@@ -1,0 +1,68 @@
+.aim-sec{
+  background: linear-gradient(86deg, #0B0B1D 3.56%, #003700 151.03%);
+  padding: 100px 0;
+}
+.aim-sec h3{
+  color: var(--bs-white);
+  font-size: 22px;
+  letter-spacing: -0.45px;
+}
+.aim-sec h2{
+  color: var(--bs-white);
+  font-size: 75px;
+  letter-spacing: -1.49px;
+  line-height: 1.1;
+}
+.aim-sec p{
+  color: #C0C4C2;
+  line-height:2;
+  letter-spacing: -0.32px;
+}
+
+@media screen and (max-width:1666px) {
+  .aim-sec h2 {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width:1399px) {
+  .aim-sec h2 {
+    font-size: 53px;
+  }
+}
+@media screen and (max-width:1199px) {
+  .aim-sec h2 {
+    font-size: 48px;
+  }
+  .aim-sec p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+}
+@media screen and (max-width:991px) {
+  .aim-sec {
+    padding: 50px 0;
+  }
+  .aim-sec h2 {
+    font-size: 38px;
+  } 
+  .aim-sec p{
+    margin-bottom: 0px;
+  }
+
+}
+@media screen and (max-width:767px) {}
+@media screen and (max-width:575px) {
+  .aim-sec {
+    padding: 30px 0;
+  }
+  .aim-sec h2 {
+    font-size: 35px;
+  }
+}
+@media screen and (max-width:480px) {}
+@media screen and (max-width:375px) {}
+
+
+

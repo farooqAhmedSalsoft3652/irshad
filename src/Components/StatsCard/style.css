@@ -1,0 +1,137 @@
+.stats_card {
+  border-radius: 10px;
+  background: rgba(220, 220, 220, 0.1);
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1rem;
+}
+
+/* .statsContent {
+    display: flex;
+    gap: 1rem;
+    flex-grow: 1;
+} */
+
+/* .statsImg {
+    flex-shrink: 0;
+} */
+
+.statsImg img {
+  height: 82px;
+  aspect-ratio: 2/1;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0.5rem;
+}
+.statsDataImg {
+  position: absolute;
+  right: -70px;
+  top: 20px;
+  bottom: 0;
+  margin: auto;
+  width: 190px;
+  opacity: 0.1;
+}
+.statsData {
+  flex-grow: 1;
+}
+
+.statsNumber {
+  margin-bottom: 0;
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--blackColor);
+}
+.statsIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+  padding: 15px;
+  width: 65px;
+  border-radius: 50%;
+}
+.statsImg-1 {
+  background: #ff8ca1;
+}
+.statsImg-2 {
+  background: #b7fff2;
+}
+.statsImg-3 {
+  background: #b5e99d;
+}
+.statsImg-4 {
+  background: #f6c1ff;
+}
+.statsText {
+  margin: 0;
+  font-weight: 600;
+  font-size: 25px;
+  color: var(--blackColor);
+  text-transform: uppercase;
+  text-wrap: auto;
+}
+
+.statsChange {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.statsChange p {
+  color: var(--whiteColor);
+}
+@media screen and (max-width: 1366px) {
+  .statsImg {
+    padding: 10px 20px;
+  }
+  .statsText {
+    font-size: 22px;
+  }
+  .statsNumber {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .statsText {
+    font-size: 20px;
+  }
+  .statsIcons {
+    height: 55px;
+    padding: 10px;
+    width: 55px;
+  }
+  .statsNumber {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .statsImg {
+    padding: 8px 15px;
+  }
+  .statsText {
+    font-size: 18px;
+  }
+  .statsNumber {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .statsText {
+    font-size: 18px;
+  }
+  .statsIcons {
+    height: 45px;
+    padding: 10px;
+    width: 45px;
+  }
+  .statsNumber {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .statsText {
+    font-size: 18px;
+  }
+  .statsNumber {
+    font-size: 20px;
+  }
+}

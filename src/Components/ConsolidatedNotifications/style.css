@@ -1,0 +1,9 @@
+.slimSelect {
+  padding: 8px 28px 8px 12px;
+}
+.slimSelect + .chevron-icon {
+  top: 10px !important;
+}
+.greenbtn {
+  color: #1a8c1a;
+}

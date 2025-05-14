@@ -1,0 +1,13 @@
+.modalpara {
+  max-width: 305px;
+  margin-bottom: 10px !important;
+  margin: 0 auto;
+  color: #656565;
+  text-transform: capitalize;
+}
+.modalButton {
+  font-size: 16px;
+}
+.modal-backdrop {
+  --bs-backdrop-opacity: 0.8;
+}

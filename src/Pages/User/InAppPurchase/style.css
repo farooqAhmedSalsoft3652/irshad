@@ -1,0 +1,30 @@
+.card-app {
+  box-shadow: 0px 7.172px 71.719px 0px rgba(0, 0, 0, 0.06);
+}
+.card-app h4{
+  color: #000;
+  font-size: 23px;
+}
+.card-app h6{
+  font-size: 23px;
+}
+.card-app .file-icon {
+  max-width: 100px;
+  height: auto;
+}
+.card-app p{
+  font-size: 17px;
+  color: #8E8E8E;
+  line-height: 1.5;
+}
+.card-app .btn-primary{
+  font-size: 20px;
+  font-weight: 500;
+  min-width:180px;
+}
+.card-app .btn-primary svg{
+  max-width: 25px;
+  margin-right: 10px;
+}
+
+/* color: #1819FF; */

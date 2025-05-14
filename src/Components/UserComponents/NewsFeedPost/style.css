@@ -1,0 +1,99 @@
+
+/* NewFeed Cart Start */
+.card-newsfeed{
+  background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0px 7.172px 71.719px 0px rgba(0, 0, 0, 0.06);
+}
+.card-newsfeed{}
+.card-newsfeed .card-header h5{
+  font-size: 21px;
+}
+.card-newsfeed .card-header p{
+  font-size: 17px;
+  color: #868686;
+}
+.card-newsfeed .card-header  img {
+  max-width: 75px;
+  max-height: 75px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid #d7d7d7;
+}
+.card-newsfeed .card-text{
+  font-size: 17px;
+  line-height: 1.4;
+}
+.card-newsfeed .card-img{
+  border-radius: 0;
+}
+.card-newsfeed .dropdown-toggle{
+  padding: 0px;
+  background: transparent;
+  font-size: 35px;
+  color: #000;
+  height: auto;
+  line-height: 0;
+}
+.card-newsfeed .dropdown-toggle:hover{
+  color: #1A8C1A;
+}
+.card-newsfeed .dropdown-toggle:after{
+  content: "";
+  display: none;
+}
+.card-newsfeed .dropdown-menu{
+  background-color: #E9E9E9;
+}
+.card-newsfeed .dropdown-menu .dropdown-item{
+  font-weight: 700;
+  font-size: 18px;
+  color: #0F1828;
+}
+.card-newsfeed .dropdown-menu .dropdown-item:hover,
+.card-newsfeed .dropdown-menu .dropdown-item:focus{
+  background-color:#dbdbdb; 
+}
+.card-newsfeed .dropdown-menu .dropdown-item svg{
+  margin-right: 0.5rem;
+}
+.card-newsfeed .reactions-wrapper{
+  font-size: 16px;
+  font-weight: 500;
+  color: #1D1D1D;
+}
+.card-newsfeed .react-now{
+  font-size: 17px;
+}
+.card-newsfeed .react-now svg{
+  font-size: 20px;
+}
+
+.card-newsfeed .likes-comments{
+  font-size: 14px;
+  font-weight: 500;
+  color: #1D1D1D;
+}
+.react-now:hover .post-reactions {
+  display: flex;
+}
+.post-reactions {
+  width: 86px;
+  height: 34px;
+  border-radius: 50px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 11px 1px rgba(204, 204, 204, 0.25);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -30px;
+  left: 0;
+  transition: ease-in-out .2s;
+}
+.post-reaction{}
+.likes-modal .modal-dialog{
+  max-width: 600px;
+}

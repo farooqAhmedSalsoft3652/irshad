@@ -1,0 +1,58 @@
+.provide-info{}
+.provide-info img{
+  max-width: 50px;
+  max-height: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid #d7d7d7;
+}
+
+.booking-detail-card h5{
+  font-size: 16px;
+}
+.booking-detail-card h4{
+  font-size: 23px;
+}
+.booking-detail-card p{
+  font-size: 17px;
+  color: #8E8E8E;
+  margin-bottom: 0px;
+}
+
+.booking-charges .inline-card h5{
+  flex-basis: 300px;
+}
+.booking-charges .booking-detail-card h5{
+  font-size: 20px;
+}
+.booking-charges .booking-detail-card p{
+  color: var(--darkGreen);
+}
+.booking-charges .booking-detail-card p.price{
+  font-size: 24px;
+}
+
+.inline-card h5 {
+  flex-basis: 250px;
+  min-width: 250px;
+}
+
+
+.user-layout .booking-detail .btn.disabled,
+.user-layout .booking-detail .btn:disabled {
+    color: #fff;
+    pointer-events: none;
+    background: linear-gradient(55deg, var(--c1, #195f74), var(--c2, #1a8c1a) 55%, var(--c1, #1a8c1a)) var(--x, 0)/ 200%;
+    opacity: 1;
+}
+
+.session-screen {
+  background-color: #f5f5f5;
+}
+
+.session-footer {
+  padding: 30px 0 0 0;
+}
