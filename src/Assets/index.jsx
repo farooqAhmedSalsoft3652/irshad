@@ -44,9 +44,18 @@ import shopBanner from "../Assets/images/shop-banner.png";
 import MyShopproduct from "../Assets/images/product-2.png";
 
 
-
-
-
+// irshad images 
+import BannerImg from '../Assets/images/bannerImg.png';
+import Logo from '../Assets/images/logo.png';
+import FbIcon from "../Assets/images/fbIcon1.svg?react";
+import XIcon from "../Assets/images/twitterIcon1.svg?react";
+import InstaIcon from "../Assets/images/instaIcon1.svg?react";
+import LinkedinIcon from "../Assets/images/linkedInIcon1.svg?react";
+import OurAim from '../Assets/images/ourAim.png';
+import ConsultantImg from '../Assets/images/consultantImg.png';
+import ArrowVector from '../Assets/images/arrowVector.svg?react';
+import AddIcon from '../Assets/images/addIcon.svg?react';
+import DeleteIcon from '../Assets/images/deleteIcon.svg?react';
 export const images = {
   Check,
   Question,
@@ -85,6 +94,17 @@ export const images = {
   certificate_image,
   shopBanner,
   MyShopproduct,
-  placeholder
-
+  placeholder,
+  // irsha images
+  BannerImg,
+  Logo,
+  FbIcon,
+  XIcon,
+  InstaIcon,
+  LinkedinIcon,
+  OurAim,
+  ConsultantImg,
+  ArrowVector,
+  AddIcon,
+  DeleteIcon
 };

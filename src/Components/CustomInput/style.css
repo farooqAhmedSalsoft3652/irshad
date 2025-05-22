@@ -30,7 +30,7 @@
 }
 
 .mainInput:focus {
-  border: 1px solid #39ae94;
+  border: 1px solid #1C5CDB;
 }
 .mainInput.select-style {
   border-radius: 4px;

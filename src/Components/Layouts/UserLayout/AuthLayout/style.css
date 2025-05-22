@@ -9,6 +9,7 @@
   background-image: url(../../../../Assets/images/authBg.jpg);
   background-repeat: no-repeat;
   padding:45px 0;
+  margin-top: 40px;
 }
 .auth-wrap {
 }
@@ -81,7 +82,7 @@
 } */
 .user-login .authForm {
   border-radius: 0px;
-  padding: 4rem 5rem;
+  padding: 3rem 3rem;
   width: 100%;
 }
 /* .authTitle {
@@ -143,7 +144,7 @@
 }
 @media screen and (max-width: 575px) {
   .authForm {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem !important;
   }
   .authLogo img{
     width: 200px;

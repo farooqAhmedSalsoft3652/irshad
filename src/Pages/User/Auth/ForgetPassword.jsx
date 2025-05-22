@@ -5,7 +5,7 @@ const UserForgetPassword = () => {
   return (
     <UserAuthLayout
       authTitle="Forgot Password"
-      authPara="Enter your email address to receive a verification code"
+      authPara="Enter your email to recover your password."
       authLeftText="Your Journey to Emotional Wellness"
       backOption={true}
       authMain

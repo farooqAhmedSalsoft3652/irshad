@@ -10,6 +10,7 @@ import CustomButton from "../CustomButton/index.jsx";
 import CustomInput from "../CustomInput/index.jsx";
 import Toast, { showToast } from "../Toast/index.jsx";
 import "./style.css";
+import { Form } from "react-bootstrap";
 
 const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) => {
   const [load, setLoad] = useState(false);
@@ -103,15 +104,12 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
             error={touched.password && errors.password}
           />
           <div className="d-flex align-items-center justify-content-between mt-1 flex-wrap gap-sm-0 gap-2">
-            <div className="toggle-container">
-              <input type="checkbox" name="rememberMe" id="rememberMe" className="toggle-checkbox" />
-              <label htmlFor="rememberMe" className="toggle-label">
-                <span className="toggle-slider"></span>
-              </label>
-              <label htmlFor="rememberMe" className="toggle-text">
-                Remember Me
-              </label>
-            </div>
+            <Form.Check
+              type={'checkbox'}
+              name="rememberMe"
+              id="rememberMe"
+              label={`Remember Me`}
+            />
             <Link to={`${actor ? "/"+actor : "" }/forget-password`} className="fw-light text-decoration-underline blueColor">
               <button type="button" className="notButton underlineOnHover blueColor text-decoration-underline">
                 Forgot Password?
@@ -121,8 +119,8 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
 
           <div className="mt-5 text-center">
             <CustomButton
-              variant="site-btn primary-btn"
-              className="px-5 w-100"
+              variant="siteBtn primaryBtn"
+              className="py-sm-4 w-100"
               text="Log In"
               pendingText="Loading..."
               isPending={isSubmitting}

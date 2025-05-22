@@ -41,7 +41,7 @@
 }
 .authTitle {
   font-weight: 600;
-  font-size: 50px;
+  font-size: 40px;
   text-transform: capitalize;
   color: var(--lightblackColor);
 }
@@ -55,7 +55,8 @@
 .authPara {
   font-weight: 400;
   font-size: 16px;
-  color: #9B9797;
+  color: #999999 !important;
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 1366px) {

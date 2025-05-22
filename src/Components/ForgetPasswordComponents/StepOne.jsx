@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { forgotEmail } from "../../Config/Validations";
 import { useFormStatus } from "../../Hooks/useFormStatus";
-import { usePageTitle } from "../../Utils/helper";
-import { AuthLayout } from "../Layouts/AdminLayout/Auth";
+import { usePageTitleUser } from "../../Utils/helper";
 import CustomButton from "../CustomButton";
 import CustomInput from "../CustomInput";
 import Toast from "../Toast";
@@ -13,7 +12,7 @@ import "./style.css";
 const StepOne = ({ apiEndpoint, navigateTo }) => {
   const navigate = useNavigate();
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
-  usePageTitle("Forgot Password");
+  usePageTitleUser("Forgot Password");
   const handleSubmit = async (values) => {
     startSubmitting();
     setTimeout(() => {
@@ -54,7 +53,7 @@ const StepOne = ({ apiEndpoint, navigateTo }) => {
             <div className="mt-4 text-center">
               <CustomButton
                 type="submit"
-                className="site-btn primary-btn w-100"
+                className="siteBtn primaryBtn w-100 py-4"
                 text="Continue"
                 isPending={isSubmitting}
                 pendingText="Loading..."

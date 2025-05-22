@@ -1201,7 +1201,86 @@ export const addProductSchema = Yup.object().shape({
   
 });
 
+// irshad validations
 
+export const signUpUserValidationSchema = Yup.object().shape({
+  first_name: Yup.string().required("First Name is required"),
+  last_name: Yup.string().required("Last Name is required"),
+  language: Yup.string().required("Language is required"),
+  nationality: Yup.string().required("Nationality is required"),
+  gender: Yup.string().required("Gender is required"),
+  phone: Yup.string()
+    .required("Contact Number is required")
+    .min(10, "Contact Number must be at least 10 digits"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: Yup.string()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters"),
+  confirm_password: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Confirm Password is required"),
+  profile_pic: Yup.array()
+    .min(1, "Profile Picture is required")
+    .required("Profile Picture is required"),
+  cover_pic: Yup.array()
+    .min(1, "Cover Picture is required")
+    .required("Cover Picture is required"),
+});
+
+
+export const personalDetailsValidationSchema = Yup.object().shape({
+  about: Yup.string().required("About is required"),
+  category: Yup.string().required("Category is required"),
+  
+  educationDetails: Yup.array().of(
+    Yup.object().shape({
+      institution_name: Yup.string().required("Institution Name is required"),
+      degree_title: Yup.string().required("Degree Title is required"),
+      edu_details_from: Yup.date()
+        .required("Start date is required")
+        .typeError("Invalid date"),
+      edu_details_to: Yup.date()
+        .required("End date is required")
+        .typeError("Invalid date")
+        .min(
+          Yup.ref("edu_details_from"),
+          "End date can't be before start date"
+        ),
+    })
+  ),
+
+  workExperience: Yup.array().of(
+    Yup.object().shape({
+      organization_name: Yup.string().required("Organization Name is required"),
+      designation: Yup.string().required("Designation is required"),
+      wokr_exp_from: Yup.date()
+        .required("Start date is required")
+        .typeError("Invalid date"),
+      wokr_exp_to: Yup.date()
+        .required("End date is required")
+        .typeError("Invalid date")
+        .min(
+          Yup.ref("wokr_exp_from"),
+          "End date can't be before start date"
+        ),
+    })
+  ),
+
+  certificationDetails: Yup.array().of(
+    Yup.object().shape({
+      institution_name: Yup.string().required("Institution Name is required"),
+      certificate_title: Yup.string().required("Certificate Title is required"),
+      certificate_pic: Yup.mixed()
+        .test(
+          "fileRequired",
+          "Certificate Picture is required",
+          (value) => value && value.length > 0
+        ),
+    })
+  ),
+});
 
 
 

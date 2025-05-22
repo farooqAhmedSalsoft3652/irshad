@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { forgotCode } from "../../Config/Validations";
 import { useFormStatus } from "../../Hooks/useFormStatus";
 import { post } from "../../Services/Api";
-import { getEmail, usePageTitle } from "../../Utils/helper";
-import { AuthLayout } from "../Layouts/AdminLayout/Auth";
+import { getEmail, usePageTitleUser } from "../../Utils/helper";
 import CustomButton from "../CustomButton";
 import CustomInput from "../CustomInput";
 import Toast, { showToast } from "../Toast";
@@ -17,7 +16,7 @@ const StepTwo = ({ apiEndpoint, resendEndpoint, navigateTo }) => {
   const [load, setLoad] = useState(false);
   const [data, setForgotPasswordData] = useState({});
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
-  usePageTitle("Forgot Password");
+  usePageTitleUser("Forgot Password");
   const handleSubmit = async (values) => {
     setTimeout(() => {
       navigate(navigateTo);
@@ -71,7 +70,8 @@ const StepTwo = ({ apiEndpoint, resendEndpoint, navigateTo }) => {
               required
               error={touched.code && errors.code}
             />
-            <div className="d-flex align-items-baseline justify-content-end mt-1">
+            <div className="d-flex align-items-baseline justify-content-between mt-1">
+              <p className="text-dark">00:58</p>
               <button type="button" className="underlineOnHover notButton blueColor" onClick={resendCode}>
                 {load ? "Sending..." : "Resend Code"}
               </button>
@@ -79,7 +79,7 @@ const StepTwo = ({ apiEndpoint, resendEndpoint, navigateTo }) => {
             <div className="mt-4 text-center">
               <CustomButton
                 type="submit"
-                className="site-btn primary-btn px-5 w-100"
+                className="siteBtn primaryBtn py-4 w-100"
                 text="Continue"
                 isPending={isSubmitting}
                 pendingText="Loading..."

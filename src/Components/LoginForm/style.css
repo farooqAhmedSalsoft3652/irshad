@@ -48,3 +48,20 @@
   cursor: pointer;
   margin-top: 3px;
 }
+
+.form-check-input{
+  cursor: pointer;
+  border-color: #1C5CDB !important;
+}
+.form-check-label{
+  cursor: pointer;
+}
+.form-check-input:checked {
+  background-color: blue;
+  
+}
+
+.form-check-input:focus {
+  box-shadow: none;
+  border-color: #1C5CDB !important;
+}

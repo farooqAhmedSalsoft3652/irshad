@@ -4,7 +4,7 @@ const UserForgetPassword2 = () => {
   return (
     <UserAuthLayout
       authTitle="Forgot Password"
-      authPara="Enter an email address / Phone Number to receive a verification code"
+      authPara="Enter verification code sent to your email address."
       authLeftText="Your Journey to Emotional Wellness"
       backOption={true}
       authMain
@@ -12,7 +12,7 @@ const UserForgetPassword2 = () => {
       <StepTwo
         apiEndpoint="/admin-api/password-recovery/verify-code"
         resendEndpoint="/admin-api/password-recovery/verify-email"
-        navigateTo="/admin/forget-password3"
+        navigateTo="/forget-password3"
       />
     </UserAuthLayout>
   );

@@ -2,15 +2,15 @@
 import { UserAuthLayout } from "../../../Components/Layouts/UserLayout/AuthLayout";
 import LoginForm from "../../../Components/LoginForm";
 import { loginValidationSchema } from "../../../Config/Validations";
-import { usePageTitle } from "../../../Utils/helper";
+import { usePageTitleUser } from "../../../Utils/helper";
 import "./style.css";
 
 
 const UserLogin = () => {
-  usePageTitle("User Login");
+  usePageTitleUser("Login");
   return (
     <>
-      <UserAuthLayout authTitle="Login Account" authMain authPara="Log In to Your Account" authLeftText="Your Journey to Emotional Wellness">
+      <UserAuthLayout authTitle="Login" authMain authPara="" authLeftText="Your Journey to Emotional Wellness" dontHaveAcc>
         <LoginForm
           // actor="user"
           // apiEndpoint="/admin-api/auth/login"

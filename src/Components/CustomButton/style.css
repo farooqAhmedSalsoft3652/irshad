@@ -38,7 +38,8 @@ fieldset:disabled .btn {
 .user-layout .btn-primary,
 .btn-user-primary  {
     color: var(--bs-white);
-    background: linear-gradient(55deg, var(--c1, #195f74), var(--c2, #1a8c1a) 55%, var(--c1, #1a8c1a)) var(--x, 0)/ 200%;
+    background: #15355E !important;
+    /* background: linear-gradient(55deg, var(--c1, #195f74), var(--c2, #1a8c1a) 55%, var(--c1, #1a8c1a)) var(--x, 0)/ 200%; */
 }
 
 .user-layout .btn-primary:hover,

@@ -4,7 +4,8 @@
 Footer
 ******************/
 #footer {
-  background: linear-gradient(86deg, #0B0B1D 3.56%, #003700 151.03%);
+  /* background: linear-gradient(86deg, #0B0B1D 3.56%, #003700 151.03%); */
+    background: url(../../../../Assets/images/footerBg.png) no-repeat;
   background-size: cover;
   background-position: center center;
 }
@@ -19,7 +20,7 @@ Footer
 #footer .widget h3.widget-title {
   font-size: 18px;
   padding-bottom: 15px;
-  color: #ffffff;
+  color: #333333;
   position: relative;
 }
 
@@ -34,17 +35,17 @@ Footer
 
 #footer .widget li {
   margin: 10px 0;
-  color: #ffffff;
+  color: #555753;
 }
 #footer .widget li a {
-  color: var(--bs-white);
+  color: #555753;
   text-decoration: none;
   position: relative;
   padding:5px 0px;
 }
 
 #footer .widget li a:hover {
-  color: var(--bs-white);
+  color: #333333;
   text-decoration: underline;
 }
 
@@ -61,12 +62,12 @@ Footer
 .footer-info address {
   margin-bottom: 0px;
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.81);
+  color: #555753;
 
 }
 
 .footer-info .border-top {
-  border-color: rgb(99, 99, 99, 0.3) !important;
+  border-color: #111111 !important;
 }
 
 .widget.image-widget p {

@@ -53,14 +53,14 @@ const CustomModal = (props) => {
               {props?.success ? (
                 <CustomButton
                   onClick={props?.action ? props.action : props?.close}
-                  className="site-btn modalButton primary-btn px-5 mb-2 mt-3"
+                  className="siteBtn modalButton primaryBtn px-5 mb-2 mt-3"
                   text={props?.btnText || "Ok"}
                 />
               ) : props?.showReason ? (
                 <>
                   <CustomButton
                     onClick={props?.action}
-                    variant="site-btn primary-btn"
+                    variant="siteBtn primaryBtn"
                     text={"Submit"}
                   />
                 </>
@@ -68,7 +68,7 @@ const CustomModal = (props) => {
                 <>
                   <CustomButton
                     onClick={props?.action ?? props?.close}
-                    className="site-btn primary-btn px-5 mb-2 mt-3 modalButton"
+                    className="siteBtn primaryBtn px-5 mb-2 mt-3 modalButton"
                     text="Ok"
                   />
                 </>
@@ -76,13 +76,13 @@ const CustomModal = (props) => {
                 <div className="mt-4">
                   <CustomButton
                     onClick={props?.action}
-                    variant="site-btn primary-btn px-5 modalButton"
+                    variant="siteBtn primaryBtn px-5 modalButton"
                     text="Yes"
                     className="me-2"
                   />
                   <CustomButton
                     onClick={props?.close}
-                    variant="site-btn secondary-btn px-5 modalButton"
+                    variant="siteBtn secondaryBtn px-5 modalButton"
                     text="No"
                   />
                 </div>

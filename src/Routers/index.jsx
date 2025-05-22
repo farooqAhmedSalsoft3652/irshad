@@ -2,7 +2,7 @@ import { useRoutes } from "react-router-dom";
 
 /* Admin Routes */
 
-import AdminErrorPage from "../Pages/Admin/ErrorPage"
+import AdminErrorPage from "../Pages/Admin/ErrorPage";
 
 import ForgetPassword from "../Pages/Admin/Auth/ForgetPassword";
 import ForgetPassword2 from "../Pages/Admin/Auth/ForgetPassword2";
@@ -17,200 +17,143 @@ import UserManagement from "../Pages/Admin/UserManagement";
 import UserDetails from "../Pages/Admin/UserManagement/UserDetails";
 import GuestRoutes from "./GuestRoutes";
 import PreventAdmin from "./PreventAdmin";
-import PreventProvider from "./PreventProvider";
 import PreventUser from "./PreventUser";
 import ProtectedRoutes from "./ProtectedRoutes";
 
-import ServiceProviderManagement from "../Pages/Admin/ServiceProviderManagement/ServiceProviderManagement";
-import ServiceProviderDetails from "../Pages/Admin/ServiceProviderManagement/ServiceProviderDetails";
-import ServiceProviderServices from "../Pages/Admin/ServiceProviderManagement/ServiceProviderServices";
-import ServiceDetails from "../Pages/Admin/ServiceProviderManagement/ServiceDetails";
-import UserOrderDetails from "../Pages/Admin/UserManagement/OrderDetail";
-import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
 import AppointmentDetails from "../Pages/Admin/AppointmentLogs/AppointmentDetails";
-import ProductCategoryManagement from "../Pages/Admin/ProductCategoryManagement/ProductCategoryManagement";
-import AddProductCategory from "../Pages/Admin/ProductCategoryManagement/AddProductCategory";
-import ShopDetails from "../Pages/Admin/ServiceProviderManagement/ShopDetails";
-import Product from "../Pages/Admin/Product/Product";
-import ServiceProviderRequests from "../Pages/Admin/ServiceProviderManagement/ServiceProviderRequests";
-import ServiceProviderProfile from "../Pages/Admin/ServiceProviderManagement/ServiceProviderProfile";
-import ServiceCategoryManagement from "../Pages/Admin/ServiceCategoryManagement/ServiceCategoryManagement";
-import AddServiceCategory from "../Pages/Admin/ServiceCategoryManagement/AddServiceCategory";
-import EditServiceCategory from "../Pages/Admin/ServiceCategoryManagement/EditServiceCategory";
-import ViewServiceCategory from "../Pages/Admin/ServiceCategoryManagement/ViewServiceCategory";
-import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
-import EditProductCategory from "../Pages/Admin/ProductCategoryManagement/EditProductCategory";
-import ViewProductCategoryDetail from "../Pages/Admin/ProductCategoryManagement/ViewProductCategoryDetail";
-import ViewBlogs from "../Pages/Admin/ContentManagement/Blogs/ViewBlogs";
+import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
 import CommissionManagement from "../Pages/Admin/CommissionManagement/CommissionManagement";
 import ViewArticles from "../Pages/Admin/ContentManagement/Articles/ViewArticles";
+import AddBlog from "../Pages/Admin/ContentManagement/Blogs/AddBlog";
+import ViewBlogs from "../Pages/Admin/ContentManagement/Blogs/ViewBlogs";
+import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
+import AddEBook from "../Pages/Admin/ContentManagement/EBooks/AddEBook";
 import ViewEBooks from "../Pages/Admin/ContentManagement/EBooks/ViewEBooks";
 import AddVideo from "../Pages/Admin/ContentManagement/Videos/AddVideo";
-import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
 import ViewVideo from "../Pages/Admin/ContentManagement/Videos/ViewVideo";
-import AddBlog from "../Pages/Admin/ContentManagement/Blogs/AddBlog";
-import AddEBook from "../Pages/Admin/ContentManagement/EBooks/AddEBook";
-import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
-import QueriesDetails from "../Pages/Admin/QueriesManagement/QueriesDetail";
-import InAppPurchaseManagement from "../Pages/Admin/In-AppPurchaseManagement/InAppPurchaseManagement";
-import InAppPurchaseDetail from "../Pages/Admin/In-AppPurchaseManagement/InAppPurchaseDetail";
 import AddInAppPurchase from "../Pages/Admin/In-AppPurchaseManagement/AddInAppPurchase";
 import EditInAppPurchase from "../Pages/Admin/In-AppPurchaseManagement/EditInAppPurchase";
+import InAppPurchaseDetail from "../Pages/Admin/In-AppPurchaseManagement/InAppPurchaseDetail";
+import InAppPurchaseManagement from "../Pages/Admin/In-AppPurchaseManagement/InAppPurchaseManagement";
+import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
+import Product from "../Pages/Admin/Product/Product";
+import AddProductCategory from "../Pages/Admin/ProductCategoryManagement/AddProductCategory";
+import EditProductCategory from "../Pages/Admin/ProductCategoryManagement/EditProductCategory";
+import ProductCategoryManagement from "../Pages/Admin/ProductCategoryManagement/ProductCategoryManagement";
+import ViewProductCategoryDetail from "../Pages/Admin/ProductCategoryManagement/ViewProductCategoryDetail";
+import QueriesDetails from "../Pages/Admin/QueriesManagement/QueriesDetail";
+import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
+import AddServiceCategory from "../Pages/Admin/ServiceCategoryManagement/AddServiceCategory";
+import EditServiceCategory from "../Pages/Admin/ServiceCategoryManagement/EditServiceCategory";
+import ServiceCategoryManagement from "../Pages/Admin/ServiceCategoryManagement/ServiceCategoryManagement";
+import ViewServiceCategory from "../Pages/Admin/ServiceCategoryManagement/ViewServiceCategory";
+import ServiceDetails from "../Pages/Admin/ServiceProviderManagement/ServiceDetails";
+import ServiceProviderDetails from "../Pages/Admin/ServiceProviderManagement/ServiceProviderDetails";
+import ServiceProviderManagement from "../Pages/Admin/ServiceProviderManagement/ServiceProviderManagement";
+import ServiceProviderProfile from "../Pages/Admin/ServiceProviderManagement/ServiceProviderProfile";
+import ServiceProviderRequests from "../Pages/Admin/ServiceProviderManagement/ServiceProviderRequests";
+import ServiceProviderServices from "../Pages/Admin/ServiceProviderManagement/ServiceProviderServices";
+import ShopDetails from "../Pages/Admin/ServiceProviderManagement/ShopDetails";
+import UserOrderDetails from "../Pages/Admin/UserManagement/OrderDetail";
 
-import AddArticle from "../Pages/Admin/ContentManagement/Articles/AddArticle";
-import EditVideo from "../Pages/Admin/ContentManagement/Videos/EditVideo";
-import MyBankDetail from "../Pages/Admin/BankDetail/MyBankDetail";
+import MainLayout from "../Components/Layouts/UserLayout/MainLayout/index";
 import AddBankDetail from "../Pages/Admin/BankDetail/AddBankDetail";
 import EditBankDetail from "../Pages/Admin/BankDetail/EditBankDetail";
-import EditBlog from "../Pages/Admin/ContentManagement/Blogs/EditBlog";
-import EditArticle from "../Pages/Admin/ContentManagement/Articles/EditArticle";
-import EditEBook from "../Pages/Admin/ContentManagement/EBooks/EditEBook";
-import SubscriptionLogs from "../Pages/Admin/SubscriptionLogs/subscriptionLogs";
-import EmergencyContactsManagement from "../Pages/Admin/EmergencyContactsManagement/EmergencyContactsManagement";
-import AddEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/AddEmergencyContacts";
-import EditEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/EditEmergencyContacts.";
-import SubscriptionPlansManagementUser from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementUser";
-import SubscriptionPlansManagementProvider from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementProvider";
-import AddNewPlanUser from "../Pages/Admin/SubscriptionLogs/AddNewPlanUser";
-import AddNewPlanProvider from "../Pages/Admin/SubscriptionLogs/AddNewPlanProvider";
-import EditSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanProvider";
-import EditSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanUser";
-import ViewSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanProvider";
-import ViewSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanUser";
-import PaymentLogs from "../Pages/Admin/PaymentLogs/PaymentLogs";
-import FAQsManagement from "../Pages/Admin/FAQsManagement/FAQsManagement";
-import AddFaqs from "../Pages/Admin/FAQsManagement/AddFaqs";
-import ReportsManagement from "../Pages/Admin/ReportsManagement/ReportsManagement";
-import ViewReport from "../Pages/Admin/ReportsManagement/ViewReport";
-import ReportDetails from "../Pages/Admin/ReportsManagement/ReportDetails";
-import EditFaqs from "../Pages/Admin/FAQsManagement/EditFaqs";
-import BannerAdsManagement from "../Pages/Admin/BannerAdsManagement/BannerAdsManagement";
-import BannerAdDetails from "../Pages/Admin/BannerAdsManagement/BannerAdDetails";
+import MyBankDetail from "../Pages/Admin/BankDetail/MyBankDetail";
 import AddBanner from "../Pages/Admin/BannerAdsManagement/AddBanner";
+import BannerAdDetails from "../Pages/Admin/BannerAdsManagement/BannerAdDetails";
+import BannerAdsManagement from "../Pages/Admin/BannerAdsManagement/BannerAdsManagement";
 import EditBanner from "../Pages/Admin/BannerAdsManagement/EditBanner";
 import Chat from "../Pages/Admin/Chat/Chat";
+import AddArticle from "../Pages/Admin/ContentManagement/Articles/AddArticle";
+import EditArticle from "../Pages/Admin/ContentManagement/Articles/EditArticle";
+import EditBlog from "../Pages/Admin/ContentManagement/Blogs/EditBlog";
+import EditEBook from "../Pages/Admin/ContentManagement/EBooks/EditEBook";
+import EditVideo from "../Pages/Admin/ContentManagement/Videos/EditVideo";
+import AddEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/AddEmergencyContacts";
+import EditEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/EditEmergencyContacts.";
+import EmergencyContactsManagement from "../Pages/Admin/EmergencyContactsManagement/EmergencyContactsManagement";
+import AddFaqs from "../Pages/Admin/FAQsManagement/AddFaqs";
+import EditFaqs from "../Pages/Admin/FAQsManagement/EditFaqs";
+import FAQsManagement from "../Pages/Admin/FAQsManagement/FAQsManagement";
+import PaymentLogs from "../Pages/Admin/PaymentLogs/PaymentLogs";
+import ReportDetails from "../Pages/Admin/ReportsManagement/ReportDetails";
 import ReportedPost from "../Pages/Admin/ReportsManagement/ReportedPost";
+import ReportsManagement from "../Pages/Admin/ReportsManagement/ReportsManagement";
+import ViewReport from "../Pages/Admin/ReportsManagement/ViewReport";
+import AddNewPlanProvider from "../Pages/Admin/SubscriptionLogs/AddNewPlanProvider";
+import AddNewPlanUser from "../Pages/Admin/SubscriptionLogs/AddNewPlanUser";
+import EditSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanProvider";
+import EditSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanUser";
+import SubscriptionPlansManagementProvider from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementProvider";
+import SubscriptionPlansManagementUser from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementUser";
+import ViewSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanProvider";
+import ViewSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanUser";
+import SubscriptionLogs from "../Pages/Admin/SubscriptionLogs/subscriptionLogs";
 import UserPosts from "../Pages/Admin/UserManagement/UserPosts";
-import MainLayout from "../Components/Layouts/UserLayout/MainLayout/index";
 
 /* User Routes */
-import Home from "../Pages/User/Home";
 import UserForgetPassword from "../Pages/User/Auth/ForgetPassword";
 import UserForgetPassword2 from "../Pages/User/Auth/ForgetPassword2";
 import UserForgetPassword3 from "../Pages/User/Auth/ForgetPassword3";
+import Home from "../Pages/User/Home";
 
 import AboutUs from "../Pages/User/AboutUs";
-import UserLogin from "../Pages/User/Auth/Login"
-import UserSignup from "../Pages/User/Auth/Signup"
+import UserLogin from "../Pages/User/Auth/Login";
+import UserSignup from "../Pages/User/Auth/Signup";
 import ContactUs from "../Pages/User/ContactUs";
 import Services from "../Pages/User/Services";
 import ServicesDetails from "../Pages/User/Services/ServiceDetail";
 // import ServicesDetails_1 from "../Pages/User/Services/ServiceDetail_1";
-import ServicesProvider from "../Pages/User/ServiceProvider";
-import EmergencyContacts from "../Pages/User/EmergencyContacts";
-import EmergencyContactsAdd from "../Pages/User/EmergencyContacts/Add";
-import Subscriptions from "../Pages/User/Subscriptions";
-import SubscriptionPayment from "../Pages/User/Subscriptions/SubscriptionPayment";
-import SubscriptionLogsUser from "../Pages/User/Subscriptions/SubscriptionLogs";
+import ScrollToTop from "../Components/UserComponents/ScrollToTop";
+import BlockedUsers from "../Pages/User/BlockedUsers";
 import Bookings from "../Pages/User/Booking";
 import BookingsDetails from "../Pages/User/Booking/BookingDetail";
-import InAppPurchase from "../Pages/User/InAppPurchase";
-import InAppPurchasePayment from "../Pages/User/InAppPurchase/InAppPurchasePayment";
-import UserProfile from "../Pages/User/Profile";
-import UserEditProfile from "../Pages/User/Profile/UserEditProfile";
-import UserChangePassword from "../Pages/User/Profile/UserChangePassword";
-import UserNotifications from "../Pages/User/Notifications";
-import Faqs from "../Pages/User/Faqs";
 import JoinSession from "../Pages/User/Booking/JoinSession";
-import RehabCenter from "../Pages/User/RehabCenter";
-import Education from "../Pages/User/Education";
-import EducationDetail from "../Pages/User/Education/EducationDetail";
-import BlockedUsers from "../Pages/User/BlockedUsers";
-import ProductView from "../Pages/User/Shop/ProductView";
-import Cart from "../Pages/User/Shop/Cart";
-import ServicesReview from "../Pages/User/Services/Review";
-import Wishlist from "../Pages/User/Shop/Wishlist";
-import Checkout from "../Pages/User/Shop/Checkout";
-import CardDetail from "../Pages/User/Shop/cardDetail";
-import OrderLogs from "../Pages/User/OrderLogs";
-import OrderLogsDetail from "../Pages/User/OrderLogs/OrderLogsDetail";
 import ViewMap from "../Pages/User/Booking/ViewMap";
 import UserChat from "../Pages/User/Chat/Chat";
+import Education from "../Pages/User/Education";
+import EducationDetail from "../Pages/User/Education/EducationDetail";
+import EmergencyContacts from "../Pages/User/EmergencyContacts";
+import EmergencyContactsAdd from "../Pages/User/EmergencyContacts/Add";
+import Faqs from "../Pages/User/Faqs";
+import InAppPurchase from "../Pages/User/InAppPurchase";
+import InAppPurchasePayment from "../Pages/User/InAppPurchase/InAppPurchasePayment";
+import MyPosts from "../Pages/User/MyPosts";
 import NewsFeed from "../Pages/User/NewsFeed";
-import ServicePayment from "../Pages/User/Services/ServicePayment";
-import ServiceProviderRequest from "../Pages/User/ServiceProvider/ServiceProviderRequest";
-import ServiceProviderPayment from "../Pages/User/ServiceProvider/ServiceProviderPayment";
+import UserNotifications from "../Pages/User/Notifications";
+import OrderLogs from "../Pages/User/OrderLogs";
+import OrderLogsDetail from "../Pages/User/OrderLogs/OrderLogsDetail";
+import UserProfile from "../Pages/User/Profile";
+import UserChangePassword from "../Pages/User/Profile/UserChangePassword";
+import UserEditProfile from "../Pages/User/Profile/UserEditProfile";
+import RehabCenter from "../Pages/User/RehabCenter";
+import ServicesProvider from "../Pages/User/ServiceProvider";
 import ServiceProviderBookServices from "../Pages/User/ServiceProvider/ServiceProviderBookServices";
 import ServiceProviderBookView from "../Pages/User/ServiceProvider/ServiceProviderBookView";
+import ServiceProviderPayment from "../Pages/User/ServiceProvider/ServiceProviderPayment";
+import ServiceProviderRequest from "../Pages/User/ServiceProvider/ServiceProviderRequest";
+import ServicesReview from "../Pages/User/Services/Review";
 import ServiceBook from "../Pages/User/Services/ServiceBook";
 import ServiceBookView from "../Pages/User/Services/ServiceBookView";
-import MyPosts from "../Pages/User/MyPosts";
-import ScrollToTop from "../Components/UserComponents/ScrollToTop";
+import ServicePayment from "../Pages/User/Services/ServicePayment";
+import Cart from "../Pages/User/Shop/Cart";
+import Checkout from "../Pages/User/Shop/Checkout";
+import ProductView from "../Pages/User/Shop/ProductView";
+import Wishlist from "../Pages/User/Shop/Wishlist";
+import CardDetail from "../Pages/User/Shop/cardDetail";
+import Subscriptions from "../Pages/User/Subscriptions";
+import SubscriptionLogsUser from "../Pages/User/Subscriptions/SubscriptionLogs";
+import SubscriptionPayment from "../Pages/User/Subscriptions/SubscriptionPayment";
 
 import ErrorPage from "../Pages/User/ErrorPage";
-import ProviderErrorPage from "../Pages/Provider/ErrorPage";
-import ProviderProfile from "../Pages/Provider/Profile";
-import ProviderEditProfile from "../Pages/Provider/Profile/ProviderEditProfile";
-import ProviderChangePassword from "../Pages/Provider/Profile/ProviderChangePassword";
-
-import SelectServices from "../Pages/Provider/SelectServices";
-import SelectServicesAdd from "../Pages/Provider/SelectServices/SelectServicesAdd";
-
-import ProviderServices from "../Pages/Provider/Services";
-import ProviderServicesDetails from "../Pages/Provider/Services/ServiceDetails";
-import ProviderServicesDetailsEdit from "../Pages/Provider/Services/ServicesDetailsEdit";
-import ProviderServicesReview from "../Pages/Provider/Services/Review";
-import ProviderBookingLogs from "../Pages/Provider/BookingLogs";
-import ProviderBookingDetails from "../Pages/Provider/BookingLogs/BookingDetails";
-import ProviderBookingRequests from "../Pages/Provider/BookingLogs/bookingRequests";
-
-
-import ProviderOrderLogs from "../Pages/Provider/OrderLogs";
-import ProviderOrderLogsDetail from "../Pages/Provider/OrderLogs/OrderLogsDetail";
-
-import ProviderBlockedUsers from "../Pages/Provider/BlockedUsers";
-
-import ProviderPaymentLogs from "../Pages/Provider/PaymentLogs";
-import ProviderMyBank from "../Pages/Provider/MyBank";
-import ProviderMyBankAdd from "../Pages/Provider/MyBank/BankAdd";
-import ProviderMyBankEdit from "../Pages/Provider/MyBank/BankEdit";
-
-import ProviderUserNotifications from "../Pages/Provider/Notifications";
-import ProviderSubscriptions from "../Pages/Provider/Subscriptions";
-import ProviderSubscriptionLogs from "../Pages/Provider/Subscriptions/SubscriptionLogs";
-import ProviderSubscriptionPayment from "../Pages/Provider/Subscriptions/SubscriptionPayment";
-
-import ProviderShop from "../Pages/Provider/Shop/";
-import ProviderShopCreate from "../Pages/Provider/Shop/ShopCreate";
-import ProviderShopEdit from "../Pages/Provider/Shop/ShopEdit";
-
-import ProviderProductView from "../Pages/Provider/Shop/ProductView";
-import ProviderProductEdit from "../Pages/Provider/Shop/ProductEdit";
-import ProviderProductAdd from "../Pages/Provider/Shop/ProductAdd";
-
-import ProviderNewsFeed from "../Pages/Provider/NewsFeed";
-import ProviderMyPosts from "../Pages/Provider/MyPosts";
-
-import ProviderChat from "../Pages/Provider/Chat/Chat";
-import ProviderSignup from "../Pages/Provider/Auth/Signup";
-
-
-
-
-
-
-
-
-
-
+import PersonalDetails from "../Pages/User/Auth/PersonalDetails";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
 const roles = {
   admin: "admin",
   user: "user",
-  provider: "provider",
-
 };
 
 // Refactor code - Change layout implementation
@@ -502,19 +445,18 @@ const routes = [
             element: <MainLayout />,
             children: [
               { path: "", element: <Home /> },
-              // { path: "provider", element: <Home /> },
-              
-              { path: "about-us", element: <AboutUs />, },
-              { path: "contact-us", element: <ContactUs /> },  
+              { path: "about-us", element: <AboutUs /> },
+              { path: "contact-us", element: <ContactUs /> },
             ],
           },
           {
-            element: <MainLayout showFooter={false} />,
+            element: <MainLayout  />,
             children: [
               {
                 element: <PreventUser />, // Wrap provider routes with PreventProvider
                 children: [
                   { path: "signup", element: <UserSignup /> },
+                  { path: "personal-details", element: <PersonalDetails /> },
                   { path: "login", element: <UserLogin /> },
                   { path: "/forget-password", element: <UserForgetPassword /> },
                   { path: "/forget-password2", element: <UserForgetPassword2 /> },
@@ -532,11 +474,10 @@ const routes = [
           // { path: "/", element: <Home /> },
           {
             element: <MainLayout />,
-            children:[
+            children: [
               { path: "/profile", element: <UserProfile /> },
               { path: "/edit-profile", element: <UserEditProfile /> },
               { path: "/change-password", element: <UserChangePassword /> },
-
 
               { path: "/services", element: <Services /> },
               { path: "/services/:id", element: <ServicesDetails /> },
@@ -545,14 +486,11 @@ const routes = [
               { path: "/services/book-services", element: <ServiceBook /> },
               { path: "/services/book-services/view-booking", element: <ServiceBookView /> },
 
-
               { path: "/services-provider/:id", element: <ServicesProvider /> },
               { path: "/services-provider/request", element: <ServiceProviderRequest /> },
               { path: "/services-provider/payment", element: <ServiceProviderPayment /> },
               { path: "/services-provider/book-services", element: <ServiceProviderBookServices /> },
               { path: "/services-provider/book-services/view-booking", element: <ServiceProviderBookView /> },
-
-              // { path: "/services-pages/", element: <ServicesDetails_1 /> },
 
               { path: "/emergency-contacts/", element: <EmergencyContacts /> },
               { path: "/emergency-contacts/add", element: <EmergencyContactsAdd /> },
@@ -563,7 +501,7 @@ const routes = [
               { path: "/bookings/", element: <Bookings /> },
               { path: "/bookings/:id", element: <BookingsDetails /> },
               { path: "/bookings/join-session/:id", element: <JoinSession /> },
-              
+
               { path: "/in-app-purchase", element: <InAppPurchase /> },
               { path: "/in-app-purchase/payment/:id", element: <InAppPurchasePayment /> },
               { path: "/notifications", element: <UserNotifications /> },
@@ -575,7 +513,7 @@ const routes = [
               { path: "/education/:id/:type/:id", element: <EducationDetail /> },
 
               { path: "/blocked-users", element: <BlockedUsers /> },
-              
+
               { path: "/product-detail/:id", element: <ProductView /> },
               { path: "/wishlist/", element: <Wishlist /> },
               { path: "/view-cart/", element: <Cart /> },
@@ -584,113 +522,21 @@ const routes = [
 
               { path: "/order-logs/", element: <OrderLogs /> },
               { path: "/order-logs/:id", element: <OrderLogsDetail /> },
-              
+
               { path: "/newsfeed", element: <NewsFeed /> },
 
               { path: "/chat", element: <UserChat /> },
               { path: "/my-posts", element: <MyPosts /> },
 
               // { path: "", element: <Home /> },
-            ] 
+            ],
           },
           {
             element: <MainLayout showHeader={false} showFooter={false} />,
-            children: [
-              { path: "/wiew-map/", element: <ViewMap /> },
-            ]
+            children: [{ path: "/wiew-map/", element: <ViewMap /> }],
           },
           { path: "*", element: <ErrorPage /> },
         ],
-      },
-
-      {
-        element: <GuestRoutes provider />,
-        children: [
-          {
-            element: <MainLayout />,
-            children: [
-              { path: "provider", element: <Home /> },
-              { path: "provider/about-us", element: <AboutUs /> },
-              { path: "provider/contact-us", element: <ContactUs /> },
-              { path: "provider/create-shop", element: <ProviderShopCreate /> }, // will be delet on backend
-
-              // Add more provider specific routes here
-            ],
-          },
-          {
-            element: <MainLayout showFooter={false} />,
-            children: [
-              {
-                element: <PreventProvider />, // Wrap provider routes with PreventProvider
-                children: [
-                  { path: "provider/signup", element: <ProviderSignup /> },
-                  { path: "provider/login", element: <UserLogin /> },
-                  { path: "provider/forget-password", element: <UserForgetPassword /> },
-                  { path: "provider/forget-password2", element: <UserForgetPassword2 /> },
-                  { path: "provider/forget-password3", element: <UserForgetPassword3 /> },
-                ],
-              },
-            ],
-          },
-          { path: "provider/*", element: <ProviderErrorPage /> },
-        ],
-      },
-      {
-        element: <ProtectedRoutes provider roles={[roles.provider]} />,
-        children:[
-          {
-            element: <MainLayout />,
-            children: [
-              { path: "/provider/profile", element: <ProviderProfile /> },
-              { path: "/provider/edit-profile", element: <ProviderEditProfile /> },
-              { path: "/provider/change-password", element: <ProviderChangePassword /> },
-
-              { path: "/provider/select-services", element: <SelectServices /> },
-              { path: "/provider/select-services/add", element: <SelectServicesAdd /> },
-
-              { path: "/provider/my-services", element: <ProviderServices /> },
-              { path: "/provider/my-services/:id", element: <ProviderServicesDetails /> },
-              { path: "/provider/my-services/:id/edit", element: <ProviderServicesDetailsEdit /> },
-              { path: "/provider/my-services/:id/review", element: <ProviderServicesReview /> },
-
-              { path: "/provider/booking-logs", element: <ProviderBookingLogs /> },
-              { path: "/provider/booking-logs/requests", element: <ProviderBookingRequests /> },
-              { path: "/provider/booking-logs/:id", element: <ProviderBookingDetails /> },
-
-              { path: "/provider/blocked-users", element: <ProviderBlockedUsers /> },
-
-              { path: "/provider/order-logs", element: <ProviderOrderLogs /> },
-              { path: "/provider/order-logs/:id", element: <ProviderOrderLogsDetail /> },
-              
-              { path: "/provider/payment-logs", element: <ProviderPaymentLogs /> },
-
-              { path: "/provider/my-bank", element: <ProviderMyBank /> },
-              { path: "/provider/my-bank/add", element: <ProviderMyBankAdd /> },
-              { path: "/provider/my-bank/edit", element: <ProviderMyBankEdit /> },
-
-              { path: "/provider/notifications", element: <ProviderUserNotifications /> },
-              { path: "/provider/subscription", element: <ProviderSubscriptions /> },
-              { path: "/provider/subscription/logs", element: <ProviderSubscriptionLogs /> },
-              { path: "/provider/subscription/:id/payment", element: <ProviderSubscriptionPayment /> },
-
-              { path: "provider/my-shop", element: <ProviderShop /> },
-              { path: "provider/my-shop/edit", element: <ProviderShopEdit /> },
-              { path: "provider/create-shop", element: <ProviderShopCreate /> },
-
-              { path: "provider/my-shop/product/:id", element: <ProviderProductView /> },
-              { path: "provider/my-shop/product/:id/edit", element: <ProviderProductEdit /> },
-              { path: "provider/add-product", element: <ProviderProductAdd /> },
-
-              { path: "provider/newsfeed", element: <ProviderNewsFeed /> },
-              // { path: "provider/newsfeed/:id", element: <ProviderNewsFeedDetails /> },
-              { path: "provider/my-posts", element: <ProviderMyPosts /> },
-              { path: "provider/chat", element: <ProviderChat /> },
-
-
-            ]
-          },
-          { path: "provider/*", element: <ProviderErrorPage /> },
-        ]
       },
       {
         path: "*",

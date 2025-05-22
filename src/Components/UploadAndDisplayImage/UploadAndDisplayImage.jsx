@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FaXmark } from "react-icons/fa6";
-import { HiOutlineUpload } from "react-icons/hi";
 import Styles from "./UploadAndDisplayImage.module.css";
-import './style.css'
+import "./style.css";
+import UploadIcon from '../../Assets/images/uploadIcon.svg?react';
 
-const UploadAndDisplayImages = ({
+const ImageUpload = ({
   images = [],
   className,
   label,
@@ -22,18 +22,8 @@ const UploadAndDisplayImages = ({
   const [error, setError] = useState("");
   const [initialized, setInitialized] = useState(false); // New flag
 
-  // useEffect(() => {
-  //   console.log("Images updated:", images);
-  //   if (images.length === 0) {
-  //     console.log("Resetting files...");
-  //     setFiles([]);
-  //   }
-  // }, [images]);
-
-  
   // Memoize images array
   const memoizedImages = useMemo(() => images, [images]);
-
 
   // Initialize files from parent images only once
   useEffect(() => {
@@ -78,34 +68,16 @@ const UploadAndDisplayImages = ({
     setError("");
   };
 
-  // const handleRemoveFile = (index) => {
-  //   setError("");
-  //   if (typeof files[index] === "string") {
-  //     let newFiles = [...files];
-  //     newFiles.splice(index, 1);
-  //     setFiles(newFiles);
-  //   } else {
-  //     setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
-  //   }
-  // };
-
   const handleRemoveFile = (imgId, index) => {
-    console.log(imgId, "indexxxxxxxxxxxxxxxxx");
+    // console.log(imgId, "indexxxxxxxxxxxxxxxxx");
     setError(""); // Clear error message
 
     if (imgId) {
-      const storedToBeDelete =
-        JSON.parse(localStorage.getItem("toBeDelete")) || [];
+      const storedToBeDelete = JSON.parse(localStorage.getItem("toBeDelete")) || [];
 
       const updatedToBeDelete = [...storedToBeDelete, imgId];
       localStorage.setItem("toBeDelete", JSON.stringify(updatedToBeDelete));
     }
-
-    // if (imgId) {
-    //   const abc = [];
-    //   abc.push(imgId);
-    //   localStorage.setItem(abc);
-    // }
 
     if (Array.isArray(files)) {
       // Check if files is an array
@@ -117,36 +89,25 @@ const UploadAndDisplayImages = ({
     }
   };
 
-
-//   const handleRemoveFile = (imageId, index) => {
-//   console.log("Removed Image ID:", imageId);
-
-//   setError(""); // Clear error message
-
-//   // Store removed image ID in localStorage
-//   if (imageId) {
-//     const storedToBeDelete = JSON.parse(localStorage.getItem("toBeDelete")) || [];
-//     const updatedToBeDelete = [...storedToBeDelete, imageId];
-//     localStorage.setItem("toBeDelete", JSON.stringify(updatedToBeDelete));
-//   }
-
-//   setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
-// }; 
-
-
   return (
-    <div style={{ position: "relative" }} className={`${Styles[className]} mb-3`}>
-      <p className={Styles.imageUploaderLabel}>
-        {label}
+    <div style={{ position: "relative" }} className={`${className} mb-3`}>
+      <label className="form-label d-flex align-items-center gap-2" htmlFor={`myImage${id}`}>
+        <UploadIcon />
+        <span style={{color: "#333", fontWeight: "500"}}>{label}</span>
         {required ? <span className="text-danger">*</span> : ""}
-      </p>
+      </label>
 
       {/* Conditionally render the selected image(s) */}
       {!!(Array.isArray(files) ? files.length : files ? 1 : 0) && (
-        <div className={`d-flex justify-content-start gap-2 mb-3 display-uploader ${Styles.displayImages}`}>
+        <div className={`d-flex justify-content-start gap-2 mb-3 ${Styles.displayImages}`}>
           {(Array.isArray(files) ? files : [files]).map((image, index) => (
             <div key={index} style={{ position: "relative" }}>
-              <img style={{ height: height }} src={typeof image === "string" ? image : URL.createObjectURL(image)} alt="Uploaded" className={`uploadImage ${Styles.uploadedImage}`} />
+              <img
+                style={{ height: height }}
+                src={typeof image === "string" ? image : URL.createObjectURL(image)}
+                alt="Uploaded"
+                className={Styles.uploadedImage}
+              />
               <button
                 type="button"
                 className={Styles.imageRemoveButton}
@@ -161,22 +122,9 @@ const UploadAndDisplayImages = ({
         </div>
       )}
 
-      {(Array.isArray(files) ? files.length : files ? 1 : 0) <
-        numberOfFiles && (
-        <label style={{ height: height }} htmlFor={`myImage${id}`} className={`imageUploadArea`}>
-          <div>
-            <div className="d-flex flex-column justify-content-center align-items-center gap-2 UploadArea">
-              <HiOutlineUpload size={32} color="#333" />
-              <p>Upload Image{numberOfFiles > 1 ? "(s)" : ""}</p>
-            </div>
-            {numberOfFiles > 1 && showNumberOfImagesText ? <p style={{ color: "#999", fontSize: "12px" }}>Minimum 1 Maximum {numberOfFiles} Images</p> : null}
-          </div>
-        </label>
-      )}
-
       <input
         id={`myImage${id}`}
-        style={{ opacity: 0, position: "absolute", bottom: 0, cursor: "pointer", zIndex: -1 }}
+        style={{ opacity: 0, position: "absolute", bottom: 0, cursor: "pointer", zIndex: -1, width: "100%" }}
         type="file"
         multiple={numberOfFiles > 1}
         // required={required}
@@ -184,13 +132,9 @@ const UploadAndDisplayImages = ({
         accept="image/jpeg,image/jpg,image/webp,image/gif,image/png"
         onChange={handleFileChange}
       />
-      {error && (
-        <p style={{ color: "red" }} className="mb-0 mt-1 error-message red-text">
-          {error}
-        </p>
-      )}
+      {error && <div className="error-message ps-1 pt-1"><p>{error}</p></div>}
     </div>
   );
 };
 
-export default UploadAndDisplayImages;
+export default ImageUpload;

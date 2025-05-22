@@ -4,8 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { forgotPassword } from "../../Config/Validations";
 import { useFormStatus } from "../../Hooks/useFormStatus";
-import { usePageTitle } from "../../Utils/helper";
-import { AuthLayout } from "../Layouts/AdminLayout/Auth";
+import { usePageTitleUser } from "../../Utils/helper";
 import CustomButton from "../CustomButton";
 import CustomInput from "../CustomInput";
 import CustomModal from "../CustomModal";
@@ -18,7 +17,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
   const [load, setLoad] = useState(false);
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
 
-  usePageTitle("Forgot Password");
+  usePageTitleUser("Forgot Password");
 
   const handleSubmit = async (values) => {
     startSubmitting();
@@ -41,7 +40,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
   };
 
   const PageChange = () => {
-    navigate(navigateTo);
+    navigate('/login');
   };
 
   return (
@@ -87,7 +86,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
               <div className="mt-4 text-center">
                 <CustomButton
                   type="submit"
-                  className="site-btn primary-btn px-5 w-100"
+                  className="siteBtn primaryBtn py-4 w-100"
                   text="Update"
                   isPending={isSubmitting}
                   pendingText="Loading..."
@@ -96,7 +95,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
             </form>
           )}
         </Formik>
-      <CustomModal show={showModal} close={PageChange} success btnText="Login" heading="Password Updated" para="Your password has been updated. Please login to continue" />
+      <CustomModal show={showModal} close={()=>setShowModal(false)}  action={PageChange} success btnText="Login" para="Your password has been updated. Please login to continue" />
     </>
   );
 };

@@ -297,7 +297,11 @@ export const usePageTitle = (title = "", user = false) => {
       : process.env.REACT_APP_WEBSITE_NAME + " " + name + " | " + title.charAt(0).toUpperCase() + title.slice(1);
   }, [title, user, name]); // Add dependencies
 };
-
+export const usePageTitleUser = (title) => {
+  useEffect(() => {
+    document.title = `IRSHAD | ${title}`
+  }, [title]);
+};
 
 export const tableStatus = (val) => {
   return val === 1 ? "Inactive" : "Active";
@@ -705,18 +709,6 @@ export const generateLinks = (role) => {
       {
         path: "/about-us",
         label: "About Us",
-      },
-      {
-        path: "/services",
-        label: "All Service",
-      },
-      {
-        path: "/newsfeed",
-        label: "Newsfeed",
-      },
-      {
-        path: "/education",
-        label: "Education",
       },
       {
         path: "/contact-us",
