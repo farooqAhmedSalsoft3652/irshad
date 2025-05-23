@@ -241,7 +241,13 @@
     border-radius: 12px;
   }
 }
-
+.step_card{
+  cursor: pointer;
+}
+.step_card svg{
+  width: 100px;
+  height: auto;
+}
 @media screen and (max-width:1666px) {
   .slide-content h2 {
     font-size: 63px;
@@ -315,6 +321,9 @@
 }
 
 @media screen and (max-width:767px) {
+  .step_card svg{
+  width: 80px;
+}
   .slide-content h2 {
     font-size: 35px;
     line-height: 1.2;
@@ -340,6 +349,9 @@
 }
 
 @media screen and (max-width:575px) {
+  .step_card svg{
+  width: 60px;
+}
   .how_to_be_img {
     height: 350px;
   }

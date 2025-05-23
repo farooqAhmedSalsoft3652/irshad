@@ -1,0 +1,17 @@
+.site_card {
+    border-radius: 20px;
+    background: var(--WHITE, #FFF);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+    padding: 30px;
+}
+
+@media screen and (max-width: 767.5px) {
+    .site_card{
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 575.5px) {
+    .site_card{
+        padding: 15px;
+    }
+}

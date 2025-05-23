@@ -229,7 +229,7 @@ Menu Wrapper
 }
 
 .navbar-nav.navbar-login a:hover svg path {
-  fill: #1a8c1a;
+  fill: #C5E4F6;
 }
 
 .navbar-nav.navbar-login .btn.btn-primary {
@@ -275,7 +275,7 @@ Menu Wrapper
 }
 
 .user-layout .notiDropdown .dropdown-toggle svg path {
-  fill: #002c9c;
+  fill: #C5E4F6 !important;
 }
 
 .user-layout #header .singleNoti:hover svg path {
@@ -292,7 +292,7 @@ Menu Wrapper
 }
 
 .user-layout .notiDropdown span.badge {
-  background-color: #1A8C1A;
+  background-color: #ff0000;
   color: #fff;
 }
 
@@ -508,7 +508,7 @@ Menu Wrapper
 .dropdown-user .dropdown-toggle:hover svg path,
 .dropdown-user .dropdown-toggle.show svg path,
 .user-layout .notiDropdown.show .dropdown-toggle svg path {
-  fill: #1a8c1a;
+  fill: #C5E4F6;
   transition: all .6s ease 0s;
 }
 

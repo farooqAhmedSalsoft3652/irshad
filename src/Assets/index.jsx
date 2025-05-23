@@ -56,6 +56,14 @@ import ConsultantImg from '../Assets/images/consultantImg.png';
 import ArrowVector from '../Assets/images/arrowVector.svg?react';
 import AddIcon from '../Assets/images/addIcon.svg?react';
 import DeleteIcon from '../Assets/images/deleteIcon.svg?react';
+import VideoVerification from '../Assets/images/videVerification.svg?react';
+import MeetWithAdmin from '../Assets/images/meetingWithAdmin.svg?react';
+import Rule_Regulations from '../Assets/images/rulesAndRegulations.svg?react';
+import Tutorials from '../Assets/images/tutorials.svg?react';
+import FinalApproval from '../Assets/images/finalApproval.svg?react';
+import WaitResult from '../Assets/images/waitForResult.svg?react';
+
+
 export const images = {
   Check,
   Question,
@@ -106,5 +114,11 @@ export const images = {
   ConsultantImg,
   ArrowVector,
   AddIcon,
-  DeleteIcon
+  DeleteIcon,
+  VideoVerification,
+  MeetWithAdmin,
+  Rule_Regulations,
+  Tutorials,
+  FinalApproval,
+  WaitResult
 };

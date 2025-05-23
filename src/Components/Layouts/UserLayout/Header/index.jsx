@@ -188,16 +188,6 @@ export const Header = () => {
                   <Nav as="ul" className="gap-3 gap-xxl-4 navbar-login align-items-center d-sm-none ">
                     <>
                       <Nav.Item as="li">
-                        <Link to="/wishlist" className="align-self-center">
-                          <images.HeartIcon />
-                        </Link>
-                      </Nav.Item>
-                      <Nav.Item as="li">
-                        <Link to="/view-cart">
-                          <images.CartIcon />
-                        </Link>
-                      </Nav.Item>
-                      <Nav.Item as="li">
                         <Link to="/chat">
                           <images.ChatIcon />
                         </Link>
@@ -268,16 +258,6 @@ export const Header = () => {
               {token ? (
                 <Nav as="ul" className="gap-3 gap-xxl-4 navbar-login align-items-center d-sm-flex d-none">
                   <>
-                    <Nav.Item as="li">
-                      <Link to="/wishlist" className="align-self-center">
-                        <images.HeartIcon />
-                      </Link>
-                    </Nav.Item>
-                    <Nav.Item as="li">
-                      <Link to="/view-cart">
-                        <images.CartIcon />
-                      </Link>
-                    </Nav.Item>
                     <Nav.Item as="li">
                       <Link to="/chat">
                         <images.ChatIcon />

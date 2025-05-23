@@ -861,7 +861,7 @@ h2.page-title {
 }
 
 .user-layout .form-check-input:checked[type="radio"] {
-  background: #000000;
+  background: #C5E4F6;
   border: 1px solid #fff;
   box-shadow: 0px 0px 0px 1px #666;
 }

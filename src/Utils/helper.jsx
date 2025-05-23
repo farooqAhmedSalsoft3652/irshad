@@ -20,8 +20,6 @@ import FAQsManagement from "../Assets/images/faq.svg?react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment-timezone";
 
-
-
 //set email
 export const setEmail = (email) => localStorage.setItem("email", JSON.stringify(email));
 export const getEmail = () => JSON.parse(localStorage.getItem("email"));
@@ -299,7 +297,7 @@ export const usePageTitle = (title = "", user = false) => {
 };
 export const usePageTitleUser = (title) => {
   useEffect(() => {
-    document.title = `IRSHAD | ${title}`
+    document.title = `IRSHAD | ${title}`;
   }, [title]);
 };
 
@@ -508,71 +506,36 @@ export const convertMinutes = (minutes) => {
   }
 };
 
-
 export const generateProviderLinks = (role) => {
   let Links = [];
 
   switch (role) {
     case "provider":
       Links = [
-        { path: "/provider",
-          label: "Home"
-        },
-        { path: "/provider/about-us",
-          label: "About Us"
-        },
-        { path: "/provider/select-services",
-          label: "Select Services"
-        },
-        { path: "/provider/my-services",
-          label: "My Service"
-        },
-        { path: "/provider/newsfeed",
-          label: "Newsfeed"
-        },
-        { path: "/provider/subscription",
-          label: "Buy Subscription"
-        },
-        { path: "/provider/payment-logs",
-          label: "Payment Logs"
-        },
-        { path: "/provider/create-shop",
-          label: "Create Shop"
-        },
-        { path: "/provider/my-shop",
-          label: "My Shop"
-        },
-        { path: "/provider/contact-us",
-          label: "Contact Us"
-        },
+        { path: "/provider", label: "Home" },
+        { path: "/provider/about-us", label: "About Us" },
+        { path: "/provider/select-services", label: "Select Services" },
+        { path: "/provider/my-services", label: "My Service" },
+        { path: "/provider/newsfeed", label: "Newsfeed" },
+        { path: "/provider/subscription", label: "Buy Subscription" },
+        { path: "/provider/payment-logs", label: "Payment Logs" },
+        { path: "/provider/create-shop", label: "Create Shop" },
+        { path: "/provider/my-shop", label: "My Shop" },
+        { path: "/provider/contact-us", label: "Contact Us" },
       ];
-    break;
+      break;
     default: // No role case or fallback links
       Links = [
-        { path: "/provider",
-          label: "Home"
-        },
-        { path: "/provider/about-us",
-          label: "About Us"
-        },
-        { path: "/provider/services",
-          label: "Select Services"
-        },
-        { path: "/provider/newsfeed",
-          label: "Newsfeed"
-        },
-        { path: "/provider/subscription",
-          label: "Buy Subscription"
-        },
-        { path: "/provider/create-shop",
-          label: "Create Shop"
-        },
-        { path: "/provider/contact-us",
-          label: "Contact Us"
-        },
+        { path: "/provider", label: "Home" },
+        { path: "/provider/about-us", label: "About Us" },
+        { path: "/provider/services", label: "Select Services" },
+        { path: "/provider/newsfeed", label: "Newsfeed" },
+        { path: "/provider/subscription", label: "Buy Subscription" },
+        { path: "/provider/create-shop", label: "Create Shop" },
+        { path: "/provider/contact-us", label: "Contact Us" },
       ];
 
-    break;
+      break;
   }
 
   return Links;
@@ -670,53 +633,38 @@ export const generateLinks = (role) => {
           name: "Payment Logs",
         },
       ];
-    break;
+      break;
     case "user":
-      Links=[
-        { path: "/",
-          label: "Home"
+      Links = [
+        { path: "/", label: "Home" },
+        { path: "/appointments", label: "Appointments" },
+        { path: "/new-services", label: "New Service" },
+        { path: "/services", label: "All Services" },
+        { path: "/slot-management", label: "Slot Management" },
+        {
+          path: "/contact-us",
+          label: "Contact Us",
         },
-        { path: "/about-us",
-          label: "About Us"
-        },
-        { path: "/education",
-          label: "Education"
-        },
-        { path: "/services",
-          label: "All Service"
-        },
-        { path: "/newsfeed",
-          label: "Newsfeed"
-        },
-        { path: "/rehab-center",
-          label: "Rehab Centres"
-        },
-        { path: "/in-app-purchase",
-          label: "In-App Purchases"
-        },
-        { path: "/faqs",
-          label: "FAQ"
-        },
-      ]
-    break;
+        { path: "/about-us", label: "About Us" },
+      ];
+      break;
     default: // No role case or fallback links
-   
-    Links = [
-      {
-        path: "/",
-        label: "Home",
-      },
-      {
-        path: "/about-us",
-        label: "About Us",
-      },
-      {
-        path: "/contact-us",
-        label: "Contact Us",
-      },
-    ];
-  
-    break;
+      Links = [
+        {
+          path: "/",
+          label: "Home",
+        },
+        {
+          path: "/about-us",
+          label: "About Us",
+        },
+        {
+          path: "/contact-us",
+          label: "Contact Us",
+        },
+      ];
+
+      break;
   }
 
   return Links;
@@ -2327,4 +2275,3 @@ export const replaceUnderscoreWithSpace = (str) => {
   }
   return str;
 };
-

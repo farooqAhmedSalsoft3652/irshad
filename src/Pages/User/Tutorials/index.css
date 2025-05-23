@@ -1,0 +1,14 @@
+.playVidBtn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 80px;
+}
+
+@media screen and (max-width: 575.5px) {
+    .playVidBtn {
+        font-size: 40px;
+    }
+}

@@ -148,6 +148,11 @@ import SubscriptionPayment from "../Pages/User/Subscriptions/SubscriptionPayment
 
 import ErrorPage from "../Pages/User/ErrorPage";
 import PersonalDetails from "../Pages/User/Auth/PersonalDetails";
+import VideoVerification from "../Pages/User/VideoVerification";
+import MeetingWithAdmin from "../Pages/User/MeetingWithAdmin/MeetingWithAdmin";
+import RuleRegulations from "../Pages/User/Rules&Regulations";
+import Tutorials from "../Pages/User/Tutorials";
+import FinalQuiz from "../Pages/User/FinalQuiz";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -447,6 +452,11 @@ const routes = [
               { path: "", element: <Home /> },
               { path: "about-us", element: <AboutUs /> },
               { path: "contact-us", element: <ContactUs /> },
+              { path: "/video-verification", element: <VideoVerification /> },
+              { path: "/meeting-admin", element: <MeetingWithAdmin /> },
+              { path: "/rules-regulations", element: <RuleRegulations /> },
+              { path: "/tutorials", element: <Tutorials /> },
+              { path: "/final-quiz", element: <FinalQuiz /> },
             ],
           },
           {
