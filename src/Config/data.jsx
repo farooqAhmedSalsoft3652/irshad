@@ -5669,16 +5669,16 @@ export const servicesData = {
     data: [
       {
         id: 1,
-        title: "Drug Consultation",
-        category: "abc Category",
+        title: "Services Name",
+        category: "abc",
+        quick: false,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         price: "$200.00",
         rating: 4.0,
         // reviews: "1.21K reviews",
         image: images.serviceImg1,
         isWishListed: true,
-        provider_name: "ABC Service Provider Name",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        
+        provider_name: "ABC Service Provider Name",        
         reviews: {
           count: 1000,
           comments: [
@@ -5730,15 +5730,16 @@ export const servicesData = {
       },
       {
         id: 2,
-        title: "Pet walker",
-        category: "abc Category",
+        title: "Services Name",
+        category: "abc",
+        quick: true,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         price: "$50.00",
         rating: 4.8,
         reviews: "890 reviews",
         image: images.serviceImg2,
         isWishListed: false,
         provider_name: "ABC Service Provider Name",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         reviews: {
           count: 157,
           comments: [
@@ -5790,15 +5791,16 @@ export const servicesData = {
       },
       {
         id: 3,
-        title: "Drug Consultation",
-        category: "abc Category",
+        title: "Services Name",
+        category: "abc",
+        quick: false,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         price: "$30.00",
         rating: 4.9,
         reviews: "720 reviews",
         image: images.serviceImg3,
         isWishListed: true,
         provider_name: "ABC Service Provider Name",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         
         reviews: {
           count: 157,
@@ -5851,16 +5853,16 @@ export const servicesData = {
       },
       {
         id: 4,
-        title: "Drug Consultation",
-        category: "abc Category",
+        title: "Services Name",
+        category: "abc",
+        quick: true,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         price: "$30.00",
         rating: 4.9,
         reviews: "720 reviews",
         image: images.serviceImg3,
         isWishListed: true,
-        provider_name: "ABC Service Provider Name",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        
+        provider_name: "ABC Service Provider Name",        
         reviews: {
           count: 157,
           comments: [
@@ -5912,16 +5914,16 @@ export const servicesData = {
       },
       {
         id: 5,
-        title: "Pet walker",
-        category: "abc Category",
+        title: "Services Name",
+        category: "abc",
+        quick: false,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         price: "$350.00",
         rating: 4.9,
         reviews: "720 reviews",
         image: images.serviceImg3,
         isWishListed: true,
-        provider_name: "ABC Service Provider Name",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        
+        provider_name: "ABC Service Provider Name",        
         reviews: {
           count: 157,
           comments: [
@@ -5973,15 +5975,16 @@ export const servicesData = {
       },
       {
         id: 6,
-        title: "Drug Consultation",
-        category: "abc Category",
+        title: "Services Name",
+        category: "abc",
+        quick: true,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         price: "$30.00",
         rating: 4.9,
         reviews: "720 reviews",
         image: images.serviceImg3,
         isWishListed: true,
         provider_name: "ABC Service Provider Name",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         reviews: {
           count: 157,
           comments: [

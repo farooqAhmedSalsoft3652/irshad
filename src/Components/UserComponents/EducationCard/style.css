@@ -33,7 +33,7 @@
 .service-card .review-rating svg{
   font-size: 22px;
 }
-.review-rating .review{
+/* .review-rating .review{
   color: #666666;
   padding-left: 12px;
   margin-left: 12px;
@@ -47,7 +47,7 @@
   top: 50%;
   content: "";
   transform: translateY(-51%);
-}
+} */
 .review-rating svg path{
   fill: #FDB332;
 }

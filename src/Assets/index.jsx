@@ -62,7 +62,8 @@ import Rule_Regulations from '../Assets/images/rulesAndRegulations.svg?react';
 import Tutorials from '../Assets/images/tutorials.svg?react';
 import FinalApproval from '../Assets/images/finalApproval.svg?react';
 import WaitResult from '../Assets/images/waitForResult.svg?react';
-
+import VerticalBar from '../Assets/images/verticalBar.svg?react';
+import QuickService from '../Assets/images/quickService.svg?react';
 
 export const images = {
   Check,
@@ -120,5 +121,7 @@ export const images = {
   Rule_Regulations,
   Tutorials,
   FinalApproval,
-  WaitResult
+  WaitResult,
+  VerticalBar,
+  QuickService
 };

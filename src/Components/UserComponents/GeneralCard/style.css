@@ -1,43 +1,52 @@
 /* Home Service Section */
-.general-card{
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0px 7.172px 71.719px 0px rgba(0, 0, 0, 0.06);
+.general-card {
+  border-radius: 15px;
+  border: 1px solid rgba(21, 53, 94, 0.40);
+  background: #FFF;
+  box-shadow: 0px 7px 55px 0px rgba(0, 0, 0, 0.10);
   padding: 18px;
-  border: none;
   color: #000;
 }
-.general-card img.card-img-top{
-  border-radius: 15px 15px 0px 0px;
+
+.general-card img.card-img-top {
+  border-radius: 15px;
+  border: 1px solid rgba(21, 53, 94, 0.40);
   height: 275px;
   object-fit: cover;
   object-position: center center;
 }
-.general-card .category-name{
+
+.general-card .category-name {
   font-size: 17px;
-  color:#1A8C1A;
+  color: #1A8C1A;
 }
-.general-card .card-title{
+
+.general-card .card-title {
   font-size: 22px;
   font-weight: 600;
   color: var(--bs-black);
   transition: all .3s ease-out;
 }
-.general-card .card-title a{
+
+.general-card .card-title a {
   text-decoration: none;
   color: var(--bs-black);
   transition: all .6s ease 0s;
 }
-.general-card .card-title a:hover{
+
+.general-card .card-title a:hover {
   color: #1A8C1A;
 }
-.general-card .review-rating{
+
+.general-card .review-rating {
   font-size: 20px;
 }
-.general-card .review-rating svg{
+
+.general-card .review-rating svg {
   font-size: 22px;
 }
-.review-rating .review{
+
+/* .review-rating .review{
   color: #666666;
   padding-left: 12px;
   margin-left: 12px;
@@ -51,35 +60,41 @@
   top: 50%;
   content: "";
   transform: translateY(-51%);
-}
-.review-rating svg path{
+} */
+.review-rating svg path {
   fill: #FDB332;
 }
-.general-card .price{
+
+.general-card .price {
   font-size: 23px;
   font-weight: 600;
   color: var(--blueColor);
   line-height: 1.1;
 }
-.general-card .wishlist-btn{
+
+.general-card .wishlist-btn {
   line-height: 1;
 }
-.general-card .wishlist-btn svg{
+
+.general-card .wishlist-btn svg {
   font-size: 22px;
 }
-.general-card .wishlist-btn svg path{
+
+.general-card .wishlist-btn svg path {
   color: #ff0000;
 }
 
-.general-card .date{
+.general-card .date {
   font-size: 17px;
-  color:#1A8C1A;
+  color: #1A8C1A;
 }
-.general-card .language p{
+
+.general-card .language p {
   color: #666666;
   font-size: 17px;
 }
-.general-card .video-thumb svg{
+
+.general-card .video-thumb svg {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -88,21 +103,26 @@
   color: #fff;
   font-size: 45px;
 }
-.general-card .save-btn{
+
+.general-card .save-btn {
   line-height: 1;
   color: #000;
   transition: all .3s ease 0s;
 }
-.general-card .save-btn svg{
+
+.general-card .save-btn svg {
   font-size: 27px;
 }
-.general-card .save-btn:hover{
+
+.general-card .save-btn:hover {
   color: #1A8C1A;
 }
-.general-card .reading-link a{
-  color:#1819FF;
+
+.general-card .reading-link a {
+  color: #1819FF;
 }
-.general-card .reading-link a:hover{
+
+.general-card .reading-link a:hover {
   color: #1A8C1A;
 }
 
@@ -113,24 +133,34 @@
   .general-card .card-title {
     font-size: 18px;
   }
+
   .general-card .price {
     font-size: 20px;
   }
+
   .general-card .review-rating {
     font-size: 17px;
   }
-  
+
 }
+
 @media screen and (max-width:1199px) {
   .general-card .card-title {
     font-size: 17px;
   }
+
   .general-card .price {
     font-size: 19px;
   }
+
   .general-card .review-rating {
     font-size: 16px;
   }
-  
+
 }
 
+@media screen and (max-width: 575.5px) {
+  .general-card{
+    padding: 10px;
+  }
+}

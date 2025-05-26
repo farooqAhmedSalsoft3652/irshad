@@ -131,7 +131,7 @@ export const Header = () => {
               </Offcanvas.Header>
               <Offcanvas.Body id="basic-navbar-nav" className="justify-content-between">
                 {token ? (
-                  <div className="d-flex scroll-nav-wrapper flex-grow-1 justify-content-start justify-content-lg-end">
+                  <div className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start ${token ? 'justify-content-lg-center' : 'justify-content-lg-end'}`}>
                     {showLeftButton && (
                       <button className="scroll-button d-lg-inline-block d-none left" onClick={scrollLeft}>
                         <FontAwesomeIcon icon={faAngleLeft} />
@@ -154,7 +154,7 @@ export const Header = () => {
                   </div>
                 ) : (
                   // Guest Navigation
-                  <div className="d-flex scroll-nav-wrapper flex-grow-1 justify-content-start justify-content-lg-end">
+                  <div className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start justify-content-lg-end`}>
                     {showLeftButton && (
                       <button className="scroll-button d-lg-inline-block d-none left" onClick={scrollLeft}>
                         <FontAwesomeIcon icon={faAngleLeft} />
@@ -239,7 +239,7 @@ export const Header = () => {
                     </>
                   </Nav>
                 ) : (
-                  <Nav as="ul" className="navbar-right flex-grow-1 flex-lg-grow-0 justify-content-end gap-2 d-sm-none">
+                  <Nav as="ul" className={`navbar-right flex-grow-1 flex-lg-grow-0 ${token ? 'justify-content-center' : 'justify-content-end'}  gap-2 d-sm-none`}>
                     <Nav.Item as="li">
                       <Link to={"/login"} className="secondaryBtn siteBtn">
                         Login
