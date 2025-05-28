@@ -7,15 +7,10 @@ const UserNotifications = () => {
   usePageTitle("Notifications", true);
   const apiEndpoint = `/admin-api/notifications`;
   return (
-    <section className="page-content notification-page">
+    <section className="page-content p-0 notification-page">
       <Container fluid>
         <Row>
-            <Col sm={12} className="gap-3 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 mb-lg-4">
-              <h2 className="page-title fw-bold">Notifications</h2>
-            </Col>
-        </Row>
-        <Row>
-          <Col xs={12} xxl={11} className="mx-auto">
+          <Col xs={12} className="">
             <ConsolidatedNotifications apiEndpoint={apiEndpoint} />
           </Col>
         </Row>

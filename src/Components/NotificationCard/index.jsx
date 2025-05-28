@@ -1,8 +1,8 @@
-import { React } from "react";
+import { faCalendar, faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomButton from "../CustomButton";
 import "./style.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faCalendar, faClock } from "@fortawesome/free-solid-svg-icons";
+import { color } from "framer-motion";
 
 
 const NotificationCard = (props) => {
@@ -14,9 +14,6 @@ const NotificationCard = (props) => {
     <div className={`notificationWrapper ${props.read === null ? "unread" : ""}`}>
       <div className={`d-sm-flex justify-content-between align-items-center gap-3 `} key={props.id}>
         <div className="d-flex gap-3 align-items-center">
-          <div className="notificationImageIcon">
-            <FontAwesomeIcon icon={faBell} color="#fff" size="xl" />
-          </div>
           <div className="d-flex flex-column gap-1 flex-grow-1">
             <div className="d-flex gap-3">
               {/* <h5 className="notificationHeading">{props?.name}</h5> */}
@@ -34,7 +31,7 @@ const NotificationCard = (props) => {
         </div>
         {props.read === null ? (
           <div className="flex-shrink-0 text-end">
-            <CustomButton onClick={handleClick} variant={`notButton text-decoration-underline fw-medium ${true ? "blueColor" : "grayColor"}`} text={props.read === null ? "Mark as Read" : "Mark as Unread"} />
+            <CustomButton onClick={handleClick} variant={`notButton text-decoration-underline fw-medium `} style={{color: "#15355E"}} text={props.read === null ? "Mark as Read" : "Mark as Unread"} />
           </div>
         ) : null}
       </div>

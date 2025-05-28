@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
-import { DashboardLayout } from "../Layouts/AdminLayout/DashboardLayout";
-import NotificationCard from "../NotificationCard";
-import CustomPagination from "../CustomPagination";
-import { getAll, post } from "../../Services/Api";
-import { dateFormat, humanReadable } from "../../Utils/helper";
-import { images } from "../../Assets";
-import { Select } from "../Select";
+import React, { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
+import { notificationsData } from "../../Config/Data";
 import { notificationOptions } from "../../Config/TableStatus";
-import LoadingSpinner from "../Loader";
 import withPagination from "../../HOC/withPagination";
-import { notificationsData } from "../../Config/data";
+import { dateFormat, humanReadable } from "../../Utils/helper";
 import CustomButton from "../CustomButton";
-import { Row, Col } from "react-bootstrap";
+import LoadingSpinner from "../Loader";
+import NotificationCard from "../NotificationCard";
+import { Select } from "../Select";
+import "./style.css";
 
 const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, pagination, updatePagination }) => {
   const [notifications, setNotifications] = useState([]);
@@ -64,27 +60,34 @@ const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, paginatio
   // console.log(notifications)
 
   return (
-   <>
-      
-        <Row className="mb-4">
-          <Col xs={12}>
-            <div className="d-flex align-items-center">
+    <div className="py-sm-5 py-3">
+      <div className="site_card">
+      <Row className="mb-4">
+        <Col xs={12}>
+          <div className="d-flex justify-content-between align-items-center flex-wrap gap-sm-3 ">
+            <div>
               <Select className="slimSelect" value={selectedStatus} onChange={setSelectedStatus} label="Show" labelclass="pe-3">
                 {notificationOptions}
               </Select>
+            </div>
+            <div>
+              <h2 className="page-title fw-bold mb-0">Notifications</h2>
+            </div>
+            <div>
               <CustomButton
-                className="m-auto me-0"
+                className=""
                 onClick={() => {
                   console.log("mark all clicked");
                 }}
-                variant={`notButton fw-bold text-decoration-underline ${true ? "greenbtn" : "grayColor"}`}
+                variant={`notButton fw-medium text-decoration-underline`}
                 text={"Mark All as Read"}
               />
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12}>
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
           {loading ? (
             <LoadingSpinner />
           ) : (
@@ -100,14 +103,17 @@ const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, paginatio
                   notiRead={notification?.read_at}
                   onClick={handleNotificationAction}
                 />
-                </React.Fragment>
+              </React.Fragment>
             ))
           )}
-          </Col>
-        </Row>
-        <CustomPagination pagination={pagination} setFilters={setFilters} />
-      </>
-   
+
+        </Col>
+      </Row>
+      <div className="text-center">
+        <CustomButton text='Load More' className='siteBtn primaryBtn' />
+      </div>
+      </div>
+    </div>
   );
 };
 

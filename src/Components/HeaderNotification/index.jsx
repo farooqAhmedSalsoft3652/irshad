@@ -2,6 +2,7 @@ import React from "react";
 import { Dropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faBell as faBellNoti } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { dateFormat, humanReadable } from "../../Utils/helper";
@@ -33,13 +34,12 @@ const HeaderNotification = ({ notificationData, getNotification, viewAllLink }) 
         </div>
         <div className="notificationsBody">
           {notificationData.slice(0, 5).map((notification) => (
-            <Link
+            <div
               className={`singleNoti ${notification.read_at === null ? "unread" : ""}`}
-              to={`/${role}/notifications`}
-              key={notification.id} // Use a unique key here
+              key={notification.id}
             >
               <div className="singleNotiIcon">
-                <FontAwesomeIcon className="notiIcon" icon={faBell} />
+                <FontAwesomeIcon className="notiIcon" icon={faBellNoti} />
               </div>
               <div className="singleNotiContent w-100">
                 <h5 className="notiHeading">{notification?.data?.title}</h5>
@@ -54,18 +54,18 @@ const HeaderNotification = ({ notificationData, getNotification, viewAllLink }) 
                       e.stopPropagation();
                       e.preventDefault();
                     }}
-                    style={{ fontSize: 12 }}
-                    className="notButton underlineOnHover grayColor"
+                    style={{ fontSize: 12, color: '#333333' }}
+                    className="notButton underlineOnHover"
                   >
                     {notification.read_at === null ? "Mark as Read" : "Mark as Unread"}
                   </button>
                 </div>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
-        <div className="notiFooter">
-          <Link to={viewAllLink || `/${role}/notifications`}>view all notifications</Link>
+        <div className="notiFooter text-end pe-4">
+          <Link to={viewAllLink || `/${role}/notifications`} className="underlineOnHover">view all</Link>
         </div>
       </Dropdown.Menu>
     </Dropdown>

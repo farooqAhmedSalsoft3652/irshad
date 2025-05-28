@@ -75,7 +75,7 @@
 .notificationsBody {
   max-height: 300px;
   overflow-y: auto;
-  padding: 12px 8px 8px;
+  padding: 10px 0px;
 }
 
 .notificationsBody::-webkit-scrollbar {
@@ -101,14 +101,14 @@
   line-height: 1;
 }
 .newNotificationCount {
-  background: var(--primaryColor);
+  background: #D0D7DF;
   padding-inline: 8px;
   border-radius: 4px;
 }
 .newNotificationCount p {
   margin-bottom: 0;
   font-weight: 600;
-  color: white;
+  color: #15355E;
 }
 
 .singleNoti {
@@ -116,19 +116,19 @@
   align-items: start;
   gap: 1rem;
   text-decoration: none;
-  background: #f5f5f5;
+  /* background: #f5f5f5; */
   padding: 0.5rem 0.5rem;
   transition: 0.3s linear;
   color: unset;
   margin-bottom: 6px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 .singleNoti h5 {
   color: #333;
   transition: 0.15s;
 }
 .singleNoti:hover {
-  background: #e8e8e8;
+  background: #E7F2FF;
 }
 .singleNoti:hover h5 {
   color: var(--primaryColor);
@@ -140,7 +140,7 @@
 .notiIcon {
   font-size: 18px;
   color: var(--whiteColor);
-  background: var(--primaryColor);
+  background: #15355E;
   padding: 7px;
   border-radius: 7px;
 }
@@ -204,10 +204,7 @@
   text-align: right;
   text-decoration-line: none;
   text-transform: capitalize;
-  background: var(--abc, linear-gradient(261deg, #1a8c1a 45.38%, #1819ff 174.25%));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #15355E;
 }
 
 .navbar-toggler {

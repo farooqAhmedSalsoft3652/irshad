@@ -64,6 +64,12 @@ import FinalApproval from '../Assets/images/finalApproval.svg?react';
 import WaitResult from '../Assets/images/waitForResult.svg?react';
 import VerticalBar from '../Assets/images/verticalBar.svg?react';
 import QuickService from '../Assets/images/quickService.svg?react';
+import MyProfile from '../Assets/images/MyProfile.svg?react';
+import PaymentLog from '../Assets/images/PaymentLog.svg?react';
+import RatingReview from '../Assets/images/RatingReview.svg?react';
+import BankDetails from '../Assets/images/BankDetails.svg?react';
+import BlockedUsers from '../Assets/images/BlockedUsers.svg?react';
+import Logout from '../Assets/images/Logout.svg?react';
 
 export const images = {
   Check,
@@ -104,7 +110,7 @@ export const images = {
   shopBanner,
   MyShopproduct,
   placeholder,
-  // irsha images
+  // irshad images
   BannerImg,
   Logo,
   FbIcon,
@@ -123,5 +129,11 @@ export const images = {
   FinalApproval,
   WaitResult,
   VerticalBar,
-  QuickService
+  QuickService,
+  MyProfile,
+  PaymentLog,
+  RatingReview,
+  BankDetails,
+  BlockedUsers,
+  Logout
 };

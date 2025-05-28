@@ -1,4 +1,4 @@
-import { faAngleLeft, faAngleRight, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight, faBars, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { Button, Container, Dropdown, Offcanvas } from "react-bootstrap";
@@ -6,7 +6,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { images } from "../../../../Assets";
-import { notificationsData } from "../../../../Config/Data";
 import { useAuth } from "../../../../Hooks/useAuth";
 import { useLogout } from "../../../../Services/Auth";
 import { fullName, generateLinks } from "../../../../Utils/helper";
@@ -14,6 +13,7 @@ import CustomModal from "../../../CustomModal";
 import HeaderNotification from "../../../HeaderNotification";
 import Toast, { showToast } from "../../../Toast";
 import "./style.css";
+import { notificationsData } from "../../../../Config/data";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -131,7 +131,9 @@ export const Header = () => {
               </Offcanvas.Header>
               <Offcanvas.Body id="basic-navbar-nav" className="justify-content-between">
                 {token ? (
-                  <div className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start ${token ? 'justify-content-lg-center' : 'justify-content-lg-end'}`}>
+                  <div
+                    className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start ${token ? "justify-content-lg-center" : "justify-content-lg-end"}`}
+                  >
                     {showLeftButton && (
                       <button className="scroll-button d-lg-inline-block d-none left" onClick={scrollLeft}>
                         <FontAwesomeIcon icon={faAngleLeft} />
@@ -198,37 +200,33 @@ export const Header = () => {
                       <Nav.Item as="li">
                         <Dropdown className="dropdown-user">
                           <Dropdown.Toggle className="after-none" variant="" id="dropdown-basic">
-                            <images.UserIcon />
-                          </Dropdown.Toggle>
-                          <Dropdown.Menu align="end">
                             {user && (
                               <Dropdown.Item as="div" className="text-center login-user">
-                                <span className="avatar avatar-online">
-                                  <img src={profilePic ?? images.userImage} alt="avatar" />
-                                </span>
-                                <span className="user-name fw-semibold">{fullName(user)}</span>
+                                <div className="d-flex align-items-center gap-2">
+                                  <span className="avatar avatar-online">
+                                    <img src={profilePic ?? images.userImage} alt="avatar" />
+                                  </span>
+                                  <span className="user-name fw-semibold">{fullName(user)}</span>
+                                  <FontAwesomeIcon icon={faChevronDown} color="#333" />
+                                </div>
                               </Dropdown.Item>
                             )}
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu align="end">
                             <Dropdown.Item as={Link} to="/profile">
-                              View Profile
+                              My Profile
                             </Dropdown.Item>
-                            <Dropdown.Item as={Link} to="/my-posts">
-                              My Posts
+                            <Dropdown.Item as={Link} to="">
+                              Payment Log
                             </Dropdown.Item>
-                            <Dropdown.Item as={Link} to="/order-logs">
-                              My Order Logs
+                            <Dropdown.Item as={Link} to="">
+                              Ratings & Reviews
                             </Dropdown.Item>
-                            <Dropdown.Item as={Link} to="/bookings">
-                              My Bookings
+                            <Dropdown.Item as={Link} to="">
+                              Bank Details
                             </Dropdown.Item>
                             <Dropdown.Item as={Link} to="/blocked-users">
-                              Block Users
-                            </Dropdown.Item>
-                            <Dropdown.Item as={Link} to="/subscriptions">
-                              Buy Subscription
-                            </Dropdown.Item>
-                            <Dropdown.Item as={Link} to="/emergency-contacts">
-                              Emergency Contacts
+                              Blocked User
                             </Dropdown.Item>
                             <Dropdown.Item className="logout" onClick={() => setShowModal(true)}>
                               Logout
@@ -239,7 +237,10 @@ export const Header = () => {
                     </>
                   </Nav>
                 ) : (
-                  <Nav as="ul" className={`navbar-right flex-grow-1 flex-lg-grow-0 ${token ? 'justify-content-center' : 'justify-content-end'}  gap-2 d-sm-none`}>
+                  <Nav
+                    as="ul"
+                    className={`navbar-right flex-grow-1 flex-lg-grow-0 ${token ? "justify-content-center" : "justify-content-end"}  gap-2 d-sm-none`}
+                  >
                     <Nav.Item as="li">
                       <Link to={"/login"} className="secondaryBtn siteBtn">
                         Login
@@ -269,40 +270,54 @@ export const Header = () => {
                     <Nav.Item as="li">
                       <Dropdown className="dropdown-user">
                         <Dropdown.Toggle className="after-none" variant="" id="dropdown-basic">
-                          <images.UserIcon />
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu align="end">
                           {user && (
                             <Dropdown.Item as="div" className="text-center login-user">
-                              <span className="avatar avatar-online">
-                                <img src={profilePic ?? images.userImage} alt="avatar" />
-                              </span>
-                              <span className="user-name fw-semibold">{fullName(user)}</span>
+                              <div className="d-flex align-items-center gap-2">
+                                <span className="avatar avatar-online">
+                                  <img src={profilePic ?? images.userImage} alt="avatar" />
+                                </span>
+                                <span className="user-name fw-semibold">{fullName(user)}</span>
+                                <FontAwesomeIcon icon={faChevronDown} color="#333" />
+                              </div>
                             </Dropdown.Item>
                           )}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu align="end">
                           <Dropdown.Item as={Link} to="/profile">
-                            View Profile
+                            <span>
+                              <images.MyProfile />
+                            </span>
+                            <span>My Profile</span>
                           </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/my-posts">
-                            My Posts
+                          <Dropdown.Item as={Link} to="">
+                            <span>
+                              <images.PaymentLog />
+                            </span>
+                            <span>Payment Log</span>
                           </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/order-logs">
-                            My Order Logs
+                          <Dropdown.Item as={Link} to="">
+                            <span>
+                              <images.RatingReview />
+                            </span>
+                            <span>Ratings & Reviews</span>
                           </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/bookings">
-                            My Bookings
+                          <Dropdown.Item as={Link} to="">
+                            <span>
+                              <images.BankDetails />
+                            </span>
+                            <span> Bank Details</span>
                           </Dropdown.Item>
                           <Dropdown.Item as={Link} to="/blocked-users">
-                            Block Users
-                          </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/subscriptions">
-                            Buy Subscription
-                          </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/emergency-contacts">
-                            Emergency Contacts
+                            <span>
+                              <images.BlockedUsers />
+                            </span>
+                            <span>Blocked Users</span>
                           </Dropdown.Item>
                           <Dropdown.Item className="logout" onClick={() => setShowModal(true)}>
-                            Logout
+                            <span>
+                              <images.Logout />
+                            </span>
+                            <span>Logout</span>
                           </Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
