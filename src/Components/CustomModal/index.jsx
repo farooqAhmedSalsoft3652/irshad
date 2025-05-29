@@ -37,7 +37,7 @@ const CustomModal = (props) => {
               {/* Show reason input area if `showReason` is true */}
               {props?.showReason && (
                 <div className="modalReason my-3 text-start">
-                  <p className="modalpara">{ props?.reasonLabel}</p>
+                  <p className="mb-1 fw-medium ms-1">{ props?.reasonLabel} <span className="text-red">*</span></p>
                   <textarea
                     className="mainInput"
                     placeholder={props?.reasonPlaceholder}
@@ -57,13 +57,18 @@ const CustomModal = (props) => {
                   text={props?.btnText || "Ok"}
                 />
               ) : props?.showReason ? (
-                <>
+                <div className="d-flex justify-content-center gap-2">
                   <CustomButton
                     onClick={props?.action}
                     variant="siteBtn primaryBtn"
                     text={"Submit"}
                   />
-                </>
+                  <CustomButton
+                    onClick={props?.close}
+                    variant="siteBtn secondaryBtn"
+                    text={"Cancel"}
+                  />
+                </div>
               ) : props?.alert ? (
                 <>
                   <CustomButton

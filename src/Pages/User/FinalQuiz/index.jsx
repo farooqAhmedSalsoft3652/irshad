@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FormCheck } from "react-bootstrap";
+import { Container, FormCheck } from "react-bootstrap";
 import VideoVerificationQuiz from "../../../Assets/images/videoVerificationQuiz.png";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import CustomModal from "../../../Components/CustomModal";
@@ -46,7 +46,8 @@ const FinalQuiz = () => {
   //     setAnswers({});
   //   };
   return (
-    <div className="p-sm-5 p-3">
+    <Container fluid>
+    <div className="py-sm-5 py-3 px-sm-0 px-1">
       <div className="site_card">
         <div className="d-flex align-items-center flex-wrap mb-3">
           <BackButton2 />
@@ -147,6 +148,7 @@ const FinalQuiz = () => {
         success
       />
     </div>
+    </Container>
   );
 };
 

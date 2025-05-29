@@ -959,10 +959,6 @@ export const blockUserHeaders = [
     title: "S.No",
   },
   {
-    key: "userType",
-    title: "User Type",
-  },
-  {
     key: "userName",
     title: "User Name",
   },
@@ -1065,4 +1061,45 @@ export const providerPaymentLogHeaders = [
     key: "status",
     title: "Status",
   },
+];
+
+export const appointmentsHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "bookingId",
+    title: "Booking ID",
+  },
+  {
+    key: "bookingDate",
+    title: "Booking Date",
+  },
+  {
+    key: "appointmentType",
+    title: "Appointment Type",
+  },
+  {
+    key: "appointmentDate",
+    title: "Appointment Date",
+  },
+  {
+    key: "sessionType",
+    title: "Session Type",
+  },
+  {
+    key: "amount",
+    title: "Amount",
+  },
+  {
+    key: "status",
+    title: "Status",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+
+
 ];

@@ -8,12 +8,14 @@ import "./index.css";
 import CustomModal from "../../../Components/CustomModal";
 import { useState } from "react";
 import { usePageTitleUser } from "../../../Utils/helper";
+import { Container } from "react-bootstrap";
 
 const MeetingWithAdmin = () => {
   const [modal, setModal] = useState(false);
   usePageTitleUser("Meeting With Admin");
   return (
-    <div className="p-sm-5 p-3">
+    <Container fluid>
+    <div className="py-sm-5 py-3 px-sm-0 px-1">
       <div className="site_card">
         <div className="d-flex align-items-center flex-wrap mb-3">
           <BackButton2 />
@@ -51,6 +53,7 @@ const MeetingWithAdmin = () => {
         success
       />
     </div>
+    </Container>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Container } from "react-bootstrap";
 import VideoVerificationQuiz from "../../../Assets/images/videoVerificationQuiz.png";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import { usePageTitleUser } from "../../../Utils/helper";
@@ -5,7 +6,8 @@ import { usePageTitleUser } from "../../../Utils/helper";
 const RuleRegulations = () => {
   usePageTitleUser("Rules & Regulations");
   return (
-    <div className="p-sm-5 p-3">
+    <Container fluid>
+    <div className="py-sm-5 py-3 px-sm-0 px-1">
       <div className="site_card">
         <div className="d-flex flex-wrap align-items-center mb-3">
           <BackButton2 />
@@ -39,6 +41,7 @@ const RuleRegulations = () => {
         </div>
       </div>
     </div>
+    </Container>
   );
 };
 

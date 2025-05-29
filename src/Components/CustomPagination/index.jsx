@@ -82,20 +82,24 @@ const CustomPagination = ({ pagination, setFilters }) => {
 
   return (
     <div className="customPagination">
-      <div className="row align-items-baseline">
-        <div className="col-lg-6">
+      <div className="d-flex justify-content-between align-items-baseline flex-wrap">
+        <div className="">
           <p className="paginationText">
             Showing {totalRecords > 0 ? startItem : 0} to {endItem} Out Of{" "}
             {totalRecords} Entries
           </p>
         </div>
-        <div className="col-lg-6">
+        <div className="">
           <Pagination>
-            <Pagination.First onClick={handleFirstPage} />
-            <Pagination.Prev onClick={handlePrevPage} />
+            {/* <Pagination.First onClick={handleFirstPage} /> */}
+            <Pagination.Prev onClick={handlePrevPage} >
+              Previous
+            </Pagination.Prev>
             {items}
-            <Pagination.Next onClick={handleNextPage} />
-            <Pagination.Last onClick={handleLastPage} />
+            <Pagination.Next onClick={handleNextPage} >
+              Next
+            </Pagination.Next>
+            {/* <Pagination.Last onClick={handleLastPage} /> */}
           </Pagination>
         </div>
       </div>

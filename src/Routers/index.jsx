@@ -20,8 +20,8 @@ import PreventAdmin from "./PreventAdmin";
 import PreventUser from "./PreventUser";
 import ProtectedRoutes from "./ProtectedRoutes";
 
-import AppointmentDetails from "../Pages/Admin/AppointmentLogs/AppointmentDetails";
 import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
+import AppointmentDetails from '../Pages/Admin/AppointmentLogs/AppointmentDetails';
 import CommissionManagement from "../Pages/Admin/CommissionManagement/CommissionManagement";
 import ViewArticles from "../Pages/Admin/ContentManagement/Articles/ViewArticles";
 import AddBlog from "../Pages/Admin/ContentManagement/Blogs/AddBlog";
@@ -107,10 +107,6 @@ import ServicesDetails from "../Pages/User/Services/ServiceDetail";
 // import ServicesDetails_1 from "../Pages/User/Services/ServiceDetail_1";
 import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 import BlockedUsers from "../Pages/User/BlockedUsers";
-import Bookings from "../Pages/User/Booking";
-import BookingsDetails from "../Pages/User/Booking/BookingDetail";
-import JoinSession from "../Pages/User/Booking/JoinSession";
-import ViewMap from "../Pages/User/Booking/ViewMap";
 import UserChat from "../Pages/User/Chat/Chat";
 import Education from "../Pages/User/Education";
 import EducationDetail from "../Pages/User/Education/EducationDetail";
@@ -146,13 +142,17 @@ import Subscriptions from "../Pages/User/Subscriptions";
 import SubscriptionLogsUser from "../Pages/User/Subscriptions/SubscriptionLogs";
 import SubscriptionPayment from "../Pages/User/Subscriptions/SubscriptionPayment";
 
-import ErrorPage from "../Pages/User/ErrorPage";
+import Appointment from "../Pages/User/Appointment";
+import AppointmentsDetails from '../Pages/User/Appointment/AppointmentDetails';
 import PersonalDetails from "../Pages/User/Auth/PersonalDetails";
-import VideoVerification from "../Pages/User/VideoVerification";
+import ErrorPage from "../Pages/User/ErrorPage";
+import FinalQuiz from "../Pages/User/FinalQuiz";
 import MeetingWithAdmin from "../Pages/User/MeetingWithAdmin/MeetingWithAdmin";
 import RuleRegulations from "../Pages/User/Rules&Regulations";
 import Tutorials from "../Pages/User/Tutorials";
-import FinalQuiz from "../Pages/User/FinalQuiz";
+import VideoVerification from "../Pages/User/VideoVerification";
+import JoinSession from "../Pages/User/Appointment/JoinSession";
+import VoiceCall from "../Pages/User/Appointment/VoiceCall";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -457,6 +457,10 @@ const routes = [
               { path: "/rules-regulations", element: <RuleRegulations /> },
               { path: "/tutorials", element: <Tutorials /> },
               { path: "/final-quiz", element: <FinalQuiz /> },
+              { path: "/appointments/", element: <Appointment /> },
+              { path: "/appointments/:id", element: <AppointmentsDetails /> },
+              { path: "/video-call", element: <JoinSession /> },
+              { path: "/call", element: <VoiceCall /> },
             ],
           },
           {
@@ -508,9 +512,6 @@ const routes = [
               { path: "/subscriptions", element: <Subscriptions /> },
               { path: "/subscriptions/payment/:id", element: <SubscriptionPayment /> },
               { path: "/subscriptions/subscriptions-logs/", element: <SubscriptionLogsUser /> },
-              { path: "/bookings/", element: <Bookings /> },
-              { path: "/bookings/:id", element: <BookingsDetails /> },
-              { path: "/bookings/join-session/:id", element: <JoinSession /> },
 
               { path: "/in-app-purchase", element: <InAppPurchase /> },
               { path: "/in-app-purchase/payment/:id", element: <InAppPurchasePayment /> },
@@ -540,10 +541,6 @@ const routes = [
 
               // { path: "", element: <Home /> },
             ],
-          },
-          {
-            element: <MainLayout showHeader={false} showFooter={false} />,
-            children: [{ path: "/wiew-map/", element: <ViewMap /> }],
           },
           { path: "*", element: <ErrorPage /> },
         ],

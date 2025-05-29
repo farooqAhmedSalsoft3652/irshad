@@ -95,7 +95,7 @@ const withModal = (WrappedComponent) => {
           showReason={modalState.currentStep === MODAL_STEPS.REASON_INPUT}
           onChange={handleReasonChange}
           value={modalState.reasonValue}
-          reasonLabel={modalState.reasonLabel?.trim() ? modalState.reasonLabel : "Please provide a reason for rejection"}
+          reasonLabel={modalState.reasonLabel?.trim() ? modalState.reasonLabel : "Reason"}
           reasonPlaceholder={props?.reasonPlaceholder || "Enter reason here..."}
           btnText={props?.btnText}
           errorMessage={modalState.errorMessage}

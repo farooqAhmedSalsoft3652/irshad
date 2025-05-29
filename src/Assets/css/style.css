@@ -874,7 +874,7 @@ h2.page-title {
 }
 
 .user-layout .customPagination p.paginationText {
-  color: #000;
+  color: #999;
 }
 
 .user-layout .customPagination>.row.align-items-baseline {
@@ -893,7 +893,7 @@ h2.page-title {
   border-width: 1px 0px 1px 0px;
   padding: 10px 20px;
   color: var(--paginationColor);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   background-color: transparent;
   height: 46px;
@@ -913,8 +913,8 @@ h2.page-title {
 }
 
 .user-layout .customPagination .page-item:first-child a {
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
   border-left: 1px solid var(--pagiBorderColor);
   color: #000;
   display: inline-flex;
@@ -924,15 +924,15 @@ h2.page-title {
 
 .user-layout .customPagination .page-item:first-child a span,
 .user-layout .customPagination .page-item:last-child a span {
-  font-size: 30px;
+  font-size: 14px;
   line-height: 0;
   display: flex;
   /* color: #333; */
 }
 
 .user-layout .customPagination .page-item:last-child a {
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
   border-right: 1px solid var(--pagiBorderColor);
   color: #000;
   display: inline-flex;
@@ -948,7 +948,7 @@ h2.page-title {
 
 .user-layout .customPagination .page-item:nth-child(2) span,
 .user-layout .customPagination .page-item:nth-last-child(2) span {
-  font-size: 25px;
+  font-size: 14px;
   line-height: 23px;
   display: flex;
 }
@@ -980,7 +980,7 @@ h2.page-title {
 .user-layout .page-item .page-link:focus {
   z-index: 3;
   color: #ffffff;
-  background: var(--primaryColor);
+  background: #C5E4F6;
   border-color: var(--pagiBorderColor);
   outline: 0;
   /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);*/

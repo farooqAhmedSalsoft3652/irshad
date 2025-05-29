@@ -29,7 +29,7 @@ p.paginationText {
 }
 
 .customPagination .page-item.active .page-link, .customPagination .page-item:hover .page-link {
-    color: #fff !important;
-    background: var(--primaryColor);
+    color: #15355E !important;
+    background: #C5E4F6;
     box-shadow: none;
 }

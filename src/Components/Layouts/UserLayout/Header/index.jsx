@@ -121,7 +121,7 @@ export const Header = () => {
     <>
       <header id="header" className={`w-100 z-inxed-2 w-100 user-header ${location.pathname == "/" && "home_header"}`}>
         <Navbar bg="light" variant="light" className={``}>
-          <Container fluid>
+          <Container fluid className="">
             <Navbar.Brand as={Link} to={"/"} className="me-3">
               <img src={images.Logo} alt="" />
             </Navbar.Brand>

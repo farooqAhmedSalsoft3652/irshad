@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import GeneralCard from "../../../Components/UserComponents/GeneralCard";
 import { servicesData } from "../../../Config/data";
 import withFilters from "../../../HOC/withFilters ";
@@ -29,8 +29,8 @@ const Services = () => {
   }, []);
 
   return (
-    <>
-      <div className="p-sm-5 p-3">
+    <Container fluid>
+      <div className="py-sm-5 py-3 px-sm-0 px-1">
         <div className="site_card">
           <Row>
             <Col xs={12}>
@@ -53,7 +53,7 @@ const Services = () => {
           </Row>
         </div>
       </div>
-    </>
+    </Container>
   );
 };
 

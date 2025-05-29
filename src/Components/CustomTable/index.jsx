@@ -12,6 +12,9 @@ const CustomTable = (props) => {
         setFilters={props?.setFilters}
         selectOptions={props?.selectOptions}
         dateFilters={props?.dateFilters}
+        showEntries={props?.showEntries}
+        showSearch={props?.showSearch}
+        showFilter={props?.showFilter}
       />
       <div className="customTable position-relative">
         {props?.loading && (

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { RiEqualizerLine } from "react-icons/ri";
+import { RiEqualizerLine, RiFilter2Fill } from "react-icons/ri";
 import React, { useCallback, useEffect, useState } from "react";
 import "./style.css";
 import CustomButton from "../CustomButton";
@@ -9,6 +9,7 @@ import { sorting } from "../../Config/TableStatus";
 import debounce from "lodash.debounce";
 import SiteInput from "../Input/input";
 import { Dropdown } from "react-bootstrap";
+import { FaFilter } from "react-icons/fa6";
 
 const CustomFilters = (props) => {
   const { showEntries = true , showFilter = true, showSearch = true } = props;
@@ -76,7 +77,7 @@ const CustomFilters = (props) => {
   return (
     <>
       <div className="tableFilters">
-        <div className="d-flex justify-content-between gap-3 flex-wrap align-items-center">
+        <div className={`d-flex ${showEntries ? 'justify-content-between' : 'justify-content-end'} gap-3 flex-wrap align-items-center`}>
           {showEntries && (
             <div className="d-flex align-items-center gap-3">
               <Select
@@ -112,7 +113,7 @@ const CustomFilters = (props) => {
             {showFilter && (
             <Dropdown className="filter-dropdown">
               <Dropdown.Toggle className="btn_filter">
-                <RiEqualizerLine size={26} color="white" />
+                <FaFilter size={20} color="white" />
               </Dropdown.Toggle>
 
               <Dropdown.Menu align="end">
@@ -125,7 +126,7 @@ const CustomFilters = (props) => {
                     {props?.dateFilters?.map(({ title, toTitle, fromTitle, from, to }, index) => (
                       <div className="filterWrapper mb-4" key={index}>
                         
-                        <label className="filterLabel w-100 mb-2">Filter By {title}</label>
+                        {/* <label className="filterLabel w-100 mb-2">Filter By {title}</label> */}
                         {fromTitle && <label className="filterLabel w-100 mb-0 mt-2">{fromTitle}</label>}
                         <input
                           type="date"
@@ -178,7 +179,7 @@ const CustomFilters = (props) => {
                             labelclass="mb-2 filterLabel "
                             value={formData[option.title] || ""}
                             onChange={(value) => handleChange(option.title, value)}
-                            label={`Filter by ${option?.title}`}
+                            label={`${option?.title}`}
                           >
                             {option?.options}
                           </Select>
@@ -186,9 +187,9 @@ const CustomFilters = (props) => {
                       </div>
                     ))}
                   </div>
-                  <div className="d-flex flex-column gap-2">
-                    <CustomButton onClick={handleApply} type="button" variant="site-btn primary-btn modalButton" text="Apply" />
-                    <CustomButton onClick={handleClear} type="button" variant="site-btn secondary-btn modalButton" text="Clear" />
+                  <div className="d-flex gap-2">
+                    <CustomButton onClick={handleApply} type="button" variant="siteBtn primaryBtn modalButton" text="Apply" />
+                    <CustomButton onClick={handleClear} type="button" variant="siteBtn secondaryBtn modalButton" text="Clear" />
                   </div>
                 </div>
               </Dropdown.Menu>

@@ -870,3 +870,44 @@ export const stateOptions = [
 
 
 
+export const appointmentsStatus = [
+  {
+    value: "all",
+    text: "All",
+  },
+  {
+    value: "upcoming",
+    text: "Upcoming",
+  },
+  {
+    value: "in-progress",
+    text: "In-Progress",
+  },
+  {
+    value: "past",
+    text: "Past",
+  },
+  {
+    value: "cancelled",
+    text: "Cancelled",
+  },
+];
+
+export const sessionTypeStatus = [
+  {
+    value: "all",
+    text: "All",
+  },
+  {
+    value: "chat",
+    text: "Chat",
+  },
+  {
+    value: "call",
+    text: "Call",
+  },
+  {
+    value: "video call",
+    text: "Video Call",
+  },
+];

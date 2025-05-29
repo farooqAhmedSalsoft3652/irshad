@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Col, Modal, Row } from "react-bootstrap";
+import { Col, Container, Modal, Row } from "react-bootstrap";
 import { BiPlayCircle } from "react-icons/bi";
 import VideoVerificationQuiz from "../../../Assets/images/videoVerificationQuiz.png";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
@@ -58,7 +58,8 @@ const Tutorials = () => {
   ];
 
   return (
-    <div className="p-sm-5 p-3">
+    <Container fluid>
+    <div className="py-sm-5 py-3 px-sm-0 px-1">
       <div className="site_card">
         <div className="d-flex flex-wrap align-items-center mb-3">
           <BackButton2 />
@@ -105,6 +106,7 @@ const Tutorials = () => {
         </Modal.Body>
       </Modal>
     </div>
+    </Container>
   );
 };
 
