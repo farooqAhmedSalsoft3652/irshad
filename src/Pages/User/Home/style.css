@@ -248,6 +248,24 @@
   width: 100px;
   height: auto;
 }
+.chatHeaderDropdown {
+  width: 42px;
+  height: 42px;
+  background-color: transparent;
+  border: 1px solid #DADDDD;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chatHeaderDropdown .dropdown-toggle{
+  background-color: transparent !important;
+  color: #000 !important;
+  font-size: 22px !important;
+}
+.chatHeaderDropdown .dropdown-toggle::after{
+  display: none;
+}
 @media screen and (max-width:1666px) {
   .slide-content h2 {
     font-size: 63px;

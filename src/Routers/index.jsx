@@ -153,6 +153,11 @@ import Tutorials from "../Pages/User/Tutorials";
 import VideoVerification from "../Pages/User/VideoVerification";
 import JoinSession from "../Pages/User/Appointment/JoinSession";
 import VoiceCall from "../Pages/User/Appointment/VoiceCall";
+import UserChatAnnouncement from "../Pages/User/Chat/Announcement";
+import UserChatContactUs from "../Pages/User/Chat/ChatContactUs";
+import UserChatReports from "../Pages/User/Chat/ChatReports";
+import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
+import RatingsAndReviews from '../Pages/User/RatingAndReviews';
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -461,6 +466,8 @@ const routes = [
               { path: "/appointments/:id", element: <AppointmentsDetails /> },
               { path: "/video-call", element: <JoinSession /> },
               { path: "/call", element: <VoiceCall /> },
+              { path: "/payment-logs-user", element: <PaymentLogsUser /> },
+              { path: "/rating-reviews", element: <RatingsAndReviews /> },
             ],
           },
           {
@@ -537,6 +544,9 @@ const routes = [
               { path: "/newsfeed", element: <NewsFeed /> },
 
               { path: "/chat", element: <UserChat /> },
+              { path: "/chat-announcement", element: <UserChatAnnouncement /> },
+              { path: "/chat-contact-us", element: <UserChatContactUs /> },
+              { path: "/chat-reports", element: <UserChatReports /> },
               { path: "/my-posts", element: <MyPosts /> },
 
               // { path: "", element: <Home /> },

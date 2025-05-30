@@ -1103,3 +1103,30 @@ export const appointmentsHeaders = [
 
 
 ];
+
+export const paymentLogsHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "bookingID",
+    title: "Booking ID",
+  },
+  {
+    key: "paymentDate",
+    title: "Payment Date",
+  },
+  {
+    key: "totalAmount",
+    title: "Total Amount",
+  },
+  {
+    key: "receivedAmount",
+    title: "Received Amount",
+  },
+  {
+    key: "adminCommission",
+    title: "Admin's Commission",
+  },
+];

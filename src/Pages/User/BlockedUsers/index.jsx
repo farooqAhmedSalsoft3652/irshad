@@ -46,10 +46,10 @@ const BlockedUsers = ({ filters, setFilters, pagination, updatePagination, showM
 
   const onUnblock = async (id) => {
     console.log("test");
-    showModal("Block User", "Are you sure you want to unblock this user", () => updateApprove(id), false);
+    showModal("", "Are you sure you want to unblock this user?", () => updateApprove(id), false);
   };
   const updateApprove = async (status, id) => {
-    showModal(`successful`, `User successfully unblocked.`, null, true);
+    showModal(``, `User successfully unblocked.`, null, true);
   };
 
   return (
@@ -95,7 +95,7 @@ const BlockedUsers = ({ filters, setFilters, pagination, updatePagination, showM
                         <td style={{width: "45%"}}>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
                         <td className="">{item?.user_name}</td>
                         <td>
-                          <Link className="" onClick={onUnblock}>
+                          <Link className="fw-medium" style={{color: "#333"}} onClick={onUnblock}>
                             Unblock
                           </Link>
                         </td>

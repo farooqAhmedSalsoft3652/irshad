@@ -13,7 +13,7 @@ import CustomModal from "../../../CustomModal";
 import HeaderNotification from "../../../HeaderNotification";
 import Toast, { showToast } from "../../../Toast";
 import "./style.css";
-import { notificationsData } from "../../../../Config/data";
+import { notificationsData } from "../../../../Config/Data";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -216,10 +216,10 @@ export const Header = () => {
                             <Dropdown.Item as={Link} to="/profile">
                               My Profile
                             </Dropdown.Item>
-                            <Dropdown.Item as={Link} to="">
+                            <Dropdown.Item as={Link} to="/payment-logs-user">
                               Payment Log
                             </Dropdown.Item>
-                            <Dropdown.Item as={Link} to="">
+                            <Dropdown.Item as={Link} to="/rating-&-reviews">
                               Ratings & Reviews
                             </Dropdown.Item>
                             <Dropdown.Item as={Link} to="">
@@ -289,13 +289,13 @@ export const Header = () => {
                             </span>
                             <span>My Profile</span>
                           </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="">
+                          <Dropdown.Item as={Link} to="/payment-logs-user">
                             <span>
                               <images.PaymentLog />
                             </span>
                             <span>Payment Log</span>
                           </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="">
+                          <Dropdown.Item as={Link} to="/rating-reviews">
                             <span>
                               <images.RatingReview />
                             </span>

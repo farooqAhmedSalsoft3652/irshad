@@ -113,10 +113,10 @@
 }
 
 .filter-dropdown .dropdown-menu .fiter-main {
-  height: auto;
+  /* height: auto;
   max-height: 405px;
   overscroll-behavior: contain;
-  overflow-y: scroll;
+  overflow-y: scroll; */
 }
 
 .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar {
@@ -141,7 +141,7 @@
 }
 
 .fiter-main {
-  padding: 20px;
+  padding: 20px 10px;
 }
 
 .select-inner-wrapper {

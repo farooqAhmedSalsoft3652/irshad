@@ -9681,3 +9681,176 @@ export const appointmentsData = {
     total: 11,
   },
 };
+
+export const paymentLogsData = {
+  status: true,
+  message: "Subscription logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: 1,
+        booking_id: "#123456",
+        payment_date: "20/05/2022",
+        total_amount: "$10",
+        recieved_amount: "$10",
+        commision: "$10",
+      },
+      {
+        id: 2,
+        booking_id: "#123456",
+        payment_date: "20/05/2022",
+        total_amount: "$10",
+        recieved_amount: "$10",
+        commision: "$10",
+      },
+      {
+        id: 3,
+        booking_id: "#123456",
+        payment_date: "20/05/2022",
+        total_amount: "$10",
+        recieved_amount: "$10",
+        commision: "$10",
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
+
+export const ratingReviewsData = {
+  status: true,
+  message: "All Service Data",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: 1,
+        title: "Services Name",
+        category: "abc",
+        quick: false,
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        chat: "$30.00",
+        call: "$30.00",
+        video_call: "$30.00",
+        price: "$200.00",
+        rating: 4.0,
+        // reviews: "1.21K reviews",
+        image: images.serviceImg1,
+        isWishListed: true,
+        provider_name: "ABC Service Provider Name",
+        reviews: {
+          count: 1000,
+          comments: [
+            {
+              user: {
+                name: "D. David",
+                "photo-path":
+                  "https://media.istockphoto.com/id/1347005975/photo/portrait-of-a-serious-muslim-young-man-looking-at-camera.jpg?s=612x612&w=0&k=20&c=mxRUDCuwDD3ML6-vMaUlTY7Ghqlj2R_LOhWWCB5CTXE=",
+              },
+              comment:
+                "Excellent product for digestive relief! DigestAid worked wonders for my bloating and indigestion. After using it for just a week, I feel so much better. Highly recommend it for anyone with digestive discomfort",
+              rating: 2,
+              timestamp: "Jul 14, 2023",
+            },
+            {
+              user: { name: "Ai Boi", "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg" },
+              comment:
+                "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
+              rating: 4,
+              timestamp: "Jul 14, 2023",
+            },
+            {
+              user: { name: "Athalia Putri", "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8" },
+              comment:
+                "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
+              rating: 5,
+              timestamp: "Jul 14, 2023",
+            },
+            {
+              user: { name: "Athalia Putri", "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp" },
+              comment:
+                "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
+              rating: 4,
+              timestamp: "Dec 14, 2023",
+            },
+            {
+              user: {
+                name: "Athalia Putri",
+                "photo-path":
+                  "https://shotkit.com/wp-content/uploads/bb-plugin/cache/cool-profile-pic-matheus-ferrero-landscape-6cbeea07ce870fc53bedd94909941a4b-zybravgx2q47.jpeg",
+              },
+              comment:
+                "A must-have for gut health enthusiasts. DigestAid has become a staple in my daily routine. It's helped me stay regular and feel lighter throughout the day. It’s a comprehensive solution for anyone focused on gut health",
+              rating: 3,
+              timestamp: "Feb 16, 2024",
+            },
+          ],
+        },
+      },
+
+    ],
+  },
+  first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+  from: 1,
+  last_page: 2,
+  last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+  links: [
+    {
+      url: null,
+      label: "&laquo; Previous",
+      active: false,
+    },
+    {
+      url: "http://localhost/food_app/admin-api/branches?page=1",
+      label: "1",
+      active: true,
+    },
+    {
+      url: "http://localhost/food_app/admin-api/branches?page=2",
+      label: "2",
+      active: false,
+    },
+    {
+      url: "http://localhost/food_app/admin-api/branches?page=2",
+      label: "Next &raquo;",
+      active: false,
+    },
+  ],
+  next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+  path: "http://localhost/food_app/admin-api/branches",
+  per_page: 10,
+  prev_page_url: null,
+  to: 10,
+  total: 11,
+};

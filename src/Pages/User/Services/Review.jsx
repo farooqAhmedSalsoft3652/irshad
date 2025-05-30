@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { images } from '../../../Assets'
 import {Container, Row, Col, ProgressBar } from 'react-bootstrap'
-import { servicesData } from '../../../Config/data'
 import { useNavigate, useParams } from 'react-router-dom'
 import Rating from "react-rating";
 import { FaRegStar, FaStar } from 'react-icons/fa6'
@@ -11,6 +10,7 @@ import BackButton2 from '../../../Components/BackButton/BackButton2'
 import "./style.css"
 import withFilters from '../../../HOC/withFilters '
 import CustomPagination from '../../../Components/CustomPagination'
+import { servicesData } from '../../../Config/Data';
 
 const ServicesReview = ({filters, setFilters, pagination, updatePagination}) => {
   usePageTitle("Product Review", true);
