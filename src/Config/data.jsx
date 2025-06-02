@@ -243,6 +243,12 @@ export const loginCredentials = [
     certificate_name: "Institute ABC",
     certificate_title: "Certificate  ABC",
     certificate_image: images.certificate_image,
+    certificate_from: '10-04-2025',
+    certificate_to: '17-04-2025',
+    edu_details_from: '10-04-2025',
+    edu_details_to: '17-04-2025',
+    wokr_exp_from: '10-04-2025',
+    wokr_exp_to: '17-04-2025',
   },
   {
     user_id: 3,
