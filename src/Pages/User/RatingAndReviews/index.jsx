@@ -72,35 +72,35 @@ const RatingsAndReviews = () => {
                           </div>
                           <Rating
                             className="mt-3"
-                            emptySymbol={<FaRegStar color="#E9D225" size={40} />}
-                            fullSymbol={<FaStar size={40} color="#E9D225" />}
+                            emptySymbol={<FaRegStar color="#FFE420" size={40} />}
+                            fullSymbol={<FaStar size={40} color="#FFE420" />}
                             initialRating={parseFloat(product?.rating).toFixed(1)}
                             readonly
                           />
                         </div>
 
                         <div className="reviews-bar">
-                          <div className="reviews-item d-flex align-items-center gap-4">
+                          <div className="reviews-item d-flex flex-wrap align-items-center gap-lg-4 gap-2">
                             <label htmlFor="rating1">5 Star</label>
                             <ProgressBar variant="progress" now={90} />
                             <span>30</span>
                           </div>
-                          <div className="reviews-item d-flex align-items-center gap-4">
+                          <div className="reviews-item d-flex flex-wrap align-items-center gap-lg-4 gap-2">
                             <label htmlFor="rating2">4 Star</label>
                             <ProgressBar variant="progress" now={75} />
                             <span>20</span>
                           </div>
-                          <div className="reviews-item d-flex align-items-center gap-4">
+                          <div className="reviews-item d-flex flex-wrap align-items-center gap-lg-4 gap-2">
                             <label htmlFor="rating3">3 Star</label>
                             <ProgressBar variant="progress" now={20} />
                             <span>5</span>
                           </div>
-                          <div className="reviews-item d-flex align-items-center gap-4">
+                          <div className="reviews-item d-flex flex-wrap align-items-center gap-lg-4 gap-2">
                             <label htmlFor="rating4">2 Star</label>
                             <ProgressBar variant="progress" now={10} />
                             <span>1</span>
                           </div>
-                          <div className="reviews-item d-flex align-items-center gap-4">
+                          <div className="reviews-item d-flex flex-wrap align-items-center gap-lg-4 gap-2">
                             <label htmlFor="rating5">1 Star</label>
                             <ProgressBar variant="progress" now={4} />
                             <span>1</span>
@@ -132,13 +132,13 @@ const RatingsAndReviews = () => {
 
                         {filteredReviews.length > 0 ? (
                           filteredReviews.map((review, i) => (
-                            <div key={i} className="card-comment d-flex gap-3 mt-4">
+                            <div key={i} className="card-comment d-flex flex-md-row flex-column align-items-md-center gap-3 mt-4">
                               <div className="d-flex flex-grow-1 gap-3 comment-info">
                                 <img className="profile-avatar" src={review.user?.["photo-path"]} alt="user_photo" />
                                 <div className="flex-grow-1 align-self-center">
                                   <div className="star-rating d-flex gap-1 mb-3">
                                     {Array.from({ length: review.rating }).map((_, j) => (
-                                      <FaStar key={`${i}-${j}`} className="text-warning" />
+                                      <FaStar key={`${i}-${j}`} style={{color:"#FFE420"}} />
                                     ))}
                                   </div>
                                   <h6 className="mb-1">{review.user?.name}</h6>

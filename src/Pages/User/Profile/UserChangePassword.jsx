@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
 import { Col, Container, Row } from "react-bootstrap";
-import ChangePasswordForm from "../../../Components/ChangePasswordForm";
-import { useFormStatus } from "../../../Hooks/useFormStatus";
-import withModal from "../../../HOC/withModal";
-import "./style.css";
+import { useNavigate } from "react-router";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
+import ChangePasswordForm from "../../../Components/ChangePasswordForm";
+import withModal from "../../../HOC/withModal";
+import { useFormStatus } from "../../../Hooks/useFormStatus";
+import "./style.css";
 
 const UserChangePassword = ({ showModal }) => {
   const navigate = useNavigate();
@@ -14,12 +14,7 @@ const UserChangePassword = ({ showModal }) => {
 
   const handleSubmit = async (values) => {
     startSubmitting();
-    showModal(
-      'Successful',
-      `password Has Been changed Successfully!`,
-      ()=>(navigate(-1)),
-      true,
-    );
+    showModal("Successful", `password Has Been changed Successfully!`, () => navigate(-1), true);
     // let response = await post("/admin-api/account/change-password", values);
     // if (response.status) {
     //   showModal(
@@ -34,33 +29,38 @@ const UserChangePassword = ({ showModal }) => {
     stopSubmitting();
   };
   return (
-    <section className="page-content profile">
-      <Container fluid>
-        <Row>
+    <Container fluid>
+      <div className="py-sm-5 py-3">
+        <div className="site_card">
+          <Row>
             <Col sm={12} className="gap-3 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 mb-lg-4">
-              <h2 className="page-title fw-bold"><BackButton2 />Change password</h2>
+                <BackButton2 />
+              <h2 className="page-title fw-bold mx-auto">
+                Change Password
+              </h2>
             </Col>
-        </Row>
-        <Row>
-          <Col xs={12} lg={10}>
-            <div className="profile-card">
-              <Row>
-                <Col xs={12} lg={7} xxl={5}>
-                  <ChangePasswordForm
-                    onSubmit={handleSubmit}
-                    isSubmitting={isSubmitting}
-                    errors={errorsData}
-                    btnText="Change Password"
-                    btnVariant="btn btn-primary"
-                  />
-                </Col>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </section>
-  )
-}
+          </Row>
+          <Row>
+            <Col xs={12} lg={10}>
+              <div >
+                <Row>
+                  <Col xs={12} lg={7} xxl={5}>
+                    <ChangePasswordForm
+                      onSubmit={handleSubmit}
+                      isSubmitting={isSubmitting}
+                      errors={errorsData}
+                      btnText="Update"
+                      btnVariant="btn btn-primary"
+                    />
+                  </Col>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+    </Container>
+  );
+};
 
-export default withModal(UserChangePassword)
+export default withModal(UserChangePassword);

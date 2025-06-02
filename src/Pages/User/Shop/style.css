@@ -114,7 +114,7 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  border: 1px solid #1a8c1a;
+  border: 2px solid #15355E;
 }
 .profile-avatar {
   width: 100px;
@@ -280,7 +280,12 @@
   padding-right:0 ;
 }
 
+@media screen and (max-width: 991.5px) {
+  .reviews-item label {
+    min-width: 55px;
+  }
 
+}
 /* Cart Table End */
 /* .rating {
   color: #ff0000;

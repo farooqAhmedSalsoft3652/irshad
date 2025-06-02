@@ -70,6 +70,7 @@ import RatingReview from '../Assets/images/RatingReview.svg?react';
 import BankDetails from '../Assets/images/BankDetails.svg?react';
 import BlockedUsers from '../Assets/images/BlockedUsers.svg?react';
 import Logout from '../Assets/images/Logout.svg?react';
+import ProfileCover from '../Assets/images/profileCover.png';
 
 export const images = {
   Check,
@@ -106,7 +107,6 @@ export const images = {
   CameraIconOutline,
   sessionScreen,
   productImage,
-  certificate_image,
   shopBanner,
   MyShopproduct,
   placeholder,
@@ -135,5 +135,7 @@ export const images = {
   RatingReview,
   BankDetails,
   BlockedUsers,
-  Logout
+  Logout,
+  certificate_image,
+  ProfileCover,
 };

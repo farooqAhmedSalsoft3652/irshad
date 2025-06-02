@@ -63,7 +63,7 @@ const ChangePasswordForm = ({ onSubmit, isSubmitting, errors, btnText ="Update",
                 labelclass="mainLabel"
                 type="password"
                 required
-                placeholder="Confirm New Password"
+                placeholder="Enter New Password"
                 inputclass="mainInput"
                 id="password_confirmation"
                 value={values.password_confirmation}
