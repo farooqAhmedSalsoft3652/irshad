@@ -13,11 +13,10 @@ import CustomInput from "../../../Components/CustomInput";
 import { Select } from "../../../Components/Select";
 import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 import { genderOptions, language } from "../../../Config/TableStatus";
-import { editProviderValidation } from "../../../Config/Validations";
+import { editUserProfileValidation } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useAuth } from "../../../Hooks/useAuth";
-import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { usePageTitleUser, validateImage } from "../../../Utils/helper";
+import { dateFormat, usePageTitleUser, validateImage } from "../../../Utils/helper";
 import "./style.css";
 
 const UserEditProfile = ({ showModal }) => {
@@ -26,9 +25,7 @@ const UserEditProfile = ({ showModal }) => {
   const [imageObject, setImageObject] = useState({});
   const [profileData, setProfileData] = useState({});
   const [profilePic, setProfilePic] = useState();
-  const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const { user } = useAuth();
-  const [uploadKey, setUploadKey] = useState(Date.now());
 
   useEffect(() => {
     setProfileData(user);
@@ -48,13 +45,8 @@ const UserEditProfile = ({ showModal }) => {
 
   const handleSubmit = async (values) => {
     values.image = imageObject;
-    showModal(
-      "Succesful",
-      `profile Has Been updated Successfully!`,
-      () => navigate(`/profile`),
-      true
-    );
-    // console.log(values);
+    showModal("Succesful", `profile Has Been updated Successfully!`, () => navigate(`/profile`), true);
+    // console.log(values, "form submitted");
   };
 
   return (
@@ -93,8 +85,8 @@ const UserEditProfile = ({ showModal }) => {
                             {
                               institution_name: profileData.institution_name || "",
                               degree_title: profileData?.degree_title || "",
-                              edu_details_from: profileData?.edu_details_from || "",
-                              edu_details_to: profileData?.edu_details_to || "",
+                              edu_details_from: dateFormat(profileData?.edu_details_from || "", "YYYY-MM-DD"),
+                              edu_details_to: dateFormat(profileData?.edu_details_to || "", "YYYY-MM-DD"),
                             },
                           ],
 
@@ -102,8 +94,8 @@ const UserEditProfile = ({ showModal }) => {
                             {
                               organization_name: profileData?.organization_name || "",
                               designation: profileData?.designation || "",
-                              wokr_exp_from: profileData?.wokr_exp_from || "",
-                              wokr_exp_to: profileData?.wokr_exp_to || "",
+                              wokr_exp_from: dateFormat(profileData?.wokr_exp_from || "", "YYYY-MM-DD"),
+                              wokr_exp_to: dateFormat(profileData?.wokr_exp_to || "", "YYYY-MM-DD"),
                             },
                           ],
 
@@ -111,13 +103,13 @@ const UserEditProfile = ({ showModal }) => {
                             {
                               institution_name: profileData.institution_name || "",
                               certificate_title: profileData.certificate_title || "",
-                              certificate_from: profileData.certificate_from || "",
-                              certificate_to: profileData.certificate_to || "",
+                              certificate_from: dateFormat(profileData.certificate_from || "", "YYYY-MM-DD"),
+                              certificate_to: dateFormat(profileData.certificate_to || "", "YYYY-MM-DD"),
                               certificate_image: profileData.certificate_image || [],
                             },
                           ],
                         }}
-                        validationSchema={editProviderValidation}
+                        validationSchema={editUserProfileValidation}
                         onSubmit={handleSubmit}
                       >
                         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue, setFieldError, setFieldTouched, isSubmitting }) => {
