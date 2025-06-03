@@ -2,8 +2,8 @@ import { FieldArray, Formik } from "formik";
 import { UserAuthLayout } from "../../../Components/Layouts/UserLayout/AuthLayout";
 import { Select } from "../../../Components/Select";
 import CustomInput from "../../../Components/CustomInput";
-import AddIcon from "../../../Assets/images/addIcon.svg?react";
-import DeleteIcon from "../../../Assets/images/deleteIcon.svg?react";
+import AddIcon from "../../../Assets/images/svg/addIcon.svg?react";
+import DeleteIcon from "../../../Assets/images/svg/deleteIcon.svg?react";
 import { usePageTitleUser } from "../../../Utils/helper";
 import ImageUpload from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 import { personalDetailsValidationSchema } from "../../../Config/Validations";
@@ -53,7 +53,16 @@ const PersonalDetails = () => {
         validationSchema={personalDetailsValidationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          setFieldTouched,
+          setFieldValue,
+        }) => (
           <form className="mt-3" onSubmit={handleSubmit}>
             <div className="inputWrapper position-relative">
               <Select
@@ -66,7 +75,9 @@ const PersonalDetails = () => {
                 wrapperClass="d-block mb-3"
                 mainLabel="Select Category"
                 value={values.category}
-                onChange={(value) => handleChange({ target: { name: "category", value } })} // Adapting to Formik
+                onChange={(value) =>
+                  handleChange({ target: { name: "category", value } })
+                } // Adapting to Formik
                 onBlur={handleBlur}
                 error={touched.category && errors.category}
               >
@@ -100,11 +111,17 @@ const PersonalDetails = () => {
                 <>
                   {values.educationDetails.map((edu, index) => (
                     <div key={index} className="mb-4">
-                      <h3 className="fw-bold">Educational Details {index + 1}</h3>
+                      <h3 className="fw-bold">
+                        Educational Details {index + 1}
+                      </h3>
                       {/* Delete button */}
                       {values.educationDetails.length > 1 && (
                         <div className="text-end">
-                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                          <button
+                            type="button"
+                            className="bg-transparent border-0"
+                            onClick={() => remove(index)}
+                          >
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -220,7 +237,11 @@ const PersonalDetails = () => {
                       {/* Delete button */}
                       {values.workExperience.length > 1 && (
                         <div className="text-end">
-                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                          <button
+                            type="button"
+                            className="bg-transparent border-0"
+                            onClick={() => remove(index)}
+                          >
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -332,11 +353,17 @@ const PersonalDetails = () => {
                 <>
                   {values.certificationDetails.map((edu, index) => (
                     <div key={index} className="mb-4 mt-4">
-                      <h3 className="fw-bold">Certification Detail {index + 1}</h3>
+                      <h3 className="fw-bold">
+                        Certification Detail {index + 1}
+                      </h3>
                       {/* Delete button */}
                       {values.certificationDetails.length > 1 && (
                         <div className="text-end">
-                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                          <button
+                            type="button"
+                            className="bg-transparent border-0"
+                            onClick={() => remove(index)}
+                          >
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -354,12 +381,15 @@ const PersonalDetails = () => {
                         placeholder="Enter Institution Name"
                         labelclass="mainLabel"
                         inputclass="mainInput mainInputLogIn"
-                        value={values.certificationDetails[index].institution_name}
+                        value={
+                          values.certificationDetails[index].institution_name
+                        }
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={
                           touched.certificationDetails &&
-                          touched.certificationDetails[index]?.institution_name &&
+                          touched.certificationDetails[index]
+                            ?.institution_name &&
                           errors.certificationDetails &&
                           errors.certificationDetails[index]?.institution_name
                         }
@@ -372,12 +402,15 @@ const PersonalDetails = () => {
                         placeholder="Enter Certificate Title"
                         labelclass="mainLabel"
                         inputclass="mainInput mainInputLogIn"
-                        value={values.certificationDetails[index].certificate_title}
+                        value={
+                          values.certificationDetails[index].certificate_title
+                        }
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={
                           touched.certificationDetails &&
-                          touched.certificationDetails[index]?.certificate_title &&
+                          touched.certificationDetails[index]
+                            ?.certificate_title &&
                           errors.certificationDetails &&
                           errors.certificationDetails[index]?.certificate_title
                         }
@@ -386,11 +419,17 @@ const PersonalDetails = () => {
                         <ImageUpload
                           id={`certificationDetails.${index}.certificate_pic`}
                           label="Upload Certificate Picture"
-                          onChange={(files) => setFieldValue(`certificationDetails.${index}.certificate_pic`, files)}
+                          onChange={(files) =>
+                            setFieldValue(
+                              `certificationDetails.${index}.certificate_pic`,
+                              files
+                            )
+                          }
                           numberOfFiles={1}
                           errorFromParent={
                             touched.certificationDetails &&
-                            touched.certificationDetails[index]?.certificate_pic &&
+                            touched.certificationDetails[index]
+                              ?.certificate_pic &&
                             errors.certificationDetails &&
                             errors.certificationDetails[index]?.certificate_pic
                           }
@@ -421,7 +460,11 @@ const PersonalDetails = () => {
                 </>
               )}
             </FieldArray>
-            <CustomButton className="siteBtn primaryBtn py-4 w-100 mt-4" text="Signup" type="submit" />
+            <CustomButton
+              className="siteBtn primaryBtn py-4 w-100 mt-4"
+              text="Signup"
+              type="submit"
+            />
             <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">
               Already have an account?
               <Link to={"/login"} className="underlineOnHover text-dark ps-1">
@@ -431,7 +474,15 @@ const PersonalDetails = () => {
           </form>
         )}
       </Formik>
-      <CustomModal show={modal} action={()=>{setModal(false)}} close={()=>setModal(false)} success para='Profile has been created successfully. Please wait for the admin approval.' />
+      <CustomModal
+        show={modal}
+        action={() => {
+          setModal(false);
+        }}
+        close={() => setModal(false)}
+        success
+        para="Profile has been created successfully. Please wait for the admin approval."
+      />
     </UserAuthLayout>
   );
 };

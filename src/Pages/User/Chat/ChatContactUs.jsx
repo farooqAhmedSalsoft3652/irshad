@@ -1,7 +1,16 @@
 import { useEffect, useState } from "react";
 import { Container, Dropdown } from "react-bootstrap";
 import { BiCheck, BiCheckDouble } from "react-icons/bi";
-import { FaBars, FaEllipsisV, FaFileAlt, FaFileExcel, FaFilePdf, FaFileWord, FaFilter, FaSearch } from "react-icons/fa";
+import {
+  FaBars,
+  FaEllipsisV,
+  FaFileAlt,
+  FaFileExcel,
+  FaFilePdf,
+  FaFileWord,
+  FaFilter,
+  FaSearch,
+} from "react-icons/fa";
 import { FaPaperPlane, FaXmark } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import ScrollToBottom from "react-scroll-to-bottom";
@@ -9,7 +18,7 @@ import { images } from "../../../Assets";
 import CustomInput from "../../../Components/CustomInput/index";
 import { chat_box, loginCredentials, sidebar } from "../../../Config/data";
 import { usePageTitleUser } from "../../../Utils/helper";
-import SendIcon from "../../../Assets/images/Send.svg?react";
+import SendIcon from "../../../Assets/images/svg/Send.svg?react";
 import Styles from "./chat.module.css";
 
 const UserChatContactUs = () => {
@@ -100,7 +109,9 @@ const UserChatContactUs = () => {
   };
 
   const handleDeleteFile = (indexToDelete) => {
-    setUploadedFiles((prevFiles) => prevFiles.filter((_, i) => i !== indexToDelete));
+    setUploadedFiles((prevFiles) =>
+      prevFiles.filter((_, i) => i !== indexToDelete)
+    );
   };
 
   const getFileIcon = (filename) => {
@@ -129,14 +140,28 @@ const UserChatContactUs = () => {
         <div className="py-sm-5 py-3 px-sm-0 px-1">
           <div className="site_card p-0 bg-white">
             <h2 className="text-center fw-bold pt-3">Chat Contact Us</h2>
-            <div className={`d-flex justify-content-between align-items-center mb-xl-0 mb-3`}>
-              <button className={`${Styles[`sidebar-toggle`]} ${Styles[`chatToggleButton`]}`} onClick={toggleSidebar}>
+            <div
+              className={`d-flex justify-content-between align-items-center mb-xl-0 mb-3`}
+            >
+              <button
+                className={`${Styles[`sidebar-toggle`]} ${
+                  Styles[`chatToggleButton`]
+                }`}
+                onClick={toggleSidebar}
+              >
                 <FaBars />
               </button>
             </div>
             <div className={`${Styles[`chat-module`]}`}>
-              <div className={`${Styles[`chat-sidebar`]} ${isSidebarOpen ? `${Styles.open}` : ``}`}>
-                <button className={`d-xl-none d-block ${Styles.sidebarCloseBtn}`} onClick={() => setIsSidebarOpen(false)}>
+              <div
+                className={`${Styles[`chat-sidebar`]} ${
+                  isSidebarOpen ? `${Styles.open}` : ``
+                }`}
+              >
+                <button
+                  className={`d-xl-none d-block ${Styles.sidebarCloseBtn}`}
+                  onClick={() => setIsSidebarOpen(false)}
+                >
                   <FaXmark />
                 </button>
                 <div className="d-flex align-items-center gap-2 px-2">
@@ -163,12 +188,20 @@ const UserChatContactUs = () => {
                           Chat
                         </h6>
                         <Dropdown.Item>
-                          <Link to={'/chat-reports'}  className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link
+                            to={"/chat-reports"}
+                            className="text-decoration-none"
+                            style={{ color: "#999999" }}
+                          >
                             Reports
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link to={'/chat-contact-us'} className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link
+                            to={"/chat-contact-us"}
+                            className="text-decoration-none"
+                            style={{ color: "#999999" }}
+                          >
                             Contact Us
                           </Link>
                         </Dropdown.Item>
@@ -178,17 +211,35 @@ const UserChatContactUs = () => {
                 </div>
                 <ul>
                   {sideData?.map((user, i) => (
-                    <div className={`${Styles.sidebarChat} my-3 ${user.isOpen ? `isOpen` : `close`}`} key={i} onClick={() => handleUserClick(user)}>
+                    <div
+                      className={`${Styles.sidebarChat} my-3 ${
+                        user.isOpen ? `isOpen` : `close`
+                      }`}
+                      key={i}
+                      onClick={() => handleUserClick(user)}
+                    >
                       <div className={`flex-shrink-0`}>
-                        <img src={user["photo-path"]} alt={`asdas`} className={Styles.chatHeaderImg} />
+                        <img
+                          src={user["photo-path"]}
+                          alt={`asdas`}
+                          className={Styles.chatHeaderImg}
+                        />
                       </div>
                       <div className={`flex-grow-1`}>
                         <h6 className={`mb-0`}>{user.name}</h6>
                         <p className={`mb-0`}>{user.message}</p>
                       </div>
                       <div>
-                        <p className={`img-fluid ${Styles["noti-tag-time"]} mb-0`}>{user.time}</p>
-                        {user.delivered && <span className={`${Styles.chatBadge} ms-auto`}>{user.notification}</span>}
+                        <p
+                          className={`img-fluid ${Styles["noti-tag-time"]} mb-0`}
+                        >
+                          {user.time}
+                        </p>
+                        {user.delivered && (
+                          <span className={`${Styles.chatBadge} ms-auto`}>
+                            {user.notification}
+                          </span>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -202,12 +253,20 @@ const UserChatContactUs = () => {
                       <div className="d-flex align-items-center flex-wrap gap-3 justify-content-between">
                         <div className="d-flex gap-3 align-items-center">
                           <div className="flex-shrink-0">
-                            <img src={images.UserImage} alt="" className="user-img" />
+                            <img
+                              src={images.UserImage}
+                              alt=""
+                              className="user-img"
+                            />
                           </div>
                           <div className="flex-grow-1 align-self-center">
                             <h4 className="fw-medium mb-0">Jessica Drew</h4>
-                            <h6 className="mb-0" style={{ color: "#999999", fontWeight: "400" }}>
-                              <span style={{ color: "#00B207" }}>●</span> Active Now
+                            <h6
+                              className="mb-0"
+                              style={{ color: "#999999", fontWeight: "400" }}
+                            >
+                              <span style={{ color: "#00B207" }}>●</span> Active
+                              Now
                             </h6>
                           </div>
                         </div>
@@ -220,24 +279,50 @@ const UserChatContactUs = () => {
                           <div
                             key={index}
                             className={`${Styles.message} ${
-                              message["user-id"] !== currentUserData?.["user-id"] ? Styles["other-message"] : Styles["my-message"]
+                              message["user-id"] !==
+                              currentUserData?.["user-id"]
+                                ? Styles["other-message"]
+                                : Styles["my-message"]
                             }`}
                           >
-                            {message.message && <p className={``}>{message?.message}</p>}
+                            {message.message && (
+                              <p className={``}>{message?.message}</p>
+                            )}
                             {message.files &&
                               message.files.map((file, index) => (
-                                <div className={`my-3 ${Styles.uploadImg}`} key={index}>
-                                  <img src={URL.createObjectURL(file)} alt={`Uploaded File`} className={`img-fluid`} />
+                                <div
+                                  className={`my-3 ${Styles.uploadImg}`}
+                                  key={index}
+                                >
+                                  <img
+                                    src={URL.createObjectURL(file)}
+                                    alt={`Uploaded File`}
+                                    className={`img-fluid`}
+                                  />
                                 </div>
                               ))}
-                            <div className={`d-flex justify-content-end align-items-center flex-wrap gap-3`}>
+                            <div
+                              className={`d-flex justify-content-end align-items-center flex-wrap gap-3`}
+                            >
                               {
-                                <div className={`d-flex gap-2 align-items-center flex-wrap`}>
-                                  <div className={`d-flex align-items-center gap-2`}>
+                                <div
+                                  className={`d-flex gap-2 align-items-center flex-wrap`}
+                                >
+                                  <div
+                                    className={`d-flex align-items-center gap-2`}
+                                  >
                                     <p className={`mb-0`}>{message?.time}</p>
-                                    {message["user-id"] == currentUserData?.["user-id"] && (
+                                    {message["user-id"] ==
+                                      currentUserData?.["user-id"] && (
                                       <p className={`mb-0`}>
-                                        {message?.seen ? <BiCheckDouble size={25} color="#53A6EC" /> : <BiCheck size={24} color="#666" />}
+                                        {message?.seen ? (
+                                          <BiCheckDouble
+                                            size={25}
+                                            color="#53A6EC"
+                                          />
+                                        ) : (
+                                          <BiCheck size={24} color="#666" />
+                                        )}
                                       </p>
                                     )}{" "}
                                   </div>
@@ -253,9 +338,19 @@ const UserChatContactUs = () => {
                       <div className={files ? Styles.uploadedFiles : ``}>
                         {files.map((item, index) => (
                           <div className={`${Styles.isFileVisible}`}>
-                            <div className={`${Styles.fileVisible}`} key={index}>
-                              <img src={URL.createObjectURL(item)} alt={`Uploaded File`} className={`img-fluid`} />
-                              <button onClick={() => deleteFile(index)} className={`${Styles.deleteBtn}`}>
+                            <div
+                              className={`${Styles.fileVisible}`}
+                              key={index}
+                            >
+                              <img
+                                src={URL.createObjectURL(item)}
+                                alt={`Uploaded File`}
+                                className={`img-fluid`}
+                              />
+                              <button
+                                onClick={() => deleteFile(index)}
+                                className={`${Styles.deleteBtn}`}
+                              >
                                 <FaXmark />
                               </button>
                             </div>
@@ -266,23 +361,41 @@ const UserChatContactUs = () => {
                     {/* Display uploaded files with icons */}
                     <ul className="uploaded-file-list mb-0 mt-2 ps-3">
                       {uploadedFiles.map((file, index) => (
-                        <li key={index} className="uploaded-file-item d-flex gap-2 align-items-center" style={{ listStyle: "none" }}>
+                        <li
+                          key={index}
+                          className="uploaded-file-item d-flex gap-2 align-items-center"
+                          style={{ listStyle: "none" }}
+                        >
                           <div className="d-flex align-items-center">
                             {getFileIcon(file.name)}
                             <span className="file-name ms-1">{file.name}</span>
                           </div>
-                          <button onClick={() => handleDeleteFile(index)} className={`${Styles.documentDeleteBtn}`}>
+                          <button
+                            onClick={() => handleDeleteFile(index)}
+                            className={`${Styles.documentDeleteBtn}`}
+                          >
                             <FaXmark />
                           </button>
                         </li>
                       ))}
                     </ul>
                     <div className={`${Styles["input-area"]}`}>
-                      <input type="text" placeholder="Type A Message..." value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
+                      <input
+                        type="text"
+                        placeholder="Type A Message..."
+                        value={messageInput}
+                        onChange={(e) => setMessageInput(e.target.value)}
+                      />
                       <div className={`${Styles["input-area-inner"]}`}>
                         <div className={`${Styles.fileUpload}`}>
                           <label htmlFor={`uploader`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 46 38" fill="none">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="35"
+                              height="35"
+                              viewBox="0 0 46 38"
+                              fill="none"
+                            >
                               <path
                                 d="M41.9243 8.00492H41.5352C41.3073 6.05261 39.7362 4.50471 37.7727 4.31526C37.5473 2.21056 35.7619 0.565674 33.5986 0.565674H6.80727C3.22177 0.565674 0.304688 3.48276 0.304688 7.0679V25.8528C0.304688 28.0313 1.97173 29.8268 4.09647 30.0322C4.31951 32.1144 6.06998 33.7453 8.20208 33.7796C8.20685 34.1401 8.26352 34.498 8.37033 34.8424C8.84788 36.3754 10.2808 37.4915 11.969 37.4915H41.9243C44.0025 37.4915 45.693 35.8009 45.693 33.7232V11.7736C45.693 9.69546 44.0025 8.00492 41.9243 8.00492ZM43.92 11.7736V26.2888L40.0638 23.3758C39.01 22.5801 37.5852 22.5676 36.5178 23.345L31.6397 26.8993L22.3371 17.3086C21.229 16.1659 19.4258 16.0956 18.2322 17.149L9.97364 24.435V11.7736C9.97364 10.6731 10.8688 9.7779 11.969 9.7779H41.9243C43.0248 9.7779 43.92 10.6731 43.92 11.7736ZM43.92 33.7228C43.92 34.8233 43.0248 35.7185 41.9247 35.7185H11.969C11.0752 35.7185 10.3165 35.1274 10.0637 34.3157C10.0039 34.1239 9.97349 33.9241 9.97364 33.7232V26.7992L19.4055 18.4783C19.6371 18.2733 19.9388 18.1655 20.2479 18.1775C20.557 18.1896 20.8495 18.3204 21.0645 18.5427L25.2629 22.8713C25.2629 22.8716 25.2629 22.8716 25.2632 22.8716L33.6194 31.4869C33.702 31.5723 33.8009 31.6402 33.9102 31.6865C34.0196 31.7327 34.1372 31.7565 34.2559 31.7563C34.4782 31.7563 34.7009 31.6732 34.8729 31.5063C35.2241 31.1652 35.2328 30.6042 34.892 30.2527L32.8863 28.1847L37.5618 24.7783C37.9934 24.4639 38.5692 24.4687 38.9951 24.7904L43.92 28.5105V33.7228ZM5.84525 29.5823V8.65135C5.84525 8.56244 5.84968 8.47405 5.85873 8.38753C5.99108 7.0867 7.09325 6.06812 8.42857 6.06812H19.2721C19.7617 6.06812 20.1586 5.67133 20.1586 5.18163C20.1586 4.69202 19.7617 4.29514 19.2721 4.29514H8.42848C6.02636 4.29514 4.07227 6.24923 4.07227 8.65135V28.2408C2.9396 28.0369 2.07767 27.0437 2.07767 25.8528V7.0679C2.07767 4.46038 4.19939 2.33865 6.80727 2.33865H33.5986C34.7753 2.33865 35.7591 3.18117 35.9783 4.29514H26.364C25.8743 4.29514 25.4776 4.69202 25.4776 5.18163C25.4776 5.67133 25.8743 6.06812 26.364 6.06812H37.3662C38.5359 6.06812 39.5151 6.90098 39.742 8.00492H11.969C9.89128 8.00492 8.20066 9.69546 8.20066 11.7736V32.0066C6.89557 31.9696 5.84525 30.8965 5.84525 29.5823Z"
                                 fill="#A3A3A3"
@@ -293,11 +406,26 @@ const UserChatContactUs = () => {
                               />
                             </svg>
                           </label>
-                          <input type={`file`} id={`uploader`} onChange={handleFileChange} multiple hidden={true} />
+                          <input
+                            type={`file`}
+                            id={`uploader`}
+                            onChange={handleFileChange}
+                            multiple
+                            hidden={true}
+                          />
                         </div>
                         <div className="file-upload">
-                          <label htmlFor="doc-uploader" className="upload-label">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 39 40" fill="none">
+                          <label
+                            htmlFor="doc-uploader"
+                            className="upload-label"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="30"
+                              height="30"
+                              viewBox="0 0 39 40"
+                              fill="none"
+                            >
                               <g clip-path="url(#clip0_435_42258)">
                                 <path
                                   fill-rule="evenodd"
@@ -314,21 +442,39 @@ const UserChatContactUs = () => {
                               </g>
                               <defs>
                                 <clipPath id="clip0_435_42258">
-                                  <rect width="38.6862" height="38.6862" fill="white" transform="translate(0.117188 0.596924)" />
+                                  <rect
+                                    width="38.6862"
+                                    height="38.6862"
+                                    fill="white"
+                                    transform="translate(0.117188 0.596924)"
+                                  />
                                 </clipPath>
                               </defs>
                             </svg>
                           </label>
-                          <input type="file" id="doc-uploader" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" multiple hidden onChange={onDocumentSelect} />
+                          <input
+                            type="file"
+                            id="doc-uploader"
+                            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                            multiple
+                            hidden
+                            onChange={onDocumentSelect}
+                          />
                         </div>
-                        <button className={`${Styles["send-btn"]}`} disabled={!(messageInput || files.length)} onClick={handleSend}>
+                        <button
+                          className={`${Styles["send-btn"]}`}
+                          disabled={!(messageInput || files.length)}
+                          onClick={handleSend}
+                        >
                           <SendIcon />
                         </button>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <div className={`${Styles["no-chat-selected"]}`}>Select a user to start chat</div>
+                  <div className={`${Styles["no-chat-selected"]}`}>
+                    Select a user to start chat
+                  </div>
                 )}
               </div>
             </div>
