@@ -246,6 +246,12 @@ export const loginCredentials = [
     certificate_name: "Institute ABC",
     certificate_title: "Certificate  ABC",
     certificate_image: images.certificate_image,
+    certificate_from: "2024-06-10T14:29:37.000000Z",
+    certificate_to: "2024-06-17T14:29:37.000000Z",
+    edu_details_from: "2024-06-25T14:29:37.000000Z",
+    edu_details_to: "2024-06-27T14:29:37.000000Z",
+    wokr_exp_from: "2024-06-01T14:29:37.000000Z",
+    wokr_exp_to: "2024-06-03T14:29:37.000000Z",
   },
   {
     user_id: 3,
