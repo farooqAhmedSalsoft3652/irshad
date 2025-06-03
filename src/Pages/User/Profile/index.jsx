@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { images } from "../../../Assets";
 import CustomButton from "../../../Components/CustomButton";
 import { useAuth } from "../../../Hooks/useAuth";
@@ -102,7 +102,7 @@ const UserProfile = () => {
                         <div className="profile_wallet_card">
                           <h4>Wallet</h4>
                           <p>Amount : {user?.amount || '$20'} </p>
-                          <button className="siteBtn primaryBtn text-nowrap">Withdraw Amount</button>
+                          <Link to={'/withdraw-amount'} className="siteBtn primaryBtn text-nowrap">Withdraw Amount</Link>
                         </div>
                       </Col>
                     </Row>

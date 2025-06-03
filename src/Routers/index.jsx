@@ -158,6 +158,7 @@ import UserChatContactUs from "../Pages/User/Chat/ChatContactUs";
 import UserChatReports from "../Pages/User/Chat/ChatReports";
 import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
 import RatingsAndReviews from '../Pages/User/RatingAndReviews';
+import WithDrawAmount from '../Pages/User/WithDraw';
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -499,6 +500,7 @@ const routes = [
               { path: "/profile", element: <UserProfile /> },
               { path: "/edit-profile", element: <UserEditProfile /> },
               { path: "/change-password", element: <UserChangePassword /> },
+              { path: "/withdraw-amount", element: <WithDrawAmount /> },
 
               { path: "/services", element: <Services /> },
               { path: "/services/:id", element: <ServicesDetails /> },
