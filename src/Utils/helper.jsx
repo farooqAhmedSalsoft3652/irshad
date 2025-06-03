@@ -1,31 +1,33 @@
 import { useEffect, useState } from "react";
 import { images } from "../Assets";
-import Dashboard from "../Assets/images/dashboard.svg?react";
-import ServiceProviderManagement from "../Assets/images/serviceProviderManagement.svg?react";
-import ServiceCategoryManagement from "../Assets/images/serviceCategoryManagement.svg?react";
-import ContentManagement from "../Assets/images/contentManagement.svg?react";
-import CommissionManagement from "../Assets/images/comissionManagement.svg?react";
-import SubscriptionLogs from "../Assets/images/subscriptionLogs.svg?react";
-import PayoutsManagement from "../Assets/images/payoutsManagement.svg?react";
-import PaymentLogs from "../Assets/images/paymentLogs.svg?react";
-import AppointmentLogs from "../Assets/images/appointmentLogs.svg?react";
-import UserManagement from "../Assets/images/userManagement.svg?react";
-import ProductCategoryManagement from "../Assets/images/productcategoryManagement.svg?react";
-import InAppPurchaseManagement from "../Assets/images/inAppPurchase.svg?react";
-import EmergencyContact from "../Assets/images/emergencyContact.svg?react";
-import ReportsManagement from "../Assets/images/reportsManagement.svg?react";
-import BannerAdsManagement from "../Assets/images/bannerAds.svg?react";
-import FAQsManagement from "../Assets/images/faq.svg?react";
+import Dashboard from "../Assets/images/svg/dashboard.svg?react";
+import ServiceProviderManagement from "../Assets/images/svg/serviceProviderManagement.svg?react";
+import ServiceCategoryManagement from "../Assets/images/svg/serviceCategoryManagement.svg?react";
+import ContentManagement from "../Assets/images/svg/contentManagement.svg?react";
+import CommissionManagement from "../Assets/images/svg/comissionManagement.svg?react";
+import SubscriptionLogs from "../Assets/images/svg/subscriptionLogs.svg?react";
+import PayoutsManagement from "../Assets/images/svg/payoutsManagement.svg?react";
+import PaymentLogs from "../Assets/images/svg/paymentLogs.svg?react";
+import AppointmentLogs from "../Assets/images/svg/appointmentLogs.svg?react";
+import UserManagement from "../Assets/images/svg/userManagement.svg?react";
+import ProductCategoryManagement from "../Assets/images/svg/productcategoryManagement.svg?react";
+import InAppPurchaseManagement from "../Assets/images/svg/inAppPurchase.svg?react";
+import EmergencyContact from "../Assets/images/svg/emergencyContact.svg?react";
+import ReportsManagement from "../Assets/images/svg/reportsManagement.svg?react";
+import BannerAdsManagement from "../Assets/images/svg/bannerAds.svg?react";
+import FAQsManagement from "../Assets/images/svg/faq.svg?react";
 // import moment from "moment";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment-timezone";
 
 //set email
-export const setEmail = (email) => localStorage.setItem("email", JSON.stringify(email));
+export const setEmail = (email) =>
+  localStorage.setItem("email", JSON.stringify(email));
 export const getEmail = () => JSON.parse(localStorage.getItem("email"));
 
 //set emaiFAQsManagementl
-export const setCode = (code) => localStorage.setItem("code", JSON.stringify(code));
+export const setCode = (code) =>
+  localStorage.setItem("code", JSON.stringify(code));
 export const getCode = () => JSON.parse(localStorage.getItem("code"));
 
 export const usePasswordToggle = () => {
@@ -79,7 +81,12 @@ export const usePasswordToggle3 = () => {
 
 //form builder
 export const buildFormData = (formData, data, parentKey) => {
-  if (data && typeof data === "object" && !(data instanceof Date) && !(data instanceof File)) {
+  if (
+    data &&
+    typeof data === "object" &&
+    !(data instanceof Date) &&
+    !(data instanceof File)
+  ) {
     Object.keys(data).forEach((key) => {
       buildFormData(formData, data[key], key);
     });
@@ -255,7 +262,15 @@ export const convertUTCToLocalTime = (utcTime) => {
   return moment.utc(utcTime, "HH:mm").local().format("hh:mm A");
 };
 
-const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+const daysOfWeek = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+];
 
 export const sortTimingsByDay = (timings) => {
   return timings.sort((a, b) => {
@@ -291,8 +306,16 @@ export const usePageTitle = (title = "", user = false) => {
 
   useEffect(() => {
     document.title = user
-      ? process.env.REACT_APP_WEBSITE_NAME + " | " + title.charAt(0).toUpperCase() + title.slice(1)
-      : process.env.REACT_APP_WEBSITE_NAME + " " + name + " | " + title.charAt(0).toUpperCase() + title.slice(1);
+      ? process.env.REACT_APP_WEBSITE_NAME +
+        " | " +
+        title.charAt(0).toUpperCase() +
+        title.slice(1)
+      : process.env.REACT_APP_WEBSITE_NAME +
+        " " +
+        name +
+        " | " +
+        title.charAt(0).toUpperCase() +
+        title.slice(1);
   }, [title, user, name]); // Add dependencies
 };
 export const usePageTitleUser = (title) => {
@@ -440,7 +463,12 @@ export const calculateIndex = (currentPage, selectedEntries) => {
   return (currentPage - 1) * selectedEntries + 1;
 };
 
-export const handleFileChange = (e, formData, setFormData, setUploadedImage) => {
+export const handleFileChange = (
+  e,
+  formData,
+  setFormData,
+  setUploadedImage
+) => {
   const fileInput = e.target;
   const files = fileInput.files;
   if (files && files.length > 0) {
@@ -456,7 +484,8 @@ export const handleFileChange = (e, formData, setFormData, setUploadedImage) => 
 };
 
 export const getUserDetails = (user, data) => {
-  const userDetails = user.sendable_id === data.id ? user.receiver : user.sender;
+  const userDetails =
+    user.sendable_id === data.id ? user.receiver : user.sender;
   return {
     profilePic: userDetails?.file?.file_url,
     firstName: userDetails?.first_name,
@@ -498,7 +527,9 @@ export const convertMinutes = (minutes) => {
   const remainingMinutes = minutes % 60;
 
   if (hours > 0 && remainingMinutes > 0) {
-    return `${hours} hour${hours > 1 ? "s" : ""} and ${remainingMinutes} minute${remainingMinutes !== 1 ? "s" : ""}`;
+    return `${hours} hour${
+      hours > 1 ? "s" : ""
+    } and ${remainingMinutes} minute${remainingMinutes !== 1 ? "s" : ""}`;
   } else if (hours > 0) {
     return `${hours} hour${hours > 1 ? "s" : ""}`;
   } else {
@@ -2225,7 +2256,9 @@ export const isNullOrEmpty = (variable) => {
     variable === null || // Check if null
     variable === undefined || // Check if undefined
     (Array.isArray(variable) && variable.length === 0) || // Check if it's an empty array
-    (typeof variable === "object" && !Array.isArray(variable) && Object.keys(variable).length === 0) // Check if it's an empty object (and not an array)
+    (typeof variable === "object" &&
+      !Array.isArray(variable) &&
+      Object.keys(variable).length === 0) // Check if it's an empty object (and not an array)
   );
 };
 

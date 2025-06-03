@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import MedicalImage from "../../../Assets/images/medical-health.png";
+// import MedicalImage from "../../../Assets/images/medical-health.png";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import BackButton from "../../../Components/BackButton";
 import { Select } from "../../../Components/Select";
@@ -14,7 +14,9 @@ const InAppPurchaseDetail = ({ showModal }) => {
 
   useEffect(() => {
     const getUser = async () => {
-      const response = inAppPurchaseManagementData.detail.data.find((e) => e.id == Number(id));
+      const response = inAppPurchaseManagementData.detail.data.find(
+        (e) => e.id == Number(id)
+      );
       if (response) {
         setPurchaseData(response);
 
@@ -31,14 +33,23 @@ const InAppPurchaseDetail = ({ showModal }) => {
     const newStatusValue = e;
     showModal(
       `${newStatusValue === "1" ? "Active" : "Inactive"} Product`,
-      `Are you sure you want to change this Product status to ${newStatusValue === "1" ? "Active" : "Inactive"}?`,
+      `Are you sure you want to change this Product status to ${
+        newStatusValue === "1" ? "Active" : "Inactive"
+      }?`,
       () => onConfirmStatusChange(userId, newStatusValue)
     );
   };
 
   const onConfirmStatusChange = async (userId, newStatusValue) => {
     setPurchaseData({ ...purchaseData, status_detail: newStatusValue });
-    showModal("Successful", `Product status has been changed to ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
+    showModal(
+      "Successful",
+      `Product status has been changed to ${
+        newStatusValue === "1" ? "Active" : "Inactive"
+      } successfully.`,
+      null,
+      true
+    );
   };
 
   const { price, productTitle, description } = purchaseData;
@@ -61,8 +72,12 @@ const InAppPurchaseDetail = ({ showModal }) => {
                 <div className="file-wrapper ps-5 mb-3 mb-sm-0">
                   <div className="ps-5 ms-3">
                     {filePreview ? (
-                      <a href={filePreview} download="medical-health-document.pdf" target="_blank">
-                        <img src={MedicalImage} alt="Uploaded document" className="uploaded-img" />
+                      <a
+                        href={filePreview}
+                        download="medical-health-document.pdf"
+                        target="_blank"
+                      >
+                        {/* <img src={MedicalImage} alt="Uploaded document" className="uploaded-img" /> */}
                       </a>
                     ) : (
                       <p>No file uploaded yet</p>
@@ -102,7 +117,12 @@ const InAppPurchaseDetail = ({ showModal }) => {
                 { label: "price", value: `$${price}` },
                 { label: "Description", value: description },
               ].map(({ label, value }) => (
-                <div className={`col-md-4 mb-4 ${label === "Description" && "col-md-10 col-lg-10"}`} key={label}>
+                <div
+                  className={`col-md-4 mb-4 ${
+                    label === "Description" && "col-md-10 col-lg-10"
+                  }`}
+                  key={label}
+                >
                   <h4 className="secondaryLabel">{label}</h4>
                   <p className="secondaryText wrapText mb-0">{value}</p>
                 </div>
@@ -110,7 +130,10 @@ const InAppPurchaseDetail = ({ showModal }) => {
             </div>
             <div className="row">
               <div className="col-12">
-                <Link to={`edit`} className="site-btn primary-btn text-decoration-none px-5">
+                <Link
+                  to={`edit`}
+                  className="site-btn primary-btn text-decoration-none px-5"
+                >
                   Edit
                 </Link>
               </div>

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FaXmark } from "react-icons/fa6";
 import Styles from "./UploadAndDisplayImage.module.css";
 import "./style.css";
-import UploadIcon from '../../Assets/images/uploadIcon.svg?react';
+import UploadIcon from "../../Assets/images/svg/uploadIcon.svg?react";
 
 const ImageUpload = ({
   images = [],
@@ -46,11 +46,19 @@ const ImageUpload = ({
 
   const handleFileChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    const validImageTypes = ["image/jpeg", "image/jpg", "image/webp", "image/gif", "image/png"];
+    const validImageTypes = [
+      "image/jpeg",
+      "image/jpg",
+      "image/webp",
+      "image/gif",
+      "image/png",
+    ];
 
     e.target.value = null; // Reset input to allow selecting the same file again
 
-    const allValid = selectedFiles.every((file) => validImageTypes.includes(file.type));
+    const allValid = selectedFiles.every((file) =>
+      validImageTypes.includes(file.type)
+    );
 
     if (!allValid) {
       setError("Only image files (jpg, jpeg, webp, gif, png) are allowed.");
@@ -62,7 +70,12 @@ const ImageUpload = ({
       return;
     }
 
-    const newFiles = allowSameImageUpload ? selectedFiles : selectedFiles.filter((file) => !files.some((f) => f.name === file.name && f.size === file.size));
+    const newFiles = allowSameImageUpload
+      ? selectedFiles
+      : selectedFiles.filter(
+          (file) =>
+            !files.some((f) => f.name === file.name && f.size === file.size)
+        );
 
     setFiles((prevFiles) => [...prevFiles, ...newFiles]);
     setError("");
@@ -73,7 +86,8 @@ const ImageUpload = ({
     setError(""); // Clear error message
 
     if (imgId) {
-      const storedToBeDelete = JSON.parse(localStorage.getItem("toBeDelete")) || [];
+      const storedToBeDelete =
+        JSON.parse(localStorage.getItem("toBeDelete")) || [];
 
       const updatedToBeDelete = [...storedToBeDelete, imgId];
       localStorage.setItem("toBeDelete", JSON.stringify(updatedToBeDelete));
@@ -91,20 +105,27 @@ const ImageUpload = ({
 
   return (
     <div style={{ position: "relative" }} className={`${className} mb-3`}>
-      <label className="form-label d-flex align-items-center gap-2" htmlFor={`myImage${id}`}>
+      <label
+        className="form-label d-flex align-items-center gap-2"
+        htmlFor={`myImage${id}`}
+      >
         <UploadIcon />
-        <span style={{color: "#333", fontWeight: "500"}}>{label}</span>
+        <span style={{ color: "#333", fontWeight: "500" }}>{label}</span>
         {required ? <span className="text-danger">*</span> : ""}
       </label>
 
       {/* Conditionally render the selected image(s) */}
       {!!(Array.isArray(files) ? files.length : files ? 1 : 0) && (
-        <div className={`d-flex justify-content-start gap-2 mb-3 ${Styles.displayImages}`}>
+        <div
+          className={`d-flex justify-content-start gap-2 mb-3 ${Styles.displayImages}`}
+        >
           {(Array.isArray(files) ? files : [files]).map((image, index) => (
             <div key={index} style={{ position: "relative" }}>
               <img
                 style={{ height: height }}
-                src={typeof image === "string" ? image : URL.createObjectURL(image)}
+                src={
+                  typeof image === "string" ? image : URL.createObjectURL(image)
+                }
                 alt="Uploaded"
                 className={Styles.uploadedImage}
               />
@@ -124,7 +145,14 @@ const ImageUpload = ({
 
       <input
         id={`myImage${id}`}
-        style={{ opacity: 0, position: "absolute", bottom: 0, cursor: "pointer", zIndex: -1, width: "100%" }}
+        style={{
+          opacity: 0,
+          position: "absolute",
+          bottom: 0,
+          cursor: "pointer",
+          zIndex: -1,
+          width: "100%",
+        }}
         type="file"
         multiple={numberOfFiles > 1}
         // required={required}
@@ -132,7 +160,11 @@ const ImageUpload = ({
         accept="image/jpeg,image/jpg,image/webp,image/gif,image/png"
         onChange={handleFileChange}
       />
-      {error && <div className="error-message ps-1 pt-1"><p>{error}</p></div>}
+      {error && (
+        <div className="error-message ps-1 pt-1">
+          <p>{error}</p>
+        </div>
+      )}
     </div>
   );
 };

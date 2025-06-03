@@ -21,7 +21,7 @@ import PreventUser from "./PreventUser";
 import ProtectedRoutes from "./ProtectedRoutes";
 
 import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
-import AppointmentDetails from '../Pages/Admin/AppointmentLogs/AppointmentDetails';
+import AppointmentDetails from "../Pages/Admin/AppointmentLogs/AppointmentDetails";
 import CommissionManagement from "../Pages/Admin/CommissionManagement/CommissionManagement";
 import ViewArticles from "../Pages/Admin/ContentManagement/Articles/ViewArticles";
 import AddBlog from "../Pages/Admin/ContentManagement/Blogs/AddBlog";
@@ -143,7 +143,7 @@ import SubscriptionLogsUser from "../Pages/User/Subscriptions/SubscriptionLogs";
 import SubscriptionPayment from "../Pages/User/Subscriptions/SubscriptionPayment";
 
 import Appointment from "../Pages/User/Appointment";
-import AppointmentsDetails from '../Pages/User/Appointment/AppointmentDetails';
+import AppointmentsDetails from "../Pages/User/Appointment/AppointmentDetails";
 import PersonalDetails from "../Pages/User/Auth/PersonalDetails";
 import ErrorPage from "../Pages/User/ErrorPage";
 import FinalQuiz from "../Pages/User/FinalQuiz";
@@ -157,7 +157,8 @@ import UserChatAnnouncement from "../Pages/User/Chat/Announcement";
 import UserChatContactUs from "../Pages/User/Chat/ChatContactUs";
 import UserChatReports from "../Pages/User/Chat/ChatReports";
 import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
-import RatingsAndReviews from '../Pages/User/RatingAndReviews';
+import RatingsAndReviews from "../Pages/User/RatingAndReviews";
+import NewServices from "../Pages/User/NewServices";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -457,21 +458,10 @@ const routes = [
               { path: "", element: <Home /> },
               { path: "about-us", element: <AboutUs /> },
               { path: "contact-us", element: <ContactUs /> },
-              { path: "/video-verification", element: <VideoVerification /> },
-              { path: "/meeting-admin", element: <MeetingWithAdmin /> },
-              { path: "/rules-regulations", element: <RuleRegulations /> },
-              { path: "/tutorials", element: <Tutorials /> },
-              { path: "/final-quiz", element: <FinalQuiz /> },
-              { path: "/appointments/", element: <Appointment /> },
-              { path: "/appointments/:id", element: <AppointmentsDetails /> },
-              { path: "/video-call", element: <JoinSession /> },
-              { path: "/call", element: <VoiceCall /> },
-              { path: "/payment-logs-user", element: <PaymentLogsUser /> },
-              { path: "/rating-reviews", element: <RatingsAndReviews /> },
             ],
           },
           {
-            element: <MainLayout  />,
+            element: <MainLayout />,
             children: [
               {
                 element: <PreventUser />, // Wrap provider routes with PreventProvider
@@ -480,8 +470,14 @@ const routes = [
                   { path: "personal-details", element: <PersonalDetails /> },
                   { path: "login", element: <UserLogin /> },
                   { path: "/forget-password", element: <UserForgetPassword /> },
-                  { path: "/forget-password2", element: <UserForgetPassword2 /> },
-                  { path: "/forget-password3", element: <UserForgetPassword3 /> },
+                  {
+                    path: "/forget-password2",
+                    element: <UserForgetPassword2 />,
+                  },
+                  {
+                    path: "/forget-password3",
+                    element: <UserForgetPassword3 />,
+                  },
                 ],
               },
             ],
@@ -496,6 +492,18 @@ const routes = [
           {
             element: <MainLayout />,
             children: [
+              { path: "/video-verification", element: <VideoVerification /> },
+              { path: "/meeting-admin", element: <MeetingWithAdmin /> },
+              { path: "/rules-regulations", element: <RuleRegulations /> },
+              { path: "/tutorials", element: <Tutorials /> },
+              { path: "/final-quiz", element: <FinalQuiz /> },
+              { path: "/appointments/", element: <Appointment /> },
+              { path: "/appointments/:id", element: <AppointmentsDetails /> },
+              { path: "/video-call", element: <JoinSession /> },
+              { path: "/call", element: <VoiceCall /> },
+              { path: "/payment-logs-user", element: <PaymentLogsUser /> },
+              { path: "/rating-reviews", element: <RatingsAndReviews /> },
+
               { path: "/profile", element: <UserProfile /> },
               { path: "/edit-profile", element: <UserEditProfile /> },
               { path: "/change-password", element: <UserChangePassword /> },
@@ -505,30 +513,61 @@ const routes = [
               { path: "/services/review/:id", element: <ServicesReview /> },
               { path: "/services/payment/:id", element: <ServicePayment /> },
               { path: "/services/book-services", element: <ServiceBook /> },
-              { path: "/services/book-services/view-booking", element: <ServiceBookView /> },
+              {
+                path: "/services/book-services/view-booking",
+                element: <ServiceBookView />,
+              },
 
               { path: "/services-provider/:id", element: <ServicesProvider /> },
-              { path: "/services-provider/request", element: <ServiceProviderRequest /> },
-              { path: "/services-provider/payment", element: <ServiceProviderPayment /> },
-              { path: "/services-provider/book-services", element: <ServiceProviderBookServices /> },
-              { path: "/services-provider/book-services/view-booking", element: <ServiceProviderBookView /> },
+              {
+                path: "/services-provider/request",
+                element: <ServiceProviderRequest />,
+              },
+              {
+                path: "/services-provider/payment",
+                element: <ServiceProviderPayment />,
+              },
+              {
+                path: "/services-provider/book-services",
+                element: <ServiceProviderBookServices />,
+              },
+              {
+                path: "/services-provider/book-services/view-booking",
+                element: <ServiceProviderBookView />,
+              },
+              { path: "/new-services", element: <NewServices /> },
 
               { path: "/emergency-contacts/", element: <EmergencyContacts /> },
-              { path: "/emergency-contacts/add", element: <EmergencyContactsAdd /> },
+              {
+                path: "/emergency-contacts/add",
+                element: <EmergencyContactsAdd />,
+              },
 
               { path: "/subscriptions", element: <Subscriptions /> },
-              { path: "/subscriptions/payment/:id", element: <SubscriptionPayment /> },
-              { path: "/subscriptions/subscriptions-logs/", element: <SubscriptionLogsUser /> },
+              {
+                path: "/subscriptions/payment/:id",
+                element: <SubscriptionPayment />,
+              },
+              {
+                path: "/subscriptions/subscriptions-logs/",
+                element: <SubscriptionLogsUser />,
+              },
 
               { path: "/in-app-purchase", element: <InAppPurchase /> },
-              { path: "/in-app-purchase/payment/:id", element: <InAppPurchasePayment /> },
+              {
+                path: "/in-app-purchase/payment/:id",
+                element: <InAppPurchasePayment />,
+              },
               { path: "/notifications", element: <UserNotifications /> },
               { path: "/faqs", element: <Faqs /> },
               { path: "/rehab-center", element: <RehabCenter /> },
 
               { path: "/education", element: <Education /> },
               { path: "/education/:type/:id", element: <EducationDetail /> },
-              { path: "/education/:id/:type/:id", element: <EducationDetail /> },
+              {
+                path: "/education/:id/:type/:id",
+                element: <EducationDetail />,
+              },
 
               { path: "/blocked-users", element: <BlockedUsers /> },
 

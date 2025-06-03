@@ -3,17 +3,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-  --seconderyColor: #fe3156;
-  --primaryColor: linear-gradient(261deg, #1a8c1a 45.38%, #1819ff 174.25%);
+  --primaryColor: #666764;
+  --secondaryColor: #333333;
+
+  /* BG Color */
+  --bodyBg: #EFF1FF;
+  --primaryBg: #5AB2FF;
+  /* --lightBg: #F9F9F9; */
+
+  /* Buttons */
+  --primBtn: #15355E;
+  --secBtn: #E8EBEF;
+
+  /* Heading */
+  --primeHeading: #333333;
+  --secondaryHeading: #020516;
+
   --grayColor: #666;
-  --grayLightColor: #999;
-  --redColor: #d70000;
-  --greenColor: #42c900;
+
+
   --darkGreen: #2c8109;
   --yellowColor: #e5bb45;
   --whiteColor: #fff;
   --lightblackColor: #333;
-  --blackColor: #000;
   --lightPrimaryColor: #80bdff;
   --lightWhiteColor: #f0f0f0;
   --blueColor: #1819ff;
@@ -21,10 +33,64 @@
   --pagiBorderColor: #DCDCDC;
 }
 
+/***** Place Holder *****/
+::-webkit-input-placeholder {
+  color: inherit !important;
+}
+
+:-moz-placeholder {
+  color: inherit !important;
+}
+
+.form-control::-moz-placeholder {
+  color: inherit !important;
+  opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+  color: inherit !important;
+}
+
+form .form-control::placeholder,
+.form-control::placeholder {
+  color: inherit !important;
+  opacity: 0.5;
+}
+
+input.form-control:-webkit-autofill,
+input.form-control:-webkit-autofill:hover,
+input.form-control:-webkit-autofill:focus,
+input.form-control:-webkit-autofill:active {
+  transition: 1s ease-in-out 0s;
+  color: #000000;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+
+
+/***** Number Field Spinner Hide *****/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0
+}
+
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "SF Pro Display", sans-serif;
   font-size: 16px;
-  min-width: 320px;
+  font-weight: 400;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -39,18 +105,27 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-p {
-  font-family: "Poppins", sans-serif;
+h p {
+  font-family: "SF Pro Display", sans-serif;
 }
 
 a {
   transition: all .3s ease-out;
+}
+
+a:hover {
+  color: var(--bs-black);
 }
 
 .tag-yellow {
@@ -557,12 +632,12 @@ a {
   position: relative;
 }
 
-.radio-checkbox-container input:checked+.custom-checkbox {
+.radio-checkbox-container input:checked + .custom-checkbox {
   background-color: #4caf50;
   border-color: #4caf50;
 }
 
-.radio-checkbox-container input:checked+.custom-checkbox::after {
+.radio-checkbox-container input:checked + .custom-checkbox::after {
   content: "\2713";
   /* Unicode for checkmark */
   color: white;
@@ -573,7 +648,7 @@ a {
   transform: translate(-50%, -50%);
 }
 
-.radio-checkbox-container input+.custom-checkbox:hover {
+.radio-checkbox-container input + .custom-checkbox:hover {
   border-color: #4caf50;
 }
 
@@ -656,6 +731,11 @@ p.section-text {
 **************************/
 h2.page-title {
   font-size: 40px;
+  color: var(--lightblackColor);
+}
+
+h3.page-title {
+  font-size: 30px;
   color: var(--lightblackColor);
 }
 
@@ -751,7 +831,7 @@ h2.page-title {
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-link:hover,
-.nav-tabs .show>.nav-link {
+.nav-tabs .show > .nav-link {
   color: var(--bs-white);
   background: var(--primaryColor);
 }
@@ -801,7 +881,7 @@ h2.page-title {
 
 .style-underline-tabs .nav-link.active:after,
 .style-underline-tabs .nav-link:hover:after,
-.style-underline-tabs .show>.nav-link:after {
+.style-underline-tabs .show > .nav-link:after {
 
   opacity: 1;
   /* Show underline on hover */
@@ -809,7 +889,7 @@ h2.page-title {
 
 .style-underline-tabs .nav-link.active,
 .style-underline-tabs .nav-link:hover,
-.style-underline-tabs .show>.nav-link {
+.style-underline-tabs .show > .nav-link {
   background: transparent;
   color: #333;
 }
@@ -844,7 +924,7 @@ h2.page-title {
 
 .nav-pills .nav-link.active,
 .nav-pills .nav-link:hover,
-.nav-pills .show>.nav-link {
+.nav-pills .show > .nav-link {
   color: var(--bs-white);
   background: linear-gradient(261deg, #1a8c1a 45.38%, #1819ff 174.25%);
 }
@@ -877,7 +957,7 @@ h2.page-title {
   color: #999;
 }
 
-.user-layout .customPagination>.row.align-items-baseline {
+.user-layout .customPagination > .row.align-items-baseline {
   align-items: center !important;
 }
 
@@ -1007,7 +1087,7 @@ h2.page-title {
   width: 1px;
 }
 
-.user-layout ul.pagination .break>a {
+.user-layout ul.pagination .break > a {
   border-color: var(--primaryColor);
   border-style: solid;
   border-width: 1px 0px 1px 0px;
@@ -1020,7 +1100,7 @@ h2.page-title {
   position: relative;
 }
 
-.user-layout ul.pagination .break>a::before {
+.user-layout ul.pagination .break > a::before {
   position: absolute;
   content: "";
   height: 16px;

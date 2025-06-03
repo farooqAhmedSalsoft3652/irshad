@@ -9,7 +9,7 @@ import { images } from "../../../Assets";
 import CustomInput from "../../../Components/CustomInput/index";
 import { chat_box, loginCredentials, sidebar } from "../../../Config/data";
 import { usePageTitleUser } from "../../../Utils/helper";
-import SendIcon from "../../../Assets/images/Send.svg?react";
+import SendIcon from "../../../Assets/images/svg/Send.svg?react";
 import Styles from "./chat.module.css";
 
 const UserChat = () => {

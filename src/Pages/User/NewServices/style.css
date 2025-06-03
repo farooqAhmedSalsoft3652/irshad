@@ -1,0 +1,116 @@
+.service-header h4 {
+  font-size: 30px;
+}
+
+.new-service-card {
+  position: relative;
+  padding: 8px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+
+.card-header:before {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255, 255, 0) 47%);
+  background-size: 100% auto;
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.new-service-card img.card-img-top {
+  height: 310px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-title {
+  font-size: 30px;
+  color: var(--bs-white);
+  bottom: 8px;
+}
+
+.select-card a {
+  text-decoration: none;
+  color: #000;
+}
+
+.select-card:hover .card-title {
+  text-decoration: none;
+  color: #1A8C1A;
+}
+
+.services-detail {}
+
+.image-upload-style-2 .imageUploadArea {
+  background-color: transparent;
+  padding: 1rem;
+  height: auto;
+}
+
+.image-upload-style-2 .imageUploadArea .UploadArea {
+  flex-direction: row !important;
+}
+
+.user-layout .image-upload-style-2 p {
+  color: #000;
+  font-weight: 500;
+}
+
+.user-layout .image-upload-style-2 p.error-message {
+  font-weight: 400;
+}
+
+.time-slotes-switch .form-check-input {
+  /* --bs-form-switch-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2344B80E'/%3e%3c/svg%3e); */
+
+  --form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23D9001B'/%3e%3c/svg%3e");
+
+  background-color: #dbdbdb;
+  border-color: #c5c5c5;
+  background-image: var(--form-switch-bg);
+}
+
+.time-slotes-switch .form-check-input:checked {
+  --form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2344B80E'/%3e%3c/svg%3e");
+
+  background-image: var(--form-switch-bg);
+}
+
+.time-slotes-switch .inputWrapper {
+  margin-bottom: 0rem;
+  flex-grow: 1;
+}
+
+.time-slotes-switch .mainInput {
+  padding: 10px 5px 10px 10px;
+}
+
+.time-slotes-switch .add-btn {
+  border: 1px solid #c5c5c5;
+  color: #44b80e;
+  font-size: 20px;
+  width: 40px;
+  padding: 0;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time-slotes-switch .remove-btn {
+  /* border: 1px solid #c5c5c5; */
+  color: #D9001B;
+  font-size: 18px;
+  width: 40px;
+  padding: 0;
+  height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
