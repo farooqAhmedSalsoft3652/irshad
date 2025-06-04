@@ -68,7 +68,7 @@ export const Footer = () => {
             <Row>
               <Col col={12} className="text-center info">
                 <div className="border-top py-3">
-                  <address>Copy &copy; 2025-Irshad. All Rights Reserved.</address>
+                  <address>Copy &copy; 2025 - Irshad. All Rights Reserved.</address>
                 </div>
               </Col>
             </Row>

@@ -11,8 +11,9 @@ import { chat_box, loginCredentials, sidebar } from "../../../Config/data";
 import { usePageTitleUser } from "../../../Utils/helper";
 import SendIcon from "../../../Assets/images/svg/Send.svg?react";
 import Styles from "./chat.module.css";
+import withModal from "../../../HOC/withModal";
 
-const UserChat = () => {
+const UserChat = ({ showModal }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [sideData, setSideData] = useState([]);
@@ -123,12 +124,24 @@ const UserChat = () => {
     }
   };
 
+  const PermissionToShare = () =>{
+    showModal(``, `Permission Granted to user to share file successfully.`, null, true);
+  }
+
+  const UserRestricted = () =>{
+    showModal(``, `User restricted to message Successfully.`, null, true);
+  }
+
+   const BlockedUser = () =>{
+    showModal(``, `User Blocked Successfully.`, null, true);
+  }
+ 
   return (
     <section className={"border-top"}>
       <Container fluid>
         <div className="py-sm-5 py-3 px-sm-0 px-1">
           <div className="site_card p-0 bg-white">
-            <h2 className="text-center fw-bold pt-3">Chat</h2>
+            <h2 className="text-center fw-bold pt-3 page-title">Chat</h2>
             <div className={`d-flex justify-content-between align-items-center mb-xl-0 mb-3`}>
               <button className={`${Styles[`sidebar-toggle`]} ${Styles[`chatToggleButton`]}`} onClick={toggleSidebar}>
                 <FaBars />
@@ -163,12 +176,12 @@ const UserChat = () => {
                           Chat
                         </h6>
                         <Dropdown.Item>
-                          <Link to={'/chat-reports'} className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link to={"/chat-reports"} className="text-decoration-none" style={{ color: "#999999" }}>
                             Reports
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link to={'/chat-contact-us'} className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link to={"/chat-contact-us"} className="text-decoration-none" style={{ color: "#999999" }}>
                             Contact Us
                           </Link>
                         </Dropdown.Item>
@@ -213,14 +226,14 @@ const UserChat = () => {
                         </div>
                         <div className="d-flex align-items-center gap-1">
                           <button className="siteBtn primaryBtn">Book Now</button>
-                          <Dropdown className="chatHeaderDropdown" align={'end'}>
+                          <Dropdown className="chatHeaderDropdown" align={"end"}>
                             <Dropdown.Toggle className="p-0">
                               <FaEllipsisV />
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
-                              <Dropdown.Item>
-
-                              </Dropdown.Item>
+                              <Dropdown.Item onClick={()=>PermissionToShare()}>Give Permission To Share File</Dropdown.Item>
+                              <Dropdown.Item onClick={()=>UserRestricted()}>Restrict Message From The User</Dropdown.Item>
+                              <Dropdown.Item onClick={()=>BlockedUser()}>Block User</Dropdown.Item>
                             </Dropdown.Menu>
                           </Dropdown>
                         </div>
@@ -352,4 +365,4 @@ const UserChat = () => {
   );
 };
 
-export default UserChat;
+export default withModal(UserChat);

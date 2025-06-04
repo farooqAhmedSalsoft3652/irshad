@@ -1,0 +1,15 @@
+.dollar_icon{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    background: #fff;
+}
+.dollar_icon_with_error{
+    position: absolute;
+    background: #fff;
+    right: 20px;
+    top: 40%;
+}
+.withdraw_page .inputWrapper{
+    margin-bottom: 0;
+}

@@ -63,7 +63,7 @@ const Tutorials = () => {
       <div className="site_card">
         <div className="d-flex flex-wrap align-items-center mb-3">
           <BackButton2 />
-          <h2 className="mx-auto fw-bold mb-0">Tutorials</h2>
+          <h2 className="mx-auto fw-bold mb-0 page-title">Tutorials</h2>
         </div>
         <div className="mb-3">
           <img src={VideoVerificationQuiz} alt="video-quiz" className="img-fluid w-100" />

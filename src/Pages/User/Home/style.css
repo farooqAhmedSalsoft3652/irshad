@@ -262,6 +262,7 @@
   background-color: transparent !important;
   color: #000 !important;
   font-size: 22px !important;
+  margin-bottom: 5px;
 }
 .chatHeaderDropdown .dropdown-toggle::after{
   display: none;

@@ -128,7 +128,7 @@ const UserChatReports = () => {
       <Container fluid>
         <div className="py-sm-5 py-3 px-sm-0 px-1">
           <div className="site_card p-0 bg-white">
-            <h2 className="text-center fw-bold pt-3">Chat Reports</h2>
+            <h2 className="text-center fw-bold pt-3 page-title">Chat Reports</h2>
             <div className={`d-flex justify-content-between align-items-center mb-xl-0 mb-3`}>
               <button className={`${Styles[`sidebar-toggle`]} ${Styles[`chatToggleButton`]}`} onClick={toggleSidebar}>
                 <FaBars />
@@ -212,7 +212,7 @@ const UserChatReports = () => {
                           </div>
                         </div>
                         <div className="">
-                          <button className="siteBtn primaryBtn">Report</button>
+                          <Link to={'/chat-report-details'} className="siteBtn primaryBtn">Report</Link>
                         </div>
                       </div>
                     </header>

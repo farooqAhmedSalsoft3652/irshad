@@ -75,7 +75,7 @@ const Home = () => {
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       icon: <WaitResult />,
       cardBg: "rgba(21, 53, 94, 0.20)",
-      link_path: "/meeting-admin",
+      link_path: "",
     },
   ];
   return (

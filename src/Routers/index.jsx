@@ -160,6 +160,10 @@ import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
 import RatingsAndReviews from "../Pages/User/RatingAndReviews";
 import WithDrawAmount from "../Pages/User/WithDraw";
 import NewServices from "../Pages/User/NewServices";
+import BankDetailsUser from "../Pages/User/BankDetailsUser/BankDetailsUser";
+import BankDetailsUserAdd from "../Pages/User/BankDetailsUser/BankDetailsUserAdd";
+import BankDetailsUserEdit from "../Pages/User/BankDetailsUser/BankDetailsUserEdit";
+import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -538,6 +542,9 @@ const routes = [
                 element: <ServiceProviderBookView />,
               },
               { path: "/new-services", element: <NewServices /> },
+              { path: "/bank-details", element: <BankDetailsUser /> },
+              { path: "/bank-details-add", element: <BankDetailsUserAdd /> },
+              { path: "/bank-details-edit", element: <BankDetailsUserEdit /> },
 
               { path: "/emergency-contacts/", element: <EmergencyContacts /> },
               {
@@ -588,6 +595,7 @@ const routes = [
               { path: "/chat-announcement", element: <UserChatAnnouncement /> },
               { path: "/chat-contact-us", element: <UserChatContactUs /> },
               { path: "/chat-reports", element: <UserChatReports /> },
+              { path: "/chat-report-details", element: <ChatReportDetails /> },
               { path: "/my-posts", element: <MyPosts /> },
 
               // { path: "", element: <Home /> },

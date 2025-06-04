@@ -98,7 +98,7 @@ const UserProfile = () => {
                   </Col>
                   <Col xs={12} xxl={3}>
                     <Row>
-                      <Col xs={12}>
+                      <Col xs={12} className="mb-xxl-0 mb-3">
                         <div className="profile_wallet_card">
                           <h4>Wallet</h4>
                           <p>Amount : {user?.amount || '$20'} </p>
