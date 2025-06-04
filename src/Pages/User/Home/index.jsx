@@ -206,6 +206,7 @@ const Home = () => {
       )}
       {token && (
         <div className="p-sm-5 p-2">
+          <h2 className="fw-bold mb-3">Screening</h2>
           {steps.map((step) => (
             <div
               className={`mb-3 step_card p-md-4 p-2`}
