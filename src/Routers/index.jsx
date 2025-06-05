@@ -119,7 +119,6 @@ import UserChatReports from "../Pages/User/Chat/ChatReports";
 import ErrorPage from "../Pages/User/ErrorPage";
 import FinalQuiz from "../Pages/User/FinalQuiz";
 import MeetingWithAdmin from "../Pages/User/MeetingWithAdmin/MeetingWithAdmin";
-import NewServices from "../Pages/User/NewServices";
 import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
 import RatingsAndReviews from "../Pages/User/RatingAndReviews";
 import RuleRegulations from "../Pages/User/Rules&Regulations";
