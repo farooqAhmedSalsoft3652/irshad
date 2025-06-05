@@ -130,6 +130,7 @@ import WithDrawAmount from "../Pages/User/WithDraw";
 import SlotDetails from "../Pages/User/SlotManagement/SlotDetails";
 // import SlotManagement from "../Pages/User/SlotManagement";
 import NewServices from "../Pages/User/NewServices";
+import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import BankDetailsUser from "../Pages/User/BankDetailsUser/BankDetailsUser";
 import BankDetailsUserAdd from "../Pages/User/BankDetailsUser/BankDetailsUserAdd";
 import BankDetailsUserEdit from "../Pages/User/BankDetailsUser/BankDetailsUserEdit";
@@ -464,6 +465,7 @@ const routes = [
               { path: "/services/review/:id", element: <ServicesReview /> },
 
               { path: "/new-services", element: <NewServices /> },
+              { path: "/new-services/add", element: <NewServicesAdd /> },
               { path: "/bank-details", element: <BankDetailsUser /> },
               { path: "/bank-details-add", element: <BankDetailsUserAdd /> },
               { path: "/bank-details-edit", element: <BankDetailsUserEdit /> },

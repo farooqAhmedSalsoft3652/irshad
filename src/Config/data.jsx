@@ -6485,7 +6485,7 @@ export const newServicesData = {
     data: [
       {
         id: 1,
-        title: "Services Name",
+        title: "Services Name 1",
         category: "abc",
         quick: false,
         description:
@@ -6502,7 +6502,7 @@ export const newServicesData = {
       },
       {
         id: 2,
-        title: "Services Name",
+        title: "Services Name 2",
         category: "abc",
         quick: true,
         description:

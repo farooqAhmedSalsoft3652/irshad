@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Nav, Row, Tab } from "react-bootstrap";
-import { Card } from "react-bootstrap";
-import { images } from "../../../Assets";
-import "./style.css";
+import { useEffect, useState } from "react";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import CustomFilters from "../../../Components/CustomFilters";
-import CustomButton from "../../../Components/CustomButton";
 import { newServicesData } from "../../../Config/data";
-import { normalStatus, serviceCategories } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters ";
-import ServicesCard from "../../../Components/UserComponents/ServicesCard";
-import { useFormStatus } from "../../../Hooks/useFormStatus";
-import CustomPagination from "../../../Components/CustomPagination";
-import { usePageTitle } from "../../../Utils/helper";
-import GeneralCard from "../../../Components/UserComponents/GeneralCard";
+import "./style.css";
 import { Link } from "react-router-dom";
+import CustomPagination from "../../../Components/CustomPagination";
+import { useFormStatus } from "../../../Hooks/useFormStatus";
+import { usePageTitle } from "../../../Utils/helper";
 
 const NewServices = ({ filters, setFilters, pagination, updatePagination }) => {
   usePageTitle("New Services", true);
@@ -83,7 +77,7 @@ const NewServices = ({ filters, setFilters, pagination, updatePagination }) => {
                 className="mb-3 mb-xl-4 mb-xxl-5"
               >
                 <Card className={`new-service-card`}>
-                  <Link to={`/provider/select-services/add`}>
+                  <Link to={`/new-services/add`} state={{ title: item.title }}>
                     <Card.Header className="position-relative p-0 bg-transparent border-0">
                       <Card.Img
                         variant="top"

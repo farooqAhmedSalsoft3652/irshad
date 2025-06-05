@@ -6,6 +6,7 @@
 .toggle-checkbox {
   display: none;
 }
+
 .toggle-label {
   position: relative;
   display: flex;
@@ -22,6 +23,7 @@
   background-color: #ffffff;
   border: 1px solid #212552;
 }
+
 .toggle-slider {
   position: absolute;
   content: "";
@@ -49,19 +51,21 @@
   margin-top: 3px;
 }
 
-.form-check-input{
+.form-check-input[type=checkbox] {
   cursor: pointer;
-  border-color: #1C5CDB !important;
-}
-.form-check-label{
-  cursor: pointer;
-}
-.form-check-input:checked {
-  background-color: blue;
-  
+  border-color: #15355e !important;
 }
 
-.form-check-input:focus {
+.form-check-label {
+  cursor: pointer;
+}
+
+.form-check-input[type=checkbox]:checked {
+  background-color: #15355e;
+
+}
+
+.form-check-input[type=checkbox]:focus {
   box-shadow: none;
-  border-color: #1C5CDB !important;
+  border-color: #15355e !important;
 }
