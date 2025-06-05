@@ -123,17 +123,18 @@ import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
 import RatingsAndReviews from "../Pages/User/RatingAndReviews";
 import RuleRegulations from "../Pages/User/Rules&Regulations";
 import SlotManagement from "../Pages/User/SlotManagement";
+import SlotDetails from "../Pages/User/SlotManagement/SlotDetails";
 import SlotsHistoryManagement from "../Pages/User/SlotManagement/history";
 import Tutorials from "../Pages/User/Tutorials";
 import VideoVerification from "../Pages/User/VideoVerification";
 import WithDrawAmount from "../Pages/User/WithDraw";
-import SlotDetails from "../Pages/User/SlotManagement/SlotDetails";
 // import SlotManagement from "../Pages/User/SlotManagement";
-import NewServices from "../Pages/User/NewServices";
 import BankDetailsUser from "../Pages/User/BankDetailsUser/BankDetailsUser";
 import BankDetailsUserAdd from "../Pages/User/BankDetailsUser/BankDetailsUserAdd";
 import BankDetailsUserEdit from "../Pages/User/BankDetailsUser/BankDetailsUserEdit";
 import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
+import NewServices from "../Pages/User/NewServices";
+import ScreeningHome from "../Pages/User/ScreeningHome/HomeAfterSignUp";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -416,9 +417,15 @@ const routes = [
               {
                 element: <PreventUser />, // Wrap provider routes with PreventProvider
                 children: [
-                  { path: "signup", element: <UserSignup /> },
-                  { path: "personal-details", element: <PersonalDetails /> },
-                  { path: "login", element: <UserLogin /> },
+                  { path: "/signup", element: <UserSignup /> },
+                  { path: "/personal-details", element: <PersonalDetails /> },
+                  { path: "/screening", element: <ScreeningHome /> },
+                  { path: "/video-verification", element: <VideoVerification /> },
+                  { path: "/meeting-admin", element: <MeetingWithAdmin /> },
+                  { path: "/rules-regulations", element: <RuleRegulations /> },
+                  { path: "/tutorials", element: <Tutorials /> },
+                  { path: "/final-quiz", element: <FinalQuiz /> },
+                  { path: "/login", element: <UserLogin /> },
                   { path: "/forget-password", element: <UserForgetPassword /> },
                   {
                     path: "/forget-password2",
@@ -442,11 +449,6 @@ const routes = [
           {
             element: <MainLayout />,
             children: [
-              { path: "/video-verification", element: <VideoVerification /> },
-              { path: "/meeting-admin", element: <MeetingWithAdmin /> },
-              { path: "/rules-regulations", element: <RuleRegulations /> },
-              { path: "/tutorials", element: <Tutorials /> },
-              { path: "/final-quiz", element: <FinalQuiz /> },
               { path: "/appointments/", element: <Appointment /> },
               { path: "/appointments/:id", element: <AppointmentsDetails /> },
               { path: "/video-call", element: <JoinSession /> },

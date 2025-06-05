@@ -12,9 +12,15 @@ const GeneralCard = ({ data, linkPath, serviceCard = false, className = "" }) =>
     <Card className={`general-card ${className || ""}`}>
       {serviceCard && (
         <>
+        {linkPath ? (
           <Link to={`${linkPath}/${id}`}>
             <Card.Img variant="top" src={image ?? images.placeholder} alt={title} />
           </Link>
+        ) : (
+           <div >
+            <Card.Img variant="top" src={image ?? images.placeholder} alt={title} />
+          </div>
+        )}
           <Card.Body className="position-relative p-0 mt-3 pb-1 pb-xxl-1 px-2">
             <div className="d-flex justify-content-between flex-wrap">
               <div>

@@ -8,12 +8,13 @@ import { usePageTitleUser } from "../../../Utils/helper";
 import ImageUpload from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 import { personalDetailsValidationSchema } from "../../../Config/Validations";
 import CustomButton from "../../../Components/CustomButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import CustomModal from "../../../Components/CustomModal";
 
 const PersonalDetails = () => {
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
   usePageTitleUser("Personal Details");
   const handleSubmit = async (values, { resetForm }) => {
     // console.log("details", values);
@@ -478,6 +479,7 @@ const PersonalDetails = () => {
         show={modal}
         action={() => {
           setModal(false);
+          navigate('/screening');
         }}
         close={() => setModal(false)}
         success
