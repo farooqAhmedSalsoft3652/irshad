@@ -162,7 +162,7 @@ const Home = () => {
                 <div className="col-lg-6">
                   <div className="how_to_be_img">
                     <img
-                      src={images.ConsultantImg}
+                      src={images.newServiceImg}
                       alt="our-aim"
                       className=""
                     />
