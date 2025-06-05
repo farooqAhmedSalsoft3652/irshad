@@ -241,13 +241,16 @@
     border-radius: 12px;
   }
 }
-.step_card{
+
+.step_card {
   cursor: pointer;
 }
-.step_card svg{
+
+.step_card svg {
   width: 100px;
   height: auto;
 }
+
 .chatHeaderDropdown {
   width: 42px;
   height: 42px;
@@ -258,15 +261,78 @@
   align-items: center;
   justify-content: center;
 }
-.chatHeaderDropdown .dropdown-toggle{
+
+.chatHeaderDropdown .dropdown-toggle {
   background-color: transparent !important;
   color: #000 !important;
   font-size: 22px !important;
   margin-bottom: 5px;
 }
-.chatHeaderDropdown .dropdown-toggle::after{
+
+.chatHeaderDropdown .dropdown-toggle::after {
   display: none;
 }
+
+.timeline-container {
+  position: relative;
+  gap: 20px;
+}
+
+.timeline-container.first-step .timeline-step::after {
+  height: 100%;
+  top: 50%;
+  background-color: #183c66;
+  z-index: 1;
+}
+
+.timeline-container.first-step .step-circle {
+  background: #183c66;
+  border-color: #183c66;
+  color: white;
+  z-index: 2;
+}
+
+.timeline-container.last-step .timeline-step::after {
+  height: 50%;
+  top: 0;
+  bottom: auto;
+}
+
+.timeline-step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-step::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 7px;
+  background-color: #BFBFBF;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.step-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 65px;
+  height: 65px;
+  background: #F6FAFF;
+  border: 1px solid #15355E;
+  border-radius: 50%;
+  z-index: 1;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+
+
+
+
 @media screen and (max-width:1666px) {
   .slide-content h2 {
     font-size: 63px;
@@ -340,9 +406,10 @@
 }
 
 @media screen and (max-width:767px) {
-  .step_card svg{
-  width: 80px;
-}
+  .step_card svg {
+    width: 80px;
+  }
+
   .slide-content h2 {
     font-size: 35px;
     line-height: 1.2;
@@ -368,15 +435,18 @@
 }
 
 @media screen and (max-width:575px) {
-  .step_card svg{
-  width: 60px;
-}
+  .step_card svg {
+    width: 60px;
+  }
+
   .how_to_be_img {
     height: 350px;
   }
+
   .our_aim_img {
     height: 350px;
   }
+
   .how_to_be button {
     width: 100%;
   }
@@ -396,6 +466,19 @@
 
   .slide-content .btn {
     padding: 12px 30px;
+  }
+
+  .step-circle {
+    left: -17px;
+    top: -16px;
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .timeline-container {
+    border-width: 3px;
+    padding-left: 15px;
   }
 }
 
