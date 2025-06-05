@@ -12,7 +12,7 @@ const AboutUs = () => {
         <Container>
           <Row className="justify-content-center">
             <Col xs={12}>
-              <h2 className="fw-semibold text-center mb-3">About Us</h2>
+              <h2 className="fw-semibold text-center mb-3 page-title">About Us</h2>
               <div className="about_us_content_wrapper">
                 <p className="mb-0" style={{ color: "#666764" }}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et

@@ -21,7 +21,7 @@ const ContactUs = () => {
   return (
     <>
       <section className="py-5">
-        <h2 className="fw-semibold text-center mb-3">Contact Us</h2>
+        <h2 className="fw-semibold text-center mb-3 page-title">Contact Us</h2>
         <Container fluid>
           <Row>
             <Col xs={12} xl={9} lg={10} className="mx-auto">

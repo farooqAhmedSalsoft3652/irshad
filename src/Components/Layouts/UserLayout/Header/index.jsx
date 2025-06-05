@@ -301,7 +301,7 @@ export const Header = () => {
                             </span>
                             <span>Ratings & Reviews</span>
                           </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="">
+                          <Dropdown.Item as={Link} to="/bank-details">
                             <span>
                               <images.BankDetails />
                             </span>

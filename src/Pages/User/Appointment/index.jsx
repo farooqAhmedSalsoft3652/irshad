@@ -48,7 +48,7 @@ const Appointment = ({ filters, setFilters, pagination, updatePagination }) => {
         <div className="site_card">
           <Row>
             <Col>
-              <h2 className="text-center fw-bold mb-0">Appointments</h2>
+              <h2 className="text-center fw-bold mb-0 page-title">Appointments</h2>
             </Col>
             <Col xs={12}>
               <CustomTable

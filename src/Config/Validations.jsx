@@ -1247,3 +1247,44 @@ export const editUserProfileValidation = Yup.object().shape({
     })
   ),
 });
+
+export const withDrawValidationSchema = Yup.object().shape({
+  fundAmount: Yup.string().required("Fund amount is required"),
+  accountHolderName: Yup.string().required("Account holder name is required"),
+  accountType: Yup.string().required("Account type is required"),
+  bankName: Yup.string().required("Bank name is required"),
+  routingNumber: Yup.string()
+    .required("Routing number is required")
+    .matches(/^\d+$/, "Routing number must be numeric"),
+  confirmRoutingNumber: Yup.string()
+    .oneOf([Yup.ref("routingNumber"), null], "Routing numbers must match")
+    .required("Please confirm routing number"),
+  accountNumber: Yup.string()
+    .required("Account number is required")
+    .matches(/^\d+$/, "Account number must be numeric"),
+  confirmAccountNumber: Yup.string()
+    .oneOf([Yup.ref("accountNumber"), null], "Account numbers must match")
+    .required("Please confirm account number"),
+  swiftCode: Yup.string().required("SWIFT code is required"),
+  confirmSwiftCode: Yup.string()
+    .oneOf([Yup.ref("swiftCode"), null], "SWIFT codes must match")
+    .required("Please confirm SWIFT code"),
+  branchCode: Yup.string().required("Branch code is required"),
+});
+
+export const bankDetailsValidationSchema = Yup.object().shape({
+  name: Yup.string()
+    .required("Name is required"),
+
+  cardNumber: Yup.string()
+    .required("Card Number is required")
+    .matches(/^\d{16}$/, "Card Number must be exactly 16 digits"),
+
+  cvcNumber: Yup.string()
+    .required("CVC Number is required")
+    .matches(/^\d{3,4}$/, "CVC must be 3 or 4 digits"),
+
+  validityDate: Yup.string()
+    .required("Validity Date is required")
+    // .matches(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Enter a valid MM/YY format"),
+});

@@ -5300,12 +5300,12 @@ export const inAppPurchaseManagementData = {
 //   accountNumber: "22872090"
 // };
 export const accountInfo = {
-  accountHolderName: "Tom Albert",
-  accountType: "Savings",
-  bankName: "Bank Abc",
-  routingNumber: "482185491",
-  accountNumber: "22872090",
+  name: "Tom Albert",
+  cardNumber: "1121211111111222",
+  cvcNumber: "123",
+  validityDate: "2025/07/22",
 };
+
 export const contactsData = [
   { id: 1, name: "Tom Albert", phone: "+1 1234567890" },
   { id: 2, name: "John Doe", phone: "+1 9876543210" },
@@ -10593,6 +10593,67 @@ export const ratingReviewsData = {
   total: 11,
 };
 
+export const chatReportDetailsData = {
+  status: true,
+  message: "Subscription logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: 1,
+        status: "upcoming",
+        booking_id: "#123",
+        booking_date: "2024-06-26T14:29:37.000000Z",
+        appointment_type: "Standard",
+        appointment_date: "20/05/2022",
+        appointment_charges: "$10.00",
+        appointment_time: "12:00 PM - 12:30 PM",
+        category: "Education",
+        sub_category: "Langauge",
+        user_name: "User A",
+        user_number: "+1 1234567890",
+        user_email: "alvinaaric1@gmail.com",
+        session_type: "Call",
+        amount: "$10",
+        report_date: "2024-06-29T14:29:37.000000Z",
+        message:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. ",
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
 export const slotManagementData = {
   status: true,
   message: "All Service Data",
@@ -10789,7 +10850,6 @@ export const slotManagementData = {
     total: 11,
   },
 };
-
 export const slotManagementHistoryData = {
   status: true,
   message: "All Slots Data",
@@ -10921,7 +10981,6 @@ export const slotManagementHistoryData = {
     total: 11,
   },
 };
-
 export const slotsData = {
   detail: {
     data: [

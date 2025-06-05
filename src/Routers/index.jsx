@@ -130,6 +130,11 @@ import VideoVerification from "../Pages/User/VideoVerification";
 import WithDrawAmount from "../Pages/User/WithDraw";
 import SlotDetails from "../Pages/User/SlotManagement/SlotDetails";
 // import SlotManagement from "../Pages/User/SlotManagement";
+import NewServices from "../Pages/User/NewServices";
+import BankDetailsUser from "../Pages/User/BankDetailsUser/BankDetailsUser";
+import BankDetailsUserAdd from "../Pages/User/BankDetailsUser/BankDetailsUserAdd";
+import BankDetailsUserEdit from "../Pages/User/BankDetailsUser/BankDetailsUserEdit";
+import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -460,6 +465,9 @@ const routes = [
               { path: "/services/review/:id", element: <ServicesReview /> },
 
               { path: "/new-services", element: <NewServices /> },
+              { path: "/bank-details", element: <BankDetailsUser /> },
+              { path: "/bank-details-add", element: <BankDetailsUserAdd /> },
+              { path: "/bank-details-edit", element: <BankDetailsUserEdit /> },
 
               { path: "/notifications", element: <UserNotifications /> },
 
@@ -479,6 +487,7 @@ const routes = [
                 path: "/slot-management/details/:id",
                 element: <SlotDetails />,
               },
+              { path: "/chat-report-details", element: <ChatReportDetails /> },
 
               // { path: "", element: <Home /> },
             ],

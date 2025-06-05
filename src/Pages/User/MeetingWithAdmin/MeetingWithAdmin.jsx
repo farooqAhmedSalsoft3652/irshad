@@ -19,7 +19,7 @@ const MeetingWithAdmin = () => {
         <div className="site_card">
           <div className="d-flex align-items-center flex-wrap mb-3">
             <BackButton2 />
-            <h2 className="mx-auto fw-bold mb-0">Meeting With Admin</h2>
+            <h2 className="mx-auto fw-bold mb-0 page-title">Meeting With Admin</h2>
           </div>
           <div className="row">
             <div className="col-lg-8 col-md-10 mx-auto">

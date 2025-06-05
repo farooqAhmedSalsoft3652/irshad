@@ -60,7 +60,7 @@ const AppointmentsDetails = ({ reasonModal }) => {
                     <BackButton2 />
                   </div>
                   <div>
-                    <h2 className="fw-bold mb-0">Appointment Details</h2>
+                    <h2 className="fw-bold mb-0 page-title">Appointment Details</h2>
                   </div>
                   <div>
                     <p className="mb-0 fw-medium" style={{ color: "#333" }}>

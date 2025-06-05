@@ -699,9 +699,14 @@ export const serviceProvidersRequestsStatus = [
 ];
 export const accountTypeOptions = [
   { value: "", text: "Select Account Type" },
-  { value: "Checking", text: "Checking" },
-  { value: "Savings", text: "Savings" },
-  { value: "Business", text: "Business" },
+  { value: "checking", text: "Checking" },
+  { value: "savings", text: "Savings" },
+  { value: "business", text: "Business" },
+];
+export const bankNameOptions = [
+  { value: "", text: "Select Bank Name" },
+  { value: "abc", text: "Abc" },
+  { value: "xyz", text: "Xyz" },
 ];
 export const subcriptionStatus = [
   { value: "all", text: "All" },
