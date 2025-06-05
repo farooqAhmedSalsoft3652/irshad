@@ -134,6 +134,7 @@ import BankDetailsUserAdd from "../Pages/User/BankDetailsUser/BankDetailsUserAdd
 import BankDetailsUserEdit from "../Pages/User/BankDetailsUser/BankDetailsUserEdit";
 import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 import NewServices from "../Pages/User/NewServices";
+import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ScreeningHome from "../Pages/User/ScreeningHome/HomeAfterSignUp";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
