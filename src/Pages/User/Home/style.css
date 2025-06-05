@@ -82,7 +82,7 @@
   display: flex;
 }
 
-.service-provider-slider .slick-slide>div {
+.service-provider-slider .slick-slide > div {
   display: flex;
   padding: 30px 10px;
   flex-grow: 1;
@@ -278,6 +278,14 @@
   gap: 20px;
 }
 
+.step_card {
+  margin-bottom: 15px;
+}
+
+.timeline-container.last-step .step_card {
+  margin-bottom: 0px;
+}
+
 .timeline-container.first-step .timeline-step::after {
   height: 100%;
   top: 50%;
@@ -406,6 +414,33 @@
 }
 
 @media screen and (max-width:767px) {
+  .timeline-container {
+    gap: 15px;
+  }
+
+  .timeline-step {
+    align-items: start;
+  }
+
+  /* .timeline-container.first-step .step-circle {
+    margin-top: 20px;
+  } */
+
+  .timeline-container.first-step .timeline-step::after {
+    top: 20px;
+  }
+
+  .timeline-container.last-step .timeline-step::after {
+    height: 100%;
+  }
+
+  .step-circle {
+    font-size: 25px;
+    width: 55px;
+    height: 55px;
+    margin-top: 20px;
+  }
+
   .step_card svg {
     width: 80px;
   }
@@ -435,6 +470,16 @@
 }
 
 @media screen and (max-width:575px) {
+  .timeline-container {
+    gap: 5px;
+  }
+
+  .step-circle {
+    height: 45px;
+    width: 45px;
+    font-size: 20px;
+  }
+
   .step_card svg {
     width: 60px;
   }
@@ -466,19 +511,6 @@
 
   .slide-content .btn {
     padding: 12px 30px;
-  }
-
-  .step-circle {
-    left: -17px;
-    top: -16px;
-    width: 30px;
-    height: 30px;
-    font-size: 13px;
-  }
-
-  .timeline-container {
-    border-width: 3px;
-    padding-left: 15px;
   }
 }
 

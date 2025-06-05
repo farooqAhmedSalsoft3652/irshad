@@ -28,7 +28,8 @@ const Home = () => {
     {
       id: 1,
       title: "Video Verification",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
       date: "20/02/2025",
       status: "open",
       icon: <VideoVerification />,
@@ -82,10 +83,16 @@ const Home = () => {
     <>
       <section className="hero-banner">
         <div className="header-slide position-relative">
-          <img className="img-fluid banner-image" src={images.BannerImg} alt="Hero Banner" />
+          <img
+            className="img-fluid banner-image"
+            src={images.BannerImg}
+            alt="Hero Banner"
+          />
           <div className="slide-content-wrap container-fluid">
             <div className="slide-content">
-              <h2 className="section-title fw-bold mt-5 text-capitalize">Consult. Grow. Succeed – Book Your Session Now!</h2>
+              <h2 className="section-title fw-bold mt-5 text-capitalize">
+                Consult. Grow. Succeed – Book Your Session Now!
+              </h2>
             </div>
           </div>
         </div>
@@ -96,16 +103,27 @@ const Home = () => {
             <div className="container-fluid">
               <h2 className="fw-bold">Why We?</h2>
               <p className="mb-0" style={{ color: "#666764" }}>
-                How to be a consultant. 1. You sign up as a consultant, add the necessary details and implement a form. There are 3 screening phases. 2. Once
-                form submitted you will wait for approval. 3. Post approval you have finished the first screening step of the 3 phase screening. 4. Next it
-                would be the 2nd screening, the video verification 10 minute Q and A. Where 5 common questions are asked and consultant has 2 minutes to answer
-                each. 3. Once approved, an email sent to schedule a meeting with the admins for the next screening process. 4. The meeting date chosen and once
-                meeting takes place, the admins ask the consultant necessary questions to judge the consultant whether he is competent or not. Here they can
-                also discuss about commissions, pricings, dates of availability. 5. Once approved, there will be an email sent about approval. Where they will
-                take him to a page where they will be able to see tutorials about how to operate. Somewhat like a probation period. A simple tutorial, a reading
-                of rules and regulations and a quiz will take place to assess the consultant finally. Why the quiz? to make sure he knows his things, and later
-                doesn't say I didn't know. AND he will not consult and be approved a 100% unless he passes the probation period of learning and tutorials and
-                quiz and reading the rules
+                How to be a consultant. 1. You sign up as a consultant, add the
+                necessary details and implement a form. There are 3 screening
+                phases. 2. Once form submitted you will wait for approval. 3.
+                Post approval you have finished the first screening step of the
+                3 phase screening. 4. Next it would be the 2nd screening, the
+                video verification 10 minute Q and A. Where 5 common questions
+                are asked and consultant has 2 minutes to answer each. 3. Once
+                approved, an email sent to schedule a meeting with the admins
+                for the next screening process. 4. The meeting date chosen and
+                once meeting takes place, the admins ask the consultant
+                necessary questions to judge the consultant whether he is
+                competent or not. Here they can also discuss about commissions,
+                pricings, dates of availability. 5. Once approved, there will be
+                an email sent about approval. Where they will take him to a page
+                where they will be able to see tutorials about how to operate.
+                Somewhat like a probation period. A simple tutorial, a reading
+                of rules and regulations and a quiz will take place to assess
+                the consultant finally. Why the quiz? to make sure he knows his
+                things, and later doesn't say I didn't know. AND he will not
+                consult and be approved a 100% unless he passes the probation
+                period of learning and tutorials and quiz and reading the rules
               </p>
             </div>
           </section>
@@ -115,8 +133,10 @@ const Home = () => {
                 <div className="col-lg-6">
                   <h2 className="fw-bold">How To be a Consultant</h2>
                   <p style={{ color: "#666764" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et
-                    viverra justo commodo. Proin sodales pulvinar tempor.{" "}
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    amet lacus accumsan et viverra justo commodo. Proin sodales
+                    pulvinar tempor.{" "}
                   </p>
                   <div>
                     <button className="button_1" onClick={handleProtectedClick}>
@@ -141,7 +161,11 @@ const Home = () => {
                 </div>
                 <div className="col-lg-6">
                   <div className="how_to_be_img">
-                    <img src={images.ConsultantImg} alt="our-aim" className="" />
+                    <img
+                      src={images.ConsultantImg}
+                      alt="our-aim"
+                      className=""
+                    />
                   </div>
                 </div>
               </div>
@@ -158,13 +182,22 @@ const Home = () => {
                 <div className="col-lg-6">
                   <h2 className="fw-bold">Our Aim?</h2>
                   <p style={{ color: "#666764" }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et
-                    viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                    Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit. Aenean euismod bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
-                    laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus
-                    et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed
-                    rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    amet lacus accumsan et viverra justo commodo. Proin sodales
+                    pulvinar tempor. Cum sociis natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Nam fermentum,
+                    nulla luctus pharetra vulputate, felis tellus mollis orci,
+                    sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit. Aenean euismod bibendum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    amet lacus accumsan et viverra justo commodo. Proin sodales
+                    pulvinar tempor. Cum sociis natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Nam fermentum,
+                    nulla luctus pharetra vulputate, felis tellus mollis orci,
+                    sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit.{" "}
                   </p>
                 </div>
               </div>
@@ -180,17 +213,25 @@ const Home = () => {
                 <h2 className="fw-bold mb-3">Screening</h2>
                 {steps.map((step, index) => (
                   <div
-                    className={`position-relative timeline-container d-flex ${index === 0 ? "first-step" : index === steps.length - 1 ? "last-step" : ""}`}
+                    className={`position-relative timeline-container d-flex ${
+                      index === 0
+                        ? "first-step"
+                        : index === steps.length - 1
+                        ? "last-step"
+                        : ""
+                    }`}
                     key={step.id}
                   >
                     {/* Numbered Circle */}
                     <div className={`timeline-step flex-shrink-0`}>
-                      <div className={`step-circle flex-shrink-0`}>{String(index + 1).padStart(2, "0")}</div>
+                      <div className={`step-circle flex-shrink-0`}>
+                        {String(index + 1).padStart(2, "0")}
+                      </div>
                     </div>
 
                     {/* Card Content */}
                     <div
-                      className={`mb-3 step_card p-md-4 p-2 ms-2 flex-grow-1`}
+                      className={`step_card p-md-4 p-3 flex-grow-1`}
                       style={{ backgroundColor: step.cardBg }}
                       onClick={() => navigate(step.link_path)}
                     >
@@ -201,7 +242,9 @@ const Home = () => {
                             <div>
                               <div className="d-flex align-items-center gap-4">
                                 <h4 className="mb-0">{step.title}</h4>
-                                {step.approved && <img src={step.approved} alt="" />}
+                                {step.approved && (
+                                  <img src={step.approved} alt="" />
+                                )}
                               </div>
                               <p className="mb-0" style={{ color: "#333" }}>
                                 {step.description}
@@ -209,11 +252,19 @@ const Home = () => {
                             </div>
                             <div className="text-end">
                               {step.date && (
-                                <p className="mb-md-3 mb-0" style={{ color: "#333" }}>
+                                <p
+                                  className="mb-md-3 mb-0"
+                                  style={{ color: "#333" }}
+                                >
                                   {step.date}
                                 </p>
                               )}
-                              {step.status === "open" && <CustomButton variant="siteBtn primaryBtn ms-md-0 ms-3" text="Open" />}
+                              {step.status === "open" && (
+                                <CustomButton
+                                  variant="siteBtn primaryBtn ms-md-0 ms-3"
+                                  text="Open"
+                                />
+                              )}
                             </div>
                           </div>
                         </div>
@@ -226,10 +277,16 @@ const Home = () => {
           </Container>
         </section>
       )}
-      <CustomModal show={loginModal} close={() => setLoginModal(false)} para="You need to login or signup first">
+      <CustomModal
+        show={loginModal}
+        close={() => setLoginModal(false)}
+        para="You need to login or signup first"
+      >
         <div className="text-center">
           <img src={images.Question} alt="check" className="modalImage" />
-          <p className="modalPara text-capitalize">You need to login or signup first</p>
+          <p className="modalPara text-capitalize">
+            You need to login or signup first
+          </p>
           <div className="d-flex gap-2 justify-content-center">
             <Link to="/login" className="siteBtn primaryBtn">
               Login
