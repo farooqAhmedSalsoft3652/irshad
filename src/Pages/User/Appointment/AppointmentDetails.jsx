@@ -16,7 +16,9 @@ const AppointmentsDetails = ({ reasonModal }) => {
   const [data, setData] = useState([]);
 
   const fetchBookings = async () => {
-    const response = appointmentsData.detail.data.find((e) => e.id === Number(id));
+    const response = appointmentsData.detail.data.find(
+      (e) => e.id === Number(id)
+    );
     // const response = await getDetails(`/admin-api/users/${id}`);
     if (response) {
       setData(response);
@@ -96,7 +98,9 @@ const AppointmentsDetails = ({ reasonModal }) => {
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Booking Date:</h6>
-                  <p style={{ color: "#727A84" }}>{dateFormat(data?.booking_date)}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {dateFormat(data?.booking_date)}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
@@ -114,7 +118,9 @@ const AppointmentsDetails = ({ reasonModal }) => {
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Appointment Charges:</h6>
-                  <p style={{ color: "#727A84" }}>{data?.appointment_charges}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {data?.appointment_charges}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
@@ -159,11 +165,13 @@ const AppointmentsDetails = ({ reasonModal }) => {
                     <div>
                       <h6 className="fw-medium mb-2">Rating</h6>
                       <div className="review-rating d-flex gap-0">
-                        {[...Array(Number(data?.rating || 0))].map((_, index) => (
-                          <span key={index} className="rating fw-light me-1">
-                            <FontAwesomeIcon icon={faStar} />
-                          </span>
-                        ))}
+                        {[...Array(Number(data?.rating || 0))].map(
+                          (_, index) => (
+                            <span key={index} className="rating fw-light me-1">
+                              <FontAwesomeIcon icon={faStar} />
+                            </span>
+                          )
+                        )}
                       </div>
                     </div>
                   </Col>
@@ -177,24 +185,34 @@ const AppointmentsDetails = ({ reasonModal }) => {
               )}
               {data?.status == "cancelled" && (
                 <Col xs={12} className="mb-md-2">
-                <div>
-                  <h6 className="fw-medium mb-2">Rejection Reason:</h6>
-                  <p style={{ color: "#727A84" }}>{data?.reason}</p>
-                </div>
-              </Col>
+                  <div>
+                    <h6 className="fw-medium mb-2">Rejection Reason:</h6>
+                    <p style={{ color: "#727A84" }}>{data?.reason}</p>
+                  </div>
+                </Col>
               )}
-              {(data?.status === "upcoming" || data?.status === "in-progress") && (
+              {(data?.status === "upcoming" ||
+                data?.status === "in-progress") && (
                 <div className="d-flex gap-2 flex-wrap align-items-center">
                   {data?.session_type == "Chat" ? (
-                    <Link to="/chat" className="siteBtn primaryBtn min-width-180">
+                    <Link
+                      to="/chat"
+                      className="siteBtn primaryBtn min-width-180"
+                    >
                       Start Chat
                     </Link>
                   ) : data?.session_type == "Call" ? (
-                    <Link to="/call" className="siteBtn primaryBtn min-width-180">
+                    <Link
+                      to="/call"
+                      className="siteBtn primaryBtn min-width-180"
+                    >
                       Start Call
                     </Link>
                   ) : data?.session_type == "Video Call" ? (
-                    <Link to="/video-call" className="siteBtn primaryBtn min-width-180">
+                    <Link
+                      to="/video-call"
+                      className="siteBtn primaryBtn min-width-180"
+                    >
                       Join Session
                     </Link>
                   ) : null}
@@ -203,7 +221,11 @@ const AppointmentsDetails = ({ reasonModal }) => {
                       onClick={cancelBooking}
                       className="siteBtn min-width-180"
                       text="Cancel Booking"
-                      style={{ border: "1px solid #D9001B", color: "#D9001B", background: "#FBE5E8" }}
+                      style={{
+                        border: "1px solid #D9001B",
+                        color: "#D9001B",
+                        background: "#FBE5E8",
+                      }}
                     />
                   )}
                 </div>

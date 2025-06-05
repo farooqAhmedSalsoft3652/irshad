@@ -4,7 +4,7 @@ import { FaRegStar, FaStar } from "react-icons/fa6";
 import Rating from "react-rating";
 import { useParams } from "react-router-dom";
 import CustomButton from "../../../Components/CustomButton";
-import { ratingReviewsData } from "../../../Config/Data";
+import { ratingReviewsData } from "../../../Config/data";
 import withFilters from "../../../HOC/withFilters ";
 import { usePageTitleUser } from "../../../Utils/helper";
 
@@ -47,7 +47,9 @@ const RatingsAndReviews = () => {
         <div className="site_card">
           <Row>
             <Col sm={12} className="mb-3 mb-lg-4">
-              <h2 className="page-title fw-bold mb-0 text-center">Rating & Reviews</h2>
+              <h2 className="page-title fw-bold mb-0 text-center">
+                Rating & Reviews
+              </h2>
             </Col>
           </Row>
           <Row>
@@ -56,25 +58,36 @@ const RatingsAndReviews = () => {
                 const filteredReviews =
                   reviewsFilter === "All"
                     ? product?.reviews?.comments ?? []
-                    : (product?.reviews?.comments ?? []).filter((review) => review.rating === parseInt(reviewsFilter));
+                    : (product?.reviews?.comments ?? []).filter(
+                        (review) => review.rating === parseInt(reviewsFilter)
+                      );
 
                 return (
                   <div key={index} className="product-reviews box-shadow">
                     <Row>
-                      <Col xs={12} className="d-flex flex-wrap justify-content-between align-items-center gap-4 rating-reviews">
+                      <Col
+                        xs={12}
+                        className="d-flex flex-wrap justify-content-between align-items-center gap-4 rating-reviews"
+                      >
                         <div className="d-flex flex-column align-items-start reviews-info">
                           <div className="d-flex gap-4 align-items-baseline">
                             <h3 className="fw-bold">
                               {product?.rating}
                               <span>/5</span>
                             </h3>
-                            <p className="review-count mb-0">{product?.reviews?.count} Reviews</p>
+                            <p className="review-count mb-0">
+                              {product?.reviews?.count} Reviews
+                            </p>
                           </div>
                           <Rating
                             className="mt-3"
-                            emptySymbol={<FaRegStar color="#FFE420" size={40} />}
+                            emptySymbol={
+                              <FaRegStar color="#FFE420" size={40} />
+                            }
                             fullSymbol={<FaStar size={40} color="#FFE420" />}
-                            initialRating={parseFloat(product?.rating).toFixed(1)}
+                            initialRating={parseFloat(product?.rating).toFixed(
+                              1
+                            )}
                             readonly
                           />
                         </div>
@@ -114,7 +127,11 @@ const RatingsAndReviews = () => {
                             <CustomButton
                               key={star}
                               onClick={() => setReviewsFilter(star)}
-                              className={`btn ${reviewsFilter === star ? "btn-primary" : "btn-outline-primary"}`}
+                              className={`btn ${
+                                reviewsFilter === star
+                                  ? "btn-primary"
+                                  : "btn-outline-primary"
+                              }`}
                             >
                               {star !== "All" ? (
                                 <div className="d-flex align-items-center">
@@ -132,17 +149,32 @@ const RatingsAndReviews = () => {
 
                         {filteredReviews.length > 0 ? (
                           filteredReviews.map((review, i) => (
-                            <div key={i} className="card-comment d-flex flex-md-row flex-column align-items-md-center gap-3 mt-4">
+                            <div
+                              key={i}
+                              className="card-comment d-flex flex-md-row flex-column align-items-md-center gap-3 mt-4"
+                            >
                               <div className="d-flex flex-grow-1 gap-3 comment-info">
-                                <img className="profile-avatar" src={review.user?.["photo-path"]} alt="user_photo" />
+                                <img
+                                  className="profile-avatar"
+                                  src={review.user?.["photo-path"]}
+                                  alt="user_photo"
+                                />
                                 <div className="flex-grow-1 align-self-center">
                                   <div className="star-rating d-flex gap-1 mb-3">
-                                    {Array.from({ length: review.rating }).map((_, j) => (
-                                      <FaStar key={`${i}-${j}`} style={{color:"#FFE420"}} />
-                                    ))}
+                                    {Array.from({ length: review.rating }).map(
+                                      (_, j) => (
+                                        <FaStar
+                                          key={`${i}-${j}`}
+                                          style={{ color: "#FFE420" }}
+                                        />
+                                      )
+                                    )}
                                   </div>
                                   <h6 className="mb-1">{review.user?.name}</h6>
-                                  <time className="published-date" dateTime={review.timestamp}>
+                                  <time
+                                    className="published-date"
+                                    dateTime={review.timestamp}
+                                  >
                                     {review.timestamp}
                                   </time>
                                 </div>

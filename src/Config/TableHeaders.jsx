@@ -874,8 +874,6 @@ export const bookingsHeaders = [
     key: "action",
     title: "Action",
   },
-
-
 ];
 export const providerBookingsHeaders = [
   {
@@ -914,8 +912,6 @@ export const providerBookingsHeaders = [
     key: "action",
     title: "Action",
   },
-
-
 ];
 export const providerBookingRequestHeaders = [
   {
@@ -950,8 +946,6 @@ export const providerBookingRequestHeaders = [
     key: "action",
     title: "Action",
   },
-
-
 ];
 export const blockUserHeaders = [
   {
@@ -1100,8 +1094,6 @@ export const appointmentsHeaders = [
     key: "action",
     title: "Action",
   },
-
-
 ];
 
 export const paymentLogsHeaders = [
@@ -1128,5 +1120,38 @@ export const paymentLogsHeaders = [
   {
     key: "adminCommission",
     title: "Admin's Commission",
+  },
+];
+
+export const slotManagementHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "serviceName",
+    title: "Service Name",
+  },
+  {
+    key: "subCategoryName",
+    title: "Sub Category Name",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
+export const slotHistoryHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "slots",
+    title: "Slots",
+  },
+  {
+    key: "action",
+    title: "Action",
   },
 ];

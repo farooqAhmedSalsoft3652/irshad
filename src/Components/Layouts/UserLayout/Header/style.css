@@ -530,7 +530,7 @@ Menu Wrapper
 .dropdown-user .dropdown-toggle:hover svg path,
 .dropdown-user .dropdown-toggle.show svg path,
 .user-layout .notiDropdown.show .dropdown-toggle svg path {
-  fill: #C5E4F6;
+  fill: #27446a;
   transition: all .6s ease 0s;
 }
 

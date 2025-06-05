@@ -190,13 +190,14 @@
 
 .user-layout .tableFilters .btn_filter {
   padding: 0px;
-  background: #1A8C1A;
+  background: #15355E;
   width: 51px;
   height: 51px;
+  border-radius: 50px;
 }
 
 .user-layout .tableFilters .btn_filter:hover {
-  background-color: #206C4F;
+  background-color: #333;
 }
 
 /* .user-layout .tableFilters .filterWrapper{

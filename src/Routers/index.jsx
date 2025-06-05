@@ -20,8 +20,8 @@ import PreventAdmin from "./PreventAdmin";
 import PreventUser from "./PreventUser";
 import ProtectedRoutes from "./ProtectedRoutes";
 
-import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
 import AppointmentDetails from "../Pages/Admin/AppointmentLogs/AppointmentDetails";
+import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
 import CommissionManagement from "../Pages/Admin/CommissionManagement/CommissionManagement";
 import ViewArticles from "../Pages/Admin/ContentManagement/Articles/ViewArticles";
 import AddBlog from "../Pages/Admin/ContentManagement/Blogs/AddBlog";
@@ -31,10 +31,6 @@ import AddEBook from "../Pages/Admin/ContentManagement/EBooks/AddEBook";
 import ViewEBooks from "../Pages/Admin/ContentManagement/EBooks/ViewEBooks";
 import AddVideo from "../Pages/Admin/ContentManagement/Videos/AddVideo";
 import ViewVideo from "../Pages/Admin/ContentManagement/Videos/ViewVideo";
-import AddInAppPurchase from "../Pages/Admin/In-AppPurchaseManagement/AddInAppPurchase";
-import EditInAppPurchase from "../Pages/Admin/In-AppPurchaseManagement/EditInAppPurchase";
-import InAppPurchaseDetail from "../Pages/Admin/In-AppPurchaseManagement/InAppPurchaseDetail";
-import InAppPurchaseManagement from "../Pages/Admin/In-AppPurchaseManagement/InAppPurchaseManagement";
 import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
 import Product from "../Pages/Admin/Product/Product";
 import AddProductCategory from "../Pages/Admin/ProductCategoryManagement/AddProductCategory";
@@ -73,9 +69,6 @@ import EditVideo from "../Pages/Admin/ContentManagement/Videos/EditVideo";
 import AddEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/AddEmergencyContacts";
 import EditEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/EditEmergencyContacts.";
 import EmergencyContactsManagement from "../Pages/Admin/EmergencyContactsManagement/EmergencyContactsManagement";
-import AddFaqs from "../Pages/Admin/FAQsManagement/AddFaqs";
-import EditFaqs from "../Pages/Admin/FAQsManagement/EditFaqs";
-import FAQsManagement from "../Pages/Admin/FAQsManagement/FAQsManagement";
 import PaymentLogs from "../Pages/Admin/PaymentLogs/PaymentLogs";
 import ReportDetails from "../Pages/Admin/ReportsManagement/ReportDetails";
 import ReportedPost from "../Pages/Admin/ReportsManagement/ReportedPost";
@@ -108,58 +101,35 @@ import ServicesDetails from "../Pages/User/Services/ServiceDetail";
 import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 import BlockedUsers from "../Pages/User/BlockedUsers";
 import UserChat from "../Pages/User/Chat/Chat";
-import Education from "../Pages/User/Education";
-import EducationDetail from "../Pages/User/Education/EducationDetail";
-import EmergencyContacts from "../Pages/User/EmergencyContacts";
-import EmergencyContactsAdd from "../Pages/User/EmergencyContacts/Add";
-import Faqs from "../Pages/User/Faqs";
-import InAppPurchase from "../Pages/User/InAppPurchase";
-import InAppPurchasePayment from "../Pages/User/InAppPurchase/InAppPurchasePayment";
-import MyPosts from "../Pages/User/MyPosts";
-import NewsFeed from "../Pages/User/NewsFeed";
 import UserNotifications from "../Pages/User/Notifications";
-import OrderLogs from "../Pages/User/OrderLogs";
-import OrderLogsDetail from "../Pages/User/OrderLogs/OrderLogsDetail";
 import UserProfile from "../Pages/User/Profile";
 import UserChangePassword from "../Pages/User/Profile/UserChangePassword";
 import UserEditProfile from "../Pages/User/Profile/UserEditProfile";
-import RehabCenter from "../Pages/User/RehabCenter";
-import ServicesProvider from "../Pages/User/ServiceProvider";
-import ServiceProviderBookServices from "../Pages/User/ServiceProvider/ServiceProviderBookServices";
-import ServiceProviderBookView from "../Pages/User/ServiceProvider/ServiceProviderBookView";
-import ServiceProviderPayment from "../Pages/User/ServiceProvider/ServiceProviderPayment";
-import ServiceProviderRequest from "../Pages/User/ServiceProvider/ServiceProviderRequest";
+
 import ServicesReview from "../Pages/User/Services/Review";
-import ServiceBook from "../Pages/User/Services/ServiceBook";
-import ServiceBookView from "../Pages/User/Services/ServiceBookView";
-import ServicePayment from "../Pages/User/Services/ServicePayment";
-import Cart from "../Pages/User/Shop/Cart";
-import Checkout from "../Pages/User/Shop/Checkout";
-import ProductView from "../Pages/User/Shop/ProductView";
-import Wishlist from "../Pages/User/Shop/Wishlist";
-import CardDetail from "../Pages/User/Shop/cardDetail";
-import Subscriptions from "../Pages/User/Subscriptions";
-import SubscriptionLogsUser from "../Pages/User/Subscriptions/SubscriptionLogs";
-import SubscriptionPayment from "../Pages/User/Subscriptions/SubscriptionPayment";
 
 import Appointment from "../Pages/User/Appointment";
 import AppointmentsDetails from "../Pages/User/Appointment/AppointmentDetails";
-import PersonalDetails from "../Pages/User/Auth/PersonalDetails";
-import ErrorPage from "../Pages/User/ErrorPage";
-import FinalQuiz from "../Pages/User/FinalQuiz";
-import MeetingWithAdmin from "../Pages/User/MeetingWithAdmin/MeetingWithAdmin";
-import RuleRegulations from "../Pages/User/Rules&Regulations";
-import Tutorials from "../Pages/User/Tutorials";
-import VideoVerification from "../Pages/User/VideoVerification";
 import JoinSession from "../Pages/User/Appointment/JoinSession";
 import VoiceCall from "../Pages/User/Appointment/VoiceCall";
+import PersonalDetails from "../Pages/User/Auth/PersonalDetails";
 import UserChatAnnouncement from "../Pages/User/Chat/Announcement";
 import UserChatContactUs from "../Pages/User/Chat/ChatContactUs";
 import UserChatReports from "../Pages/User/Chat/ChatReports";
+import ErrorPage from "../Pages/User/ErrorPage";
+import FinalQuiz from "../Pages/User/FinalQuiz";
+import MeetingWithAdmin from "../Pages/User/MeetingWithAdmin/MeetingWithAdmin";
+import NewServices from "../Pages/User/NewServices";
 import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
 import RatingsAndReviews from "../Pages/User/RatingAndReviews";
+import RuleRegulations from "../Pages/User/Rules&Regulations";
+import SlotManagement from "../Pages/User/SlotManagement";
+import SlotsHistoryManagement from "../Pages/User/SlotManagement/history";
+import Tutorials from "../Pages/User/Tutorials";
+import VideoVerification from "../Pages/User/VideoVerification";
 import WithDrawAmount from "../Pages/User/WithDraw";
-import NewServices from "../Pages/User/NewServices";
+import SlotDetails from "../Pages/User/SlotManagement/SlotDetails";
+// import SlotManagement from "../Pages/User/SlotManagement";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -394,25 +364,6 @@ const routes = [
           { path: "admin/banner-ads/add", element: <AddBanner /> },
           // --- End --- //
 
-          // InApp Purchase Management //
-          {
-            path: "admin/in-app-purchase-management",
-            element: <InAppPurchaseManagement />,
-          },
-          {
-            path: "admin/in-app-purchase-management/:id",
-            element: <InAppPurchaseDetail />,
-          },
-          {
-            path: "admin/in-app-purchase-management/add-product",
-            element: <AddInAppPurchase />,
-          },
-          {
-            path: "admin/in-app-purchase-management/:id/edit",
-            element: <EditInAppPurchase />,
-          },
-          // --- End --- //
-
           // Bank Details //
           { path: "admin/mybank-detail", element: <MyBankDetail /> },
           { path: "admin/add-bank-details", element: <AddBankDetail /> },
@@ -432,12 +383,6 @@ const routes = [
             path: "admin/emergency-contact-management/:id/edit",
             element: <EditEmergencyContacts />,
           },
-          // --- End --- //
-
-          // FAQs Management Management //
-          { path: "admin/faqs", element: <FAQsManagement /> },
-          { path: "admin/faqs/add", element: <AddFaqs /> },
-          { path: "admin/faqs/edit", element: <EditFaqs /> },
           // --- End --- //
 
           { path: "admin/notifications", element: <NotificationsAdmin /> },
@@ -513,82 +458,27 @@ const routes = [
               { path: "/services", element: <Services /> },
               { path: "/services/:id", element: <ServicesDetails /> },
               { path: "/services/review/:id", element: <ServicesReview /> },
-              { path: "/services/payment/:id", element: <ServicePayment /> },
-              { path: "/services/book-services", element: <ServiceBook /> },
-              {
-                path: "/services/book-services/view-booking",
-                element: <ServiceBookView />,
-              },
 
-              { path: "/services-provider/:id", element: <ServicesProvider /> },
-              {
-                path: "/services-provider/request",
-                element: <ServiceProviderRequest />,
-              },
-              {
-                path: "/services-provider/payment",
-                element: <ServiceProviderPayment />,
-              },
-              {
-                path: "/services-provider/book-services",
-                element: <ServiceProviderBookServices />,
-              },
-              {
-                path: "/services-provider/book-services/view-booking",
-                element: <ServiceProviderBookView />,
-              },
               { path: "/new-services", element: <NewServices /> },
 
-              { path: "/emergency-contacts/", element: <EmergencyContacts /> },
-              {
-                path: "/emergency-contacts/add",
-                element: <EmergencyContactsAdd />,
-              },
-
-              { path: "/subscriptions", element: <Subscriptions /> },
-              {
-                path: "/subscriptions/payment/:id",
-                element: <SubscriptionPayment />,
-              },
-              {
-                path: "/subscriptions/subscriptions-logs/",
-                element: <SubscriptionLogsUser />,
-              },
-
-              { path: "/in-app-purchase", element: <InAppPurchase /> },
-              {
-                path: "/in-app-purchase/payment/:id",
-                element: <InAppPurchasePayment />,
-              },
               { path: "/notifications", element: <UserNotifications /> },
-              { path: "/faqs", element: <Faqs /> },
-              { path: "/rehab-center", element: <RehabCenter /> },
-
-              { path: "/education", element: <Education /> },
-              { path: "/education/:type/:id", element: <EducationDetail /> },
-              {
-                path: "/education/:id/:type/:id",
-                element: <EducationDetail />,
-              },
 
               { path: "/blocked-users", element: <BlockedUsers /> },
-
-              { path: "/product-detail/:id", element: <ProductView /> },
-              { path: "/wishlist/", element: <Wishlist /> },
-              { path: "/view-cart/", element: <Cart /> },
-              { path: "/checkout/", element: <Checkout /> },
-              { path: "/card-detail/", element: <CardDetail /> },
-
-              { path: "/order-logs/", element: <OrderLogs /> },
-              { path: "/order-logs/:id", element: <OrderLogsDetail /> },
-
-              { path: "/newsfeed", element: <NewsFeed /> },
 
               { path: "/chat", element: <UserChat /> },
               { path: "/chat-announcement", element: <UserChatAnnouncement /> },
               { path: "/chat-contact-us", element: <UserChatContactUs /> },
               { path: "/chat-reports", element: <UserChatReports /> },
-              { path: "/my-posts", element: <MyPosts /> },
+
+              { path: "/slot-management", element: <SlotManagement /> },
+              {
+                path: "/slot-management/history/:id",
+                element: <SlotsHistoryManagement />,
+              },
+              {
+                path: "/slot-management/details/:id",
+                element: <SlotDetails />,
+              },
 
               // { path: "", element: <Home /> },
             ],

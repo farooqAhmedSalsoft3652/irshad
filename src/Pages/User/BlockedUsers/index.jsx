@@ -7,12 +7,18 @@ import CustomTable from "../../../Components/CustomTable";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { blockUserHeaders } from "../../../Config/TableHeaders";
 
-import { blockUserData } from "../../../Config/Data";
+import { blockUserData } from "../../../Config/data";
 import { Link } from "react-router-dom";
 import "./style.css";
 import withModal from "../../../HOC/withModal";
 
-const BlockedUsers = ({ filters, setFilters, pagination, updatePagination, showModal }) => {
+const BlockedUsers = ({
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+  showModal,
+}) => {
   usePageTitle("Blocked users", true);
 
   const [userData, setUserData] = useState([]);
@@ -46,7 +52,12 @@ const BlockedUsers = ({ filters, setFilters, pagination, updatePagination, showM
 
   const onUnblock = async (id) => {
     console.log("test");
-    showModal("", "Are you sure you want to unblock this user?", () => updateApprove(id), false);
+    showModal(
+      "",
+      "Are you sure you want to unblock this user?",
+      () => updateApprove(id),
+      false
+    );
   };
   const updateApprove = async (status, id) => {
     showModal(``, `User successfully unblocked.`, null, true);
@@ -59,7 +70,9 @@ const BlockedUsers = ({ filters, setFilters, pagination, updatePagination, showM
           <div className="site_card">
             <Row>
               <Col xs={12} className="mb-3 mb-lg-4">
-                <h2 className="fw-bold mb-0 page-title text-center">Blocked Users</h2>
+                <h2 className="fw-bold mb-0 page-title text-center">
+                  Blocked Users
+                </h2>
               </Col>
             </Row>
             <Row>
@@ -92,10 +105,18 @@ const BlockedUsers = ({ filters, setFilters, pagination, updatePagination, showM
                   <tbody>
                     {userData?.map((item, index) => (
                       <tr key={item?.id}>
-                        <td style={{width: "45%"}}>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                        <td style={{ width: "45%" }}>
+                          {serialNum(
+                            (filters.page - 1) * filters.per_page + index + 1
+                          )}
+                        </td>
                         <td className="">{item?.user_name}</td>
                         <td>
-                          <Link className="fw-medium" style={{color: "#333"}} onClick={onUnblock}>
+                          <Link
+                            className="fw-medium"
+                            style={{ color: "#333" }}
+                            onClick={onUnblock}
+                          >
                             Unblock
                           </Link>
                         </td>
