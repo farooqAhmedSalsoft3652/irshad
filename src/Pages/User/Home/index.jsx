@@ -141,7 +141,7 @@ const Home = () => {
                 </div>
                 <div className="col-lg-6">
                   <div className="how_to_be_img">
-                    <img src={images.ConsultantImg} alt="our-aim" className="" />
+                    <img src={images.newServiceImg} alt="our-aim" className="" />
                   </div>
                 </div>
               </div>
