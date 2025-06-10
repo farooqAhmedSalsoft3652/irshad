@@ -85,7 +85,7 @@ const CustomFilters = (props) => {
           {showEntries && (
             <div className="d-flex align-items-center gap-3">
               <Select
-                className="select-style"
+                className="select-entries"
                 value={formData?.per_page}
                 name="per_page"
                 label="Show :"
@@ -104,7 +104,7 @@ const CustomFilters = (props) => {
                     type="text"
                     placeholder="Search..."
                     name="search"
-                    className="filterInput searchInput mainInput select-style"
+                    className="filterInput searchInput form-control"
                     value={formData?.search || ""}
                     onChange={handleInputChange}
                   />

@@ -35,25 +35,30 @@ export const Select = (props) => {
           id={props?.id}
           value={selectedValue}
           onChange={handleChange}
-          className={`${props.isInputNeeded === false ? "" : "mainInput selectInput"} ${props?.className || ""}`}
+          className={`${props.isInputNeeded === false ? "" : "form-select"} ${
+            props?.className || ""
+          }`}
           style={props?.style}
           onBlur={props?.onBlur}
         >
-          {props?.mainLabel && (
-            <option value="">{props?.mainLabel}</option>
-          )}
-          
+          {props?.mainLabel && <option value="">{props?.mainLabel}</option>}
+
           {props?.children?.map((item) => (
-            <option key={item?.value} value={item?.value} disabled={!item?.value}>
+            <option
+              key={item?.value}
+              value={item?.value}
+              disabled={!item?.value}
+            >
               {item?.text}
             </option>
           ))}
         </select>
 
-          <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />
+        {/* <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" /> */}
 
-        {props?.error && <div className="error-message red-text">{props?.error}</div>}
-  
+        {props?.error && (
+          <div className="error-message red-text">{props?.error}</div>
+        )}
       </div>
     </>
   );

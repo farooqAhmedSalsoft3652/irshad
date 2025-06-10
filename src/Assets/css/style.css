@@ -801,9 +801,10 @@ h3.page-title {
   font-size: 18px;
 }
 
-.user-layout .select-style {
+/* .user-layout .select-style {
   padding-right: 30px;
-}
+  font-size: 14px;
+} */
 
 /*** Nav Tabs ***/
 .nav-tabs {

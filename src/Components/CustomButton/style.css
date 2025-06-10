@@ -3,15 +3,7 @@
     min-width: 180px !important;
 }
 
-.btn-link {
-    color: #000;
-    outline: none;
-}
 
-.btn-link:hover,
-.btn-link:focus {
-    color: #27446a;
-}
 
 /***** Buttons*****/
 .btn {
@@ -39,6 +31,16 @@ fieldset:disabled .btn {
     border-color: #DEDEDE;
 }
 
+.btn-link {
+    color: #000;
+    outline: none;
+    padding: 3px 10px;
+}
+
+.btn-link:hover,
+.btn-link:focus {
+    color: #27446a;
+}
 
 /****** Button Primary ******/
 .btn-primary {

@@ -6,7 +6,9 @@ import { generateNextFiveYears } from "../../Utils/helper";
 
 export const Graph = (props) => {
   const [selectedValue, setSelectedValue] = useState(props.selectedValue);
-  const [selectedValueTwo, setSelectedValueTwo] = useState(props.selectedValueTwo);
+  const [selectedValueTwo, setSelectedValueTwo] = useState(
+    props.selectedValueTwo
+  );
   const [yearlState, setYearState] = useState(false);
 
   const handleSelectChange = (e) => {
@@ -38,12 +40,18 @@ export const Graph = (props) => {
       <div className="d-sm-flex justify-content-between ">
         <h3 className="sub-title">{props.item.heading}</h3>
 
-        <Select className="dropdown-graph mainInput select-style w-auto" onChange={handleSelectChangeTwo}>
+        <Select
+          className="dropdown-graph mainInput w-auto"
+          onChange={handleSelectChangeTwo}
+        >
           {years}
         </Select>
       </div>
 
-      <div className="graph-wrapper" style={{ minHeight: "400px", height: "100%" }}>
+      <div
+        className="graph-wrapper"
+        style={{ minHeight: "400px", height: "100%" }}
+      >
         <CChart
           type={props.type}
           height={90}
@@ -56,12 +64,12 @@ export const Graph = (props) => {
                   display: true,
                   text: props?.text,
                   color: "#000",
-                  font:{size:16, weight:700}
+                  font: { size: 16, weight: 700 },
                 },
                 font: {
                   size: 16,
-                  weight: "bold"
-                }
+                  weight: "bold",
+                },
               },
               x: {
                 title: {
@@ -70,22 +78,37 @@ export const Graph = (props) => {
                   color: "#000", // Black color
                   font: {
                     size: 16, // Font size 16px
-                    weight: "bold" // Font weight bold
-                  }
-                }
-              }
-            }
+                    weight: "bold", // Font weight bold
+                  },
+                },
+              },
+            },
           }}
           style={{ height: "400px" }}
           data={{
-            labels: props?.label ? props?.label : ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: props?.label
+              ? props?.label
+              : [
+                  "Jan",
+                  "Feb",
+                  "Mar",
+                  "Apr",
+                  "May",
+                  "Jun",
+                  "Jul",
+                  "Aug",
+                  "Sep",
+                  "Oct",
+                  "Nov",
+                  "Dec",
+                ],
 
             tension: "0.5",
             datasets: [
               {
                 label: props.item.label,
-                fill: props.item.fill, 
-                backgroundColor : props.backgroundColor, // Adjust for the fill color
+                fill: props.item.fill,
+                backgroundColor: props.backgroundColor, // Adjust for the fill color
                 ...(props.borderColor && { borderColor: props.borderColor }),
                 pointBackgroundColor: "#fff",
                 borderWidth: 4,
@@ -93,9 +116,9 @@ export const Graph = (props) => {
                 data: props.item.data,
                 tension: 0.5,
                 barPercentage: 0.5, // Adjust this value to reduce the bar width
-                categoryPercentage: 0.5
-              }
-            ]
+                categoryPercentage: 0.5,
+              },
+            ],
           }}
         />
       </div>
