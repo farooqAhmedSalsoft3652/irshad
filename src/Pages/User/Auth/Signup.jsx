@@ -18,7 +18,7 @@ const UserSignup = () => {
   const handleSubmit = async (values, { resetForm }) => {
     // console.log("registered", values);
     resetForm();
-    navigate('/personal-details');
+    navigate("/personal-details");
   };
   return (
     <>
@@ -49,7 +49,6 @@ const UserSignup = () => {
                 required
                 placeholder="Enter First Name"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.first_name}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -62,7 +61,6 @@ const UserSignup = () => {
                 required
                 placeholder="Enter Last Name"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.last_name}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -70,7 +68,6 @@ const UserSignup = () => {
               />
               <div className="inputWrapper position-relative">
                 <Select
-                  className="mainInput selectInput w-100"
                   label="Language"
                   labelclass="mainLabel"
                   required
@@ -102,7 +99,6 @@ const UserSignup = () => {
                 required
                 placeholder="Enter Your Nationality"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.nationality}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -110,7 +106,6 @@ const UserSignup = () => {
               />
               <div className="inputWrapper position-relative">
                 <Select
-                  className="mainInput selectInput w-100"
                   label="gender"
                   labelclass="mainLabel"
                   required
@@ -146,7 +141,7 @@ const UserSignup = () => {
                   value={values.phone}
                   onChange={(phone) => setFieldValue("phone", phone)}
                   onBlur={() => setFieldTouched("phone", true)}
-                  className="mainInput"
+                  className="form-control"
                 />
                 {touched.phone && errors.phone ? (
                   <div className="error-message">
@@ -161,7 +156,6 @@ const UserSignup = () => {
                 required
                 placeholder="Enter your Email"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -174,7 +168,6 @@ const UserSignup = () => {
                 required
                 placeholder="Enter password"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -187,7 +180,6 @@ const UserSignup = () => {
                 required
                 placeholder="Confirm Password"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -217,7 +209,7 @@ const UserSignup = () => {
               </div>
 
               <div className="mt-5 text-center">
-                <CustomButton variant="siteBtn primaryBtn py-4" className="px-5 w-100" text="Next" pendingText="Loading..." type="submit" />
+                <CustomButton variant="primary" className="w-100" text="Next" pendingText="Loading..." type="submit" />
               </div>
 
               <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">

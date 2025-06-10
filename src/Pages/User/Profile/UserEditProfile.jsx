@@ -247,7 +247,7 @@ const UserEditProfile = ({ showModal }) => {
                                     onBlur={() =>
                                       setFieldTouched("phone", true)
                                     }
-                                    className="mainInput"
+                                    className="form-control"
                                   />
                                   {touched.phone && errors.phone ? (
                                     <div className="text-danger">
@@ -272,7 +272,6 @@ const UserEditProfile = ({ showModal }) => {
                                 </Col>
                                 <Col xs={12} lg={6} xxl={6} className="mb-3">
                                   <Select
-                                    className="mainInput selectInput w-100"
                                     label="Language"
                                     labelclass="mainLabel"
                                     required
@@ -293,7 +292,6 @@ const UserEditProfile = ({ showModal }) => {
                                 </Col>
                                 <Col xs={12} lg={6} xxl={6} className="mb-3">
                                   <Select
-                                    className="mainInput selectInput w-100"
                                     label="Gender"
                                     labelclass="mainLabel"
                                     required

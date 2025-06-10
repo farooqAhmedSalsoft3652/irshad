@@ -63,7 +63,6 @@ const StepTwo = ({ apiEndpoint, resendEndpoint, navigateTo }) => {
               id="code"
               placeholder="Enter Verification Code"
               labelclass="mainLabel"
-              inputclass="mainInput mainInputLogIn"
               value={values.code}
               onChange={handleChange}
               onBlur={handleBlur}

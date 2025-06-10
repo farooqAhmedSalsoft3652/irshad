@@ -84,7 +84,6 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
             required
             placeholder="Enter Your Email Address"
             labelclass="mainLabel"
-            inputclass="mainInput mainInputLogIn"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -97,7 +96,6 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
             required
             placeholder="Enter Password"
             labelclass="mainLabel"
-            inputclass="mainInput mainInputLogIn"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}

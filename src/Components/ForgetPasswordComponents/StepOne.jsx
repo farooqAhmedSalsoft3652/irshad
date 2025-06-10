@@ -43,7 +43,7 @@ const StepOne = ({ apiEndpoint, navigateTo }) => {
               type="email"
               placeholder="Enter Your Email Address"
               labelclass="mainLabel"
-              inputclass="mainInput mainInputLogIn"
+              // inputclass="mainInput mainInputLogIn"
               value={values.email}
               onChange={handleChange}
               required

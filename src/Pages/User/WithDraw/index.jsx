@@ -66,7 +66,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Fund Amount"
-                                    inputclass="mainInput"
                                     id="fundAmount"
                                     value={values.fundAmount}
                                     onChange={handleChange}
@@ -83,7 +82,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Account holder Name"
-                                    inputclass="mainInput"
                                     id="accountHolderName"
                                     value={values.accountHolderName}
                                     onChange={handleChange}
@@ -94,7 +92,6 @@ const WithDrawAmount = ({ showModal }) => {
                                 <Col xs={12} lg={6} xxl={6} className="mb-lg-4 mb-3">
                                   <div className="select-inner-wrapper">
                                     <Select
-                                      className="mainInput selectInput w-100"
                                       required
                                       id="accountType"
                                       name="accountType"
@@ -113,7 +110,6 @@ const WithDrawAmount = ({ showModal }) => {
                                 <Col xs={12} lg={6} xxl={6} className="mb-lg-4 mb-3">
                                   <div className="select-inner-wrapper">
                                     <Select
-                                      className="mainInput selectInput w-100"
                                       required
                                       id="bankName"
                                       name="bankName"
@@ -136,7 +132,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Routing Number"
-                                    inputclass="mainInput"
                                     id="routingNumber"
                                     value={values.routingNumber}
                                     onChange={handleChange}
@@ -151,7 +146,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Confirm Routing Number"
-                                    inputclass="mainInput"
                                     id="confirmRoutingNumber"
                                     value={values.confirmRoutingNumber}
                                     onChange={handleChange}
@@ -166,7 +160,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Account Number"
-                                    inputclass="mainInput"
                                     id="accountNumber"
                                     value={values.accountNumber}
                                     onChange={handleChange}
@@ -181,7 +174,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Confirm Account Number"
-                                    inputclass="mainInput"
                                     id="confirmAccountNumber"
                                     value={values.confirmAccountNumber}
                                     onChange={handleChange}
@@ -196,7 +188,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Swift Code"
-                                    inputclass="mainInput"
                                     id="swiftCode"
                                     value={values.swiftCode}
                                     onChange={handleChange}
@@ -211,7 +202,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Confirm Swift Code"
-                                    inputclass="mainInput"
                                     id="confirmSwiftCode"
                                     value={values.confirmSwiftCode}
                                     onChange={handleChange}
@@ -226,7 +216,6 @@ const WithDrawAmount = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Branch Code"
-                                    inputclass="mainInput"
                                     id="branchCode"
                                     value={values.branchCode}
                                     onChange={handleChange}
@@ -239,7 +228,7 @@ const WithDrawAmount = ({ showModal }) => {
                           </Row>
                           <Row>
                             <Col xs={12}>
-                              <CustomButton variant="siteBtn primaryBtn" className="px-5" text="Transfer Amount" type="submit" />
+                              <CustomButton variant="primary" className="px-5" text="Transfer Amount" type="submit" />
                             </Col>
                           </Row>
                         </Form>
