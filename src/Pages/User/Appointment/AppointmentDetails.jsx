@@ -197,21 +197,21 @@ const AppointmentsDetails = ({ reasonModal }) => {
                   {data?.session_type == "Chat" ? (
                     <Link
                       to="/chat"
-                      className="siteBtn primaryBtn min-width-180"
+                      className="btn btn-primary min-width-180"
                     >
                       Start Chat
                     </Link>
                   ) : data?.session_type == "Call" ? (
                     <Link
                       to="/call"
-                      className="siteBtn primaryBtn min-width-180"
+                      className="btn btn-primary min-width-180"
                     >
                       Start Call
                     </Link>
                   ) : data?.session_type == "Video Call" ? (
                     <Link
                       to="/video-call"
-                      className="siteBtn primaryBtn min-width-180"
+                      className="btn btn-primary min-width-180"
                     >
                       Join Session
                     </Link>

@@ -53,19 +53,19 @@ const CustomModal = (props) => {
               {props?.success ? (
                 <CustomButton
                   onClick={props?.action ? props.action : props?.close}
-                  className="siteBtn modalButton primaryBtn px-5 mb-2 mt-3"
+                  className="primary px-5 mb-2 mt-3"
                   text={props?.btnText || "Ok"}
                 />
               ) : props?.showReason ? (
                 <div className="d-flex justify-content-center gap-2">
                   <CustomButton
                     onClick={props?.action}
-                    variant="siteBtn primaryBtn"
+                    variant="primary"
                     text={"Submit"}
                   />
                   <CustomButton
                     onClick={props?.close}
-                    variant="siteBtn secondaryBtn"
+                    variant="secondary"
                     text={"Cancel"}
                   />
                 </div>
@@ -73,7 +73,7 @@ const CustomModal = (props) => {
                 <>
                   <CustomButton
                     onClick={props?.action ?? props?.close}
-                    className="siteBtn primaryBtn px-5 mb-2 mt-3 modalButton"
+                    className="primary px-5 mb-2 mt-3 modalButton"
                     text="Ok"
                   />
                 </>
@@ -81,13 +81,13 @@ const CustomModal = (props) => {
                 <div className="mt-4">
                   <CustomButton
                     onClick={props?.action}
-                    variant="siteBtn primaryBtn px-5 modalButton"
+                    variant="primary px-5 modalButton"
                     text="Yes"
                     className="me-2"
                   />
                   <CustomButton
                     onClick={props?.close}
-                    variant="siteBtn secondaryBtn px-5 modalButton"
+                    variant="secondary px-5 modalButton"
                     text="No"
                   />
                 </div>

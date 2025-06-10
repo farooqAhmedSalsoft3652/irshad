@@ -131,7 +131,7 @@ const UserProfile = () => {
                           <p>Amount : {user?.amount || "$20"} </p>
                           <Link
                             to={"/withdraw-amount"}
-                            className="siteBtn primaryBtn text-nowrap"
+                            className="btn btn-primary text-nowrap"
                           >
                             Withdraw Amount
                           </Link>

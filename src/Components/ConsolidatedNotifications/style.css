@@ -7,3 +7,14 @@
 .greenbtn {
   color: #1a8c1a;
 }
+.mark_all_btn {
+  color: #15355E;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  transition: 3s ease-in-out;
+  &:hover{
+    text-decoration: underline;
+    transition: 3s ease-in-out;
+  }
+}

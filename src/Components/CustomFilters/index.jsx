@@ -209,7 +209,7 @@ const CustomFilters = (props) => {
                         </div>
                       ))}
                     </div>
-                    <div className="d-flex gap-2">
+                    <div className="d-flex justify-content-center gap-2">
                       <CustomButton
                         onClick={handleApply}
                         variant="primary"

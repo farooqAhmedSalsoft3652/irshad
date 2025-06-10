@@ -74,14 +74,12 @@ const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, paginatio
               <h2 className="page-title fw-bold mb-0">Notifications</h2>
             </div>
             <div>
-              <CustomButton
-                className=""
+              <button
+                className="mark_all_btn"
                 onClick={() => {
                   console.log("mark all clicked");
                 }}
-                variant={`notButton fw-medium text-decoration-underline`}
-                text={"Mark All as Read"}
-              />
+              >Mark All as Read</button>
             </div>
           </div>
         </Col>

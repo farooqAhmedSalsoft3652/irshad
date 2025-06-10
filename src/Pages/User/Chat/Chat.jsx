@@ -26,6 +26,7 @@ import SiteInput from "../../../Components/Input/input";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./style.css";
+import CustomButton from "../../../Components/CustomButton";
 
 const UserChat = ({ showModal }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -193,27 +194,14 @@ const UserChat = ({ showModal }) => {
                       type="text"
                       placeholder="Search..."
                       name="search"
-                      // value={formData?.search || ""}
-                      // onChange={handleInputChange}
+                      id="search"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
                     />
                     <button className="searchButton notButton">
                       <FontAwesomeIcon icon={faSearch} />
                     </button>
                   </div>
-
-                  {/* <div className="flex-grow-1">
-                    <CustomInput
-                      labelclass="mainLabel flex-shrink-0 mb-0"
-                      type="text"
-                      wrapperClass="mb-0 flex-grow-1 "
-                      placeholder="Search Here..."
-                      // inputclass="mainInput"
-                      id="search"
-                      // rightIcon={FaSearch}
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                  </div> */}
                   <div className="flex-shrink-0">
                     <Dropdown className="chat_filter">
                       <Dropdown.Toggle className="btn_filter p-0">
@@ -307,14 +295,14 @@ const UserChat = ({ showModal }) => {
                           </div>
                         </div>
                         <div className="d-flex align-items-center gap-1">
-                          <button className="siteBtn primaryBtn">
+                          <CustomButton className="primary">
                             Book Now
-                          </button>
+                          </CustomButton>
                           <Dropdown
                             className="chatHeaderDropdown"
                             align={"end"}
                           >
-                            <Dropdown.Toggle className="p-0">
+                            <Dropdown.Toggle className="p-0 border-0">
                               <FaEllipsisV />
                             </Dropdown.Toggle>
                             <Dropdown.Menu>
