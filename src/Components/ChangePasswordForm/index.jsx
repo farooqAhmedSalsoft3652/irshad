@@ -5,7 +5,13 @@ import { changePassword } from "../../Config/Validations";
 import CustomInput from "../CustomInput";
 import CustomButton from "../CustomButton";
 
-const ChangePasswordForm = ({ onSubmit, isSubmitting, errors, btnText ="Update", btnVariant="site-btn primary-btn" }) => {
+const ChangePasswordForm = ({
+  onSubmit,
+  isSubmitting,
+  errors,
+  btnText = "Update",
+  btnVariant = "site-btn primary-btn",
+}) => {
   console.log(errors);
   return (
     <Formik
@@ -34,7 +40,7 @@ const ChangePasswordForm = ({ onSubmit, isSubmitting, errors, btnText ="Update",
                 type="password"
                 required
                 placeholder="Enter Current Password"
-                inputclass="mainInput"
+                // inputclass="mainInput"
                 id="current_password"
                 value={values.current_password}
                 onChange={handleChange}
@@ -49,7 +55,7 @@ const ChangePasswordForm = ({ onSubmit, isSubmitting, errors, btnText ="Update",
                 type="password"
                 required
                 placeholder="Enter New Password"
-                inputclass="mainInput"
+                // inputclass="mainInput"
                 id="password"
                 value={values.password}
                 onChange={handleChange}
@@ -64,7 +70,7 @@ const ChangePasswordForm = ({ onSubmit, isSubmitting, errors, btnText ="Update",
                 type="password"
                 required
                 placeholder="Enter New Password"
-                inputclass="mainInput"
+                // inputclass="mainInput"
                 id="password_confirmation"
                 value={values.password_confirmation}
                 onChange={handleChange}

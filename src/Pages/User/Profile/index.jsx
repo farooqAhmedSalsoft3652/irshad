@@ -271,16 +271,16 @@ const UserProfile = () => {
                 <Row>
                   <Col xs={12} className="d-flex gap-3 flex-wrap">
                     <CustomButton
-                      type="button"
-                      className="siteBtn primaryBtn min-width-180 py-4"
+                      variant="primary"
+                      className="min-width-180"
                       text="Edit Profile"
                       onClick={() => {
                         navigate("/edit-profile");
                       }}
                     />
                     <CustomButton
-                      type="button"
-                      className="siteBtn secondaryBtn min-width-180 py-4"
+                      variant="secondary"
+                      className="min-width-180 px-3"
                       text="Change Password"
                       onClick={() => {
                         navigate("/change-password");

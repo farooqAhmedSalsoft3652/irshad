@@ -140,18 +140,18 @@
   overflow-y: hidden;
 }
 
-.messages>div>div::-webkit-scrollbar,
+.messages > div > div::-webkit-scrollbar,
 .chat-sidebar ul::-webkit-scrollbar {
   width: 6px;
 }
 
-.messages>div>div::-webkit-scrollbar-track,
+.messages > div > div::-webkit-scrollbar-track,
 .chat-sidebar ul::-webkit-scrollbar-track {
   background: #ffffff;
   border-radius: 10px;
 }
 
-.messages>div>div::-webkit-scrollbar-thumb,
+.messages > div > div::-webkit-scrollbar-thumb,
 .chat-sidebar ul::-webkit-scrollbar-thumb {
   background-color: #c0c0c0c0;
   border-radius: 10px;
@@ -413,6 +413,7 @@
   width: 35px;
   height: 35px;
 }
+
 .documentDeleteBtn {
   width: 20px;
   height: 20px;
@@ -425,9 +426,11 @@
   color: #fff;
   font-size: 18px;
 }
+
 .chatHeaderDropdown .dropdown-toggle::after {
-display: none;
+  display: none;
 }
+
 @media screen and (max-width: 1399.5px) {
   /* .input-area input {
     padding-left: 30px;
@@ -442,6 +445,12 @@ display: none;
   .chat-sidebar {
     min-height: 100vh;
     z-index: 1000 !important;
+  }
+
+  .chat-sidebar ul {
+    overflow-y: auto;
+    margin-bottom: 0;
+    max-height: calc(100vh - 100px);
   }
 }
 
@@ -462,6 +471,8 @@ display: none;
   .sidebar-toggle {
     display: none;
   }
+
+
 }
 
 @media screen and (max-width: 991.5px) {
@@ -479,11 +490,13 @@ display: none;
     gap: 2px;
     right: 18px;
   }
-  .input-area input{
+
+  .input-area input {
     padding-left: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
   .chatDashCard {
     padding: 1.5rem 1rem;
   }

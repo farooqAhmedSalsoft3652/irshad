@@ -434,6 +434,7 @@ a:hover {
   color: #333333;
 }
 
+/* 
 .siteBtn {
   min-width: 140px;
   height: 42px;
@@ -453,29 +454,29 @@ a:hover {
 
 .siteBtn:hover {
   transform: scale(1.05);
-}
+} */
 
 .filterApplybtn {
   padding: 13px 15px;
 }
 
-.primaryBtn {
+/* .primaryBtn {
   background: #15355E;
   color: #fff !important;
   animation: blur 1s infinite !important;
-}
-
+} */
+/* 
 .primary-btn-2 {
   border: 1px solid var(--blueColor) !important;
   background: var(--blueColor);
   color: var(--whiteColor) !important;
-}
+} */
 
-.secondary-btn-2 {
+/* .secondary-btn-2 {
   border: 1px solid var(--grayLightColor) !important;
   background: var(--whiteColor);
   color: var(--grayColor) !important;
-}
+} */
 
 .site-btn:disabled {
   background: var(--grayColor);
@@ -501,7 +502,7 @@ a:hover {
   background-color: var(--blueColor);
 }
 
-.secondaryBtn {
+/* .secondaryBtn {
   background: rgb(21 53 94 / 10%);
   color: #15355E !important;
 }
@@ -509,7 +510,7 @@ a:hover {
 .secondary-btn:hover {
   color: var(--whiteColor) !important;
   background: var(--primaryColor);
-}
+} */
 
 .red-boder-btn {
   border: 1px solid var(--redColor);

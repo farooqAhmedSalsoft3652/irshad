@@ -5,8 +5,10 @@ import Rating from "react-rating";
 import { useParams } from "react-router-dom";
 import CustomButton from "../../../Components/CustomButton";
 import { ratingReviewsData } from "../../../Config/data";
+// import { ratingReviewsData } from "../../../Config/data";
 import withFilters from "../../../HOC/withFilters ";
 import { usePageTitleUser } from "../../../Utils/helper";
+import "./style.css";
 
 const RatingsAndReviews = () => {
   usePageTitleUser("Rating & Review");

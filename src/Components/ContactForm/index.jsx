@@ -32,7 +32,7 @@ const ContactForm = ({ onSubmit }) => {
               labelclass="mainLabel"
               type="text"
               placeholder="Enter Full Name"
-              inputclass="mainInput"
+              // inputclass="mainInput"
               id="name"
               value={values.name}
               onChange={handleChange}
@@ -44,7 +44,7 @@ const ContactForm = ({ onSubmit }) => {
               labelclass="mainLabel"
               type="email"
               placeholder="Enter Email Address"
-              inputclass="mainInput"
+              // inputclass="mainInput"
               id="email"
               value={values.email}
               onChange={handleChange}
@@ -56,7 +56,7 @@ const ContactForm = ({ onSubmit }) => {
               labelclass="mainLabel"
               type="number"
               placeholder="Enter Contact No"
-              inputclass="mainInput"
+              // inputclass="mainInput"
               id="phone"
               value={values.phone}
               onChange={handleChange}
@@ -68,7 +68,7 @@ const ContactForm = ({ onSubmit }) => {
               labelclass="mainLabel"
               type="text"
               placeholder="Enter Subject"
-              inputclass="mainInput"
+              // inputclass="mainInput"
               id="subject"
               value={values.subject}
               onChange={handleChange}
@@ -81,18 +81,14 @@ const ContactForm = ({ onSubmit }) => {
               rows="8"
               type="textarea"
               placeholder="Write here..."
-              inputclass="mainInput"
+              // inputclass="mainInput"
               id="message"
               value={values.message}
               onChange={handleChange}
               onBlur={handleBlur}
               error={touched.message && errors.message}
             />
-            <CustomButton
-              className="site-btn primary-btn px-5"
-              text="Submit"
-              type="submit"
-            />
+            <CustomButton variant="primary" text="Submit" type="submit" />
           </div>
         </form>
       )}

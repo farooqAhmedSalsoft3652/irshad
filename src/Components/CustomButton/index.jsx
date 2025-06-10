@@ -1,20 +1,27 @@
 import React from "react";
 import "./style.css";
 
-const CustomButton = (props) => {
-  // Ensure onClick is always a function or provide a default function
-  const handleClick =
-    typeof props?.onClick === "function" ? props.onClick : () => {};
-
+const CustomButton = ({
+  type = "button",
+  variant = "primary",
+  className = "",
+  onClick,
+  disabled = false,
+  isPending = false, // loading state flag
+  loadingText = "Loading…", // optional loading text
+  text = "Click to load", // default text
+  children,
+  style,
+}) => {
   return (
     <button
-      style={props?.style}
-      className={`${props?.variant} ${props?.className}`}
-      type={props?.type || "button"}
-      onClick={handleClick}
-      disabled={props?.isPending}
+      type={type}
+      style={style}
+      className={`btn btn-${variant} ${className}`}
+      onClick={!isPending ? onClick : null}
+      disabled={disabled || isPending}
     >
-      {props?.isPending ? props?.pendingText : props?.text}   { props?.children}
+      {isPending ? loadingText : children || text}
     </button>
   );
 };

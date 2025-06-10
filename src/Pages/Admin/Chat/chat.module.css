@@ -10,17 +10,21 @@
   background: #fff;
   box-shadow: 0px 4px 8px 0px rgba(192, 192, 192, 0.25);
   padding: 1rem 1rem 0px 1rem;
+
   & p {
     margin: 0;
     margin-bottom: 4px;
   }
 }
+
 .message:last-child {
   margin-bottom: 1rem;
 }
+
 .chatDashCard {
   min-height: calc(100vh - 500px) !important;
 }
+
 .profile-pic {
   width: 60px !important;
   height: 60px !important;
@@ -51,6 +55,7 @@
   border-radius: 10px;
   border-bottom-left-radius: 4px;
 }
+
 .other-message::before {
   position: absolute;
   content: "";
@@ -77,14 +82,17 @@
   /* background-color: #f0f0f0;
     padding: 20px; */
 }
+
 .chat-sidebar ul {
   overflow-y: auto;
   margin-bottom: 0;
-  max-height: calc(100vh - 339px);
+  max-height: calc(100vh - 100px);
 }
+
 .chat-sidebar ul {
   padding-left: 0;
 }
+
 .chat-sidebar {
   display: none;
 }
@@ -92,6 +100,7 @@
 .chat-sidebar.open {
   display: block;
 }
+
 .chat-sidebar {
   position: fixed;
   top: 0;
@@ -128,10 +137,12 @@
   background-color: rgba(239, 239, 239, 0.5);
   overflow-y: hidden;
 }
+
 .messages > div > div::-webkit-scrollbar,
 .chat-sidebar ul::-webkit-scrollbar {
   width: 6px;
 }
+
 .messages > div > div::-webkit-scrollbar-track,
 .chat-sidebar ul::-webkit-scrollbar-track {
   background: #ffffff;
@@ -143,13 +154,16 @@
   background-color: #c0c0c0c0;
   border-radius: 10px;
 }
+
 .uploadedFiles::-webkit-scrollbar-thumb {
   background-color: #c0c0c0c0;
   border-radius: 10px;
 }
+
 .uploadedFiles::-webkit-scrollbar {
   height: 5px;
 }
+
 .uploadedFiles::-webkit-scrollbar-track {
   background: #ffeccc;
   border-radius: 10px;
@@ -181,6 +195,7 @@
   font-size: 16px;
   font-weight: 400;
 }
+
 .input-area input:focus {
   border: 2px solid var(--gradient15);
   outline: 0;
@@ -209,9 +224,11 @@
   color: #707070 !important;
   cursor: pointer;
 }
+
 .fileUpload label {
   cursor: pointer;
 }
+
 .uploadedFiles {
   border: 2px solid var(--gradient15) !important;
   border-radius: 5px;
@@ -220,9 +237,11 @@
   margin-top: 20px;
   overflow-x: auto;
 }
+
 .isFileVisible {
   padding: 5px 5px;
 }
+
 .fileVisible {
   width: 80px;
   height: 40px;
@@ -230,11 +249,13 @@
   border: 1px solid black;
   position: relative;
 }
+
 .fileVisible img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .deleteBtn {
   border: 0;
   background: red;
@@ -246,6 +267,7 @@
   z-index: 2;
   font-size: 12px;
 }
+
 .thumbUp {
   font-size: 30px;
 }
@@ -264,24 +286,28 @@
   color: #fff;
   padding: 10px 20px;
 }
+
 .chatHeader p {
   color: #ffffff;
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 0;
 }
+
 .chatHeaderImg {
   width: 60px;
   height: 60px;
   object-fit: cover;
   border-radius: 60px;
 }
+
 .messageImg {
   width: 40px;
   height: 40px;
   object-fit: cover;
   border-radius: 60px;
 }
+
 .searchWrapper1 {
   position: sticky;
   display: inline-block;
@@ -313,6 +339,7 @@
   text-wrap: nowrap;
   font-size: 14px;
 }
+
 .sidebarChat {
   display: flex;
   align-items: center;
@@ -322,6 +349,7 @@
   padding-inline: 24px;
   padding-block: 8px;
 }
+
 .sidebarChat:hover,
 .sidebarChat:active {
   background-color: rgba(246, 246, 246, 0.84);
@@ -350,6 +378,7 @@
   justify-content: center;
   position: relative;
 }
+
 .uploadImg img {
   width: 100%;
   height: 100%;
@@ -357,9 +386,11 @@
   object-position: center;
   border-radius: 10px;
 }
+
 .camInputImg {
   filter: brightness(0);
 }
+
 @media screen and (max-width: 1399.5px) {
   /* .input-area input {
     padding-left: 30px;

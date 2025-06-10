@@ -1,0 +1,20 @@
+.chat-search {
+  position: relative;
+}
+
+.chat-search .inputWrapper {
+  margin-bottom: 0;
+}
+
+.chat-search .form-control {
+  padding: 14px 45px 14px 20px;
+}
+
+.chat-search .searchButton {
+
+  left: auto;
+  right: 0;
+  color: #999;
+  max-width: 50px;
+  padding: 0 35px 0 10px;
+}

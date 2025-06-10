@@ -12,7 +12,20 @@ const CustomInput = (props) => {
   const togglePassType = () => {
     setTypePass(!typePass);
   };
-  const { label, labelclass, required, type, inputclass, wrapperClass, showInline, rightText, rightTextClass, rightIcon, error, ...inputProps } = props;
+  const {
+    label,
+    labelclass,
+    required,
+    type,
+    inputclass,
+    wrapperClass,
+    showInline,
+    rightText,
+    rightTextClass,
+    rightIcon,
+    error,
+    ...inputProps
+  } = props;
   return (
     <>
       <div className={`inputWrapper position-relative ${props.wrapperClass}`}>
@@ -25,8 +38,18 @@ const CustomInput = (props) => {
           )}
           {props?.type === "password" ? (
             <div className="passwordWrapper">
-              <input {...inputProps} type={typePass ? "password" : "text"} className={`${props.inputclass ? props.inputclass : ""}`} />
-              <button type="button" className="eyeButton" onClick={togglePassType}>
+              <input
+                {...inputProps}
+                type={typePass ? "password" : "text"}
+                className={`${
+                  props.inputclass ? props.inputclass : "form-control"
+                }`}
+              />
+              <button
+                type="button"
+                className="eyeButton"
+                onClick={togglePassType}
+              >
                 <FontAwesomeIcon icon={typePass ? faEyeSlash : faEye} />
               </button>
             </div>
@@ -38,15 +61,23 @@ const CustomInput = (props) => {
                 name={props?.name}
                 rows={props?.rows}
                 cols={props?.cols}
-                className={props?.inputclass}
+                className={`${
+                  props.inputclass ? props.inputclass : "form-control"
+                }`}
                 onChange={props?.onChange}
                 value={props?.value}
                 onBlur={props?.onBlur}
               />
             </>
           ) : (
-            <div style={{ position: "relative", width: '100%' }}>
-              <input type={type} {...inputProps} className={`${props.inputclass ? props.inputclass : ""}`} />
+            <div style={{ position: "relative", width: "100%" }}>
+              <input
+                type={type}
+                {...inputProps}
+                className={`${
+                  props.inputclass ? props.inputclass : "form-control"
+                }`}
+              />
               {IconToBeUsed ? (
                 <div className={`right-icon`}>
                   <IconToBeUsed color={props?.iconColor} />

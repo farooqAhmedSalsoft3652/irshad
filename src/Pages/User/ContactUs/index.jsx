@@ -27,7 +27,7 @@ const ContactUs = () => {
             <Col xs={12} xl={9} lg={10} className="mx-auto">
               <div className="form-card px-md-0 px-3">
                 <Row>
-                  <Col xs={12} md={10} xl={8} xxl={6}  className="mx-auto">
+                  <Col xs={12} md={10} xl={8} xxl={6} className="mx-auto">
                     <p className="text-center" style={{ color: "#666764" }}>
                       Please let us know how we can improve your experience
                     </p>
@@ -41,7 +41,15 @@ const ContactUs = () => {
                       validationSchema={userContactValidationSchema}
                       onSubmit={handleSubmit}
                     >
-                      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+                      {({
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        setFieldValue,
+                      }) => (
                         <Form>
                           <Row>
                             <Col xs={12} className="mb-2 mb-lg-2 mb-xxl-2">
@@ -52,7 +60,7 @@ const ContactUs = () => {
                                 required
                                 placeholder="Enter Full Name"
                                 labelclass="mainLabel"
-                                inputclass="mainInput mainInputLogIn"
+                                // inputclass="mainInput mainInputLogIn"
                                 value={values.full_name}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -67,11 +75,13 @@ const ContactUs = () => {
                                 required
                                 placeholder="Enter Email"
                                 labelclass="mainLabel"
-                                inputclass="mainInput mainInputLogIn"
+                                // inputclass="mainInput mainInputLogIn"
                                 value={values.email_address}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                error={touched.email_address && errors.email_address}
+                                error={
+                                  touched.email_address && errors.email_address
+                                }
                               />
                             </Col>
                             <Col xs={12} className="mb-2 mb-lg-2 mb-xxl-2">
@@ -82,7 +92,7 @@ const ContactUs = () => {
                                 required
                                 placeholder="Enter Subject"
                                 labelclass="mainLabel"
-                                inputclass="mainInput mainInputLogIn"
+                                // inputclass="mainInput mainInputLogIn"
                                 value={values.subject}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -98,7 +108,7 @@ const ContactUs = () => {
                                 required
                                 placeholder="Enter Message..."
                                 labelclass="mainLabel"
-                                inputclass="mainInput mainInputLogIn rounded-4"
+                                // inputclass="mainInput mainInputLogIn rounded-4"
                                 value={values.message}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -107,8 +117,8 @@ const ContactUs = () => {
                             </Col>
                             <Col xs={12} className="mt-2 mt-lg-2">
                               <CustomButton
-                                variant="siteBtn primaryBtn py-4"
-                                className="px-5 w-100"
+                                variant="primary"
+                                className="w-100"
                                 text="Submit"
                                 pendingText="Loading..."
                                 // isPending={isSubmitting}

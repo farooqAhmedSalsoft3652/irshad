@@ -70,23 +70,23 @@
 .btn_filter {
   height: 50px;
   width: 50px;
-  border-radius: 8px;
-  background: var(--primaryColor);
-  border-color: var(--primaryColor);
+  border-radius: 50px;
+  /* background: var(--primaryColor); */
+  /* border-color: var(--primaryColor); */
 }
 
 .btn_filter:hover {
-  border-color: #1a8c1a !important;
-  color: #fff !important;
+  border-color: #333;
+  color: #fff;
 
 
 }
 
 .btn_filter:hover,
 .btn_filter.btn.show {
-
-  border-color: #1a8c1a !important;
-  color: #fff !important;
+  border-color: #333;
+  background-color: #333;
+  color: #fff;
 
 }
 
@@ -95,7 +95,7 @@
 }
 
 .btn_filter::after {
-  display: none !important;
+  display: none;
 }
 
 .border-btm {
