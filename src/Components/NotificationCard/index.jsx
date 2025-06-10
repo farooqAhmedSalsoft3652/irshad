@@ -4,10 +4,9 @@ import CustomButton from "../CustomButton";
 import "./style.css";
 import { color } from "framer-motion";
 
-
 const NotificationCard = (props) => {
   const handleClick = () => {
-    props.onClick(props?.id); 
+    props.onClick(props?.id);
   };
 
   return (
@@ -25,13 +24,20 @@ const NotificationCard = (props) => {
                 {props?.date}
                 <span className="dateTimeSeparator">|</span>
               </p>
-              <p className="p-sm l-grey-text mb-0"><FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>{props?.time}</p>
+              <p className="p-sm l-grey-text mb-0">
+                <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
+                {props?.time}
+              </p>
             </div>
           </div>
         </div>
         {props.read === null ? (
           <div className="flex-shrink-0 text-end">
-            <CustomButton onClick={handleClick} variant={`notButton text-decoration-underline fw-medium `} style={{color: "#15355E"}} text={props.read === null ? "Mark as Read" : "Mark as Unread"} />
+            <button
+              onClick={handleClick}
+              className={`mark_all_btn fw-medium`}
+              style={{ color: "#15355E" }}
+            >{props.read === null ? "Mark as Read" : "Mark as Unread"}</button>
           </div>
         ) : null}
       </div>

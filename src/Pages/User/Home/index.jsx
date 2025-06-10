@@ -340,7 +340,7 @@ const Home = () => {
                 <div className="col-12">
                   <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
                     <h2 className="fw-bold mb-0">Our Services</h2>
-                    <Link to={"/services"} className="siteBtn primaryBtn">
+                    <Link to={"/services"} className="btn btn-primary">
                       View All
                     </Link>
                   </div>

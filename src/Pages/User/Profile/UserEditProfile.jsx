@@ -202,7 +202,6 @@ const UserEditProfile = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter First Name"
-                                    inputclass="mainInput"
                                     id="first_name"
                                     value={values.first_name}
                                     onChange={handleChange}
@@ -221,7 +220,6 @@ const UserEditProfile = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Last Name"
-                                    inputclass="mainInput"
                                     id="last_name"
                                     value={values.last_name}
                                     onChange={handleChange}
@@ -249,7 +247,7 @@ const UserEditProfile = ({ showModal }) => {
                                     onBlur={() =>
                                       setFieldTouched("phone", true)
                                     }
-                                    className="mainInput"
+                                    className="form-control"
                                   />
                                   {touched.phone && errors.phone ? (
                                     <div className="text-danger">
@@ -265,7 +263,6 @@ const UserEditProfile = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Last Name"
-                                    inputclass="mainInput"
                                     id="email"
                                     value={values.email}
                                     onChange={handleChange}
@@ -275,7 +272,6 @@ const UserEditProfile = ({ showModal }) => {
                                 </Col>
                                 <Col xs={12} lg={6} xxl={6} className="mb-3">
                                   <Select
-                                    className="mainInput selectInput w-100"
                                     label="Language"
                                     labelclass="mainLabel"
                                     required
@@ -296,7 +292,6 @@ const UserEditProfile = ({ showModal }) => {
                                 </Col>
                                 <Col xs={12} lg={6} xxl={6} className="mb-3">
                                   <Select
-                                    className="mainInput selectInput w-100"
                                     label="Gender"
                                     labelclass="mainLabel"
                                     required
@@ -323,7 +318,6 @@ const UserEditProfile = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Bio"
-                                    inputclass="mainInput"
                                     id="nationality"
                                     value={values.nationality}
                                     onChange={handleChange}
@@ -343,9 +337,8 @@ const UserEditProfile = ({ showModal }) => {
                                     type="textarea"
                                     required
                                     placeholder="Enter About Yourself..."
-                                    inputclass="mainInput rounded-4"
                                     id="bio"
-                                    rows="7"
+                                    rows="6"
                                     value={values.bio}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
@@ -398,7 +391,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Institution Name"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.educationDetails[index]
                                                     .institution_name
@@ -429,7 +421,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Degree Title"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.educationDetails[index]
                                                     .degree_title
@@ -460,7 +451,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Date"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.educationDetails[index]
                                                     .edu_details_from
@@ -491,7 +481,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Date"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.educationDetails[index]
                                                     .edu_details_to
@@ -581,7 +570,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Organization Name"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.workExperience[index]
                                                     .organization_name
@@ -611,7 +599,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Designation"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.workExperience[index]
                                                     .designation
@@ -641,7 +628,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Date"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.workExperience[index]
                                                     .wokr_exp_from
@@ -671,7 +657,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 required
                                                 placeholder="Enter Date"
                                                 labelclass="mainLabel"
-                                                inputclass="mainInput mainInputLogIn"
                                                 value={
                                                   values.workExperience[index]
                                                     .wokr_exp_to
@@ -775,7 +760,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 type="text"
                                                 required
                                                 placeholder="Enter Institution Name"
-                                                inputclass="mainInput"
                                                 id={`certificates.${index}.institution_name`}
                                                 value={
                                                   certificate.institution_name
@@ -807,7 +791,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 type="text"
                                                 required
                                                 placeholder="Enter Certificate Title"
-                                                inputclass="mainInput"
                                                 id={`certificates.${index}.certificate_title`}
                                                 value={
                                                   certificate.certificate_title
@@ -838,7 +821,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 type="date"
                                                 required
                                                 placeholder="Enter Certificate Title"
-                                                inputclass="mainInput"
                                                 id={`certificates.${index}.certificate_from`}
                                                 value={
                                                   certificate.certificate_from
@@ -869,7 +851,6 @@ const UserEditProfile = ({ showModal }) => {
                                                 type="date"
                                                 required
                                                 placeholder="Enter Certificate Title"
-                                                inputclass="mainInput"
                                                 id={`certificates.${index}.certificate_to`}
                                                 value={
                                                   certificate.certificate_to

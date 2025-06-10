@@ -99,7 +99,7 @@ const ServicesDetails = ({ showModal }) => {
                 </div>
               </div>
               <div className="mb-4">
-                <h2 className="fw-bold mb-0">Quick Service</h2>
+                <h2 className="fw-bold mb-2">Quick Service</h2>
                 <div className="d-flex gap-sm-5 gap-4 align-items-center flex-wrap">
                   <div>
                     <h6 className="fw-medium mb-0">Chat</h6>
@@ -116,9 +116,9 @@ const ServicesDetails = ({ showModal }) => {
                 </div>
               </div>
               <div className="d-flex flex-wrap gap-2">
-                <CustomButton className="siteBtn primaryBtn" text="Manage Slots" />
-                <CustomButton className="siteBtn secondaryBtn" text="Remove" onClick={RemoveModal} />
-                <Link className="siteBtn secondaryBtn">Edit</Link>
+                <CustomButton variant="primary min-width-180" text="Manage Slots" />
+                <CustomButton variant="secondary min-width-180" text="Remove" onClick={RemoveModal} />
+                <Link className="btn btn-secondary min-width-180">Edit</Link>
               </div>
             </Col>
           </Row>

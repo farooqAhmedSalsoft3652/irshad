@@ -239,7 +239,6 @@ const NewServicesAdd = ({ showModal }) => {
                             type="text"
                             required
                             placeholder="Enter Service Name"
-                            inputclass="mainInput"
                             id="service_name"
                             name="service_name"
                             value={values.service_name}
@@ -259,7 +258,6 @@ const NewServicesAdd = ({ showModal }) => {
                               type="number"
                               required
                               placeholder="Enter Online Charges"
-                              inputclass="mainInput"
                               id="online_charges"
                               name="online_charges"
                               value={values.online_charges}
@@ -282,7 +280,6 @@ const NewServicesAdd = ({ showModal }) => {
                               type="number"
                               required
                               placeholder="Enter Onsite Charges"
-                              inputclass="mainInput"
                               id="onsite_charges"
                               name="onsite_charges"
                               value={values.onsite_charges}
@@ -303,7 +300,6 @@ const NewServicesAdd = ({ showModal }) => {
                             type="textarea"
                             required
                             placeholder="Enter Descriptions"
-                            inputclass="mainInput"
                             id="descriptions"
                             name="descriptions"
                             rows="4"
@@ -348,7 +344,6 @@ const NewServicesAdd = ({ showModal }) => {
                               type="text"
                               required
                               placeholder="Enter Maplink"
-                              inputclass="mainInput"
                               id="maplink"
                               name="maplink"
                               value={values.maplink}
@@ -424,7 +419,6 @@ const NewServicesAdd = ({ showModal }) => {
                                     >
                                       <CustomInput
                                         name={`${day}Time.${index}.startTime`}
-                                        inputclass="mainInput"
                                         type="time"
                                         disabled={isDisabled[day]}
                                         value={
@@ -442,7 +436,6 @@ const NewServicesAdd = ({ showModal }) => {
 
                                       <CustomInput
                                         name={`${day}Time.${index}.endTime`}
-                                        inputclass="mainInput"
                                         type="time"
                                         disabled={isDisabled[day]}
                                         value={
@@ -491,7 +484,7 @@ const NewServicesAdd = ({ showModal }) => {
                         {/* Submit Button */}
                         <Col xs={12} className="mt-4">
                           <CustomButton
-                            variant="btn btn-primary min-width-auto"
+                            variant="primary"
                             className="px-5"
                             text="Save"
                             pendingText="Submitting..."

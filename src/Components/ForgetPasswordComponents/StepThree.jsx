@@ -63,7 +63,6 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
                 required
                 placeholder="Enter New Password"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -77,7 +76,6 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
                 required
                 placeholder="Enter Confirm Password"
                 labelclass="mainLabel"
-                inputclass="mainInput mainInputLogIn"
                 value={values.password_confirmation}
                 onChange={handleChange}
                 onBlur={handleBlur}

@@ -106,7 +106,7 @@ const ChatReportDetails = () => {
                 </div>
               </Col>
               <Col xs={12}>
-                <Link to={`/appointments/${chatReportData?.id}`} className="siteBtn primaryBtn">View Booking</Link>
+                <Link to={`/appointments/${chatReportData?.id}`} className="btn btn-primary">View Booking</Link>
               </Col>
             </Row>
             <Row className="mt-md-4 mt-3">

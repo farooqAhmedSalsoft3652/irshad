@@ -85,7 +85,6 @@ const BankDetailsUserAdd = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Name"
-                                    // inputclass="mainInput"
                                     id="name"
                                     value={values.name}
                                     onChange={handleChange}
@@ -100,7 +99,6 @@ const BankDetailsUserAdd = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Card Number"
-                                    inputclass="mainInput"
                                     id="cardNumber"
                                     value={values.cardNumber}
                                     onChange={handleChange}
@@ -117,7 +115,6 @@ const BankDetailsUserAdd = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter CVC Number"
-                                    inputclass="mainInput"
                                     id="cvcNumber"
                                     value={values.cvcNumber}
                                     onChange={handleChange}
@@ -134,7 +131,6 @@ const BankDetailsUserAdd = ({ showModal }) => {
                                     type="date"
                                     required
                                     placeholder="Enter Validity Date"
-                                    inputclass="mainInput"
                                     id="validityDate"
                                     value={values.validityDate}
                                     onChange={handleChange}
@@ -208,7 +204,6 @@ const BankDetailsUserAdd = ({ showModal }) => {
                       type="text"
                       required
                       placeholder="Enter OTP"
-                      inputclass="mainInput"
                       id="otp"
                       value={values.otp}
                       onChange={handleChange}
@@ -218,7 +213,7 @@ const BankDetailsUserAdd = ({ showModal }) => {
                   </div>
                   <div className="my-4">
                     <CustomButton
-                      variant="siteBtn primaryBtn"
+                      variant="primary"
                       className="px-5"
                       text="Submit"
                       type="submit"

@@ -71,7 +71,6 @@ const AddBankDetail = ({ showModal }) => {
                                   type="text"
                                   required
                                   placeholder="Enter Account holder Name"
-                                  inputclass="mainInput"
                                   id="accountHolderName"
                                   value={values.accountHolderName}
                                   onChange={handleChange}
