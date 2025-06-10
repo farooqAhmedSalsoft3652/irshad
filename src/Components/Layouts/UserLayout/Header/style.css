@@ -223,13 +223,13 @@ Menu Wrapper
   margin-right: 0px;
 }
 
-#header .navbar-right li.nav-item:first-child a {
+/* #header .navbar-right li.nav-item:first-child a {
   color: #1A8C1A;
 }
 
 #header .navbar-right li.nav-item:first-child a:hover {
   color: #000;
-}
+} */
 
 #header .navbar-right li.nav-item a {
   padding: 13px 15px;
@@ -238,7 +238,7 @@ Menu Wrapper
 }
 
 #header .navbar-right li.nav-item .btn {
-  padding: 12px 50px;
+  padding: 12px 40px;
 }
 
 

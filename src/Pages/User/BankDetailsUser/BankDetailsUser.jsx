@@ -40,7 +40,9 @@ const BankDetailsUser = () => {
                 <div className="bankCard">
                   <div className="d-flex flex-column justify-content-center">
                     <img src={BankIcon} alt="bankicon" className="img-fluid" />
-                    <p className="mb-0 text-decoration-underline  mt-2">Add Bank Details</p>
+                    <p className="mb-0 text-decoration-underline  mt-2">
+                      Add Bank Details
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -56,8 +58,15 @@ const BankDetailsUser = () => {
                       { label: "Validity Date", value: bankData?.validityDate },
                     ].map(({ label, value }) => (
                       <div className={`col-md-4 col-sm-6 mb-sm-4`} key={label}>
-                        <h5 className="mb-0 fw-medium text-capitalize mb-2">{label}:</h5>
-                        <p className="text-capitalize" style={{color: "#727A84"}}>{value}</p>
+                        <h5 className="mb-0 fw-medium text-capitalize mb-2">
+                          {label}:
+                        </h5>
+                        <p
+                          className="text-capitalize"
+                          style={{ color: "#727A84" }}
+                        >
+                          {value}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -67,7 +76,10 @@ const BankDetailsUser = () => {
                         {/* <Link to={`/bank-details-add`} className="siteBtn primaryBtn text-decoration-none px-5">
                           Add
                         </Link> */}
-                        <Link to={`/bank-details-edit`} className="siteBtn secondaryBtn text-decoration-none px-5">
+                        <Link
+                          to={`/bank-details-edit`}
+                          className="btn btn-primary px-5"
+                        >
                           Edit Bank Detail
                         </Link>
                       </div>

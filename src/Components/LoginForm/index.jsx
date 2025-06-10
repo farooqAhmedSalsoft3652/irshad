@@ -12,7 +12,12 @@ import Toast, { showToast } from "../Toast/index.jsx";
 import "./style.css";
 import { Form } from "react-bootstrap";
 
-const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) => {
+const LoginForm = ({
+  actor,
+  apiEndpoint,
+  validationSchema,
+  additionalField,
+}) => {
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
   const login = useLogin();
@@ -29,9 +34,9 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
     //     ? (currentUser = loginCredentials)
     //     : (currentUser = false);
 
-        const currentUser = loginCredentials.find(
-          (user) => user.email === values.email && user.password === values.password
-        );
+    const currentUser = loginCredentials.find(
+      (user) => user.email === values.email && user.password === values.password
+    );
 
     // let response = await login(apiEndpoint, values); // open this whn using backend api
     if (currentUser && currentUser.status) {
@@ -40,7 +45,7 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
       dispatch(setRoles(currentUser.role));
       dispatch(setData(currentUser));
       showToast(currentUser.message, "success");
-      
+
       setTimeout(() => {
         if (currentUser?.role === "admin") {
           navigate(`/admin/dashboard`);
@@ -74,7 +79,14 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
         <form className="mt-3" onSubmit={handleSubmit}>
           <Toast />
           <CustomInput
@@ -103,22 +115,28 @@ const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) =>
           />
           <div className="d-flex align-items-center justify-content-between mt-1 flex-wrap gap-sm-0 gap-2">
             <Form.Check
-              type={'checkbox'}
+              type={"checkbox"}
               name="rememberMe"
               id="rememberMe"
               label={`Remember Me`}
             />
-            <Link to={`${actor ? "/"+actor : "" }/forget-password`} className="fw-light text-decoration-underline blueColor">
-              <button type="button" className="notButton underlineOnHover blueColor text-decoration-underline">
+            <Link
+              to={`${actor ? "/" + actor : ""}/forget-password`}
+              className="fw-light text-decoration-underline blueColor"
+            >
+              <button
+                type="button"
+                className="notButton underlineOnHover blueColor text-decoration-underline"
+              >
                 Forgot Password?
-                </button>
+              </button>
             </Link>
           </div>
 
           <div className="mt-5 text-center">
             <CustomButton
-              variant="siteBtn primaryBtn"
-              className="py-sm-4 w-100"
+              variant="primary"
+              className="w-100"
               text="Log In"
               pendingText="Loading..."
               isPending={isSubmitting}

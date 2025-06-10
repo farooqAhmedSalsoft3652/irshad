@@ -1,4 +1,9 @@
-import { faAngleLeft, faAngleRight, faBars, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleLeft,
+  faAngleRight,
+  faBars,
+  faChevronDown,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { Button, Container, Dropdown, Offcanvas } from "react-bootstrap";
@@ -119,27 +124,52 @@ export const Header = () => {
 
   return (
     <>
-      <header id="header" className={`w-100 z-inxed-2 w-100 user-header ${location.pathname == "/" && "home_header"}`}>
+      <header
+        id="header"
+        className={`w-100 z-inxed-2 w-100 user-header ${
+          location.pathname == "/" && "home_header"
+        }`}
+      >
         <Navbar bg="light" variant="light" className={``}>
           <Container fluid className="">
             <Navbar.Brand as={Link} to={"/"} className="me-3">
               <img src={images.Logo} alt="" />
             </Navbar.Brand>
-            <Offcanvas className="main-nav-wrap flex-grow-1 me-0 me-lg-3" show={show} onHide={handleClose} responsive="lg">
+            <Offcanvas
+              className="main-nav-wrap flex-grow-1 me-0 me-lg-3"
+              show={show}
+              onHide={handleClose}
+              responsive="lg"
+            >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title></Offcanvas.Title>
               </Offcanvas.Header>
-              <Offcanvas.Body id="basic-navbar-nav" className="justify-content-between">
+              <Offcanvas.Body
+                id="basic-navbar-nav"
+                className="justify-content-between"
+              >
                 {token ? (
                   <div
-                    className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start ${token ? "justify-content-lg-center" : "justify-content-lg-end"}`}
+                    className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start ${
+                      token
+                        ? "justify-content-lg-center"
+                        : "justify-content-lg-end"
+                    }`}
                   >
                     {showLeftButton && (
-                      <button className="scroll-button d-lg-inline-block d-none left" onClick={scrollLeft}>
+                      <button
+                        className="scroll-button d-lg-inline-block d-none left"
+                        onClick={scrollLeft}
+                      >
                         <FontAwesomeIcon icon={faAngleLeft} />
                       </button>
                     )}
-                    <Nav className="mx-0 scrollable-nav" ref={navbarRef} onScroll={checkScrollButtons} onMouseLeave={hideDropdown}>
+                    <Nav
+                      className="mx-0 scrollable-nav"
+                      ref={navbarRef}
+                      onScroll={checkScrollButtons}
+                      onMouseLeave={hideDropdown}
+                    >
                       {currentLinks.map((element, index) => (
                         <Nav.Item as="li" key={index}>
                           <NavLink className="nav-link" to={element.path}>
@@ -149,27 +179,48 @@ export const Header = () => {
                       ))}
                     </Nav>
                     {showRightButton && (
-                      <button className="scroll-button d-lg-inline-block d-none right" onClick={scrollRight}>
+                      <button
+                        className="scroll-button d-lg-inline-block d-none right"
+                        onClick={scrollRight}
+                      >
                         <FontAwesomeIcon icon={faAngleRight} />
                       </button>
                     )}
                   </div>
                 ) : (
                   // Guest Navigation
-                  <div className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start justify-content-lg-end`}>
+                  <div
+                    className={`d-flex scroll-nav-wrapper flex-grow-1 justify-content-start justify-content-lg-end`}
+                  >
                     {showLeftButton && (
-                      <button className="scroll-button d-lg-inline-block d-none left" onClick={scrollLeft}>
+                      <button
+                        className="scroll-button d-lg-inline-block d-none left"
+                        onClick={scrollLeft}
+                      >
                         <FontAwesomeIcon icon={faAngleLeft} />
                       </button>
                     )}
-                    <Nav className="mx-0 scrollable-nav" ref={navbarRef} onScroll={checkScrollButtons} onMouseLeave={hideDropdown}>
+                    <Nav
+                      className="mx-0 scrollable-nav"
+                      ref={navbarRef}
+                      onScroll={checkScrollButtons}
+                      onMouseLeave={hideDropdown}
+                    >
                       {currentLinks.map((element, index) => {
-                        const isAccessible = userRole || pageAcces.includes(element.path.replace("/", "").toLowerCase());
+                        const isAccessible =
+                          userRole ||
+                          pageAcces.includes(
+                            element.path.replace("/", "").toLowerCase()
+                          );
 
                         return (
                           <Nav.Item as="li" key={index}>
                             <NavLink
-                              className={({ isActive }) => `nav-link ${isAccessible && isActive ? "active" : ""}`}
+                              className={({ isActive }) =>
+                                `nav-link ${
+                                  isAccessible && isActive ? "active" : ""
+                                }`
+                              }
                               to={isAccessible ? element.path : "#"}
                             >
                               {element.label}
@@ -179,7 +230,10 @@ export const Header = () => {
                       })}
                     </Nav>
                     {showRightButton && (
-                      <button className="scroll-button d-lg-inline-block d-none right" onClick={scrollRight}>
+                      <button
+                        className="scroll-button d-lg-inline-block d-none right"
+                        onClick={scrollRight}
+                      >
                         <FontAwesomeIcon icon={faAngleRight} />
                       </button>
                     )}
@@ -187,7 +241,10 @@ export const Header = () => {
                 )}
 
                 {token ? (
-                  <Nav as="ul" className="gap-3 gap-xxl-4 navbar-login align-items-center d-sm-none ">
+                  <Nav
+                    as="ul"
+                    className="gap-3 gap-xxl-4 navbar-login align-items-center d-sm-none "
+                  >
                     <>
                       <Nav.Item as="li">
                         <Link to="/chat">
@@ -195,19 +252,38 @@ export const Header = () => {
                         </Link>
                       </Nav.Item>
                       <Nav.Item as="li">
-                        <HeaderNotification viewAllLink="/notifications" notificationData={notificationData} getNotification={getNotification} />
+                        <HeaderNotification
+                          viewAllLink="/notifications"
+                          notificationData={notificationData}
+                          getNotification={getNotification}
+                        />
                       </Nav.Item>
                       <Nav.Item as="li">
                         <Dropdown className="dropdown-user">
-                          <Dropdown.Toggle className="after-none" variant="" id="dropdown-basic">
+                          <Dropdown.Toggle
+                            className="after-none"
+                            variant=""
+                            id="dropdown-basic"
+                          >
                             {user && (
-                              <Dropdown.Item as="div" className="text-center login-user">
+                              <Dropdown.Item
+                                as="div"
+                                className="text-center login-user"
+                              >
                                 <div className="d-flex align-items-center gap-2">
                                   <span className="avatar avatar-online">
-                                    <img src={profilePic ?? images.userImage} alt="avatar" />
+                                    <img
+                                      src={profilePic ?? images.userImage}
+                                      alt="avatar"
+                                    />
                                   </span>
-                                  <span className="user-name fw-semibold">{fullName(user)}</span>
-                                  <FontAwesomeIcon icon={faChevronDown} color="#333" />
+                                  <span className="user-name fw-semibold">
+                                    {fullName(user)}
+                                  </span>
+                                  <FontAwesomeIcon
+                                    icon={faChevronDown}
+                                    color="#333"
+                                  />
                                 </div>
                               </Dropdown.Item>
                             )}
@@ -228,7 +304,10 @@ export const Header = () => {
                             <Dropdown.Item as={Link} to="/blocked-users">
                               Blocked User
                             </Dropdown.Item>
-                            <Dropdown.Item className="logout" onClick={() => setShowModal(true)}>
+                            <Dropdown.Item
+                              className="logout"
+                              onClick={() => setShowModal(true)}
+                            >
                               Logout
                             </Dropdown.Item>
                           </Dropdown.Menu>
@@ -239,15 +318,17 @@ export const Header = () => {
                 ) : (
                   <Nav
                     as="ul"
-                    className={`navbar-right flex-grow-1 flex-lg-grow-0 ${token ? "justify-content-center" : "justify-content-end"}  gap-2 d-sm-none`}
+                    className={`navbar-right flex-grow-1 flex-lg-grow-0 ${
+                      token ? "justify-content-center" : "justify-content-end"
+                    }  gap-2 d-sm-none`}
                   >
                     <Nav.Item as="li">
-                      <Link to={"/login"} className="secondaryBtn siteBtn">
+                      <Link to={"/login"} className="btn btn-secondary">
                         Login
                       </Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                      <NavLink className="primaryBtn siteBtn" to={"/signup"}>
+                      <NavLink className="btn btn-primary" to={"/signup"}>
                         Sign up
                       </NavLink>
                     </Nav.Item>
@@ -255,9 +336,15 @@ export const Header = () => {
                 )}
               </Offcanvas.Body>
             </Offcanvas>
-            <Navbar.Collapse id="" className="flex-grow-0 h-100 justify-content-end">
+            <Navbar.Collapse
+              id=""
+              className="flex-grow-0 h-100 justify-content-end"
+            >
               {token ? (
-                <Nav as="ul" className="gap-3 gap-xxl-4 navbar-login align-items-center d-sm-flex d-none">
+                <Nav
+                  as="ul"
+                  className="gap-3 gap-xxl-4 navbar-login align-items-center d-sm-flex d-none"
+                >
                   <>
                     <Nav.Item as="li">
                       <Link to="/chat">
@@ -265,19 +352,38 @@ export const Header = () => {
                       </Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                      <HeaderNotification viewAllLink="/notifications" notificationData={notificationData} getNotification={getNotification} />
+                      <HeaderNotification
+                        viewAllLink="/notifications"
+                        notificationData={notificationData}
+                        getNotification={getNotification}
+                      />
                     </Nav.Item>
                     <Nav.Item as="li">
                       <Dropdown className="dropdown-user">
-                        <Dropdown.Toggle className="after-none" variant="" id="dropdown-basic">
+                        <Dropdown.Toggle
+                          className="after-none"
+                          variant=""
+                          id="dropdown-basic"
+                        >
                           {user && (
-                            <Dropdown.Item as="div" className="text-center login-user">
+                            <Dropdown.Item
+                              as="div"
+                              className="text-center login-user"
+                            >
                               <div className="d-flex align-items-center gap-2">
                                 <span className="avatar avatar-online">
-                                  <img src={profilePic ?? images.userImage} alt="avatar" />
+                                  <img
+                                    src={profilePic ?? images.userImage}
+                                    alt="avatar"
+                                  />
                                 </span>
-                                <span className="user-name fw-semibold">{fullName(user)}</span>
-                                <FontAwesomeIcon icon={faChevronDown} color="#333" />
+                                <span className="user-name fw-semibold">
+                                  {fullName(user)}
+                                </span>
+                                <FontAwesomeIcon
+                                  icon={faChevronDown}
+                                  color="#333"
+                                />
                               </div>
                             </Dropdown.Item>
                           )}
@@ -313,7 +419,10 @@ export const Header = () => {
                             </span>
                             <span>Blocked Users</span>
                           </Dropdown.Item>
-                          <Dropdown.Item className="logout" onClick={() => setShowModal(true)}>
+                          <Dropdown.Item
+                            className="logout"
+                            onClick={() => setShowModal(true)}
+                          >
                             <span>
                               <images.Logout />
                             </span>
@@ -325,21 +434,28 @@ export const Header = () => {
                   </>
                 </Nav>
               ) : (
-                <Nav as="ul" className="navbar-right flex-grow-1 flex-lg-grow-0 justify-content-end gap-2 align-items-center d-sm-flex d-none">
+                <Nav
+                  as="ul"
+                  className="navbar-right flex-grow-1 flex-lg-grow-0 justify-content-end gap-2 align-items-center d-sm-flex d-none"
+                >
                   <Nav.Item as="li">
-                    <Link to={"/login"} className="secondaryBtn siteBtn">
+                    <Link to={"/login"} className="btn btn-secondary">
                       Login
                     </Link>
                   </Nav.Item>
                   <Nav.Item as="li">
-                    <NavLink className="primaryBtn siteBtn" to={"/signup"}>
+                    <NavLink className="btn btn-primary" to={"/signup"}>
                       Sign up
                     </NavLink>
                   </Nav.Item>
                 </Nav>
               )}
 
-              <Button variant="primary" className="menu-toggle mobile-nav d-lg-none ms-3" onClick={handleShow}>
+              <Button
+                variant="primary"
+                className="menu-toggle mobile-nav d-lg-none ms-3"
+                onClick={handleShow}
+              >
                 <FontAwesomeIcon icon={faBars} />
               </Button>
             </Navbar.Collapse>

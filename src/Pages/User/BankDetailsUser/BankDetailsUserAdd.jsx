@@ -147,8 +147,8 @@ const BankDetailsUserAdd = ({ showModal }) => {
                           <Row>
                             <Col xs={12}>
                               <CustomButton
-                                variant="siteBtn primaryBtn"
-                                className="px-5"
+                                variant="primary"
+                                className="min-width-150"
                                 text="Add"
                                 type="submit"
                               />

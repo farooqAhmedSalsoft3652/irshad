@@ -8,9 +8,16 @@ import CustomButton from "../../../Components/CustomButton";
 import CustomInput from "../../../Components/CustomInput";
 import CustomModal from "../../../Components/CustomModal";
 import { accountInfo } from "../../../Config/data";
-import { addOtpSchema, bankDetailsValidationSchema } from "../../../Config/Validations";
+import {
+  addOtpSchema,
+  bankDetailsValidationSchema,
+} from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
-import { dateFormat, isNullOrEmpty, usePageTitleUser } from "../../../Utils/helper";
+import {
+  dateFormat,
+  isNullOrEmpty,
+  usePageTitleUser,
+} from "../../../Utils/helper";
 
 const BankDetailsUserEdit = ({ showModal }) => {
   usePageTitleUser("Bank Details");
@@ -35,7 +42,12 @@ const BankDetailsUserEdit = ({ showModal }) => {
   const handleOtpSubmit = async (values) => {
     // console.log("OTP Submitted:", values.otp);
     setOtpModalShow(false);
-    showModal("", `Card Details Has Been Updated Successfully!`, () => navigate("/bank-details"), true);
+    showModal(
+      "",
+      `Card Details Has Been Updated Successfully!`,
+      () => navigate("/bank-details"),
+      true
+    );
   };
   if (isNullOrEmpty(bankData)) {
     return (
@@ -53,7 +65,9 @@ const BankDetailsUserEdit = ({ showModal }) => {
               <Col xs={12}>
                 <div className="d-flex align-items-center">
                   <BackButton2 />
-                  <h2 className="page-title fw-bold mx-auto mb-0">Edit Bank Details</h2>
+                  <h2 className="page-title fw-bold mx-auto mb-0">
+                    Edit Bank Details
+                  </h2>
                 </div>
               </Col>
             </Row>
@@ -66,12 +80,23 @@ const BankDetailsUserEdit = ({ showModal }) => {
                         name: bankData?.name || "",
                         cardNumber: bankData?.cardNumber || "",
                         cvcNumber: bankData?.cvcNumber || "",
-                        validityDate: dateFormat(bankData?.validityDate || "", "YYYY-MM-DD"),
+                        validityDate: dateFormat(
+                          bankData?.validityDate || "",
+                          "YYYY-MM-DD"
+                        ),
                       }}
                       validationSchema={bankDetailsValidationSchema}
                       onSubmit={handleFormSubmit}
                     >
-                      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+                      {({
+                        values,
+                        errors,
+                        touched,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        setFieldValue,
+                      }) => (
                         <Form onSubmit={handleSubmit}>
                           <Row>
                             <Col xs={12}>
@@ -101,7 +126,9 @@ const BankDetailsUserEdit = ({ showModal }) => {
                                     value={values.cardNumber}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    error={touched.cardNumber && errors.cardNumber}
+                                    error={
+                                      touched.cardNumber && errors.cardNumber
+                                    }
                                   />
                                 </Col>
                                 <Col xs={12} lg={6} xxl={6} className="mb-3">
@@ -115,7 +142,9 @@ const BankDetailsUserEdit = ({ showModal }) => {
                                     value={values.cvcNumber}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    error={touched.cvcNumber && errors.cvcNumber}
+                                    error={
+                                      touched.cvcNumber && errors.cvcNumber
+                                    }
                                   />
                                 </Col>
                                 <Col xs={12} lg={6} xxl={6} className="mb-3">
@@ -129,7 +158,10 @@ const BankDetailsUserEdit = ({ showModal }) => {
                                     value={values.validityDate}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    error={touched.validityDate && errors.validityDate}
+                                    error={
+                                      touched.validityDate &&
+                                      errors.validityDate
+                                    }
                                   />
                                 </Col>
                               </Row>
@@ -137,7 +169,12 @@ const BankDetailsUserEdit = ({ showModal }) => {
                           </Row>
                           <Row>
                             <Col xs={12}>
-                              <CustomButton variant="primary" className="px-5" text="Update" type="submit" />
+                              <CustomButton
+                                variant="primary"
+                                className="px-5"
+                                text="Update"
+                                type="submit"
+                              />
                             </Col>
                           </Row>
                         </Form>
@@ -161,11 +198,26 @@ const BankDetailsUserEdit = ({ showModal }) => {
         background="gray"
       >
         <div className="text-center px-sm-5">
-          <Formik initialValues={{ otp: "" }} validationSchema={addOtpSchema} onSubmit={handleOtpSubmit}>
-            {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+          <Formik
+            initialValues={{ otp: "" }}
+            validationSchema={addOtpSchema}
+            onSubmit={handleOtpSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+            }) => (
               <form onSubmit={handleSubmit}>
                 <div className="otp_wrapper">
-                  <img src={images.Question} alt="Question" className="modalImage" />
+                  <img
+                    src={images.Question}
+                    alt="Question"
+                    className="modalImage"
+                  />
                   <h2 className="modalHeading text-start mb-0">
                     OTP<span className="text-danger">*</span>
                   </h2>
