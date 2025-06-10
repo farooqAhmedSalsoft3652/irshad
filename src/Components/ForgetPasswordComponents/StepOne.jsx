@@ -33,35 +33,47 @@ const StepOne = ({ apiEndpoint, navigateTo }) => {
   };
 
   return (
-      <Formik initialValues={{ email: "" }} validationSchema={forgotEmail} onSubmit={handleSubmit}>
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-          <form onSubmit={handleSubmit} className="mt-4">
-            <Toast />
-            <CustomInput
-              label="Email Address"
-              id="email"
-              type="email"
-              placeholder="Enter Your Email Address"
-              labelclass="mainLabel"
-              // inputclass="mainInput mainInputLogIn"
-              value={values.email}
-              onChange={handleChange}
-              required
-              onBlur={handleBlur}
-              error={touched.email && errors.email}
+    <Formik
+      initialValues={{ email: "" }}
+      validationSchema={forgotEmail}
+      onSubmit={handleSubmit}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
+        <form onSubmit={handleSubmit} className="mt-4">
+          <Toast />
+          <CustomInput
+            label="Email Address"
+            id="email"
+            type="email"
+            placeholder="Enter Your Email Address"
+            labelclass="mainLabel"
+            // inputclass="mainInput mainInputLogIn"
+            value={values.email}
+            onChange={handleChange}
+            required
+            onBlur={handleBlur}
+            error={touched.email && errors.email}
+          />
+          <div className="mt-4 text-center">
+            <CustomButton
+              type="submit"
+              variant="primary"
+              className="w-100"
+              text="Continue"
+              isPending={isSubmitting}
+              pendingText="Loading..."
             />
-            <div className="mt-4 text-center">
-              <CustomButton
-                type="submit"
-                className="siteBtn primaryBtn w-100 py-4"
-                text="Continue"
-                isPending={isSubmitting}
-                pendingText="Loading..."
-              />
-            </div>
-          </form>
-        )}
-      </Formik>
+          </div>
+        </form>
+      )}
+    </Formik>
   );
 };
 

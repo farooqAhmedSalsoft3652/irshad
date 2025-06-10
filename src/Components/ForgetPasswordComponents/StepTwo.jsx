@@ -54,39 +54,55 @@ const StepTwo = ({ apiEndpoint, resendEndpoint, navigateTo }) => {
   };
 
   return (
-      <Formik initialValues={{ code: "" }} validationSchema={forgotCode} onSubmit={handleSubmit}>
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-          <form onSubmit={handleSubmit} className="mt-4">
-            <Toast />
-            <CustomInput
-              label="Verification Code"
-              id="code"
-              placeholder="Enter Verification Code"
-              labelclass="mainLabel"
-              value={values.code}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              required
-              error={touched.code && errors.code}
+    <Formik
+      initialValues={{ code: "" }}
+      validationSchema={forgotCode}
+      onSubmit={handleSubmit}
+    >
+      {({
+        values,
+        errors,
+        touched,
+        handleChange,
+        handleBlur,
+        handleSubmit,
+      }) => (
+        <form onSubmit={handleSubmit} className="mt-4">
+          <Toast />
+          <CustomInput
+            label="Verification Code"
+            id="code"
+            placeholder="Enter Verification Code"
+            labelclass="mainLabel"
+            value={values.code}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            required
+            error={touched.code && errors.code}
+          />
+          <div className="d-flex align-items-baseline justify-content-between mt-1">
+            <p className="text-dark">00:58</p>
+            <button
+              type="button"
+              className="underlineOnHover notButton blueColor"
+              onClick={resendCode}
+            >
+              {load ? "Sending..." : "Resend Code"}
+            </button>
+          </div>
+          <div className="mt-4 text-center">
+            <CustomButton
+              type="submit"
+              variant="primary"
+              className="w-100"
+              text="Continue"
+              isPending={isSubmitting}
+              pendingText="Loading..."
             />
-            <div className="d-flex align-items-baseline justify-content-between mt-1">
-              <p className="text-dark">00:58</p>
-              <button type="button" className="underlineOnHover notButton blueColor" onClick={resendCode}>
-                {load ? "Sending..." : "Resend Code"}
-              </button>
-            </div>
-            <div className="mt-4 text-center">
-              <CustomButton
-                type="submit"
-                className="siteBtn primaryBtn py-4 w-100"
-                text="Continue"
-                isPending={isSubmitting}
-                pendingText="Loading..."
-              />
-            </div>
-          </form>
-        )}
-      </Formik>
+          </div>
+        </form>
+      )}
+    </Formik>
   );
 };
 

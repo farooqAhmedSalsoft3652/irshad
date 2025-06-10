@@ -40,60 +40,77 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
   };
 
   const PageChange = () => {
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
     <>
-        <Formik
-          initialValues={{
-            password: "",
-            password_confirmation: "",
-          }}
-          validationSchema={forgotPassword}
-          onSubmit={handleSubmit}
-        >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-            <form onSubmit={handleSubmit} className="mt-4">
-              <Toast />
-              <CustomInput
-                label="New Password"
-                id="password"
-                type="password"
-                required
-                placeholder="Enter New Password"
-                labelclass="mainLabel"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.password && errors.password}
-              />
+      <Formik
+        initialValues={{
+          password: "",
+          password_confirmation: "",
+        }}
+        validationSchema={forgotPassword}
+        onSubmit={handleSubmit}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
+          <form onSubmit={handleSubmit} className="mt-4">
+            <Toast />
+            <CustomInput
+              label="New Password"
+              id="password"
+              type="password"
+              required
+              placeholder="Enter New Password"
+              labelclass="mainLabel"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={touched.password && errors.password}
+            />
 
-              <CustomInput
-                label="Confirm Password"
-                id="password_confirmation"
-                type="password"
-                required
-                placeholder="Enter Confirm Password"
-                labelclass="mainLabel"
-                value={values.password_confirmation}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.password_confirmation && errors.password_confirmation}
+            <CustomInput
+              label="Confirm Password"
+              id="password_confirmation"
+              type="password"
+              required
+              placeholder="Enter Confirm Password"
+              labelclass="mainLabel"
+              value={values.password_confirmation}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={
+                touched.password_confirmation && errors.password_confirmation
+              }
+            />
+            <div className="mt-4 text-center">
+              <CustomButton
+                type="submit"
+                variant="primary"
+                className="w-100"
+                text="Update"
+                isPending={isSubmitting}
+                pendingText="Loading..."
               />
-              <div className="mt-4 text-center">
-                <CustomButton
-                  type="submit"
-                  className="siteBtn primaryBtn py-4 w-100"
-                  text="Update"
-                  isPending={isSubmitting}
-                  pendingText="Loading..."
-                />
-              </div>
-            </form>
-          )}
-        </Formik>
-      <CustomModal show={showModal} close={()=>setShowModal(false)}  action={PageChange} success btnText="Login" para="Your password has been updated. Please login to continue" />
+            </div>
+          </form>
+        )}
+      </Formik>
+      <CustomModal
+        show={showModal}
+        close={() => setShowModal(false)}
+        action={PageChange}
+        success
+        btnText="Login"
+        para="Your password has been updated. Please login to continue"
+      />
     </>
   );
 };

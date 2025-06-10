@@ -328,9 +328,9 @@ export const Header = () => {
                       </Link>
                     </Nav.Item>
                     <Nav.Item as="li">
-                      <NavLink className="btn btn-primary" to={"/signup"}>
+                      <Link className="btn btn-primary" to={"/signup"}>
                         Sign up
-                      </NavLink>
+                      </Link>
                     </Nav.Item>
                   </Nav>
                 )}
@@ -444,9 +444,9 @@ export const Header = () => {
                     </Link>
                   </Nav.Item>
                   <Nav.Item as="li">
-                    <NavLink className="btn btn-primary" to={"/signup"}>
+                    <Link to={"/signup"} className="btn btn-primary">
                       Sign up
-                    </NavLink>
+                    </Link>
                   </Nav.Item>
                 </Nav>
               )}
