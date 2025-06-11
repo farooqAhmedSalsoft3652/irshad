@@ -12,18 +12,19 @@ export const AuthLayout = (props) => {
     <>
       <section className={`authBg ${props?.authClasMain}`}>
         <div className="container-fluid">
-          <div className="row gap-xl-5 gap-lg-3 justify-content-center authBox align-items-center">
-            <div className="col-lg-5 col-xxl-4 d-none d-lg-block ">
+          <div className="col-lg-11 mx-auto">
+          <div className="row justify-content-center">
+            <div className="col-lg-6 d-none d-lg-block ">
               <div className="authLogo ">
-                <img src={images.adminLogo} alt="authLogo" />
+                <img src={images.OurAim} className="w-100" alt="authLogo" />
               </div>
-              <div className="auth-Bg">
+              {/* <div className="auth-Bg">
                 <div className="auth-wrap  text-white">
                   <p className="auth_card_title">{props?.authLeftText}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
-            <div className="col-lg-5 col-xxl-4">
+            <div className="col-lg-6">
               <div className="authFormWrapper">
                 <div className="authForm">
                   {/* <div className="authLogo ">
@@ -44,6 +45,7 @@ export const AuthLayout = (props) => {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>

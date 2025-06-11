@@ -11,7 +11,7 @@ const UserForgetPassword3 = () => {
     >
       <StepThree
         apiEndpoint="/admin-api/password-recovery/update-password"
-        // navigateTo="/admin"
+        navigateTo="/login"
       />
     </UserAuthLayout>
   );

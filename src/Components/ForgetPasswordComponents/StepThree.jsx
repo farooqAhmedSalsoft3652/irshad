@@ -19,7 +19,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
 
   usePageTitleUser("Forgot Password");
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values) => { 
     startSubmitting();
     // let email = getEmail();
     // let code = getCode();
@@ -40,7 +40,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
   };
 
   const PageChange = () => {
-    navigate("/login");
+    navigate(navigateTo);
   };
 
   return (
