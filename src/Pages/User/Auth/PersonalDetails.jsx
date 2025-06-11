@@ -410,7 +410,7 @@ const PersonalDetails = () => {
                 </>
               )}
             </FieldArray>
-            <CustomButton className="siteBtn primaryBtn py-4 w-100 mt-4" text="Signup" type="submit" />
+            <CustomButton variant="primary" className="w-100 mt-4" text="Signup" type="submit" />
             <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">
               Already have an account?
               <Link to={"/login"} className="underlineOnHover text-dark ps-1">

@@ -410,10 +410,10 @@ const Home = () => {
           <img src={images.Question} alt="check" className="modalImage" />
           <p className="modalPara text-capitalize">You need to login or signup first</p>
           <div className="d-flex gap-2 justify-content-center">
-            <Link to="/login" className="siteBtn primaryBtn">
+            <Link to="/login" className="btn btn-primary min-width-150">
               Login
             </Link>
-            <Link to="/signup" className="siteBtn secondaryBtn">
+            <Link to="/signup" className="btn btn-secondary min-width-150">
               Signup
             </Link>
           </div>
