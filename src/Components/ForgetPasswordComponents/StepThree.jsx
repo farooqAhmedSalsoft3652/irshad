@@ -108,7 +108,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
         close={() => setShowModal(false)}
         action={PageChange}
         success
-        btnText="Login"
+        btnText="Okay"
         para="Your password has been updated. Please login to continue"
       />
     </>

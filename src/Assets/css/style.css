@@ -20,6 +20,7 @@
   --secondaryHeading: #020516;
 
   --grayColor: #666;
+  --lightGrayColor: #999;
 
 
   --darkGreen: #2c8109;
@@ -229,6 +230,9 @@ a:hover {
 
 .grayColor {
   color: var(--grayColor) !important;
+}
+.lightGrayColor {
+  color: var(--lightGrayColor) !important;
 }
 
 .grayLightColor {
