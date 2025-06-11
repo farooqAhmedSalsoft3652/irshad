@@ -52,6 +52,7 @@ import BlockedUsers from "../Assets/images/svg/BlockedUsers.svg?react";
 import Logout from "../Assets/images/svg/Logout.svg?react";
 import ProfileCover from "../Assets/images/profileCover.png";
 import newServiceImg from "../Assets/images/new-service.png";
+import authLeftImg from "../Assets/images/authLeftImg.png";
 
 export const images = {
   Check,
@@ -108,4 +109,5 @@ export const images = {
   certificate_image,
   ProfileCover,
   newServiceImg,
+  authLeftImg,
 };

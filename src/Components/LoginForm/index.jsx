@@ -122,7 +122,7 @@ const LoginForm = ({
             />
             <Link
               to={`${actor ? "/" + actor : ""}/forget-password`}
-              className="fw-light text-decoration-underline blueColor"
+              className="fw-light"
             >
               <button
                 type="button"
