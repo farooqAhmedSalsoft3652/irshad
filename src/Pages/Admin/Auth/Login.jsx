@@ -7,10 +7,10 @@ import LoginForm from "../../../Components/LoginForm/index.jsx";
 // import LoginForm from "../../../Components/LoginForm/index.jsx";
 
 const AdminLogin = () => {
-  usePageTitle("Admin Login");
+  usePageTitle("Login");
   return (
     <>
-      <AuthLayout authTitle="admin login" authMain authPara="Log In to Your Account" authLeftText="Your Journey to Emotional Wellness Starts Here">
+      <AuthLayout authTitle="admin login" authMain authPara="Enter your details to login your account">
         <LoginForm
           actor="admin"
           // apiEndpoint="/admin-api/auth/login"

@@ -17,15 +17,15 @@ export const AuthLayout = (props) => {
             <Col xs={12} xl={10} className="mx-auto">
               <div className="login-card p-0">
                 <Row className="justify-content-center g-0">
-                  <Col xs={12} lg={6} className="d-flex align-items-stretch">
-                    <div className="left position-relative w-100 ">
+                  <Col xs={12} lg={6} className="d-flex align-items-stretch d-lg-block d-none">
+                    <div className="left position-relative w-100 h-100">
                       <img
                         src={images.authLeftImg}
                         alt="authLogo"
                         className="img-fluid"
                       />
                       <div className="position-absolute top-50 start-50 translate-middle">
-                        <img src={images.Logo} alt="authLogo" className="" />
+                        <img src={images.adminAuthLogo} alt="authLogo" className="adminAuthLogo" />
                       </div>
                     </div>
                   </Col>
@@ -34,7 +34,7 @@ export const AuthLayout = (props) => {
                     lg={6}
                     className="d-flex flex-column justify-content-center"
                   >
-                    <div className="right">
+                    <div className="right px-xxl-5">
                       <div className="authFormWrapper">
                         <div className="authForm">
                           <div className="authFormHeader mb-sm-5 mb-3 text-center">
@@ -50,8 +50,8 @@ export const AuthLayout = (props) => {
                                 to={`/${firstSegment}`}
                                 className="fw-normal text-decoration-underline grayColor"
                               >
-                                <button className="notButton underlineOnHover blueColor">
-                                  Back to Login
+                                <button className="notButton underlineOnHover fw-medium">
+                                  <span className="lightGrayColor">Back To</span> Login
                                 </button>
                               </Link>
                             </div>

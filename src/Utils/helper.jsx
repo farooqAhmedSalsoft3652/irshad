@@ -312,10 +312,11 @@ export const usePageTitle = (title = "", user = false) => {
         title.slice(1)
       : process.env.REACT_APP_WEBSITE_NAME +
         " " +
-        name +
-        " | " +
-        title.charAt(0).toUpperCase() +
-        title.slice(1);
+        // name +
+        " | "  +
+        // title.charAt(0).toUpperCase() +
+        // title.slice(1);
+        title
   }, [title, user, name]); // Add dependencies
 };
 export const usePageTitleUser = (title) => {

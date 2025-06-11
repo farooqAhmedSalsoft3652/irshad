@@ -124,7 +124,7 @@ const LoginForm = ({
             >
               <button
                 type="button"
-                className="notButton underlineOnHover blueColor text-decoration-underline"
+                className="notButton underlineOnHover blueColor text-decoration-underline fw-medium"
               >
                 Forgot Password?
               </button>
