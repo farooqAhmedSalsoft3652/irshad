@@ -8,13 +8,14 @@
   gap: 1rem;
 }
 
-.mainLabel {
+.mainLabel,
+.form-label {
   margin-bottom: 0.25rem;
   padding: 0 0 0 6px;
   font-weight: 600;
   font-size: 16px;
   text-transform: capitalize;
-  color: var(--blackColor);
+  color: var(--bs-black);
 }
 
 .error-message p,

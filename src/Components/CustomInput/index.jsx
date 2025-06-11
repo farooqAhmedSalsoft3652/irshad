@@ -31,7 +31,11 @@ const CustomInput = (props) => {
       <div className={`inputWrapper position-relative ${props.wrapperClass}`}>
         <div className={`${props?.showInline === true ? "inlineLabel" : ""}`}>
           {props?.label && (
-            <label htmlFor={props?.id} className={props?.labelclass}>
+            <label
+              htmlFor={props?.id || props?.name}
+              className={`form-label ${props?.labelclass || ""}`}
+              // className={props?.labelclass}
+            >
               {props?.label}
               {props?.required ? <span className="text-danger">*</span> : ""}
             </label>
