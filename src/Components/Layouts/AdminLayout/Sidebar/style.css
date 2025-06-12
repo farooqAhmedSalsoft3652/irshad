@@ -3,9 +3,9 @@
   height: 100vh;
   position: fixed;
   transition: all 0.15s ease-in-out;
-  background: var(--whiteColor);
+  background: #fff;
   z-index: 4;
-  top: 0;
+  top: 70px;
   padding-bottom: 84px;
   overflow-y: auto;
   white-space: nowrap;
@@ -20,7 +20,7 @@
   padding: 0.8rem 1rem;
   background: #fff0;
   /* border-bottom: 1px solid #ccc; */
-  border-radius: 10px;
+  border-radius: 0px 50px 50px 0;
   position: relative;
   transition: 0.15s linear;
   display: flex;
@@ -39,7 +39,7 @@
 .sideLink:hover,
 .sideLink.active {
   color: #fff !important;
-  background: var(--primaryColor);
+  background: #15355E;
   border-color: var(--primaryColor);
 }
 /* 

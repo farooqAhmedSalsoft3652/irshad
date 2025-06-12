@@ -21,8 +21,8 @@ const HeaderNotification = ({ notificationData, getNotification, viewAllLink }) 
 
   return (
     <Dropdown className="notiDropdown me-2 whiteColor" onClick={handleDropdownToggle}>
-      <Dropdown.Toggle variant="transparent bellIconDropdown" className="notButton">
-        <FontAwesomeIcon className="bellIcon whiteColor" icon={faBell} />
+      <Dropdown.Toggle variant="transparent bellIconDropdown border-0 px-0" className="notButton">
+        <FontAwesomeIcon className="bellIcon" icon={faBell} color="#C5E4F6" />
         {notificationData.length ? <span className="badge">{notificationData.length > 9 ? "9+" : notificationData.length}</span> : null}
       </Dropdown.Toggle>
       <Dropdown.Menu className="notiMenu" align="end">

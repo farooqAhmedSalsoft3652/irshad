@@ -48,7 +48,7 @@ export const DashboardLayout = (props) => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 p-0">
-            <div className={`dashboardBody ${bodyClass}`}>
+            <div className={`dashboardBody admin-layout ${bodyClass}`}>
               <Header className={`${headerClass?'header-collapsed':''}`} sidebarToggle={sidebarToggle} />
               <div className="dashboardBody-inner">
                 {props.children}

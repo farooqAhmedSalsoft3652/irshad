@@ -54,6 +54,7 @@ import ProfileCover from "../Assets/images/profileCover.png";
 import newServiceImg from "../Assets/images/new-service.png";
 import authLeftImg from "../Assets/images/authLeftImg.png";
 import adminAuthLogo from "../Assets/images/adminAuthLogo.png";
+import adminProfileImg from "../Assets/images/adminProfileImg.png";
 
 export const images = {
   Check,
@@ -112,4 +113,5 @@ export const images = {
   newServiceImg,
   authLeftImg,
   adminAuthLogo,
+  adminProfileImg,
 };

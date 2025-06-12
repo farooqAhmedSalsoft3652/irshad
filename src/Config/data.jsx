@@ -1,8 +1,8 @@
 import { images } from "../Assets";
-import Stats1 from "../Assets/images/svg/stats1.svg?react";
-import Stats2 from "../Assets/images/svg/stats2.svg?react";
-import Stats3 from "../Assets/images/svg/stats3.svg?react";
-import Stats4 from "../Assets/images/svg/stats4.svg?react";
+import Stats1 from "../Assets/images/svg/totalEarning.svg?react";
+import Stats2 from "../Assets/images/svg/newBookings.svg?react";
+import Stats3 from "../Assets/images/svg/newUsers.svg?react";
+import Stats4 from "../Assets/images/svg/newConsultant.svg?react";
 import { getImageAsFile } from "../Utils/helper";
 
 export const notificationsData = {
@@ -211,11 +211,11 @@ export const loginCredentials = [
     role: "admin",
     message: "Login successfully",
     token: "1164|ihHvE9J6cn1U3St4Sk6v6JKOdm2ARA87hXYbIdS63831040a",
-    "full-name": "John Wick",
-    "first-name": "John",
-    "last-name": "Wick",
+    "full_name": "John Wick",
+    first_name: "John",
+    last_name: "Wick",
     "photo-path":
-      "https://media4.giphy.com/avatars/digitalducks/syqUuk9PflgI.png",
+      images.adminProfileImg,
     "user-id": 1,
   },
   {
@@ -439,8 +439,8 @@ export const sidebar = [
 ];
 export const dashboardChartDataOne = {
   heading: "Total Earning",
-  label: "Sales",
-  fill: false,
+  label: "Total Earning",
+  fill: true,
   data: [10, 30, 20, 40, 50, 60, 20, 80, 90, 50, 40, 120],
 };
 export const dashboardChartDataTwo = {
@@ -456,8 +456,8 @@ export const dashboardChartDataThree = {
   data: [10, 30, 20, 40, 50, 60, 20, 80, 90, 50, 40, 120],
 };
 export const dashboardChartDatafour = {
-  heading: "New Service Provider Registered",
-  label: "New Service Provider Registered",
+  heading: "New Consultant Registered",
+  label: "New Consultant Registered",
   fill: true,
 
   data: [10, 30, 20, 40, 50, 60, 20, 80, 90, 50, 40, 120],
@@ -493,10 +493,11 @@ export const statsData = [
     image: Stats1,
     number: "178",
     text: "total earning",
-    change: "100",
+    change: "33",
     increase: false,
     arrowIcon: true,
     total_post: "Since last week",
+    backgroundColor: "#ECE7F1",
   },
   {
     id: 2,
@@ -507,6 +508,7 @@ export const statsData = [
     text: "new  bookings",
     change: "33",
     total_post: "Since last week",
+    backgroundColor: "#E8F3F0",
   },
   {
     id: 3,
@@ -517,6 +519,7 @@ export const statsData = [
     increase: true,
     arrowIcon: true,
     total_post: "Since last week",
+    backgroundColor: "#E2F1FB",
   },
   {
     id: 4,
@@ -527,6 +530,7 @@ export const statsData = [
     text: "new  service provider",
     change: "33",
     total_post: "Since last week",
+    backgroundColor: "#FFF7CF",
   },
 ];
 export const userManagementData = {

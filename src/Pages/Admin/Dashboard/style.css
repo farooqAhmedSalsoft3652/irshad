@@ -14,6 +14,10 @@
   box-shadow: 0 3px 10px rgb(0, 0, 0, .16);
   padding: 10px;
 }
+.admin-layout .dropdown-graph{
+  padding: 12px 50px 12px 20px;
+  height: unset;
+}
 @media screen and (max-width: 1200px) and (min-width: 768px) {
   .stats,
   .stats:not(:last-child) {

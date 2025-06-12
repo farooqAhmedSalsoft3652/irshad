@@ -71,6 +71,7 @@
   height: 50px;
   width: 50px;
   border-radius: 50px;
+  padding: 0;
   /* background: var(--primaryColor); */
   /* border-color: var(--primaryColor); */
 }
@@ -227,6 +228,18 @@
 }
 
 .user-layout .tableFilters .filterWrapper .searchButton {
+  left: auto;
+  right: 0px;
+  color: #999;
+  max-width: 50px;
+  padding: 0 35px 0 10px;
+}
+.admin-layout .tableFilters .filterWrapper .searchInput {
+  padding: 11px 45px 11px 20px;
+  width: 100%;
+  max-width: none;
+}
+.admin-layout .tableFilters .filterWrapper .searchButton {
   left: auto;
   right: 0px;
   color: #999;
