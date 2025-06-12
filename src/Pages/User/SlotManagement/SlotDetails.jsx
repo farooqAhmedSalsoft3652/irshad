@@ -16,6 +16,7 @@ const SlotDetails = ({
   pagination,
   updatePagination,
   showModal,
+  reasonModal
 }) => {
   usePageTitleUser("Slots Details");
   const { id } = useParams();
@@ -64,6 +65,46 @@ const SlotDetails = ({
   }, [filters, slotsData, slotManagementHistoryData, id]);
   console.log(id, "id from params");
 
+   const BookedAll = () => {
+    reasonModal(
+      "",
+      "Are you sure you want to Book Next week?",
+      (reason, id) => {
+        BookedAllSuucces(reason, id);
+      },
+      false,
+      true
+    );
+  };
+  const BookedAllSuucces = async (reason, id) => {
+    reasonModal(
+      ``,
+      `Booked Request for next week has been send Sucessfully. Wait for the admin's Apporval`,
+      null, //action
+      true //success
+    );
+  };
+
+   const ReduceHours = () => {
+    reasonModal(
+      "",
+      "Are you sure you want to reduce working hour for Next week?",
+      (reason, id) => {
+        ReduceHoursSuccess(reason, id);
+      },
+      false,
+      true
+    );
+  };
+  const ReduceHoursSuccess = async (reason, id) => {
+    reasonModal(
+      ``,
+      `Your working hour deduction Request for the next week has been send Successfully. Wait for the admin's Approval`,
+      null, //action
+      true //success
+    );
+  };
+
   return (
     <>
       <Container fluid>
@@ -108,13 +149,13 @@ const SlotDetails = ({
                   variant="secondary"
                   text="Reduce working hours for next week"
                   className="px-4"
-                  // onClick={RemoveModal}
+                  onClick={ReduceHours}
                 />
                 <CustomButton
                   variant="secondary"
                   text="Booked All Next Week"
                   className="px-4"
-                  // onClick={RemoveModal}
+                  onClick={BookedAll}
                 />
                 <Link
                   to={`/slot-management/${id}/edit`}

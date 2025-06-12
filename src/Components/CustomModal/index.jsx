@@ -39,7 +39,7 @@ const CustomModal = (props) => {
                 <div className="modalReason my-3 text-start">
                   <p className="mb-1 fw-medium ms-1">{ props?.reasonLabel} <span className="text-red">*</span></p>
                   <textarea
-                    className="mainInput"
+                    className="form-control"
                     placeholder={props?.reasonPlaceholder}
                     rows="4"
                     onChange={props?.onChange}
