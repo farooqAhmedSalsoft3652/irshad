@@ -11,7 +11,7 @@ import withModal from "../../../HOC/withModal";
 import { usePageTitleUser } from "../../../Utils/helper";
 import "./style.css";
 
-const NewSlot = () => {
+const NewSlot = ({ reasonModal }) => {
   usePageTitleUser("New Slot");
 
   const initialSlot = { start_time: "", end_time: "", timeDuration: "" };
@@ -68,6 +68,50 @@ const NewSlot = () => {
         ),
       },
     });
+  };
+
+  const BookedAll = () => {
+    reasonModal(
+      "", // heading
+      "Are you sure you want to Book Next week? 12", // para
+      (reason, id) => {
+        BookedAllSuucces(reason, id);
+      },
+      false, // success
+      true, // showReason
+      "Provide Reason for booked week",
+      "Description" // ✅ reasonLabel
+    );
+  };
+  const BookedAllSuucces = async (reason, id) => {
+    reasonModal(
+      ``,
+      `Booked Request for next week has been send Sucessfully. Wait for the admin's Apporval`,
+      null, //action
+      true //success
+    );
+  };
+
+  const ReduceHours = () => {
+    reasonModal(
+      "",
+      "Are you sure you want to reduce working hour for Next week?",
+      (reason, id) => {
+        ReduceHoursSuccess(reason, id);
+      },
+      false, // success
+      true, // showReason
+      "Provide Reason for reduce hours",
+      "Description" // ✅ reasonLabel
+    );
+  };
+  const ReduceHoursSuccess = async (reason, id) => {
+    reasonModal(
+      ``,
+      `Your working hour deduction Request for the next week has been send Successfully. Wait for the admin's Approval`,
+      null, //action
+      true //success
+    );
   };
 
   return (
@@ -267,13 +311,13 @@ const NewSlot = () => {
                             variant="secondary"
                             text="Reduce working hours for next week"
                             className="px-4"
-                            // onClick={RemoveModal}
+                            onClick={ReduceHours}
                           />
                           <CustomButton
                             variant="secondary"
                             text="Booked All Next Week"
                             className="px-4 min-width-230"
-                            // onClick={RemoveModal}
+                            onClick={BookedAll}
                           />
                         </Col>
                       </Row>

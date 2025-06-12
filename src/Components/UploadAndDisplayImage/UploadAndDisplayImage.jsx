@@ -8,6 +8,7 @@ const ImageUpload = ({
   images = [],
   className,
   label,
+  placeholder = "Upload Image",
   required = false,
   onChange,
   numberOfFiles = 3,
@@ -17,6 +18,7 @@ const ImageUpload = ({
   height = "",
   id = "0",
   imgId,
+  uploaderType = "default",
 }) => {
   const [files, setFiles] = useState([]);
   const [error, setError] = useState("");
@@ -104,15 +106,40 @@ const ImageUpload = ({
   };
 
   return (
-    <div style={{ position: "relative" }} className={`${className} mb-3`}>
+    <div style={{ position: "relative" }} className={`${Styles[className]}`}>
+      {/* {(Array.isArray(files) ? files.length : files ? 1 : 0) > 0 && label && (
+        <label
+          className={`form-label fw-medium d-block ${
+            files.length ? "mb-2" : ""
+          }`}
+        >
+          {label}
+          {required && <span className="text-danger">*</span>}
+        </label>
+      )} */}
       <label
-        className="form-label d-flex align-items-center gap-2"
-        htmlFor={`myImage${id}`}
+        className={`form-label fw-medium d-block ${files.length ? "mb-2" : ""}`}
       >
-        <UploadIcon />
-        <span style={{ color: "#333", fontWeight: "500" }}>{label}</span>
-        {required ? <span className="text-danger">*</span> : ""}
+        {label}
+        {required && <span className="text-danger">*</span>}
       </label>
+
+      {(Array.isArray(files) ? files.length : files ? 1 : 0) <
+        numberOfFiles && (
+        <label
+          // className="form-label d-flex align-items-center gap-2"
+          htmlFor={`myImage${id}`}
+          className={`imageUploadArea`}
+        >
+          <div className="d-flex flex-column justify-content-center align-items-center gap-2 UploadArea">
+            <UploadIcon />
+            <span style={{ color: "#333", fontWeight: "500" }}>
+              {placeholder}
+              {required ? <span className="text-danger">*</span> : ""}
+            </span>
+          </div>
+        </label>
+      )}
 
       {/* Conditionally render the selected image(s) */}
       {!!(Array.isArray(files) ? files.length : files ? 1 : 0) && (

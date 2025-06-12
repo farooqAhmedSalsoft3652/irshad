@@ -18,11 +18,11 @@ const SlotCard = ({ day, date, slots }) => {
       {/* Slot Rows */}
       <Card.Body className="pt-2">
         {slots.map((slot, index) => (
-          <div class="slot-row" key={index}>
-            <div class="date fw-medium text-center">
+          <div className="slot-row" key={index}>
+            <div className="date fw-medium text-center">
               {dateFormat(date, "MMM DD, YYYY")}
             </div>
-            <div class="slot-time">
+            <div className="slot-time">
               <h4 className="fw-medium">Slot Time</h4>
               <div className="d-flex justify-content-between">
                 <div className="d-flex align-items-center fw-medium">

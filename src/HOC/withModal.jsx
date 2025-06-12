@@ -10,24 +10,33 @@ const MODAL_STEPS = {
 const withModal = (WrappedComponent) => {
   return (props) => {
     const [modalState, setModalState] = useState({
-      currentStep: MODAL_STEPS.INITIAL, 
+      currentStep: MODAL_STEPS.INITIAL,
       show: false,
       success: false,
       heading: "",
-      para:"",
+      para: "",
       action: null,
       showReason: false,
       reasonValue: "",
-      errorMessage: "", 
+      errorMessage: "",
+      reasonHeading: "",
       reasonLabel: "", // Add reasonLabel in state
     });
-    const reasonModal = ( heading, para, action, success = false, showReason = false, reasonLabel = "",
+    const reasonModal = (
+      heading,
+      para,
+      action,
+      success = false,
+      showReason = false,
+      reasonHeading = "",
+      reasonLabel = ""
     ) => {
       setModalState({
         currentStep: MODAL_STEPS.INITIAL,
         show: true,
         success,
         heading,
+        reasonHeading,
         para,
         action,
         showReason,
@@ -41,7 +50,6 @@ const withModal = (WrappedComponent) => {
     const showModal = (heading = null, para, action, success = false) => {
       setModalState({ heading, para, action, success, show: true });
     };
-
 
     const handleModalClose = () => {
       setModalState((prev) => ({ ...prev, show: false, action: null }));
@@ -84,18 +92,25 @@ const withModal = (WrappedComponent) => {
 
     return (
       <>
-        <WrappedComponent {...props} showModal={showModal} reasonModal={reasonModal} />
+        <WrappedComponent
+          {...props}
+          showModal={showModal}
+          reasonModal={reasonModal}
+        />
         <CustomModal
           show={modalState.show}
           close={handleModalClose}
           action={modalState.showReason ? handleSubmit : modalState.action}
           heading={modalState.heading}
+          reasonHeading={modalState.reasonHeading}
           para={modalState.para}
           success={modalState.success}
           showReason={modalState.currentStep === MODAL_STEPS.REASON_INPUT}
           onChange={handleReasonChange}
           value={modalState.reasonValue}
-          reasonLabel={modalState.reasonLabel?.trim() ? modalState.reasonLabel : "Reason"}
+          reasonLabel={
+            modalState.reasonLabel?.trim() ? modalState.reasonLabel : "Reason"
+          }
           reasonPlaceholder={props?.reasonPlaceholder || "Enter reason here..."}
           btnText={props?.btnText}
           errorMessage={modalState.errorMessage}

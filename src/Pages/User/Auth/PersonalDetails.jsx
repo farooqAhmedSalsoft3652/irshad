@@ -54,7 +54,16 @@ const PersonalDetails = () => {
         validationSchema={personalDetailsValidationSchema}
         onSubmit={handleSubmit}
       >
-        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          setFieldTouched,
+          setFieldValue,
+        }) => (
           <form className="mt-3" onSubmit={handleSubmit}>
             <div className="inputWrapper position-relative">
               <Select
@@ -66,7 +75,9 @@ const PersonalDetails = () => {
                 wrapperClass="d-block mb-3"
                 mainLabel="Select Category"
                 value={values.category}
-                onChange={(value) => handleChange({ target: { name: "category", value } })} // Adapting to Formik
+                onChange={(value) =>
+                  handleChange({ target: { name: "category", value } })
+                } // Adapting to Formik
                 onBlur={handleBlur}
                 error={touched.category && errors.category}
               >
@@ -99,11 +110,17 @@ const PersonalDetails = () => {
                 <>
                   {values.educationDetails.map((edu, index) => (
                     <div key={index} className="mb-4">
-                      <h3 className="fw-bold">Educational Details {index + 1}</h3>
+                      <h3 className="fw-bold">
+                        Educational Details {index + 1}
+                      </h3>
                       {/* Delete button */}
                       {values.educationDetails.length > 1 && (
                         <div className="text-end">
-                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                          <button
+                            type="button"
+                            className="bg-transparent border-0"
+                            onClick={() => remove(index)}
+                          >
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -215,7 +232,11 @@ const PersonalDetails = () => {
                       {/* Delete button */}
                       {values.workExperience.length > 1 && (
                         <div className="text-end">
-                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                          <button
+                            type="button"
+                            className="bg-transparent border-0"
+                            onClick={() => remove(index)}
+                          >
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -323,11 +344,17 @@ const PersonalDetails = () => {
                 <>
                   {values.certificationDetails.map((edu, index) => (
                     <div key={index} className="mb-4 mt-4">
-                      <h3 className="fw-bold">Certification Detail {index + 1}</h3>
+                      <h3 className="fw-bold">
+                        Certification Detail {index + 1}
+                      </h3>
                       {/* Delete button */}
                       {values.certificationDetails.length > 1 && (
                         <div className="text-end">
-                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                          <button
+                            type="button"
+                            className="bg-transparent border-0"
+                            onClick={() => remove(index)}
+                          >
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -344,12 +371,15 @@ const PersonalDetails = () => {
                         required
                         placeholder="Enter Institution Name"
                         labelclass="mainLabel"
-                        value={values.certificationDetails[index].institution_name}
+                        value={
+                          values.certificationDetails[index].institution_name
+                        }
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={
                           touched.certificationDetails &&
-                          touched.certificationDetails[index]?.institution_name &&
+                          touched.certificationDetails[index]
+                            ?.institution_name &&
                           errors.certificationDetails &&
                           errors.certificationDetails[index]?.institution_name
                         }
@@ -361,12 +391,15 @@ const PersonalDetails = () => {
                         required
                         placeholder="Enter Certificate Title"
                         labelclass="mainLabel"
-                        value={values.certificationDetails[index].certificate_title}
+                        value={
+                          values.certificationDetails[index].certificate_title
+                        }
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={
                           touched.certificationDetails &&
-                          touched.certificationDetails[index]?.certificate_title &&
+                          touched.certificationDetails[index]
+                            ?.certificate_title &&
                           errors.certificationDetails &&
                           errors.certificationDetails[index]?.certificate_title
                         }
@@ -374,16 +407,24 @@ const PersonalDetails = () => {
                       <div className="image-upload-style-2 mt-4">
                         <ImageUpload
                           id={`certificationDetails.${index}.certificate_pic`}
-                          label="Upload Certificate Picture"
-                          onChange={(files) => setFieldValue(`certificationDetails.${index}.certificate_pic`, files)}
+                          placeholder="Upload Certificate Picture"
+                          label={`Certificate Picture`}
+                          onChange={(files) =>
+                            setFieldValue(
+                              `certificationDetails.${index}.certificate_pic`,
+                              files
+                            )
+                          }
                           numberOfFiles={1}
                           errorFromParent={
                             touched.certificationDetails &&
-                            touched.certificationDetails[index]?.certificate_pic &&
+                            touched.certificationDetails[index]
+                              ?.certificate_pic &&
                             errors.certificationDetails &&
                             errors.certificationDetails[index]?.certificate_pic
                           }
                           className="image-upload-style-2"
+                          required
                         />
                       </div>
                     </div>
@@ -410,7 +451,12 @@ const PersonalDetails = () => {
                 </>
               )}
             </FieldArray>
-            <CustomButton variant="primary" className="w-100 mt-4" text="Signup" type="submit" />
+            <CustomButton
+              variant="primary"
+              className="w-100 mt-4"
+              text="Signup"
+              type="submit"
+            />
             <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">
               Already have an account?
               <Link to={"/login"} className="underlineOnHover text-dark ps-1">

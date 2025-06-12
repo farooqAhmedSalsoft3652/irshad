@@ -8,12 +8,22 @@ import "./style.css";
 
 const CustomModal = (props) => {
   return (
-    <Modal className={props?.className} show={props?.show} centered onHide={props?.close} size={props?.size} keyboard={false} backdrop="static">
+    <Modal
+      className={props?.className}
+      show={props?.show}
+      centered
+      onHide={props?.close}
+      size={props?.size}
+      keyboard={false}
+      backdrop="static"
+    >
       {/* Close button for the modal */}
-      {!props?.hideClose && <button className="closeButton" onClick={props?.close}>
-        <FontAwesomeIcon icon={faTimes} />
-      </button>}
-      
+      {!props?.hideClose && (
+        <button className="closeButton" onClick={props?.close}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+      )}
+
       <Modal.Body>
         {/* Render children if provided; otherwise, render default content */}
         {props?.children ? (
@@ -26,26 +36,42 @@ const CustomModal = (props) => {
             ) : props?.showReason ? (
               ""
             ) : (
-              <img src={images.Question} alt="question" className="modalImage" />
+              <img
+                src={images.Question}
+                alt="question"
+                className="modalImage"
+              />
             )}
 
             {/* Default modal content */}
             <div className="modalContent">
-              <h2 className="modalHeading">{ props?.heading}</h2>
-              <p className="modalpara">{props?.showReason ? "" : props?.para}</p>
+              {props?.heading && (
+                <h2 className="modalHeading">{props?.heading}</h2>
+              )}
+              {props?.para && !props?.showReason && (
+                <p className="modalpara">{props.para}</p>
+              )}
+              {/* <p className="modalpara">
+                {props?.showReason ? "" : props?.para}
+              </p> */}
 
               {/* Show reason input area if `showReason` is true */}
               {props?.showReason && (
                 <div className="modalReason my-3 text-start">
-                  <p className="mb-1 fw-medium ms-1">{ props?.reasonLabel} <span className="text-red">*</span></p>
+                  <h3 className="modalHeading">{props?.reasonHeading}</h3>
+                  <p className="mb-1 fw-medium ms-1">
+                    {props?.reasonLabel} <span className="text-red">*</span>
+                  </p>
                   <textarea
-                    className="mainInput"
+                    className="form-control"
                     placeholder={props?.reasonPlaceholder}
                     rows="4"
                     onChange={props?.onChange}
                     value={props?.value}
                   ></textarea>
-                  {props?.errorMessage && <p className="text-danger">{props?.errorMessage}</p>}
+                  {props?.errorMessage && (
+                    <p className="text-danger">{props?.errorMessage}</p>
+                  )}
                 </div>
               )}
 

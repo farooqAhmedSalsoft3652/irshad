@@ -296,4 +296,4 @@ const EditSlot = () => {
   );
 };
 
-export default withModal(EditSlot);
+export default EditSlot;

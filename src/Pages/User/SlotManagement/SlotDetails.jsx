@@ -16,6 +16,7 @@ const SlotDetails = ({
   pagination,
   updatePagination,
   showModal,
+  reasonModal,
 }) => {
   usePageTitleUser("Slots Details");
   const { id } = useParams();
@@ -35,7 +36,7 @@ const SlotDetails = ({
 
         const getSlotId = data?.find((item) => item.slot_id == Number(id));
 
-        console.log(getSlotId, "getSlotId");
+        // console.log(getSlotId, "getSlotId");
 
         const filteredSlots = slotsData?.detail?.data.filter(
           (item) => item.slot_id == getSlotId?.slot_id
@@ -62,6 +63,50 @@ const SlotDetails = ({
   useEffect(() => {
     fetchUsers();
   }, [filters, slotsData, slotManagementHistoryData, id]);
+
+  const BookedAll = () => {
+    reasonModal(
+      "", // heading
+      "Are you sure you want to Book Next week? 12", // para
+      (reason, id) => {
+        BookedAllSuucces(reason, id);
+      },
+      false, // success
+      true, // showReason
+      "Provide Reason for booked week",
+      "Description" // ✅ reasonLabel
+    );
+  };
+  const BookedAllSuucces = async (reason, id) => {
+    reasonModal(
+      ``,
+      `Booked Request for next week has been send Sucessfully. Wait for the admin's Apporval`,
+      null, //action
+      true //success
+    );
+  };
+
+  const ReduceHours = () => {
+    reasonModal(
+      "",
+      "Are you sure you want to reduce working hour for Next week?",
+      (reason, id) => {
+        ReduceHoursSuccess(reason, id);
+      },
+      false, // success
+      true, // showReason
+      "Provide Reason for reduce hours",
+      "Description" // ✅ reasonLabel
+    );
+  };
+  const ReduceHoursSuccess = async (reason, id) => {
+    reasonModal(
+      ``,
+      `Your working hour deduction Request for the next week has been send Successfully. Wait for the admin's Approval`,
+      null, //action
+      true //success
+    );
+  };
 
   return (
     <>
@@ -107,13 +152,13 @@ const SlotDetails = ({
                   variant="secondary"
                   text="Reduce working hours for next week"
                   className="px-4"
-                  // onClick={RemoveModal}
+                  onClick={ReduceHours}
                 />
                 <CustomButton
                   variant="secondary"
                   text="Booked All Next Week"
                   className="px-4"
-                  // onClick={RemoveModal}
+                  onClick={BookedAll}
                 />
                 <Link
                   to={`/slot-management/${id}/edit`}
