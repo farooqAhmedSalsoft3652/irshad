@@ -9,21 +9,22 @@
   top: 4px;
 }
 
-.tabel-select {
+.admin-layout .tabel-select {
   background-color: unset;
   appearance: none !important;
   border: none;
-  padding: 0px 20px;
+  padding: 0px 40px 0px 0px;
+  box-shadow: none;
 }
 
 .status1,
 .status1 + .chevron-icon {
-  color: #00B612;
+  color: #00B612 !important;
 }
 
 .status0,
 .status0 + .chevron-icon {
-  color: #D10000;
+  color: #D10000 !important;
 }
 
 .tabel-select:focus-visible {

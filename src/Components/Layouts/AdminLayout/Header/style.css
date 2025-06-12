@@ -1,22 +1,25 @@
 .customHeader {
   position: fixed !important;
-  width: calc(100% - 310px);
+  /* width: calc(100% - 310px); */
+  width: 100%;
   z-index: 9;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
   padding: 0px 10px !important;
-  background: var(--primaryColor);
+  background: #15355E;
   box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.1);
   height: 84px;
   top: 0;
   right: 0;
 }
 .header-collapsed .customHeader {
-  width: calc(100% - 60px);
+  /* width: calc(100% - 60px); */
+  width: 100%;
 }
 .customCollapse .navbar-nav {
   align-items: center;
+  gap: 10px;
 }
 .dropdown-toggle::after {
   color: #fff;
@@ -57,7 +60,7 @@
 }
 .bellIcon:hover {
   path {
-    fill: #fff;
+    fill: #C5E4F6;
   }
 }
 .bellIconDropdown::after {
@@ -149,8 +152,8 @@
   flex-grow: 0;
 }
 .notiDropdown span.badge {
-  background: white;
-  color: var(--primaryColor);
+  background: #FF4848;
+  color: #fff;
   height: 18px;
   width: 18px;
   padding: 3px;
@@ -158,8 +161,8 @@
   transition: all 0.2s ease-out;
   border-radius: 50px;
   position: absolute;
-  right: 0px;
-  top: -4px;
+  right: -8px;
+  top: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,10 +216,10 @@
 /*----- Notifcation End-----*/
 
 .userImage img {
+  height: 45px;
   width: 45px;
   max-width: 100%;
   max-height: 100%;
-  height: 48px;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
@@ -244,7 +247,8 @@
 }
 
 .userMenuItem:hover {
-  color: #1a8c1a;
+  color: #15355E;
+  background-color: #C5E4F6;
 }
 
 /* @media screen and (max-width: 991px) {
@@ -258,7 +262,7 @@
     padding-bottom: 0px !important;
   }
   .customCollapse {
-    background: var(--primaryColor);
+    background: #15355E;
     position: absolute;
     top: 84px;
     left: 0;

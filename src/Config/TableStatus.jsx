@@ -335,7 +335,7 @@ export const chartStatus = [
   },
   {
     value: "yearly",
-    text: "yearly",
+    text: "Yearly",
   },
 ];
 export const orderLogStatus = [

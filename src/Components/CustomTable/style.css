@@ -15,7 +15,8 @@
 }
 
 .customTable table thead tr {
-  background: rgba(26, 140, 26, 0.2);
+  /* background: rgba(26, 140, 26, 0.2); */
+  background: transparent
 }
 
 .customTable table thead tr th:last-child {
@@ -221,6 +222,31 @@ User Table Styling ***************/
   border: 1px solid transparent !important;
   background: rgba(153, 153, 153, 0.10);
   
+}
+.admin-layout .customTable tbody tr:nth-child(odd) td {
+  border: 1px solid transparent !important;
+  background: rgba(153, 153, 153, 0.10);
+  
+}
+.admin-layout .customTable tbody td:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-left: 1px solid #E7E7E7 !important;
+  padding-left: 1.5rem !important;
+}
+
+.admin-layout .customTable tbody td:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-right: 1px solid #E7E7E7 !important;
+  padding-right: 1.5rem !important;
+}
+.admin-layout .customTable tbody td {
+  border-top: 1px solid #E7E7E7;
+  border-bottom: 1px solid #E7E7E7;
+  padding: 0rem 1.2rem !important;
+  background-color: transparent;
+  color: #707070;
 }
 
 .user-layout .customTable tbody tr:nth-child(even) td {

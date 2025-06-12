@@ -36,15 +36,17 @@ export const Graph = (props) => {
   const years = generateNextFiveYears(); // Generate the next five years
 
   return (
-    <div className="dashCard">
+    <div className="graphCard">
       <div className="d-sm-flex justify-content-between ">
         <h3 className="sub-title">{props.item.heading}</h3>
 
         <Select
           className="dropdown-graph mainInput w-auto"
-          onChange={handleSelectChangeTwo}
+          onChange={handleSelectChange}
+          value={selectedValue}
         >
-          {years}
+          {/* {years} */}
+          {props.options}
         </Select>
       </div>
 
@@ -56,6 +58,9 @@ export const Graph = (props) => {
           type={props.type}
           height={90}
           options={{
+            plugins: {
+                legend: false,
+              },
             responsive: true,
             maintainAspectRatio: false,
             scales: {
@@ -110,9 +115,9 @@ export const Graph = (props) => {
                 fill: props.item.fill,
                 backgroundColor: props.backgroundColor, // Adjust for the fill color
                 ...(props.borderColor && { borderColor: props.borderColor }),
-                pointBackgroundColor: "#fff",
+                pointBackgroundColor: "#15355E",
                 borderWidth: 4,
-                pointBorderColor: "#39AE94",
+                pointBorderColor: "#fff",
                 data: props.item.data,
                 tension: 0.5,
                 barPercentage: 0.5, // Adjust this value to reduce the bar width

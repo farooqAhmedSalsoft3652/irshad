@@ -24,11 +24,11 @@ export const Sidebar = (props) => {
   return (
     <>
       <div className={`sidebar ${props.sideclassName}`} id="sidebar">
-        <div className="logoWrapper p-3 px-2 order-2 order-lg-1">
+        {/* <div className="logoWrapper p-3 px-2 order-2 order-lg-1">
           <Link to={"/admin/dashboard"} className="siteLogo">
             <img src={headerLogo} alt="" />
           </Link>
-        </div>
+        </div> */}
         <ul className="list-unstyled mt-4">
           {Links.map((element, index) => (
             <li className="sidebar-li" key={index}>
