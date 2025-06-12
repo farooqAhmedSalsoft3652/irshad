@@ -95,7 +95,6 @@ const LoginForm = ({
             type="email"
             required
             placeholder="Enter Your Email Address"
-            labelclass="mainLabel"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -107,7 +106,6 @@ const LoginForm = ({
             type="password"
             required
             placeholder="Enter Password"
-            labelclass="mainLabel"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
