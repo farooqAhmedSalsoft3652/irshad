@@ -11,6 +11,7 @@ import withModal from "../../../HOC/withModal";
 import { usePageTitleUser } from "../../../Utils/helper";
 import "./style.css";
 import { useLocation } from "react-router-dom";
+import { slotsData } from "../../../Config/data";
 
 const EditSlot = ({ reasonModal }) => {
   usePageTitleUser("New Slot");
@@ -19,7 +20,45 @@ const EditSlot = ({ reasonModal }) => {
 
   const initialSlot = { start_time: "", end_time: "", timeDuration: "" };
 
-  const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+  const daysOfWeek = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
+  ];
+
+  const getInitialSlotsFromData = () => {
+    const slots = daysOfWeek.reduce((acc, day) => {
+      acc[day] = {
+        status: false,
+        timeDuration: false,
+        times: [initialSlot],
+      };
+      return acc;
+    }, {});
+
+    slotsData.detail.data.forEach((slotDay) => {
+      const day = slotDay.day.toLowerCase();
+      if (slots[day]) {
+        slots[day].status = true;
+        slots[day].times = slotDay.slots.map((slot) => ({
+          start_time: slot.start_time,
+          end_time: slot.end_time,
+          timeDuration: "",
+        }));
+      }
+    });
+
+    return slots;
+  };
+
+  const initialValues = {
+    slots: getInitialSlotsFromData(),
+  };
+
   const create = async (values, { resetForm }) => {
     let transformedSlots = {}; // Initialize
 
@@ -118,19 +157,7 @@ const EditSlot = ({ reasonModal }) => {
                 </div>
 
                 <Formik
-                  initialValues={{
-                    slots: daysOfWeek.reduce(
-                      (acc, day) => ({
-                        ...acc,
-                        [day]: {
-                          status: false,
-                          timeDuration: false,
-                          times: [initialSlot],
-                        },
-                      }),
-                      {}
-                    ),
-                  }}
+                  initialValues={initialValues}
                   onSubmit={create}
                   validationSchema={slotValidationSchema}
                 >
