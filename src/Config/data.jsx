@@ -11005,7 +11005,7 @@ export const slotsData = {
       {
         id: 2,
         slot_id: 974,
-        day: "Friday",
+        day: "Thursday",
         date: "5/27/2025",
         slots: [
           {
@@ -11039,9 +11039,99 @@ export const slotsData = {
         ],
       },
       {
-        id: 3,
+        id: 4,
         slot_id: 974,
         day: "sunday",
+        date: "5/27/2025",
+        slots: [
+          {
+            start_time: "19:05:00",
+            end_time: "20:05:00",
+            isBooked: false,
+          },
+          {
+            start_time: "19:05:00",
+            end_time: "20:05:00",
+            isBooked: false,
+          },
+        ],
+      },
+      {
+        slot_id: 766,
+        id: 5,
+        day: "wednesday",
+        date: "5/27/2025",
+        slots: [
+          {
+            start_time: "16:07:00",
+            end_time: "16:08:00",
+            isBooked: false,
+          },
+          {
+            start_time: "16:07:00",
+            end_time: "16:08:00",
+            isBooked: false,
+          },
+        ],
+      },
+      {
+        id: 6,
+        slot_id: 766,
+        day: "Thursday",
+        date: "5/27/2025",
+        slots: [
+          {
+            start_time: "16:07:00",
+            end_time: "16:08:00",
+            isBooked: false,
+          },
+          {
+            start_time: "16:07:00",
+            end_time: "16:08:00",
+            isBooked: false,
+          },
+        ],
+      },
+      {
+        id: 7,
+        slot_id: 766,
+        day: "friday",
+        date: "5/27/2025",
+        slots: [
+          {
+            start_time: "19:05:00",
+            end_time: "23:08:00",
+            isBooked: false,
+          },
+          {
+            start_time: "19:05:00",
+            end_time: "23:08:00",
+            isBooked: false,
+          },
+        ],
+      },
+      {
+        id: 8,
+        slot_id: 766,
+        day: "sunday",
+        date: "5/27/2025",
+        slots: [
+          {
+            start_time: "19:05:00",
+            end_time: "20:05:00",
+            isBooked: false,
+          },
+          {
+            start_time: "19:05:00",
+            end_time: "20:05:00",
+            isBooked: false,
+          },
+        ],
+      },
+      {
+        id: 9,
+        slot_id: 766,
+        day: "monday",
         date: "5/27/2025",
         slots: [
           {

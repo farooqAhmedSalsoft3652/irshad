@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import CustomTable from "../../../Components/CustomTable";
-import {
-  slotManagementData,
-  slotManagementHistoryData,
-  slotsData,
-} from "../../../Config/data";
-import { slotHistoryHeaders } from "../../../Config/TableHeaders";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
+import CustomButton from "../../../Components/CustomButton";
+import SlotCard from "../../../Components/SlotCard";
+import { slotManagementHistoryData, slotsData } from "../../../Config/data";
 import withFilters from "../../../HOC/withFilters ";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { serialNum, usePageTitleUser } from "../../../Utils/helper";
-import { Link, useParams } from "react-router-dom";
-import BackButton2 from "../../../Components/BackButton/BackButton2";
-import SlotCard from "../../../Components/SlotCard";
+import { usePageTitleUser } from "../../../Utils/helper";
 
 const SlotDetails = ({
   filters,
@@ -22,8 +17,9 @@ const SlotDetails = ({
   updatePagination,
   showModal,
 }) => {
-  usePageTitleUser("Payment Logs");
+  usePageTitleUser("Slots Details");
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [daySlots, setDaySlots] = useState([]);
 
@@ -89,10 +85,9 @@ const SlotDetails = ({
                   <h5 className="">Week: 19 Oct-27 Oct 2024</h5>
                   <h5 className="">Working Hours: 19</h5>
                 </div>
-                <Row>
+                <Row className="g-3 g-lg-4">
                   {daySlots?.map((daySlot, index) => (
                     <Col xs={12} lg={6} xl={3} key={index}>
-                      <h2>{daySlot?.days?.day}</h2>
                       <SlotCard
                         day={daySlot?.day}
                         date={daySlot.date}
@@ -102,9 +97,33 @@ const SlotDetails = ({
                   ))}
                 </Row>
               </Col>
-            </Row>
-            <Row>
-              <Col xs={12}></Col>
+              <Col xs={12} className="mt-4 d-flex gap-3">
+                <CustomButton
+                  variant="primary"
+                  text="Create same slots for next week"
+                  className="px-4"
+                  onClick={() => navigate("/slot-management/add")}
+                />
+                <CustomButton
+                  variant="secondary"
+                  text="Reduce working hours for next week"
+                  className="px-4"
+                  // onClick={RemoveModal}
+                />
+                <CustomButton
+                  variant="secondary"
+                  text="Booked All Next Week"
+                  className="px-4"
+                  // onClick={RemoveModal}
+                />
+                <Link
+                  to={`/slot-management/${id}/edit`}
+                  className="btn btn-secondary min-width-180"
+                  // state={{ service_name: item.title }}
+                >
+                  Edit Slot
+                </Link>
+              </Col>
             </Row>
           </div>
         </div>

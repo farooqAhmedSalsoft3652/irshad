@@ -101,6 +101,10 @@ input.form-control:-webkit-autofill:active {
   min-width: 200px;
 }
 
+.min-width-220 {
+  min-width: 220px;
+}
+
 .min-width-230 {
   min-width: 230px;
 }
@@ -231,6 +235,7 @@ a:hover {
 .grayColor {
   color: var(--grayColor) !important;
 }
+
 .lightGrayColor {
   color: var(--lightGrayColor) !important;
 }

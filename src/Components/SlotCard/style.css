@@ -24,7 +24,7 @@
   margin-top: 15px;
 }
 
-.slot-row:not(:last-child) {
+.slot-row:first-child {
   margin-top: 0px;
 }
 

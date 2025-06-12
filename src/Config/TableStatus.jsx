@@ -60,6 +60,20 @@ export const language = [
     text: "Spanish",
   },
 ];
+export const timeDuration = [
+  {
+    value: "",
+    text: "Select Your Duration",
+  },
+  {
+    value: "30_minutes",
+    text: "30 minutes",
+  },
+  {
+    value: "1_hour",
+    text: "1 Hour",
+  },
+];
 export const partsOfSpeech = [
   {
     value: "",
@@ -813,42 +827,30 @@ export const bankName = [
     value: "bankc",
     text: "Bank C",
   },
-  
 ];
 
-export const serviceCategories =[
+export const serviceCategories = [
   {
     label: "Category A",
-    value: "categoryA"
+    value: "categoryA",
   },
-  { label: "Category B",
-    value: "categoryB"
-  },
-  { label: "Category C",
-    value: "categoryC"
-  },
+  { label: "Category B", value: "categoryB" },
+  { label: "Category C", value: "categoryC" },
 ];
-export const productCategories =[
+export const productCategories = [
   {
     text: "Product A",
-    value: "producta"
+    value: "producta",
   },
-  { text: "Product B",
-    value: "productb"
-  },
-  { text: "Product C",
-    value: "productc"
-  },
+  { text: "Product B", value: "productb" },
+  { text: "Product C", value: "productc" },
 ];
-export const deliveryOptions =[
+export const deliveryOptions = [
   {
     text: "E-Delivery",
-    value: "edelivery"
+    value: "edelivery",
   },
-  { text: "Normal Delivery",
-    value: "normal"
-  },
-
+  { text: "Normal Delivery", value: "normal" },
 ];
 
 export const countryOptions = [
@@ -872,8 +874,6 @@ export const stateOptions = [
   { value: "pennsylvania", text: "Pennsylvania" },
   { value: "ohio", text: "Ohio" },
 ];
-
-
 
 export const appointmentsStatus = [
   {

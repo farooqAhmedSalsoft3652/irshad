@@ -20,7 +20,7 @@ const SlotsHistoryManagement = ({
   updatePagination,
   showModal,
 }) => {
-  usePageTitleUser("Payment Logs");
+  usePageTitleUser("Slot History");
   const { id } = useParams();
 
   const [slotsData, setSlotsData] = useState([]);
@@ -112,11 +112,11 @@ const SlotsHistoryManagement = ({
                           )}
                         </td>
                         <td>{slot?.reference_id}</td>
-                        <td>{slot?.reference?.category_name}</td>
                         <td>
                           <Link
                             className="btn btn-link fw-medium"
                             to={`/slot-management/details/${slot?.id}`}
+                            // state={{ service_name: item.title }}
                           >
                             View
                           </Link>

@@ -16,7 +16,7 @@ const SlotManagement = ({
   updatePagination,
   showModal,
 }) => {
-  usePageTitleUser("Payment Logs");
+  usePageTitleUser("Slot Management");
 
   const [slotsData, setSlotsData] = useState([]);
 

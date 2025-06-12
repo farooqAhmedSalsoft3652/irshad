@@ -23,7 +23,11 @@ export const Select = (props) => {
   return (
     <>
       {props?.label && (
-        <label className={`cap  ${props?.labelclass ? props?.labelclass : ""}`}>
+        <label
+          className={`cap form-label  ${
+            props?.labelclass ? props?.labelclass : ""
+          }`}
+        >
           {props?.label}
           {props?.required ? <span className="red-text">*</span> : ""}
         </label>

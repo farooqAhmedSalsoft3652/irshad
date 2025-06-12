@@ -123,6 +123,8 @@ import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
 import RatingsAndReviews from "../Pages/User/RatingAndReviews";
 import RuleRegulations from "../Pages/User/Rules&Regulations";
 import SlotManagement from "../Pages/User/SlotManagement";
+import NewSlot from "../Pages/User/SlotManagement/NewSlot";
+import EditSlot from "../Pages/User/SlotManagement/EditSlot";
 import SlotDetails from "../Pages/User/SlotManagement/SlotDetails";
 import SlotsHistoryManagement from "../Pages/User/SlotManagement/history";
 import Tutorials from "../Pages/User/Tutorials";
@@ -485,6 +487,8 @@ const routes = [
               { path: "/chat-reports", element: <UserChatReports /> },
 
               { path: "/slot-management", element: <SlotManagement /> },
+              { path: "/slot-management/add", element: <NewSlot /> },
+              { path: "/slot-management/:id/edit", element: <EditSlot /> },
               {
                 path: "/slot-management/history/:id",
                 element: <SlotsHistoryManagement />,
