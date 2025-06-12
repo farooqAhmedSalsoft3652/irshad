@@ -62,7 +62,6 @@ const SlotDetails = ({
   useEffect(() => {
     fetchUsers();
   }, [filters, slotsData, slotManagementHistoryData, id]);
-  console.log(id, "id from params");
 
   return (
     <>

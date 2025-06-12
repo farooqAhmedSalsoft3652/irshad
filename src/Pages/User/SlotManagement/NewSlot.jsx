@@ -247,46 +247,41 @@ const NewSlot = () => {
                           </Col>
                         ))}
                       </Row>
-                      {errors.slots ? (
-                        <div className="errorText red-text mt-3">
-                          {errors.slots}
-                        </div>
-                      ) : null}
-
-                      <div className="col-12 mt-4">
-                        <CustomButton
-                          variant="primary"
-                          className="px-5"
-                          text="Add"
-                          type="submit"
-                          // isPending={mutation.isPending}
-                        />
-                      </div>
+                      <Row>
+                        <Col xs={12}>
+                          {errors.slots ? (
+                            <div className="errorText red-text mt-3">
+                              {errors.slots}
+                            </div>
+                          ) : null}
+                        </Col>
+                        <Col xs={12} className="mt-4 d-flex gap-3">
+                          <CustomButton
+                            variant="primary"
+                            className="px-4 min-width-220"
+                            text="Save Slots"
+                            type="submit"
+                            // isPending={mutation.isPending}
+                          />
+                          <CustomButton
+                            variant="secondary"
+                            text="Reduce working hours for next week"
+                            className="px-4"
+                            // onClick={RemoveModal}
+                          />
+                          <CustomButton
+                            variant="secondary"
+                            text="Booked All Next Week"
+                            className="px-4 min-width-230"
+                            // onClick={RemoveModal}
+                          />
+                        </Col>
+                      </Row>
                     </Form>
                   )}
                 </Formik>
               </Col>
-              <Col xs={12} className="mt-4 d-flex gap-3">
-                <CustomButton
-                  variant="primary"
-                  text="Save Slots"
-                  className="px-4 min-width-220"
-                />
-                <CustomButton
-                  variant="secondary"
-                  text="Reduce working hours for next week"
-                  className="px-4"
-                  // onClick={RemoveModal}
-                />
-                <CustomButton
-                  variant="secondary"
-                  text="Booked All Next Week"
-                  className="px-4 min-width-230"
-                  // onClick={RemoveModal}
-                />
-              </Col>
             </Row>
-            <Row></Row>
           </div>
         </div>
       </Container>
