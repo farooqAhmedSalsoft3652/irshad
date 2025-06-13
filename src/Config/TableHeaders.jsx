@@ -83,20 +83,36 @@ export const appointmentHeader = [
     title: "S.No",
   },
   {
-    key: "appointmentiD",
-    title: "Appointment ID",
+    key: "bookingID",
+    title: "Booking ID",
+  },
+  {
+    key: "consultantName",
+    title: "Consultant Name",
+  },
+  {
+    key: "bookingDate",
+    title: "Booking Date",
+  },
+  {
+    key: "appointmentDate",
+    title: "Appointment Date",
+  },
+  {
+    key: "duration",
+    title: "Duration",
+  },
+  {
+    key: "sessiontype",
+    title: "Session Type",
   },
   {
     key: "appointmenttype",
     title: "appointment type",
   },
   {
-    key: "date",
-    title: "date",
-  },
-  {
-    key: "charges",
-    title: "charges",
+    key: "amount",
+    title: "Amount",
   },
   {
     key: "status",

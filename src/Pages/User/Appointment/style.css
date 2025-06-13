@@ -58,7 +58,10 @@
 }
 
 .upcoming_color {
-  color: #FDB332;
+  color: #FDB332 !important;
+}
+.completed_color {
+  color: #004126 !important;
 }
 .past_color {
   color: #0DCF38;
