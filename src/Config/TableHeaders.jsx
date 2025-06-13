@@ -4,8 +4,12 @@ export const userHeaders = [
     title: "S.No",
   },
   {
-    key: "userName",
-    title: "User Name",
+    key: "firstName",
+    title: "First Name",
+  },
+  {
+    key: "lastName",
+    title: "Last Name",
   },
   {
     key: "emailAddress",
@@ -13,7 +17,7 @@ export const userHeaders = [
   },
   {
     key: "registeredOn",
-    title: "Registered Date",
+    title: "Registration Date",
   },
   {
     key: "status",

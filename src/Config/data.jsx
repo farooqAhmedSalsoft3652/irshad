@@ -542,6 +542,8 @@ export const userManagementData = {
       {
         id: 1,
         user_name: "Toms",
+        first_name: "Toms",
+        last_name: "Eric",
         relationship: "father",
         language: "English",
         subscription_type: "monthly",
@@ -564,6 +566,8 @@ export const userManagementData = {
       {
         id: 2,
         user_name: "Toms",
+         first_name: "Toms",
+        last_name: "Eric",
         relationship: "father",
         language: "English",
         subscription_type: "yearly",

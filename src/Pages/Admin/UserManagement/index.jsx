@@ -84,20 +84,24 @@ const UserManagement = ({ showModal, filters, setFilters, pagination, updatePagi
                         title: "Registration Date",
                         from: "fromDate",
                         to: "toDate",
+                        fromTitle: "From",
+                        toTitle: "To",
                       },
                     ]}
                     selectOptions={[
-                      {
+                      { 
+                        main_title: "Filter by status",
                         title: "Status",
-                        options: normalStatus
-                      }
+                        options: normalStatus,
+                      },
                     ]}
                   >
                     <tbody>
                       {userData?.map((item, index) => (
                         <tr key={item?.id}>
                           <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
-                          <td>{item?.user_name}</td>
+                          <td>{item?.first_name}</td>
+                          <td>{item?.last_name}</td>
                           <td>{item?.email}</td>
                           <td>{dateFormat(item?.created_at)}</td>
                           {/* Status column with Select dropdown */}
