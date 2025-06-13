@@ -406,12 +406,12 @@ export const AppointmentType = [
     text: "All",
   },
   {
-    value: "online",
-    text: "	Online",
+    value: "standard",
+    text: "	Standard",
   },
   {
-    value: "onsite",
-    text: "	Onsite",
+    value: "quick",
+    text: "Quick",
   },
 ];
 export const subcriptionType = [
@@ -601,26 +601,13 @@ export const appointmentStatus = [
     value: "",
     text: "All",
   },
-
-  {
-    value: "pending",
-    text: "Pending",
-  },
-  {
-    value: "rejected",
-    text: "Rejected",
-  },
   {
     value: "upcoming",
     text: "Upcoming",
   },
   {
-    value: "past",
-    text: "Past",
-  },
-  {
-    value: "approved",
-    text: "Approved",
+    value: "completde",
+    text: "Completde",
   },
 ];
 export const orderStatus = [

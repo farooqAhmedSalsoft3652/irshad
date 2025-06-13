@@ -66,7 +66,9 @@
 .searchInput::placeholder {
   color: #666 !important;
 }
-
+.admin-layout .btn_filter{
+  border-radius: 12px;
+}
 .btn_filter {
   height: 50px;
   width: 50px;
@@ -113,12 +115,12 @@
   padding: 0;
 }
 
-.filter-dropdown .dropdown-menu .fiter-main {
-  /* height: auto;
+/* .filter-dropdown .dropdown-menu .fiter-main {
+  height: auto;
   max-height: 405px;
   overscroll-behavior: contain;
-  overflow-y: scroll; */
-}
+  overflow-y: scroll;
+} */
 
 .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar {
   width: 8px;
@@ -156,40 +158,43 @@
   padding: 10px 30px 10px 15px;
   background-image: var(--bs-form-select-bg-img), var(--bs-form-select-bg-icon, none);
 }
-
+.admin-layout .tableFilters .select-entries {
+   padding: 11px 50px 11px 15px;
+   height: 45px;
+}
 /*************** User Filter DropDown Style 
 *********************/
-.user-layout .filter-dropdown .dropdown-menu {
+.user-layout .filter-dropdown .dropdown-menu, .admin-layout .filter-dropdown .dropdown-menu {
   border-radius: 20px;
   border: 1px solid #EBEBEB;
   background: #FAFAFA;
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.10);
 }
 
-.user-layout .filter-dropdown .dropdown-menu .mainInput {
+.user-layout .filter-dropdown .dropdown-menu .mainInput, .admin-layout .filter-dropdown .dropdown-menu .mainInput  {
   padding: 10px 15px;
 }
 
-.user-layout .filter-dropdown .dropdown-menu .selectInput {
+.user-layout .filter-dropdown .dropdown-menu .selectInput, .admin-layout .filter-dropdown .dropdown-menu .selectInput {
   padding-right: 30px;
 }
 
-.user-layout .filter-dropdown .select-container .chevron-icon {
+.user-layout .filter-dropdown .select-container .chevron-icon, .admin-layout .filter-dropdown .select-container .chevron-icon {
   color: #878787;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.user-layout .filter-dropdown .dropdown-menu .border-btm {
+.user-layout .filter-dropdown .dropdown-menu .border-btm, .admin-layout .filter-dropdown .dropdown-menu .border-btm  {
   border-width: 0 0 1px 0;
   border-color: #dbdbdb;
 }
 
-.user-layout .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar {
+.user-layout .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar, .admin-layout .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar {
   width: 5px;
 }
 
-.user-layout .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar-thumb {
+.user-layout .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar-thumb, .admin-layout .filter-dropdown .dropdown-menu .fiter-main::-webkit-scrollbar-thumb  {
   background-color: #15355E;
 }
 

@@ -745,10 +745,10 @@ export function flattenDateFilters(filters) {
 export const statusClassMap = {
   Pending: "text-warning",
   Requested: "text-warning",
-  Upcoming: "text-warning",
+  Upcoming: "upcoming_color",
   Rejected: "text-danger",
   Past: "text-danger",
-  Completed: "text-success",
+  Completed: "completed_color",
   Approved: "text-success",
 };
 export const statusClassMap2 = {

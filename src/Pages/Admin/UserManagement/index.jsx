@@ -42,10 +42,8 @@ const UserManagement = ({ showModal, filters, setFilters, pagination, updatePagi
   const handleStatusChange = (e, userId) => {
     const newStatusValue = e;
     // Open the modal for confirmation
-    showModal(
-      `Mark as ${newStatusValue === "1" ? "Active" : "Inactive"}`,
-      `Are you sure you want to change this user's status to ${newStatusValue === "1" ? "Active" : "Inactive"}?`,
-      () => onConfirmStatusChange(userId, newStatusValue)
+    showModal(``, `Are you sure you want to change this user status to ${newStatusValue === "1" ? "Active" : "Inactive"}?`, () =>
+      onConfirmStatusChange(userId, newStatusValue)
     );
   };
 
@@ -53,7 +51,7 @@ const UserManagement = ({ showModal, filters, setFilters, pagination, updatePagi
   const onConfirmStatusChange = async (userId, newStatusValue) => {
     // Update the status in the userData state
     setUserData((prevData) => prevData.map((user) => (user.id === userId ? { ...user, status_detail: newStatusValue } : user)));
-    showModal("Successful", `User status has been changed to ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
+    showModal("", `User status has been changed to ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
   };
 
   useEffect(() => {
@@ -63,14 +61,14 @@ const UserManagement = ({ showModal, filters, setFilters, pagination, updatePagi
   return (
     <DashboardLayout pageTitle="User Management">
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-12">
-            <div className="row my-4">
-              <div className="col-12">
-                <h2 className="mainTitle mb-0">User Management</h2>
+        <div className="dashCard">
+          <div className="row">
+            <div className="col-12">
+              <div className="row mb-2">
+                <div className="col-12">
+                  <h2 className="mainTitle mb-0">User Management</h2>
+                </div>
               </div>
-            </div>
-            <div className="dashCard">
               <div className="row mb-3">
                 <div className="col-12">
                   <CustomTable
@@ -84,20 +82,24 @@ const UserManagement = ({ showModal, filters, setFilters, pagination, updatePagi
                         title: "Registration Date",
                         from: "fromDate",
                         to: "toDate",
+                        fromTitle: "From",
+                        toTitle: "To",
                       },
                     ]}
                     selectOptions={[
                       {
+                        main_title: "Filter by status",
                         title: "Status",
-                        options: normalStatus
-                      }
+                        options: normalStatus,
+                      },
                     ]}
                   >
                     <tbody>
                       {userData?.map((item, index) => (
                         <tr key={item?.id}>
                           <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
-                          <td>{item?.user_name}</td>
+                          <td>{item?.first_name}</td>
+                          <td>{item?.last_name}</td>
                           <td>{item?.email}</td>
                           <td>{dateFormat(item?.created_at)}</td>
                           {/* Status column with Select dropdown */}

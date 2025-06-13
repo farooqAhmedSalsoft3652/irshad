@@ -124,7 +124,7 @@ export const Dashboard = () => {
     setNewUsersData(dashboardChartDataThree); // Use predefined data
   };
 
-   const fetchNewConsultant = async (value, newValue = "") => {
+  const fetchNewConsultant = async (value, newValue = "") => {
     // Fetch new users data (uncomment if fetching from API)
     // try {
     //   const response = await getAll(
@@ -159,7 +159,6 @@ export const Dashboard = () => {
   return (
     <>
       <DashboardLayout pageTitle="Dashboard">
-        <div className="px-2 py-3">
         <div className="container-fluid dashCard pt-1">
           <div className="row">
             <div className="col-12">
@@ -217,7 +216,7 @@ export const Dashboard = () => {
                 options={chartStatus}
                 onSelectYear={handleSelectYear}
                 text="New Users Registered"
-                 backgroundColor="rgba(197, 228, 246, 0.50)"
+                backgroundColor="rgba(197, 228, 246, 0.50)"
               />
             </div>
           </div>
@@ -235,7 +234,6 @@ export const Dashboard = () => {
               />
             </div>
           </div>
-        </div>
         </div>
       </DashboardLayout>
     </>
