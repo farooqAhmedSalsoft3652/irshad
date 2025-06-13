@@ -1,6 +1,6 @@
 import { Card, Col, Container, FormCheck, Row } from "react-bootstrap";
 import { Formik, Form, FieldArray, Field, ErrorMessage } from "formik";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { images } from "../../../Assets";
 import CustomButton from "../../../Components/CustomButton";
 import "react-phone-number-input/style.css";
@@ -9,12 +9,16 @@ import { serviceValidationSchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { usePageTitle, validateImage } from "../../../Utils/helper";
+import {
+  isNullOrEmpty,
+  usePageTitle,
+  validateImage,
+} from "../../../Utils/helper";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import "./style.css";
-
+import { servicesData } from "../../../Config/data";
 import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCirclePlus,
@@ -25,11 +29,13 @@ import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { Select } from "../../../Components/Select";
 import { servicesOptions } from "../../../Config/TableStatus";
 
-const NewServicesAdd = ({ showModal }) => {
+const ServicesEdit = ({ showModal }) => {
   usePageTitle("Edit Profile", true);
   const navigate = useNavigate();
   const location = useLocation();
   const title = location.state?.title;
+  const { id } = useParams();
+  const [services, setServices] = useState();
 
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const { user } = useAuth();
@@ -42,25 +48,30 @@ const NewServicesAdd = ({ showModal }) => {
     saturday: true,
     sunday: true,
   });
+  const sessionOptions = [
+    { label: "Chat", value: "chat" },
+    { label: "Call", value: "call" },
+    { label: "Video Call", value: "video" },
+  ];
 
   // Initial values for the form
   const initialValues = {
-    service_name: "",
+    service_name: services?.service_name || "",
     showQuickServices: false,
-    sessionType: "",
+    sessionType: "child",
     sessionAmounts: {
-      chat: "child",
+      chat: "",
       call: "",
       video: "",
     },
-    quickSessionType: "",
+    quickSessionType: "child",
     quickSessionAmounts: {
-      chat: "child",
+      chat: "",
       call: "",
       video: "",
     },
-    descriptions: "",
-    banner_images: [], // Image Upload Field
+    descriptions: services?.description || "",
+    banner_images: services?.image || [],
     mondayTime: [{ startTime: "", endTime: "" }],
     tuesdayTime: [{ startTime: "", endTime: "" }],
     wednesdayTime: [{ startTime: "", endTime: "" }],
@@ -70,83 +81,20 @@ const NewServicesAdd = ({ showModal }) => {
     sundayTime: [{ startTime: "", endTime: "" }],
   };
 
-  const sessionOptions = [
-    { label: "Chat", value: "chat" },
-    { label: "Call", value: "call" },
-    { label: "Video Call", value: "video" },
-  ];
-
   // Handle form submission
   const handleSubmit = (values, { resetForm }) => {
     // Create a copy of the values to avoid modifying the original
     startSubmitting();
     const formData = { ...values };
-    const buildPayload = (values) => {
-      const payload = {
-        service_name: values.service_name,
-        showQuickServices: values.showQuickServices,
-        descriptions: values.descriptions,
-        banner_images: values.banner_images,
-      };
-
-      // Session Amount (if selected and non-empty)
-      if (values.sessionType && values.sessionAmounts?.[values.sessionType]) {
-        payload.sessionType = values.sessionType;
-        payload.sessionAmounts = {
-          [values.sessionType]: values.sessionAmounts[values.sessionType],
-        };
-      }
-
-      // Quick Session Amount (if selected and non-empty)
-      if (
-        values.quickSessionType &&
-        values.quickSessionAmounts?.[values.quickSessionType]
-      ) {
-        payload.quickSessionType = values.quickSessionType;
-        payload.quickSessionAmounts = {
-          [values.quickSessionType]:
-            values.quickSessionAmounts[values.quickSessionType],
-        };
-      }
-
-      // Days timing (filter out empty time slots)
-      const days = [
-        "mondayTime",
-        "tuesdayTime",
-        "wednesdayTime",
-        "thursdayTime",
-        "fridayTime",
-        "saturdayTime",
-        "sundayTime",
-      ];
-
-      days.forEach((day) => {
-        const timeSlots = values[day]?.filter(
-          (slot) => slot.startTime && slot.endTime
-        );
-
-        if (timeSlots?.length) {
-          payload[day] = timeSlots;
-        }
-      });
-
-      return payload;
-    };
-
-    const payload = buildPayload(values);
-    console.log("Final Payload:", payload);
-
+    // values.image = imageObject;
     showModal(
-      "",
-      `New Service Added Successfully.`,
+      "Succesful",
+      `New Service Added Successfully`,
       // null,
-      () => navigate(`/new-services`),
+      () => navigate(`/services`),
       true
     );
     // Filter out days with empty time slots
-
-    // Process each time slot key
-    /*
     const timeSlotKeys = [
       "mondayTime",
       "tuesdayTime",
@@ -156,6 +104,8 @@ const NewServicesAdd = ({ showModal }) => {
       "saturdayTime",
       "sundayTime",
     ];
+
+    // Process each time slot key
     timeSlotKeys.forEach((key) => {
       const dayData = values[key];
 
@@ -178,27 +128,52 @@ const NewServicesAdd = ({ showModal }) => {
         delete formData[key];
       }
     });
-*/
+
     // Log the filtered form data
-    // resetForm();
-
-    resetForm({
-      payload: {
-        ...values,
-        banner_images: [], // 👈 preserve uploaded images
-      },
-    });
-    // console.log("File:::::", values.banner_images);
-
-    // resetForm({ payload: { ...values, banner_images: [] } });
-
-    // console.log("Form Data with Filtered Time Slots:", formData);
+    resetForm();
+    console.log("Form Data with Filtered Time Slots:", formData);
     stopSubmitting();
     // Here you would submit formData to your API
     // submitToAPI(formData)
   };
 
-  // console.log(user)
+  const getServices = async () => {
+    const response = servicesData?.detail?.data?.find(
+      (item) => item.id === Number(id)
+    );
+    if (response) {
+      setServices(response);
+
+      // Update disabled state based on existing time slots
+      // const newDisabledState = {
+      //   monday: !response.mondayTime || response.mondayTime.length === 0,
+      //   tuesday: !response.tuesdayTime || response.tuesdayTime.length === 0,
+      //   wednesday:
+      //     !response.wednesdayTime || response.wednesdayTime.length === 0,
+      //   thursday: !response.thursdayTime || response.thursdayTime.length === 0,
+      //   friday: !response.fridayTime || response.fridayTime.length === 0,
+      //   saturday: !response.saturdayTime || response.saturdayTime.length === 0,
+      //   sunday: !response.sundayTime || response.sundayTime.length === 0,
+      // };
+      // setIsDisabled(newDisabledState);
+    }
+  };
+  useEffect(() => {
+    getServices();
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [id]);
+
+  console.log("data", services);
+  if (isNullOrEmpty(services)) {
+    return (
+      <section className="page-content service-details-edit">
+        <div className="page-header mb-4">
+          <div className="page-title mb-0">loading...</div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <Container fluid>
       <div className="py-sm-5 py-3 px-sm-0 px-1">
@@ -210,8 +185,8 @@ const NewServicesAdd = ({ showModal }) => {
                   <BackButton2 />
                 </div>
                 <div className="flex-grow-1 text-center">
-                  <h2 className="fw-bold mb-1  page-title">Sub Category</h2>
-                  <h3 className="fw-regular mb-0 page-title">{title}</h3>
+                  <h2 className="fw-bold mb-1  page-title">Edit {title}</h2>
+                  <h3 className="fw-regular mb-0 page-title">Sub Category</h3>
                 </div>
               </div>
             </Col>
@@ -222,6 +197,7 @@ const NewServicesAdd = ({ showModal }) => {
                 initialValues={initialValues}
                 validationSchema={serviceValidationSchema}
                 onSubmit={handleSubmit}
+                enableReinitialize
               >
                 {({
                   values,
@@ -357,6 +333,7 @@ const NewServicesAdd = ({ showModal }) => {
                       {/* Image Upload */}
                       <Col xs={12} lg={12} xxl={5} className="mb-4">
                         <UploadAndDisplayImages
+                          images={values.banner_images}
                           label="Upload Image"
                           placeholder="Upload your picture"
                           onChange={(files) =>
@@ -615,4 +592,4 @@ const NewServicesAdd = ({ showModal }) => {
   );
 };
 
-export default withModal(NewServicesAdd);
+export default withModal(ServicesEdit);

@@ -1,6 +1,6 @@
-.inputWrapper {
+/* .inputWrapper {
   margin-bottom: 1rem;
-}
+} */
 
 .inlineLabel {
   display: flex;
@@ -11,8 +11,8 @@
 .mainLabel,
 .form-label {
   margin-bottom: 0.25rem;
-  padding: 0 0 0 6px;
-  font-weight: 600;
+  padding: 0 0 0 0px;
+  font-weight: 500;
   font-size: 16px;
   text-transform: capitalize;
   color: var(--bs-black);

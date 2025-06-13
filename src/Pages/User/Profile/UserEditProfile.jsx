@@ -297,7 +297,7 @@ const UserEditProfile = ({ showModal }) => {
                                     required
                                     id="gender"
                                     name="gender"
-                                    wrapperClass="d-block mb-3"
+                                    wrapperClass="d-block"
                                     mainLabel="Select Gender"
                                     value={values.gender}
                                     onChange={(value) =>

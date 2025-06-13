@@ -18,14 +18,21 @@ const ServicesDetails = ({ showModal }) => {
 
   // console.log(servicesData, "servicesData")
   const getServices = async () => {
-    const response = servicesData?.detail?.data?.find((item) => item.id === Number(id));
+    const response = servicesData?.detail?.data?.find(
+      (item) => item.id === Number(id)
+    );
     if (response) {
       setServices(response);
     }
   };
 
   const RemoveModal = () => {
-    showModal("", `Are you sure you want to remove service abc ?`, ()=>RemoveSuccessModal(), false);
+    showModal(
+      "",
+      `Are you sure you want to remove service abc ?`,
+      () => RemoveSuccessModal(),
+      false
+    );
   };
   const RemoveSuccessModal = () => {
     showModal("", `Service Has been removed successfully`, null, true);
@@ -47,7 +54,9 @@ const ServicesDetails = ({ showModal }) => {
                 <div className="flex-shrink-0 mb-3 mb-lg-0 align-self-center">
                   <div className="d-flex">
                     <BackButton2 />
-                    <h2 className="fw-bold mb-0 page-title mx-auto">Services New</h2>
+                    <h2 className="fw-bold mb-0 page-title mx-auto">
+                      Services View
+                    </h2>
                   </div>
                 </div>
               </div>
@@ -62,9 +71,15 @@ const ServicesDetails = ({ showModal }) => {
                 <div className="d-flex justify-content-between flex-wrap">
                   <div>
                     <h2 className="fw-bold mb-1 ">{services?.title}</h2>
-                    <h4 className="provide-name fw-normal" style={{ color: "#262932" }}>
+                    <h4
+                      className="provide-name fw-normal"
+                      style={{ color: "#262932" }}
+                    >
                       Sub-Category Name:{" "}
-                      <span className="text-capitalize" style={{ color: "#727A84" }}>
+                      <span
+                        className="text-capitalize"
+                        style={{ color: "#727A84" }}
+                      >
                         {services?.category}
                       </span>
                     </h4>
@@ -75,7 +90,9 @@ const ServicesDetails = ({ showModal }) => {
                         <FontAwesomeIcon icon={faStar} className="me-1" />
                         {services?.rating}
                       </span>
-                      <span className="review">({services?.reviews?.count}+)</span>
+                      <span className="review">
+                        ({services?.reviews?.count}+)
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -116,9 +133,19 @@ const ServicesDetails = ({ showModal }) => {
                 </div>
               </div>
               <div className="d-flex flex-wrap gap-2">
-                <CustomButton variant="primary min-width-180" text="Manage Slots" />
-                <CustomButton variant="secondary min-width-180" text="Remove" onClick={RemoveModal} />
-                <Link className="btn btn-secondary min-width-180">Edit</Link>
+                {/* <CustomButton variant="primary min-width-180" text="Manage Slots" /> */}
+                <CustomButton
+                  variant="secondary min-width-180"
+                  text="Remove"
+                  onClick={RemoveModal}
+                />
+                <Link
+                  to={`/services/${id}/edit`}
+                  className="btn btn-secondary min-width-180"
+                  state={{ title: services?.title }}
+                >
+                  Edit
+                </Link>
               </div>
             </Col>
           </Row>

@@ -23,7 +23,9 @@ const VideoVerification = () => {
 
   const validationSchema = Yup.object(
     questions.reduce((shape, q) => {
-      shape[`question${q.id}`] = Yup.string().required("This question is required");
+      shape[`question${q.id}`] = Yup.string().required(
+        "This question is required"
+      );
       return shape;
     }, {})
   );
@@ -43,16 +45,27 @@ const VideoVerification = () => {
         <div className="site_card">
           <div className="d-flex align-items-center flex-wrap mb-3">
             <BackButton2 />
-            <h2 className="mx-auto fw-bold mb-0 page-title">Video Verification Quiz</h2>
+            <h2 className="mx-auto fw-bold mb-0 page-title">
+              Video Verification Quiz
+            </h2>
           </div>
           <div className="mb-3">
-            <img src={VideoVerificationQuiz} alt="video-quiz" className="img-fluid w-100" />
+            <img
+              src={VideoVerificationQuiz}
+              alt="video-quiz"
+              className="img-fluid w-100"
+            />
           </div>
           <p className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra
-            justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum,
-            nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+            Cum sociis natoque penatibus et magnis dis parturient montes,
+            nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra
+            vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
+            odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
           </p>
           <Formik
             initialValues={initialValues}
@@ -73,8 +86,16 @@ const VideoVerification = () => {
                       <div className="d-flex gap-3 flex-wrap">
                         {["A", "B", "C", "D"].map((opt) => (
                           <FormCheck key={opt} type="radio" className="me-2">
-                            <Field name={`question${q.id}`} type="radio" value={opt} as={FormCheck.Input} id={`q${q.id}-${opt}`} />
-                            <FormCheck.Label htmlFor={`q${q.id}-${opt}`}>Option {opt}</FormCheck.Label>
+                            <Field
+                              name={`question${q.id}`}
+                              type="radio"
+                              value={opt}
+                              as={FormCheck.Input}
+                              id={`q${q.id}-${opt}`}
+                            />
+                            <FormCheck.Label htmlFor={`q${q.id}-${opt}`}>
+                              Option {opt}
+                            </FormCheck.Label>
                           </FormCheck>
                         ))}
                       </div>
@@ -85,7 +106,7 @@ const VideoVerification = () => {
                   ))}
 
                   <div>
-                    <button className="siteBtn primaryBtn" type="submit">
+                    <button className="btn btn-primary  " type="submit">
                       Submit
                     </button>
                   </div>
@@ -93,7 +114,6 @@ const VideoVerification = () => {
               </FormikForm>
             )}
           </Formik>
- 
         </div>
         <CustomModal
           show={modal}

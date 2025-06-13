@@ -5984,7 +5984,8 @@ export const servicesData = {
     data: [
       {
         id: 1,
-        title: "Services Name",
+        title: "Services Name 1",
+        service_name: "services_a",
         category: "abc",
         quick: false,
         description:
@@ -5995,7 +5996,7 @@ export const servicesData = {
         price: "$200.00",
         rating: 4.0,
         // reviews: "1.21K reviews",
-        image: images.serviceImg1,
+        image: [images.serviceImg1],
         isWishListed: true,
         provider_name: "ABC Service Provider Name",
         reviews: {
