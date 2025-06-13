@@ -706,236 +706,261 @@ const UserEditProfile = ({ showModal }) => {
                                     Certification Detail
                                   </h3>
                                 </Col>
-                                <FieldArray name="certificates">
-                                  {({ push, remove }) => (
-                                    <>
-                                      {values.certificates.map(
-                                        (certificate, index) => (
-                                          <Row
-                                            key={index}
-                                            className={`certificate-clone ${
-                                              values.certificates.length > 1
-                                                ? "mb-4"
-                                                : "mb-0 pb-0 border-bottom-0"
-                                            }`}
-                                          >
-                                            {/* Remove Button */}
-                                            {values.certificates.length > 1 && (
-                                              <Col xs={12} className="text-end">
-                                                <button
-                                                  type="button"
-                                                  className="bg-transparent border-0"
-                                                  onClick={() => {
-                                                    // Clear image first
-                                                    setFieldValue(
-                                                      `certificates.${index}.certificate_image`,
-                                                      []
-                                                    );
-                                                    // Then remove after small delay
-                                                    setTimeout(
-                                                      () => remove(index),
-                                                      50
-                                                    );
-                                                  }}
+                                <Col xs={12}>
+                                  <FieldArray name="certificates">
+                                    {({ push, remove }) => (
+                                      <>
+                                        {values.certificates.map(
+                                          (certificate, index) => (
+                                            <div
+                                              key={index}
+                                              className={`certificate-clone ${
+                                                values.certificates.length > 1
+                                                  ? "mb-4"
+                                                  : "mb-0 pb-0 border-bottom-0"
+                                              }`}
+                                            >
+                                              <Row>
+                                                {/* Remove Button */}
+                                                {values.certificates.length >
+                                                  1 && (
+                                                  <Col
+                                                    xs={12}
+                                                    className="text-end"
+                                                  >
+                                                    <button
+                                                      type="button"
+                                                      className="bg-transparent border-0"
+                                                      onClick={() => {
+                                                        // Clear image first
+                                                        setFieldValue(
+                                                          `certificates.${index}.certificate_image`,
+                                                          []
+                                                        );
+                                                        // Then remove after small delay
+                                                        setTimeout(
+                                                          () => remove(index),
+                                                          50
+                                                        );
+                                                      }}
+                                                    >
+                                                      <div className="d-flex align-items-center gap-1">
+                                                        <span>Delete</span>{" "}
+                                                        <span>
+                                                          <images.DeleteIcon />
+                                                        </span>
+                                                      </div>
+                                                    </button>
+                                                  </Col>
+                                                )}
+                                                {/* Institution Name */}
+                                                <Col
+                                                  xs={12}
+                                                  lg={6}
+                                                  xxl={6}
+                                                  className="mb-3"
                                                 >
-                                                  <div className="d-flex align-items-center gap-1">
-                                                    <span>Delete</span>{" "}
-                                                    <span>
-                                                      <images.DeleteIcon />
-                                                    </span>
-                                                  </div>
-                                                </button>
-                                              </Col>
-                                            )}
-                                            {/* Institution Name */}
-                                            <Col
-                                              xs={12}
-                                              lg={6}
-                                              xxl={6}
-                                              className="mb-3"
-                                            >
-                                              <CustomInput
-                                                label="Institution Name"
-                                                labelclass="mainLabel"
-                                                type="text"
-                                                required
-                                                placeholder="Enter Institution Name"
-                                                id={`certificates.${index}.institution_name`}
-                                                value={
-                                                  certificate.institution_name
-                                                }
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                error={
-                                                  errors.certificates?.[index]
-                                                    ?.institution_name &&
-                                                  touched.certificates?.[index]
-                                                    ?.institution_name
-                                                    ? errors.certificates[index]
-                                                        .institution_name // Ensure it's a string
-                                                    : ""
-                                                }
-                                              />
-                                            </Col>
+                                                  <CustomInput
+                                                    label="Institution Name"
+                                                    labelclass="mainLabel"
+                                                    type="text"
+                                                    required
+                                                    placeholder="Enter Institution Name"
+                                                    id={`certificates.${index}.institution_name`}
+                                                    value={
+                                                      certificate.institution_name
+                                                    }
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    error={
+                                                      errors.certificates?.[
+                                                        index
+                                                      ]?.institution_name &&
+                                                      touched.certificates?.[
+                                                        index
+                                                      ]?.institution_name
+                                                        ? errors.certificates[
+                                                            index
+                                                          ].institution_name // Ensure it's a string
+                                                        : ""
+                                                    }
+                                                  />
+                                                </Col>
 
-                                            {/* Certificate Title */}
-                                            <Col
-                                              xs={12}
-                                              lg={6}
-                                              xxl={6}
-                                              className="mb-3"
-                                            >
-                                              <CustomInput
-                                                label="Certificate Title"
-                                                labelclass="mainLabel"
-                                                type="text"
-                                                required
-                                                placeholder="Enter Certificate Title"
-                                                id={`certificates.${index}.certificate_title`}
-                                                value={
-                                                  certificate.certificate_title
-                                                }
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                error={
-                                                  errors.certificates?.[index]
-                                                    ?.certificate_title &&
-                                                  touched.certificates?.[index]
-                                                    ?.certificate_title
-                                                    ? errors.certificates[index]
-                                                        .certificate_title // Ensure it's a string
-                                                    : ""
-                                                }
-                                              />
-                                            </Col>
-                                            {/* Certificate Detail From */}
-                                            <Col
-                                              xs={12}
-                                              lg={6}
-                                              xxl={6}
-                                              className="mb-3"
-                                            >
-                                              <CustomInput
-                                                label="From"
-                                                labelclass="mainLabel"
-                                                type="date"
-                                                required
-                                                placeholder="Enter Certificate Title"
-                                                id={`certificates.${index}.certificate_from`}
-                                                value={
-                                                  certificate.certificate_from
-                                                }
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                error={
-                                                  errors.certificates?.[index]
-                                                    ?.certificate_from &&
-                                                  touched.certificates?.[index]
-                                                    ?.certificate_from
-                                                    ? errors.certificates[index]
-                                                        .certificate_from // Ensure it's a string
-                                                    : ""
-                                                }
-                                              />
-                                            </Col>
-                                            {/* Certificate Detail TO */}
-                                            <Col
-                                              xs={12}
-                                              lg={6}
-                                              xxl={6}
-                                              className="mb-3"
-                                            >
-                                              <CustomInput
-                                                label="To"
-                                                labelclass="mainLabel"
-                                                type="date"
-                                                required
-                                                placeholder="Enter Certificate Title"
-                                                id={`certificates.${index}.certificate_to`}
-                                                value={
-                                                  certificate.certificate_to
-                                                }
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                error={
-                                                  errors.certificates?.[index]
-                                                    ?.certificate_to &&
-                                                  touched.certificates?.[index]
-                                                    ?.certificate_to
-                                                    ? errors.certificates[index]
-                                                        .certificate_to // Ensure it's a string
-                                                    : ""
-                                                }
-                                              />
-                                            </Col>
-                                            {/* {console.log(errors)} */}
-                                            {/* Certificate Image Upload */}
-                                            <Col
-                                              xs={12}
-                                              lg={6}
-                                              xxl={6}
-                                              className="certificates-images image-upload-style-2"
-                                            >
-                                              <UploadAndDisplayImages
-                                                id={`certi.${index}.certificate_image`}
-                                                images={
-                                                  certificate.certificate_image
-                                                }
-                                                // key={index} // Ensures re-mounting on removal
-                                                key={`cert-${index}-${
-                                                  certificate.certificate_image
-                                                    ?.length || 0
-                                                }`}
-                                                label="Upload Certificate Picture"
-                                                onChange={(files) =>
-                                                  setFieldValue(
-                                                    `certificates.${index}.certificate_image`,
-                                                    files
-                                                  )
-                                                }
-                                                numberOfFiles={1}
-                                                errorFromParent={
-                                                  errors.certificates?.[index]
-                                                    ?.certificate_image &&
-                                                  touched.certificates?.[index]
-                                                    ?.certificate_image
-                                                    ? errors.certificates[index]
-                                                        .certificate_image // Ensure it's a string
-                                                    : ""
-                                                }
-                                                required
-                                              />
-                                            </Col>
-                                          </Row>
-                                        )
-                                      )}
+                                                {/* Certificate Title */}
+                                                <Col
+                                                  xs={12}
+                                                  lg={6}
+                                                  xxl={6}
+                                                  className="mb-3"
+                                                >
+                                                  <CustomInput
+                                                    label="Certificate Title"
+                                                    labelclass="mainLabel"
+                                                    type="text"
+                                                    required
+                                                    placeholder="Enter Certificate Title"
+                                                    id={`certificates.${index}.certificate_title`}
+                                                    value={
+                                                      certificate.certificate_title
+                                                    }
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    error={
+                                                      errors.certificates?.[
+                                                        index
+                                                      ]?.certificate_title &&
+                                                      touched.certificates?.[
+                                                        index
+                                                      ]?.certificate_title
+                                                        ? errors.certificates[
+                                                            index
+                                                          ].certificate_title // Ensure it's a string
+                                                        : ""
+                                                    }
+                                                  />
+                                                </Col>
+                                                {/* Certificate Detail From */}
+                                                <Col
+                                                  xs={12}
+                                                  lg={6}
+                                                  xxl={6}
+                                                  className="mb-3"
+                                                >
+                                                  <CustomInput
+                                                    label="From"
+                                                    labelclass="mainLabel"
+                                                    type="date"
+                                                    required
+                                                    placeholder="Enter Certificate Title"
+                                                    id={`certificates.${index}.certificate_from`}
+                                                    value={
+                                                      certificate.certificate_from
+                                                    }
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    error={
+                                                      errors.certificates?.[
+                                                        index
+                                                      ]?.certificate_from &&
+                                                      touched.certificates?.[
+                                                        index
+                                                      ]?.certificate_from
+                                                        ? errors.certificates[
+                                                            index
+                                                          ].certificate_from // Ensure it's a string
+                                                        : ""
+                                                    }
+                                                  />
+                                                </Col>
+                                                {/* Certificate Detail TO */}
+                                                <Col
+                                                  xs={12}
+                                                  lg={6}
+                                                  xxl={6}
+                                                  className="mb-3"
+                                                >
+                                                  <CustomInput
+                                                    label="To"
+                                                    labelclass="mainLabel"
+                                                    type="date"
+                                                    required
+                                                    placeholder="Enter Certificate Title"
+                                                    id={`certificates.${index}.certificate_to`}
+                                                    value={
+                                                      certificate.certificate_to
+                                                    }
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    error={
+                                                      errors.certificates?.[
+                                                        index
+                                                      ]?.certificate_to &&
+                                                      touched.certificates?.[
+                                                        index
+                                                      ]?.certificate_to
+                                                        ? errors.certificates[
+                                                            index
+                                                          ].certificate_to // Ensure it's a string
+                                                        : ""
+                                                    }
+                                                  />
+                                                </Col>
+                                                {/* {console.log(errors)} */}
+                                                {/* Certificate Image Upload */}
+                                                <Col
+                                                  xs={12}
+                                                  lg={6}
+                                                  xxl={6}
+                                                  className="certificates-images image-upload-style-2"
+                                                >
+                                                  <UploadAndDisplayImages
+                                                    id={`certi.${index}.certificate_image`}
+                                                    images={
+                                                      certificate.certificate_image
+                                                    }
+                                                    // key={index} // Ensures re-mounting on removal
+                                                    key={`cert-${index}-${
+                                                      certificate
+                                                        .certificate_image
+                                                        ?.length || 0
+                                                    }`}
+                                                    placeholder="Upload Certificate Picture"
+                                                    label="Upload Certificate Picture"
+                                                    onChange={(files) =>
+                                                      setFieldValue(
+                                                        `certificates.${index}.certificate_image`,
+                                                        files
+                                                      )
+                                                    }
+                                                    numberOfFiles={1}
+                                                    errorFromParent={
+                                                      errors.certificates?.[
+                                                        index
+                                                      ]?.certificate_image &&
+                                                      touched.certificates?.[
+                                                        index
+                                                      ]?.certificate_image
+                                                        ? errors.certificates[
+                                                            index
+                                                          ].certificate_image // Ensure it's a string
+                                                        : ""
+                                                    }
+                                                    required
+                                                  />
+                                                </Col>
+                                              </Row>
+                                            </div>
+                                          )
+                                        )}
 
-                                      {/* Add Button */}
-                                      <Col xs={12} className="">
-                                        <button
-                                          type="button"
-                                          onClick={() =>
-                                            push({
-                                              institution_name: "",
-                                              certificate_title: "",
-                                              certificate_image: [],
-                                            })
-                                          }
-                                          className="bg-transparent border-0"
-                                        >
-                                          <div className="d-flex align-items-center gap-1">
-                                            <span>
-                                              <images.AddIcon />
-                                            </span>{" "}
-                                            <span className="mt-1">
-                                              Add More
-                                            </span>
-                                          </div>
-                                        </button>
-                                      </Col>
-                                    </>
-                                  )}
-                                </FieldArray>
+                                        {/* Add Button */}
+                                        <Col className="">
+                                          <button
+                                            type="button"
+                                            onClick={() =>
+                                              push({
+                                                institution_name: "",
+                                                certificate_title: "",
+                                                certificate_image: [],
+                                              })
+                                            }
+                                            className="bg-transparent border-0"
+                                          >
+                                            <div className="d-flex align-items-center gap-1">
+                                              <span>
+                                                <images.AddIcon />
+                                              </span>{" "}
+                                              <span className="mt-1">
+                                                Add More
+                                              </span>
+                                            </div>
+                                          </button>
+                                        </Col>
+                                      </>
+                                    )}
+                                  </FieldArray>
+                                </Col>
                               </Row>
                               <Row>
                                 <Col xs={12}>

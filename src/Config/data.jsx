@@ -211,11 +211,10 @@ export const loginCredentials = [
     role: "admin",
     message: "Login successfully",
     token: "1164|ihHvE9J6cn1U3St4Sk6v6JKOdm2ARA87hXYbIdS63831040a",
-    "full_name": "John Wick",
+    full_name: "John Wick",
     first_name: "John",
     last_name: "Wick",
-    "photo-path":
-      images.adminProfileImg,
+    "photo-path": images.adminProfileImg,
     "user-id": 1,
   },
   {
@@ -10990,10 +10989,12 @@ export const slotManagementHistoryData = {
   },
 };
 export const slotsData = {
+  message: "slots data",
   detail: {
     data: [
       {
         slot_id: 974,
+        reference_id: 974,
         id: 1,
         day: "wednesday",
         date: "5/27/2025",
@@ -11013,6 +11014,7 @@ export const slotsData = {
       {
         id: 2,
         slot_id: 974,
+        reference_id: 974,
         day: "Thursday",
         date: "5/27/2025",
         slots: [

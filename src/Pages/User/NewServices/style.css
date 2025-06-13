@@ -47,29 +47,17 @@
 
 .services-detail {}
 
-.image-upload-style-2 .imageUploadArea {
-  background-color: transparent;
-  padding: 1rem;
-  height: auto;
+.add-service.time-slotes .slot-row {
+  padding: 15px 10px;
 }
 
-.image-upload-style-2 .imageUploadArea .UploadArea {
-  flex-direction: row !important;
-}
-
-.user-layout .image-upload-style-2 p {
-  color: #000;
-  font-weight: 500;
-}
-
-.user-layout .image-upload-style-2 p.error-message {
-  font-weight: 400;
+.form-contro {
+  padding: 10px 10px;
 }
 
 
+/* 
 .time-slotes-switch .form-check-input {
-  /* --bs-form-switch-bg: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%2344B80E'/%3e%3c/svg%3e); */
-
   --form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23D9001B'/%3e%3c/svg%3e");
 
   background-color: #dbdbdb;
@@ -90,9 +78,20 @@
 
 .time-slotes-switch .mainInput {
   padding: 10px 5px 10px 10px;
-}
+} */
+/* 
+.time-slotes .remove-btn,
+.time-slotes .add-btn {
+  color: #000000;
+  font-size: 16px;
+  padding: 0px 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+} */
 
-.time-slotes-switch .add-btn {
+/* .time-slotes-switch .add-btn {
   border: 1px solid #c5c5c5;
   color: #44b80e;
   font-size: 20px;
@@ -105,7 +104,6 @@
 }
 
 .time-slotes-switch .remove-btn {
-  /* border: 1px solid #c5c5c5; */
   color: #D9001B;
   font-size: 18px;
   width: 40px;
@@ -114,4 +112,4 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-}
+} */

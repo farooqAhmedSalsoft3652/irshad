@@ -845,6 +845,13 @@ export const productCategories = [
   { text: "Product B", value: "productb" },
   { text: "Product C", value: "productc" },
 ];
+export const servicesOptions = [
+  { text: "Select Services", value: "select_services" },
+  { text: "Services A", value: "services_a" },
+  { text: "Services B", value: "services_b" },
+  { text: "Services C", value: "services_c" },
+];
+
 export const deliveryOptions = [
   {
     text: "E-Delivery",

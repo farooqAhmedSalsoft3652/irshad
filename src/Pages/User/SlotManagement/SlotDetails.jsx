@@ -16,7 +16,7 @@ const SlotDetails = ({
   pagination,
   updatePagination,
   showModal,
-  reasonModal
+  reasonModal,
 }) => {
   usePageTitleUser("Slots Details");
   const { id } = useParams();
@@ -36,7 +36,7 @@ const SlotDetails = ({
 
         const getSlotId = data?.find((item) => item.slot_id == Number(id));
 
-        console.log(getSlotId, "getSlotId");
+        // console.log(getSlotId, "getSlotId");
 
         const filteredSlots = slotsData?.detail?.data.filter(
           (item) => item.slot_id == getSlotId?.slot_id
@@ -63,17 +63,18 @@ const SlotDetails = ({
   useEffect(() => {
     fetchUsers();
   }, [filters, slotsData, slotManagementHistoryData, id]);
-  console.log(id, "id from params");
 
-   const BookedAll = () => {
+  const BookedAll = () => {
     reasonModal(
-      "",
-      "Are you sure you want to Book Next week?",
+      "", // heading
+      "Are you sure you want to Book Next week? 12", // para
       (reason, id) => {
         BookedAllSuucces(reason, id);
       },
-      false,
-      true
+      false, // success
+      true, // showReason
+      "Provide Reason for booked week",
+      "Description" // ✅ reasonLabel
     );
   };
   const BookedAllSuucces = async (reason, id) => {
@@ -85,15 +86,17 @@ const SlotDetails = ({
     );
   };
 
-   const ReduceHours = () => {
+  const ReduceHours = () => {
     reasonModal(
       "",
       "Are you sure you want to reduce working hour for Next week?",
       (reason, id) => {
         ReduceHoursSuccess(reason, id);
       },
-      false,
-      true
+      false, // success
+      true, // showReason
+      "Provide Reason for reduce hours",
+      "Description" // ✅ reasonLabel
     );
   };
   const ReduceHoursSuccess = async (reason, id) => {

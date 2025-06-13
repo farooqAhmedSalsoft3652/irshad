@@ -40,7 +40,16 @@ const UserSignup = () => {
           validationSchema={signUpUserValidationSchema}
           onSubmit={handleSubmit}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            setFieldTouched,
+            setFieldValue,
+          }) => (
             <form className="mt-3" onSubmit={handleSubmit}>
               <CustomInput
                 label="First Name"
@@ -76,7 +85,9 @@ const UserSignup = () => {
                   wrapperClass="d-block mb-3"
                   mainLabel="Select Language"
                   value={values.language}
-                  onChange={(value) => handleChange({ target: { name: "language", value } })} // Adapting to Formik
+                  onChange={(value) =>
+                    handleChange({ target: { name: "language", value } })
+                  } // Adapting to Formik
                   onBlur={handleBlur}
                   error={touched.language && errors.language}
                 >
@@ -114,7 +125,9 @@ const UserSignup = () => {
                   wrapperClass="d-block mb-3"
                   mainLabel="Select Gender"
                   value={values.gender}
-                  onChange={(value) => handleChange({ target: { name: "gender", value } })} // Adapting to Formik
+                  onChange={(value) =>
+                    handleChange({ target: { name: "gender", value } })
+                  } // Adapting to Formik
                   onBlur={handleBlur}
                   error={touched.gender && errors.gender}
                 >
@@ -188,7 +201,8 @@ const UserSignup = () => {
               <div className="image-upload-style-2 mt-4">
                 <ImageUpload
                   id="profile_pic"
-                  label="Upload Profile Picture"
+                  label="Profile Picture"
+                  placeholder="Upload Profile Picture"
                   onChange={(files) => setFieldValue("profile_pic", files)}
                   numberOfFiles={1}
                   // required
@@ -199,7 +213,8 @@ const UserSignup = () => {
               <div className="image-upload-style-2 mt-4">
                 <ImageUpload
                   id="cover_pic"
-                  label="Upload Cover Picture"
+                  label="Cover Picture"
+                  placeholder="Upload Cover Picture"
                   onChange={(files) => setFieldValue("cover_pic", files)}
                   numberOfFiles={1}
                   // required
@@ -209,10 +224,16 @@ const UserSignup = () => {
               </div>
 
               <div className="mt-5 text-center">
-                <CustomButton variant="primary" className="w-100" text="Next" pendingText="Loading..." type="submit" />
+                <CustomButton
+                  variant="primary"
+                  className="w-100"
+                  text="Next"
+                  pendingText="Loading..."
+                  type="submit"
+                />
               </div>
 
-              <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">
+              <p className="mt-4 mb-0 fw-medium text-center text-capitalize grayLightColor">
                 Already have an account?
                 <Link to={"/login"} className="underlineOnHover text-dark ps-1">
                   Login

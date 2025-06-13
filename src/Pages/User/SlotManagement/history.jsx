@@ -38,7 +38,7 @@ const SlotsHistoryManagement = ({
         const getReferenceId = data?.find(
           (item) => item.reference_id == Number(id)
         );
-        console.log(getReferenceId, "getReferenceId");
+        // console.log(getReferenceId, "getReferenceId");
         const filteredSlots = slotManagementHistoryData?.detail?.data.filter(
           (item) => item.reference_id == getReferenceId?.reference_id
         );
