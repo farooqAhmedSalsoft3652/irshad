@@ -10,9 +10,11 @@ import { slotValidationSchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { usePageTitleUser } from "../../../Utils/helper";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
-const NewSlot = ({ reasonModal }) => {
+const NewSlot = ({ reasonModal, showModal }) => {
   usePageTitleUser("New Slot");
+  const navigate = useNavigate();
 
   const initialSlot = { start_time: "", end_time: "", timeDuration: "" };
 
@@ -53,6 +55,13 @@ const NewSlot = ({ reasonModal }) => {
     // mutation.mutate(transformedSlots);
     console.log("Transformed Slots:", transformedSlots);
 
+    showModal(
+      null,
+      "Slots has been saved successfully",
+      () => navigate("/slot-management/"),
+      true
+    );
+
     resetForm({
       values: {
         slots: daysOfWeek.reduce(
@@ -73,7 +82,7 @@ const NewSlot = ({ reasonModal }) => {
   const BookedAll = () => {
     reasonModal(
       "", // heading
-      "Are you sure you want to Book Next week? 12", // para
+      "Are you sure you want to Book Next week?", // para
       (reason, id) => {
         BookedAllSuucces(reason, id);
       },

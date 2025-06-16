@@ -135,7 +135,7 @@ const ImageUpload = ({
             <UploadIcon />
             <span style={{ color: "#333", fontWeight: "500" }}>
               {placeholder}
-              {required ? <span className="text-danger">*</span> : ""}
+              {/* {required ? <span className="text-danger">*</span> : ""} */}
             </span>
           </div>
         </label>

@@ -5,31 +5,52 @@ import { Link } from "react-router-dom";
 import { images } from "../../../Assets";
 import "./style.css";
 
-const GeneralCard = ({ data, linkPath, serviceCard = false, className = "" }) => {
-  const { id, title, description, price, rating, reviews, image, category, quick } = data;
+const GeneralCard = ({
+  data,
+  linkPath,
+  serviceCard = false,
+  className = "",
+}) => {
+  const {
+    id,
+    title,
+    description,
+    price,
+    rating,
+    reviews,
+    image,
+    category,
+    quick,
+  } = data;
 
   return (
     <Card className={`general-card ${className || ""}`}>
       {serviceCard && (
         <>
-        {linkPath ? (
-          <Link to={`${linkPath}/${id}`}>
-            <Card.Img variant="top" src={image ?? images.placeholder} alt={title} />
-          </Link>
-        ) : (
-           <div >
-            <Card.Img variant="top" src={image ?? images.placeholder} alt={title} />
-          </div>
-        )}
+          {linkPath ? (
+            <Link to={`${linkPath}/${id}`}>
+              <Card.Img
+                variant="top"
+                src={image ?? images.placeholder}
+                alt={title}
+              />
+            </Link>
+          ) : (
+            <div>
+              <Card.Img
+                variant="top"
+                src={image ?? images.placeholder}
+                alt={title}
+              />
+            </div>
+          )}
           <Card.Body className="position-relative p-0 mt-3 pb-1 pb-xxl-1 px-2">
             <div className="d-flex justify-content-between flex-wrap">
               <div>
-                <h5 className="mb-0 fw-bold">{title}</h5>
-                <div className="category-name mb-2" style={{ color: "#262932" }}>
+                <h5 className="mb-0 fw-bold card-title">{title}</h5>
+                <div className="category-name mb-2">
                   Sub-Category Name:{" "}
-                  <span className="text-capitalize" style={{ color: "#727A84" }}>
-                    {category}
-                  </span>
+                  <span className="text-capitalize">{category}</span>
                 </div>
               </div>
               <div>
@@ -43,9 +64,7 @@ const GeneralCard = ({ data, linkPath, serviceCard = false, className = "" }) =>
               </div>
             </div>
             <div>
-              <p className="mb-0" style={{ color: "#727A84" }}>
-                {description}
-              </p>
+              <p className="mb-0 card-text">{description}</p>
             </div>
             <div className="d-flex gap-2 align-items-center flex-wrap mt-2">
               <h6 className="mb-0 fw-bold">Amount : {price}</h6>
@@ -54,8 +73,13 @@ const GeneralCard = ({ data, linkPath, serviceCard = false, className = "" }) =>
                   <span>
                     <images.VerticalBar />
                   </span>
-                  <p className="mb-0 d-flex align-items-center gap-1" style={{ color: "#111" }}>
-                    <span><images.QuickService /></span>
+                  <p
+                    className="mb-0 d-flex align-items-center gap-1"
+                    style={{ color: "#111" }}
+                  >
+                    <span>
+                      <images.QuickService />
+                    </span>
                     <span>Quick Service</span>
                   </p>
                 </>

@@ -67,7 +67,7 @@ const SlotDetails = ({
   const BookedAll = () => {
     reasonModal(
       "", // heading
-      "Are you sure you want to Book Next week? 12", // para
+      "Are you sure you want to Book Next week?", // para
       (reason, id) => {
         BookedAllSuucces(reason, id);
       },
@@ -141,7 +141,7 @@ const SlotDetails = ({
                   ))}
                 </Row>
               </Col>
-              <Col xs={12} className="mt-4 d-flex gap-3">
+              <Col xs={12} className="mt-4 d-flex gap-3 flex-wrap">
                 <CustomButton
                   variant="primary"
                   text="Create same slots for next week"

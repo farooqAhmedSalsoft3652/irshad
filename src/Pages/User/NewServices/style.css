@@ -140,3 +140,81 @@
   border-color: #15355e;
   box-shadow: 0px 0px 0px 1px #fff;
 }
+
+
+
+/* Add styles for selected card */
+.new-service-card .selected-card {
+  /* position: relative; */
+}
+
+.new-service-card .selected-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(21, 53, 94, 0.47);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.new-service-card .selected-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #15355e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.new-service-card.selected {
+  /* border: 1px solid #15355e; */
+}
+
+.add-services .searchWrapper {
+  min-width: 350px;
+}
+
+.add-services .searchWrapper .searchInput {
+  padding: 11px 45px 11px 20px;
+  width: 100%;
+  max-width: none;
+}
+
+.add-services .searchWrapper .searchButton {
+  left: auto;
+  right: 0px;
+  color: #999;
+  max-width: 50px;
+  padding: 0 35px 0 10px;
+}
+
+@media (min-width: 1400px) and (max-width: 1666px) {
+
+
+  .add-service.time-slotes .slot-row {
+    padding: 15px 6px;
+  }
+
+  .add-service.time-slotes .slot-row .form-control {
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width:767px) {
+  .add-services .searchWrapper {
+    min-width: 100%;
+  }
+
+  .service-header h4 {
+    font-size: 25px;
+  }
+}

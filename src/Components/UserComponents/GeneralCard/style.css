@@ -6,6 +6,7 @@
   box-shadow: 0px 7px 55px 0px rgba(0, 0, 0, 0.10);
   padding: 18px;
   color: #000;
+  transition: all .6s ease 0s;
 }
 
 .general-card img.card-img-top {
@@ -18,7 +19,11 @@
 
 .general-card .category-name {
   font-size: 17px;
-  color: #1A8C1A;
+  color: #262932;
+}
+
+.general-card .category-name span {
+  color: #727A84;
 }
 
 .general-card .card-title {
@@ -35,7 +40,7 @@
 }
 
 .general-card .card-title a:hover {
-  color: #1A8C1A;
+  color: #15355E;
 }
 
 .general-card .review-rating {
@@ -45,6 +50,26 @@
 .general-card .review-rating svg {
   font-size: 22px;
 }
+
+.general-card:hover {
+  background: #e7f2ff;
+}
+
+.general-card:hover h5 {
+  color: #000;
+}
+
+.general-card .card-text {
+  font-size: 17px;
+  transition: all .3s ease-out;
+  color: #727A84;
+
+}
+
+.general-card:hover .card-text {
+  color: #000;
+}
+
 
 /* .review-rating .review{
   color: #666666;

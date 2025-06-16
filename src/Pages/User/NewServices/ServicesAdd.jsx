@@ -25,11 +25,11 @@ import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { Select } from "../../../Components/Select";
 import { servicesOptions } from "../../../Config/TableStatus";
 
-const NewServicesAdd = ({ showModal }) => {
+const NewServicesAdd = ({ showModal, reasonModal }) => {
   usePageTitle("Edit Profile", true);
   const navigate = useNavigate();
   const location = useLocation();
-  const title = location.state?.title;
+  const { title, id } = location.state || {};
 
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const { user } = useAuth();
@@ -43,19 +43,24 @@ const NewServicesAdd = ({ showModal }) => {
     sunday: true,
   });
 
+  // Add this state for the validation schema
+  const [validationSchema, setValidationSchema] = useState(
+    serviceValidationSchema(isDisabled)
+  );
+
   // Initial values for the form
   const initialValues = {
     service_name: "",
     showQuickServices: false,
     sessionType: "",
     sessionAmounts: {
-      chat: "child",
+      chat: "",
       call: "",
       video: "",
     },
     quickSessionType: "",
     quickSessionAmounts: {
-      chat: "child",
+      chat: "",
       call: "",
       video: "",
     },
@@ -77,6 +82,29 @@ const NewServicesAdd = ({ showModal }) => {
   ];
 
   // Handle form submission
+
+  const requestCall = () => {
+    reasonModal(
+      "", // heading
+      "Are you sure you want to Book Next week?", // para
+      (reason, id) => {
+        BookedAllSuucces(reason, id);
+      },
+      false, // success
+      true, // showReason
+      "Provide Reason for booked week",
+      "Description" // ✅ reasonLabel
+    );
+  };
+  const BookedAllSuucces = async (reason, id) => {
+    reasonModal(
+      ``,
+      `Booked Request for next week has been send Sucessfully. Wait for the admin's Apporval`,
+      null, //action
+      true //success
+    );
+  };
+
   const handleSubmit = (values, { resetForm }) => {
     // Create a copy of the values to avoid modifying the original
     startSubmitting();
@@ -211,7 +239,9 @@ const NewServicesAdd = ({ showModal }) => {
                 </div>
                 <div className="flex-grow-1 text-center">
                   <h2 className="fw-bold mb-1  page-title">Sub Category</h2>
-                  <h3 className="fw-regular mb-0 page-title">{title}</h3>
+                  <h3 className="fw-regular mb-0 page-title">
+                    {title} {id}
+                  </h3>
                 </div>
               </div>
             </Col>
@@ -220,7 +250,7 @@ const NewServicesAdd = ({ showModal }) => {
             <Col xs={12}>
               <Formik
                 initialValues={initialValues}
-                validationSchema={serviceValidationSchema}
+                validationSchema={validationSchema}
                 onSubmit={handleSubmit}
               >
                 {({
@@ -229,13 +259,14 @@ const NewServicesAdd = ({ showModal }) => {
                   touched,
                   handleChange,
                   handleBlur,
-                  handleSubmit,
                   setFieldValue,
+                  setErrors,
+                  setTouched,
+                  handleSubmit,
                   setFieldTouched,
-                  isSubmitting,
                 }) => (
                   <Form onSubmit={handleSubmit}>
-                    {console.log(errors)}
+                    {console.log("Errors:", errors)}
                     <Row>
                       {/* Service Name */}
                       <Col xs={12} lg={6} xxl={5} className="mb-3">
@@ -267,9 +298,7 @@ const NewServicesAdd = ({ showModal }) => {
                           {sessionOptions.map(({ label, value }) => (
                             <div key={value}>
                               <div
-                                className={`d-flex align-items-center gap-3 ${
-                                  errors.sessionAmounts ? "mb-3" : "mb-3"
-                                }`}
+                                className={`d-flex align-items-center gap-3 mb-3`}
                               >
                                 <label
                                   key={value}
@@ -280,29 +309,42 @@ const NewServicesAdd = ({ showModal }) => {
                                   <FormCheck
                                     type="radio"
                                     name="sessionType"
-                                    id={`sessionType-${value}`} // unique id
+                                    id={`sessionType-${value}`}
                                     label={label}
                                     value={value}
                                     checked={values.sessionType === value}
                                     onChange={() => {
                                       setFieldValue("sessionType", value);
-                                      setFieldTouched("sessionType", true); // 🔥 this ensures touch is triggered
+                                      setFieldTouched("sessionType", true);
+                                      // Touch the amount field for this session type
+                                      setFieldTouched(
+                                        `sessionAmounts.${value}`,
+                                        true
+                                      );
                                     }}
-                                    onBlur={() =>
-                                      setFieldTouched("sessionType", true)
-                                    }
                                   />
                                 </label>
                                 <Field
                                   name={`sessionAmounts.${value}`}
                                   value={values.sessionAmounts?.[value] || ""}
-                                  // value={values.amounts[value]}
                                   type="number"
                                   className="form-control w-auto"
                                   disabled={values.sessionType !== value}
                                   placeholder="Enter Amount"
                                   min={0}
                                   max={100}
+                                  onChange={(e) => {
+                                    setFieldValue(
+                                      `sessionAmounts.${value}`,
+                                      e.target.value
+                                    );
+                                  }}
+                                  onBlur={() => {
+                                    setFieldTouched(
+                                      `sessionAmounts.${value}`,
+                                      true
+                                    );
+                                  }}
                                 />
 
                                 <span className="badge">Range $0-$100</span>
@@ -310,15 +352,18 @@ const NewServicesAdd = ({ showModal }) => {
                                   variant="secondary"
                                   className=""
                                   text="Request More"
+                                  onClick={requestCall}
+                                  type="button"
                                 />
                               </div>
-                              <div className="">
-                                <ErrorMessage
-                                  name={`sessionAmounts.${value}`}
-                                  component="div"
-                                  className="error-message red-text mb-2"
-                                />
-                              </div>
+                              {/* Only show error for the current session type */}
+                              {values.sessionType === value &&
+                                errors.sessionAmounts &&
+                                errors.sessionAmounts[value] && (
+                                  <div className="error-message red-text mb-2">
+                                    {errors.sessionAmounts[value]}
+                                  </div>
+                                )}
                             </div>
                           ))}
                           <ErrorMessage
@@ -402,53 +447,97 @@ const NewServicesAdd = ({ showModal }) => {
                           {values.showQuickServices && (
                             <div className="mt-3 p-3">
                               {sessionOptions.map(({ label, value }) => (
-                                <div
-                                  key={value}
-                                  className="d-flex align-items-center gap-3 mb-3"
-                                >
-                                  <label
-                                    key={value}
-                                    className={`btn btn-primary btn-radio ${
-                                      values.quickSessionType === value
-                                        ? ""
-                                        : ""
-                                    }`}
+                                <div key={value}>
+                                  <div
+                                    className={`d-flex align-items-center gap-3 mb-3`}
                                   >
-                                    <FormCheck
-                                      type="radio"
-                                      name="quickSessionType"
-                                      id={`quickSessionType-${value}`} // unique id
-                                      label={label}
-                                      value={value}
-                                      checked={
+                                    <label
+                                      key={value}
+                                      className={`btn btn-primary btn-radio ${
                                         values.quickSessionType === value
+                                          ? ""
+                                          : ""
+                                      }`}
+                                    >
+                                      <FormCheck
+                                        type="radio"
+                                        name="quickSessionType"
+                                        id={`quickSessionType-${value}`} // unique id
+                                        label={label}
+                                        value={value}
+                                        checked={
+                                          values.quickSessionType === value
+                                        }
+                                        onChange={() =>
+                                          setFieldValue(
+                                            "quickSessionType",
+                                            value
+                                          )
+                                        }
+                                      />
+                                    </label>
+                                    <Field
+                                      name={`quickSessionAmounts.${value}`}
+                                      value={
+                                        values.quickSessionAmounts?.[value] ||
+                                        ""
                                       }
-                                      onChange={() =>
-                                        setFieldValue("quickSessionType", value)
-                                      }
+                                      type="number"
+                                      className="form-control w-auto"
+                                      disabled={values.sessionType !== value}
+                                      placeholder="Enter Amount"
+                                      min={0}
+                                      max={100}
+                                      onChange={(e) => {
+                                        setFieldValue(
+                                          `quickSessionAmounts.${value}`,
+                                          e.target.value
+                                        );
+                                      }}
+                                      onBlur={() => {
+                                        setFieldTouched(
+                                          `quickSessionAmounts.${value}`,
+                                          true
+                                        );
+                                      }}
                                     />
-                                  </label>
-                                  <Field
-                                    name={`quickSessionAmounts.${value}`}
-                                    value={
-                                      values.quickSessionAmounts?.[value] || ""
-                                    }
-                                    type="number"
-                                    className="form-control w-auto"
-                                    disabled={values.quickSessionType !== value}
-                                    min={0}
-                                    max={100}
-                                  />
-
-                                  <span className="badge">Range $0-$100</span>
-                                  <CustomButton
-                                    variant="secondary"
-                                    className=""
-                                    text="Request More"
-                                  />
+                                    <span className="badge">Range $0-$100</span>
+                                    <CustomButton
+                                      variant="secondary"
+                                      className=""
+                                      text="Request More"
+                                    />
+                                  </div>
+                                  {/* Only show error for the current session type */}
+                                  {values.quickSessionType === value &&
+                                    errors.quickSessionAmounts &&
+                                    errors.quickSessionAmounts[value] && (
+                                      <div className="error-message red-text mb-2">
+                                        {errors.quickSessionAmounts[value]}
+                                      </div>
+                                    )}
                                 </div>
                               ))}
 
+                              {/* Display errors for quick session type */}
+                              {/* {sessionOptions.map(({ value }) => (
+                                <div key={`error-${value}`}>
+                                  {values.quickSessionType === value &&
+                                    errors.quickSessionAmounts &&
+                                    errors.quickSessionAmounts[value] && (
+                                      <div className="error-message red-text mb-2">
+                                        {errors.quickSessionAmounts[value]}
+                                      </div>
+                                    )}
+                                </div>
+                              ))} */}
+
+                              {/* Show error for quickSessionType if no option is selected */}
+                              <ErrorMessage
+                                name="quickSessionType"
+                                component="div"
+                                className="error-message red-text mb-2"
+                              />
                               <CustomButton
                                 variant="secondary"
                                 type="submit"
@@ -476,7 +565,7 @@ const NewServicesAdd = ({ showModal }) => {
                       ].map((day) => (
                         <Col xs={12} md={6} xxl={3} className="mb-3" key={day}>
                           <Card className="card-slot">
-                            <Card.Header className="py-3  d-flex align-items-center">
+                            <Card.Header className="py-3 d-flex align-items-center">
                               <Card.Title className="mb-0 text-capitalize fw-medium flex-grow-1">
                                 <label>
                                   {day.charAt(0).toUpperCase() + day.slice(1)}
@@ -486,13 +575,51 @@ const NewServicesAdd = ({ showModal }) => {
                                 type="switch"
                                 className="flex-shrink-0"
                                 label=""
-                                onChange={(e) =>
-                                  setIsDisabled((prev) => ({
-                                    ...prev,
-                                    [day]: !e.target.checked,
-                                  }))
-                                }
-                                checked={!isDisabled[day]} // Disable by default
+                                onChange={(e) => {
+                                  const isEnabled = e.target.checked;
+
+                                  // Update the disabled state
+                                  setIsDisabled((prev) => {
+                                    const newState = {
+                                      ...prev,
+                                      [day]: !isEnabled,
+                                    };
+
+                                    // Update validation schema with new disabled state
+                                    const newValidationSchema =
+                                      serviceValidationSchema(newState);
+                                    setValidationSchema(newValidationSchema);
+
+                                    return newState;
+                                  });
+
+                                  // If disabling, clear existing values and errors for this day
+                                  if (!isEnabled) {
+                                    const dayTimeKey = `${day}Time`;
+
+                                    // Clear values
+                                    setFieldValue(dayTimeKey, [
+                                      { startTime: "", endTime: "" },
+                                    ]);
+
+                                    // Clear errors
+                                    if (errors[dayTimeKey]) {
+                                      setErrors((prev) => ({
+                                        ...prev,
+                                        [dayTimeKey]: undefined,
+                                      }));
+                                    }
+
+                                    // Clear touched state
+                                    if (touched[dayTimeKey]) {
+                                      setTouched((prev) => ({
+                                        ...prev,
+                                        [dayTimeKey]: undefined,
+                                      }));
+                                    }
+                                  }
+                                }}
+                                checked={!isDisabled[day]}
                               />
                             </Card.Header>
                             {!isDisabled[day] && (
@@ -514,12 +641,12 @@ const NewServicesAdd = ({ showModal }) => {
                                                 }
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                                error={
-                                                  touched[`${day}Time`]?.[index]
-                                                    ?.startTime &&
-                                                  errors[`${day}Time`]?.[index]
-                                                    ?.startTime
-                                                }
+                                                // error={
+                                                //   touched[`${day}Time`]?.[index]
+                                                //     ?.startTime &&
+                                                //   errors[`${day}Time`]?.[index]
+                                                //     ?.startTime
+                                                // }
                                               />
                                             </div>
                                             <div className="flex-grow-1 w-100">
@@ -533,15 +660,28 @@ const NewServicesAdd = ({ showModal }) => {
                                                 }
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                                error={
-                                                  touched[`${day}Time`]?.[index]
-                                                    ?.endTime &&
-                                                  errors[`${day}Time`]?.[index]
-                                                    ?.endTime
-                                                }
+                                                // error={
+                                                //   touched[`${day}Time`]?.[index]
+                                                //     ?.endTime &&
+                                                //   errors[`${day}Time`]?.[index]
+                                                //     ?.endTime
+                                                // }
                                               />
                                             </div>
                                           </div>
+
+                                          {/* Display time range error if both times are entered but end time is not after start time */}
+                                          {touched[`${day}Time`]?.[index]
+                                            ?.endTime &&
+                                            errors[`${day}Time`]?.[index]
+                                              ?.endTime && (
+                                              <div className="error-message red-text mt-2">
+                                                {
+                                                  errors[`${day}Time`][index]
+                                                    .endTime
+                                                }
+                                              </div>
+                                            )}
 
                                           {values[`${day}Time`].length > 1 && (
                                             <div className="d-flex flex-shrink-0 gap-2 mt-3">
@@ -549,7 +689,6 @@ const NewServicesAdd = ({ showModal }) => {
                                                 type="button"
                                                 className="btn remove-btn"
                                                 onClick={() => remove(index)}
-                                                // disabled={isDisabled[day]}
                                               >
                                                 <span className="delete-icon">
                                                   <FontAwesomeIcon
@@ -563,7 +702,7 @@ const NewServicesAdd = ({ showModal }) => {
                                         </div>
                                       ))}
 
-                                      {!isDisabled[day] && ( // Only show "Add Time Slot" button when FormCheck is enabled
+                                      {!isDisabled[day] && (
                                         <div className="d-flex flex-shrink-0 gap-2 mt-3">
                                           <button
                                             type="button"

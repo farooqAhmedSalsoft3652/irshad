@@ -55,7 +55,7 @@ const ServicesDetails = ({ showModal }) => {
                   <div className="d-flex">
                     <BackButton2 />
                     <h2 className="fw-bold mb-0 page-title mx-auto">
-                      Services View
+                      Service View
                     </h2>
                   </div>
                 </div>

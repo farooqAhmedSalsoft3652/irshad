@@ -8,6 +8,7 @@ const SlotCard = ({ day, date, slots }) => {
   return (
     <Card className="card-slot">
       {/* Header */}
+
       <Card.Header className="pt-3 pb-0">
         <Card.Title className="mb-0 text-capitalize fw-medium text-center">
           {day}

@@ -111,7 +111,9 @@ const SlotsHistoryManagement = ({
                             (filters.page - 1) * filters.per_page + index + 1
                           )}
                         </td>
-                        <td>{slot?.reference_id}</td>
+                        <td>
+                          {slot?.start_time} -{slot?.end_time}
+                        </td>
                         <td>
                           <Link
                             className="btn btn-link fw-medium"
