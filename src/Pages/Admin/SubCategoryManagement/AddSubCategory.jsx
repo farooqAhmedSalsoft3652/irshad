@@ -1,48 +1,51 @@
 import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import BackButton from "../../../Components/BackButton";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
+import CustomButton from "../../../Components/CustomButton";
 import CustomInput from "../../../Components/CustomInput";
+import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { Select } from "../../../Components/Select";
-import { statusOptions } from "../../../Config/TableStatus";
+import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
+import { categoryStatus, statusOptions } from "../../../Config/TableStatus";
+import { addSubCategorySchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import CustomButton from "../../../Components/CustomButton";
-import { addServiceCategorySchema } from "../../../Config/Validations";
-import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 
-const AddServiceCategory = ({ showModal }) => {
+const AddSubCategory = ({ showModal }) => {
   const navigate = useNavigate();
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const [errorsData, setErrorsData] = useState({});
 
   const handleSubmit = async (values) => {
-    console.log(values)
+    console.log(values);
     startSubmitting();
-    showModal("Successful", `Category has been added successfully`, () => navigate(-1), true);
+    showModal("", `Sub-Category has been added successfully`, () => navigate(-1), true);
     stopSubmitting();
   };
 
   return (
-    <DashboardLayout pageTitle="Add Service Category">
+    <DashboardLayout pageTitle="Add Sub-Category">
       <div className="container-fluid">
-        <div className="row mb-5">
-          <div className="col-12 my-4 d-flex">
-            <BackButton />
-            <h2 className="mainTitle mb-0">Add Service Category</h2>
-          </div>
+        <div className="row">
           <div className="col-12">
             <div className="dashCard mb-4">
+              <div className="row">
+                <div className="col-12 mb-4 d-flex">
+                  <BackButton2 />
+                  <h2 className="mainTitle mb-0">Add Sub-Category</h2>
+                </div>
+              </div>
               <div className="row mb-3">
                 <div className="col-12">
                   <Formik
                     initialValues={{
                       categoryTitle: "",
-                      status_detail: "1",
+                      status_detail: "",
+                      category: "",
                       photo: "",
                     }}
-                    validationSchema={addServiceCategorySchema}
+                    validationSchema={addSubCategorySchema}
                     onSubmit={handleSubmit}
                   >
                     {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
@@ -50,12 +53,10 @@ const AddServiceCategory = ({ showModal }) => {
                         <div className="row">
                           <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4 my-2">
                             <CustomInput
-                              label="Category Title"
-                              labelclass="mainLabel"
+                              label="Sub-Category Title"
                               type="text"
                               required
                               placeholder="Enter Category Title"
-                              inputclass="mainInput"
                               id="categoryTitle"
                               value={values.categoryTitle}
                               onChange={handleChange}
@@ -74,9 +75,7 @@ const AddServiceCategory = ({ showModal }) => {
                                   value={values?.status_detail}
                                   onChange={(e) => setFieldValue("status_detail", e)}
                                   label="Status"
-                                  labelclass="mainLabel"
                                   onBlur={handleBlur}
-                                  isInputNeeded={false}
                                   error={touched.status_detail && errors.status_detail}
                                 >
                                   {statusOptions}
@@ -84,19 +83,41 @@ const AddServiceCategory = ({ showModal }) => {
                               </div>
                             </div>
                           </div>
+                          <div className="row mb-4">
+                            <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                              <div className="select-inner-wrapper">
+                                <Select
+                                  className="mainInput selectInput w-100"
+                                  required
+                                  id="category"
+                                  name="category"
+                                  value={values?.category}
+                                  onChange={(e) => setFieldValue("category", e)}
+                                  label="Category"
+                                  onBlur={handleBlur}
+                                  error={touched.category && errors.category}
+                                >
+                                  {categoryStatus}
+                                </Select>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <UploadAndDisplayImages
-                          height={"400px"}
-                          onChange={(files) => setFieldValue("photo", files)}
-                          numberOfFiles={1}
-                          errorFromParent={touched.photo && errors.photo}
-                        />
+                        <div className="row mb-4">
+                          <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                            <UploadAndDisplayImages
+                              onChange={(files) => setFieldValue("photo", files)}
+                              numberOfFiles={1}
+                              errorFromParent={touched.photo && errors.photo}
+                            />
+                          </div>
+                        </div>
                         <div className="row ">
                           <div className="col-12 mt-3">
                             <CustomButton
-                              variant="site-btn primary-btn"
+                              variant="btn btn-primary"
                               className="px-5"
-                              text="Add Category"
+                              text="Add Sub-Category"
                               pendingText="Submitting..."
                               isPending={isSubmitting}
                               type="submit"
@@ -117,4 +138,4 @@ const AddServiceCategory = ({ showModal }) => {
   );
 };
 
-export default withModal(AddServiceCategory);
+export default withModal(AddSubCategory);

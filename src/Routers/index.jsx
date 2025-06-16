@@ -39,10 +39,6 @@ import ProductCategoryManagement from "../Pages/Admin/ProductCategoryManagement/
 import ViewProductCategoryDetail from "../Pages/Admin/ProductCategoryManagement/ViewProductCategoryDetail";
 import QueriesDetails from "../Pages/Admin/QueriesManagement/QueriesDetail";
 import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
-import AddServiceCategory from "../Pages/Admin/ServiceCategoryManagement/AddServiceCategory";
-import EditServiceCategory from "../Pages/Admin/ServiceCategoryManagement/EditServiceCategory";
-import ServiceCategoryManagement from "../Pages/Admin/ServiceCategoryManagement/ServiceCategoryManagement";
-import ViewServiceCategory from "../Pages/Admin/ServiceCategoryManagement/ViewServiceCategory";
 import ServiceDetails from "../Pages/Admin/ServiceProviderManagement/ServiceDetails";
 import ServiceProviderDetails from "../Pages/Admin/ServiceProviderManagement/ServiceProviderDetails";
 import ServiceProviderManagement from "../Pages/Admin/ServiceProviderManagement/ServiceProviderManagement";
@@ -123,14 +119,15 @@ import PaymentLogsUser from "../Pages/User/PaymentLogsUser";
 import RatingsAndReviews from "../Pages/User/RatingAndReviews";
 import RuleRegulations from "../Pages/User/Rules&Regulations";
 import SlotManagement from "../Pages/User/SlotManagement";
-import NewSlot from "../Pages/User/SlotManagement/NewSlot";
 import EditSlot from "../Pages/User/SlotManagement/EditSlot";
+import NewSlot from "../Pages/User/SlotManagement/NewSlot";
 import SlotDetails from "../Pages/User/SlotManagement/SlotDetails";
 import SlotsHistoryManagement from "../Pages/User/SlotManagement/history";
 import Tutorials from "../Pages/User/Tutorials";
 import VideoVerification from "../Pages/User/VideoVerification";
 import WithDrawAmount from "../Pages/User/WithDraw";
 // import SlotManagement from "../Pages/User/SlotManagement";
+import SubCategoryManagement from "../Pages/Admin/SubCategoryManagement/SubCategoryManagement";
 import BankDetailsUser from "../Pages/User/BankDetailsUser/BankDetailsUser";
 import BankDetailsUserAdd from "../Pages/User/BankDetailsUser/BankDetailsUserAdd";
 import BankDetailsUserEdit from "../Pages/User/BankDetailsUser/BankDetailsUserEdit";
@@ -138,6 +135,7 @@ import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ScreeningHome from "../Pages/User/ScreeningHome/HomeAfterSignUp";
+import AddSubCategory from "../Pages/Admin/SubCategoryManagement/AddSubCategory";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -214,23 +212,23 @@ const routes = [
           },
           // --- End --- //
 
-          // Service Category Mangement //
+          // Sub Category Mangement //
           {
-            path: "admin/service-category-management",
-            element: <ServiceCategoryManagement />,
+            path: "admin/sub-category-management",
+            element: <SubCategoryManagement />,
           },
           {
-            path: "admin/service-category-management/add",
-            element: <AddServiceCategory />,
+            path: "admin/sub-category-management/add",
+            element: <AddSubCategory />,
           },
-          {
-            path: "admin/service-category-management/:id",
-            element: <ViewServiceCategory />,
-          },
-          {
-            path: "admin/service-category-management/:id/edit",
-            element: <EditServiceCategory />,
-          },
+          // {
+          //   path: "admin/service-category-management/:id",
+          //   element: <ViewServiceCategory />,
+          // },
+          // {
+          //   path: "admin/service-category-management/:id/edit",
+          //   element: <EditServiceCategory />,
+          // },
           // --- End --- //
           { path: "admin/products/:productId", element: <Product /> },
 
