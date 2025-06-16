@@ -21,12 +21,13 @@ const NotificationCard = (props) => {
             <div className="dateTime">
               <p className="p-sm l-grey-text mb-0">
                 <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
-                {props?.date}
+                {/* {props?.time} */}
+                01:10 PM
                 <span className="dateTimeSeparator">|</span>
               </p>
               <p className="p-sm l-grey-text mb-0">
                 <FontAwesomeIcon icon={faCalendar}></FontAwesomeIcon>
-                {props?.time}
+                {props?.date}
               </p>
             </div>
           </div>

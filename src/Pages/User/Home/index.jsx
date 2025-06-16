@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { images } from "../../../Assets";
 import CustomModal from "../../../Components/CustomModal";
 import GeneralCard from "../../../Components/UserComponents/GeneralCard";
@@ -340,14 +340,14 @@ const Home = () => {
                 <div className="col-12">
                   <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
                     <h2 className="fw-bold mb-0">Our Services</h2>
-                    <Link to={"/services"} className="btn btn-primary">
+                    <Link to={`/services`} className="btn btn-primary">
                       View All
                     </Link>
                   </div>
                   <div className="row">
                     {servicesCardData?.map((item) => (
                       <div className="col-12 col-xl-6 col-xxl-4 mb-xk-0 mb-3">
-                        <GeneralCard data={item} serviceCard={true} linkPath={false} />
+                        <GeneralCard data={item} serviceCard={true} linkPath="/services/"/>
                       </div>
                     ))}
                   </div>
@@ -362,6 +362,15 @@ const Home = () => {
                   <h2 className="fw-bold">About Us</h2>
                   <p className="lh-base" style={{ color: "#666764" }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et
+                    viverra justo commodo. Proin sodales pulvinar tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
+                    laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin
+                    sodales pulvinar tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit
+                    amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                    euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Lorem ipsum
+                    dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo
+                    commodo. Proin sodales pulvinar tempor.
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et
                     viverra justo commodo. Proin sodales pulvinar tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
                     laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin
@@ -392,6 +401,14 @@ const Home = () => {
                   <h2 className="fw-bold">Our Aim?</h2>
                   <p style={{ color: "#666764" }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et
+                    viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                    Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Aenean euismod bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum
+                    laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus
+                    et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed
+                    rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.{" "}
+
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et
                     viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
                     Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit. Aenean euismod bibendum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum

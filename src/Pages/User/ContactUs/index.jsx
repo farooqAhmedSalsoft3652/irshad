@@ -7,13 +7,15 @@ import CustomInput from "../../../Components/CustomInput";
 import PageTitle from "../../../Components/PageTitle";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { usePageTitle, usePageTitleUser } from "../../../Utils/helper";
+import withModal from "../../../HOC/withModal";
 
-const ContactUs = () => {
+const ContactUs = ({showModal}) => {
   usePageTitleUser("Contact Us");
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus(); // use your custom hook
   const handleSubmit = async (values, { resetForm }) => {
     startSubmitting();
-    console.log("submit Forms Value", values);
+    // console.log("submit Forms Value", values);
+    showModal('', 'Your message has been submitted successfully.', null, true);
     stopSubmitting();
     resetForm();
   };
@@ -73,7 +75,7 @@ const ContactUs = () => {
                                 id="email_address"
                                 type="email"
                                 required
-                                placeholder="Enter Email"
+                                placeholder="Enter Email Address"
                                 labelclass="mainLabel"
                                 // inputclass="mainInput mainInputLogIn"
                                 value={values.email_address}
@@ -140,4 +142,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default withModal(ContactUs);

@@ -13,11 +13,13 @@ import { withDrawValidationSchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { usePageTitleUser } from "../../../Utils/helper";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
 
 const WithDrawAmount = ({ showModal }) => {
   usePageTitleUser("Withdraw Amount");
+  const navigate = useNavigate();
   const handleFormSubmit = async (values, { resetForm }) => {
-    showModal("", `Amount has been transferred`, null, true);
+    showModal("", `Amount has been transferred`, ()=>navigate('/profile'), true);
     resetForm();
     // console.log(values, 'abc');
   };
@@ -184,7 +186,7 @@ const WithDrawAmount = ({ showModal }) => {
                                 <CustomInput
                                   label="Routing Number"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
                                   placeholder="Enter Routing Number"
                                   id="routingNumber"
@@ -206,7 +208,7 @@ const WithDrawAmount = ({ showModal }) => {
                                 <CustomInput
                                   label="Confirm Routing Number"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
                                   placeholder="Confirm Routing Number"
                                   id="confirmRoutingNumber"
@@ -228,7 +230,7 @@ const WithDrawAmount = ({ showModal }) => {
                                 <CustomInput
                                   label="Account Number"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
                                   placeholder="Enter Account Number"
                                   id="accountNumber"
@@ -250,7 +252,7 @@ const WithDrawAmount = ({ showModal }) => {
                                 <CustomInput
                                   label="Confirm Account Number"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
                                   placeholder="Confirm Account Number"
                                   id="confirmAccountNumber"
@@ -272,7 +274,7 @@ const WithDrawAmount = ({ showModal }) => {
                                 <CustomInput
                                   label="Swift Code"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
                                   placeholder="Enter Swift Code"
                                   id="swiftCode"
@@ -291,7 +293,7 @@ const WithDrawAmount = ({ showModal }) => {
                                 <CustomInput
                                   label="Confirm Swift Code"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
                                   placeholder="Confirm Swift Code"
                                   id="confirmSwiftCode"
@@ -313,7 +315,7 @@ const WithDrawAmount = ({ showModal }) => {
                                 <CustomInput
                                   label="Branch Code"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
                                   placeholder="Enter Branch Code"
                                   id="branchCode"

@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 import { images } from "../Assets";
 import Dashboard from "../Assets/images/svg/dashboard.svg?react";
-import ServiceProviderManagement from "../Assets/images/svg/serviceProviderManagement.svg?react";
-import ServiceCategoryManagement from "../Assets/images/svg/serviceCategoryManagement.svg?react";
-import ContentManagement from "../Assets/images/svg/contentManagement.svg?react";
-import CommissionManagement from "../Assets/images/svg/comissionManagement.svg?react";
-import SubscriptionLogs from "../Assets/images/svg/subscriptionLogs.svg?react";
-import PayoutsManagement from "../Assets/images/svg/payoutsManagement.svg?react";
-import PaymentLogs from "../Assets/images/svg/paymentLogs.svg?react";
-import AppointmentLogs from "../Assets/images/svg/appointmentLogs.svg?react";
 import UserManagement from "../Assets/images/svg/userManagement.svg?react";
-import ProductCategoryManagement from "../Assets/images/svg/productcategoryManagement.svg?react";
-import InAppPurchaseManagement from "../Assets/images/svg/inAppPurchase.svg?react";
-import EmergencyContact from "../Assets/images/svg/emergencyContact.svg?react";
-import ReportsManagement from "../Assets/images/svg/reportsManagement.svg?react";
-import BannerAdsManagement from "../Assets/images/svg/bannerAds.svg?react";
-import FAQsManagement from "../Assets/images/svg/faq.svg?react";
+import ConsultantMgIcon from "../Assets/images/svg/ConsultantMgIcon.svg?react";
+import SubCategoryMgIcon from "../Assets/images/svg/subCategoryMgIcon.svg?react";
+import ServiceMgIcon from "../Assets/images/svg/serviceMgIcon.svg?react";
+import AppointmentLogs from "../Assets/images/svg/appointmentLogsIcon.svg?react";
+import PromoCodeIcon from "../Assets/images/svg/promoCodeMgIcon.svg?react";
+import BannerMgIcon from "../Assets/images/svg/bannerMgIcon.svg?react";
+import CancelPenaltyIcon from "../Assets/images/svg/cancelPenaltyMgIcon.svg?react";
+import CommissionCategoryIcon from "../Assets/images/svg/commissioCategoryIcon.svg?react";
+import PayoutMgIcon from "../Assets/images/svg/payoutMgIcon.svg?react";
+import RequestMgIcon from "../Assets/images/svg/requestMgIcon.svg?react";
+import ReportMgIcon from "../Assets/images/svg/reportMgIcon.svg?react";
+import QueryMgIcon from "../Assets/images/svg/queryMgIcon.svg?react";
+import FAQsMgIcon from "../Assets/images/svg/faqMgIcon.svg?react";
 // import moment from "moment";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment-timezone";
@@ -591,78 +590,68 @@ export const generateLinks = (role) => {
         },
         {
           link: "/admin/service-provider-management",
-          image: ServiceProviderManagement,
-          name: "Service Provider Management",
+          image: ConsultantMgIcon,
+          name: "Consultant Management",
         },
         {
-          link: "/admin/service-category-management",
-          image: ServiceCategoryManagement,
-          name: "Service Category Management",
+          link: "/admin/sub-category-management",
+          image: SubCategoryMgIcon,
+          name: "Sub-Category Management",
         },
         {
           link: "/admin/product-category-management",
-          image: ProductCategoryManagement,
-          name: "Product Category Management",
+          image: ServiceMgIcon,
+          name: "Service Management",
         },
-        {
-          link: "/admin/content-management",
-          image: ContentManagement,
-          name: "Content Management",
-        },
-        {
-          link: "/admin/commission-management",
-          image: CommissionManagement,
-          name: "Commission Management",
-        },
-        {
-          link: "/admin/subscription-logs",
-          image: SubscriptionLogs,
-          name: "Subscription Logs",
-        },
-        {
-          link: "/admin/payout-management",
-          image: PayoutsManagement,
-          name: "Payouts Management",
-        },
-        {
-          link: "/admin/reports-management",
-          image: ReportsManagement,
-          name: "Reports Management",
-        },
-        {
-          link: "/admin/faqs",
-          image: FAQsManagement,
-          name: "FAQs Management",
-        },
-        {
-          link: "/admin/banner-ads",
-          image: BannerAdsManagement,
-          name: "Banner Ads Management",
-        },
-        {
-          link: "/admin/in-app-purchase-management",
-          image: InAppPurchaseManagement,
-          name: "In-App Purchase Management",
-        },
-        {
-          link: "/admin/queries-management",
-          image: AppointmentLogs,
-          name: "Queries Management",
-        },
-        {
-          link: "/admin/emergency-contact-management",
-          image: EmergencyContact,
-          name: "Emergency Contacts Management",
-        },
-        {
+         {
           link: "/admin/appointments",
           image: AppointmentLogs,
           name: "Appointment Logs",
         },
         {
-          link: "/admin/payment-logs",
-          image: PaymentLogs,
-          name: "Payment Logs",
+          link: "/admin/content-management",
+          image: PromoCodeIcon,
+          name: "Promo Code management",
+        },
+        {
+          link: "/admin/admin/banner-ads",
+          image: BannerMgIcon,
+          name: "Banner Management",
+        },
+        {
+          link: "/admin/subscription-logs",
+          image: CancelPenaltyIcon,
+          name: "Cancellation Penalty Management ",
+        },
+        {
+          link: "/admin/commission-management",
+          image: CommissionCategoryIcon,
+          name: "Commission Category",
+        },
+        {
+          link: "/admin/payout-management",
+          image: PayoutMgIcon,
+          name: "Payout Management",
+        },
+        {
+          link: "/admin/request-management",
+          image: RequestMgIcon,
+          name: "Request Management",
+        },
+        {
+          link: "/admin/reports-management",
+          image: ReportMgIcon,
+          name: "Report Management",
+        },
+        {
+          link: "/admin/queries-management",
+          image: QueryMgIcon,
+          name: "Query Management",
+        },
+        {
+          link: "/admin/faqs",
+          image: FAQsMgIcon,
+          name: "FAQs Management",
         },
       ];
       break;

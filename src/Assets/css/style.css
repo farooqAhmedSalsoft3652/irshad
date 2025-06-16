@@ -1305,9 +1305,9 @@ h3.page-title {
   box-shadow: none !important;
 }
 /***** Status Text End *******/
-
-
-
+.otp_wrapper img{
+  display: none;
+}
 /************ User Css END
 *****************************************/
 

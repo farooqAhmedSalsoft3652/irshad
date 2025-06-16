@@ -382,14 +382,14 @@ export const serviceProvidersRequestHeaders = [
     title: "Action",
   },
 ];
-export const serviceCategoryHeaders = [
+export const subCategoryHeaders = [
   {
     key: "id",
     title: "S.No",
   },
   {
-    key: "categoryTitle",
-    title: "Category Title",
+    key: "subCategoryTitle",
+    title: "Sub-Category Title",
   },
   {
     key: "creationDate",

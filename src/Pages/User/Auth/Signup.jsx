@@ -40,41 +40,36 @@ const UserSignup = () => {
           validationSchema={signUpUserValidationSchema}
           onSubmit={handleSubmit}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            setFieldTouched,
-            setFieldValue,
-          }) => (
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue }) => (
             <form className="mt-3" onSubmit={handleSubmit}>
-              <CustomInput
-                label="First Name"
-                id="first_name"
-                type="text"
-                required
-                placeholder="Enter First Name"
-                labelclass="mainLabel"
-                value={values.first_name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.first_name && errors.first_name}
-              />
-              <CustomInput
-                label="Last Name"
-                id="last_name"
-                type="text"
-                required
-                placeholder="Enter Last Name"
-                labelclass="mainLabel"
-                value={values.last_name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.last_name && errors.last_name}
-              />
+              <div className="mb-3">
+                <CustomInput
+                  label="First Name"
+                  id="first_name"
+                  type="text"
+                  required
+                  placeholder="Enter First Name"
+                  labelclass="mainLabel"
+                  value={values.first_name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.first_name && errors.first_name}
+                />
+              </div>
+              <div className="mb-3">
+                <CustomInput
+                  label="Last Name"
+                  id="last_name"
+                  type="text"
+                  required
+                  placeholder="Enter Last Name"
+                  labelclass="mainLabel"
+                  value={values.last_name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.last_name && errors.last_name}
+                />
+              </div>
               <div className="inputWrapper position-relative">
                 <Select
                   label="Language"
@@ -85,9 +80,7 @@ const UserSignup = () => {
                   wrapperClass="d-block mb-3"
                   mainLabel="Select Language"
                   value={values.language}
-                  onChange={(value) =>
-                    handleChange({ target: { name: "language", value } })
-                  } // Adapting to Formik
+                  onChange={(value) => handleChange({ target: { name: "language", value } })} // Adapting to Formik
                   onBlur={handleBlur}
                   error={touched.language && errors.language}
                 >
@@ -103,18 +96,20 @@ const UserSignup = () => {
                   ]}
                 </Select>
               </div>
-              <CustomInput
-                label="Nationality"
-                id="nationality"
-                type="text"
-                required
-                placeholder="Enter Your Nationality"
-                labelclass="mainLabel"
-                value={values.nationality}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.nationality && errors.nationality}
-              />
+              <div className="mb-3">
+                <CustomInput
+                  label="Nationality"
+                  id="nationality"
+                  type="text"
+                  required
+                  placeholder="Enter Nationality"
+                  labelclass="mainLabel"
+                  value={values.nationality}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.nationality && errors.nationality}
+                />
+              </div>
               <div className="inputWrapper position-relative">
                 <Select
                   label="gender"
@@ -125,9 +120,7 @@ const UserSignup = () => {
                   wrapperClass="d-block mb-3"
                   mainLabel="Select Gender"
                   value={values.gender}
-                  onChange={(value) =>
-                    handleChange({ target: { name: "gender", value } })
-                  } // Adapting to Formik
+                  onChange={(value) => handleChange({ target: { name: "gender", value } })} // Adapting to Formik
                   onBlur={handleBlur}
                   error={touched.gender && errors.gender}
                 >
@@ -143,7 +136,7 @@ const UserSignup = () => {
                   ]}
                 </Select>
               </div>
-              <div className="inputWrapper position-relative">
+              <div className="inputWrapper position-relative mb-3">
                 <label htmlFor="phoneInput" className="mainLabel">
                   {" "}
                   Contact Number<span className="text-danger">*</span>
@@ -162,43 +155,49 @@ const UserSignup = () => {
                   </div>
                 ) : null}
               </div>
-              <CustomInput
-                label="Email Address"
-                id="email"
-                type="email"
-                required
-                placeholder="Enter your Email"
-                labelclass="mainLabel"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.email && errors.email}
-              />
-              <CustomInput
-                label="password"
-                id="password"
-                type="password"
-                required
-                placeholder="Enter password"
-                labelclass="mainLabel"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.password && errors.password}
-              />
-              <CustomInput
-                label="Confirm Password"
-                id="confirm_password"
-                type="password"
-                required
-                placeholder="Confirm Password"
-                labelclass="mainLabel"
-                value={values.confirm_password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={touched.confirm_password && errors.confirm_password}
-              />
-              <div className="image-upload-style-2 mt-4">
+              <div className="mb-3">
+                <CustomInput
+                  label="Email Address"
+                  id="email"
+                  type="email"
+                  required
+                  placeholder="Enter Email Address"
+                  labelclass="mainLabel"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.email && errors.email}
+                />
+              </div>
+              <div className="mb-3">
+                <CustomInput
+                  label="password"
+                  id="password"
+                  type="password"
+                  required
+                  placeholder="Enter Password"
+                  labelclass="mainLabel"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.password && errors.password}
+                />
+              </div>
+              <div className="mb-3">
+                <CustomInput
+                  label="Confirm Password"
+                  id="confirm_password"
+                  type="password"
+                  required
+                  placeholder="Confirm Password"
+                  labelclass="mainLabel"
+                  value={values.confirm_password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.confirm_password && errors.confirm_password}
+                />
+              </div>
+              <div className="image-upload-style-2 mb-3">
                 <ImageUpload
                   id="profile_pic"
                   label="Profile Picture"
@@ -210,7 +209,7 @@ const UserSignup = () => {
                   className="image-upload-style-2"
                 />
               </div>
-              <div className="image-upload-style-2 mt-4">
+              <div className="image-upload-style-2">
                 <ImageUpload
                   id="cover_pic"
                   label="Cover Picture"
@@ -224,13 +223,7 @@ const UserSignup = () => {
               </div>
 
               <div className="mt-5 text-center">
-                <CustomButton
-                  variant="primary"
-                  className="w-100"
-                  text="Next"
-                  pendingText="Loading..."
-                  type="submit"
-                />
+                <CustomButton variant="primary" className="w-100" text="Next" pendingText="Loading..." type="submit" />
               </div>
 
               <p className="mt-4 mb-0 fw-medium text-center text-capitalize grayLightColor">

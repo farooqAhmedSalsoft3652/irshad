@@ -243,7 +243,7 @@ export const Header = () => {
                 {token ? (
                   <Nav
                     as="ul"
-                    className="gap-3 gap-xxl-4 navbar-login align-items-center d-sm-none "
+                    className="gap-3 gap-xxl-4 navbar-login align-items-sm-center flex-row d-sm-none "
                   >
                     <>
                       <Nav.Item as="li">
@@ -293,7 +293,7 @@ export const Header = () => {
                               My Profile
                             </Dropdown.Item>
                             <Dropdown.Item as={Link} to="/payment-logs-user">
-                              Payment Log
+                              Payment Logs
                             </Dropdown.Item>
                             <Dropdown.Item as={Link} to="/rating-&-reviews">
                               Ratings & Reviews
@@ -399,7 +399,7 @@ export const Header = () => {
                             <span>
                               <images.PaymentLog />
                             </span>
-                            <span>Payment Log</span>
+                            <span>Payment Logs</span>
                           </Dropdown.Item>
                           <Dropdown.Item as={Link} to="/rating-reviews">
                             <span>

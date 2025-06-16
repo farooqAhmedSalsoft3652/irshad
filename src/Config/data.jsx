@@ -549,6 +549,7 @@ export const userManagementData = {
         name: "Darvesh Restuarant",
         email: "darvesh@gmail.com",
         phone: "03656558478",
+        date_of_birth: "12/12/2024",
         lat: 36.3212167,
         lng: 74.66940469,
         status: 1,
@@ -573,6 +574,7 @@ export const userManagementData = {
         name: "Darvesh Restuarant",
         email: "darvesh@gmail.com",
         phone: "03656558478",
+        date_of_birth: "11/12/2024",
         lat: 36.3212167,
         lng: 74.66940469,
         status: 0,
@@ -3769,6 +3771,7 @@ export const serviceCategoryData = {
         categoryTitle: "Pain Relief",
         creationDate: "12/02/2024",
         status_detail: "1",
+        category: "diabetes care",
         photo: [
           "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
         ],
@@ -3778,6 +3781,7 @@ export const serviceCategoryData = {
         categoryTitle: "Diabetes Care",
         creationDate: "01/12/2024",
         status_detail: "0",
+         category: "pain releif",
         photo: [
           "https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg",
         ],

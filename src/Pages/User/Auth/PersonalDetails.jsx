@@ -54,20 +54,11 @@ const PersonalDetails = () => {
         validationSchema={personalDetailsValidationSchema}
         onSubmit={handleSubmit}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          setFieldTouched,
-          setFieldValue,
-        }) => (
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue }) => (
           <form className="mt-3" onSubmit={handleSubmit}>
             <div className="inputWrapper position-relative">
               <Select
-                label="Language"
+                label="Select Category"
                 labelclass="mainLabel"
                 required
                 id="category"
@@ -75,52 +66,46 @@ const PersonalDetails = () => {
                 wrapperClass="d-block mb-3"
                 mainLabel="Select Category"
                 value={values.category}
-                onChange={(value) =>
-                  handleChange({ target: { name: "category", value } })
-                } // Adapting to Formik
+                onChange={(value) => handleChange({ target: { name: "category", value } })} // Adapting to Formik
                 onBlur={handleBlur}
                 error={touched.category && errors.category}
               >
                 {[
                   {
-                    value: "english",
-                    text: "English",
+                    value: "abc",
+                    text: "abc",
                   },
                   {
-                    value: "spanish",
-                    text: "Spanish",
+                    value: "abc",
+                    text: "abc",
                   },
                 ]}
               </Select>
             </div>
-            <CustomInput
-              label="About Yourself"
-              id="about"
-              type="textarea"
-              required
-              placeholder="Add About Yourself"
-              labelclass="mainLabel"
-              value={values.about}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={touched.about && errors.about}
-            />
+            <div className="mb-3">
+              <CustomInput
+                label="About Yourself"
+                id="about"
+                type="textarea"
+                required
+                placeholder="Add About Yourself"
+                labelclass="mainLabel"
+                value={values.about}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.about && errors.about}
+              />
+            </div>
             <FieldArray name="educationDetails">
               {({ push, remove }) => (
                 <>
                   {values.educationDetails.map((edu, index) => (
                     <div key={index} className="mb-4">
-                      <h3 className="fw-bold">
-                        Educational Details {index + 1}
-                      </h3>
+                      <h3 className="fw-bold">Educational Details {index + 1}</h3>
                       {/* Delete button */}
                       {values.educationDetails.length > 1 && (
                         <div className="text-end">
-                          <button
-                            type="button"
-                            className="bg-transparent border-0"
-                            onClick={() => remove(index)}
-                          >
+                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -130,74 +115,82 @@ const PersonalDetails = () => {
                           </button>
                         </div>
                       )}
-                      <CustomInput
-                        label="Institution Name"
-                        id={`educationDetails.${index}.institution_name`}
-                        type="text"
-                        required
-                        placeholder="Enter Institution Name"
-                        labelclass="mainLabel"
-                        value={values.educationDetails[index].institution_name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.educationDetails &&
-                          touched.educationDetails[index]?.institution_name &&
-                          errors.educationDetails &&
-                          errors.educationDetails[index]?.institution_name
-                        }
-                      />
-                      <CustomInput
-                        label="Degree Title"
-                        id={`educationDetails.${index}.degree_title`}
-                        type="text"
-                        required
-                        placeholder="Enter Degree Title"
-                        labelclass="mainLabel"
-                        value={values.educationDetails[index].degree_title}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.educationDetails &&
-                          touched.educationDetails[index]?.degree_title &&
-                          errors.educationDetails &&
-                          errors.educationDetails[index]?.degree_title
-                        }
-                      />
-                      <CustomInput
-                        label="From"
-                        id={`educationDetails.${index}.edu_details_from`}
-                        type="date"
-                        required
-                        placeholder="Enter Date"
-                        labelclass="mainLabel"
-                        value={values.educationDetails[index].edu_details_from}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.educationDetails &&
-                          touched.educationDetails[index]?.edu_details_from &&
-                          errors.educationDetails &&
-                          errors.educationDetails[index]?.edu_details_from
-                        }
-                      />
-                      <CustomInput
-                        label="To"
-                        id={`educationDetails.${index}.edu_details_to`}
-                        type="date"
-                        required
-                        placeholder="Enter Date"
-                        labelclass="mainLabel"
-                        value={values.educationDetails[index].edu_details_to}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.educationDetails &&
-                          touched.educationDetails[index]?.edu_details_to &&
-                          errors.educationDetails &&
-                          errors.educationDetails[index]?.edu_details_to
-                        }
-                      />
+                      <div className="mb-3">
+                        <CustomInput
+                          label="Institution Name"
+                          id={`educationDetails.${index}.institution_name`}
+                          type="text"
+                          required
+                          placeholder="Enter Institution Name"
+                          labelclass="mainLabel"
+                          value={values.educationDetails[index].institution_name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.educationDetails &&
+                            touched.educationDetails[index]?.institution_name &&
+                            errors.educationDetails &&
+                            errors.educationDetails[index]?.institution_name
+                          }
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <CustomInput
+                          label="Degree Title"
+                          id={`educationDetails.${index}.degree_title`}
+                          type="text"
+                          required
+                          placeholder="Enter Degree Title"
+                          labelclass="mainLabel"
+                          value={values.educationDetails[index].degree_title}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.educationDetails &&
+                            touched.educationDetails[index]?.degree_title &&
+                            errors.educationDetails &&
+                            errors.educationDetails[index]?.degree_title
+                          }
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <CustomInput
+                          label="From"
+                          id={`educationDetails.${index}.edu_details_from`}
+                          type="date"
+                          required
+                          placeholder="Enter Date"
+                          labelclass="mainLabel"
+                          value={values.educationDetails[index].edu_details_from}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.educationDetails &&
+                            touched.educationDetails[index]?.edu_details_from &&
+                            errors.educationDetails &&
+                            errors.educationDetails[index]?.edu_details_from
+                          }
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <CustomInput
+                          label="To"
+                          id={`educationDetails.${index}.edu_details_to`}
+                          type="date"
+                          required
+                          placeholder="Enter Date"
+                          labelclass="mainLabel"
+                          value={values.educationDetails[index].edu_details_to}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.educationDetails &&
+                            touched.educationDetails[index]?.edu_details_to &&
+                            errors.educationDetails &&
+                            errors.educationDetails[index]?.edu_details_to
+                          }
+                        />
+                      </div>
                     </div>
                   ))}
                   {/* Add More button */}
@@ -232,11 +225,7 @@ const PersonalDetails = () => {
                       {/* Delete button */}
                       {values.workExperience.length > 1 && (
                         <div className="text-end">
-                          <button
-                            type="button"
-                            className="bg-transparent border-0"
-                            onClick={() => remove(index)}
-                          >
+                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -246,74 +235,82 @@ const PersonalDetails = () => {
                           </button>
                         </div>
                       )}
-                      <CustomInput
-                        label="Organization Name"
-                        id={`workExperience.${index}.organization_name`}
-                        type="text"
-                        required
-                        placeholder="Enter Organization Name"
-                        labelclass="mainLabel"
-                        value={values.workExperience[index].organization_name}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.workExperience &&
-                          touched.workExperience[index]?.organization_name &&
-                          errors.workExperience &&
-                          errors.workExperience[index]?.organization_name
-                        }
-                      />
-                      <CustomInput
-                        label="Designation"
-                        id={`workExperience.${index}.designation`}
-                        type="text"
-                        required
-                        placeholder="Enter Designation"
-                        labelclass="mainLabel"
-                        value={values.workExperience[index].designation}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.workExperience &&
-                          touched.workExperience[index]?.designation &&
-                          errors.workExperience &&
-                          errors.workExperience[index]?.designation
-                        }
-                      />
-                      <CustomInput
-                        label="From"
-                        id={`workExperience.${index}.wokr_exp_from`}
-                        type="date"
-                        required
-                        placeholder="Enter Date"
-                        labelclass="mainLabel"
-                        value={values.workExperience[index].wokr_exp_from}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.workExperience &&
-                          touched.workExperience[index]?.wokr_exp_from &&
-                          errors.workExperience &&
-                          errors.workExperience[index]?.wokr_exp_from
-                        }
-                      />
-                      <CustomInput
-                        label="To"
-                        id={`workExperience.${index}.wokr_exp_to`}
-                        type="date"
-                        required
-                        placeholder="Enter Date"
-                        labelclass="mainLabel"
-                        value={values.workExperience[index].wokr_exp_to}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={
-                          touched.workExperience &&
-                          touched.workExperience[index]?.wokr_exp_to &&
-                          errors.workExperience &&
-                          errors.workExperience[index]?.wokr_exp_to
-                        }
-                      />
+                      <div className="mb-3">
+                        <CustomInput
+                          label="Organization Name"
+                          id={`workExperience.${index}.organization_name`}
+                          type="text"
+                          required
+                          placeholder="Enter Organization Name"
+                          labelclass="mainLabel"
+                          value={values.workExperience[index].organization_name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.workExperience &&
+                            touched.workExperience[index]?.organization_name &&
+                            errors.workExperience &&
+                            errors.workExperience[index]?.organization_name
+                          }
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <CustomInput
+                          label="Designation"
+                          id={`workExperience.${index}.designation`}
+                          type="text"
+                          required
+                          placeholder="Enter Designation"
+                          labelclass="mainLabel"
+                          value={values.workExperience[index].designation}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.workExperience &&
+                            touched.workExperience[index]?.designation &&
+                            errors.workExperience &&
+                            errors.workExperience[index]?.designation
+                          }
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <CustomInput
+                          label="From"
+                          id={`workExperience.${index}.wokr_exp_from`}
+                          type="date"
+                          required
+                          placeholder="Enter Date"
+                          labelclass="mainLabel"
+                          value={values.workExperience[index].wokr_exp_from}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.workExperience &&
+                            touched.workExperience[index]?.wokr_exp_from &&
+                            errors.workExperience &&
+                            errors.workExperience[index]?.wokr_exp_from
+                          }
+                        />
+                      </div>
+                      <div className="mb-3">
+                        <CustomInput
+                          label="To"
+                          id={`workExperience.${index}.wokr_exp_to`}
+                          type="date"
+                          required
+                          placeholder="Enter Date"
+                          labelclass="mainLabel"
+                          value={values.workExperience[index].wokr_exp_to}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={
+                            touched.workExperience &&
+                            touched.workExperience[index]?.wokr_exp_to &&
+                            errors.workExperience &&
+                            errors.workExperience[index]?.wokr_exp_to
+                          }
+                        />
+                      </div>
                     </div>
                   ))}
                   {/* Add More button */}
@@ -344,17 +341,11 @@ const PersonalDetails = () => {
                 <>
                   {values.certificationDetails.map((edu, index) => (
                     <div key={index} className="mb-4 mt-4">
-                      <h3 className="fw-bold">
-                        Certification Detail {index + 1}
-                      </h3>
+                      <h3 className="fw-bold">Certification Detail {index + 1}</h3>
                       {/* Delete button */}
                       {values.certificationDetails.length > 1 && (
                         <div className="text-end">
-                          <button
-                            type="button"
-                            className="bg-transparent border-0"
-                            onClick={() => remove(index)}
-                          >
+                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
                             <div className="d-flex align-items-center gap-1">
                               <span>
                                 <DeleteIcon />
@@ -364,6 +355,7 @@ const PersonalDetails = () => {
                           </button>
                         </div>
                       )}
+                       <div className="mb-3">
                       <CustomInput
                         label="Institution Name"
                         id={`certificationDetails.${index}.institution_name`}
@@ -371,19 +363,18 @@ const PersonalDetails = () => {
                         required
                         placeholder="Enter Institution Name"
                         labelclass="mainLabel"
-                        value={
-                          values.certificationDetails[index].institution_name
-                        }
+                        value={values.certificationDetails[index].institution_name}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={
                           touched.certificationDetails &&
-                          touched.certificationDetails[index]
-                            ?.institution_name &&
+                          touched.certificationDetails[index]?.institution_name &&
                           errors.certificationDetails &&
                           errors.certificationDetails[index]?.institution_name
                         }
                       />
+                       </div>
+                        <div className="mb-3">
                       <CustomInput
                         label="Certificate Title"
                         id={`certificationDetails.${index}.certificate_title`}
@@ -391,35 +382,28 @@ const PersonalDetails = () => {
                         required
                         placeholder="Enter Certificate Title"
                         labelclass="mainLabel"
-                        value={
-                          values.certificationDetails[index].certificate_title
-                        }
+                        value={values.certificationDetails[index].certificate_title}
                         onChange={handleChange}
                         onBlur={handleBlur}
                         error={
                           touched.certificationDetails &&
-                          touched.certificationDetails[index]
-                            ?.certificate_title &&
+                          touched.certificationDetails[index]?.certificate_title &&
                           errors.certificationDetails &&
                           errors.certificationDetails[index]?.certificate_title
                         }
                       />
-                      <div className="image-upload-style-2 mt-4">
+
+                        </div>
+                      <div className="image-upload-style-2 mt-3">
                         <ImageUpload
                           id={`certificationDetails.${index}.certificate_pic`}
                           placeholder="Upload Certificate Picture"
                           label={`Certificate Picture`}
-                          onChange={(files) =>
-                            setFieldValue(
-                              `certificationDetails.${index}.certificate_pic`,
-                              files
-                            )
-                          }
+                          onChange={(files) => setFieldValue(`certificationDetails.${index}.certificate_pic`, files)}
                           numberOfFiles={1}
                           errorFromParent={
                             touched.certificationDetails &&
-                            touched.certificationDetails[index]
-                              ?.certificate_pic &&
+                            touched.certificationDetails[index]?.certificate_pic &&
                             errors.certificationDetails &&
                             errors.certificationDetails[index]?.certificate_pic
                           }
@@ -451,12 +435,7 @@ const PersonalDetails = () => {
                 </>
               )}
             </FieldArray>
-            <CustomButton
-              variant="primary"
-              className="w-100 mt-4"
-              text="Signup"
-              type="submit"
-            />
+            <CustomButton variant="primary" className="w-100 mt-4" text="Signup" type="submit" />
             <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">
               Already have an account?
               <Link to={"/login"} className="underlineOnHover text-dark ps-1">

@@ -14,7 +14,7 @@ const UserChangePassword = ({ showModal }) => {
 
   const handleSubmit = async (values) => {
     startSubmitting();
-    showModal("Successful", `password Has Been changed Successfully!`, () => navigate(-1), true);
+    showModal("Successful", `password Has Been updated Successfully!`, () => navigate(-1), true);
     // let response = await post("/admin-api/account/change-password", values);
     // if (response.status) {
     //   showModal(

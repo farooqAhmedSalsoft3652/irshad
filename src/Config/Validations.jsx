@@ -154,7 +154,7 @@ export const loyaltyValidation = Yup.object().shape({
 export const forgotEmail = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
-    .required("Email is required"),
+    .required("Email Address is required"),
 });
 
 export const forgotCode = Yup.object().shape({
@@ -185,7 +185,7 @@ export const changePassword = Yup.object().shape({
 export const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
-    .required("Email is required"),
+    .required("Email address is required"),
   password: Yup.string()
     // .min(8, 'Password must be at least 8 characters')
     .required("Password is required"),
@@ -197,7 +197,7 @@ export const contactValidationSchema = Yup.object().shape({
   message: Yup.string().required("Query is required"),
   email: Yup.string()
     .email("Invalid email address")
-    .required("Email is required"),
+    .required("Email address is required"),
   phone: Yup.string()
     .matches(/^[0-9]+$/, "Must be only digits")
     .min(10, "Must be greater  then 10 digits")
@@ -595,11 +595,42 @@ export const addProductCategorySchema = Yup.object().shape({
     .min(3, "Category Title must be at least 3 characters long"),
   status: Yup.string().required("Status is required"),
 });
-export const addServiceCategorySchema = Yup.object().shape({
+export const addSubCategorySchema = Yup.object().shape({
   categoryTitle: Yup.string()
     .required("Category Title is required")
     .min(3, "Category Title must be at least 3 characters long"),
   status_detail: Yup.string().required("Status is required"),
+  category: Yup.string().required("Category is required"),
+  photo: Yup.mixed()
+    .required("An image is required.") // Ensure something is provided
+    .test(
+      "is-valid-images",
+      "At least one valid image must be provided.",
+      function (value) {
+        const validImageTypes = [
+          "image/jpeg",
+          "image/jpg",
+          "image/webp",
+          "image/gif",
+          "image/png",
+        ];
+
+        // Ensure at least one valid file or URL is present
+        const hasValidFiles =
+          value &&
+          value.some((file) => {
+            if (typeof file === "string") {
+              return true; // If it's a string, assume it's a valid URL
+            }
+            if (file instanceof File) {
+              return validImageTypes.includes(file.type); // Validate file type
+            }
+            return false;
+          });
+
+        return hasValidFiles;
+      }
+    ),
 });
 export const commissionRate = Yup.object().shape({
   Commission_rate: Yup.string().required("Commission is required"),

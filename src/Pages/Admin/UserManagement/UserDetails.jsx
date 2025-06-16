@@ -80,7 +80,7 @@ const UserDetails = ({ showModal, filters, setFilters, pagination, updatePaginat
     showModal("", `User status has been changed to ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
   };
 
-  const { email, phone_number, user_name, relationship, language } = profileData;
+  const { email, phone_number, first_name, last_name, date_of_birth } = profileData;
   return (
     <DashboardLayout pageTitle="User Details">
       <div className="dashCard ">
@@ -120,11 +120,11 @@ const UserDetails = ({ showModal, filters, setFilters, pagination, updatePaginat
               <div className="col-md-10">
                 <div className="row mb-4">
                   {[
-                    { label: "User Name", value: user_name },
+                    { label: "First Name", value: first_name },
+                    { label: "Last Name", value: last_name },
                     { label: "Email Address", value: email },
+                    { label: "Date Of Birth", value: date_of_birth },
                     { label: "Phone Number", value: phone_number },
-                    { label: "Language", value: language },
-                    { label: "relationship", value: relationship },
                   ].map(({ label, value }) => (
                     <div className="col-lg-4 col-md-6 mb-3" key={label}>
                       <div className="detail-box">

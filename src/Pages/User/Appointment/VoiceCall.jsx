@@ -12,7 +12,7 @@ const VoiceCall = () => {
               <div className="d-flex justify-content-between align-items-center flex-wrap gap-sm-3 mb-sm-4 mb-2">
                 <div className="d-flex align-items-center">
                   <BackButton2 />
-                  <h5 className="fw-bold mb-0">
+                  <h5 className="fw-bold mb-0 ms-3">
                     Booking ID: <span className="fw-medium">#123456</span>
                   </h5>
                 </div>

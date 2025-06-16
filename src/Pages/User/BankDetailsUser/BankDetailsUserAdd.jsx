@@ -40,7 +40,7 @@ const BankDetailsUserAdd = ({ showModal }) => {
     <>
       <Container fluid>
         <div className="py-sm-5 py-3 px-sm-0 px-1">
-          <div className="site_card">
+          <div className="site_card bank_details">
             <Row className="my-3">
               <Col xs={12}>
                 <div className="d-flex align-items-center">

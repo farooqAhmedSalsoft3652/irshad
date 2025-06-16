@@ -89,17 +89,19 @@ const LoginForm = ({
       }) => (
         <form className="mt-3" onSubmit={handleSubmit}>
           <Toast />
+          <div className="mb-3">
           <CustomInput
             label="Email Address"
             id="email"
             type="email"
             required
-            placeholder="Enter Your Email Address"
+            placeholder="Enter Email Address"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
             error={touched.email && errors.email}
           />
+          </div>
           <CustomInput
             label="Password"
             id="password"
