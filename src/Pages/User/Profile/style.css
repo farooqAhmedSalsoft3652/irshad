@@ -153,6 +153,18 @@
     border-bottom: 1px solid #C2C2C2;
   }
 
+  .edit-profile .cover_img .display-image {
+    flex-direction: column;
+  }
+
+  .edit-profile .cover_img .display-image img {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+
   @media screen and (max-width: 991.5px) {
     .cover_img {
       height: 230px;

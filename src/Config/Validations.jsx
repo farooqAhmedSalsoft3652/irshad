@@ -1252,20 +1252,7 @@ const isValidTimeRange = (startTime, endTime) => {
 };
 
 // Create a reusable time slot schema
-// const timeSlotSchema = Yup.object().shape({
-//   startTime: Yup.string(),
-//   endTime: Yup.string().test(
-//     "is-after-start-time",
-//     "End time must be after start time",
-//     function (endTime) {
-//       const { startTime } = this.parent;
-//       return isValidTimeRange(startTime, endTime);
-//     }
-//   ),
-// });
-
-// Create a conditional time slot schema based on day status
-export const createTimeSlotSchema = (isEnabled) => {
+const createTimeSlotSchema = (isEnabled) => {
   // If day is disabled, return schema with no validations
   if (!isEnabled) {
     return Yup.object().shape({
@@ -1297,149 +1284,122 @@ export const createTimeSlotSchema = (isEnabled) => {
   });
 };
 
-export const serviceValidationSchema = (isDisabled) =>
-  Yup.object().shape({
-    service_name: Yup.string()
-      .required("Service name is required")
-      .min(2, "Service name must be at least 2 characters")
-      .max(100, "Service name must not exceed 100 characters"),
-
-    descriptions: Yup.string()
-      .required("Description is required")
-      .min(10, "Description must be at least 10 characters")
-      .max(1200, "Description must not exceed 1000 characters"),
-
-    banner_images: Yup.mixed()
-      .required("An image is required.") // Ensure something is provided
-      .test(
-        "is-valid-images",
-        "At least one valid image file or URL must be provided.",
-        function (value) {
-          const validImageTypes = [
-            "image/jpeg",
-            "image/jpg",
-            "image/webp",
-            "image/gif",
-            "image/png",
-          ];
-          // Ensure at least one valid file or URL is present
-          const hasValidFiles =
-            value &&
-            value.some((file) => {
-              if (typeof file === "string") {
-                return true; // If it's a string, assume it's a valid URL
-              }
-              if (file instanceof File) {
-                return validImageTypes.includes(file.type); // Validate file type
-              }
-              return false;
-            });
-
-          return hasValidFiles;
-        }
-      ),
-
+export const serviceValidationSchema = (disabledDays = {}) => {
+  return Yup.object().shape({
+    service_name: Yup.string().required("Service name is required"),
+    descriptions: Yup.string().required("Description is required"),
+    banner_images: Yup.array()
+      .min(1, "At least one image is required")
+      .required("Banner image is required"),
     sessionType: Yup.string().required("Session type is required"),
-
-    // Use test instead of shape for more control
     sessionAmounts: Yup.object().test(
       "validate-session-amount",
-      null, // No generic error message
-      function (value, context) {
-        const { sessionType } = this.parent;
-
-        // Only validate the selected session type
-        if (!sessionType) return true;
-
-        const amount = value[sessionType];
-
-        // Check if amount is a valid number
-        if (amount === undefined || amount === "" || isNaN(Number(amount))) {
-          return this.createError({
-            path: `sessionAmounts.${sessionType}`,
-            message: "Amount is required and must be a number",
-          });
-        }
-
-        // Check min/max constraints
-        const numAmount = Number(amount);
-        if (numAmount < 0) {
-          return this.createError({
-            path: `sessionAmounts.${sessionType}`,
-            message: "Minimum amount is $0",
-          });
-        }
-
-        if (numAmount > 100) {
-          return this.createError({
-            path: `sessionAmounts.${sessionType}`,
-            message: "Maximum amount is $100",
-          });
-        }
-
-        return true;
-      }
-    ),
-
-    // Add conditional validation for quickSessionType and quickSessionAmounts
-    quickSessionType: Yup.string().when("showQuickServices", {
-      is: true,
-      then: (schema) => schema.required("Quick session type is required"),
-      otherwise: (schema) => schema.notRequired(),
-    }),
-
-    // Add validation for quickSessionAmounts similar to sessionAmounts
-    quickSessionAmounts: Yup.object().test(
-      "validate-quick-session-amount",
       null,
       function (value, context) {
-        const { quickSessionType, showQuickServices } = this.parent;
-
-        // Skip validation if quick services are not enabled
-        if (!showQuickServices) return true;
-
-        // Skip validation if no session type is selected
-        if (!quickSessionType) return true;
-
-        const amount = value[quickSessionType];
-
-        // Check if amount is a valid number
+        const { sessionType } = this.parent;
+        if (!sessionType) return true;
+        const amount = value[sessionType];
         if (amount === undefined || amount === "" || isNaN(Number(amount))) {
           return this.createError({
-            path: `quickSessionAmounts.${quickSessionType}`,
+            path: `sessionAmounts.${sessionType}`,
             message: "Amount is required and must be a number",
           });
         }
-
-        // Check min/max constraints
         const numAmount = Number(amount);
-        if (numAmount < 0) {
+        if (numAmount < 0 || numAmount > 100) {
           return this.createError({
-            path: `quickSessionAmounts.${quickSessionType}`,
-            message: "Minimum amount is $0",
+            path: `sessionAmounts.${sessionType}`,
+            message: "Amount must be between $0 and $100",
           });
         }
-
-        if (numAmount > 100) {
-          return this.createError({
-            path: `quickSessionAmounts.${quickSessionType}`,
-            message: "Maximum amount is $100",
-          });
-        }
-
         return true;
       }
     ),
-
-    // Add this test for each day's time slots
-    // mondayTime: Yup.array().of(createTimeSlotSchema(!isDisabled.monday)),
-    // tuesdayTime: Yup.array().of(createTimeSlotSchema(!isDisabled.tuesday)),
-    // wednesdayTime: Yup.array().of(createTimeSlotSchema(!isDisabled.wednesday)),
-    // thursdayTime: Yup.array().of(createTimeSlotSchema(!isDisabled.thursday)),
-    // fridayTime: Yup.array().of(createTimeSlotSchema(!isDisabled.friday)),
-    // saturdayTime: Yup.array().of(createTimeSlotSchema(!isDisabled.saturday)),
-    // sundayTime: Yup.array().of(createTimeSlotSchema(!isDisabled.sunday)),
-  });
+    // Conditionally validate quick session fields if showQuickServices is true
+    quickSessionType: Yup.string().when("showQuickServices", {
+      is: true,
+      then: () => Yup.string().required("Quick session type is required"),
+      otherwise: () => Yup.string(),
+    }),
+    quickSessionAmounts: Yup.object().when("showQuickServices", {
+      is: true,
+      then: () =>
+        Yup.object().test(
+          "validate-quick-session-amount",
+          null,
+          function (value, context) {
+            const { quickSessionType, showQuickServices } = this.parent;
+            if (!showQuickServices || !quickSessionType) return true;
+            const amount = value[quickSessionType];
+            if (
+              amount === undefined ||
+              amount === "" ||
+              isNaN(Number(amount))
+            ) {
+              return this.createError({
+                path: `quickSessionAmounts.${quickSessionType}`,
+                message: "Amount is required and must be a number",
+              });
+            }
+            const numAmount = Number(amount);
+            if (numAmount < 0 || numAmount > 100) {
+              return this.createError({
+                path: `quickSessionAmounts.${quickSessionType}`,
+                message: "Amount must be between $0 and $100",
+              });
+            }
+            return true;
+          }
+        ),
+      otherwise: () => Yup.object(),
+    }),
+    
+    // Dynamically validate time slots based on disabled state
+    mondayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.monday)),
+    tuesdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.tuesday)),
+    wednesdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.wednesday)),
+    thursdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.thursday)),
+    fridayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.friday)),
+    saturdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.saturday)),
+    sundayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.sunday)),
+  }).test(
+    "at-least-one-day",
+    "At least one day must be enabled with valid time slots",
+    function(values) {
+      // Check if at least one day is enabled (not disabled)
+      const hasEnabledDay = Object.entries(disabledDays).some(([day, isDisabled]) => !isDisabled);
+      
+      if (!hasEnabledDay) {
+        return this.createError({
+          path: 'mondayTime',
+          message: "At least one day must be enabled"
+        });
+      }
+      
+      // Check if enabled days have valid time slots
+      const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+      const hasValidTimeSlot = daysOfWeek.some(day => {
+        if (disabledDays[day]) return false; // Skip disabled days
+        
+        const dayTimeKey = `${day}Time`;
+        const timeSlots = values[dayTimeKey];
+        
+        return timeSlots && timeSlots.some(slot => 
+          slot.startTime && slot.endTime
+        );
+      });
+      
+      if (!hasValidTimeSlot) {
+        return this.createError({
+          path: 'mondayTime',
+          message: "At least one enabled day must have valid time slots"
+        });
+      }
+      
+      return true;
+    }
+  );
+};
 
 // const validationSchema = Yup.object().shape({
 //   sessionType: Yup.string().required("Session type required hai"),

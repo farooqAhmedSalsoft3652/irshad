@@ -117,12 +117,16 @@ const ImageUpload = ({
           {required && <span className="text-danger">*</span>}
         </label>
       )} */}
-      <label
-        className={`form-label fw-medium d-block ${files.length ? "mb-2" : ""}`}
-      >
-        {label}
-        {required && <span className="text-danger">*</span>}
-      </label>
+      {label && (
+        <label
+          className={`form-label fw-medium d-block ${
+            files.length ? "mb-2" : ""
+          }`}
+        >
+          {label}
+          {required && <span className="text-danger">*</span>}
+        </label>
+      )}
 
       {(Array.isArray(files) ? files.length : files ? 1 : 0) <
         numberOfFiles && (
@@ -144,7 +148,7 @@ const ImageUpload = ({
       {/* Conditionally render the selected image(s) */}
       {!!(Array.isArray(files) ? files.length : files ? 1 : 0) && (
         <div
-          className={`d-flex justify-content-start gap-2 mb-3 ${Styles.displayImages}`}
+          className={`d-flex justify-content-start gap-2 mb-3 display-image ${Styles.displayImages}`}
         >
           {(Array.isArray(files) ? files : [files]).map((image, index) => (
             <div key={index} style={{ position: "relative" }}>

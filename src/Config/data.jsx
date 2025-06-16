@@ -3781,7 +3781,7 @@ export const serviceCategoryData = {
         categoryTitle: "Diabetes Care",
         creationDate: "01/12/2024",
         status_detail: "0",
-         category: "pain releif",
+        category: "pain releif",
         photo: [
           "https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg",
         ],
@@ -6099,6 +6099,7 @@ export const servicesData = {
             },
           ],
         },
+        slot_id: 974,
       },
       {
         id: 2,
@@ -6176,6 +6177,7 @@ export const servicesData = {
             },
           ],
         },
+        slot_id: 766,
       },
       {
         id: 3,
@@ -11041,16 +11043,6 @@ export const slotsData = {
             end_time: "16:08:00",
             isBooked: true,
           },
-          {
-            start_time: "18:07:00",
-            end_time: "19:08:00",
-            isBooked: true,
-          },
-          {
-            start_time: "20:07:00",
-            end_time: "22:08:00",
-            isBooked: true,
-          },
         ],
       },
       {
@@ -11171,6 +11163,11 @@ export const slotsData = {
         day: "monday",
         date: "5/27/2025",
         slots: [
+          {
+            start_time: "16:07:00",
+            end_time: "16:08:00",
+            isBooked: false,
+          },
           {
             start_time: "16:07:00",
             end_time: "16:08:00",

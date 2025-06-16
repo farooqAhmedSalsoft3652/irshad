@@ -14,7 +14,7 @@ import BackButton2 from "../../../Components/BackButton/BackButton2";
 import "./style.css";
 
 import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCirclePlus,
@@ -24,6 +24,7 @@ import {
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { Select } from "../../../Components/Select";
 import { servicesOptions } from "../../../Config/TableStatus";
+import CustomModal from "../../../Components/CustomModal";
 
 const NewServicesAdd = ({ showModal, reasonModal }) => {
   usePageTitle("Edit Profile", true);
@@ -43,10 +44,64 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     sunday: true,
   });
 
-  // Add this state for the validation schema
-  const [validationSchema, setValidationSchema] = useState(
-    serviceValidationSchema(isDisabled)
-  );
+  // Add this function to book a specific day
+  const bookDay = (day) => {
+    reasonModal(
+      "", // heading
+      `Are you sure you want to book ${
+        day.charAt(0).toUpperCase() + day.slice(1)
+      }?`, // para
+      (reason) => {
+        // On confirmation, update the day's booking status
+        const dayTimeKey = `${day}Time`;
+        const currentTimeSlots = [...formikRef.current.values[dayTimeKey]];
+
+        // Update all time slots for this day to be booked
+        const updatedTimeSlots = currentTimeSlots.map((slot) => ({
+          ...slot,
+          isBooked: true,
+        }));
+
+        // Set the updated time slots
+        formikRef.current.setFieldValue(dayTimeKey, updatedTimeSlots);
+
+        // Disable the day
+        setIsDisabled((prev) => ({
+          ...prev,
+          [day]: true,
+        }));
+
+        // Show success message
+        reasonModal(
+          ``,
+          `${
+            day.charAt(0).toUpperCase() + day.slice(1)
+          } has been booked successfully.`,
+          null, //action
+          true //success
+        );
+      },
+      false, // success
+      true, // showReason
+      "Provide reason for booking this day",
+      "Description" // reasonLabel
+    );
+  };
+
+  // Add this useEffect to ensure validation schema is updated when isDisabled changes
+  useEffect(() => {
+    // This will force Formik to re-validate with the updated isDisabled state
+    // You can add this if you're having issues with validation not updating
+    if (formikRef.current) {
+      formikRef.current.validateForm();
+    }
+  }, [isDisabled]);
+
+  // Create a ref to access Formik instance
+  const formikRef = useRef(null);
+
+  // Track if form has been submitted
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   // Initial values for the form
   const initialValues = {
@@ -66,13 +121,13 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     },
     descriptions: "",
     banner_images: [], // Image Upload Field
-    mondayTime: [{ startTime: "", endTime: "" }],
-    tuesdayTime: [{ startTime: "", endTime: "" }],
-    wednesdayTime: [{ startTime: "", endTime: "" }],
-    thursdayTime: [{ startTime: "", endTime: "" }],
-    fridayTime: [{ startTime: "", endTime: "" }],
-    saturdayTime: [{ startTime: "", endTime: "" }],
-    sundayTime: [{ startTime: "", endTime: "" }],
+    mondayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    tuesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    wednesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    thursdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    fridayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    saturdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    sundayTime: [{ startTime: "", endTime: "", isBooked: false }],
   };
 
   const sessionOptions = [
@@ -85,11 +140,9 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
 
   const requestCall = () => {
     reasonModal(
-      "", // heading
-      "Are you sure you want to Book Next week?", // para
-      (reason, id) => {
-        BookedAllSuucces(reason, id);
-      },
+      null, // heading
+      null, // para
+      null,
       false, // success
       true, // showReason
       "Provide Reason for booked week",
@@ -149,12 +202,27 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
       ];
 
       days.forEach((day) => {
+        // Filter out empty time slots
         const timeSlots = values[day]?.filter(
           (slot) => slot.startTime && slot.endTime
         );
 
         if (timeSlots?.length) {
-          payload[day] = timeSlots;
+          // For time slots with start and end times, set isBooked to true
+          payload[day] = timeSlots.map((slot) => ({
+            startTime: slot.startTime,
+            endTime: slot.endTime,
+            isBooked: true, // Set isBooked to true for all time slots with times
+          }));
+        } else {
+          // Even if there are no time slots, add an entry with isBooked status
+          payload[day] = [
+            {
+              startTime: "",
+              endTime: "",
+              isBooked: false,
+            },
+          ];
         }
       });
 
@@ -167,63 +235,18 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     showModal(
       "",
       `New Service Added Successfully.`,
-      // null,
       () => navigate(`/new-services`),
       true
     );
-    // Filter out days with empty time slots
-
-    // Process each time slot key
-    /*
-    const timeSlotKeys = [
-      "mondayTime",
-      "tuesdayTime",
-      "wednesdayTime",
-      "thursdayTime",
-      "fridayTime",
-      "saturdayTime",
-      "sundayTime",
-    ];
-    timeSlotKeys.forEach((key) => {
-      const dayData = values[key];
-
-      // Check if any time slot has valid data
-      const hasValidTime = dayData.some(
-        (item) =>
-          (item.startTime && item.startTime.trim() !== "") ||
-          (item.endTime && item.endTime.trim() !== "")
-      );
-
-      if (hasValidTime) {
-        // Filter out empty time slots
-        formData[key] = dayData.filter(
-          (item) =>
-            (item.startTime && item.startTime.trim() !== "") ||
-            (item.endTime && item.endTime.trim() !== "")
-        );
-      } else {
-        // Remove the key entirely if no valid time slots
-        delete formData[key];
-      }
-    });
-*/
-    // Log the filtered form data
-    // resetForm();
 
     resetForm({
       payload: {
         ...values,
-        banner_images: [], // 👈 preserve uploaded images
+        banner_images: [], // preserve uploaded images
       },
     });
-    // console.log("File:::::", values.banner_images);
 
-    // resetForm({ payload: { ...values, banner_images: [] } });
-
-    // console.log("Form Data with Filtered Time Slots:", formData);
     stopSubmitting();
-    // Here you would submit formData to your API
-    // submitToAPI(formData)
   };
 
   // console.log(user)
@@ -250,8 +273,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
             <Col xs={12}>
               <Formik
                 initialValues={initialValues}
-                validationSchema={validationSchema}
+                validationSchema={serviceValidationSchema(isDisabled)}
                 onSubmit={handleSubmit}
+                enableReinitialize
+                innerRef={formikRef}
               >
                 {({
                   values,
@@ -454,26 +479,35 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                     <label
                                       key={value}
                                       className={`btn btn-primary btn-radio ${
-                                        values.quickSessionType === value
+                                        values.showQuickServices === value
                                           ? ""
                                           : ""
                                       }`}
                                     >
                                       <FormCheck
                                         type="radio"
-                                        name="quickSessionType"
-                                        id={`quickSessionType-${value}`} // unique id
+                                        name="showQuickServices"
+                                        id={`showQuickServices-${value}`}
                                         label={label}
                                         value={value}
                                         checked={
-                                          values.quickSessionType === value
+                                          values.showQuickServices === value
                                         }
-                                        onChange={() =>
+                                        onChange={() => {
                                           setFieldValue(
-                                            "quickSessionType",
+                                            "showQuickServices",
                                             value
-                                          )
-                                        }
+                                          );
+                                          setFieldTouched(
+                                            "showQuickServices",
+                                            true
+                                          );
+                                          // Touch the amount field for this session type
+                                          setFieldTouched(
+                                            `quickSessionAmounts.${value}`,
+                                            true
+                                          );
+                                        }}
                                       />
                                     </label>
                                     <Field
@@ -484,7 +518,9 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                       }
                                       type="number"
                                       className="form-control w-auto"
-                                      disabled={values.sessionType !== value}
+                                      disabled={
+                                        values.showQuickServices !== value
+                                      }
                                       placeholder="Enter Amount"
                                       min={0}
                                       max={100}
@@ -501,15 +537,18 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                         );
                                       }}
                                     />
+
                                     <span className="badge">Range $0-$100</span>
                                     <CustomButton
                                       variant="secondary"
                                       className=""
                                       text="Request More"
+                                      onClick={requestCall}
+                                      type="button"
                                     />
                                   </div>
                                   {/* Only show error for the current session type */}
-                                  {values.quickSessionType === value &&
+                                  {values.showQuickServices === value &&
                                     errors.quickSessionAmounts &&
                                     errors.quickSessionAmounts[value] && (
                                       <div className="error-message red-text mb-2">
@@ -517,20 +556,77 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                       </div>
                                     )}
                                 </div>
+                                // <div key={value}>
+                                //   <div
+                                //     className={`d-flex align-items-center gap-3 mb-3`}
+                                //   >
+                                //     <label
+                                //       key={value}
+                                //       className={`btn btn-primary btn-radio ${
+                                //         values.quickSessionType === value
+                                //           ? ""
+                                //           : ""
+                                //       }`}
+                                //     >
+                                //       <FormCheck
+                                //         type="radio"
+                                //         name="quickSessionType"
+                                //         id={`quickSessionType-${value}`} // unique id
+                                //         label={label}
+                                //         value={value}
+                                //         checked={
+                                //           values.quickSessionType === value
+                                //         }
+                                //         onChange={() =>
+                                //           setFieldValue(
+                                //             "quickSessionType",
+                                //             value
+                                //           )
+                                //         }
+                                //       />
+                                //     </label>
+                                //     <Field
+                                //       name={`quickSessionAmounts.${value}`}
+                                //       value={
+                                //         values.quickSessionAmounts?.[value] ||
+                                //         ""
+                                //       }
+                                //       type="number"
+                                //       className="form-control w-auto"
+                                //       disabled={values.sessionType !== value}
+                                //       placeholder="Enter Amount"
+                                //       min={0}
+                                //       max={100}
+                                //       onChange={(e) => {
+                                //         setFieldValue(
+                                //           `quickSessionAmounts.${value}`,
+                                //           e.target.value
+                                //         );
+                                //       }}
+                                //       onBlur={() => {
+                                //         setFieldTouched(
+                                //           `quickSessionAmounts.${value}`,
+                                //           true
+                                //         );
+                                //       }}
+                                //     />
+                                //     <span className="badge">Range $0-$100</span>
+                                //     <CustomButton
+                                //       variant="secondary"
+                                //       className=""
+                                //       text="Request More"
+                                //     />
+                                //   </div>
+                                //   {/* Only show error for the current session type */}
+                                //   {values.quickSessionType === value &&
+                                //     errors.quickSessionAmounts &&
+                                //     errors.quickSessionAmounts[value] && (
+                                //       <div className="error-message red-text mb-2">
+                                //         {errors.quickSessionAmounts[value]}
+                                //       </div>
+                                //     )}
+                                // </div>
                               ))}
-
-                              {/* Display errors for quick session type */}
-                              {/* {sessionOptions.map(({ value }) => (
-                                <div key={`error-${value}`}>
-                                  {values.quickSessionType === value &&
-                                    errors.quickSessionAmounts &&
-                                    errors.quickSessionAmounts[value] && (
-                                      <div className="error-message red-text mb-2">
-                                        {errors.quickSessionAmounts[value]}
-                                      </div>
-                                    )}
-                                </div>
-                              ))} */}
 
                               {/* Show error for quickSessionType if no option is selected */}
                               <ErrorMessage
@@ -579,27 +675,42 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                   const isEnabled = e.target.checked;
 
                                   // Update the disabled state
-                                  setIsDisabled((prev) => {
-                                    const newState = {
-                                      ...prev,
-                                      [day]: !isEnabled,
-                                    };
+                                  setIsDisabled((prev) => ({
+                                    ...prev,
+                                    [day]: !isEnabled,
+                                  }));
 
-                                    // Update validation schema with new disabled state
-                                    const newValidationSchema =
-                                      serviceValidationSchema(newState);
-                                    setValidationSchema(newValidationSchema);
+                                  // Update the day's booking status in the form values
+                                  const dayTimeKey = `${day}Time`;
+                                  const currentTimeSlots = [
+                                    ...values[dayTimeKey],
+                                  ];
 
-                                    return newState;
-                                  });
+                                  // We don't change isBooked here - it should only be changed when explicitly booking a day
 
+                                  // If enabling, touch the fields to trigger validation
+                                  if (isEnabled) {
+                                    // Touch all fields in the first time slot to trigger validation
+                                    setFieldTouched(
+                                      `${dayTimeKey}.0.startTime`,
+                                      true
+                                    );
+                                    setFieldTouched(
+                                      `${dayTimeKey}.0.endTime`,
+                                      true
+                                    );
+                                  }
                                   // If disabling, clear existing values and errors for this day
-                                  if (!isEnabled) {
-                                    const dayTimeKey = `${day}Time`;
-
-                                    // Clear values
+                                  else {
+                                    // Clear values but keep isBooked property unchanged
                                     setFieldValue(dayTimeKey, [
-                                      { startTime: "", endTime: "" },
+                                      {
+                                        startTime: "",
+                                        endTime: "",
+                                        isBooked:
+                                          currentTimeSlots[0]?.isBooked ||
+                                          false,
+                                      },
                                     ]);
 
                                     // Clear errors
@@ -634,61 +745,61 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                               <CustomInput
                                                 name={`${day}Time.${index}.startTime`}
                                                 type="time"
-                                                disabled={isDisabled[day]}
+                                                disabled={
+                                                  isDisabled[day] ||
+                                                  values[`${day}Time`][index]
+                                                    .isBooked
+                                                }
                                                 value={
                                                   values[`${day}Time`][index]
                                                     .startTime
                                                 }
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                                // error={
-                                                //   touched[`${day}Time`]?.[index]
-                                                //     ?.startTime &&
-                                                //   errors[`${day}Time`]?.[index]
-                                                //     ?.startTime
-                                                // }
+                                                error={
+                                                  touched[`${day}Time`]?.[index]
+                                                    ?.startTime &&
+                                                  errors[`${day}Time`]?.[index]
+                                                    ?.startTime
+                                                }
                                               />
                                             </div>
                                             <div className="flex-grow-1 w-100">
                                               <CustomInput
                                                 name={`${day}Time.${index}.endTime`}
                                                 type="time"
-                                                disabled={isDisabled[day]}
+                                                disabled={
+                                                  isDisabled[day] ||
+                                                  values[`${day}Time`][index]
+                                                    .isBooked
+                                                }
                                                 value={
                                                   values[`${day}Time`][index]
                                                     .endTime
                                                 }
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                                // error={
-                                                //   touched[`${day}Time`]?.[index]
-                                                //     ?.endTime &&
-                                                //   errors[`${day}Time`]?.[index]
-                                                //     ?.endTime
-                                                // }
+                                                error={
+                                                  touched[`${day}Time`]?.[index]
+                                                    ?.endTime &&
+                                                  errors[`${day}Time`]?.[index]
+                                                    ?.endTime
+                                                }
                                               />
                                             </div>
                                           </div>
 
-                                          {/* Display time range error if both times are entered but end time is not after start time */}
-                                          {touched[`${day}Time`]?.[index]
-                                            ?.endTime &&
-                                            errors[`${day}Time`]?.[index]
-                                              ?.endTime && (
-                                              <div className="error-message red-text mt-2">
-                                                {
-                                                  errors[`${day}Time`][index]
-                                                    .endTime
-                                                }
-                                              </div>
-                                            )}
-
+                                          {/* Delete button */}
                                           {values[`${day}Time`].length > 1 && (
                                             <div className="d-flex flex-shrink-0 gap-2 mt-3">
                                               <button
                                                 type="button"
                                                 className="btn remove-btn"
                                                 onClick={() => remove(index)}
+                                                disabled={
+                                                  values[`${day}Time`][index]
+                                                    .isBooked
+                                                }
                                               >
                                                 <span className="delete-icon">
                                                   <FontAwesomeIcon
@@ -702,6 +813,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                         </div>
                                       ))}
 
+                                      {/* Add More button */}
                                       {!isDisabled[day] && (
                                         <div className="d-flex flex-shrink-0 gap-2 mt-3">
                                           <button
@@ -711,6 +823,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                               push({
                                                 startTime: "",
                                                 endTime: "",
+                                                isBooked: false, // New time slots are not booked by default
                                               })
                                             }
                                           >
@@ -729,6 +842,15 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                           </Card>
                         </Col>
                       ))}
+                      <Col xs={12}>
+                        {/* Display the "at least one day" error if it exists */}
+                        {errors.mondayTime &&
+                          typeof errors.mondayTime === "string" && (
+                            <div className="error-message red-text mb-3">
+                              {errors.mondayTime}
+                            </div>
+                          )}
+                      </Col>
                     </Row>
                     <Row>
                       {/* Submit Button */}
@@ -750,6 +872,64 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
           </Row>
         </div>
       </div>
+      {/* <CustomModal
+        show={requestModal}
+        hideClose={false}
+        close={() => {
+          setRatingModal(false);
+        }}
+        className="rating-modal"
+      >
+        <Formik
+          initialValues={{
+            review_text: "",
+            rating: 0, // Initialize rating in form values
+          }}
+          validationSchema={ratingValidationSchema}
+          onSubmit={handleSubmit}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            setFieldValue,
+            isSubmitting,
+          }) => (
+            <Form onSubmit={handleSubmit}>
+              <h4 className="modalHeading text-start">Rate Product</h4>
+              <div className="mb-3"></div>
+              <div className="mb-3">
+                <CustomInput
+                  type="textarea"
+                  required
+                  placeholder="Write Review"
+                  inputclass="mainInput"
+                  id="review_text"
+                  rows="5"
+                  value={values.review_text}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.review_text && errors.review_text}
+                />
+              </div>
+              <div className="text-center">
+                <CustomButton
+                  variant="btn-user-primary"
+                  className="btn-user"
+                  text="Submit"
+                  pendingText="Submitting..."
+                  isPending={isSubmitting}
+                  type="submit"
+                  disabled={isSubmitting}
+                />
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </CustomModal> */}
     </Container>
   );
 };

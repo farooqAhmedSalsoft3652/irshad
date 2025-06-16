@@ -9,21 +9,34 @@ import { dateFormat, humanReadable } from "../../Utils/helper";
 import { useAuth } from "../../Hooks/useAuth";
 import CustomButton from "../CustomButton";
 
-const HeaderNotification = ({ notificationData, getNotification, viewAllLink }) => {
+const HeaderNotification = ({
+  notificationData,
+  getNotification,
+  viewAllLink,
+}) => {
   const { role } = useAuth();
   const handleDropdownToggle = (e) => {
     e.preventDefault(); // Prevent default behavior to avoid unnecessary page reloads or navigation
-    getNotification(); 
+    getNotification();
   };
 
   // const notificationsLink = viewAllLink || `${role}/notifications`;
 
-
   return (
-    <Dropdown className="notiDropdown me-2 whiteColor" onClick={handleDropdownToggle}>
-      <Dropdown.Toggle variant="transparent bellIconDropdown border-0 px-0" className="notButton">
+    <Dropdown
+      className="notiDropdown me-2 whiteColor"
+      onClick={handleDropdownToggle}
+    >
+      <Dropdown.Toggle
+        variant="transparent bellIconDropdown border-0 px-0"
+        className="notButton"
+      >
         <FontAwesomeIcon className="bellIcon" icon={faBell} color="#C5E4F6" />
-        {notificationData.length ? <span className="badge">{notificationData.length > 9 ? "9+" : notificationData.length}</span> : null}
+        {notificationData.length ? (
+          <span className="badge">
+            {notificationData.length > 9 ? "9+" : notificationData.length}
+          </span>
+        ) : null}
       </Dropdown.Toggle>
       <Dropdown.Menu className="notiMenu" align="end">
         <div className="notificationsBodyHeader">
@@ -35,7 +48,9 @@ const HeaderNotification = ({ notificationData, getNotification, viewAllLink }) 
         <div className="notificationsBody">
           {notificationData.slice(0, 5).map((notification) => (
             <div
-              className={`singleNoti ${notification.read_at === null ? "unread" : ""}`}
+              className={`singleNoti ${
+                notification.read_at === null ? "unread" : ""
+              }`}
               key={notification.id}
             >
               <div className="singleNotiIcon">
@@ -46,7 +61,8 @@ const HeaderNotification = ({ notificationData, getNotification, viewAllLink }) 
                 <p className="notiText">{notification?.data?.body}</p>
                 <div className="d-flex justify-content-between mt-2">
                   <p className="d-inline notiDateTime">
-                    {dateFormat(notification?.created_at)} | {humanReadable(notification?.created_at)}
+                    {dateFormat(notification?.created_at)} |{" "}
+                    {humanReadable(notification?.created_at)}
                   </p>
                   <button
                     type="button"
@@ -54,18 +70,25 @@ const HeaderNotification = ({ notificationData, getNotification, viewAllLink }) 
                       e.stopPropagation();
                       e.preventDefault();
                     }}
-                    style={{ fontSize: 12, color: '#333333' }}
+                    style={{ fontSize: 12, color: "#333333" }}
                     className="notButton underlineOnHover"
                   >
-                    {notification.read_at === null ? "Mark as Read" : "Mark as Unread"}
+                    {notification.read_at === null
+                      ? "Mark as Read"
+                      : "Mark as Unread"}
                   </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="notiFooter text-end pe-4">
-          <Link to={viewAllLink || `/${role}/notifications`} className="underlineOnHover">view all</Link>
+        <div className="notiFooter text-center pe-4">
+          <Link
+            to={viewAllLink || `/${role}/notifications`}
+            className="underlineOnHover"
+          >
+            view all
+          </Link>
         </div>
       </Dropdown.Menu>
     </Dropdown>

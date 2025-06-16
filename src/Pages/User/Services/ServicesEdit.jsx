@@ -16,7 +16,7 @@ import {
 } from "../../../Utils/helper";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import "./style.css";
-import { servicesData } from "../../../Config/data";
+import { servicesData, slotsData } from "../../../Config/data";
 import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -36,6 +36,15 @@ const ServicesEdit = ({ showModal }) => {
   const title = location.state?.title;
   const { id } = useParams();
   const [services, setServices] = useState();
+  const [initialTimeSlots, setInitialTimeSlots] = useState({
+    mondayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    tuesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    wednesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    thursdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    fridayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    saturdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    sundayTime: [{ startTime: "", endTime: "", isBooked: false }],
+  });
 
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const { user } = useAuth();
@@ -72,13 +81,7 @@ const ServicesEdit = ({ showModal }) => {
     },
     descriptions: services?.description || "",
     banner_images: services?.image || [],
-    mondayTime: [{ startTime: "", endTime: "" }],
-    tuesdayTime: [{ startTime: "", endTime: "" }],
-    wednesdayTime: [{ startTime: "", endTime: "" }],
-    thursdayTime: [{ startTime: "", endTime: "" }],
-    fridayTime: [{ startTime: "", endTime: "" }],
-    saturdayTime: [{ startTime: "", endTime: "" }],
-    sundayTime: [{ startTime: "", endTime: "" }],
+    ...initialTimeSlots, // Spread the populated time slots
   };
 
   // Handle form submission
@@ -86,14 +89,7 @@ const ServicesEdit = ({ showModal }) => {
     // Create a copy of the values to avoid modifying the original
     startSubmitting();
     const formData = { ...values };
-    // values.image = imageObject;
-    showModal(
-      "Succesful",
-      `New Service Added Successfully`,
-      // null,
-      () => navigate(`/services`),
-      true
-    );
+
     // Filter out days with empty time slots
     const timeSlotKeys = [
       "mondayTime",
@@ -117,12 +113,18 @@ const ServicesEdit = ({ showModal }) => {
       );
 
       if (hasValidTime) {
-        // Filter out empty time slots
-        formData[key] = dayData.filter(
-          (item) =>
-            (item.startTime && item.startTime.trim() !== "") ||
-            (item.endTime && item.endTime.trim() !== "")
-        );
+        // Filter out empty time slots and preserve isBooked property
+        formData[key] = dayData
+          .filter(
+            (item) =>
+              (item.startTime && item.startTime.trim() !== "") ||
+              (item.endTime && item.endTime.trim() !== "")
+          )
+          .map((item) => ({
+            startTime: item.startTime,
+            endTime: item.endTime,
+            isBooked: item.isBooked || false, // Preserve isBooked property
+          }));
       } else {
         // Remove the key entirely if no valid time slots
         delete formData[key];
@@ -130,8 +132,16 @@ const ServicesEdit = ({ showModal }) => {
     });
 
     // Log the filtered form data
-    resetForm();
     console.log("Form Data with Filtered Time Slots:", formData);
+
+    showModal(
+      "Successful",
+      `Service Updated Successfully`,
+      () => navigate(`/services`),
+      true
+    );
+
+    resetForm();
     stopSubmitting();
     // Here you would submit formData to your API
     // submitToAPI(formData)
@@ -141,21 +151,58 @@ const ServicesEdit = ({ showModal }) => {
     const response = servicesData?.detail?.data?.find(
       (item) => item.id === Number(id)
     );
+
     if (response) {
       setServices(response);
 
-      // Update disabled state based on existing time slots
-      // const newDisabledState = {
-      //   monday: !response.mondayTime || response.mondayTime.length === 0,
-      //   tuesday: !response.tuesdayTime || response.tuesdayTime.length === 0,
-      //   wednesday:
-      //     !response.wednesdayTime || response.wednesdayTime.length === 0,
-      //   thursday: !response.thursdayTime || response.thursdayTime.length === 0,
-      //   friday: !response.fridayTime || response.fridayTime.length === 0,
-      //   saturday: !response.saturdayTime || response.saturdayTime.length === 0,
-      //   sunday: !response.sundayTime || response.sundayTime.length === 0,
-      // };
-      // setIsDisabled(newDisabledState);
+      // Get the slot_id from the service or use 974 as default
+      const serviceSlotId = response.slot_id || 974;
+
+      // Filter slots data by slot_id
+      const serviceSlots = slotsData.detail.data.filter(
+        (slot) => slot.slot_id === serviceSlotId
+      );
+
+      // Create a new time slots object
+      const newTimeSlots = {
+        mondayTime: [{ startTime: "", endTime: "", isBooked: false }],
+        tuesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+        wednesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+        thursdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+        fridayTime: [{ startTime: "", endTime: "", isBooked: false }],
+        saturdayTime: [{ startTime: "", endTime: "", isBooked: false }],
+        sundayTime: [{ startTime: "", endTime: "", isBooked: false }],
+      };
+
+      // Create a new disabled state object
+      const newDisabledState = { ...isDisabled };
+
+      // Populate time slots for each day from the filtered slots data
+      serviceSlots.forEach((daySlot) => {
+        const day = daySlot.day.toLowerCase();
+        const dayTimeKey = `${day}Time`;
+
+        if (daySlot.slots && daySlot.slots.length > 0) {
+          // Map the slots to the format expected by the form
+          newTimeSlots[dayTimeKey] = daySlot.slots.map((slot) => ({
+            startTime: slot.start_time.substring(0, 5), // Format: HH:MM
+            endTime: slot.end_time.substring(0, 5), // Format: HH:MM
+            isBooked: slot.isBooked || false, // Default to false if not specified
+          }));
+
+          // Enable the day in the UI if it has slots
+          newDisabledState[day] = false;
+        }
+      });
+
+      // Update the form's initial values with the populated time slots
+      setInitialTimeSlots(newTimeSlots);
+
+      // Update the disabled state
+      setIsDisabled(newDisabledState);
+
+      console.log("Populated time slots:", newTimeSlots);
+      console.log("Updated disabled state:", newDisabledState);
     }
   };
   useEffect(() => {
@@ -379,53 +426,84 @@ const ServicesEdit = ({ showModal }) => {
                           {values.showQuickServices && (
                             <div className="mt-3 p-3">
                               {sessionOptions.map(({ label, value }) => (
-                                <div
-                                  key={value}
-                                  className="d-flex align-items-center gap-3 mb-3"
-                                >
-                                  <label
-                                    key={value}
-                                    className={`btn btn-primary btn-radio ${
-                                      values.quickSessionType === value
-                                        ? ""
-                                        : ""
-                                    }`}
+                                <div key={value}>
+                                  <div
+                                    className={`d-flex align-items-center gap-3 mb-3`}
                                   >
-                                    <FormCheck
-                                      type="radio"
-                                      name="quickSessionType"
-                                      id={`quickSessionType-${value}`} // unique id
-                                      label={label}
-                                      value={value}
-                                      checked={
+                                    <label
+                                      key={value}
+                                      className={`btn btn-primary btn-radio ${
                                         values.quickSessionType === value
+                                          ? ""
+                                          : ""
+                                      }`}
+                                    >
+                                      <FormCheck
+                                        type="radio"
+                                        name="quickSessionType"
+                                        id={`quickSessionType-${value}`} // unique id
+                                        label={label}
+                                        value={value}
+                                        checked={
+                                          values.quickSessionType === value
+                                        }
+                                        onChange={() =>
+                                          setFieldValue(
+                                            "quickSessionType",
+                                            value
+                                          )
+                                        }
+                                      />
+                                    </label>
+                                    <Field
+                                      name={`quickSessionAmounts.${value}`}
+                                      value={
+                                        values.quickSessionAmounts?.[value] ||
+                                        ""
                                       }
-                                      onChange={() =>
-                                        setFieldValue("quickSessionType", value)
-                                      }
+                                      type="number"
+                                      className="form-control w-auto"
+                                      disabled={values.sessionType !== value}
+                                      placeholder="Enter Amount"
+                                      min={0}
+                                      max={100}
+                                      onChange={(e) => {
+                                        setFieldValue(
+                                          `quickSessionAmounts.${value}`,
+                                          e.target.value
+                                        );
+                                      }}
+                                      onBlur={() => {
+                                        setFieldTouched(
+                                          `quickSessionAmounts.${value}`,
+                                          true
+                                        );
+                                      }}
                                     />
-                                  </label>
-                                  <Field
-                                    name={`quickSessionAmounts.${value}`}
-                                    value={
-                                      values.quickSessionAmounts?.[value] || ""
-                                    }
-                                    type="number"
-                                    className="form-control w-auto"
-                                    disabled={values.quickSessionType !== value}
-                                    min={0}
-                                    max={100}
-                                  />
-
-                                  <span className="badge">Range $0-$100</span>
-                                  <CustomButton
-                                    variant="secondary"
-                                    className=""
-                                    text="Request More"
-                                  />
+                                    <span className="badge">Range $0-$100</span>
+                                    <CustomButton
+                                      variant="secondary"
+                                      className=""
+                                      text="Request More"
+                                    />
+                                  </div>
+                                  {/* Only show error for the current session type */}
+                                  {values.quickSessionType === value &&
+                                    errors.quickSessionAmounts &&
+                                    errors.quickSessionAmounts[value] && (
+                                      <div className="error-message red-text mb-2">
+                                        {errors.quickSessionAmounts[value]}
+                                      </div>
+                                    )}
                                 </div>
                               ))}
 
+                              {/* Show error for quickSessionType if no option is selected */}
+                              <ErrorMessage
+                                name="quickSessionType"
+                                component="div"
+                                className="error-message red-text mb-2"
+                              />
                               <CustomButton
                                 variant="secondary"
                                 type="submit"
