@@ -678,6 +678,10 @@ margin-right: 10px;
   .dropdown-notification .dropdown .dropdown-menu {
     width: 20rem;
   }
+  .navbar-nav .dropdown-menu{
+    position: absolute;
+    left: -50px;
+  }
 }
 
 @media (max-width: 480px) {

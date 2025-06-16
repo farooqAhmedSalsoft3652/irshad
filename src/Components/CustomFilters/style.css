@@ -106,7 +106,7 @@
 }
 
 .filter-dropdown .dropdown-menu {
-  min-width: 280px;
+  min-width: 300px;
   border: 0;
   border-radius: 8px;
   border: 0.8px solid var(--add-1, #39ae94);
@@ -144,7 +144,7 @@
 }
 
 .fiter-main {
-  padding: 20px 10px;
+  padding: 20px 15px;
 }
 
 .select-inner-wrapper {
@@ -202,11 +202,11 @@
   margin: 0px;
 }
 
-.user-layout .tableFilters .btn_filter {
+.user-layout .tableFilters .btn_filter, .admin-layout .tableFilters .btn_filter {
   padding: 0px;
   background: #15355E;
-  width: 51px;
-  height: 51px;
+  width: 45px;
+  height: 45px;
   border-radius: 50px;
 }
 

@@ -36,7 +36,9 @@ const AppointmentsDetails = ({ reasonModal }) => {
         reasonSuucces(reason, id);
       },
       false,
-      true
+      true, 
+      "Cancellation Reason",
+      "Reason"
     );
   };
   const reasonSuucces = async (reason, id) => {
@@ -213,7 +215,7 @@ const AppointmentsDetails = ({ reasonModal }) => {
                       to="/video-call"
                       className="btn btn-primary min-width-180"
                     >
-                      Join Session
+                      Start Session
                     </Link>
                   ) : null}
                   {data?.status !== "in-progress" && (

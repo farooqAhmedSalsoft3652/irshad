@@ -52,7 +52,7 @@ const StepOne = ({ apiEndpoint, navigateTo }) => {
             label="Email Address"
             id="email"
             type="email"
-            placeholder="Enter Your Email Address"
+            placeholder="Enter Email Address"
             labelclass="mainLabel"
             // inputclass="mainInput mainInputLogIn"
             value={values.email}

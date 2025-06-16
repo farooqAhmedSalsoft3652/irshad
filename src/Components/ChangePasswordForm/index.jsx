@@ -65,11 +65,11 @@ const ChangePasswordForm = ({
             </Col>
             <Col md={12} className="my-1">
               <CustomInput
-                label="Confirm New Password"
+                label="Confirm Password"
                 labelclass="mainLabel"
                 type="password"
                 required
-                placeholder="Enter New Password"
+                placeholder="Confirm Password"
                 // inputclass="mainInput"
                 id="password_confirmation"
                 value={values.password_confirmation}

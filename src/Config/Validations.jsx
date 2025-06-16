@@ -154,7 +154,7 @@ export const loyaltyValidation = Yup.object().shape({
 export const forgotEmail = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
-    .required("Email is required"),
+    .required("Email Address is required"),
 });
 
 export const forgotCode = Yup.object().shape({
@@ -185,7 +185,7 @@ export const changePassword = Yup.object().shape({
 export const loginValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
-    .required("Email is required"),
+    .required("Email address is required"),
   password: Yup.string()
     // .min(8, 'Password must be at least 8 characters')
     .required("Password is required"),
@@ -197,7 +197,7 @@ export const contactValidationSchema = Yup.object().shape({
   message: Yup.string().required("Query is required"),
   email: Yup.string()
     .email("Invalid email address")
-    .required("Email is required"),
+    .required("Email address is required"),
   phone: Yup.string()
     .matches(/^[0-9]+$/, "Must be only digits")
     .min(10, "Must be greater  then 10 digits")
