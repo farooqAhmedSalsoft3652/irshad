@@ -42,8 +42,8 @@ const SubCategoryManagement = ({ showModal, filters, setFilters, pagination, upd
     const newStatusValue = e;
     // Open the modal for confirmation
     showModal(
-      `${newStatusValue === "1" ? "Active" : "Inactive"} Category`,
-      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this Category?`,
+      ``,
+      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this Sub-Category?`,
       () => onConfirmStatusChange(userId, newStatusValue)
     );
   };
@@ -52,7 +52,7 @@ const SubCategoryManagement = ({ showModal, filters, setFilters, pagination, upd
   const onConfirmStatusChange = async (categoryId, newStatusValue) => {
     // Update the status in the categories state
     setCategories((prevData) => prevData.map((category) => (category.id === categoryId ? { ...category, status_detail: newStatusValue } : category)));
-    showModal("Successful", `This Category has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
+    showModal("", `This Sub-Category has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
   };
 
   useEffect(() => {
@@ -84,6 +84,8 @@ const SubCategoryManagement = ({ showModal, filters, setFilters, pagination, upd
                         title: "Creation Date",
                         from: "fromDate",
                         to: "toDate",
+                        fromTitle: "From",
+                        toTitle: "To",
                       },
                     ]}
                     selectOptions={[

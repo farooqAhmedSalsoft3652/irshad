@@ -17,10 +17,11 @@ const AddSubCategory = ({ showModal }) => {
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const [errorsData, setErrorsData] = useState({});
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, { resetForm }) => {
     console.log(values);
     startSubmitting();
     showModal("", `Sub-Category has been added successfully`, () => navigate(-1), true);
+    resetForm();
     stopSubmitting();
   };
 
