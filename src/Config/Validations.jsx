@@ -1233,29 +1233,14 @@ export const BookingvalidationSchema = Yup.object({
     .required("Email is required"),
 });
 
+const sessionTypes = ["chat", "call", "video"];
+const sessionOptions = [
+  { label: "Chat", value: "chat" },
+  { label: "Call", value: "call" },
+  { label: "Video Call", value: "video" },
+];
+
 export const serviceValidationSchema = Yup.object().shape({
-  service_type: Yup.string()
-    .required("Please select a service type")
-    .oneOf(["online", "offline", "both"], "Invalid service type"),
-
-  online_charges: Yup.number().when("service_type", {
-    is: (type) => type === "online" || type === "both",
-    then: (schema) =>
-      schema
-        .required("Online charges are required")
-        .min(0, "Charges cannot be negative"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
-
-  onsite_charges: Yup.number().when("service_type", {
-    is: (type) => type === "offline" || type === "both",
-    then: (schema) =>
-      schema
-        .required("Onsite charges are required")
-        .min(0, "Charges cannot be negative"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
-
   service_name: Yup.string()
     .required("Service name is required")
     .min(2, "Service name must be at least 2 characters")
@@ -1296,17 +1281,90 @@ export const serviceValidationSchema = Yup.object().shape({
       }
     ),
 
-  add_address: Yup.string().required("Please select an address option"),
+  sessionType: Yup.string()
+    .required("Session type is required")
+    .oneOf(
+      sessionOptions.map((opt) => opt.value),
+      "Invalid session type"
+    ),
 
-  maplink: Yup.string().when("add_address", (value) => {
-    if (value[0] === "map_address") {
-      return Yup.string().required(
-        "Maplink is required when adding an address"
-      );
-    }
-    return Yup.string().notRequired();
+  sessionAmounts: Yup.object().shape(
+    sessionOptions.reduce((acc, { value }) => {
+      acc[value] = Yup.number()
+        .typeError("Amount must be a number")
+        .min(0, "Minimum amount is $0")
+        .max(100, "Maximum amount is $100")
+        .when(["sessionType"], {
+          is: (sessionType) => sessionType === value,
+          then: (schema) =>
+            schema.required("Amount is required for selected session"),
+          otherwise: (schema) => schema.notRequired(),
+        });
+      return acc;
+    }, {})
+  ),
+
+  /*
+  quickSessionType: Yup.string().when("showQuickServices", {
+    is: true,
+    then: (schema) => schema.required("Please select a quick session type"),
+    otherwise: (schema) => schema.notRequired(),
   }),
+
+  quickSessionAmounts: Yup.object().shape(
+    sessionTypes.reduce((acc, type) => {
+      acc[type] = Yup.number()
+        .min(0, "Minimum is 0")
+        .max(100, "Maximum is 100")
+        .when("quickSessionType", {
+          is: (val) => val === type,
+          then: (schema) => schema.required("Amount is required"),
+          otherwise: (schema) => schema.notRequired(),
+        });
+      return acc;
+    }, {})
+  ),
+  */
 });
+
+// const validationSchema = Yup.object().shape({
+//   sessionType: Yup.string().required("Session type required hai"),
+//   amounts: Yup.object().shape({
+//     chat: Yup.string().when("sessionType", {
+//       is: "chat",
+//       then: Yup.string()
+//         .required("Chat amount zaroori hai")
+//         .matches(/^\d+$/, "Sirf numbers daalo")
+//         .test("range", "Amount $0 se $100 ke beech hona chahiye", (val) => {
+//           const num = parseFloat(val);
+//           return num >= 0 && num <= 100;
+//         }),
+//       otherwise: Yup.string().notRequired(),
+//     }),
+//     call: Yup.string().when("sessionType", {
+//       is: "call",
+//       then: Yup.string()
+//         .required("Call amount zaroori hai")
+//         .matches(/^\d+$/, "Sirf numbers daalo")
+//         .test("range", "Amount $0 se $100 ke beech hona chahiye", (val) => {
+//           const num = parseFloat(val);
+//           return num >= 0 && num <= 100;
+//         }),
+//       otherwise: Yup.string().notRequired(),
+//     }),
+//     video: Yup.string().when("sessionType", {
+//       is: "video",
+//       then: Yup.string()
+//         .required("Video amount zaroori hai")
+//         .matches(/^\d+$/, "Sirf numbers daalo")
+//         .test("range", "Amount $0 se $100 ke beech hona chahiye", (val) => {
+//           const num = parseFloat(val);
+//           return num >= 0 && num <= 100;
+//         }),
+//       otherwise: Yup.string().notRequired(),
+//     }),
+//   }),
+// });
 
 export const createShopValidationSchema = Yup.object().shape({
   shop_name: Yup.string()

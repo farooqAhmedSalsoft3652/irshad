@@ -93,7 +93,7 @@ import UserSignup from "../Pages/User/Auth/Signup";
 import ContactUs from "../Pages/User/ContactUs";
 import Services from "../Pages/User/Services";
 import ServicesDetails from "../Pages/User/Services/ServiceDetail";
-// import ServicesDetails_1 from "../Pages/User/Services/ServiceDetail_1";
+import ServicesEdit from "../Pages/User/Services/ServicesEdit";
 import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 import BlockedUsers from "../Pages/User/BlockedUsers";
 import UserChat from "../Pages/User/Chat/Chat";
@@ -467,6 +467,7 @@ const routes = [
 
               { path: "/services", element: <Services /> },
               { path: "/services/:id", element: <ServicesDetails /> },
+              { path: "/services/:id/edit", element: <ServicesEdit /> },
               { path: "/services/review/:id", element: <ServicesReview /> },
 
               { path: "/new-services", element: <NewServices /> },
