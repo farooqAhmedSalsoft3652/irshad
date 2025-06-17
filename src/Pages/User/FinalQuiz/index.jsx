@@ -84,7 +84,7 @@ const FinalQuiz = () => {
                   ))}
 
                   <div>
-                    <button className="siteBtn primaryBtn" type="submit">
+                    <button className="btn btn-primary" type="submit">
                       Submit
                     </button>
                   </div>
