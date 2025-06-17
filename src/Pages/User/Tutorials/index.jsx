@@ -87,7 +87,7 @@ const Tutorials = () => {
           ))}
         </Row>
         <div>
-          <button className="siteBtn primaryBtn" type="button">
+          <button className="btn btn-primary" type="button">
             Continue
           </button>
         </div>

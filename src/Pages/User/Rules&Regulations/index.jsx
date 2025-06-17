@@ -35,7 +35,7 @@ const RuleRegulations = () => {
           Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
         </p>
         <div>
-          <button className="siteBtn primaryBtn" type="button">
+          <button className="btn btn-primary" type="button">
             Continue
           </button>
         </div>
