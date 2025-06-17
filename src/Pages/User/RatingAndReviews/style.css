@@ -10,12 +10,12 @@
 }
 .reviews-bar .reviews-item .progress{
   flex-grow: 1;
-  background-color: #C4C6C7;
+  background-color: #E8EAEB;
   height: 12px;
   min-width: 270px;
 }
 .bg-progress{
-  background-color: #E9D225;
+  background-color: #FFE420;
 }
 .reviews-item label{
   color: #495560;
@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  border: 1px solid #1a8c1a;
+  border: 1px solid #15355E;
 }
 .profile-avatar {
   width: 100px;

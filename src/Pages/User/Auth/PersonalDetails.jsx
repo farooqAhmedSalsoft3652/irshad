@@ -11,6 +11,7 @@ import CustomButton from "../../../Components/CustomButton";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import CustomModal from "../../../Components/CustomModal";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
 
 const PersonalDetails = () => {
   const [modal, setModal] = useState(false);
@@ -22,7 +23,11 @@ const PersonalDetails = () => {
     setModal(true);
   };
   return (
-    <UserAuthLayout authTitle="Personl Details" authBack>
+    <UserAuthLayout >
+      <div className="d-flex flex-wrap">
+        <BackButton2 />
+        <h2 className="authTitle mb-0 mx-auto">Personal Details</h2>
+      </div>
       <Formik
         initialValues={{
           about: "",
@@ -454,6 +459,7 @@ const PersonalDetails = () => {
         close={() => setModal(false)}
         success
         para="Profile has been created successfully. Please wait for the admin approval."
+        btnText="Okay"
       />
     </UserAuthLayout>
   );

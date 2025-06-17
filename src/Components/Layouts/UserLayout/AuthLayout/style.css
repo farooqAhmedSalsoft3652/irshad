@@ -168,7 +168,9 @@
   .authForm {
     padding: 2rem 1rem !important;
   }
-
+  .authTitle {
+    font-size: 30px;
+  }
   .authLogo img {
     width: 200px;
   }

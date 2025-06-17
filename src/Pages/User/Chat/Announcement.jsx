@@ -99,12 +99,12 @@ const UserChatAnnouncement = () => {
                           Chat
                         </h6>
                         <Dropdown.Item>
-                          <Link className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link to={"/chat-reports"} className="text-decoration-none" style={{ color: "#999999" }}>
                             Reports
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link to={"/chat-contact-us"} className="text-decoration-none" style={{ color: "#999999" }}>
                             Contact Us
                           </Link>
                         </Dropdown.Item>

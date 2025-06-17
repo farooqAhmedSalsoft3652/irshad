@@ -336,7 +336,7 @@ const UserChat = ({ showModal }) => {
                           </label>
                           <input type={`file`} id={`uploader`} onChange={handleImageChange} accept="image/*" multiple hidden={true} />
                         </div>
-                        <div className="file-upload">
+                        <div className="file-upload mt-2">
                           <label htmlFor="doc-uploader" className="upload-label">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 39 40" fill="none">
                               <g clip-path="url(#clip0_435_42258)">
