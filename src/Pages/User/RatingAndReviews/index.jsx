@@ -137,7 +137,7 @@ const RatingsAndReviews = () => {
                             >
                               {star !== "All" ? (
                                 <div className="d-flex align-items-center">
-                                  <FaStar className="text-warning" />
+                                  <FaStar color="#FFB400" />
                                   <span>{star}</span>
                                 </div>
                               ) : (
