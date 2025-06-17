@@ -98,12 +98,13 @@
 
 
 
-.session-type .btn-radio {
+.session-type .btn-checkbox {
   min-width: 170px;
   padding: 13px 20px;
 }
 
-.session-type .btn-radio:hover {
+.session-type .btn-checkbox:hover,
+.session-type .btn-checkbox.active {
   background-color: #15355E;
   border-color: #15355E;
   color: #fff;
@@ -115,31 +116,35 @@
   font-weight: 600;
 }
 
-
 .session-type .form-check .form-check-label {
   line-height: 1.3;
   font-size: 17px;
 }
 
-.session-type .form-check-input[type="radio"] {
-  border-color: #fff;
+.session-type .form-switch .form-check-input[type="checkbox"] {
+  width: 2.6em;
+  height: 1.3rem;
+  border-color: #15355e !important;
+}
+
+.session-type .form-switch .form-check-input:checked[type="checkbox"] {
+  background-color: #15355e;
+}
+
+.session-type .form-check-input[type="checkbox"] {
+  border-color: #fff !important;
   background-color: transparent;
   width: 1.3rem;
   height: 1.3rem;
   margin-top: 0px;
-  /* appearance: none;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid #ccc;
-  border-radius: 50%;
-  position: relative; */
 }
 
-.session-type .form-check-input:checked[type="radio"] {
-  background: #A1AEBF;
-  border-color: #15355e;
+.session-type .form-check-input:checked[type="checkbox"] {
+  border-color: #A1AEBF;
   box-shadow: 0px 0px 0px 1px #fff;
 }
+
+.session-type {}
 
 
 
@@ -209,12 +214,61 @@
   }
 }
 
+@media (max-width:991px) {
+  .session-type .btn-radio {
+    min-width: 140px;
+    padding: 10px 15px;
+  }
+
+  .session-type .form-check .form-check-label {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .session-type .form-control {
+    min-width: 120px;
+    font-size: 15px;
+    padding: 10px 15px;
+    min-height: 46px;
+
+  }
+
+  .session-type .btn-secondary {
+    padding: 12px 15px;
+    min-height: 46px;
+    font-size: 15px;
+  }
+}
+
 @media (max-width:767px) {
+
   .add-services .searchWrapper {
     min-width: 100%;
   }
 
   .service-header h4 {
     font-size: 25px;
+  }
+
+  .session-type .btn-radio {
+    min-width: 47%;
+    padding: 10px 15px;
+  }
+
+  .session-type .form-control {
+    min-width: 47%;
+    font-size: 14px;
+    padding: 10px 15px;
+
+  }
+
+  .session-type .badge {
+    min-width: 47%;
+    font-size: 14px;
+  }
+
+  .session-type .btn-secondary {
+    min-width: 47%;
+    font-size: 14px;
   }
 }

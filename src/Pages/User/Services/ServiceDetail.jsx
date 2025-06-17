@@ -65,7 +65,7 @@ const ServicesDetails = ({ showModal }) => {
           <Row>
             <Col xs={12}>
               <div className="">
-                <div className="service_detail_img mb-2">
+                <div className="service_detail_img mb-4">
                   <img src={services?.image} alt="" className="" />
                 </div>
                 <div className="d-flex justify-content-between flex-wrap">
@@ -115,7 +115,27 @@ const ServicesDetails = ({ showModal }) => {
                   </div>
                 </div>
               </div>
-              <div className="mb-4">
+              {services?.quickSessionType && (
+                <div className="mb-4">
+                  <h2 className="fw-bold mb-2">Quick Service</h2>
+                  <div className="d-flex gap-sm-5 gap-4 align-items-center flex-wrap">
+                    <div>
+                      <h6 className="fw-medium mb-0">Chat</h6>
+                      <p>{services?.quickSessionAmounts?.chat}</p>
+                    </div>
+                    <div>
+                      <h6 className="fw-medium mb-0">Call</h6>
+                      <p>{services?.quickSessionAmounts?.call}</p>
+                    </div>
+                    <div>
+                      <h6 className="fw-medium mb-0">Video Call</h6>
+                      <p>{services?.quickSessionAmounts?.video}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* <div className="mb-4">
                 <h2 className="fw-bold mb-2">Quick Service</h2>
                 <div className="d-flex gap-sm-5 gap-4 align-items-center flex-wrap">
                   <div>
@@ -131,7 +151,7 @@ const ServicesDetails = ({ showModal }) => {
                     <p>{services?.video_call}</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="d-flex flex-wrap gap-2">
                 {/* <CustomButton variant="primary min-width-180" text="Manage Slots" /> */}
                 <CustomButton

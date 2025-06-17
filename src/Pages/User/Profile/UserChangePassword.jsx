@@ -14,7 +14,12 @@ const UserChangePassword = ({ showModal }) => {
 
   const handleSubmit = async (values) => {
     startSubmitting();
-    showModal("Successful", `password Has Been updated Successfully!`, () => navigate(-1), true);
+    showModal(
+      null,
+      `password Has Been updated Successfully!`,
+      () => navigate(-1),
+      true
+    );
     // let response = await post("/admin-api/account/change-password", values);
     // if (response.status) {
     //   showModal(
@@ -33,16 +38,17 @@ const UserChangePassword = ({ showModal }) => {
       <div className="py-sm-5 py-3">
         <div className="site_card">
           <Row>
-            <Col sm={12} className="gap-3 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 mb-lg-4">
-                <BackButton2 />
-              <h2 className="page-title fw-bold mx-auto">
-                Change Password
-              </h2>
+            <Col
+              sm={12}
+              className="gap-3 d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3 mb-lg-4"
+            >
+              <BackButton2 />
+              <h2 className="page-title fw-bold mx-auto">Change Password</h2>
             </Col>
           </Row>
           <Row>
             <Col xs={12} lg={10}>
-              <div >
+              <div>
                 <Row>
                   <Col xs={12} lg={7} xxl={5}>
                     <ChangePasswordForm

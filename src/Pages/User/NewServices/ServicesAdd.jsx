@@ -1,17 +1,9 @@
+import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import { Card, Col, Container, FormCheck, Row } from "react-bootstrap";
-import {
-  Formik,
-  Form,
-  FieldArray,
-  Field,
-  ErrorMessage,
-  useField,
-  useFormikContext,
-} from "formik";
-import { useLocation, useNavigate } from "react-router";
-import { images } from "../../../Assets";
-import CustomButton from "../../../Components/CustomButton";
 import "react-phone-number-input/style.css";
+import { useLocation, useNavigate } from "react-router";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
+import CustomButton from "../../../Components/CustomButton";
 import CustomInput from "../../../Components/CustomInput";
 import {
   modalReasonValidation,
@@ -20,26 +12,17 @@ import {
 import withModal from "../../../HOC/withModal";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { usePageTitle, validateImage } from "../../../Utils/helper";
-import BackButton2 from "../../../Components/BackButton/BackButton2";
+import { usePageTitle } from "../../../Utils/helper";
 import "./style.css";
 
-import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
-import { useState, useEffect, useRef } from "react";
+import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlus,
-  faPlus,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
-import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-import { Select } from "../../../Components/Select";
-import { servicesOptions } from "../../../Config/TableStatus";
-import CustomModal from "../../../Components/CustomModal";
-import * as Yup from "yup";
-import UploadAndDisplayFiles from "../../../Components/UploadAndDisplayFiles/UploadAndDisplayFiles";
-import { FaUpload } from "react-icons/fa6";
+import { useEffect, useRef, useState } from "react";
 import UploadIcon from "../../../Assets/images/svg/uploadIcon.svg?react";
+import CustomModal from "../../../Components/CustomModal";
+import { Select } from "../../../Components/Select";
+import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
+import { servicesOptions } from "../../../Config/TableStatus";
 const NewServicesAdd = ({ showModal, reasonModal }) => {
   usePageTitle("Edit Profile", true);
   const navigate = useNavigate();
@@ -124,13 +107,13 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
   const initialValues = {
     service_name: "",
     showQuickServices: false,
-    sessionType: "chat",
+    sessionTypes: [], // Changed from sessionType to sessionTypes (array)
     sessionAmounts: {
       chat: "",
       call: "",
       video: "",
     },
-    quickSessionType: "chat",
+    quickSessionType: [],
     quickSessionAmounts: {
       chat: "",
       call: "",
@@ -155,28 +138,35 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
 
   // Handle form submission
 
-  const requestCall = () => {
-    reasonModal(
-      null, // heading
-      null, // para
-      null,
-      false, // success
-      true, // showReason
-      "Provide Reason for booked week",
-      "Description" // ✅ reasonLabel
-    );
-  };
+  const handleSubmit = async (values, { resetForm, setTouched }) => {
+    // Mark all fields as touched to show validation errors
+    setHasSubmitted(true);
 
-  const BookedAllSuucces = async (reason, id) => {
-    reasonModal(
-      ``,
-      `Booked Request for next week has been send Sucessfully. Wait for the admin's Apporval`,
-      null, //action
-      true //success
+    // Mark all fields as touched to trigger validation
+    setTouched(
+      {
+        service_name: true,
+        descriptions: true,
+        banner_images: true,
+        sessionTypes: true,
+        sessionAmounts: {
+          chat: true,
+          call: true,
+          video: true,
+        },
+        quickSessionType: values.showQuickServices ? true : false,
+        quickSessionAmounts: values.showQuickServices
+          ? {
+              chat: true,
+              call: true,
+              video: true,
+            }
+          : undefined,
+        // Add other fields as needed
+      },
+      true
     );
-  };
 
-  const handleSubmit = (values, { resetForm }) => {
     // Create a copy of the values to avoid modifying the original
     startSubmitting();
     const formData = { ...values };
@@ -188,24 +178,35 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
         banner_images: values.banner_images,
       };
 
-      // Session Amount (if selected and non-empty)
-      if (values.sessionType && values.sessionAmounts?.[values.sessionType]) {
-        payload.sessionType = values.sessionType;
-        payload.sessionAmounts = {
-          [values.sessionType]: values.sessionAmounts[values.sessionType],
-        };
+      // Session Types and Amounts (handle multiple selected types)
+      if (values.sessionTypes && values.sessionTypes.length > 0) {
+        payload.sessionTypes = values.sessionTypes;
+
+        // Add amounts for each selected session type
+        payload.sessionAmounts = {};
+        values.sessionTypes.forEach((type) => {
+          if (values.sessionAmounts?.[type]) {
+            payload.sessionAmounts[type] = values.sessionAmounts[type];
+          }
+        });
       }
 
-      // Quick Session Amount (if selected and non-empty)
+      // Quick Session Types and Amounts (if enabled and selected)
       if (
+        values.showQuickServices &&
         values.quickSessionType &&
-        values.quickSessionAmounts?.[values.quickSessionType]
+        values.quickSessionType.length > 0
       ) {
         payload.quickSessionType = values.quickSessionType;
-        payload.quickSessionAmounts = {
-          [values.quickSessionType]:
-            values.quickSessionAmounts[values.quickSessionType],
-        };
+
+        // Add amounts for each selected quick session type
+        payload.quickSessionAmounts = {};
+        values.quickSessionType.forEach((type) => {
+          if (values.quickSessionAmounts?.[type]) {
+            payload.quickSessionAmounts[type] =
+              values.quickSessionAmounts[type];
+          }
+        });
       }
 
       // Days timing (filter out empty time slots)
@@ -267,10 +268,6 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     stopSubmitting();
   };
 
-  // const handleRequestModal = () => {
-  //   setRequestModal(true);
-  // };
-
   const handleRequestSubmit = (values, { resetForm }) => {
     console.log("Request submitted with values:", values);
 
@@ -303,15 +300,6 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     resetForm();
   };
 
-  // const [field, meta] = useField(name);
-  // const { setFieldValue } = useFormikContext();
-
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFieldValue(name, file);
-    console.log("Selected file:", file);
-  };
-
   // console.log(user)
   return (
     <Container fluid>
@@ -340,6 +328,8 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                 onSubmit={handleSubmit}
                 enableReinitialize
                 innerRef={formikRef}
+                validateOnMount={true}
+                validateOnChange={true}
               >
                 {({
                   values,
@@ -376,7 +366,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col xs={12} lg={6} xxl={8} className="mb-3">
+                      <Col xs={12} lg={10} xxl={8} className="mb-3">
                         <div className="session-type mb-2">
                           <label className="form-label mb-2">
                             Select Session Type:
@@ -386,24 +376,44 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                           {sessionOptions.map(({ label, value }) => (
                             <div key={value}>
                               <div
-                                className={`d-flex align-items-center gap-3 mb-3`}
+                                className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}
                               >
                                 <label
                                   key={value}
-                                  className={`btn btn-primary btn-radio ${
-                                    values.sessionType === value ? "" : ""
+                                  className={`btn btn-primary btn-checkbox ${
+                                    values.sessionTypes?.includes(value)
+                                      ? "active"
+                                      : ""
                                   }`}
                                 >
                                   <FormCheck
-                                    type="radio"
-                                    name="sessionType"
+                                    type="checkbox"
+                                    name={`sessionTypes`}
                                     id={`sessionType-${value}`}
                                     label={label}
-                                    value={value}
-                                    checked={values.sessionType === value}
-                                    onChange={() => {
-                                      setFieldValue("sessionType", value);
-                                      setFieldTouched("sessionType", true);
+                                    checked={values.sessionTypes?.includes(
+                                      value
+                                    )}
+                                    onChange={(e) => {
+                                      // Get current session types array or initialize empty array
+                                      const currentTypes =
+                                        values.sessionTypes || [];
+
+                                      // Add or remove the value based on checkbox state
+                                      let newTypes;
+                                      if (e.target.checked) {
+                                        newTypes = [...currentTypes, value];
+                                      } else {
+                                        newTypes = currentTypes.filter(
+                                          (type) => type !== value
+                                        );
+                                      }
+
+                                      // Update the form values
+                                      setFieldValue("sessionTypes", newTypes);
+
+                                      // Mark as touched when user interacts with checkboxes
+                                      setFieldTouched("sessionTypes", true);
                                     }}
                                   />
                                 </label>
@@ -412,7 +422,9 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                   value={values.sessionAmounts?.[value] || ""}
                                   type="number"
                                   className="form-control w-auto"
-                                  disabled={values.sessionType !== value}
+                                  disabled={
+                                    !values.sessionTypes?.includes(value)
+                                  }
                                   placeholder="Enter Amount"
                                   min={0}
                                   max={100}
@@ -423,14 +435,6 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                     );
                                   }}
                                   onBlur={() => {
-                                    // Only touch the field when user interacts with it
-                                    setFieldTouched(
-                                      `sessionAmounts.${value}`,
-                                      true
-                                    );
-                                  }}
-                                  onClick={() => {
-                                    // Touch the field when clicked
                                     setFieldTouched(
                                       `sessionAmounts.${value}`,
                                       true
@@ -447,26 +451,34 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                   type="button"
                                 />
                               </div>
-                              {/* Only show error for the current session type and only if touched */}
-                              {values.sessionType === value &&
+                              {/* Show error for this session type if it's selected and touched */}
+                              {values.sessionTypes?.includes(value) &&
                                 touched.sessionAmounts?.[value] &&
-                                errors.sessionAmounts?.[value] && (
+                                errors.sessionAmounts &&
+                                typeof errors.sessionAmounts === "string" && (
                                   <div className="error-message red-text mb-2">
-                                    {errors.sessionAmounts[value]}
+                                    {(() => {
+                                      try {
+                                        const parsedErrors = JSON.parse(
+                                          errors.sessionAmounts
+                                        );
+                                        return parsedErrors[value] || "";
+                                      } catch (e) {
+                                        return "";
+                                      }
+                                    })()}
                                   </div>
                                 )}
                             </div>
                           ))}
-                          <ErrorMessage
-                            name="sessionType"
-                            component="div"
-                            className="error-message red-text mb-2"
-                          />
-                          <CustomButton
-                            variant="secondary"
-                            className="min-width-250"
-                            text="Request For Call"
-                          />
+
+                          {/* Show general session types error */}
+                          {(touched.sessionTypes || hasSubmitted) &&
+                            errors.sessionTypes && (
+                              <div className="error-message red-text mb-2">
+                                {errors.sessionTypes}
+                              </div>
+                            )}
                         </div>
                       </Col>
                     </Row>
@@ -507,7 +519,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col xs={12} lg={6} xxl={8} className="mb-3">
+                      <Col xs={12} lg={10} xxl={8} className="mb-3">
                         <div className="session-type mb-3">
                           <div className="d-flex gap-3">
                             <div className="flex-shrink-0">
@@ -524,49 +536,71 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                 type="switch"
                                 id="quick-service-switch"
                                 className="flex-shrink-0"
-                                // checked={showQuickServices}
                                 checked={values.showQuickServices}
-                                onChange={(e) =>
-                                  setFieldValue(
-                                    "showQuickServices",
-                                    e.target.checked
-                                  )
-                                }
+                                onChange={(e) => {
+                                  const isChecked = e.target.checked;
+                                  setFieldValue("showQuickServices", isChecked);
+
+                                  // If turning off quick services, reset the quick session fields
+                                  if (!isChecked) {
+                                    setFieldValue("quickSessionType", []);
+                                    setFieldValue("quickSessionAmounts", {
+                                      chat: "",
+                                      call: "",
+                                      video: "",
+                                    });
+                                  }
+                                }}
                               />
                             </div>
                           </div>
                           {values.showQuickServices && (
                             <div className="mt-3 p-3">
+                              <label className="form-label mb-2">
+                                Select Quick Session Type:
+                                <span className="text-danger">*</span>
+                              </label>
+
                               {sessionOptions.map(({ label, value }) => (
                                 <div key={value}>
                                   <div
-                                    className={`d-flex align-items-center gap-3 mb-3`}
+                                    className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}
                                   >
                                     <label
                                       key={value}
-                                      className={`btn btn-primary btn-radio ${
-                                        values.quickSessionType === value
-                                          ? ""
+                                      className={`btn btn-primary btn-checkbox ${
+                                        values.quickSessionType?.includes(value)
+                                          ? "active"
                                           : ""
                                       }`}
                                     >
                                       <FormCheck
-                                        type="radio"
-                                        name="quickSessionType"
+                                        type="checkbox"
+                                        name={`quickSessionType`}
                                         id={`quickSessionType-${value}`}
                                         label={label}
-                                        value={value}
-                                        checked={
-                                          values.quickSessionType === value
-                                        }
-                                        onChange={() => {
+                                        checked={values.quickSessionType?.includes(
+                                          value
+                                        )}
+                                        onChange={(e) => {
+                                          // Get current session types array or initialize empty array
+                                          const currentTypes =
+                                            values.quickSessionType || [];
+
+                                          // Add or remove the value based on checkbox state
+                                          let newTypes;
+                                          if (e.target.checked) {
+                                            newTypes = [...currentTypes, value];
+                                          } else {
+                                            newTypes = currentTypes.filter(
+                                              (type) => type !== value
+                                            );
+                                          }
+
+                                          // Update the form values
                                           setFieldValue(
                                             "quickSessionType",
-                                            value
-                                          );
-                                          setFieldTouched(
-                                            "quickSessionType",
-                                            true
+                                            newTypes
                                           );
                                         }}
                                       />
@@ -580,7 +614,9 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                       type="number"
                                       className="form-control w-auto"
                                       disabled={
-                                        values.quickSessionType !== value
+                                        !values.quickSessionType?.includes(
+                                          value
+                                        )
                                       }
                                       placeholder="Enter Amount"
                                       min={0}
@@ -598,35 +634,48 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                         );
                                       }}
                                     />
+
                                     <span className="badge">Range $0-$100</span>
                                     <CustomButton
                                       variant="secondary"
                                       className=""
                                       text="Request More"
-                                      onClick={requestCall}
+                                      onClick={() => setRequestModal(true)}
                                       type="button"
                                     />
                                   </div>
-                                  {/* Only show error for the current session type and only if touched */}
-                                  {values.quickSessionType === value &&
+                                  {/* Show error for this quick session type if it's selected and touched */}
+                                  {values.quickSessionType?.includes(value) &&
                                     touched.quickSessionAmounts?.[value] &&
-                                    errors.quickSessionAmounts?.[value] && (
+                                    errors.quickSessionAmounts &&
+                                    typeof errors.quickSessionAmounts ===
+                                      "string" && (
                                       <div className="error-message red-text mb-2">
-                                        {errors.quickSessionAmounts[value]}
+                                        {(() => {
+                                          try {
+                                            const parsedErrors = JSON.parse(
+                                              errors.quickSessionAmounts
+                                            );
+                                            return parsedErrors[value] || "";
+                                          } catch (e) {
+                                            return "";
+                                          }
+                                        })()}
                                       </div>
                                     )}
                                 </div>
                               ))}
-                              <ErrorMessage
-                                name="quickSessionType"
-                                component="div"
-                                className="error-message red-text mb-2"
-                              />
+
+                              {/* Show general quick session types error only on submit */}
+                              {hasSubmitted && errors.quickSessionType && (
+                                <div className="error-message red-text mb-2">
+                                  {errors.quickSessionType}
+                                </div>
+                              )}
                               <CustomButton
                                 variant="secondary"
                                 className="min-width-250"
                                 text="Request For Call"
-                                onClick={requestCall}
                                 type="button"
                               />
                             </div>

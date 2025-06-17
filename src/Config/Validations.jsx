@@ -1304,63 +1304,99 @@ export const serviceValidationSchema = (disabledDays = {}) => {
     banner_images: Yup.array()
       .min(1, "At least one image is required")
       .required("Banner image is required"),
-    sessionType: Yup.string().required("Session type is required"),
+    
+    // Session Types validation - always required
+    sessionTypes: Yup.array()
+      .min(1, "At least one session type must be selected")
+      .required("At least one session type must be selected"),
+    
+    // Session Amounts validation
     sessionAmounts: Yup.object().test(
-      "validate-session-amount",
+      "validate-session-amounts",
       null,
       function (value, context) {
-        const { sessionType } = this.parent;
-        if (!sessionType) return true;
-        const amount = value[sessionType];
-        if (amount === undefined || amount === "" || isNaN(Number(amount))) {
+        const { sessionTypes } = this.parent;
+        
+        // If no session types selected, no validation needed
+        if (!sessionTypes || sessionTypes.length === 0) return true;
+        
+        // Check if each selected session type has a valid amount
+        const errors = {};
+        let hasErrors = false;
+        
+        sessionTypes.forEach(type => {
+          const amount = value[type];
+          if (amount === undefined || amount === "" || isNaN(Number(amount))) {
+            errors[type] = "Amount is required and must be a number";
+            hasErrors = true;
+          } else {
+            const numAmount = Number(amount);
+            if (numAmount < 0 || numAmount > 100) {
+              errors[type] = "Amount must be between $0 and $100";
+              hasErrors = true;
+            }
+          }
+        });
+        
+        if (hasErrors) {
           return this.createError({
-            path: `sessionAmounts.${sessionType}`,
-            message: "Amount is required and must be a number",
+            path: "sessionAmounts",
+            message: JSON.stringify(errors),
           });
         }
-        const numAmount = Number(amount);
-        if (numAmount < 0 || numAmount > 100) {
-          return this.createError({
-            path: `sessionAmounts.${sessionType}`,
-            message: "Amount must be between $0 and $100",
-          });
-        }
+        
         return true;
       }
     ),
-    // Conditionally validate quick session fields if showQuickServices is true
-    quickSessionType: Yup.string().when("showQuickServices", {
+    
+    // Quick Session Type - only required when showQuickServices is true
+    quickSessionType: Yup.array().when("showQuickServices", {
       is: true,
-      then: () => Yup.string().required("Quick session type is required"),
-      otherwise: () => Yup.string(),
+      then: () => 
+        Yup.array()
+          .min(1, "At least one quick session type must be selected")
+          .required("Quick session type is required"),
+      otherwise: () => Yup.array(),
     }),
+    
+    // Quick Session Amounts - only validated when showQuickServices is true
     quickSessionAmounts: Yup.object().when("showQuickServices", {
       is: true,
       then: () =>
         Yup.object().test(
-          "validate-quick-session-amount",
+          "validate-quick-session-amounts",
           null,
           function (value, context) {
-            const { quickSessionType, showQuickServices } = this.parent;
-            if (!showQuickServices || !quickSessionType) return true;
-            const amount = value[quickSessionType];
-            if (
-              amount === undefined ||
-              amount === "" ||
-              isNaN(Number(amount))
-            ) {
+            const { quickSessionType } = this.parent;
+            
+            // If no quick session types selected, no validation needed
+            if (!quickSessionType || quickSessionType.length === 0) return true;
+            
+            // Check if each selected quick session type has a valid amount
+            const errors = {};
+            let hasErrors = false;
+            
+            quickSessionType.forEach(type => {
+              const amount = value[type];
+              if (amount === undefined || amount === "" || isNaN(Number(amount))) {
+                errors[type] = "Amount is required and must be a number";
+                hasErrors = true;
+              } else {
+                const numAmount = Number(amount);
+                if (numAmount < 0 || numAmount > 100) {
+                  errors[type] = "Amount must be between $0 and $100";
+                  hasErrors = true;
+                }
+              }
+            });
+            
+            if (hasErrors) {
               return this.createError({
-                path: `quickSessionAmounts.${quickSessionType}`,
-                message: "Amount is required and must be a number",
+                path: "quickSessionAmounts",
+                message: JSON.stringify(errors),
               });
             }
-            const numAmount = Number(amount);
-            if (numAmount < 0 || numAmount > 100) {
-              return this.createError({
-                path: `quickSessionAmounts.${quickSessionType}`,
-                message: "Amount must be between $0 and $100",
-              });
-            }
+            
             return true;
           }
         ),
@@ -1536,7 +1572,9 @@ export const addProductSchema = Yup.object().shape({
 export const signUpUserValidationSchema = Yup.object().shape({
   first_name: Yup.string().required("First Name is required"),
   last_name: Yup.string().required("Last Name is required"),
-  language: Yup.string().required("Language is required"),
+  languages: Yup.array()
+    .min(1, "At least one language is required")
+    .required("Languages are required"),
   nationality: Yup.string().required("Nationality is required"),
   gender: Yup.string().required("Gender is required"),
   phone: Yup.string()

@@ -8,7 +8,13 @@ import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { usePageTitleUser } from "../../../Utils/helper";
 
-const PaymentLogsUser = ({ filters, setFilters, pagination, updatePagination, showModal }) => {
+const PaymentLogsUser = ({
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+  showModal,
+}) => {
   usePageTitleUser("Payment Logs");
 
   const [paymentData, setPaymentData] = useState([]);
@@ -47,7 +53,9 @@ const PaymentLogsUser = ({ filters, setFilters, pagination, updatePagination, sh
           <div className="site_card">
             <Row>
               <Col xs={12} className="mb-3 mb-lg-4">
-                <h2 className="fw-bold mb-0 page-title text-center">Payment Logs</h2>
+                <h2 className="fw-bold mb-0 page-title text-center">
+                  Payment Logs
+                </h2>
               </Col>
             </Row>
             <Row>
@@ -57,7 +65,6 @@ const PaymentLogsUser = ({ filters, setFilters, pagination, updatePagination, sh
                   setFilters={setFilters}
                   loading={isSubmitting}
                   headers={paymentLogsHeaders}
-                  showEntries={false}
                   pagination={pagination}
                   dateFilters={[
                     {
@@ -68,22 +75,22 @@ const PaymentLogsUser = ({ filters, setFilters, pagination, updatePagination, sh
                       to: "toDate",
                     },
                   ]}
-                //   selectOptions={[
-                //     {
-                //       title: "Status",
-                //       options: normalStatus,
-                //     },
-                //   ]}
+                  //   selectOptions={[
+                  //     {
+                  //       title: "Status",
+                  //       options: normalStatus,
+                  //     },
+                  //   ]}
                 >
                   <tbody>
                     {paymentData?.map((item) => (
                       <tr key={item?.id}>
-                        <td >{item.id}</td>
-                        <td >{item?.booking_id}</td>
-                        <td >{item?.payment_date}</td>
-                        <td >{item?.total_amount}</td>
-                        <td >{item?.recieved_amount}</td>
-                        <td >{item?.commision}</td>
+                        <td>{item.id}</td>
+                        <td>{item?.booking_id}</td>
+                        <td>{item?.payment_date}</td>
+                        <td>{item?.total_amount}</td>
+                        <td>{item?.recieved_amount}</td>
+                        <td>{item?.commision}</td>
                       </tr>
                     ))}
                   </tbody>

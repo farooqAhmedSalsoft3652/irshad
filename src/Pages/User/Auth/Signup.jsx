@@ -7,19 +7,31 @@ import CustomInput from "../../../Components/CustomInput/index.jsx";
 import { UserAuthLayout } from "../../../Components/Layouts/UserLayout/AuthLayout/index.jsx";
 import { Select } from "../../../Components/Select/index.jsx";
 import ImageUpload from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage.jsx";
+import { language } from "../../../Config/TableStatus.jsx";
 import { signUpUserValidationSchema } from "../../../Config/Validations.jsx";
 import { usePageTitleUser } from "../../../Utils/helper.jsx";
 import "./style.css";
 
+import ReactSelect from "react-select";
+
 const UserSignup = () => {
   usePageTitleUser("Sign Up");
   const navigate = useNavigate();
-  // const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus(); // use your custom hook
+  
+  // Convert language options to format required by ReactSelect
+  const languageOptions = language
+    .filter(option => option.value !== "") // Remove the "Select language" option
+    .map(option => ({
+      value: option.value,
+      label: option.text
+    }));
+  
   const handleSubmit = async (values, { resetForm }) => {
     // console.log("registered", values);
     resetForm();
     navigate("/personal-details");
   };
+  
   return (
     <>
       <UserAuthLayout authTitle="Sign up">
@@ -27,7 +39,7 @@ const UserSignup = () => {
           initialValues={{
             first_name: "",
             last_name: "",
-            language: "",
+            languages: [], // Changed from language to languages (array)
             nationality: "",
             gender: "",
             phone: "",
@@ -40,7 +52,16 @@ const UserSignup = () => {
           validationSchema={signUpUserValidationSchema}
           onSubmit={handleSubmit}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue }) => (
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            setFieldTouched,
+            setFieldValue,
+          }) => (
             <form className="mt-3" onSubmit={handleSubmit}>
               <div className="mb-3">
                 <CustomInput
@@ -70,31 +91,31 @@ const UserSignup = () => {
                   error={touched.last_name && errors.last_name}
                 />
               </div>
-              <div className="inputWrapper position-relative">
-                <Select
-                  label="Language"
-                  labelclass="mainLabel"
-                  required
-                  id="language"
-                  name="language"
-                  wrapperClass="d-block mb-3"
-                  mainLabel="Select Language"
-                  value={values.language}
-                  onChange={(value) => handleChange({ target: { name: "language", value } })} // Adapting to Formik
-                  onBlur={handleBlur}
-                  error={touched.language && errors.language}
-                >
-                  {[
-                    {
-                      value: "english",
-                      text: "English",
-                    },
-                    {
-                      value: "spanish",
-                      text: "Spanish",
-                    },
-                  ]}
-                </Select>
+              <div className="inputWrapper position-relative mb-3">
+                <label htmlFor="languages" className="mainLabel">
+                  Languages<span className="text-danger">*</span>
+                </label>
+                <ReactSelect
+                  isMulti
+                  id="languages"
+                  name="languages"
+                  className="multi-select"
+                  classNamePrefix="select"
+                  value={values.languages}
+                  onChange={(selectedOptions) => {
+                    setFieldValue("languages", selectedOptions);
+                  }}
+                  onBlur={() => setFieldTouched("languages", true)}
+                  isClearable={true}
+                  isSearchable={true}
+                  options={languageOptions}
+                  placeholder="Select Languages"
+                />
+                {touched.languages && errors.languages && (
+                  <div className="error-message">
+                    <p>{errors.languages}</p>
+                  </div>
+                )}
               </div>
               <div className="mb-3">
                 <CustomInput
@@ -120,7 +141,9 @@ const UserSignup = () => {
                   wrapperClass="d-block mb-3"
                   mainLabel="Select Gender"
                   value={values.gender}
-                  onChange={(value) => handleChange({ target: { name: "gender", value } })} // Adapting to Formik
+                  onChange={(value) =>
+                    handleChange({ target: { name: "gender", value } })
+                  } // Adapting to Formik
                   onBlur={handleBlur}
                   error={touched.gender && errors.gender}
                 >
@@ -223,7 +246,13 @@ const UserSignup = () => {
               </div>
 
               <div className="mt-5 text-center">
-                <CustomButton variant="primary" className="w-100" text="Next" pendingText="Loading..." type="submit" />
+                <CustomButton
+                  variant="primary"
+                  className="w-100"
+                  text="Next"
+                  pendingText="Loading..."
+                  type="submit"
+                />
               </div>
 
               <p className="mt-4 mb-0 fw-medium text-center text-capitalize grayLightColor">

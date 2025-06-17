@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import CustomButton from "../../../Components/CustomButton";
 import { appointmentsData } from "../../../Config/data";
@@ -20,6 +20,8 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [reasonModal, setReasonModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const fetchBookings = async () => {
     const response = appointmentsData.detail.data.find(
@@ -46,15 +48,6 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
       true
     );
   };
-  const reasonSuucces = async (status, id) => {
-    setReasonModal(true);
-    // showModal(
-    //   ``,
-    //   `you have now 10 cancels left for this month after that you have to pay cancellatioon penalty [Amount] for it`,
-    //   null, //action
-    //   true //success
-    // );
-  };
 
   const handleRequestSubmit = (values, { resetForm }) => {
     console.log("Request submitted with values:", values);
@@ -79,12 +72,12 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
     showModal(
       "",
       "Your request has been submitted successfully. We will review it shortly.",
-      null,
+      () => navigate("/appointments"),
       true // success
     );
 
     // Close the modal and reset form
-    setRequestModal(false);
+    setReasonModal(false);
     resetForm();
   };
 

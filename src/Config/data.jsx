@@ -6027,12 +6027,24 @@ export const servicesData = {
         title: "Service Name 1",
         service_name: "services_a",
         category: "abc",
-        quick: false,
+        sessionAmounts: {
+          chat: "$30.00",
+          call: "$30.00",
+          video: "$30.00",
+        },
+        quickSessionType: true,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
+
+        quickSessionAmounts: {
+          chat: "$10.00",
+          call: "$20.00",
+          video: "$30.00",
+        },
+
         price: "$200.00",
         rating: 4.0,
         // reviews: "1.21K reviews",
@@ -6105,7 +6117,7 @@ export const servicesData = {
         id: 2,
         title: "Service Name",
         category: "abc",
-        quick: true,
+        quickSessionType: false,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
@@ -6183,7 +6195,7 @@ export const servicesData = {
         id: 3,
         title: "Service Name",
         category: "abc",
-        quick: false,
+        quickSessionType: true,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
@@ -6261,7 +6273,7 @@ export const servicesData = {
         id: 4,
         title: "Service Name",
         category: "abc",
-        quick: true,
+        quickSessionType: false,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
@@ -6338,7 +6350,7 @@ export const servicesData = {
         id: 5,
         title: "Service Name",
         category: "abc",
-        quick: false,
+        quickSessionType: false,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
@@ -6415,7 +6427,7 @@ export const servicesData = {
         id: 6,
         title: "Service Name",
         category: "abc",
-        quick: true,
+        quickSessionType: false,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",

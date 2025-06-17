@@ -88,21 +88,20 @@ const NewServices = ({ filters, setFilters, pagination, updatePagination }) => {
                   <h4 className="fw-bold mb-2 mb-md-0">Choose Sub Category</h4>
                 </div>
                 <div className="flex-shrink-0 d-flex justify-content-end gap-3">
-                  <div class="searchWrapper">
+                  <div className="searchWrapper">
                     <input
                       type="text"
                       placeholder="Search..."
                       name="search"
-                      class="site-input filterInput searchInput form-control"
-                      value=""
+                      className="site-input filterInput searchInput form-control"
                     />
-                    <button class="searchButton notButton">
+                    <button className="searchButton notButton">
                       <svg
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fas"
                         data-icon="magnifying-glass"
-                        class="svg-inline--fa fa-magnifying-glass "
+                        className="svg-inline--fa fa-magnifying-glass "
                         role="img"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"

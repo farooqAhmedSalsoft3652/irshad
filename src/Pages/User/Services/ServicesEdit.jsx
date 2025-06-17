@@ -5,7 +5,10 @@ import { images } from "../../../Assets";
 import CustomButton from "../../../Components/CustomButton";
 import "react-phone-number-input/style.css";
 import CustomInput from "../../../Components/CustomInput";
-import { serviceValidationSchema } from "../../../Config/Validations";
+import {
+  modalReasonValidation,
+  serviceValidationSchema,
+} from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
@@ -28,6 +31,8 @@ import {
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { Select } from "../../../Components/Select";
 import { servicesOptions } from "../../../Config/TableStatus";
+import CustomModal from "../../../Components/CustomModal";
+import UploadIcon from "../../../Assets/images/svg/uploadIcon.svg?react";
 
 const ServicesEdit = ({ showModal }) => {
   usePageTitle("Edit Profile", true);
@@ -47,6 +52,8 @@ const ServicesEdit = ({ showModal }) => {
   });
 
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [requestModal, setRequestModal] = useState(false);
   const { user } = useAuth();
   const [isDisabled, setIsDisabled] = useState({
     monday: true,
@@ -210,6 +217,38 @@ const ServicesEdit = ({ showModal }) => {
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [id]);
 
+  const handleRequestSubmit = (values, { resetForm }) => {
+    console.log("Request submitted with values:", values);
+
+    // Create FormData for file upload if needed
+    if (values.documents && values.documents.length > 0) {
+      const formData = new FormData();
+      formData.append("description", values.description);
+
+      // Append each document to the FormData
+      values.documents.forEach((file, index) => {
+        formData.append(`document_${index}`, file);
+      });
+
+      console.log("FormData created with files for upload");
+
+      // Here you would typically make an API call to upload the files
+      // For example: await api.uploadRequestDocuments(formData);
+    }
+
+    // Show success message
+    showModal(
+      "",
+      "Your request has been submitted successfully. We will review it shortly.",
+      null,
+      true // success
+    );
+
+    // Close the modal and reset form
+    setRequestModal(false);
+    resetForm();
+  };
+
   console.log("data", services);
   if (isNullOrEmpty(services)) {
     return (
@@ -280,7 +319,7 @@ const ServicesEdit = ({ showModal }) => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col xs={12} lg={6} xxl={8} className="mb-3">
+                      <Col xs={12} lg={10} xxl={8} className="mb-3">
                         <div className="session-type mb-2">
                           <label className="form-label mb-2">
                             Select Session Type:
@@ -290,42 +329,70 @@ const ServicesEdit = ({ showModal }) => {
                           {sessionOptions.map(({ label, value }) => (
                             <div key={value}>
                               <div
-                                className={`d-flex align-items-center gap-3 ${
-                                  errors.sessionAmounts ? "mb-3" : "mb-3"
-                                }`}
+                                className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}
                               >
                                 <label
                                   key={value}
-                                  className={`btn btn-primary btn-radio ${
-                                    values.sessionType === value ? "" : ""
+                                  className={`btn btn-primary btn-checkbox ${
+                                    values.sessionTypes?.includes(value)
+                                      ? "active"
+                                      : ""
                                   }`}
                                 >
                                   <FormCheck
-                                    type="radio"
-                                    name="sessionType"
-                                    id={`sessionType-${value}`} // unique id
+                                    type="checkbox"
+                                    name={`sessionTypes`}
+                                    id={`sessionType-${value}`}
                                     label={label}
-                                    value={value}
-                                    checked={values.sessionType === value}
-                                    onChange={() => {
-                                      setFieldValue("sessionType", value);
-                                      setFieldTouched("sessionType", true); // 🔥 this ensures touch is triggered
+                                    checked={values.sessionTypes?.includes(
+                                      value
+                                    )}
+                                    onChange={(e) => {
+                                      // Get current session types array or initialize empty array
+                                      const currentTypes =
+                                        values.sessionTypes || [];
+
+                                      // Add or remove the value based on checkbox state
+                                      let newTypes;
+                                      if (e.target.checked) {
+                                        newTypes = [...currentTypes, value];
+                                      } else {
+                                        newTypes = currentTypes.filter(
+                                          (type) => type !== value
+                                        );
+                                      }
+
+                                      // Update the form values
+                                      setFieldValue("sessionTypes", newTypes);
+
+                                      // Mark as touched when user interacts with checkboxes
+                                      setFieldTouched("sessionTypes", true);
                                     }}
-                                    onBlur={() =>
-                                      setFieldTouched("sessionType", true)
-                                    }
                                   />
                                 </label>
                                 <Field
                                   name={`sessionAmounts.${value}`}
                                   value={values.sessionAmounts?.[value] || ""}
-                                  // value={values.amounts[value]}
                                   type="number"
                                   className="form-control w-auto"
-                                  disabled={values.sessionType !== value}
+                                  disabled={
+                                    !values.sessionTypes?.includes(value)
+                                  }
                                   placeholder="Enter Amount"
                                   min={0}
                                   max={100}
+                                  onChange={(e) => {
+                                    setFieldValue(
+                                      `sessionAmounts.${value}`,
+                                      e.target.value
+                                    );
+                                  }}
+                                  onBlur={() => {
+                                    setFieldTouched(
+                                      `sessionAmounts.${value}`,
+                                      true
+                                    );
+                                  }}
                                 />
 
                                 <span className="badge">Range $0-$100</span>
@@ -333,27 +400,38 @@ const ServicesEdit = ({ showModal }) => {
                                   variant="secondary"
                                   className=""
                                   text="Request More"
+                                  onClick={() => setRequestModal(true)}
+                                  type="button"
                                 />
                               </div>
-                              <div className="">
-                                <ErrorMessage
-                                  name={`sessionAmounts.${value}`}
-                                  component="div"
-                                  className="error-message red-text mb-2"
-                                />
-                              </div>
+                              {/* Show error for this session type if it's selected and touched */}
+                              {values.sessionTypes?.includes(value) &&
+                                touched.sessionAmounts?.[value] &&
+                                errors.sessionAmounts &&
+                                typeof errors.sessionAmounts === "string" && (
+                                  <div className="error-message red-text mb-2">
+                                    {(() => {
+                                      try {
+                                        const parsedErrors = JSON.parse(
+                                          errors.sessionAmounts
+                                        );
+                                        return parsedErrors[value] || "";
+                                      } catch (e) {
+                                        return "";
+                                      }
+                                    })()}
+                                  </div>
+                                )}
                             </div>
                           ))}
-                          <ErrorMessage
-                            name="sessionType"
-                            component="div"
-                            className="error-message red-text mb-2"
-                          />
-                          <CustomButton
-                            variant="secondary"
-                            className="min-width-250"
-                            text="Request For Call"
-                          />
+
+                          {/* Show general session types error */}
+                          {(touched.sessionTypes || hasSubmitted) &&
+                            errors.sessionTypes && (
+                              <div className="error-message red-text mb-2">
+                                {errors.sessionTypes}
+                              </div>
+                            )}
                         </div>
                       </Col>
                     </Row>
@@ -412,47 +490,73 @@ const ServicesEdit = ({ showModal }) => {
                                 type="switch"
                                 id="quick-service-switch"
                                 className="flex-shrink-0"
-                                // checked={showQuickServices}
                                 checked={values.showQuickServices}
-                                onChange={(e) =>
-                                  setFieldValue(
-                                    "showQuickServices",
-                                    e.target.checked
-                                  )
-                                }
+                                onChange={(e) => {
+                                  const isChecked = e.target.checked;
+                                  setFieldValue("showQuickServices", isChecked);
+
+                                  // If turning off quick services, reset the quick session fields
+                                  if (!isChecked) {
+                                    setFieldValue("quickSessionType", []);
+                                    setFieldValue("quickSessionAmounts", {
+                                      chat: "",
+                                      call: "",
+                                      video: "",
+                                    });
+                                  }
+                                }}
                               />
                             </div>
                           </div>
                           {values.showQuickServices && (
                             <div className="mt-3 p-3">
+                              <label className="form-label mb-2">
+                                Select Quick Session Type:
+                                <span className="text-danger">*</span>
+                              </label>
+
                               {sessionOptions.map(({ label, value }) => (
                                 <div key={value}>
                                   <div
-                                    className={`d-flex align-items-center gap-3 mb-3`}
+                                    className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}
                                   >
                                     <label
                                       key={value}
-                                      className={`btn btn-primary btn-radio ${
-                                        values.quickSessionType === value
-                                          ? ""
+                                      className={`btn btn-primary btn-checkbox ${
+                                        values.quickSessionType?.includes(value)
+                                          ? "active"
                                           : ""
                                       }`}
                                     >
                                       <FormCheck
-                                        type="radio"
-                                        name="quickSessionType"
-                                        id={`quickSessionType-${value}`} // unique id
+                                        type="checkbox"
+                                        name={`quickSessionType`}
+                                        id={`quickSessionType-${value}`}
                                         label={label}
-                                        value={value}
-                                        checked={
-                                          values.quickSessionType === value
-                                        }
-                                        onChange={() =>
+                                        checked={values.quickSessionType?.includes(
+                                          value
+                                        )}
+                                        onChange={(e) => {
+                                          // Get current session types array or initialize empty array
+                                          const currentTypes =
+                                            values.quickSessionType || [];
+
+                                          // Add or remove the value based on checkbox state
+                                          let newTypes;
+                                          if (e.target.checked) {
+                                            newTypes = [...currentTypes, value];
+                                          } else {
+                                            newTypes = currentTypes.filter(
+                                              (type) => type !== value
+                                            );
+                                          }
+
+                                          // Update the form values
                                           setFieldValue(
                                             "quickSessionType",
-                                            value
-                                          )
-                                        }
+                                            newTypes
+                                          );
+                                        }}
                                       />
                                     </label>
                                     <Field
@@ -463,7 +567,11 @@ const ServicesEdit = ({ showModal }) => {
                                       }
                                       type="number"
                                       className="form-control w-auto"
-                                      disabled={values.sessionType !== value}
+                                      disabled={
+                                        !values.quickSessionType?.includes(
+                                          value
+                                        )
+                                      }
                                       placeholder="Enter Amount"
                                       min={0}
                                       max={100}
@@ -480,35 +588,49 @@ const ServicesEdit = ({ showModal }) => {
                                         );
                                       }}
                                     />
+
                                     <span className="badge">Range $0-$100</span>
                                     <CustomButton
                                       variant="secondary"
                                       className=""
                                       text="Request More"
+                                      onClick={() => setRequestModal(true)}
+                                      type="button"
                                     />
                                   </div>
-                                  {/* Only show error for the current session type */}
-                                  {values.quickSessionType === value &&
+                                  {/* Show error for this quick session type if it's selected and touched */}
+                                  {values.quickSessionType?.includes(value) &&
+                                    touched.quickSessionAmounts?.[value] &&
                                     errors.quickSessionAmounts &&
-                                    errors.quickSessionAmounts[value] && (
+                                    typeof errors.quickSessionAmounts ===
+                                      "string" && (
                                       <div className="error-message red-text mb-2">
-                                        {errors.quickSessionAmounts[value]}
+                                        {(() => {
+                                          try {
+                                            const parsedErrors = JSON.parse(
+                                              errors.quickSessionAmounts
+                                            );
+                                            return parsedErrors[value] || "";
+                                          } catch (e) {
+                                            return "";
+                                          }
+                                        })()}
                                       </div>
                                     )}
                                 </div>
                               ))}
 
-                              {/* Show error for quickSessionType if no option is selected */}
-                              <ErrorMessage
-                                name="quickSessionType"
-                                component="div"
-                                className="error-message red-text mb-2"
-                              />
+                              {/* Show general quick session types error only on submit */}
+                              {hasSubmitted && errors.quickSessionType && (
+                                <div className="error-message red-text mb-2">
+                                  {errors.quickSessionType}
+                                </div>
+                              )}
                               <CustomButton
                                 variant="secondary"
-                                type="submit"
                                 className="min-width-250"
                                 text="Request For Call"
+                                type="button"
                               />
                             </div>
                           )}
@@ -652,7 +774,7 @@ const ServicesEdit = ({ showModal }) => {
                         <CustomButton
                           variant="primary"
                           className="px-5"
-                          text="Save"
+                          text="Update"
                           pendingText="Submitting..."
                           isPending={isSubmitting}
                           type="submit"
@@ -666,6 +788,106 @@ const ServicesEdit = ({ showModal }) => {
           </Row>
         </div>
       </div>
+      <CustomModal
+        show={requestModal}
+        hideClose={false}
+        close={() => {
+          setRequestModal(false);
+        }}
+        className="rating-modal"
+      >
+        <Formik
+          initialValues={{
+            description: "",
+            uploadFile: null, // Initialize as null
+          }}
+          validationSchema={modalReasonValidation}
+          onSubmit={handleRequestSubmit}
+        >
+          {({
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            setFieldValue,
+            isSubmitting,
+          }) => (
+            <Form>
+              <h3 className="modalHeading">Amount Request Reason</h3>
+              {console.log("Errors", errors)}
+              <div className="mb-3">
+                <CustomInput
+                  type="textarea"
+                  required
+                  label="Description:"
+                  placeholder="Enter Description"
+                  id="description"
+                  name="description"
+                  rows="4"
+                  value={values.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  error={touched.description && errors.description}
+                />
+              </div>
+
+              <div className="modal-file-uploader mb-3">
+                <label className="upload-label" htmlFor="uploadFile">
+                  <UploadIcon /> <span>Upload Files (PDF, Docx, JPG)</span>
+                </label>
+
+                <input
+                  id="uploadFile"
+                  name="uploadFile"
+                  type="file"
+                  accept=".pdf,.docx,.jpg,.jpeg"
+                  onChange={(event) =>
+                    setFieldValue("uploadFile", event.currentTarget.files[0])
+                  }
+                  className="d-none"
+                />
+
+                {touched.uploadFile && errors.uploadFile && (
+                  <div className="error-message red-text">
+                    {errors.uploadFile}
+                  </div>
+                )}
+
+                {values.uploadFile && (
+                  <div className="upload-file">
+                    <strong>{values.uploadFile.name}</strong>
+                    <button
+                      type="button"
+                      className="remove-btn"
+                      onClick={() => setFieldValue("uploadFile", null)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <div className="text-center d-flex justify-content-center gap-3">
+                <CustomButton
+                  variant="primary"
+                  text="Post"
+                  pendingText="Submitting..."
+                  isPending={isSubmitting}
+                  type="submit"
+                  disabled={isSubmitting}
+                />
+                <CustomButton
+                  variant="secondary"
+                  text="Cancel"
+                  onClick={() => setRequestModal(false)}
+                />
+              </div>
+            </Form>
+          )}
+        </Formik>
+      </CustomModal>
     </Container>
   );
 };

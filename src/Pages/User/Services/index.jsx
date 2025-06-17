@@ -44,11 +44,16 @@ const Services = () => {
           <Row>
             {services?.map((item, index) => (
               <Col xs={12} lg={4} xl={4} key={index} className="mb-3">
-                <GeneralCard data={item} serviceCard={true} linkPath="/services/" />
+                {console.log("Item", item)}
+                <GeneralCard
+                  data={item}
+                  serviceCard={true}
+                  linkPath="/services/"
+                />
               </Col>
             ))}
             <div className="text-center">
-            <CustomButton className='siteBtn secondaryBtn' text='Load More' />
+              <CustomButton className="siteBtn secondaryBtn" text="Load More" />
             </div>
           </Row>
         </div>

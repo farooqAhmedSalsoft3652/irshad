@@ -59,6 +59,42 @@ export const language = [
     value: "spanish",
     text: "Spanish",
   },
+  {
+    value: "mandarin",
+    text: "Mandarin Chinese",
+  },
+  {
+    value: "hindi",
+    text: "Hindi",
+  },
+  {
+    value: "arabic",
+    text: "Arabic",
+  },
+  {
+    value: "portuguese",
+    text: "Portuguese",
+  },
+  {
+    value: "bengali",
+    text: "Bengali",
+  },
+  {
+    value: "russian",
+    text: "Russian",
+  },
+  {
+    value: "japanese",
+    text: "Japanese",
+  },
+  {
+    value: "french",
+    text: "French",
+  },
+  {
+    value: "german",
+    text: "German",
+  },
 ];
 export const timeDuration = [
   {

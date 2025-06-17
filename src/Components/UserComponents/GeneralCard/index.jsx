@@ -20,7 +20,7 @@ const GeneralCard = ({
     reviews,
     image,
     category,
-    quick,
+    quickSessionType,
   } = data;
 
   return (
@@ -68,7 +68,7 @@ const GeneralCard = ({
             </div>
             <div className="d-flex gap-2 align-items-center flex-wrap mt-2">
               <h6 className="mb-0 fw-bold">Amount : {price}</h6>
-              {quick && (
+              {quickSessionType && (
                 <>
                   <span>
                     <images.VerticalBar />
