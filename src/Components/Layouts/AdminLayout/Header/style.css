@@ -324,6 +324,13 @@
   .customCollapse .navbar-nav .notiMenu {
     right: -70px;
   }
+  .newNotificationCount {
+    padding-block: 4px;
+    & p{
+      color: #fff;
+      font-size: 12px;
+    }
+}
 }
 
 @media screen and (max-width: 440px) {

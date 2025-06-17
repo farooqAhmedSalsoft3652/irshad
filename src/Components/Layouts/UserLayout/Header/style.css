@@ -316,6 +316,8 @@ Menu Wrapper
 .user-layout .notiDropdown span.badge {
   background-color: #ff0000;
   color: #fff;
+  top: -7px;
+  right: -7px;
 }
 
 .user-layout .notiDropdown .notiText {
