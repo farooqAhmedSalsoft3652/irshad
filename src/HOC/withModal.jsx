@@ -95,6 +95,7 @@ const withModal = (WrappedComponent) => {
         <WrappedComponent
           {...props}
           showModal={showModal}
+          reasonModal={reasonModal}
           closeModal={handleModalClose} // ✅ Add this line
         />
         <CustomModal

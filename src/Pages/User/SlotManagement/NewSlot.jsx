@@ -11,11 +11,18 @@ import withModal from "../../../HOC/withModal";
 import { usePageTitleUser } from "../../../Utils/helper";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
+import CustomModal from "../../../Components/CustomModal";
+import CustomInput from "../../../Components/CustomInput";
+import { useState } from "react";
+import UploadIcon from "../../../Assets/images/svg/uploadIcon.svg?react";
+import { modalReasonValidation } from "../../../Config/Validations";
 
-const NewSlot = ({ reasonModal, showModal }) => {
+const NewSlot = ({ reasonModal, showModal, closeModal }) => {
   usePageTitleUser("New Slot");
   const navigate = useNavigate();
 
+  const [reasonBookModal, setReasonBookModal] = useState(false);
+  const [reasonReduceHourModal, setReasonReduceHourModal] = useState(false);
   const initialSlot = { start_time: "", end_time: "", timeDuration: "" };
 
   const daysOfWeek = [
@@ -79,48 +86,86 @@ const NewSlot = ({ reasonModal, showModal }) => {
     });
   };
 
-  const BookedAll = () => {
+  const BookedNextWeek = () => {
     reasonModal(
       "", // heading
       "Are you sure you want to Book Next week?", // para
-      (reason, id) => {
-        BookedAllSuucces(reason, id);
+      () => {
+        closeModal(); // ✅ now it works
+        setTimeout(() => setReasonBookModal(true), 300);
       },
-      false, // success
-      true, // showReason
-      "Provide Reason for booked week",
-      "Description" // ✅ reasonLabel
+      null,
+      false
     );
   };
-  const BookedAllSuucces = async (reason, id) => {
-    reasonModal(
-      ``,
-      `Booked Request for next week has been send Sucessfully. Wait for the admin's Apporval`,
-      null, //action
-      true //success
+
+  const handleReasonBookSubmit = (values, { resetForm }) => {
+    console.log("Request submitted with values:", values);
+
+    // Create FormData for file upload if needed
+    if (values.documents && values.documents.length > 0) {
+      const formData = new FormData();
+      formData.append("description", values.description);
+
+      // Append each document to the FormData
+      values.documents.forEach((file, index) => {
+        formData.append(`document_${index}`, file);
+      });
+
+      console.log("FormData created with files for upload");
+    }
+
+    // Show success message
+    showModal(
+      "",
+      "Booked Request for next week has been send Sucessfully. Wait for the admin's Apporval",
+      null,
+      true // success
     );
+
+    // Close the modal and reset form
+    setReasonBookModal(false);
+    resetForm();
   };
 
   const ReduceHours = () => {
     reasonModal(
       "",
       "Are you sure you want to reduce working hour for Next week?",
-      (reason, id) => {
-        ReduceHoursSuccess(reason, id);
-      },
-      false, // success
-      true, // showReason
-      "Provide Reason for reduce hours",
-      "Description" // ✅ reasonLabel
+      () => {
+        closeModal(); // ✅ now it works
+        setTimeout(() => setReasonReduceHourModal(true), 300);
+      }
     );
   };
-  const ReduceHoursSuccess = async (reason, id) => {
-    reasonModal(
-      ``,
-      `Your working hour deduction Request for the next week has been send Successfully. Wait for the admin's Approval`,
-      null, //action
-      true //success
+
+  const handleReduceHoursSubmit = (values, { resetForm }) => {
+    console.log("Request submitted with values:", values);
+
+    // Create FormData for file upload if needed
+    if (values.documents && values.documents.length > 0) {
+      const formData = new FormData();
+      formData.append("description", values.description);
+
+      // Append each document to the FormData
+      values.documents.forEach((file, index) => {
+        formData.append(`document_${index}`, file);
+      });
+
+      console.log("FormData created with files for upload");
+    }
+
+    // Show success message
+    showModal(
+      "",
+      "Your working hour deduction Request for the next week has been send Successfully. Wait for the admin's Approval",
+      null,
+      true // success
     );
+
+    // Close the modal and reset form
+    setReasonReduceHourModal(false);
+    resetForm();
   };
 
   return (
@@ -326,7 +371,7 @@ const NewSlot = ({ reasonModal, showModal }) => {
                             variant="secondary"
                             text="Booked All Next Week"
                             className="px-4 min-width-230"
-                            onClick={BookedAll}
+                            onClick={BookedNextWeek}
                           />
                         </Col>
                       </Row>
@@ -337,6 +382,208 @@ const NewSlot = ({ reasonModal, showModal }) => {
             </Row>
           </div>
         </div>
+        <CustomModal
+          show={reasonBookModal}
+          hideClose={false}
+          close={() => {
+            setReasonBookModal(false);
+          }}
+          className="rating-modal"
+        >
+          <Formik
+            initialValues={{
+              description: "",
+              uploadFile: null, // Initialize as null
+            }}
+            validationSchema={modalReasonValidation}
+            onSubmit={handleReasonBookSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              setFieldValue,
+              isSubmitting,
+            }) => (
+              <Form>
+                <h3 className="modalHeading">Provide Reason for booked week</h3>
+                {console.log("Errors", errors)}
+                <div className="mb-3">
+                  <CustomInput
+                    type="textarea"
+                    required
+                    label="Description:"
+                    placeholder="Enter Description"
+                    id="description"
+                    name="description"
+                    rows="4"
+                    value={values.description}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.description && errors.description}
+                  />
+                </div>
+
+                <div className="modal-file-uploader mb-3">
+                  <label className="upload-label" htmlFor="uploadFile">
+                    <UploadIcon /> <span>Upload Files (PDF, Docx, JPG)</span>
+                  </label>
+
+                  <input
+                    id="uploadFile"
+                    name="uploadFile"
+                    type="file"
+                    accept=".pdf,.docx,.jpg,.jpeg"
+                    onChange={(event) =>
+                      setFieldValue("uploadFile", event.currentTarget.files[0])
+                    }
+                    className="d-none"
+                  />
+
+                  {touched.uploadFile && errors.uploadFile && (
+                    <div className="error-message red-text">
+                      {errors.uploadFile}
+                    </div>
+                  )}
+
+                  {values.uploadFile && (
+                    <div className="upload-file">
+                      <strong>{values.uploadFile.name}</strong>
+                      <button
+                        type="button"
+                        className="remove-btn"
+                        onClick={() => setFieldValue("uploadFile", null)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="text-center d-flex justify-content-center gap-3">
+                  <CustomButton
+                    variant="primary"
+                    text="Post"
+                    pendingText="Submitting..."
+                    isPending={isSubmitting}
+                    type="submit"
+                    disabled={isSubmitting}
+                  />
+                  <CustomButton
+                    variant="secondary"
+                    text="Cancel"
+                    onClick={() => setReasonBookModal(false)}
+                  />
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </CustomModal>
+        <CustomModal
+          show={reasonReduceHourModal}
+          hideClose={false}
+          close={() => {
+            setReasonReduceHourModal(false);
+          }}
+          className="rating-modal"
+        >
+          <Formik
+            initialValues={{
+              description: "",
+              uploadFile: null, // Initialize as null
+            }}
+            validationSchema={modalReasonValidation}
+            onSubmit={handleReduceHoursSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              setFieldValue,
+              isSubmitting,
+            }) => (
+              <Form>
+                <h3 className="modalHeading">
+                  Provide Reason for reduce hours
+                </h3>
+                {console.log("Errors", errors)}
+                <div className="mb-3">
+                  <CustomInput
+                    type="textarea"
+                    required
+                    label="Description:"
+                    placeholder="Enter Description"
+                    id="description"
+                    name="description"
+                    rows="4"
+                    value={values.description}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.description && errors.description}
+                  />
+                </div>
+
+                <div className="modal-file-uploader mb-3">
+                  <label className="upload-label" htmlFor="uploadFile">
+                    <UploadIcon /> <span>Upload Files (PDF, Docx, JPG)</span>
+                  </label>
+
+                  <input
+                    id="uploadFile"
+                    name="uploadFile"
+                    type="file"
+                    accept=".pdf,.docx,.jpg,.jpeg"
+                    onChange={(event) =>
+                      setFieldValue("uploadFile", event.currentTarget.files[0])
+                    }
+                    className="d-none"
+                  />
+
+                  {touched.uploadFile && errors.uploadFile && (
+                    <div className="error-message red-text">
+                      {errors.uploadFile}
+                    </div>
+                  )}
+
+                  {values.uploadFile && (
+                    <div className="upload-file">
+                      <strong>{values.uploadFile.name}</strong>
+                      <button
+                        type="button"
+                        className="remove-btn"
+                        onClick={() => setFieldValue("uploadFile", null)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="text-center d-flex justify-content-center gap-3">
+                  <CustomButton
+                    variant="primary"
+                    text="Post"
+                    pendingText="Submitting..."
+                    isPending={isSubmitting}
+                    type="submit"
+                    disabled={isSubmitting}
+                  />
+                  <CustomButton
+                    variant="secondary"
+                    text="Cancel"
+                    onClick={() => setReasonReduceHourModal(false)}
+                  />
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </CustomModal>
       </Container>
     </>
   );
