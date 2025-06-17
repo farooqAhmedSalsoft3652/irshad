@@ -1,11 +1,22 @@
 import { Card, Col, Container, FormCheck, Row } from "react-bootstrap";
-import { Formik, Form, FieldArray, Field, ErrorMessage } from "formik";
+import {
+  Formik,
+  Form,
+  FieldArray,
+  Field,
+  ErrorMessage,
+  useField,
+  useFormikContext,
+} from "formik";
 import { useLocation, useNavigate } from "react-router";
 import { images } from "../../../Assets";
 import CustomButton from "../../../Components/CustomButton";
 import "react-phone-number-input/style.css";
 import CustomInput from "../../../Components/CustomInput";
-import { serviceValidationSchema } from "../../../Config/Validations";
+import {
+  modalReasonValidation,
+  serviceValidationSchema,
+} from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
@@ -25,7 +36,10 @@ import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import { Select } from "../../../Components/Select";
 import { servicesOptions } from "../../../Config/TableStatus";
 import CustomModal from "../../../Components/CustomModal";
-
+import * as Yup from "yup";
+import UploadAndDisplayFiles from "../../../Components/UploadAndDisplayFiles/UploadAndDisplayFiles";
+import { FaUpload } from "react-icons/fa6";
+import UploadIcon from "../../../Assets/images/svg/uploadIcon.svg?react";
 const NewServicesAdd = ({ showModal, reasonModal }) => {
   usePageTitle("Edit Profile", true);
   const navigate = useNavigate();
@@ -45,6 +59,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
   });
 
   // Add this function to book a specific day
+  /*
   const bookDay = (day) => {
     reasonModal(
       "", // heading
@@ -87,7 +102,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
       "Description" // reasonLabel
     );
   };
-
+*/
   // Add this useEffect to ensure validation schema is updated when isDisabled changes
   useEffect(() => {
     // This will force Formik to re-validate with the updated isDisabled state
@@ -103,17 +118,19 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
   // Track if form has been submitted
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
+  const [requestModal, setRequestModal] = useState(false);
+
   // Initial values for the form
   const initialValues = {
     service_name: "",
     showQuickServices: false,
-    sessionType: "",
+    sessionType: "chat",
     sessionAmounts: {
       chat: "",
       call: "",
       video: "",
     },
-    quickSessionType: "",
+    quickSessionType: "chat",
     quickSessionAmounts: {
       chat: "",
       call: "",
@@ -149,6 +166,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
       "Description" // ✅ reasonLabel
     );
   };
+
   const BookedAllSuucces = async (reason, id) => {
     reasonModal(
       ``,
@@ -249,6 +267,51 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     stopSubmitting();
   };
 
+  // const handleRequestModal = () => {
+  //   setRequestModal(true);
+  // };
+
+  const handleRequestSubmit = (values, { resetForm }) => {
+    console.log("Request submitted with values:", values);
+
+    // Create FormData for file upload if needed
+    if (values.documents && values.documents.length > 0) {
+      const formData = new FormData();
+      formData.append("description", values.description);
+
+      // Append each document to the FormData
+      values.documents.forEach((file, index) => {
+        formData.append(`document_${index}`, file);
+      });
+
+      console.log("FormData created with files for upload");
+
+      // Here you would typically make an API call to upload the files
+      // For example: await api.uploadRequestDocuments(formData);
+    }
+
+    // Show success message
+    showModal(
+      "",
+      "Your request has been submitted successfully. We will review it shortly.",
+      null,
+      true // success
+    );
+
+    // Close the modal and reset form
+    setRequestModal(false);
+    resetForm();
+  };
+
+  // const [field, meta] = useField(name);
+  // const { setFieldValue } = useFormikContext();
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFieldValue(name, file);
+    console.log("Selected file:", file);
+  };
+
   // console.log(user)
   return (
     <Container fluid>
@@ -263,7 +326,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                 <div className="flex-grow-1 text-center">
                   <h2 className="fw-bold mb-1  page-title">Sub Category</h2>
                   <h3 className="fw-regular mb-0 page-title">
-                    {title} {id}
+                    {title} {/*{id} */}
                   </h3>
                 </div>
               </div>
@@ -341,11 +404,6 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                     onChange={() => {
                                       setFieldValue("sessionType", value);
                                       setFieldTouched("sessionType", true);
-                                      // Touch the amount field for this session type
-                                      setFieldTouched(
-                                        `sessionAmounts.${value}`,
-                                        true
-                                      );
                                     }}
                                   />
                                 </label>
@@ -365,6 +423,14 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                     );
                                   }}
                                   onBlur={() => {
+                                    // Only touch the field when user interacts with it
+                                    setFieldTouched(
+                                      `sessionAmounts.${value}`,
+                                      true
+                                    );
+                                  }}
+                                  onClick={() => {
+                                    // Touch the field when clicked
                                     setFieldTouched(
                                       `sessionAmounts.${value}`,
                                       true
@@ -377,14 +443,14 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                   variant="secondary"
                                   className=""
                                   text="Request More"
-                                  onClick={requestCall}
+                                  onClick={() => setRequestModal(true)}
                                   type="button"
                                 />
                               </div>
-                              {/* Only show error for the current session type */}
+                              {/* Only show error for the current session type and only if touched */}
                               {values.sessionType === value &&
-                                errors.sessionAmounts &&
-                                errors.sessionAmounts[value] && (
+                                touched.sessionAmounts?.[value] &&
+                                errors.sessionAmounts?.[value] && (
                                   <div className="error-message red-text mb-2">
                                     {errors.sessionAmounts[value]}
                                   </div>
@@ -479,32 +545,27 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                     <label
                                       key={value}
                                       className={`btn btn-primary btn-radio ${
-                                        values.showQuickServices === value
+                                        values.quickSessionType === value
                                           ? ""
                                           : ""
                                       }`}
                                     >
                                       <FormCheck
                                         type="radio"
-                                        name="showQuickServices"
-                                        id={`showQuickServices-${value}`}
+                                        name="quickSessionType"
+                                        id={`quickSessionType-${value}`}
                                         label={label}
                                         value={value}
                                         checked={
-                                          values.showQuickServices === value
+                                          values.quickSessionType === value
                                         }
                                         onChange={() => {
                                           setFieldValue(
-                                            "showQuickServices",
+                                            "quickSessionType",
                                             value
                                           );
                                           setFieldTouched(
-                                            "showQuickServices",
-                                            true
-                                          );
-                                          // Touch the amount field for this session type
-                                          setFieldTouched(
-                                            `quickSessionAmounts.${value}`,
+                                            "quickSessionType",
                                             true
                                           );
                                         }}
@@ -519,7 +580,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                       type="number"
                                       className="form-control w-auto"
                                       disabled={
-                                        values.showQuickServices !== value
+                                        values.quickSessionType !== value
                                       }
                                       placeholder="Enter Amount"
                                       min={0}
@@ -537,7 +598,6 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                         );
                                       }}
                                     />
-
                                     <span className="badge">Range $0-$100</span>
                                     <CustomButton
                                       variant="secondary"
@@ -547,88 +607,16 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                       type="button"
                                     />
                                   </div>
-                                  {/* Only show error for the current session type */}
-                                  {values.showQuickServices === value &&
-                                    errors.quickSessionAmounts &&
-                                    errors.quickSessionAmounts[value] && (
+                                  {/* Only show error for the current session type and only if touched */}
+                                  {values.quickSessionType === value &&
+                                    touched.quickSessionAmounts?.[value] &&
+                                    errors.quickSessionAmounts?.[value] && (
                                       <div className="error-message red-text mb-2">
                                         {errors.quickSessionAmounts[value]}
                                       </div>
                                     )}
                                 </div>
-                                // <div key={value}>
-                                //   <div
-                                //     className={`d-flex align-items-center gap-3 mb-3`}
-                                //   >
-                                //     <label
-                                //       key={value}
-                                //       className={`btn btn-primary btn-radio ${
-                                //         values.quickSessionType === value
-                                //           ? ""
-                                //           : ""
-                                //       }`}
-                                //     >
-                                //       <FormCheck
-                                //         type="radio"
-                                //         name="quickSessionType"
-                                //         id={`quickSessionType-${value}`} // unique id
-                                //         label={label}
-                                //         value={value}
-                                //         checked={
-                                //           values.quickSessionType === value
-                                //         }
-                                //         onChange={() =>
-                                //           setFieldValue(
-                                //             "quickSessionType",
-                                //             value
-                                //           )
-                                //         }
-                                //       />
-                                //     </label>
-                                //     <Field
-                                //       name={`quickSessionAmounts.${value}`}
-                                //       value={
-                                //         values.quickSessionAmounts?.[value] ||
-                                //         ""
-                                //       }
-                                //       type="number"
-                                //       className="form-control w-auto"
-                                //       disabled={values.sessionType !== value}
-                                //       placeholder="Enter Amount"
-                                //       min={0}
-                                //       max={100}
-                                //       onChange={(e) => {
-                                //         setFieldValue(
-                                //           `quickSessionAmounts.${value}`,
-                                //           e.target.value
-                                //         );
-                                //       }}
-                                //       onBlur={() => {
-                                //         setFieldTouched(
-                                //           `quickSessionAmounts.${value}`,
-                                //           true
-                                //         );
-                                //       }}
-                                //     />
-                                //     <span className="badge">Range $0-$100</span>
-                                //     <CustomButton
-                                //       variant="secondary"
-                                //       className=""
-                                //       text="Request More"
-                                //     />
-                                //   </div>
-                                //   {/* Only show error for the current session type */}
-                                //   {values.quickSessionType === value &&
-                                //     errors.quickSessionAmounts &&
-                                //     errors.quickSessionAmounts[value] && (
-                                //       <div className="error-message red-text mb-2">
-                                //         {errors.quickSessionAmounts[value]}
-                                //       </div>
-                                //     )}
-                                // </div>
                               ))}
-
-                              {/* Show error for quickSessionType if no option is selected */}
                               <ErrorMessage
                                 name="quickSessionType"
                                 component="div"
@@ -636,9 +624,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                               />
                               <CustomButton
                                 variant="secondary"
-                                type="submit"
                                 className="min-width-250"
                                 text="Request For Call"
+                                onClick={requestCall}
+                                type="button"
                               />
                             </div>
                           )}
@@ -872,21 +861,21 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
           </Row>
         </div>
       </div>
-      {/* <CustomModal
+      <CustomModal
         show={requestModal}
         hideClose={false}
         close={() => {
-          setRatingModal(false);
+          setRequestModal(false);
         }}
         className="rating-modal"
       >
         <Formik
           initialValues={{
-            review_text: "",
-            rating: 0, // Initialize rating in form values
+            description: "",
+            uploadFile: null, // Initialize as null
           }}
-          validationSchema={ratingValidationSchema}
-          onSubmit={handleSubmit}
+          validationSchema={modalReasonValidation}
+          onSubmit={handleRequestSubmit}
         >
           {({
             values,
@@ -898,38 +887,80 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
             setFieldValue,
             isSubmitting,
           }) => (
-            <Form onSubmit={handleSubmit}>
-              <h4 className="modalHeading text-start">Rate Product</h4>
-              <div className="mb-3"></div>
+            <Form>
+              <h3 className="modalHeading">Amount Request Reason</h3>
+              {console.log("Errors", errors)}
               <div className="mb-3">
                 <CustomInput
                   type="textarea"
                   required
-                  placeholder="Write Review"
-                  inputclass="mainInput"
-                  id="review_text"
-                  rows="5"
-                  value={values.review_text}
+                  label="Description:"
+                  placeholder="Enter Description"
+                  id="description"
+                  name="description"
+                  rows="4"
+                  value={values.description}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  error={touched.review_text && errors.review_text}
+                  error={touched.description && errors.description}
                 />
               </div>
-              <div className="text-center">
+
+              <div className="modal-file-uploader mb-3">
+                <label className="upload-label" htmlFor="uploadFile">
+                  <UploadIcon /> <span>Upload Files (PDF, Docx, JPG)</span>
+                </label>
+
+                <input
+                  id="uploadFile"
+                  name="uploadFile"
+                  type="file"
+                  accept=".pdf,.docx,.jpg,.jpeg"
+                  onChange={(event) =>
+                    setFieldValue("uploadFile", event.currentTarget.files[0])
+                  }
+                  className="d-none"
+                />
+
+                {touched.uploadFile && errors.uploadFile && (
+                  <div className="error-message red-text">
+                    {errors.uploadFile}
+                  </div>
+                )}
+
+                {values.uploadFile && (
+                  <div className="upload-file">
+                    <strong>{values.uploadFile.name}</strong>
+                    <button
+                      type="button"
+                      className="remove-btn"
+                      onClick={() => setFieldValue("uploadFile", null)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <div className="text-center d-flex justify-content-center gap-3">
                 <CustomButton
-                  variant="btn-user-primary"
-                  className="btn-user"
-                  text="Submit"
+                  variant="primary"
+                  text="Post"
                   pendingText="Submitting..."
                   isPending={isSubmitting}
                   type="submit"
                   disabled={isSubmitting}
                 />
+                <CustomButton
+                  variant="secondary"
+                  text="Cancel"
+                  onClick={() => setRequestModal(false)}
+                />
               </div>
             </Form>
           )}
         </Formik>
-      </CustomModal> */}
+      </CustomModal>
     </Container>
   );
 };
