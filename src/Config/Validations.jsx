@@ -1252,7 +1252,20 @@ const isValidTimeRange = (startTime, endTime) => {
 };
 
 // Create a reusable time slot schema
-const createTimeSlotSchema = (isEnabled) => {
+// const timeSlotSchema = Yup.object().shape({
+//   startTime: Yup.string(),
+//   endTime: Yup.string().test(
+//     "is-after-start-time",
+//     "End time must be after start time",
+//     function (endTime) {
+//       const { startTime } = this.parent;
+//       return isValidTimeRange(startTime, endTime);
+//     }
+//   ),
+// });
+
+// Create a conditional time slot schema based on day status
+export const createTimeSlotSchema = (isEnabled) => {
   // If day is disabled, return schema with no validations
   if (!isEnabled) {
     return Yup.object().shape({
@@ -1353,52 +1366,33 @@ export const serviceValidationSchema = (disabledDays = {}) => {
         ),
       otherwise: () => Yup.object(),
     }),
-    
+
     // Dynamically validate time slots based on disabled state
-    mondayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.monday)),
-    tuesdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.tuesday)),
-    wednesdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.wednesday)),
-    thursdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.thursday)),
-    fridayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.friday)),
-    saturdayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.saturday)),
-    sundayTime: Yup.array().of(createTimeSlotSchema(!disabledDays.sunday)),
-  }).test(
-    "at-least-one-day",
-    "At least one day must be enabled with valid time slots",
-    function(values) {
-      // Check if at least one day is enabled (not disabled)
-      const hasEnabledDay = Object.entries(disabledDays).some(([day, isDisabled]) => !isDisabled);
-      
-      if (!hasEnabledDay) {
-        return this.createError({
-          path: 'mondayTime',
-          message: "At least one day must be enabled"
-        });
-      }
-      
-      // Check if enabled days have valid time slots
-      const daysOfWeek = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-      const hasValidTimeSlot = daysOfWeek.some(day => {
-        if (disabledDays[day]) return false; // Skip disabled days
-        
-        const dayTimeKey = `${day}Time`;
-        const timeSlots = values[dayTimeKey];
-        
-        return timeSlots && timeSlots.some(slot => 
-          slot.startTime && slot.endTime
+    ...Object.entries(disabledDays).reduce((acc, [day, isDisabled]) => {
+      // Only add validation for enabled days (where isDisabled is false)
+      if (!isDisabled) {
+        acc[`${day}Time`] = Yup.array().of(
+          Yup.object().shape({
+            startTime: Yup.string().required("Start time is required"),
+            endTime: Yup.string()
+              .required("End time is required")
+              .test(
+                "is-after-start-time",
+                "End time must be after start time",
+                function (endTime) {
+                  const { startTime } = this.parent;
+                  if (startTime && endTime) {
+                    return isValidTimeRange(startTime, endTime);
+                  }
+                  return true;
+                }
+              ),
+          })
         );
-      });
-      
-      if (!hasValidTimeSlot) {
-        return this.createError({
-          path: 'mondayTime',
-          message: "At least one enabled day must have valid time slots"
-        });
       }
-      
-      return true;
-    }
-  );
+      return acc;
+    }, {}),
+  });
 };
 
 // const validationSchema = Yup.object().shape({
@@ -1754,4 +1748,21 @@ export const slotValidationSchema = Yup.object().shape({
       return true;
     }
   ),
+});
+
+export const modalReasonValidation = Yup.object({
+  description: Yup.string().required("Description is required"),
+  uploadFile: Yup.mixed()
+    .required("File is required")
+    .test(
+      "fileType",
+      "Only PDF, DOCX, and JPG are allowed",
+      (value) =>
+        !value ||
+        [
+          "application/pdf",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
+          "image/jpeg",
+        ].includes(value.type)
+    ),
 });

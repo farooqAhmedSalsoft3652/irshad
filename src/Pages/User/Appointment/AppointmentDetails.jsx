@@ -9,11 +9,17 @@ import { dateFormat, usePageTitleUser } from "../../../Utils/helper";
 import "./style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import CustomModal from "../../../Components/CustomModal";
+import { Form, Formik } from "formik";
+import CustomInput from "../../../Components/CustomInput";
+import { modalReasonValidation } from "../../../Config/Validations";
+import UploadIcon from "../../../Assets/images/svg/uploadIcon.svg?react";
 
-const AppointmentsDetails = ({ reasonModal }) => {
+const AppointmentsDetails = ({ showModal, closeModal }) => {
   usePageTitleUser("Appointments Details");
   const { id } = useParams();
   const [data, setData] = useState([]);
+  const [reasonModal, setReasonModal] = useState(false);
 
   const fetchBookings = async () => {
     const response = appointmentsData.detail.data.find(
@@ -29,25 +35,57 @@ const AppointmentsDetails = ({ reasonModal }) => {
   }, [id]);
 
   const cancelBooking = () => {
-    reasonModal(
+    showModal(
       "",
       "Are you sure you want to cancel this booking as you have to pay cancellation penalty [Amount] for it?",
-      (reason, id) => {
-        reasonSuucces(reason, id);
+      () => {
+        closeModal(); // ✅ now it works
+        setTimeout(() => setReasonModal(true), 300);
       },
-      false,
-      true, 
-      "Cancellation Reason",
-      "Reason"
+      null,
+      true
     );
   };
-  const reasonSuucces = async (reason, id) => {
-    reasonModal(
-      ``,
-      `you have now 10 cancels left for this month after that you have to pay cancellatioon penalty [Amount] for it`,
-      null, //action
-      true //success
+  const reasonSuucces = async (status, id) => {
+    setReasonModal(true);
+    // showModal(
+    //   ``,
+    //   `you have now 10 cancels left for this month after that you have to pay cancellatioon penalty [Amount] for it`,
+    //   null, //action
+    //   true //success
+    // );
+  };
+
+  const handleRequestSubmit = (values, { resetForm }) => {
+    console.log("Request submitted with values:", values);
+
+    // Create FormData for file upload if needed
+    if (values.documents && values.documents.length > 0) {
+      const formData = new FormData();
+      formData.append("description", values.description);
+
+      // Append each document to the FormData
+      values.documents.forEach((file, index) => {
+        formData.append(`document_${index}`, file);
+      });
+
+      console.log("FormData created with files for upload");
+
+      // Here you would typically make an API call to upload the files
+      // For example: await api.uploadRequestDocuments(formData);
+    }
+
+    // Show success message
+    showModal(
+      "",
+      "Your request has been submitted successfully. We will review it shortly.",
+      null,
+      true // success
     );
+
+    // Close the modal and reset form
+    setRequestModal(false);
+    resetForm();
   };
 
   return (
@@ -62,7 +100,9 @@ const AppointmentsDetails = ({ reasonModal }) => {
                     <BackButton2 />
                   </div>
                   <div>
-                    <h2 className="fw-bold mb-0 page-title">Appointment Details</h2>
+                    <h2 className="fw-bold mb-0 page-title">
+                      Appointment Details
+                    </h2>
                   </div>
                   <div>
                     <p className="mb-0 fw-medium" style={{ color: "#333" }}>
@@ -197,17 +237,11 @@ const AppointmentsDetails = ({ reasonModal }) => {
                 data?.status === "in-progress") && (
                 <div className="d-flex gap-2 flex-wrap align-items-center">
                   {data?.session_type == "Chat" ? (
-                    <Link
-                      to="/chat"
-                      className="btn btn-primary min-width-180"
-                    >
+                    <Link to="/chat" className="btn btn-primary min-width-180">
                       Start Chat
                     </Link>
                   ) : data?.session_type == "Call" ? (
-                    <Link
-                      to="/call"
-                      className="btn btn-primary min-width-180"
-                    >
+                    <Link to="/call" className="btn btn-primary min-width-180">
                       Start Call
                     </Link>
                   ) : data?.session_type == "Video Call" ? (
@@ -235,6 +269,106 @@ const AppointmentsDetails = ({ reasonModal }) => {
             </Row>
           </div>
         </div>
+        <CustomModal
+          show={reasonModal}
+          hideClose={false}
+          close={() => {
+            setReasonModal(false);
+          }}
+          className="rating-modal"
+        >
+          <Formik
+            initialValues={{
+              description: "",
+              uploadFile: null, // Initialize as null
+            }}
+            validationSchema={modalReasonValidation}
+            onSubmit={handleRequestSubmit}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              setFieldValue,
+              isSubmitting,
+            }) => (
+              <Form>
+                <h3 className="modalHeading">Amount Request Reason</h3>
+                {console.log("Errors", errors)}
+                <div className="mb-3">
+                  <CustomInput
+                    type="textarea"
+                    required
+                    label="Description:"
+                    placeholder="Enter Description"
+                    id="description"
+                    name="description"
+                    rows="4"
+                    value={values.description}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.description && errors.description}
+                  />
+                </div>
+
+                <div className="modal-file-uploader mb-3">
+                  <label className="upload-label" htmlFor="uploadFile">
+                    <UploadIcon /> <span>Upload Files (PDF, Docx, JPG)</span>
+                  </label>
+
+                  <input
+                    id="uploadFile"
+                    name="uploadFile"
+                    type="file"
+                    accept=".pdf,.docx,.jpg,.jpeg"
+                    onChange={(event) =>
+                      setFieldValue("uploadFile", event.currentTarget.files[0])
+                    }
+                    className="d-none"
+                  />
+
+                  {touched.uploadFile && errors.uploadFile && (
+                    <div className="error-message red-text">
+                      {errors.uploadFile}
+                    </div>
+                  )}
+
+                  {values.uploadFile && (
+                    <div className="upload-file">
+                      <strong>{values.uploadFile.name}</strong>
+                      <button
+                        type="button"
+                        className="remove-btn"
+                        onClick={() => setFieldValue("uploadFile", null)}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+                </div>
+
+                <div className="text-center d-flex justify-content-center gap-3">
+                  <CustomButton
+                    variant="primary"
+                    text="Post"
+                    pendingText="Submitting..."
+                    isPending={isSubmitting}
+                    type="submit"
+                    disabled={isSubmitting}
+                  />
+                  <CustomButton
+                    variant="secondary"
+                    text="Cancel"
+                    onClick={() => setReasonModal(false)}
+                  />
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </CustomModal>
       </Container>
     </>
   );
