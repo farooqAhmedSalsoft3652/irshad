@@ -1,18 +1,18 @@
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Container, Dropdown } from "react-bootstrap";
 import { BiCheck, BiCheckDouble } from "react-icons/bi";
-import { FaBars, FaEllipsisV, FaFileAlt, FaFileExcel, FaFilePdf, FaFileWord, FaFilter, FaSearch } from "react-icons/fa";
-import { FaPaperPlane, FaXmark } from "react-icons/fa6";
+import { FaBars, FaDownload, FaFileAlt, FaFileExcel, FaFilePdf, FaFileWord, FaFilter } from "react-icons/fa";
+import { FaXmark } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { images } from "../../../Assets";
+import SendIcon from "../../../Assets/images/svg/Send.svg?react";
 import CustomInput from "../../../Components/CustomInput/index";
 import { chat_box, loginCredentials, sidebar } from "../../../Config/data";
 import { usePageTitleUser } from "../../../Utils/helper";
-import SendIcon from "../../../Assets/images/svg/Send.svg?react";
 import Styles from "./chat.module.css";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const UserChatReports = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,8 +21,8 @@ const UserChatReports = () => {
   const [chatBox, setChatBox] = useState([]);
   const [currentUserData, setCurrentUserData] = useState({});
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [files, setFiles] = useState([]); // State for handling file uploads
-  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]); // For images
+  const [documentFiles, setDocumentFiles] = useState([]); // For Word, Excel, PDF
 
   useEffect(() => {
     setSideData(sidebar);
@@ -38,71 +38,10 @@ const UserChatReports = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleFileChange = (e) => {
-    // Handle file selection
-    // setFile(e.target.files[0]);
+  // For image uploads
+  const handleImageChange = (e) => {
     const selectedFiles = Array.from(e.target.files);
-    setFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
-  };
-
-  const deleteFile = (index) => {
-    const updatedFiles = [...files];
-    updatedFiles.splice(index, 1);
-    setFiles(updatedFiles);
-  };
-  const handleSend = () => {
-    if (!messageInput && files.length < 1) {
-      return;
-    }
-    // Handle sending message with file
-    // Example logic to send message and reset input states
-    const newMessage = {
-      "user-id": currentUserData["user-id"],
-      name: currentUserData["full-name"],
-      message: messageInput,
-      picture: currentUserData["photo-path"],
-      time: new Date().toLocaleTimeString(),
-      date: new Date().toLocaleDateString(),
-      files: files, // Use 'files' state to include files in the message object
-    };
-
-    // Update chatBox state with new message
-    setChatBox((prevChatBox) => [...prevChatBox, newMessage]);
-
-    // Clear messageInput and file state
-    setMessageInput(``);
-    setFiles([]);
-  };
-
-  const onDocumentSelect = (e) => {
-    const files = e.target.files;
-    if (!files || files.length === 0) return;
-
-    const allowedTypes = /\.(pdf|doc|docx|xls|xlsx|ppt|pptx)$/i;
-    const validFiles = [];
-    const invalidFiles = [];
-
-    Array.from(files).forEach((file) => {
-      if (allowedTypes.test(file.name)) {
-        validFiles.push(file);
-      } else {
-        invalidFiles.push(file);
-      }
-    });
-
-    if (invalidFiles.length > 0) {
-      message.error("Only PDF, DOC, DOCX, XLS, XLSX, PPT files are allowed.");
-    }
-
-    if (validFiles.length > 0) {
-      setUploadedFiles((prev) => [...prev, ...validFiles]);
-    }
-
-    e.target.value = ""; // Reset the input
-  };
-
-  const handleDeleteFile = (indexToDelete) => {
-    setUploadedFiles((prevFiles) => prevFiles.filter((_, i) => i !== indexToDelete));
+    setImageFiles((prevFiles) => [...prevFiles, ...selectedFiles]);
   };
 
   const getFileIcon = (filename) => {
@@ -110,19 +49,70 @@ const UserChatReports = () => {
 
     switch (ext) {
       case "pdf":
-        return <FaFilePdf color="#E74C3C" />;
+        return <FaFilePdf size={20} color="#E74C3C" />;
       case "doc":
       case "docx":
-        return <FaFileWord color="#2E86C1" />;
+        return <FaFileWord size={20} color="#2E86C1" />;
       case "xls":
       case "xlsx":
-        return <FaFileExcel color="#27AE60" />;
+        return <FaFileExcel size={20} color="#27AE60" />;
       case "ppt":
       case "pptx":
-        return <FaFileAlt color="#E67E22" />;
+        return <FaFilePowerpoint size={20} color="#E67E22" />;
+      case "txt":
+        return <FaFileAlt size={20} color="#666" />;
+      case "zip":
+      case "rar":
+        return <FaFileArchive size={20} color="#7D3C98" />;
       default:
-        return <FaFileAlt />;
+        return <FaFile size={20} color="#666" />;
     }
+  };
+
+  // For document uploads
+  const handleDocumentChange = (e) => {
+    const files = Array.from(e.target.files);
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ];
+
+    const validFiles = files.filter((file) => allowedTypes.includes(file.type) || file.name.match(/\.(pdf|doc|docx|xls|xlsx)$/i));
+
+    if (validFiles.length !== files.length) {
+      alert("Only PDF, Word (.doc, .docx), Excel (.xls, .xlsx) files are allowed");
+    }
+
+    if (validFiles.length > 0) {
+      setDocumentFiles((prev) => [...prev, ...validFiles]);
+    }
+
+    e.target.value = ""; // Reset input
+  };
+
+  const handleSend = () => {
+    if (!messageInput && imageFiles.length < 1 && documentFiles.length < 1) {
+      return;
+    }
+
+    const newMessage = {
+      "user-id": currentUserData["user-id"],
+      name: currentUserData["full-name"],
+      message: messageInput,
+      picture: currentUserData["photo-path"],
+      time: new Date().toLocaleTimeString(),
+      date: new Date().toLocaleDateString(),
+      images: [...imageFiles], // Image files
+      documents: [...documentFiles], // Document files
+    };
+
+    setChatBox((prevChatBox) => [...prevChatBox, newMessage]);
+    setMessageInput("");
+    setImageFiles([]);
+    setDocumentFiles([]);
   };
 
   return (
@@ -165,12 +155,12 @@ const UserChatReports = () => {
                           Chat
                         </h6>
                         <Dropdown.Item>
-                          <Link to={'/chat-reports'} className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link to={"/chat-reports"} className="text-decoration-none" style={{ color: "#999999" }}>
                             Reports
                           </Link>
                         </Dropdown.Item>
                         <Dropdown.Item>
-                          <Link to={'/chat-contact-us'} className="text-decoration-none" style={{ color: "#999999" }}>
+                          <Link to={"/chat-contact-us"} className="text-decoration-none" style={{ color: "#999999" }}>
                             Contact Us
                           </Link>
                         </Dropdown.Item>
@@ -214,11 +204,12 @@ const UserChatReports = () => {
                           </div>
                         </div>
                         <div className="">
-                          <Link to={'/chat-report-details'} className="btn btn-primary">Report</Link>
+                          <Link to={"/chat-report-details"} className="btn btn-primary">
+                            Report
+                          </Link>
                         </div>
                       </div>
                     </header>
-
                     <div className={Styles.messages}>
                       <ScrollToBottom className={Styles.messages}>
                         {chatBox.map((message, index) => (
@@ -229,10 +220,27 @@ const UserChatReports = () => {
                             }`}
                           >
                             {message.message && <p className={``}>{message?.message}</p>}
-                            {message.files &&
-                              message.files.map((file, index) => (
-                                <div className={`my-3 ${Styles.uploadImg}`} key={index}>
-                                  <img src={URL.createObjectURL(file)} alt={`Uploaded File`} className={`img-fluid`} />
+                            {message.images &&
+                              message.images.map((file, index) => (
+                                <div className={`my-3 ${Styles.uploadImg}`} key={`img-${index}`}>
+                                  <img src={URL.createObjectURL(file)} alt={`Uploaded File`} />
+                                </div>
+                              ))}
+                            {message.documents &&
+                              message.documents.map((doc, index) => (
+                                <div className={`my-3 ${Styles.documentItem}`} key={`doc-${index}`}>
+                                  <div className="d-flex flex-wrap gap-2 align-items-start justify-content-between p-sm-2 p-1 bg-light rounded">
+                                    <div className="d-flex align-items-start gap-1">
+                                      <div>{getFileIcon(doc.name)}</div>
+                                      <div className="">
+                                        <h6 className="text-dark text-break fw-semibold mb-0">{doc.name}</h6>
+                                        <div className="text-muted small">{(doc.size / 1024).toFixed(1)} KB</div>
+                                      </div>
+                                    </div>
+                                    <a href={URL.createObjectURL(doc)} download={doc.name} className={`documentDownloadBtn`}>
+                                      <FaDownload />
+                                    </a>
+                                  </div>
                                 </div>
                               ))}
                             <div className={`d-flex justify-content-end align-items-center flex-wrap gap-3`}>
@@ -254,13 +262,14 @@ const UserChatReports = () => {
                       </ScrollToBottom>
                     </div>
 
-                    {files.length > 0 && (
-                      <div className={files ? Styles.uploadedFiles : ``}>
-                        {files.map((item, index) => (
-                          <div className={`${Styles.isFileVisible}`}>
-                            <div className={`${Styles.fileVisible}`} key={index}>
-                              <img src={URL.createObjectURL(item)} alt={`Uploaded File`} className={`img-fluid`} />
-                              <button onClick={() => deleteFile(index)} className={`${Styles.deleteBtn}`}>
+                    {/* Image previews */}
+                    {imageFiles.length > 0 && (
+                      <div className={imageFiles ? Styles.uploadedFiles : ``}>
+                        {imageFiles.map((file, index) => (
+                          <div key={`preview-img-${index}`} className={`${Styles.isFileVisible}`}>
+                            <div className={`${Styles.fileVisible}`}>
+                              <img src={URL.createObjectURL(file)} alt="Preview" className="img-fluid" />
+                              <button onClick={() => setImageFiles((prev) => prev.filter((_, i) => i !== index))} className={`${Styles.deleteBtn}`}>
                                 <FaXmark />
                               </button>
                             </div>
@@ -268,20 +277,22 @@ const UserChatReports = () => {
                         ))}
                       </div>
                     )}
-                    {/* Display uploaded files with icons */}
-                    <ul className="uploaded-file-list mb-0 mt-2 ps-3">
-                      {uploadedFiles.map((file, index) => (
-                        <li key={index} className="uploaded-file-item d-flex gap-2 align-items-center" style={{ listStyle: "none" }}>
-                          <div className="d-flex align-items-center">
-                            {getFileIcon(file.name)}
-                            <span className="file-name ms-1">{file.name}</span>
-                          </div>
-                          <button onClick={() => handleDeleteFile(index)} className={`${Styles.documentDeleteBtn}`}>
-                            <FaXmark />
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Document previews */}
+                    {documentFiles.length > 0 && (
+                      <ul className="uploaded-file-list mb-0 mt-2 px-sm-3 px-2">
+                        {documentFiles.map((file, index) => (
+                          <li key={index} className="uploaded-file-item d-flex gap-2 align-items-center" style={{ listStyle: "none" }}>
+                            <div className="d-flex align-items-center">
+                              {getFileIcon(file.name)}
+                              <span className="file-name ms-1">{file.name}</span>
+                            </div>
+                            <button onClick={() => setDocumentFiles((prev) => prev.filter((_, i) => i !== index))} className={`${Styles.documentDeleteBtn}`}>
+                              <FaXmark />
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                     <div className={`${Styles["input-area"]}`}>
                       <input type="text" placeholder="Type A Message..." value={messageInput} onChange={(e) => setMessageInput(e.target.value)} />
                       <div className={`${Styles["input-area-inner"]}`}>
@@ -298,7 +309,7 @@ const UserChatReports = () => {
                               />
                             </svg>
                           </label>
-                          <input type={`file`} id={`uploader`} onChange={handleFileChange} multiple hidden={true} />
+                          <input type={`file`} id={`uploader`} onChange={handleImageChange} accept="image/*" multiple hidden={true} />
                         </div>
                         <div className="file-upload">
                           <label htmlFor="doc-uploader" className="upload-label">
@@ -324,9 +335,13 @@ const UserChatReports = () => {
                               </defs>
                             </svg>
                           </label>
-                          <input type="file" id="doc-uploader" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" multiple hidden onChange={onDocumentSelect} />
+                          <input type="file" id="doc-uploader" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx" multiple hidden onChange={handleDocumentChange} />
                         </div>
-                        <button className={`${Styles["send-btn"]}`} disabled={!(messageInput || files.length)} onClick={handleSend}>
+                        <button
+                          className={`${Styles["send-btn"]}`}
+                          disabled={!(messageInput || imageFiles.length || documentFiles.length)}
+                          onClick={handleSend}
+                        >
                           <SendIcon />
                         </button>
                       </div>
