@@ -19,7 +19,12 @@ const WithDrawAmount = ({ showModal }) => {
   usePageTitleUser("Withdraw Amount");
   const navigate = useNavigate();
   const handleFormSubmit = async (values, { resetForm }) => {
-    showModal("", `Amount has been transferred`, ()=>navigate('/profile'), true);
+    showModal(
+      "",
+      `Amount has been transferred`,
+      () => navigate("/profile"),
+      true
+    );
     resetForm();
     // console.log(values, 'abc');
   };
@@ -83,7 +88,7 @@ const WithDrawAmount = ({ showModal }) => {
                                   <CustomInput
                                     label="Fund Amount"
                                     labelclass="mainLabel"
-                                    type="text"
+                                    type="number"
                                     required
                                     placeholder="Enter Fund Amount"
                                     id="fundAmount"

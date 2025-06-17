@@ -8,21 +8,22 @@ import PageTitle from "../../../Components/PageTitle";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { usePageTitle, usePageTitleUser } from "../../../Utils/helper";
 import withModal from "../../../HOC/withModal";
+import "./style.css";
 
-const ContactUs = ({showModal}) => {
+const ContactUs = ({ showModal }) => {
   usePageTitleUser("Contact Us");
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus(); // use your custom hook
   const handleSubmit = async (values, { resetForm }) => {
     startSubmitting();
     // console.log("submit Forms Value", values);
-    showModal('', 'Your message has been submitted successfully.', null, true);
+    showModal("", "Your message has been submitted successfully.", null, true);
     stopSubmitting();
     resetForm();
   };
 
   return (
     <>
-      <section className="py-5">
+      <section className="py-5 contact-page">
         <h2 className="fw-semibold text-center mb-3 page-title">Contact Us</h2>
         <Container fluid>
           <Row>
@@ -71,7 +72,7 @@ const ContactUs = ({showModal}) => {
                             </Col>
                             <Col xs={12} className="mb-2 mb-lg-2 mb-xxl-2">
                               <CustomInput
-                                label="Email"
+                                label="Email Address"
                                 id="email_address"
                                 type="email"
                                 required

@@ -11,9 +11,11 @@ import { slotValidationSchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { usePageTitleUser } from "../../../Utils/helper";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
-const EditSlot = () => {
+const EditSlot = ({ showModal }) => {
   usePageTitleUser("New Slot");
+  const navigate = useNavigate();
 
   const initialSlot = { start_time: "", end_time: "", timeDuration: "" };
 
@@ -82,6 +84,12 @@ const EditSlot = () => {
     }
     // Now log finalData after it is assigned
     // mutation.mutate(transformedSlots);
+    showModal(
+      "",
+      "Slots has been Updated successfully",
+      () => navigate("/slot-management/"),
+      true // success
+    );
     console.log("Transformed Slots:", transformedSlots);
 
     resetForm({
@@ -296,4 +304,4 @@ const EditSlot = () => {
   );
 };
 
-export default EditSlot;
+export default withModal(EditSlot);
