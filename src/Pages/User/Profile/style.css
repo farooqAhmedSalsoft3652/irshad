@@ -59,7 +59,7 @@
     min-width: 250px;
   }
 
-  .cover_img {
+  .cover_img, .cover_img .imageUploadArea  {
     height: 350px;
     width: 100%;
   }
@@ -166,7 +166,7 @@
 
 
   @media screen and (max-width: 991.5px) {
-    .cover_img {
+    .cover_img, .edit-profile .cover_img .display-image img, .cover_img .imageUploadArea  {
       height: 230px;
     }
 
@@ -183,7 +183,7 @@
   }
 
   @media screen and (max-width: 575.5px) {
-    .cover_img {
+    .cover_img, .edit-profile .cover_img .display-image img, .cover_img .imageUploadArea {
       height: 160px;
     }
 
