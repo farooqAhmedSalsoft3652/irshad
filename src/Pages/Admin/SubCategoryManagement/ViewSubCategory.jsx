@@ -20,7 +20,7 @@ const ViewSubCategory = ({ showModal }) => {
 
   if (isNullOrEmpty(category)) {
     return (
-      <DashboardLayout pageTitle="Add Service Category">
+      <DashboardLayout pageTitle="View Sub-Category">
         <div className="container-fluid">
           <div className="row mb-5">
             <div className="col-12 my-4 d-flex">
@@ -40,8 +40,8 @@ const ViewSubCategory = ({ showModal }) => {
     const newStatusValue = e;
     // Open the modal for confirmation
     showModal(
-      `${newStatusValue === "1" ? "Active" : "Inactive"} Category`,
-      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this category?`,
+      ``,
+      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this sub-category?`,
       () => onConfirmStatusChange(id, newStatusValue)
     );
   };
@@ -50,11 +50,11 @@ const ViewSubCategory = ({ showModal }) => {
   const onConfirmStatusChange = async (row, newStatusValue) => {
     // Update the status in the appointmentLogs state
     setCategory({ ...category, status_detail: newStatusValue });
-    showModal("Successful", `This category has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
+    showModal("", `This sub-category has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
   };
 
   return (
-    <DashboardLayout pageTitle="View Service Category">
+    <DashboardLayout pageTitle="View Sub-Category">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
@@ -65,40 +65,39 @@ const ViewSubCategory = ({ showModal }) => {
                   <h2 className="mainTitle mb-0">View Sub Category Detail</h2>
                 </div>
               </div>
-              <div className="row mb-3">
-                <div className="col-12 col-sm-8">
-                  <div className="detail-box">
-                  <h6 className="">Sub-Category Title</h6>
-                  <p className="mb-0">{category.categoryTitle}</p>
+              <div className="row">
+                <div className="col-12 mb-lg-4 mb-3">
+                  <div className="d-flex justify-content-between align-items-start flex-sm-row flex-column">
+                    <div className="detail-box order-sm-0 order-1">
+                      <h6 className="">Sub-Category Title</h6>
+                      <p className="mb-0">{category.categoryTitle}</p>
+                    </div>
+                    <div className="status-action mb-sm-0 mb-2">
+                      <Select
+                        className={`tabel-select status${category?.status_detail}`}
+                        id={`status${category?.id}`}
+                        name="status"
+                        label="Status:"
+                        value={category?.status_detail}
+                        onChange={(e) => handleStatusChange(e, category?.id)}
+                        labelclass="me-2"
+                      >
+                        {statusOptions}
+                      </Select>
+                    </div>
                   </div>
                 </div>
-                <div className="col-12 col-sm-8">
+                <div className="col-12">
                   <div className="detail-box">
-                  <h6 className="">Sub-Category Title</h6>
-                  <p className="mb-0">{category.categoryTitle}</p>
-                  </div>
-                </div>
-                <div className="col-12 col-sm-4 d-flex mt-3 mt-sm-0 justify-content-end">
-                  <div className="status-action">
-                  <Select
-                    className={`tabel-select status${category?.status_detail}`}
-                    id={`status${category?.id}`}
-                    name="status"
-                    label="Status:"
-                    value={category?.status_detail}
-                    onChange={(e) => handleStatusChange(e, category?.id)}
-                    labelclass="me-2"
-                  >
-                    {statusOptions}
-                  </Select>
-
+                    <h6 className="">Category</h6>
+                    <p className="mb-0">{category.categoryTitle}</p>
                   </div>
                 </div>
               </div>
               <div className="row">
-                <div className="col-12 my-4">{category?.photo && <img className="w-50 containedImg roundedBorders" src={category.photo} />}</div>
+                <div className="col-xxl-4 col-xl-7 col-lg-9 mt-4">{category?.photo && <img className="w-100 img-fluid roundedBorders" src={category.photo} />}</div>
               </div>
-              <div className="mt-4 mb-5">
+              <div className=" my-5">
                 <Link className="btn btn-primary px-5" to={"edit"}>
                   Edit Sub-Category
                 </Link>

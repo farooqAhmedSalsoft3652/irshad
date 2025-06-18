@@ -1337,6 +1337,7 @@ h3.page-title {
   font-weight: 600;
   border: none !important;
   box-shadow: none !important;
+  height: auto;
 }
 
 /***** Status Text End *******/
@@ -1429,7 +1430,10 @@ h3.page-title {
   h2.section-title {
     font-size: 28px;
   }
-
+  .admin-layout .back-button svg{
+    width: 30px;
+    height: 30px;
+  }
 }
 
 @media screen and (max-width: 575px) {
@@ -1479,6 +1483,10 @@ h3.page-title {
 
   h2.section-title {
     font-size: 25px;
+  }
+   .admin-layout .back-button svg{
+    width: 25px;
+    height: 25px;
   }
 }
 
