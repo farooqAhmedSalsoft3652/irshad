@@ -20,7 +20,9 @@
 .authForm .multi-select .select__indicator {
   color: #15355e;
 }
-
+.authForm .multi-select .css-1u9des2-indicatorSeparator{
+  display: none;
+}
 /* .authForm .multi-select {
   width: 30%;
   height: 45px;
