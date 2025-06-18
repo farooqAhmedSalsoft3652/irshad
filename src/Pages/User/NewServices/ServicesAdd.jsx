@@ -471,11 +471,17 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                 )}
                             </div>
                           ))}
+                          <CustomButton
+                            variant="secondary"
+                            className="min-width-250"
+                            text="Request For Call"
+                            type="button"
+                          />
 
                           {/* Show general session types error */}
                           {(touched.sessionTypes || hasSubmitted) &&
                             errors.sessionTypes && (
-                              <div className="error-message red-text mb-2">
+                              <div className="error-message red-text mt-2">
                                 {errors.sessionTypes}
                               </div>
                             )}
@@ -667,17 +673,24 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                               ))}
 
                               {/* Show general quick session types error only on submit */}
-                              {hasSubmitted && errors.quickSessionType && (
+                              {/* {hasSubmitted && errors.quickSessionType && (
                                 <div className="error-message red-text mb-2">
                                   {errors.quickSessionType}
                                 </div>
-                              )}
+                              )} */}
+
                               <CustomButton
                                 variant="secondary"
                                 className="min-width-250"
                                 text="Request For Call"
                                 type="button"
                               />
+                              {(touched.quickSessionType || hasSubmitted) &&
+                                errors.quickSessionType && (
+                                  <div className="error-message red-text mt-2">
+                                    {errors.quickSessionType}
+                                  </div>
+                                )}
                             </div>
                           )}
                         </div>

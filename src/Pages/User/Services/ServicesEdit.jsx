@@ -70,21 +70,65 @@ const ServicesEdit = ({ showModal }) => {
     { label: "Video Call", value: "video" },
   ];
 
+  // Add this before initialValues declaration
+  const populateSessionTypes = () => {
+    const types = [];
+    if (services?.chat && services.chat !== "$0.00") types.push("chat");
+    if (services?.call && services.call !== "$0.00") types.push("call");
+    if (services?.video_call && services.video_call !== "$0.00")
+      types.push("video");
+    return types;
+  };
+
+  const populateQuickSessionTypes = () => {
+    if (!services?.quickSessionType) return [];
+
+    const types = [];
+    if (
+      services?.quickSessionAmounts?.chat &&
+      services.quickSessionAmounts.chat !== "$0.00"
+    )
+      types.push("chat");
+    if (
+      services?.quickSessionAmounts?.call &&
+      services.quickSessionAmounts.call !== "$0.00"
+    )
+      types.push("call");
+    if (
+      services?.quickSessionAmounts?.video &&
+      services.quickSessionAmounts.video !== "$0.00"
+    )
+      types.push("video");
+    return types;
+  };
+
   // Initial values for the form
   const initialValues = {
     service_name: services?.service_name || "",
-    showQuickServices: false,
-    sessionType: "child",
+    showQuickServices: services?.quickSessionType || false,
+    sessionTypes: populateSessionTypes(),
     sessionAmounts: {
-      chat: "",
-      call: "",
-      video: "",
+      chat: services?.chat
+        ? services.chat.replace("$", "").replace(".00", "")
+        : "",
+      call: services?.call
+        ? services.call.replace("$", "").replace(".00", "")
+        : "",
+      video: services?.video_call
+        ? services.video_call.replace("$", "").replace(".00", "")
+        : "",
     },
-    quickSessionType: "child",
+    quickSessionType: populateQuickSessionTypes(),
     quickSessionAmounts: {
-      chat: "",
-      call: "",
-      video: "",
+      chat: services?.quickSessionAmounts?.chat
+        ? services.quickSessionAmounts.chat.replace("$", "").replace(".00", "")
+        : "",
+      call: services?.quickSessionAmounts?.call
+        ? services.quickSessionAmounts.call.replace("$", "").replace(".00", "")
+        : "",
+      video: services?.quickSessionAmounts?.video
+        ? services.quickSessionAmounts.video.replace("$", "").replace(".00", "")
+        : "",
     },
     descriptions: services?.description || "",
     banner_images: services?.image || [],
@@ -208,8 +252,8 @@ const ServicesEdit = ({ showModal }) => {
       // Update the disabled state
       setIsDisabled(newDisabledState);
 
-      console.log("Populated time slots:", newTimeSlots);
-      console.log("Updated disabled state:", newDisabledState);
+      // console.log("Populated time slots:", newTimeSlots);
+      // console.log("Updated disabled state:", newDisabledState);
     }
   };
   useEffect(() => {
@@ -249,7 +293,7 @@ const ServicesEdit = ({ showModal }) => {
     resetForm();
   };
 
-  console.log("data", services);
+  // console.log("data", services);
   if (isNullOrEmpty(services)) {
     return (
       <section className="page-content service-details-edit">
@@ -297,7 +341,7 @@ const ServicesEdit = ({ showModal }) => {
                   isSubmitting,
                 }) => (
                   <Form onSubmit={handleSubmit}>
-                    {console.log(errors)}
+                    {console.log("Errors", errors)}
                     <Row>
                       {/* Service Name */}
                       <Col xs={12} lg={6} xxl={5} className="mb-3">
@@ -424,11 +468,16 @@ const ServicesEdit = ({ showModal }) => {
                                 )}
                             </div>
                           ))}
-
+                          <CustomButton
+                            variant="secondary"
+                            className="min-width-250"
+                            text="Request For Call"
+                            type="button"
+                          />
                           {/* Show general session types error */}
                           {(touched.sessionTypes || hasSubmitted) &&
                             errors.sessionTypes && (
-                              <div className="error-message red-text mb-2">
+                              <div className="error-message red-text mt-2">
                                 {errors.sessionTypes}
                               </div>
                             )}
@@ -621,17 +670,24 @@ const ServicesEdit = ({ showModal }) => {
                               ))}
 
                               {/* Show general quick session types error only on submit */}
-                              {hasSubmitted && errors.quickSessionType && (
+                              {/* {hasSubmitted && errors.quickSessionType && (
                                 <div className="error-message red-text mb-2">
                                   {errors.quickSessionType}
                                 </div>
-                              )}
+                              )} */}
+
                               <CustomButton
                                 variant="secondary"
                                 className="min-width-250"
                                 text="Request For Call"
                                 type="button"
                               />
+                              {(touched.quickSessionType || hasSubmitted) &&
+                                errors.quickSessionType && (
+                                  <div className="error-message red-text mt-2">
+                                    {errors.quickSessionType}
+                                  </div>
+                                )}
                             </div>
                           )}
                         </div>
