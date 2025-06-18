@@ -80,7 +80,7 @@ const CustomModal = (props) => {
                 <CustomButton
                   onClick={props?.action ? props.action : props?.close}
                   className="primary px-5 mb-2 mt-3"
-                  text={props?.btnText || "Ok"}
+                  text={props?.btnText || "Okay"}
                 />
               ) : props?.showReason ? (
                 <div className="d-flex justify-content-center gap-2">
@@ -100,7 +100,7 @@ const CustomModal = (props) => {
                   <CustomButton
                     onClick={props?.action ?? props?.close}
                     className="primary px-5 mb-2 mt-3 modalButton"
-                    text="Ok"
+                    text="Okay"
                   />
                 </>
               ) : (

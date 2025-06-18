@@ -6027,16 +6027,11 @@ export const servicesData = {
         title: "Service Name 1",
         service_name: "services_a",
         category: "abc",
-        sessionAmounts: {
-          chat: "$30.00",
-          call: "$30.00",
-          video: "$30.00",
-        },
         quickSessionType: true,
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
-        chat: "$30.00",
-        call: "$30.00",
+        chat: "$10.00",
+        call: "$20.00",
         video_call: "$30.00",
 
         quickSessionAmounts: {
@@ -6116,6 +6111,7 @@ export const servicesData = {
       {
         id: 2,
         title: "Service Name",
+        service_name: "services_b",
         category: "abc",
         quickSessionType: false,
         description:
@@ -6194,6 +6190,7 @@ export const servicesData = {
       {
         id: 3,
         title: "Service Name",
+        service_name: "services_a",
         category: "abc",
         quickSessionType: true,
         description:
