@@ -85,14 +85,16 @@ const SlotsHistoryManagement = ({
                     <BackButton2 />
                   </div>
                   <div className="flex-grow-1 text-center">
-                    <h2 className="fw-bold mb-1  page-title">Slots History</h2>
+                    <h2 className="fw-bold mb-1  page-title">
+                      Slots History 123
+                    </h2>
                     <h3 className="fw-medium mb-0  page-title">Service ABC</h3>
                   </div>
                 </div>
               </Col>
             </Row>
             <Row>
-              <Col xs={12}>
+              <Col xs={12} className="slot-table">
                 <CustomTable
                   // filters={filters}
                   // setFilters={setFilters}

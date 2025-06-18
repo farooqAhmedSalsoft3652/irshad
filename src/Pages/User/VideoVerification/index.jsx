@@ -78,9 +78,11 @@ const VideoVerification = () => {
                 <div className="row">
                   {questions.map((q) => (
                     <div key={q.id} className="mb-3 col-md-5">
-                      <div className="d-flex justify-content-between align-items-center">
+                      <div className="d-flex justify-content-between align-items-center pe-5">
                         <h6>Question {q.id}</h6>
-                        <small style={{ color: "#999" }}>{q.time}</small>
+                        <small className="me-3" style={{ color: "#999" }}>
+                          {q.time}
+                        </small>
                       </div>
                       <p style={{ color: "#999" }}>{q.text}</p>
                       <div className="d-flex gap-3 flex-wrap">
@@ -106,7 +108,10 @@ const VideoVerification = () => {
                   ))}
 
                   <div>
-                    <button className="btn btn-primary  " type="submit">
+                    <button
+                      className="btn btn-primary  min-width-160"
+                      type="submit"
+                    >
                       Submit
                     </button>
                   </div>

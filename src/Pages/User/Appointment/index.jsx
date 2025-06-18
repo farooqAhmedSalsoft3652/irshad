@@ -3,7 +3,12 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CustomTable from "../../../Components/CustomTable";
 import { appointmentsHeaders } from "../../../Config/TableHeaders";
-import { appointmentsStatus, bookingStatus, bookingType, sessionTypeStatus } from "../../../Config/TableStatus";
+import {
+  appointmentsStatus,
+  bookingStatus,
+  bookingType,
+  sessionTypeStatus,
+} from "../../../Config/TableStatus";
 import { appointmentsData } from "../../../Config/data";
 import withFilters from "../../../HOC/withFilters ";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
@@ -48,7 +53,9 @@ const Appointment = ({ filters, setFilters, pagination, updatePagination }) => {
         <div className="site_card">
           <Row>
             <Col>
-              <h2 className="text-center fw-bold mb-0 page-title">Appointments</h2>
+              <h2 className="text-center fw-bold mb-0 page-title">
+                Appointments
+              </h2>
             </Col>
             <Col xs={12}>
               <CustomTable
@@ -57,7 +64,6 @@ const Appointment = ({ filters, setFilters, pagination, updatePagination }) => {
                 loading={isSubmitting}
                 headers={appointmentsHeaders}
                 pagination={pagination}
-                showEntries={false}
                 dateFilters={[
                   {
                     title: "Date",
@@ -81,7 +87,11 @@ const Appointment = ({ filters, setFilters, pagination, updatePagination }) => {
                 <tbody>
                   {appointmentData?.map((item, index) => (
                     <tr key={item?.id}>
-                      <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                      <td>
+                        {serialNum(
+                          (filters.page - 1) * filters.per_page + index + 1
+                        )}
+                      </td>
                       <td>{item?.booking_id}</td>
                       <td>{dateFormat(item?.booking_date)}</td>
                       <td>{item?.appointment_type}</td>
@@ -106,7 +116,11 @@ const Appointment = ({ filters, setFilters, pagination, updatePagination }) => {
                         {item.status}
                       </td>
                       <td>
-                        <Link className="underlineOnHover" style={{ color: "#333" }} to={`/appointments/${item?.id}`}>
+                        <Link
+                          className="underlineOnHover"
+                          style={{ color: "#333" }}
+                          to={`/appointments/${item?.id}`}
+                        >
                           View
                         </Link>
                       </td>

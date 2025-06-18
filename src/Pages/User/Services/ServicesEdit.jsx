@@ -468,12 +468,6 @@ const ServicesEdit = ({ showModal }) => {
                                 )}
                             </div>
                           ))}
-                          <CustomButton
-                            variant="secondary"
-                            className="min-width-250"
-                            text="Request For Call"
-                            type="button"
-                          />
                           {/* Show general session types error */}
                           {(touched.sessionTypes || hasSubmitted) &&
                             errors.sessionTypes && (
@@ -675,13 +669,6 @@ const ServicesEdit = ({ showModal }) => {
                                   {errors.quickSessionType}
                                 </div>
                               )} */}
-
-                              <CustomButton
-                                variant="secondary"
-                                className="min-width-250"
-                                text="Request For Call"
-                                type="button"
-                              />
                               {(touched.quickSessionType || hasSubmitted) &&
                                 errors.quickSessionType && (
                                   <div className="error-message red-text mt-2">

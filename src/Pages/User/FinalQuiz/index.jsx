@@ -21,7 +21,9 @@ const FinalQuiz = () => {
   ];
   const validationSchema = Yup.object(
     questions.reduce((shape, q) => {
-      shape[`question${q.id}`] = Yup.string().required("This question is required");
+      shape[`question${q.id}`] = Yup.string().required(
+        "This question is required"
+      );
       return shape;
     }, {})
   );
@@ -45,13 +47,22 @@ const FinalQuiz = () => {
             <h2 className="mx-auto fw-bold mb-0 page-title">Fianl Quiz</h2>
           </div>
           <div className="mb-3">
-            <img src={VideoVerificationQuiz} alt="video-quiz" className="img-fluid w-100" />
+            <img
+              src={VideoVerificationQuiz}
+              alt="video-quiz"
+              className="img-fluid w-100"
+            />
           </div>
           <p className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra
-            justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum,
-            nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+            Cum sociis natoque penatibus et magnis dis parturient montes,
+            nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra
+            vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
+            odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
           </p>
           <Formik
             initialValues={initialValues}
@@ -64,16 +75,26 @@ const FinalQuiz = () => {
                 <div className="row">
                   {questions.map((q) => (
                     <div key={q.id} className="mb-3 col-md-5">
-                      <div className="d-flex justify-content-between align-items-center">
+                      <div className="d-flex justify-content-between align-items-center pe-5">
                         <h6>Question {q.id}</h6>
-                        <small style={{ color: "#999" }}>{q.time}</small>
+                        <small className="me-3" style={{ color: "#999" }}>
+                          {q.time}
+                        </small>
                       </div>
                       <p style={{ color: "#999" }}>{q.text}</p>
                       <div className="d-flex gap-3 flex-wrap">
                         {["A", "B", "C", "D"].map((opt) => (
                           <FormCheck key={opt} type="radio" className="me-2">
-                            <Field name={`question${q.id}`} type="radio" value={opt} as={FormCheck.Input} id={`q${q.id}-${opt}`} />
-                            <FormCheck.Label htmlFor={`q${q.id}-${opt}`}>Option {opt}</FormCheck.Label>
+                            <Field
+                              name={`question${q.id}`}
+                              type="radio"
+                              value={opt}
+                              as={FormCheck.Input}
+                              id={`q${q.id}-${opt}`}
+                            />
+                            <FormCheck.Label htmlFor={`q${q.id}-${opt}`}>
+                              Option {opt}
+                            </FormCheck.Label>
                           </FormCheck>
                         ))}
                       </div>
@@ -84,7 +105,10 @@ const FinalQuiz = () => {
                   ))}
 
                   <div>
-                    <button className="btn btn-primary" type="submit">
+                    <button
+                      className="btn btn-primary min-width-160"
+                      type="submit"
+                    >
                       Submit
                     </button>
                   </div>
