@@ -59,53 +59,77 @@ const Tutorials = () => {
 
   return (
     <Container fluid>
-    <div className="py-sm-5 py-3 px-sm-0 px-1">
-      <div className="site_card">
-        <div className="d-flex flex-wrap align-items-center mb-3">
-          <BackButton2 />
-          <h2 className="mx-auto fw-bold mb-0 page-title">Tutorials</h2>
-        </div>
-        <div className="mb-3">
-          <img src={VideoVerificationQuiz} alt="video-quiz" className="img-fluid w-100" />
-        </div>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo
-          commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla
-          luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
-        </p>
-        <Row>
-          {videos?.map((video) => (
-            <Col xs={12} md={6} xxl={4} className="mb-4" key={video.id}>
-              <div className="video-card position-relative" onClick={() => handleShow(video.src)} style={{ cursor: "pointer" }}>
-                <img src={video.thumbnail} alt={`video-${video.id}`} className="img-fluid w-100 rounded" />
-                <div className="playVidBtn">
-                  <BiPlayCircle />
+      <div className="py-sm-5 py-3 px-sm-0 px-1">
+        <div className="site_card">
+          <div className="d-flex flex-wrap align-items-center mb-3">
+            <BackButton2 />
+            <h2 className="mx-auto fw-bold mb-0 page-title">Tutorials</h2>
+          </div>
+          <div className="mb-3">
+            <img
+              src={VideoVerificationQuiz}
+              alt="video-quiz"
+              className="img-fluid w-100"
+            />
+          </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+            euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+            Cum sociis natoque penatibus et magnis dis parturient montes,
+            nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra
+            vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
+            odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus
+            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+          </p>
+          <Row>
+            {videos?.map((video) => (
+              <Col xs={12} md={6} xxl={4} className="mb-4" key={video.id}>
+                <div
+                  className="video-card position-relative"
+                  onClick={() => handleShow(video.src)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <img
+                    src={video.thumbnail}
+                    alt={`video-${video.id}`}
+                    className="img-fluid w-100 rounded"
+                  />
+                  <div className="playVidBtn">
+                    <BiPlayCircle />
+                  </div>
                 </div>
-              </div>
-            </Col>
-          ))}
-        </Row>
-        <div>
-          <button className="btn btn-primary" type="button">
-            Continue
-          </button>
+              </Col>
+            ))}
+          </Row>
+          <div>
+            <button className="btn btn-primary min-width-160" type="button">
+              Continue
+            </button>
+          </div>
         </div>
+        <Modal show={show} onHide={handleClose} size="lg" centered>
+          <button className="closeButton" onClick={handleClose}>
+            <FontAwesomeIcon icon={faTimes} />
+          </button>
+          <Modal.Body className="pt-0">
+            {activeVideo && (
+              <video
+                className="rounded"
+                width="100%"
+                height="auto"
+                controls={false}
+                autoPlay
+                loop
+              >
+                <source src={activeVideo} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </Modal.Body>
+        </Modal>
       </div>
-      <Modal show={show} onHide={handleClose} size="lg" centered>
-        <button className="closeButton" onClick={handleClose}>
-          <FontAwesomeIcon icon={faTimes} />
-        </button>
-        <Modal.Body className="pt-0">
-          {activeVideo && (
-            <video className="rounded" width="100%" height="auto" controls={false} autoPlay loop>
-              <source src={activeVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
-        </Modal.Body>
-      </Modal>
-    </div>
     </Container>
   );
 };

@@ -1632,9 +1632,9 @@ export const signUpUserValidationSchema = Yup.object().shape({
   profile_pic: Yup.array()
     .min(1, "Profile Picture is required")
     .required("Profile Picture is required"),
-  cover_pic: Yup.array()
-    .min(1, "Cover Picture is required")
-    .required("Cover Picture is required"),
+  cover_pic: Yup.array().min(0, "Cover Picture is required"),
+  // cover_pic: Yup.array().min(1, "Cover Picture is required"),
+  // .required("Cover Picture is required"),
 });
 
 export const personalDetailsValidationSchema = Yup.object().shape({

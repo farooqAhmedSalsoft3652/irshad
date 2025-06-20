@@ -71,7 +71,7 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
     // Show success message
     showModal(
       "",
-      "Your request has been submitted successfully. We will review it shortly.",
+      "Booking has been Cancelled Successfully.",
       () => navigate("/appointments"),
       true // success
     );
@@ -289,14 +289,14 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
               isSubmitting,
             }) => (
               <Form>
-                <h3 className="modalHeading">Amount Request Reason</h3>
+                <h3 className="modalHeading">Cancellation Reason</h3>
                 {console.log("Errors", errors)}
                 <div className="mb-3">
                   <CustomInput
                     type="textarea"
                     required
-                    label="Description:"
-                    placeholder="Enter Description"
+                    label="Reason:"
+                    placeholder="Enter Reason"
                     id="description"
                     name="description"
                     rows="4"

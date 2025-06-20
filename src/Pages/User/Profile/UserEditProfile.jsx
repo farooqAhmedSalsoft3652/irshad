@@ -22,6 +22,7 @@ import {
   validateImage,
 } from "../../../Utils/helper";
 import "./style.css";
+import { FaUpload } from "react-icons/fa6";
 
 const UserEditProfile = ({ showModal }) => {
   usePageTitleUser("Edit Profile");
@@ -155,19 +156,44 @@ const UserEditProfile = ({ showModal }) => {
                         {/* {console.log(errors)} */}
                         <Row>
                           <Col xs={12} className="">
-                            <div className="cover_img">
-                              <UploadAndDisplayImages
-                                placeholder="Upload Cover Picture"
-                                images={values.cover_photo}
-                                onChange={(files) =>
-                                  setFieldValue("cover_photo", files)
-                                }
-                                numberOfFiles={1}
-                                required
-                                errorFromParent={
-                                  touched.cover_photo && errors.cover_photo
-                                }
+                            <div className="cover_img position-relative">
+                              <img
+                                src={values.cover_photo ?? images.ProfileCover}
+                                alt="Cover"
                               />
+                              <input
+                                type="file"
+                                accept="image/*"
+                                className="d-none"
+                                id="coverImage"
+                                onChange={(event) => {
+                                  const file = event.target.files[0];
+                                  if (validateImage(file)) {
+                                    setFieldError(
+                                      "cover_photo",
+                                      validateImage(file)
+                                    );
+                                  } else {
+                                    setFieldError("cover_photo", "");
+                                    setFieldValue(
+                                      "cover_photo",
+                                      URL.createObjectURL(file)
+                                    );
+                                  }
+                                }}
+                              />
+                              <label
+                                htmlFor="coverImage"
+                                className="upload-btn"
+                              >
+                                <FaUpload />
+                                Change Image
+                              </label>
+                              {errors.cover_photo && touched.cover_photo && (
+                                <div className="errorText red-text text-center">
+                                  {errors.cover_photo}
+                                </div>
+                              )}
                             </div>
                           </Col>
                         </Row>
@@ -202,13 +228,13 @@ const UserEditProfile = ({ showModal }) => {
                                   >
                                     <images.CameraIconOutline />
                                   </label>
+                                  {errors.profile_image &&
+                                    touched.profile_image && (
+                                      <div className="errorText red-text text-center">
+                                        {errors.profile_image}
+                                      </div>
+                                    )}
                                 </div>
-                                {errors.profile_image &&
-                                  touched.profile_image && (
-                                    <div className="errorText red-text text-center">
-                                      {errors.profile_image}
-                                    </div>
-                                  )}
                               </Col>
                               <Col xs={12} lg={6} xxl={6} className="mb-3">
                                 <CustomInput

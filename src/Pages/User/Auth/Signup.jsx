@@ -17,21 +17,21 @@ import ReactSelect from "react-select";
 const UserSignup = () => {
   usePageTitleUser("Sign Up");
   const navigate = useNavigate();
-  
+
   // Convert language options to format required by ReactSelect
   const languageOptions = language
-    .filter(option => option.value !== "") // Remove the "Select language" option
-    .map(option => ({
+    .filter((option) => option.value !== "") // Remove the "Select language" option
+    .map((option) => ({
       value: option.value,
-      label: option.text
+      label: option.text,
     }));
-  
+
   const handleSubmit = async (values, { resetForm }) => {
-    // console.log("registered", values);
+    console.log("registered", values);
     resetForm();
     navigate("/personal-details");
   };
-  
+
   return (
     <>
       <UserAuthLayout authTitle="Sign up">
@@ -227,7 +227,7 @@ const UserSignup = () => {
                   placeholder="Upload Profile Picture"
                   onChange={(files) => setFieldValue("profile_pic", files)}
                   numberOfFiles={1}
-                  // required
+                  required
                   errorFromParent={touched.profile_pic && errors.profile_pic}
                   className="image-upload-style-2"
                 />

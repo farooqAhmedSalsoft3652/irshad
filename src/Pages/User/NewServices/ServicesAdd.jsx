@@ -86,6 +86,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     );
   };
 */
+
   // Add this useEffect to ensure validation schema is updated when isDisabled changes
   useEffect(() => {
     // This will force Formik to re-validate with the updated isDisabled state
@@ -300,6 +301,15 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     resetForm();
   };
 
+  const handleRequestCall = () => {
+    showModal(
+      "",
+      `Request reason for call sent sucessfully wait for the admin's approval`,
+      false,
+      true
+    );
+  };
+
   // console.log(user)
   return (
     <Container fluid>
@@ -476,6 +486,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                             className="min-width-250"
                             text="Request For Call"
                             type="button"
+                            onClick={handleRequestCall}
                           />
 
                           {/* Show general session types error */}
@@ -684,6 +695,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                 className="min-width-250"
                                 text="Request For Call"
                                 type="button"
+                                onClick={handleRequestCall}
                               />
                               {(touched.quickSessionType || hasSubmitted) &&
                                 errors.quickSessionType && (

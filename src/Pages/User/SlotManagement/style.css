@@ -80,3 +80,8 @@
 .delete-icon .time-slotes .add-btn {
   color: #44b80e;
 }
+
+.slot-table .customTable table th,
+.slot-table .customTable table td {
+  width: 33.33%;
+}
