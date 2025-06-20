@@ -139,7 +139,6 @@ import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import ScreeningHome from "../Pages/User/ScreeningHome/index";
-import ViewSubCategory from "../Pages/Admin/SubCategoryManagement/ViewSubCategory";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
