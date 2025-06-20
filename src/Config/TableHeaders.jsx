@@ -308,22 +308,26 @@ export const appointmentLogsHeaders = [
     title: "Action",
   },
 ];
-export const productCategoryManagementHeaders = [
+export const ServiceManagementHeaders = [
   {
     key: "id",
     title: "S.No",
   },
   {
-    key: "categorytitle",
-    title: "category title",
+    key: "servicetitle",
+    title: "service title",
+  },
+  {
+    key: "subcategory",
+    title: "sub category",
+  },
+  {
+    key: "category",
+    title: "category",
   },
   {
     key: "creationdate",
     title: "creation date",
-  },
-  {
-    key: "NoofProducts",
-    title: "No. of Products",
   },
   {
     key: "status",

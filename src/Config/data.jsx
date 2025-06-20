@@ -11305,3 +11305,66 @@ export const slotsData = {
     ],
   },
 };
+
+// irshad admin data
+export const serviceManagementData = {
+  status: true,
+  message: "product Category Management Listing",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: 1,
+        service_title: "Abc",
+        sub_category: "sub-category abc",
+        category: "education",
+        creation_date: "2024-07-05T08:21:31.000000Z",
+        status_detail: "0",
+        status: 1,
+        photo: [images.BannerImg]
+      },
+       {
+        id: 2,
+        service_title: "Abc",
+        sub_category: "sub-category abc",
+        category: "consultancy",
+        creation_date: "2024-07-05T08:21:31.000000Z",
+        status_detail: "1",
+        status: 1,
+         photo: [images.ProfileCover]
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
