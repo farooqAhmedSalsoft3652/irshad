@@ -599,7 +599,7 @@ export const generateLinks = (role) => {
           name: "Sub-Category Management",
         },
         {
-          link: "/admin/product-category-management",
+          link: "/admin/service-management",
           image: ServiceMgIcon,
           name: "Service Management",
         },

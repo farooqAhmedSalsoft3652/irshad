@@ -313,6 +313,10 @@ Menu Wrapper
   color: #fff;
 }
 
+.admin-layout .notiDropdown span.badge{
+  top: 5px;
+  right: -8px;;
+}
 .user-layout .notiDropdown span.badge {
   background-color: #ff0000;
   color: #fff;

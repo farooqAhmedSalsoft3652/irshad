@@ -1298,7 +1298,10 @@ h3.page-title {
 .bg-yellow {
   background-color: #E8D101;
 }
-
+.detail-image img{
+  height: 300px;
+  object-fit: cover;
+}
 .detail-box h6 {
   font-size: 20px;
   color: #15355E;
@@ -1443,6 +1446,9 @@ h3.page-title {
     width: 30px;
     height: 30px;
   }
+  .detail-image img{
+    height: 250px;
+  }
 }
 
 @media screen and (max-width: 575px) {
@@ -1499,7 +1505,6 @@ h3.page-title {
     height: 25px;
   }
 }
-
 @media screen and (max-width:480px) {
   h2.page-title {
     font-size: 25px;
@@ -1512,7 +1517,9 @@ h3.page-title {
   h2.section-title {
     font-size: 22px;
   }
-
+  .detail-image img{
+    height: 200px;
+  }
 }
 
 @media screen and (max-width:375px) {

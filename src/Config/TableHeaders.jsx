@@ -280,50 +280,74 @@ export const appointmentLogsHeaders = [
     title: "S.No",
   },
   {
-    key: "appointmentId",
-    title: "Appointment ID",
+    key: "bookingId",
+    title: "Booking ID",
   },
   {
     key: "username",
     title: "User Name",
   },
   {
-    key: "serviceProviderName",
-    title: "Service Provider Name",
+    key: "consultantName",
+    title: "Consultant Name",
+  },
+  {
+    key: "category",
+    title: "Category",
+  },
+  {
+    key: "bookingDate",
+    title: "Booking Date",
   },
   {
     key: "appointmentDate",
     title: "Appointment Date",
   },
   {
-    key: "charges",
-    title: "Charges",
+    key: "sessionType",
+    title: "Session Type",
   },
   {
     key: "appointmentType",
     title: "Appointment Type",
   },
   {
+    key: "duration",
+    title: "Duration",
+  },
+  {
+    key: "amount",
+    title: "Amount",
+  },
+  {
+    key: "status",
+    title: "Status",
+  },
+  {
     key: "action",
     title: "Action",
   },
 ];
-export const productCategoryManagementHeaders = [
+export const ServiceManagementHeaders = [
   {
     key: "id",
     title: "S.No",
   },
   {
-    key: "categorytitle",
-    title: "category title",
+    key: "servicetitle",
+    title: "service title",
+  },
+  {
+    key: "subcategory",
+    title: "sub category",
+  },
+  {
+    key: "category",
+    title: "category",
   },
   {
     key: "creationdate",
     title: "creation date",
-  },
-  {
-    key: "NoofProducts",
-    title: "No. of Products",
   },
   {
     key: "status",

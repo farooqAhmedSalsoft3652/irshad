@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import CustomTable from "../../../Components/CustomTable";
+import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { Select } from "../../../Components/Select";
-import { productCategoryManagementData } from "../../../Config/data";
-import { productCategoryManagementHeaders } from "../../../Config/TableHeaders";
+import { serviceManagementData } from "../../../Config/Data";
+import { ServiceManagementHeaders } from "../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters ";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
-const ProductCategoryManagement = ({ filters, setFilters, pagination, updatePagination, showModal }) => {
+const ServiceManagement = ({ filters, setFilters, pagination, updatePagination, showModal }) => {
   const [productCategory, setProductCategory] = useState([]);
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
 
   const fetchProductCategory = async () => {
     try {
       startSubmitting(true);
-      const response = productCategoryManagementData;
+      const response = serviceManagementData;
       if (response.status) {
         const { data, total, per_page, current_page, to } = response.detail;
         setProductCategory(data);
@@ -42,8 +42,8 @@ const ProductCategoryManagement = ({ filters, setFilters, pagination, updatePagi
     const newStatusValue = e;
     // Open the modal for confirmation
     showModal(
-      `Mark as ${newStatusValue === "1" ? "Active" : "Inactive"}`,
-      `Are you sure you want to change this Category status to ${newStatusValue === "1" ? "Active" : "Inactive"}?`,
+      ``,
+      `Are you sure you want to ${newStatusValue === "1" ? "Active" : "Inactive"} Service ABC?`,
       () => onConfirmStatusChange(userId, newStatusValue)
     );
   };
@@ -52,7 +52,7 @@ const ProductCategoryManagement = ({ filters, setFilters, pagination, updatePagi
   const onConfirmStatusChange = async (userId, newStatusValue) => {
     // Update the status in the productCategory state
     setProductCategory((prevData) => prevData.map((user) => (user.id === userId ? { ...user, status_detail: newStatusValue } : user)));
-    showModal("Successful", `Category status has been changed to ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
+    showModal("", `Service has been ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
   };
 
   useEffect(() => {
@@ -60,33 +60,36 @@ const ProductCategoryManagement = ({ filters, setFilters, pagination, updatePagi
   }, [filters]);
 
   return (
-    <DashboardLayout pageTitle="Product Category Management">
+    <DashboardLayout pageTitle="Service Management">
       <div className="container-fluid">
         <>
-          <div className="my-4 d-flex flex-wrap gap-3 gap-md-0 align-items-center justify-content-between">
-            <h2 className="mainTitle mb-0">Product Category Management</h2>
-            <Link to={"/admin/product-category-management/add-product"} className="site-btn primary-btn text-decoration-none">
-              add category
+          <div className="dashCard">
+          <div className="mb-4 d-flex flex-wrap gap-3 gap-md-0 align-items-center justify-content-between">
+            <h2 className="mainTitle mb-0">Service Management</h2>
+            <Link to={"/admin/service-management/add-service"} className="btn btn-primary">
+              Add Service
             </Link>
           </div>
-          <div className="dashCard">
             <div className="row mb-3">
               <div className="col-12">
                 <CustomTable
                   filters={filters}
                   setFilters={setFilters}
                   loading={isSubmitting}
-                  headers={productCategoryManagementHeaders}
+                  headers={ServiceManagementHeaders}
                   pagination={pagination}
                   dateFilters={[
                     {
                       title: "Creation Date",
                       from: "fromDate",
-                      to: "toDate"
+                      to: "toDate",
+                      fromTitle: "From",
+                      toTitle: "To",
                     }
                   ]}
                   selectOptions={[
                     {
+                      main_title: "Filter By Status",
                       title: "Status",
                       options: normalStatus
                     }
@@ -96,9 +99,10 @@ const ProductCategoryManagement = ({ filters, setFilters, pagination, updatePagi
                     {productCategory?.map((item, index) => (
                       <tr key={item?.id}>
                         <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
-                        <td>{item?.category_title}</td>
+                        <td>{item?.service_title}</td>
+                        <td>{item?.sub_category}</td>
+                        <td>{item?.category}</td>
                         <td>{dateFormat(item?.creation_date)}</td>
-                        <td>{item?.no_of_Products}</td>
                         <td>
                           <Select
                             className={`tabel-select status${item?.status_detail}`}
@@ -116,12 +120,12 @@ const ProductCategoryManagement = ({ filters, setFilters, pagination, updatePagi
                           <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
                             <span className="tooltip-toggle" aria-label="View">
                               <Link to={`${item.id}`}>
-                                <FaEye size={20} color="#1819ff" />
+                                <FaEye size={20} color="#C5E4F6" />
                               </Link>
                             </span>
                             <span className="tooltip-toggle" aria-label="Edit">
                               <Link to={`${item.id}/edit`}>
-                                <FaEdit size={20} color="#1819ff" />
+                                <FaEdit size={20} color="#C5E4F6" />
                               </Link>
                             </span>
                           </div>
@@ -139,4 +143,4 @@ const ProductCategoryManagement = ({ filters, setFilters, pagination, updatePagi
   );
 };
 
-export default withModal(withFilters(ProductCategoryManagement));
+export default withModal(withFilters(ServiceManagement));

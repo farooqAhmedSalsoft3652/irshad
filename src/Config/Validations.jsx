@@ -589,11 +589,43 @@ export const addPhrasesValidationSchema = Yup.object().shape({
 export const addWordsThroughtCsvSchema = Yup.object().shape({
   status: Yup.string().required("Status is required"),
 });
-export const addProductCategorySchema = Yup.object().shape({
-  category_title: Yup.string()
-    .required("Category Title is required")
-    .min(3, "Category Title must be at least 3 characters long"),
+export const addServiceSchema = Yup.object().shape({
+  service_title: Yup.string()
+    .required("Service Title is required")
+    .min(3, "Service Title must be at least 3 characters long"),
   status: Yup.string().required("Status is required"),
+  category: Yup.string().required("Category is required"),
+  sub_category: Yup.string().required("Sub category is required"),
+  photo: Yup.mixed()
+    .required("An image is required.") // Ensure something is provided
+    .test(
+      "is-valid-images",
+      "At least one valid image file or URL must be provided.",
+      function (value) {
+        const validImageTypes = [
+          "image/jpeg",
+          "image/jpg",
+          "image/webp",
+          "image/gif",
+          "image/png",
+        ];
+
+        // Ensure at least one valid file or URL is present
+        const hasValidFiles =
+          value &&
+          value.some((file) => {
+            if (typeof file === "string") {
+              return true; // If it's a string, assume it's a valid URL
+            }
+            if (file instanceof File) {
+              return validImageTypes.includes(file.type); // Validate file type
+            }
+            return false;
+          });
+
+        return hasValidFiles;
+      }
+    ),
 });
 export const addSubCategorySchema = Yup.object().shape({
   categoryTitle: Yup.string()

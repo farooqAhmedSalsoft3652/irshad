@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-// import { DashboardLayout } from "../../../Components/AdminLayout/DashboardLayout";
 import BackButton from "../../../Components/BackButton";
-import { allAppointmentLogsData } from "../../../Config/data";
-import { dateFormat, getCountryFlag, isNullOrEmpty, statusClassMap } from "../../../Utils/helper";
-import Rating from "react-rating";
-import { FaRegStar, FaStar } from "react-icons/fa";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
+import { appointmentLogsData } from "../../../Config/data";
+import { dateFormat, getCountryFlag, isNullOrEmpty } from "../../../Utils/helper";
+import "./style.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const AppointmentDetails = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const AppointmentDetails = () => {
 
   useEffect(() => {
     const getAppointmentDetails = async () => {
-      const response = allAppointmentLogsData.detail.data.find((app) => app.id === id);
+      const response = appointmentLogsData?.detail?.data?.find((app) => app.id === id);
 
       // const response = await getDetails(`/admin-api/users/${id}`);
       if (response) {
@@ -51,149 +51,132 @@ const AppointmentDetails = () => {
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 ">
-            <div className="row my-4">
-              <div className="col-12 d-flex">
-                <BackButton />
-                <h2 className="mainTitle mb-0">Appointment Details</h2>
-              </div>
-            </div>
             <div className="dashCard">
+              <div className="row mb-4">
+                <div className="col-12">
+                  <div className="d-flex align-items-center">
+                    <BackButton2 />
+                    <h2 className="mainTitle mb-0">Booking Details</h2>
+                  </div>
+                </div>
+              </div>
               <div className="row ">
                 <div className="col-12">
-                  <div className="d-flex flex-column flex-sm-row mb-2 gap-3">
-                    <div>
-                      <h2 className="fw-semibold fs-3">{appointmentDetails?.serviceProvider?.serviceName}</h2>
+                  <div className="d-flex flex-md-row flex-column">
+                    <div className="flex-grow-1 order-1 order-md-0">
+                      <div className="row">
+                        <div className="col-xxl-10 col-lg-8">
+                          <div className="row my-2">
+                            {[
+                              { label: "Booking ID:", value: appointmentDetails.booking_id },
+                              { label: "Booking Date:", value: dateFormat(appointmentDetails.booking_date) },
+                              { label: "Session Type:", value: appointmentDetails.session_type },
+                              { label: "Category:", value: appointmentDetails.category },
+                              { label: "Appointment Date:", value: dateFormat(appointmentDetails.appointment_date) },
+                              { label: "Appointment Time:", value: appointmentDetails.appointment_time },
+                              { label: "Appointment Charges:", value: appointmentDetails.amount },
+                              { label: "Sub Category:", value: appointmentDetails.category },
+                              { label: "User Name:", value: appointmentDetails.user.name },
+                              { label: "Contact No:", value: appointmentDetails.phone },
+                              { label: "Email Address:", value: appointmentDetails.email },
+                            ].map(({ label, value }) => (
+                              <div className="col-xxl-3 col-xl-6 mb-3" key={label}>
+                                <div className="detail-box">
+                                  <h6 className="">{label}</h6>
+                                  <p className="mb-0">
+                                    {label === "Contact No:" && <span>{getCountryFlag(value)}</span>} {value}
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex-grow-1 d-flex flex-column align-items-start align-items-sm-end justify-content-end justify-content-sm-start gap-3">
+                    <div className="flex-shrink-0 ">
                       <div className="">
-                        <label className="fw-semibold">Status</label>
-                        <span className={`ms-3 fw-semibold ${statusClassMap[appointmentDetails?.status]}`}>{appointmentDetails?.status}</span>
-                      </div>
-                      <div>
-                        <label className={`fw-semibold cap d-inline`}>Appointment Type</label>
-                        <p className="appointmentTypeText secondaryText text-info ms-3 mb-0">{appointmentDetails.appointment_type}</p>
+                        <label style={{ color: "#666" }} className="fw-medium">
+                          Status
+                        </label>
+                        <span
+                          style={{
+                            color:
+                              appointmentDetails.status === "Upcoming"
+                                ? "#FDB332"
+                                : appointmentDetails.status === "In-Progress"
+                                ? "#D27231"
+                                : appointmentDetails.status === "Past"
+                                ? "#0DCF38"
+                                : "",
+                          }}
+                          className={`ms-3 fw-semibold`}
+                        >
+                          {appointmentDetails?.status}
+                        </span>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div className="row mt-md-3 mt-0">
+                <div className="col-xxl-8">
                   <div className="row">
-                    <div className="col-md-10 col-lg-8">
-                      <div className="row my-2">
-                        {appointmentDetails?.addtionalRequestService && (
-                          <div className="col-lg-6 mb-3">
-                            <h4 className="secondaryLabel">Addtional Request Service</h4>
-                            <p className="secondaryText wrapText mb-0">{appointmentDetails.addtionalRequestService}</p>
+                    <div className="col-md-6 mb-md-0 mb-3">
+                      <h2 className="mb-2">User Detail</h2>
+                      <div className="booking-detail-card">
+                        <div className="d-flex align-items-center justify-content-between flex-wrap">
+                          <div className="d-flex gap-sm-3 gap-2 align-items-center">
+                            <img className="smallProfileImage" src={appointmentDetails?.user?.photo} alt="user photo" />
+                            <h4 style={{ fontSize: 18 }} className="mb-0">
+                              {appointmentDetails?.user?.name}
+                            </h4>
                           </div>
-                        )}
-                        {appointmentDetails?.addtionalRequestCharges && (
-                        <div className="col-lg-6 mb-3">
-                          <h4 className="secondaryLabel">Addtional Request Charges</h4>
-                          <p className="secondaryText wrapText mb-0">{appointmentDetails.addtionalRequestCharges}</p>
+                          <div className="">
+                            <Link style={{ fontSize: 14 }} to={`/admin/user-management/${appointmentDetails?.user?.id}`}>
+                              View Details
+                            </Link>
+                          </div>
                         </div>
-                        )}
-                        {[
-                          { label: "Service Category:", value: appointmentDetails.serviceCategory },
-                          { label: "Service charges:", value: appointmentDetails.charges },
-                          { label: "Appointment ID:", value: appointmentDetails.appointment_iD },
-                          { label: "Appointment Date:", value: dateFormat(appointmentDetails.date) },
-                          { label: "User Name:", value: appointmentDetails.user.name },
-                          { label: "Email Address:", value: appointmentDetails.email },
-                          { label: "Phone No:", value: appointmentDetails.phone },
-                          { label: "service Date:", value: appointmentDetails.serviceDate },
-                        ].map(({ label, value }) => (
-                          <div className="col-lg-6 mb-3" key={label}>
-                            <h4 className="secondaryLabel">{label}</h4>
-                            <p className="secondaryText wrapText mb-0">
-                              {label === "Phone No:" && <span>{getCountryFlag(value)}</span>} {value}
-                            </p>
-                          </div>
-                        ))}
-                        {appointmentDetails.requestedDate && (
-                          <>
-                            <div className="col-lg-6 mb-3">
-                              <h4 className="secondaryLabel">Requested Date</h4>
-                              <p className="secondaryText wrapText mb-0">{appointmentDetails.requestedDate}</p>
-                            </div>
-                            <div className="col-lg-6 mb-3">
-                              <h4 className="secondaryLabel">Requested Time</h4>
-                              <p className="secondaryText wrapText mb-0">{appointmentDetails.requestedTime}</p>
-                            </div>
-                          </>
-                        )}
                       </div>
-                      {appointmentDetails?.address && (
-                        <div className="mb-4">
-                          <h4 className="secondaryLabel">Address</h4>
-                          <p className="secondaryText mb-0">{appointmentDetails.address}</p>
+                    </div>
+                    <div className="col-md-6 mb-md-0 mb-3">
+                      <h2 className="mb-2">Consultant Detail</h2>
+                      <div className="booking-detail-card">
+                        <div className="d-flex align-items-center justify-content-between flex-wrap">
+                          <div className="d-flex gap-sm-3 gap-2 align-items-center">
+                            <img className="roundedBorders smallProfileImage" src={appointmentDetails?.consultant?.photo} alt="user photo" />
+                            <h4 style={{ fontSize: 18 }} className="mb-0">
+                              {appointmentDetails?.consultant?.name}
+                            </h4>
+                          </div>
+                          <div className="">
+                            {/* <Link style={{ fontSize: 14 }} to={`/admin/consultant/${appointmentDetails?.consultant?.id}`}> */}
+                            <Link style={{ fontSize: 14 }}>View Details</Link>
+                          </div>
                         </div>
-                      )}
-                      {appointmentDetails?.rating && (
-                        <div className="mb-4">
-                          <h2 style={{ fontSize: 18 }} className="secondaryTitle mb-0">
-                            Rating
-                          </h2>
-                          <Rating
-                            className="mt-3"
-                            emptySymbol={<FaRegStar color="#FFC83D" size={36} />}
-                            fullSymbol={<FaStar size={36} color="#FFC83D" />}
-                            initialRating={3.5}
-                            readonly
-                          />
-                        </div>
-                      )}
-                      {appointmentDetails?.review && (
-                        <div className="mb-4">
-                          <h4 className="secondaryLabel">Review</h4>
-                          <p className="secondaryText mb-0">{appointmentDetails.review}</p>
-                        </div>
-                      )}
-                      {appointmentDetails?.rejectionReason && (
-                        <div className="mb-4">
-                          <h4 className="secondaryLabel">Rejection Reason</h4>
-                          <p className="secondaryText mb-0">{appointmentDetails.rejectionReason}</p>
-                        </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="row my-4">
-              <div className="col-12 col-md-6">
-                <div className="dashCard">
-                  <div className="d-flex justify-content-between">
-                    <h2 style={{ fontSize: 18 }} className="secondaryTitle mb-0">
-                      User Detail
-                    </h2>
-                    <Link style={{ fontSize: 14 }} to={`/admin/user-management/${appointmentDetails?.user?.id}`}>
-                      View Details
-                    </Link>
+              {appointmentDetails.status == "Past" && (
+                <div className="row mt-3">
+                  <div className="col-12">
+                    <h2>Rating</h2>
+                    {Array(parseInt(appointmentDetails.ratings))
+                      .fill()
+                      .map((_, index) => (
+                        <FontAwesomeIcon key={index} icon={faStar} size="xl" style={{ color: "#FFA929", cursor: "pointer" }} />
+                      ))}
                   </div>
-                  <div className="d-flex gap-3 mt-3 align-items-center">
-                    <img className="roundedBorders smallProfileImage" src={appointmentDetails?.user?.photo} alt="user photo" />
-                    <h4 style={{ fontSize: 18 }} className="mb-0">
-                      {appointmentDetails?.user?.name}
-                    </h4>
+                  <div className="col-xxl-4 mt-3">
+                    <div className="detail-box">
+                      <h6>Review</h6>
+                      <p className="mb-0">{appointmentDetails.review}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-12 col-md-6">
-                <div className="dashCard">
-                  <div className="d-flex justify-content-between">
-                    <h2 style={{ fontSize: 18 }} className="secondaryTitle mb-0">
-                      Service Provider Detail
-                    </h2>
-                    <Link style={{ fontSize: 14 }} to={`/admin/service-provider-management/${appointmentDetails?.serviceProvider?.id}`}>
-                      View Details
-                    </Link>
-                  </div>
-                  <div className="d-flex gap-3 mt-3 align-items-center">
-                    <img className="roundedBorders smallProfileImage" src={appointmentDetails?.serviceProvider?.photo} alt="user photo" />
-                    <h4 style={{ fontSize: 18 }} className="mb-0">
-                      {appointmentDetails?.serviceProvider?.name}
-                    </h4>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

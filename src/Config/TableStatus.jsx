@@ -256,12 +256,12 @@ export const appointmentTypeOptions = [
     text: "All",
   },
   {
-    value: "online",
-    text: "Online",
+    value: "quick",
+    text: "Quick",
   },
   {
-    value: "onsite",
-    text: "Onsite",
+    value: "standard",
+    text: "Standard",
   },
 ];
 export const subscriptionType = [

@@ -13,7 +13,8 @@
   background-color: unset;
   appearance: none !important;
   border: none;
-  padding: 0px 40px 0px 0px;
+  height: auto;
+  padding: 0px 40px 0px 3px;
   box-shadow: none;
 }
 

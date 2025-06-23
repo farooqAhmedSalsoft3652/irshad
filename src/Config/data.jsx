@@ -283,7 +283,7 @@ export const chat_box = [
     chat_id: 1,
     "user-id": 2,
     message:
-      "OMG 😲 do you remember what you did last night at the work night out? 123",
+      "OMG 😲 do you remember what you did last night at the work night out?",
     sendable_id: 1,
     receiveable_id: 1,
     "photo-path":
@@ -1843,7 +1843,7 @@ export const serviceDetailsData = {
     total: 11,
   },
 };
-export const allAppointmentLogsData = {
+export const appointmentLogsData = {
   status: true,
   message: "Appointment logs",
   detail: {
@@ -1851,339 +1851,86 @@ export const allAppointmentLogsData = {
     data: [
       {
         id: "1",
-        appointment_iD: "#123456",
-        appointment_type: "Online",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
+        booking_id: "#123456",
+        category: "Education",
+        booking_date: "2024-06-17T14:29:37.000000Z",
+        appointment_date: "2024-06-17T14:29:37.000000Z",
+        appointment_time: "06:00 PM to 08:00 PM",
+        session_type: "Chat",
+        appointment_type: "Standard",
+        duration: "30 minutes",
+        amount: "$10",
+        status: "Upcoming",
         email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
         phone: "+11234567890",
-        serviceDate: "14/02/2024",
         user: {
-          name: "Tom albert",
+          name: "Eric",
           id: "1",
           photo:
             "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
-        serviceProvider: {
+        consultant: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Victoria Andrew",
-          serviceName: "MedLink Solutions service",
+          name: "Victoria",
+          photo: images.adminProfileImg,
         },
-        status: "Pending",
       },
       {
         id: "2",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
+        booking_id: "#123456",
+        category: "Consultancy",
+        booking_date: "2024-06-17T14:29:37.000000Z",
+        appointment_date: "2024-06-17T14:29:37.000000Z",
+        appointment_time: "06:00 PM to 08:00 PM",
+        session_type: "Call",
+        appointment_type: "Quick",
+        duration: "01 hour",
+        amount: "$10",
+        status: "In-Progress",
         email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
+        phone: "+11234567890",
         user: {
-          name: "Louis Thomas",
+          name: "Eric",
           id: "1",
           photo:
             "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
-        serviceProvider: {
+        consultant: {
           id: "1",
+          name: "Victoria",
           photo:
             "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Tom albert",
-          serviceName: "MedLink Solutions service",
         },
-        status: "Rejected",
-        rejectionReason:
-          "We’re unable to process your prescription due to missing or incorrect details. Please provide the correct information for us to proceed. The medication you’ve requested is currently out of stock. We’ll notify you once it becomes available, or we can suggest alternatives.",
       },
       {
         id: "3",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
+        booking_id: "#123456",
+        category: "Consultancy",
+        booking_date: "2024-06-17T14:29:37.000000Z",
+        appointment_date: "2024-06-17T14:29:37.000000Z",
+        appointment_time: "06:00 PM to 08:00 PM",
+        session_type: "Video",
+        appointment_type: "Standard",
+        duration: "30 minutes",
+        amount: "$10",
+        status: "Past",
         email: "someemail@email.com",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
+        phone: "+11234567890",
+        ratings: "5",
+        review:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
         user: {
-          name: "Louis Thomas",
+          name: "Eric",
           id: "1",
           photo:
             "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
-        serviceProvider: {
+        consultant: {
           id: "1",
+          name: "Victoria",
           photo:
             "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Tom albert",
-          serviceName: "MedLink Solutions service",
         },
-        status: "Rejected",
-        rejectionReason:
-          "We’re unable to process your prescription due to missing or incorrect details. Please provide the correct information for us to proceed. The medication you’ve requested is currently out of stock. We’ll notify you once it becomes available, or we can suggest alternatives.",
-      },
-      {
-        id: "4",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        requestedDate: "14/02/2024",
-        requestedTime: "5:00 PM",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Cindy Anne",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Marie max",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Requested",
-      },
-      {
-        id: "5",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        requestedDate: "14/02/2024",
-        requestedTime: "5:00 PM",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Cindy Anne",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Marie max",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Requested",
-      },
-      {
-        id: "6",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$20",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Victoria Andrew",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "louis Thomas",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Completed",
-        rating: 4.5,
-        review: `Excellent Service and Care! I’ve been visiting [Clinic/Medical Shop Name] for over a year now, and every experience has been outstanding. The staff is incredibly helpful, and the doctors take the time to listen and explain everything in detail. I always leave feeling well taken care of!`,
-      },
-      {
-        id: "7",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$20",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Victoria Andrew",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "louis Thomas",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Completed",
-        rating: 4.5,
-        review: `Excellent Service and Care! I’ve been visiting [Clinic/Medical Shop Name] for over a year now, and every experience has been outstanding. The staff is incredibly helpful, and the doctors take the time to listen and explain everything in detail. I always leave feeling well taken care of!`,
-      },
-      {
-        id: "8",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Approved",
-      },
-      {
-        id: "9",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Approved",
-      },
-      {
-        id: "10",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Pending",
-      },
-      {
-        id: "7",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Pending",
-      },
-      {
-        id: "8",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Pending",
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
@@ -11304,5 +11051,68 @@ export const slotsData = {
         ],
       },
     ],
+  },
+};
+
+// irshad admin data
+export const serviceManagementData = {
+  status: true,
+  message: "product Category Management Listing",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: 1,
+        service_title: "Abc",
+        sub_category: "sub-category abc",
+        category: "education",
+        creation_date: "2024-07-05T08:21:31.000000Z",
+        status_detail: "0",
+        status: 1,
+        photo: [images.BannerImg],
+      },
+      {
+        id: 2,
+        service_title: "Abc",
+        sub_category: "sub-category abc",
+        category: "consultancy",
+        creation_date: "2024-07-05T08:21:31.000000Z",
+        status_detail: "1",
+        status: 1,
+        photo: [images.ProfileCover],
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
   },
 };
