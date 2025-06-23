@@ -6,7 +6,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
-import { Button, Container, Dropdown, Offcanvas } from "react-bootstrap";
+import {
+  Button,
+  Container,
+  Dropdown,
+  Offcanvas,
+  Placeholder,
+} from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
@@ -172,7 +178,11 @@ export const Header = () => {
                     >
                       {currentLinks.map((element, index) => (
                         <Nav.Item as="li" key={index}>
-                          <NavLink className="nav-link" to={element.path}>
+                          <NavLink
+                            className="nav-link"
+                            to={element.path}
+                            onClick={handleClose}
+                          >
                             {element.label}
                           </NavLink>
                         </Nav.Item>
@@ -273,7 +283,11 @@ export const Header = () => {
                                 <div className="d-flex align-items-center gap-2">
                                   <span className="avatar avatar-online">
                                     <img
-                                      src={profilePic ?? images.userImage}
+                                      src={
+                                        profilePic ??
+                                        images.userImage ??
+                                        images.Placeholder
+                                      }
                                       alt="avatar"
                                     />
                                   </span>

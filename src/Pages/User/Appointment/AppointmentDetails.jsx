@@ -14,12 +14,23 @@ import { Form, Formik } from "formik";
 import CustomInput from "../../../Components/CustomInput";
 import { modalReasonValidation } from "../../../Config/Validations";
 import UploadIcon from "../../../Assets/images/svg/uploadIcon.svg?react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const AppointmentsDetails = ({ showModal, closeModal }) => {
   usePageTitleUser("Appointments Details");
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [reasonModal, setReasonModal] = useState(false);
+  const [appointmentModal, setAppointmentModal] = useState(false);
+  const [pendingSubmission, setPendingSubmission] = useState(null);
+
+  const [value, setValue] = useState(new Date());
+
+  const onChange = (newDate) => {
+    setValue(newDate);
+    console.log("Selected Date:", newDate);
+  };
 
   const navigate = useNavigate();
 
@@ -49,36 +60,66 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
     );
   };
 
+  const handleFormSubmit = (values, { resetForm }) => {
+    // Store the values and resetForm function for later use
+    setPendingSubmission({ values, resetForm });
+    setReasonModal(false);
+    // Show the modal about remaining cancellations
+    showModal(
+      "",
+      "You have now 10 cancels left for this month. After that you will have to pay cancellation penalty [Amount] for it.",
+      () => {
+        // When user confirms, proceed with the actual submission
+        // Use the values directly from the closure instead of from state
+        handleRequestSubmit(values, { resetForm });
+        //closeModal();
+      },
+      true // success
+    );
+  };
+
   const handleRequestSubmit = (values, { resetForm }) => {
     console.log("Request submitted with values:", values);
 
-    // Create FormData for file upload if needed
-    if (values.documents && values.documents.length > 0) {
-      const formData = new FormData();
-      formData.append("description", values.description);
-
-      // Append each document to the FormData
-      values.documents.forEach((file, index) => {
-        formData.append(`document_${index}`, file);
-      });
-
-      console.log("FormData created with files for upload");
-
-      // Here you would typically make an API call to upload the files
-      // For example: await api.uploadRequestDocuments(formData);
+    // Add null check to prevent errors
+    if (!values) {
+      console.error("No values provided to handleRequestSubmit");
+      return;
     }
 
-    // Show success message
+    // Create FormData for file upload if needed
+    if (values.uploadFile) {
+      const formData = new FormData();
+      formData.append("description", values.description);
+      formData.append("document", values.uploadFile);
+      console.log("FormData created with file for upload");
+    }
+
+    // Show success message and close the reason modal only after success
     showModal(
       "",
       "Booking has been Cancelled Successfully.",
-      () => navigate("/appointments"),
+      () => {
+        setReasonModal(false); // Close the reason modal after success
+        resetForm();
+        navigate("/appointments");
+      },
       true // success
     );
+  };
 
-    // Close the modal and reset form
-    setReasonModal(false);
-    resetForm();
+  const handleAppointmentUpdate = () => {
+    console.log(value, "value");
+    setAppointmentModal(false);
+    showModal(
+      "",
+      "Booking date updated Sucessfully.",
+      () => {
+        navigate("/appointments");
+      },
+      true,
+      true
+    );
   };
 
   return (
@@ -88,7 +129,7 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
           <div className="site_card">
             <Row>
               <Col xs={12}>
-                <div className="d-flex flex-md-row flex-column align-items-md-center justify-content-between">
+                <div className="d-flex flex-md-row flex-column align-items-md-center justify-content-between gap-2 gap-md-0">
                   <div>
                     <BackButton2 />
                   </div>
@@ -226,35 +267,51 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
                   </div>
                 </Col>
               )}
+
               {(data?.status === "upcoming" ||
                 data?.status === "in-progress") && (
                 <div className="d-flex gap-2 flex-wrap align-items-center">
                   {data?.session_type == "Chat" ? (
-                    <Link to="/chat" className="btn btn-primary min-width-180">
+                    <CustomButton
+                      onClick={() => setAppointmentModal(true)}
+                      variant="primary"
+                      className="min-width-180"
+                    >
                       Start Chat
-                    </Link>
+                    </CustomButton>
                   ) : data?.session_type == "Call" ? (
-                    <Link to="/call" className="btn btn-primary min-width-180">
-                      Start Call
-                    </Link>
-                  ) : data?.session_type == "Video Call" ? (
-                    <Link
-                      to="/video-call"
-                      className="btn btn-primary min-width-180"
+                    <CustomButton
+                      onClick={() => setAppointmentModal(true)}
+                      variant="primary"
+                      className="min-width-180"
                     >
                       Start Session
-                    </Link>
+                    </CustomButton>
+                  ) : // <Link to="/call" className="btn btn-primary min-width-180">
+                  //   Start Session
+                  // </Link>
+                  data?.session_type == "Video Call" ? (
+                    // <Link
+                    //   to="/video-call"
+                    //   className="btn btn-primary min-width-180"
+                    // >
+                    //   Start Session
+                    // </Link>
+                    <CustomButton
+                      onClick={() => setAppointmentModal(true)}
+                      variant="primary"
+                      className="min-width-180"
+                    >
+                      Start Session
+                    </CustomButton>
                   ) : null}
+
                   {data?.status !== "in-progress" && (
                     <CustomButton
                       onClick={cancelBooking}
                       className="siteBtn min-width-180"
                       text="Cancel Booking"
-                      style={{
-                        border: "1px solid #D9001B",
-                        color: "#D9001B",
-                        background: "#FBE5E8",
-                      }}
+                      variant="outline-danger"
                     />
                   )}
                 </div>
@@ -276,7 +333,7 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
               uploadFile: null, // Initialize as null
             }}
             validationSchema={modalReasonValidation}
-            onSubmit={handleRequestSubmit}
+            onSubmit={handleFormSubmit}
           >
             {({
               values,
@@ -361,6 +418,36 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
               </Form>
             )}
           </Formik>
+        </CustomModal>
+        <CustomModal
+          show={appointmentModal}
+          hideClose={false}
+          close={() => {
+            setAppointmentModal(false);
+          }}
+          className="rating-modal"
+        >
+          {/* <Calendar onChange={onChange} value={value} /> */}
+          <h4 className="text-center fw-bold mb-3">Appointment Date</h4>
+          <div className="calendar-container">
+            <Calendar
+              onChange={setValue}
+              value={value}
+              tileClassName={({ date, view }) =>
+                date.getDate() === value.getDate() &&
+                date.getMonth() === value.getMonth() &&
+                date.getFullYear() === value.getFullYear()
+                  ? "selected-day"
+                  : null
+              }
+            />
+            <button
+              className="btn btn-primary mt-3"
+              onClick={handleAppointmentUpdate}
+            >
+              Update
+            </button>
+          </div>
         </CustomModal>
       </Container>
     </>

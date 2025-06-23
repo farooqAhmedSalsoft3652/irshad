@@ -52,7 +52,7 @@ const Appointment = ({ filters, setFilters, pagination, updatePagination }) => {
       <div className="py-sm-5 py-3 px-sm-0 px-1">
         <div className="site_card">
           <Row>
-            <Col>
+            <Col xs={12} className="mb-3 mb-lg-4 col-12">
               <h2 className="text-center fw-bold mb-0 page-title">
                 Appointments
               </h2>

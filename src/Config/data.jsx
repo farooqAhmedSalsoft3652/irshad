@@ -283,7 +283,7 @@ export const chat_box = [
     chat_id: 1,
     "user-id": 2,
     message:
-      "OMG 😲 do you remember what you did last night at the work night out?",
+      "OMG 😲 do you remember what you did last night at the work night out? 123",
     sendable_id: 1,
     receiveable_id: 1,
     "photo-path":
@@ -291,7 +291,7 @@ export const chat_box = [
     seen: true,
     name: "Abc",
     date: "04/06/20",
-    time: "03:00 PM",
+    time: "04:00 PM",
   },
   {
     chat_id: 1,
@@ -319,7 +319,7 @@ export const chat_box = [
     seen: true,
     name: "Abc",
     date: "04/06/20",
-    time: "03:00 PM",
+    time: "02:00 PM",
   },
   {
     chat_id: 1,
@@ -333,7 +333,7 @@ export const chat_box = [
     seen: false,
     name: "Abc",
     date: "04/06/20",
-    time: "03:00 PM",
+    time: "01:00 PM",
   },
 ];
 export const sidebar = [
@@ -10928,11 +10928,12 @@ export const slotManagementHistoryData = {
         updated_at: "2025-05-30T13:31:51.000000Z",
         modification_status: "active",
         slot_id: 974,
+        new_entry: true,
       },
       {
         id: 766,
         parent_id: null,
-        slot_type: "homecare_service",
+        slot_type: "homecare_service_766",
         reference_type: "App\\Models\\Service",
         reference_id: 22,
         day: "3",

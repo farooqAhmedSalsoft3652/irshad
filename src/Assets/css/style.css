@@ -1405,6 +1405,10 @@ h3.page-title {
     padding: 13px 20px;
     min-width: 120px;
   }
+
+  .user-layout .customPagination {
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 767.5px) {

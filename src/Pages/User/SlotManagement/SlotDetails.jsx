@@ -29,6 +29,7 @@ const SlotDetails = ({
   const navigate = useNavigate();
 
   const [daySlots, setDaySlots] = useState([]);
+  const [allData, setAllData] = useState([]);
 
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const [reasonBookModal, setReasonBookModal] = useState(false);
@@ -42,17 +43,23 @@ const SlotDetails = ({
       if (response.status) {
         const { data, total, per_page, current_page, to } = response.detail;
 
-        const getSlotId = data?.find((item) => item.slot_id == Number(id));
+        const slotData = data?.find((item) => item.slot_id == Number(id));
 
-        // console.log(getSlotId, "getSlotId");
+        // Add new_entry property to slotData if it doesn't exist
+        // if (slotData) {
+        //   slotData.new_entry =
+        //     slotData.new_entry !== undefined ? slotData.new_entry : false;
+        // }
 
         const filteredSlots = slotsData?.detail?.data.filter(
-          (item) => item.slot_id == getSlotId?.slot_id
+          (item) => item.slot_id == slotData?.slot_id
         );
 
         setDaySlots(filteredSlots || []);
+        setAllData(slotData);
 
         console.log(filteredSlots, "filteredSlots 0.");
+        console.log(slotData, "slotData with new_entry property");
 
         updatePagination({
           showData: to,
@@ -166,8 +173,8 @@ const SlotDetails = ({
                     <BackButton2 />
                   </div>
                   <div className="flex-grow-1 text-center">
-                    <h2 className="fw-bold mb-1  page-title">
-                      View History Slot
+                    <h2 className="fw-bold mb-1 page-title">
+                      {allData?.new_entry ? "View Slot" : "View History Slots"}
                     </h2>
                   </div>
                 </div>
@@ -206,13 +213,15 @@ const SlotDetails = ({
                   className="px-4"
                   onClick={BookedNextWeek}
                 />
-                <Link
-                  to={`/slot-management/${id}/edit`}
-                  className="btn btn-secondary min-width-180"
-                  // state={{ service_name: item.title }}
-                >
-                  Edit Slot
-                </Link>
+                {allData?.new_entry && (
+                  <Link
+                    to={`/slot-management/${id}/edit`}
+                    className="btn btn-secondary min-width-180"
+                    // state={{ service_name: item.title }}
+                  >
+                    Edit Slot
+                  </Link>
+                )}
               </Col>
             </Row>
           </div>
