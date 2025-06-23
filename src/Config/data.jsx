@@ -165,8 +165,7 @@ export const notificationsData = {
           updated_at: "2024-05-30T11:21:32.000000Z",
         },
       ],
-      first_page_url:
-        "http://localhost/food_app/admin-api/notifications?page=1",
+      first_page_url: "http://localhost/food_app/admin-api/notifications?page=1",
       from: 1,
       last_page: 2,
       last_page_url: "http://localhost/food_app/admin-api/notifications?page=2",
@@ -282,8 +281,7 @@ export const chat_box = [
   {
     chat_id: 1,
     "user-id": 2,
-    message:
-      "OMG 😲 do you remember what you did last night at the work night out?",
+    message: "OMG 😲 do you remember what you did last night at the work night out?",
     sendable_id: 1,
     receiveable_id: 1,
     "photo-path":
@@ -296,12 +294,10 @@ export const chat_box = [
   {
     chat_id: 1,
     "user-id": 1,
-    message:
-      "OMG 😲 do you remember what you did last night at the work night out?",
+    message: "OMG 😲 do you remember what you did last night at the work night out?",
     sendable_id: 1,
     receiveable_id: 1,
-    "photo-path":
-      "https://media4.giphy.com/avatars/digitalducks/syqUuk9PflgI.png",
+    "photo-path": "https://media4.giphy.com/avatars/digitalducks/syqUuk9PflgI.png",
     seen: true,
     name: "Abc",
     date: "04/06/20",
@@ -310,8 +306,7 @@ export const chat_box = [
   {
     chat_id: 1,
     "user-id": 2,
-    message:
-      "OMG 😲 do you remember what you did last night at the work night out?",
+    message: "OMG 😲 do you remember what you did last night at the work night out?",
     sendable_id: 1,
     receiveable_id: 1,
     "photo-path":
@@ -324,12 +319,10 @@ export const chat_box = [
   {
     chat_id: 1,
     "user-id": 1,
-    message:
-      "OMG 😲 do youasdasd remember what you did last night at the work night out?",
+    message: "OMG 😲 do youasdasd remember what you did last night at the work night out?",
     sendable_id: 1,
     receiveable_id: 1,
-    "photo-path":
-      "https://media4.giphy.com/avatars/digitalducks/syqUuk9PflgI.png",
+    "photo-path": "https://media4.giphy.com/avatars/digitalducks/syqUuk9PflgI.png",
     seen: false,
     name: "Abc",
     date: "04/06/20",
@@ -365,8 +358,7 @@ export const sidebar = [
     time: "3 Days Ago",
     message: "Lorem ipsum dolor sit amet...",
     notification: "01",
-    "photo-path":
-      "https://preview.keenthemes.com/metronic-v4/theme_rtl/assets/pages/media/profile/profile_user.jpg",
+    "photo-path": "https://preview.keenthemes.com/metronic-v4/theme_rtl/assets/pages/media/profile/profile_user.jpg",
     isOpen: false,
     delivered: true,
   },
@@ -397,8 +389,7 @@ export const sidebar = [
     time: "3 Days Ago",
     message: "Lorem ipsum dolor sit amet...",
     notification: "01",
-    "photo-path":
-      "https://www.befunky.com/images/wp/wp-2022-12-social-media-profile-picture-2.jpg?auto=avif,webp&format=jpg&width=944",
+    "photo-path": "https://www.befunky.com/images/wp/wp-2022-12-social-media-profile-picture-2.jpg?auto=avif,webp&format=jpg&width=944",
     isOpen: false,
     delivered: true,
   },
@@ -481,8 +472,7 @@ export const userDetail = {
       fileable_type: "AppModelsBranch",
       fileable_id: 7,
       path: "tmT299v0z6IphNMUlFk1evTI6rKBTA7auVIa449d.png",
-      file_url:
-        "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+      file_url: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
     },
   },
 };
@@ -560,8 +550,7 @@ export const userManagementData = {
         status_detail: "1",
         phone_number: "+9258552465",
         role: "branch",
-        UserImage:
-          "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+        UserImage: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
       },
       {
         id: 2,
@@ -585,8 +574,7 @@ export const userManagementData = {
         status_detail: "0",
         phone_number: "+1958552465",
         role: "branch",
-        UserImage:
-          "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+        UserImage: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
@@ -759,8 +747,7 @@ export const userOrderLogsData = {
             price: "$10",
             quantity: 10,
             total: "$100",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxUc8YW6VVv5JDUaWDIthYucrtBlhu33WIxhP9CnrNpiGQt-wz_t6GV5UVMRYqFu6Ykk&usqp=CAU",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxUc8YW6VVv5JDUaWDIthYucrtBlhu33WIxhP9CnrNpiGQt-wz_t6GV5UVMRYqFu6Ykk&usqp=CAU",
           },
           {
             sNo: "02",
@@ -769,8 +756,7 @@ export const userOrderLogsData = {
             price: "$20",
             quantity: 20,
             total: "$200",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt2C5ilnsaq6kwACZ5ULs_swsKrlo0t_xhBg&s",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt2C5ilnsaq6kwACZ5ULs_swsKrlo0t_xhBg&s",
           },
           {
             sNo: "03",
@@ -779,8 +765,7 @@ export const userOrderLogsData = {
             price: "$30",
             quantity: 30,
             total: "$300",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0g8S0XeoIdvhHZoSOJNk9cfrZ4gc3x8s3dQ&s",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0g8S0XeoIdvhHZoSOJNk9cfrZ4gc3x8s3dQ&s",
           },
         ],
         sub_total: "$80.00",
@@ -826,8 +811,7 @@ export const userOrderLogsData = {
             price: "$10",
             quantity: 10,
             total: "$100",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxUc8YW6VVv5JDUaWDIthYucrtBlhu33WIxhP9CnrNpiGQt-wz_t6GV5UVMRYqFu6Ykk&usqp=CAU",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxUc8YW6VVv5JDUaWDIthYucrtBlhu33WIxhP9CnrNpiGQt-wz_t6GV5UVMRYqFu6Ykk&usqp=CAU",
           },
           {
             sNo: "02",
@@ -836,8 +820,7 @@ export const userOrderLogsData = {
             price: "$20",
             quantity: 20,
             total: "$200",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt2C5ilnsaq6kwACZ5ULs_swsKrlo0t_xhBg&s",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt2C5ilnsaq6kwACZ5ULs_swsKrlo0t_xhBg&s",
           },
           {
             sNo: "03",
@@ -846,8 +829,7 @@ export const userOrderLogsData = {
             price: "$30",
             quantity: 30,
             total: "$300",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0g8S0XeoIdvhHZoSOJNk9cfrZ4gc3x8s3dQ&s",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0g8S0XeoIdvhHZoSOJNk9cfrZ4gc3x8s3dQ&s",
           },
         ],
         sub_total: "$80.00",
@@ -895,8 +877,7 @@ export const userOrderLogsData = {
             price: "$10",
             quantity: 10,
             total: "$100",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxUc8YW6VVv5JDUaWDIthYucrtBlhu33WIxhP9CnrNpiGQt-wz_t6GV5UVMRYqFu6Ykk&usqp=CAU",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmxUc8YW6VVv5JDUaWDIthYucrtBlhu33WIxhP9CnrNpiGQt-wz_t6GV5UVMRYqFu6Ykk&usqp=CAU",
           },
           {
             sNo: "02",
@@ -905,8 +886,7 @@ export const userOrderLogsData = {
             price: "$20",
             quantity: 20,
             total: "$200",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt2C5ilnsaq6kwACZ5ULs_swsKrlo0t_xhBg&s",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt2C5ilnsaq6kwACZ5ULs_swsKrlo0t_xhBg&s",
           },
           {
             sNo: "03",
@@ -915,8 +895,7 @@ export const userOrderLogsData = {
             price: "$30",
             quantity: 30,
             total: "$300",
-            image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0g8S0XeoIdvhHZoSOJNk9cfrZ4gc3x8s3dQ&s",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0g8S0XeoIdvhHZoSOJNk9cfrZ4gc3x8s3dQ&s",
           },
         ],
         cancellation_reason:
@@ -1000,13 +979,11 @@ export const serviceProvidersData = {
         city: "Dallas",
         bio: "Dr. Sarah has over 07 years of experience in the field of pediatrics. She has worked in several healthcare settings, including children's hospitals, clinics, and primary care facilities, providing specialized medical care for children of all ages.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Harvard Medical School",
           certificateTitle: "Pediatrician",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -1067,13 +1044,11 @@ export const serviceProvidersData = {
         city: "New York City",
         bio: "Dr. Daniel is a renowned cardiologist with 15 years of experience. He has made significant contributions in the field of cardiology and worked in various reputed hospitals to treat patients with cardiovascular diseases.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Johns Hopkins University",
           certificateTitle: "Cardiologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -1134,13 +1109,11 @@ export const serviceProvidersData = {
         city: "Miami",
         bio: "Dr. Emily has over 08 years of experience as an oncologist, working extensively in cancer research and treatment. She has been part of various cancer institutes, helping patients in their fight against cancer.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "University of Florida",
           certificateTitle: "Oncologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -1201,13 +1174,11 @@ export const serviceProvidersData = {
         city: "Los Angeles",
         bio: "Dr. Michael is a skilled neurologist with 12 years of experience, specializing in treating patients with neurological disorders. He has worked in some of the top hospitals, delivering expert care to those in need.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Stanford University",
           certificateTitle: "Neurologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -1268,13 +1239,11 @@ export const serviceProvidersData = {
         city: "Chicago",
         bio: "Dr. Jessica has over 10 years of experience in gynecology, providing specialized care for women's health. She has worked in various hospitals and private practices, ensuring quality care for women at different stages of life.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Northwestern University",
           certificateTitle: "Gynecologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -1526,8 +1495,7 @@ export const serviceDetailsData = {
         serviceCategory: "Online",
         serviceCharges: "$30",
         status_detail: "1",
-        photo:
-          "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
+        photo: "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
         appointmentLogs: [
           {
             id: "1",
@@ -1584,8 +1552,7 @@ export const serviceDetailsData = {
         serviceCategory: "Onsite",
         serviceCharges: "$30",
         status_detail: "0",
-        photo:
-          "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
+        photo: "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
         appointmentLogs: [
           {
             id: "1",
@@ -1642,8 +1609,7 @@ export const serviceDetailsData = {
         serviceCategory: "Onsite",
         serviceCharges: "$30",
         status_detail: "1",
-        photo:
-          "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
+        photo: "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
         appointmentLogs: [
           {
             id: "1",
@@ -1700,8 +1666,7 @@ export const serviceDetailsData = {
         serviceCategory: "Onsite",
         serviceCharges: "$30",
         status_detail: "0",
-        photo:
-          "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
+        photo: "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
         appointmentLogs: [
           {
             id: "1",
@@ -1758,8 +1723,7 @@ export const serviceDetailsData = {
         serviceCategory: "Onsite",
         serviceCharges: "$30",
         status_detail: "1",
-        photo:
-          "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
+        photo: "https://www.healthcareoutlook.net/wp-content/uploads/2022/03/AI-based-Medical-Diagnostic-Tools.jpg",
         appointmentLogs: [
           {
             id: "1",
@@ -1843,7 +1807,7 @@ export const serviceDetailsData = {
     total: 11,
   },
 };
-export const allAppointmentLogsData = {
+export const appointmentLogsData = {
   status: true,
   message: "Appointment logs",
   detail: {
@@ -1851,339 +1815,81 @@ export const allAppointmentLogsData = {
     data: [
       {
         id: "1",
-        appointment_iD: "#123456",
-        appointment_type: "Online",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
+        booking_id: "#123456",
+        category: "Education",
+        booking_date: "2024-06-17T14:29:37.000000Z",
+        appointment_date: "2024-06-17T14:29:37.000000Z",
+        appointment_time: "06:00 PM to 08:00 PM",
+        session_type: "Chat",
+        appointment_type: "Standard",
+        duration: "30 minutes",
+        amount: "$10",
+        status: "Upcoming",
         email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
         phone: "+11234567890",
-        serviceDate: "14/02/2024",
         user: {
-          name: "Tom albert",
+          name: "Eric",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
-        serviceProvider: {
+        consultant: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Victoria Andrew",
-          serviceName: "MedLink Solutions service",
+          name: "Victoria",
+          photo: images.adminProfileImg,
         },
-        status: "Pending",
       },
       {
         id: "2",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
+        booking_id: "#123456",
+        category: "Consultancy",
+        booking_date: "2024-06-17T14:29:37.000000Z",
+        appointment_date: "2024-06-17T14:29:37.000000Z",
+        appointment_time: "06:00 PM to 08:00 PM",
+        session_type: "Call",
+        appointment_type: "Quick",
+        duration: "01 hour",
+        amount: "$10",
+        status: "In-Progress",
         email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
+        phone: "+11234567890",
         user: {
-          name: "Louis Thomas",
+          name: "Eric",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
-        serviceProvider: {
+        consultant: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Tom albert",
-          serviceName: "MedLink Solutions service",
+          name: "Victoria",
+          photo: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         },
-        status: "Rejected",
-        rejectionReason:
-          "We’re unable to process your prescription due to missing or incorrect details. Please provide the correct information for us to proceed. The medication you’ve requested is currently out of stock. We’ll notify you once it becomes available, or we can suggest alternatives.",
       },
       {
         id: "3",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
+        booking_id: "#123456",
+        category: "Consultancy",
+        booking_date: "2024-06-17T14:29:37.000000Z",
+        appointment_date: "2024-06-17T14:29:37.000000Z",
+        appointment_time: "06:00 PM to 08:00 PM",
+        session_type: "Video",
+        appointment_type: "Standard",
+        duration: "30 minutes",
+        amount: "$10",
+        status: "Past",
         email: "someemail@email.com",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
+        phone: "+11234567890",
+        ratings: "5",
+        review:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
         user: {
-          name: "Louis Thomas",
+          name: "Eric",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
-        serviceProvider: {
+        consultant: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Tom albert",
-          serviceName: "MedLink Solutions service",
+          name: "Victoria",
+          photo: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         },
-        status: "Rejected",
-        rejectionReason:
-          "We’re unable to process your prescription due to missing or incorrect details. Please provide the correct information for us to proceed. The medication you’ve requested is currently out of stock. We’ll notify you once it becomes available, or we can suggest alternatives.",
-      },
-      {
-        id: "4",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        requestedDate: "14/02/2024",
-        requestedTime: "5:00 PM",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Cindy Anne",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Marie max",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Requested",
-      },
-      {
-        id: "5",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$30",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        requestedDate: "14/02/2024",
-        requestedTime: "5:00 PM",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Cindy Anne",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Marie max",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Requested",
-      },
-      {
-        id: "6",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$20",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Victoria Andrew",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "louis Thomas",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Completed",
-        rating: 4.5,
-        review: `Excellent Service and Care! I’ve been visiting [Clinic/Medical Shop Name] for over a year now, and every experience has been outstanding. The staff is incredibly helpful, and the doctors take the time to listen and explain everything in detail. I always leave feeling well taken care of!`,
-      },
-      {
-        id: "7",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$20",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Victoria Andrew",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "louis Thomas",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Completed",
-        rating: 4.5,
-        review: `Excellent Service and Care! I’ve been visiting [Clinic/Medical Shop Name] for over a year now, and every experience has been outstanding. The staff is incredibly helpful, and the doctors take the time to listen and explain everything in detail. I always leave feeling well taken care of!`,
-      },
-      {
-        id: "8",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Approved",
-      },
-      {
-        id: "9",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        addtionalRequestService: "Home Health & Rehabilitation Care",
-        addtionalRequestCharges: "$10",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Approved",
-      },
-      {
-        id: "10",
-        appointment_iD: "#124654",
-        appointment_type: "Onsite",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        address:
-          "789 Elmwood Avenue, Suite 202, in the heart of Green Valley, a bustling suburban neighborhood. His home is located in Grandview Apartments, just a few blocks from the Central Park Plaza and the Green Valley Shopping Center.",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Pending",
-      },
-      {
-        id: "7",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Pending",
-      },
-      {
-        id: "8",
-        appointment_iD: "#124654",
-        appointment_type: "Online",
-        date: "2024-06-25T14:29:37.000000Z",
-        charges: "$10",
-        email: "someemail@email.com",
-        serviceCategory: "Home Health & Rehabilitation Care",
-        phone: "+1123456789",
-        serviceDate: "14/02/2024",
-        user: {
-          name: "Marie max",
-          id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
-        },
-        serviceProvider: {
-          id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-          name: "Cindy Anne",
-          serviceName: "MedLink Solutions service",
-        },
-        status: "Pending",
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
@@ -2270,8 +1976,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Ai Boi",
-                    "photo-path":
-                      "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                    "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
                   },
                   comment:
                     "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -2281,8 +1986,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                    "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
                   },
                   comment:
                     "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -2292,8 +1996,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                    "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
                   },
                   comment:
                     "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -2350,8 +2053,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Ai Boi",
-                    "photo-path":
-                      "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                    "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
                   },
                   comment:
                     "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -2361,8 +2063,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                    "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
                   },
                   comment:
                     "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -2372,8 +2073,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                    "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
                   },
                   comment:
                     "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -2440,8 +2140,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Ai Boi",
-                    "photo-path":
-                      "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                    "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
                   },
                   comment:
                     "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -2451,8 +2150,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                    "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
                   },
                   comment:
                     "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -2462,8 +2160,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                    "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
                   },
                   comment:
                     "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -2520,8 +2217,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Ai Boi",
-                    "photo-path":
-                      "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                    "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
                   },
                   comment:
                     "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -2531,8 +2227,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                    "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
                   },
                   comment:
                     "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -2542,8 +2237,7 @@ export const productCategoryManagementData = {
                 {
                   user: {
                     name: "Athalia Putri",
-                    "photo-path":
-                      "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                    "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
                   },
                   comment:
                     "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -2613,8 +2307,7 @@ export const shopDetailsData = {
         shopName: "HealFast",
         deliveryDate: "12/02/2024",
         deliveryFee: "$8",
-        photo:
-          "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
+        photo: "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
         category: "Pain Relief",
         status_detail: "1",
         products: [
@@ -2660,8 +2353,7 @@ export const shopDetailsData = {
         shopName: "HealFast",
         deliveryDate: "12/02/2024",
         deliveryFee: "$8",
-        photo:
-          "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
+        photo: "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
         category: "Pain Relief",
         status_detail: "1",
         products: [
@@ -2707,8 +2399,7 @@ export const shopDetailsData = {
         shopName: "HealFast",
         deliveryDate: "12/02/2024",
         deliveryFee: "$8",
-        photo:
-          "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
+        photo: "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
         category: "Pain Relief",
         status_detail: "1",
         products: [
@@ -2754,8 +2445,7 @@ export const shopDetailsData = {
         shopName: "HealFast",
         deliveryDate: "12/02/2024",
         deliveryFee: "$8",
-        photo:
-          "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
+        photo: "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
         category: "Pain Relief",
         status_detail: "1",
         products: [
@@ -2801,8 +2491,7 @@ export const shopDetailsData = {
         shopName: "HealFast",
         deliveryDate: "12/02/2024",
         deliveryFee: "$8",
-        photo:
-          "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
+        photo: "https://img.freepik.com/premium-photo/pharmacy-shop-pharmacy-store-interior-with-shelves-pharmaceutical-products-cosmetics_1036975-246092.jpg",
         category: "Pain Relief",
         status_detail: "1",
         products: [
@@ -2918,8 +2607,7 @@ export const productsData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -2929,8 +2617,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -2940,8 +2627,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -2996,8 +2682,7 @@ export const productsData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -3007,8 +2692,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -3018,8 +2702,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -3074,8 +2757,7 @@ export const productsData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -3085,8 +2767,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -3096,8 +2777,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -3152,8 +2832,7 @@ export const productsData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -3163,8 +2842,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -3174,8 +2852,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -3230,8 +2907,7 @@ export const productsData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -3241,8 +2917,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -3252,8 +2927,7 @@ export const productsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -3398,13 +3072,11 @@ export const newRequestServiceProviderData = {
         city: "Dallas",
         bio: "Dr. Sarah has over 07 years of experience in the field of pediatrics. She has worked in several healthcare settings, including children's hospitals, clinics, and primary care facilities, providing specialized medical care for children of all ages.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Harvard Medical School",
           certificateTitle: "Pediatrician",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -3467,13 +3139,11 @@ export const newRequestServiceProviderData = {
         city: "New York City",
         bio: "Dr. Daniel is a renowned cardiologist with 15 years of experience. He has made significant contributions in the field of cardiology and worked in various reputed hospitals to treat patients with cardiovascular diseases.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Johns Hopkins University",
           certificateTitle: "Cardiologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -3534,13 +3204,11 @@ export const newRequestServiceProviderData = {
         city: "Miami",
         bio: "Dr. Emily has over 08 years of experience as an oncologist, working extensively in cancer research and treatment. She has been part of various cancer institutes, helping patients in their fight against cancer.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "University of Florida",
           certificateTitle: "Oncologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -3603,13 +3271,11 @@ export const newRequestServiceProviderData = {
         city: "Los Angeles",
         bio: "Dr. Michael is a skilled neurologist with 12 years of experience, specializing in treating patients with neurological disorders. He has worked in some of the top hospitals, delivering expert care to those in need.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Stanford University",
           certificateTitle: "Neurologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -3670,13 +3336,11 @@ export const newRequestServiceProviderData = {
         city: "Chicago",
         bio: "Dr. Jessica has over 10 years of experience in gynecology, providing specialized care for women's health. She has worked in various hospitals and private practices, ensuring quality care for women at different stages of life.",
         certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          photo: "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
           institute: "Northwestern University",
           certificateTitle: "Gynecologist",
         },
-        userImage:
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+        userImage: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
           {
             id: "1",
@@ -3772,9 +3436,7 @@ export const serviceCategoryData = {
         creationDate: "12/02/2024",
         status_detail: "1",
         category: "diabetes care",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
       },
       {
         id: "2",
@@ -3782,36 +3444,28 @@ export const serviceCategoryData = {
         creationDate: "01/12/2024",
         status_detail: "0",
         category: "pain releif",
-        photo: [
-          "https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg",
-        ],
+        photo: ["https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg"],
       },
       {
         id: "3",
         categoryTitle: "Multivitamins",
         creationDate: "03/02/2024",
         status_detail: "1",
-        photo: [
-          "https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg",
-        ],
+        photo: ["https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg"],
       },
       {
         id: "4",
         categoryTitle: "Burn Creams",
         creationDate: "08/08/2024",
         status_detail: "0",
-        photo: [
-          "https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg",
-        ],
+        photo: ["https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg"],
       },
       {
         id: "5",
         categoryTitle: "Joint & Bone Health",
         creationDate: "20/06/2024",
         status_detail: "1",
-        photo: [
-          "https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg",
-        ],
+        photo: ["https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg"],
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
@@ -3860,9 +3514,7 @@ export const blogsData = {
         addedOn: "12/02/2024",
         pricingOption: "premium",
         status_detail: "1",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
         content: `Health matters because it is the foundation of a fulfilling life. Good health allows us to pursue our goals, enjoy meaningful relationships, and navigate daily challenges with energy and resilience. Taking care of both physical and mental well-being is essential for long-term happiness and success.`,
         blogFile: ["https://pdfobject.com/pdf/sample.pdf"],
       },
@@ -3967,8 +3619,7 @@ export const videosData = {
           "This is some description about the video that is being played below. This text is here just to fill this place and give you an idea how it will look once the actual video description is here.",
         pricingOption: "premium",
         status_detail: "1",
-        video:
-          "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+        video: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
         content: `Health matters because it is the foundation of a fulfilling life. Good health allows us to pursue our goals, enjoy meaningful relationships, and navigate daily challenges with energy and resilience. Taking care of both physical and mental well-being is essential for long-term happiness and success.`,
       },
       {
@@ -3979,8 +3630,7 @@ export const videosData = {
           "This is some description about the video that is being played below. This text is here just to fill this place and give you an idea how it will look once the actual video description is here.",
         pricingOption: "free",
         status_detail: "0",
-        video:
-          "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4",
+        video: "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4",
         content: `Everyday Wellness: Simple Habits for a Healthier, Happier Life In today’s fast-paced world, it can be easy to overlook the small things that contribute to our overall wellness. We’re often focused on big goals like losing weight, reducing stress, or getting fit, but true wellness is about the little things we do every day that keep our minds and bodies healthy. By integrating simple, sustainable habits into our daily routines, we can improve our physical, mental, and emotional well-being. Here’s how to embrace everyday wellness.
 Prioritize Hydration
 Water is essential for nearly every function in the body, from regulating temperature to aiding digestion and supporting brain function. Yet, many of us don’t drink enough throughout the day. Dehydration can lead to fatigue, headaches, and even mood changes. Make it a habit to drink water regularly. Carry a reusable water bottle with you and aim for at least 8 cups of water a day (more if you’re active).
@@ -3998,8 +3648,7 @@ Tip: If you have a sedentary job, set a timer to remind you to stand up and stre
           "This is some description about the video that is being played below. This text is here just to fill this place and give you an idea how it will look once the actual video description is here.",
         pricingOption: "free",
         status_detail: "1",
-        video:
-          "https://videos.pexels.com/video-files/4769286/4769286-uhd_1440_2560_24fps.mp4",
+        video: "https://videos.pexels.com/video-files/4769286/4769286-uhd_1440_2560_24fps.mp4",
       },
       {
         id: "4",
@@ -4019,8 +3668,7 @@ Tip: If you have a sedentary job, set a timer to remind you to stand up and stre
           "This is some description about the video that is being played below. This text is here just to fill this place and give you an idea how it will look once the actual video description is here.",
         pricingOption: "premium",
         status_detail: "1",
-        video:
-          "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4",
+        video: "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4",
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
@@ -4069,9 +3717,7 @@ export const articlesData = {
         addedOn: "12/02/2024",
         pricingOption: "premium",
         status_detail: "1",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
         content: `Managing Type 2 diabetes involves maintaining healthy blood sugar levels through a combination of lifestyle changes, medications, and regular monitoring. Key aspects include following a balanced diet rich in fiber, whole grains, and lean proteins, along with regular physical activity to improve insulin sensitivity. Medications or insulin therapy may be prescribed to help control glucose levels, and regular check-ups with a healthcare provider are essential to track progress and prevent complications. Managing stress and getting adequate sleep are also important for overall well-being.`,
         articleFile: ["https://pdfobject.com/pdf/sample.pdf"],
       },
@@ -4081,9 +3727,7 @@ export const articlesData = {
         addedOn: "01/12/2024",
         pricingOption: "free",
         status_detail: "0",
-        photo: [
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-        ],
+        photo: ["https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"],
         content: `Everyday Wellness: Simple Habits for a Healthier, Happier Life In today’s fast-paced world, it can be easy to overlook the small things that contribute to our overall wellness. We’re often focused on big goals like losing weight, reducing stress, or getting fit, but true wellness is about the little things we do every day that keep our minds and bodies healthy. By integrating simple, sustainable habits into our daily routines, we can improve our physical, mental, and emotional well-being. Here’s how to embrace everyday wellness.
 Prioritize Hydration
 Water is essential for nearly every function in the body, from regulating temperature to aiding digestion and supporting brain function. Yet, many of us don’t drink enough throughout the day. Dehydration can lead to fatigue, headaches, and even mood changes. Make it a habit to drink water regularly. Carry a reusable water bottle with you and aim for at least 8 cups of water a day (more if you’re active).
@@ -4100,9 +3744,7 @@ Tip: If you have a sedentary job, set a timer to remind you to stand up and stre
         addedOn: "03/02/2024",
         pricingOption: "free",
         status_detail: "1",
-        photo: [
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-        ],
+        photo: ["https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"],
         articleFile: ["https://pdfobject.com/pdf/sample.pdf"],
       },
       {
@@ -4111,9 +3753,7 @@ Tip: If you have a sedentary job, set a timer to remind you to stand up and stre
         addedOn: "08/08/2024",
         pricingOption: "free",
         status_detail: "0",
-        photo: [
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-        ],
+        photo: ["https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"],
         articleFile: ["https://pdfobject.com/pdf/sample.pdf"],
       },
       {
@@ -4122,9 +3762,7 @@ Tip: If you have a sedentary job, set a timer to remind you to stand up and stre
         addedOn: "20/06/2024",
         pricingOption: "premium",
         status_detail: "1",
-        photo: [
-          "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-        ],
+        photo: ["https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"],
         articleFile: ["https://pdfobject.com/pdf/sample.pdf"],
       },
     ],
@@ -4174,9 +3812,7 @@ export const eBooksData = {
         addedOn: "12/02/2024",
         pricingOption: "premium",
         status_detail: "1",
-        photo: [
-          "https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg",
-        ],
+        photo: ["https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg"],
         description: `Health matters because it is the foundation of a fulfilling life. Good health allows us to pursue our goals, enjoy meaningful relationships, and navigate daily challenges with energy and resilience. Taking care of both physical and mental well-being is essential for long-term happiness and success.`,
         eBookFile: ["https://pdfobject.com/pdf/sample.pdf"],
       },
@@ -4186,9 +3822,7 @@ export const eBooksData = {
         addedOn: "01/12/2024",
         pricingOption: "free",
         status_detail: "0",
-        photo: [
-          "https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg",
-        ],
+        photo: ["https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg"],
         description: `Everyday Wellness: Simple Habits for a Healthier, Happier Life In today’s fast-paced world, it can be easy to overlook the small things that contribute to our overall wellness. We’re often focused on big goals like losing weight, reducing stress, or getting fit, but true wellness is about the little things we do every day that keep our minds and bodies healthy. By integrating simple, sustainable habits into our daily routines, we can improve our physical, mental, and emotional well-being. Here’s how to embrace everyday wellness.
 Prioritize Hydration
 Water is essential for nearly every function in the body, from regulating temperature to aiding digestion and supporting brain function. Yet, many of us don’t drink enough throughout the day. Dehydration can lead to fatigue, headaches, and even mood changes. Make it a habit to drink water regularly. Carry a reusable water bottle with you and aim for at least 8 cups of water a day (more if you’re active).
@@ -4205,9 +3839,7 @@ Tip: If you have a sedentary job, set a timer to remind you to stand up and stre
         addedOn: "03/02/2024",
         pricingOption: "free",
         status_detail: "1",
-        photo: [
-          "https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg",
-        ],
+        photo: ["https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg"],
         description: `Health matters because it is the foundation of a fulfilling life. Good health allows us to pursue our goals, enjoy meaningful relationships, and navigate daily challenges with energy and resilience. Taking care of both physical and mental well-being is essential for long-term happiness and success.`,
         eBookFile: ["https://pdfobject.com/pdf/sample.pdf"],
       },
@@ -4217,9 +3849,7 @@ Tip: If you have a sedentary job, set a timer to remind you to stand up and stre
         addedOn: "08/08/2024",
         pricingOption: "free",
         status_detail: "0",
-        photo: [
-          "https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg",
-        ],
+        photo: ["https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg"],
         description: `mental health: is an essential aspect of overall well-being, encompassing emotional, psychological, and social well-being. It affects how we think, feel, and act in daily life, influencing our ability to handle stress, relate to others, and make choices. Mental health is important at every stage of life, from childhood through adulthood.
 However, mental health issues can arise at any point in life, often leading to challenges in functioning or managing daily activities. Conditions like anxiety, depression, bipolar disorder, and schizophrenia are just some of the many disorders that can impact mental health. Fortunately, with the right support and treatment, individuals can lead fulfilling lives despite these challenges.
 Emotional Well-being: The ability to experience and express a range of emotions, including joy, sadness, anger, and fear, and to manage these emotions effectively.
@@ -4235,9 +3865,7 @@ Anxiety Disorders: Conditions characterized by excessive fear, worry, or nervous
         addedOn: "20/06/2024",
         pricingOption: "premium",
         status_detail: "1",
-        photo: [
-          "https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg",
-        ],
+        photo: ["https://phantom-writing.com/blog/wp-content/uploads/2023/10/ebook4.jpg"],
         eBookFile: ["https://pdfobject.com/pdf/sample.pdf"],
         description: `Everyday Wellness: Simple Habits for a Healthier, Happier Life In today’s fast-paced world, it can be easy to overlook the small things that contribute to our overall wellness. We’re often focused on big goals like losing weight, reducing stress, or getting fit, but true wellness is about the little things we do every day that keep our minds and bodies healthy. By integrating simple, sustainable habits into our daily routines, we can improve our physical, mental, and emotional well-being. Here’s how to embrace everyday wellness.
         Prioritize Hydration
@@ -4537,8 +4165,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Premium",
         duration: "Monthly",
         price: 20,
-        description:
-          "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $20 per month.",
+        description: "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $20 per month.",
         creationDate: "12/01/2024",
         lastModified: "13/01/2024",
         status_detail: "1",
@@ -4549,8 +4176,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Basic",
         duration: "Yearly",
         price: 50,
-        description:
-          "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $50 per month.",
+        description: "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $50 per month.",
         creationDate: "05/03/2024",
         lastModified: "06/03/2024",
         status_detail: "0",
@@ -4561,8 +4187,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Basic",
         duration: "Monthly",
         price: 10,
-        description:
-          "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $10 per month.",
+        description: "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $10 per month.",
         creationDate: "15/02/2024",
         lastModified: "16/02/2024",
         status_detail: "1",
@@ -4573,8 +4198,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Premium",
         duration: "Yearly",
         price: 100,
-        description:
-          "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $100 per month.",
+        description: "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $100 per month.",
         creationDate: "08/08/2024",
         lastModified: "09/08/2024",
         status_detail: "0",
@@ -4585,8 +4209,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Basic",
         duration: "Monthly",
         price: 10,
-        description:
-          "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $10 per month.",
+        description: "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $10 per month.",
         creationDate: "22/06/2024",
         lastModified: "23/06/2024",
         status_detail: "1",
@@ -4597,8 +4220,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Premium",
         duration: "Yearly",
         price: 100,
-        description:
-          "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $100 per month.",
+        description: "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $100 per month.",
         creationDate: "10/05/2024",
         lastModified: "11/05/2024",
         status_detail: "1",
@@ -4609,8 +4231,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Basic",
         duration: "Monthly",
         price: 15,
-        description:
-          "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $15 per month.",
+        description: "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $15 per month.",
         creationDate: "30/07/2024",
         lastModified: "31/07/2024",
         status_detail: "0",
@@ -4621,8 +4242,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Premium",
         duration: "Monthly",
         price: 40,
-        description:
-          "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $40 per month.",
+        description: "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $40 per month.",
         creationDate: "18/04/2024",
         lastModified: "19/04/2024",
         status_detail: "0",
@@ -4633,8 +4253,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Basic",
         duration: "Yearly",
         price: 30,
-        description:
-          "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $30 per month.",
+        description: "The Basic Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $30 per month.",
         creationDate: "12/10/2024",
         lastModified: "13/10/2024",
         status_detail: "1",
@@ -4645,8 +4264,7 @@ export const subscriptionPlansManagementData = {
         subscriptionTitle: "Premium",
         duration: "Monthly",
         price: 60,
-        description:
-          "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $60 per month.",
+        description: "The Premium Monthly plan offers enhanced services with exclusive benefits, tailored for high-end users at just $60 per month.",
         creationDate: "22/11/2024",
         lastModified: "23/11/2024",
         status_detail: "1",
@@ -4768,13 +4386,11 @@ export const reportsManagementBookingData = {
         user: {
           name: "Tom albert",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
         serviceProvider: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+          photo: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
           name: "Victoria Andrew",
           serviceName: "MedLink Solutions service",
         },
@@ -4801,13 +4417,11 @@ export const reportsManagementBookingData = {
         user: {
           name: "Tom albert",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
         serviceProvider: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+          photo: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
           name: "Victoria Andrew",
           serviceName: "MedLink Solutions service",
         },
@@ -4834,13 +4448,11 @@ export const reportsManagementBookingData = {
         user: {
           name: "Tom albert",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
         serviceProvider: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+          photo: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
           name: "Victoria Andrew",
           serviceName: "MedLink Solutions service",
         },
@@ -4867,13 +4479,11 @@ export const reportsManagementBookingData = {
         user: {
           name: "Tom albert",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
         serviceProvider: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+          photo: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
           name: "Victoria Andrew",
           serviceName: "MedLink Solutions service",
         },
@@ -4900,13 +4510,11 @@ export const reportsManagementBookingData = {
         user: {
           name: "Tom albert",
           id: "1",
-          photo:
-            "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
         },
         serviceProvider: {
           id: "1",
-          photo:
-            "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
+          photo: "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
           name: "Victoria Andrew",
           serviceName: "MedLink Solutions service",
         },
@@ -5156,9 +4764,7 @@ export const bannerAdsManagementData = {
         emailAddress: "neurorelief@gmail.com",
         expiryDate: "2024-02-12",
         postedOn: "12/02/2024",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
         status_detail: "1",
       },
       {
@@ -5168,9 +4774,7 @@ export const bannerAdsManagementData = {
         emailAddress: "migracare@gmail.com",
         expiryDate: "2024-12-01",
         postedOn: "01/12/2024",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
         status_detail: "0",
       },
       {
@@ -5180,9 +4784,7 @@ export const bannerAdsManagementData = {
         emailAddress: "sereneneck@gmail.com",
         expiryDate: "2024-02-03",
         postedOn: "03/02/2024",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
         status_detail: "1",
       },
       {
@@ -5192,9 +4794,7 @@ export const bannerAdsManagementData = {
         emailAddress: "cerebrahealth@gmail.com",
         expiryDate: "2024-08-08",
         postedOn: "08/08/2024",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
         status_detail: "0",
       },
       {
@@ -5204,9 +4804,7 @@ export const bannerAdsManagementData = {
         emailAddress: "calmwavehealth@gmail.com",
         expiryDate: "2024-06-20",
         postedOn: "20/06/2024",
-        photo: [
-          "https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg",
-        ],
+        photo: ["https://www.dicomdirector.com/wp-content/uploads/2022/03/wire-frame-image-human-body-2120x1060.jpg"],
         status_detail: "1",
       },
     ],
@@ -5606,8 +5204,7 @@ export const faqs = [
     answerType: "video",
     answer: "",
     image: null,
-    video:
-      "https://videos.pexels.com/video-files/8471681/8471681-uhd_2732_1440_25fps.mp4",
+    video: "https://videos.pexels.com/video-files/8471681/8471681-uhd_2732_1440_25fps.mp4",
   },
   {
     question: "How Can I Make An Appointment?",
@@ -5620,8 +5217,7 @@ export const faqs = [
     question: "What Do I Do In Case Of A Medical Emergency?",
     answerType: "image",
     answer: "",
-    image:
-      "https://img.freepik.com/free-photo/flat-lay-health-still-life-arrangement-with-copy-space_23-2148854063.jpg?semt=ais_hybrid",
+    image: "https://img.freepik.com/free-photo/flat-lay-health-still-life-arrangement-with-copy-space_23-2148854063.jpg?semt=ais_hybrid",
     video: null,
   },
 ];
@@ -5686,8 +5282,7 @@ export const productData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -5697,8 +5292,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -5708,8 +5302,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -5757,8 +5350,7 @@ export const productData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -5768,8 +5360,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -5779,8 +5370,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -5827,8 +5417,7 @@ export const productData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -5838,8 +5427,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -5849,8 +5437,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -5897,8 +5484,7 @@ export const productData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -5908,8 +5494,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -5919,8 +5504,7 @@ export const productData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -6028,8 +5612,7 @@ export const servicesData = {
         service_name: "services_a",
         category: "abc",
         quickSessionType: true,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$10.00",
         call: "$20.00",
         video_call: "$30.00",
@@ -6063,8 +5646,7 @@ export const servicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -6074,8 +5656,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -6085,8 +5666,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -6114,8 +5694,7 @@ export const servicesData = {
         service_name: "services_b",
         category: "abc",
         quickSessionType: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6142,8 +5721,7 @@ export const servicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -6153,8 +5731,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -6164,8 +5741,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -6193,8 +5769,7 @@ export const servicesData = {
         service_name: "services_a",
         category: "abc",
         quickSessionType: true,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6222,8 +5797,7 @@ export const servicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -6233,8 +5807,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -6244,8 +5817,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -6271,8 +5843,7 @@ export const servicesData = {
         title: "Service Name",
         category: "abc",
         quickSessionType: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6299,8 +5870,7 @@ export const servicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -6310,8 +5880,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -6321,8 +5890,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -6348,8 +5916,7 @@ export const servicesData = {
         title: "Service Name",
         category: "abc",
         quickSessionType: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6376,8 +5943,7 @@ export const servicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -6387,8 +5953,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -6398,8 +5963,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -6425,8 +5989,7 @@ export const servicesData = {
         title: "Service Name",
         category: "abc",
         quickSessionType: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6453,8 +6016,7 @@ export const servicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -6464,8 +6026,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -6475,8 +6036,7 @@ export const servicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -6543,8 +6103,7 @@ export const newServicesData = {
         title: "Services Name 1",
         category: "abc",
         quick: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6560,8 +6119,7 @@ export const newServicesData = {
         title: "Services Name 2",
         category: "abc",
         quick: true,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6577,8 +6135,7 @@ export const newServicesData = {
         title: "Services Name",
         category: "abc",
         quick: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6594,8 +6151,7 @@ export const newServicesData = {
         title: "Services Name",
         category: "abc",
         quick: true,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6611,8 +6167,7 @@ export const newServicesData = {
         title: "Services Name",
         category: "abc",
         quick: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -6628,8 +6183,7 @@ export const newServicesData = {
         title: "Services Name",
         category: "abc",
         quick: true,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -7285,8 +6839,7 @@ export const addsManageData = {
         payment_status: "Paid",
         subscription_plan: "Weekly Plan",
         contact_no: "00-000000-00",
-        purpose_advertisement:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+        purpose_advertisement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
         created_at: "2024-05-27T12:39:18.000000Z",
       },
       {
@@ -7302,8 +6855,7 @@ export const addsManageData = {
         email: "tomalbert@gmail.com",
         payment_status: "Unpaid",
         contact_no: "00-000000-00",
-        purpose_advertisement:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+        purpose_advertisement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
         created_at: "2024-05-27T12:39:18.000000Z",
       },
       {
@@ -7318,8 +6870,7 @@ export const addsManageData = {
         user_detail: "Sub Admin",
         email: "tomalbert@gmail.com",
         contact_no: "00-000000-00",
-        purpose_advertisement:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+        purpose_advertisement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
         created_at: "2024-05-27T12:39:18.000000Z",
       },
       {
@@ -7334,8 +6885,7 @@ export const addsManageData = {
         user_detail: "User",
         email: "tomalbert@gmail.com",
         contact_no: "00-000000-00",
-        purpose_advertisement:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+        purpose_advertisement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
         created_at: "2024-05-27T12:39:18.000000Z",
       },
       {
@@ -7350,8 +6900,7 @@ export const addsManageData = {
         user_detail: "Sub Admin",
         email: "tomalbert@gmail.com",
         contact_no: "00-000000-00",
-        purpose_advertisement:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+        purpose_advertisement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
         created_at: "2024-05-27T12:39:18.000000Z",
       },
       {
@@ -7367,8 +6916,7 @@ export const addsManageData = {
         payment_status: "Unpaid",
         email: "tomalbert@gmail.com",
         contact_no: "00-000000-00",
-        purpose_advertisement:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+        purpose_advertisement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
         created_at: "2024-05-27T12:39:18.000000Z",
       },
       {
@@ -7383,8 +6931,7 @@ export const addsManageData = {
         user_detail: "User",
         email: "tomalbert@gmail.com",
         contact_no: "00-000000-00",
-        purpose_advertisement:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
+        purpose_advertisement: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
         created_at: "2024-05-27T12:39:18.000000Z",
       },
     ],
@@ -7509,29 +7056,25 @@ export const userFaqData = {
     data: [
       {
         id: 1,
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
         content:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy .Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
       },
       {
         id: 2,
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
         content:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy .Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
       },
       {
         id: 3,
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
         content:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy .Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
       },
       {
         id: 4,
-        title:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
+        title: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ?",
         content:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy .Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
       },
@@ -7584,8 +7127,7 @@ export const educationVideoData = {
         date: "2024-06-26T14:29:37.000000Z",
         type: "video",
         image: images.serviceImg1,
-        video_path:
-          "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+        video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
         isSaved: true,
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7597,8 +7139,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg2,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7610,8 +7151,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg3,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7623,8 +7163,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg4,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7638,8 +7177,7 @@ export const educationVideoData = {
         date: "2024-06-26T14:29:37.000000Z",
         type: "video",
         image: images.serviceImg2,
-        video_path:
-          "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4",
+        video_path: "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4",
         isSaved: false,
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7651,8 +7189,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg1,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7664,8 +7201,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg2,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7677,8 +7213,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg3,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7692,8 +7227,7 @@ export const educationVideoData = {
         date: "2024-06-26T14:29:37.000000Z",
         type: "video",
         image: images.serviceImg3,
-        video_path:
-          "https://videos.pexels.com/video-files/4769286/4769286-uhd_1440_2560_24fps.mp4",
+        video_path: "https://videos.pexels.com/video-files/4769286/4769286-uhd_1440_2560_24fps.mp4",
         isSaved: true,
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7705,8 +7239,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg1,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7718,8 +7251,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg2,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7731,8 +7263,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg3,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7746,8 +7277,7 @@ export const educationVideoData = {
         date: "2024-06-26T14:29:37.000000Z",
         type: "video",
         image: images.serviceImg4,
-        video_path:
-          "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4,",
+        video_path: "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4,",
         isSaved: true,
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7759,8 +7289,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg1,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7772,8 +7301,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg2,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7785,8 +7313,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg3,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7800,8 +7327,7 @@ export const educationVideoData = {
         date: "2024-06-26T14:29:37.000000Z",
         type: "video",
         image: images.serviceImg5,
-        video_path:
-          "https://videos.pexels.com/video-files/4769286/4769286-uhd_1440_2560_24fps.mp4",
+        video_path: "https://videos.pexels.com/video-files/4769286/4769286-uhd_1440_2560_24fps.mp4",
         isSaved: true,
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7813,8 +7339,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg1,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7826,8 +7351,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg2,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7839,8 +7363,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg3,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7854,8 +7377,7 @@ export const educationVideoData = {
         date: "2024-06-26T14:29:37.000000Z",
         type: "video",
         image: images.serviceImg6,
-        video_path:
-          "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4,",
+        video_path: "https://videos.pexels.com/video-files/5721605/5721605-uhd_2732_1440_25fps.mp4,",
         isSaved: true,
         description:
           "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7867,8 +7389,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg1,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7880,8 +7401,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg2,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -7893,8 +7413,7 @@ export const educationVideoData = {
             date: "2024-06-26T14:29:37.000000Z",
             type: "video",
             image: images.serviceImg3,
-            video_path:
-              "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
+            video_path: "https://videos.pexels.com/video-files/4121322/4121322-uhd_2560_1440_25fps.mp4",
             is_save: true,
             description:
               "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset ",
@@ -8553,8 +8072,7 @@ export const wishListData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -8564,8 +8082,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -8575,8 +8092,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -8626,8 +8142,7 @@ export const wishListData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -8637,8 +8152,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -8648,8 +8162,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -8700,8 +8213,7 @@ export const wishListData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -8711,8 +8223,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -8722,8 +8233,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -8774,8 +8284,7 @@ export const wishListData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -8785,8 +8294,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -8796,8 +8304,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -8848,8 +8355,7 @@ export const wishListData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -8859,8 +8365,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -8870,8 +8375,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -8921,8 +8425,7 @@ export const wishListData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -8932,8 +8435,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -8943,8 +8445,7 @@ export const wishListData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -9022,8 +8523,7 @@ export const orderLogsData = {
         shipping_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9032,8 +8532,7 @@ export const orderLogsData = {
         billing_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9129,8 +8628,7 @@ export const providerOrderLogsData = {
         shipping_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9139,8 +8637,7 @@ export const providerOrderLogsData = {
         billing_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9165,8 +8662,7 @@ export const providerOrderLogsData = {
         shipping_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9175,8 +8671,7 @@ export const providerOrderLogsData = {
         billing_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9200,8 +8695,7 @@ export const providerOrderLogsData = {
         shipping_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9210,8 +8704,7 @@ export const providerOrderLogsData = {
         billing_address: {
           user_name: "Tom Albert",
           phone_number: "+19159969739",
-          address:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
+          address: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod",
           country: "XYZ",
           state: "XYZ",
           city: "XYZ",
@@ -9320,8 +8813,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -9331,8 +8823,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -9342,8 +8833,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -9393,8 +8883,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -9404,8 +8893,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -9415,8 +8903,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -9467,8 +8954,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -9478,8 +8964,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -9489,8 +8974,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -9541,8 +9025,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -9552,8 +9035,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -9563,8 +9045,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -9615,8 +9096,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -9626,8 +9106,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -9637,8 +9116,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -9688,8 +9166,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -9699,8 +9176,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -9710,8 +9186,7 @@ export const providerservicesData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -10540,8 +10015,7 @@ export const ratingReviewsData = {
         title: "Services Name",
         category: "abc",
         quick: false,
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit",
         chat: "$30.00",
         call: "$30.00",
         video_call: "$30.00",
@@ -10568,8 +10042,7 @@ export const ratingReviewsData = {
             {
               user: {
                 name: "Ai Boi",
-                "photo-path":
-                  "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
+                "photo-path": "https://www.profilebakery.com/wp-content/uploads/2024/05/Profile-picture-created-with-ai.jpeg",
               },
               comment:
                 "Great for maintaining gut health. I've been using DigestAid regularly, and I've noticed a significant improvement in my overall digestive health. It's a great supplement to keep my gut in check.",
@@ -10579,8 +10052,7 @@ export const ratingReviewsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
+                "photo-path": "https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8",
               },
               comment:
                 "Gentle and effective. I have a sensitive stomach, and DigestAid has been the perfect solution. It’s gentle on my system while effectively easing discomfort after meals.",
@@ -10590,8 +10062,7 @@ export const ratingReviewsData = {
             {
               user: {
                 name: "Athalia Putri",
-                "photo-path":
-                  "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
+                "photo-path": "https://newprofilepicapp.com/wp-content/uploads/2024/02/New-Profile-Pic-App.webp",
               },
               comment:
                 "Versatile digestive support. Whether I’m feeling gassy, bloated, or just need help digesting heavy meals, DigestAid always comes through. I like that it targets various digestive issues in one product",
@@ -11321,9 +10792,9 @@ export const serviceManagementData = {
         creation_date: "2024-07-05T08:21:31.000000Z",
         status_detail: "0",
         status: 1,
-        photo: [images.BannerImg]
+        photo: [images.BannerImg],
       },
-       {
+      {
         id: 2,
         service_title: "Abc",
         sub_category: "sub-category abc",
@@ -11331,7 +10802,7 @@ export const serviceManagementData = {
         creation_date: "2024-07-05T08:21:31.000000Z",
         status_detail: "1",
         status: 1,
-         photo: [images.ProfileCover]
+        photo: [images.ProfileCover],
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",

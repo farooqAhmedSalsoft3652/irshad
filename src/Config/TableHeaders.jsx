@@ -280,28 +280,48 @@ export const appointmentLogsHeaders = [
     title: "S.No",
   },
   {
-    key: "appointmentId",
-    title: "Appointment ID",
+    key: "bookingId",
+    title: "Booking ID",
   },
   {
     key: "username",
     title: "User Name",
   },
   {
-    key: "serviceProviderName",
-    title: "Service Provider Name",
+    key: "consultantName",
+    title: "Consultant Name",
+  },
+  {
+    key: "category",
+    title: "Category",
+  },
+  {
+    key: "bookingDate",
+    title: "Booking Date",
   },
   {
     key: "appointmentDate",
     title: "Appointment Date",
   },
   {
-    key: "charges",
-    title: "Charges",
+    key: "sessionType",
+    title: "Session Type",
   },
   {
     key: "appointmentType",
     title: "Appointment Type",
+  },
+  {
+    key: "duration",
+    title: "Duration",
+  },
+  {
+    key: "amount",
+    title: "Amount",
+  },
+  {
+    key: "status",
+    title: "Status",
   },
   {
     key: "action",

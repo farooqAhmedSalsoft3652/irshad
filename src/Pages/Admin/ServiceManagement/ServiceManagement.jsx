@@ -63,13 +63,13 @@ const ServiceManagement = ({ filters, setFilters, pagination, updatePagination, 
     <DashboardLayout pageTitle="Service Management">
       <div className="container-fluid">
         <>
-          <div className="my-4 d-flex flex-wrap gap-3 gap-md-0 align-items-center justify-content-between">
+          <div className="dashCard">
+          <div className="mb-4 d-flex flex-wrap gap-3 gap-md-0 align-items-center justify-content-between">
             <h2 className="mainTitle mb-0">Service Management</h2>
             <Link to={"/admin/service-management/add-service"} className="btn btn-primary">
               Add Service
             </Link>
           </div>
-          <div className="dashCard">
             <div className="row mb-3">
               <div className="col-12">
                 <CustomTable

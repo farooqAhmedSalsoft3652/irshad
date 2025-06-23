@@ -122,7 +122,9 @@
   outline: none;
   transition: 0.3s linear;
 }
-
+.admin-layout .tableAction{
+  padding: 0px;
+}
 /* .tableAction:hover {
   background: var(--primaryColor);
   color: #fff !important;
@@ -249,7 +251,7 @@ User Table Styling ***************/
 .admin-layout .customTable tbody td {
   border-top: 1px solid #E7E7E7;
   border-bottom: 1px solid #E7E7E7;
-  padding: 0rem 1.2rem !important;
+  padding: 1.1rem 1.2rem !important;
   background-color: transparent;
   color: #707070;
 }
