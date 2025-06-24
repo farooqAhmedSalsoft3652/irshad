@@ -570,6 +570,28 @@ export const PayoutManagementHeader = [
     title: "UpdatedOn",
   },
 ];
+export const PromoCodeManagementHeader = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "promoName",
+    title: "Promo Name",
+  },
+  {
+    key: "promoDiscount",
+    title: "Promo Discount",
+  },
+  {
+    key: "updatedOn",
+    title: "Updated On",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
 export const reportsManagementBookingHeader = [
   {
     key: "id",

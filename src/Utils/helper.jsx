@@ -609,7 +609,7 @@ export const generateLinks = (role) => {
           name: "Appointment Logs",
         },
         {
-          link: "/admin/content-management",
+          link: "/admin/promo-code",
           image: PromoCodeIcon,
           name: "Promo Code management",
         },

@@ -139,6 +139,7 @@ import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import ScreeningHome from "../Pages/User/ScreeningHome/index";
+import PromoCodeManagement from "../Pages/Admin/PromoCodeManagement/PromoCodeManagement";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -348,6 +349,10 @@ const routes = [
 
           // Payment Logs //
           { path: "admin/payment-logs", element: <PaymentLogs /> },
+          // --- End --- //
+
+          // Promo Code Management //
+          { path: "admin/promo-code", element: <PromoCodeManagement /> },
           // --- End --- //
 
           // Reports Management //

@@ -946,6 +946,10 @@ export const addNewSubscriptionPlanSchema = Yup.object().shape({
 export const disbursementTime = Yup.object().shape({
   disbursement_time: Yup.string().required("Disbursement time is required"),
 });
+export const promoCode = Yup.object().shape({
+  promo_name: Yup.string().required("Promo name is required"),
+  discount: Yup.string().required("Discount is required"),
+});
 const accountTypeValues = accountTypeOptions.map((option) => option.value);
 export const addBankDetailSchema = Yup.object().shape({
   accountHolderName: Yup.string()
