@@ -1,0 +1,11 @@
+.payout-wrap .dollar_icon{
+top: 28%;
+right: 17px;
+}
+
+@media screen and (max-width: 575px) {
+    .payout-wrap .dollar_icon{
+        right: 12px;
+        font-size: 14px;
+    }
+}
