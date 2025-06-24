@@ -3,7 +3,7 @@ import { Container, Dropdown } from "react-bootstrap";
 import { BiCheck, BiCheckDouble } from "react-icons/bi";
 import { FaBars, FaFilter, FaSearch } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ScrollToBottom from "react-scroll-to-bottom";
 import CustomInput from "../../../Components/CustomInput/index";
 import { chat_box, loginCredentials, sidebar } from "../../../Config/data";
@@ -65,18 +65,36 @@ const UserChatAnnouncement = () => {
         <div className="py-sm-5 py-3 px-sm-0 px-1">
           <div className="site_card p-0 bg-white">
             <h2 className="text-center fw-bold pt-3">Chat</h2>
-            <div className={`d-flex justify-content-between align-items-center mb-xl-0 mb-3`}>
-              <button className={`${Styles[`sidebar-toggle`]} ${Styles[`chatToggleButton`]}`} onClick={toggleSidebar}>
+            <div
+              className={`d-flex justify-content-between align-items-center mb-xl-0 mb-3`}
+            >
+              <button
+                className={`${Styles[`sidebar-toggle`]} ${
+                  Styles[`chatToggleButton`]
+                }`}
+                onClick={toggleSidebar}
+              >
                 <FaBars />
               </button>
             </div>
             <div className={`${Styles[`chat-module`]}`}>
-              <div className={`${Styles[`chat-sidebar`]} ${isSidebarOpen ? `${Styles.open}` : ``}`}>
-                <button className={`d-xl-none d-block ${Styles.sidebarCloseBtn}`} onClick={() => setIsSidebarOpen(false)}>
+              <div
+                className={`${Styles[`chat-sidebar`]} ${
+                  isSidebarOpen ? `${Styles.open}` : ``
+                }`}
+              >
+                <button
+                  className={`d-xl-none d-block ${Styles.sidebarCloseBtn}`}
+                  onClick={() => setIsSidebarOpen(false)}
+                >
                   <FaXmark />
                 </button>
                 <div className="d-flex align-items-center gap-2 px-2">
-                   <div className="chat-search flex-grow-1">
+                  <div
+                    className={`d-flex align-items-center gap-2 px-2 ${
+                      Styles[`chat-sidebar-top`]
+                    }`}
+                  >
                     <CustomInput
                       type="text"
                       placeholder="Search..."
@@ -94,19 +112,36 @@ const UserChatAnnouncement = () => {
                       <Dropdown.Toggle className="btn_filter p-0">
                         <FaFilter size={20} color="white" />
                       </Dropdown.Toggle>
-                      <Dropdown.Menu align="end">
-                        <h6 className="mb-1 ps-3" style={{ color: "#333" }}>
-                          Chat
-                        </h6>
-                        <Dropdown.Item>
-                          <Link to={"/chat-reports"} className="text-decoration-none" style={{ color: "#999999" }}>
-                            Reports
-                          </Link>
+                      <Dropdown.Menu align="end" as="ul">
+                        <Dropdown.Item as="li">
+                          <NavLink
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"
+                            }
+                            to={"/chat"}
+                          >
+                            Chat
+                          </NavLink>
                         </Dropdown.Item>
-                        <Dropdown.Item>
-                          <Link to={"/chat-contact-us"} className="text-decoration-none" style={{ color: "#999999" }}>
+                        <Dropdown.Item as="li">
+                          <NavLink
+                            to={"/chat-reports"}
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"
+                            }
+                          >
+                            Reports
+                          </NavLink>
+                        </Dropdown.Item>
+                        <Dropdown.Item as="li">
+                          <NavLink
+                            to={"/chat-contact-us"}
+                            className={({ isActive }) =>
+                              isActive ? "nav-link active" : "nav-link"
+                            }
+                          >
                             Contact Us
-                          </Link>
+                          </NavLink>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
@@ -114,17 +149,35 @@ const UserChatAnnouncement = () => {
                 </div>
                 <ul>
                   {sideData?.map((user, i) => (
-                    <div className={`${Styles.sidebarChat} my-3 ${user.isOpen ? `isOpen` : `close`}`} key={i} onClick={() => handleUserClick(user)}>
+                    <div
+                      className={`${Styles.sidebarChat} ${
+                        user.isOpen ? `isOpen` : `close`
+                      }`}
+                      key={i}
+                      onClick={() => handleUserClick(user)}
+                    >
                       <div className={`flex-shrink-0`}>
-                        <img src={user["photo-path"]} alt={`asdas`} className={Styles.chatHeaderImg} />
+                        <img
+                          src={user["photo-path"]}
+                          alt={`asdas`}
+                          className={Styles.chatHeaderImg}
+                        />
                       </div>
                       <div className={`flex-grow-1`}>
                         <h6 className={`mb-0`}>{user.name}</h6>
                         <p className={`mb-0`}>{user.message}</p>
                       </div>
                       <div>
-                        <p className={`img-fluid ${Styles["noti-tag-time"]} mb-0`}>{user.time}</p>
-                        {user.delivered && <span className={`${Styles.chatBadge} ms-auto`}>{user.notification}</span>}
+                        <p
+                          className={`img-fluid ${Styles["noti-tag-time"]} mb-0`}
+                        >
+                          {user.time}
+                        </p>
+                        {user.delivered && (
+                          <span className={`${Styles.chatBadge} ms-auto`}>
+                            {user.notification}
+                          </span>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -150,24 +203,52 @@ const UserChatAnnouncement = () => {
                           <div
                             key={index}
                             className={`${Styles.message} ${
-                              message["user-id"] !== currentUserData?.["user-id"] ? Styles["other-message"] : Styles["my-message"]
+                              message["user-id"] !==
+                              currentUserData?.["user-id"]
+                                ? Styles["other-message"]
+                                : Styles["my-message"]
                             }`}
                           >
-                            {message.message && <p className={``}>{message?.message}</p>}
+                            {message.message && (
+                              <p className={``}>{message?.message}</p>
+                            )}
                             {message.files &&
                               message.files.map((file, index) => (
-                                <div className={`my-3 ${Styles.uploadImg}`} key={index}>
-                                  <img src={URL.createObjectURL(file)} alt={`Uploaded File`} className={`img-fluid`} />
+                                <div
+                                  className={`my-3 ${Styles.uploadImg}`}
+                                  key={index}
+                                >
+                                  <img
+                                    src={URL.createObjectURL(file)}
+                                    alt={`Uploaded File`}
+                                    className={`img-fluid`}
+                                  />
                                 </div>
                               ))}
-                            <div className={`d-flex justify-content-end align-items-center flex-wrap gap-3`}>
+                            <div
+                              className={`d-flex justify-content-end align-items-center flex-wrap gap-3`}
+                            >
                               {
-                                <div className={`d-flex gap-2 align-items-center flex-wrap`}>
-                                  <div className={`d-flex align-items-center gap-2`}>
-                                    <p className={`mb-0`}>{message?.time}</p>
-                                    {message["user-id"] == currentUserData?.["user-id"] && (
+                                <div
+                                  className={`d-flex gap-2 align-items-center flex-wrap`}
+                                >
+                                  <div
+                                    className={`d-flex align-items-center gap-2`}
+                                  >
+                                    <p className={`mb-0 message-date`}>
+                                      {message?.time} - {message?.date}
+                                    </p>
+                                    {message["user-id"] ==
+                                      currentUserData?.["user-id"] && (
                                       <p className={`mb-0`}>
-                                        {message?.seen ? <BiCheckDouble size={25} color="#53A6EC" /> : <BiCheck size={24} color="#666" />}
+                                        {message?.seen ? (
+                                          <BiCheckDouble
+                                            size={25}
+                                            color="#53A6EC"
+                                          />
+                                        ) : (
+                                          <BiCheck size={24} color="#666" />
+                                        )}
                                       </p>
                                     )}{" "}
                                   </div>
@@ -180,7 +261,9 @@ const UserChatAnnouncement = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className={`${Styles["no-chat-selected"]}`}>Select a user to start chat</div>
+                  <div className={`${Styles["no-chat-selected"]}`}>
+                    Select a user to start chat
+                  </div>
                 )}
               </div>
             </div>

@@ -63,49 +63,6 @@ fieldset:disabled .btn {
     border-color: #15355E;
 }
 
-
-/****** Button Blue ******/
-.btn-blue {
-    color: var(--bs-white);
-    background: var(--blueColor);
-}
-
-.btn-blue:hover,
-.btn-blue:not(:disabled):not(.disabled):active {
-    color: var(--bs-white);
-    background-color: #0B0B1D;
-    outline: none;
-    box-shadow: none;
-}
-
-/****** Button Green ******/
-.btn-green {
-    color: var(--bs-white);
-    background: #1A8C1A;
-}
-
-.btn-green:hover,
-.btn-green:not(:disabled):not(.disabled):active {
-    color: var(--bs-white);
-    background-color: #0B0B1D;
-    outline: none;
-    box-shadow: none;
-}
-
-/****** Button Red ******/
-.btn-red {
-    color: var(--bs-white);
-    background: #FF0000;
-}
-
-.btn-red:hover,
-.btn-red:not(:disabled):not(.disabled):active {
-    color: var(--bs-white);
-    background-color: #0B0B1D;
-    outline: none;
-    box-shadow: none;
-}
-
 /****|| Button Outline Primary ||****/
 .btn-outline-primary {
     color: #15355E;
@@ -120,19 +77,26 @@ fieldset:disabled .btn {
     border-color: #15355E;
 }
 
-/****|| Button Outline Secondary ||****/
-.btn-outline-secondary {
-    color: #1819FF;
-    background: transparent;
-    border: 2px solid #1819FF;
+/****|| Button Outline Danger ||****/
+.btn-outline-danger {
+    border: 1px solid #D9001B;
+    color: #D9001B;
+    background: #FBE5E8;
 }
 
-.btn-outline-secondary:hover,
-.btn-outline-secondary:not(:disabled):not(.disabled):active {
-    color: var(--bs-white);
-    background-color: #1819FF;
-    border-color: #1819FF;
-    outline: none;
-    box-shadow: none;
+.btn-outline-danger:hover,
+.btn-outline-danger:not(:disabled):not(.disabled):active {
+    border: 1px solid #D9001B;
+    color: #FBE5E8;
+    background: #D9001B;
 }
 
+
+
+
+@media (max-width: 375px) {
+    .btn {
+        padding: 10px 30px;
+        font-size: 15px;
+    }
+}

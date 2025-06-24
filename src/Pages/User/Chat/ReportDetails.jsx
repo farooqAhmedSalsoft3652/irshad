@@ -31,7 +31,9 @@ const ChatReportDetails = () => {
               <Col xs={12}>
                 <div className="d-flex align-items-center flex-wrap gap-2">
                   <BackButton2 />
-                  <h2 className="fw-bold page-title mb-0 mx-auto">View Report Details</h2>
+                  <h2 className="fw-bold page-title mb-3 mx-auto">
+                    View Report Details
+                  </h2>
                 </div>
               </Col>
             </Row>
@@ -42,37 +44,49 @@ const ChatReportDetails = () => {
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Booking ID:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.booking_id}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.booking_id}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Booking Date:</h6>
-                  <p style={{ color: "#727A84" }}>{dateFormat(chatReportData?.booking_date)}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {dateFormat(chatReportData?.booking_date)}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Appointment Date:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.appointment_date}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.appointment_date}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Appointment Time:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.appointment_time}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.appointment_time}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Appointment Charges:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.appointment_charges}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.appointment_charges}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Session Type:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.session_type}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.session_type}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
@@ -84,29 +98,42 @@ const ChatReportDetails = () => {
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">Sub-Category:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.sub_category}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.sub_category}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">User Name:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.user_name}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.user_name}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">User Contact No:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.user_number}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.user_number}
+                  </p>
                 </div>
               </Col>
               <Col xs={12} sm={6} lg={4} xxl={3} className="mb-md-2">
                 <div>
                   <h6 className="fw-medium mb-2">User Email:</h6>
-                  <p style={{ color: "#727A84" }}>{chatReportData?.user_email}</p>
+                  <p style={{ color: "#727A84" }}>
+                    {chatReportData?.user_email}
+                  </p>
                 </div>
               </Col>
               <Col xs={12}>
-                <Link to={`/appointments/${chatReportData?.id}`} className="btn btn-primary">View Booking</Link>
+                <Link
+                  to={`/appointments/${chatReportData?.id}`}
+                  className="btn btn-primary"
+                >
+                  View Booking
+                </Link>
               </Col>
             </Row>
             <Row className="mt-md-4 mt-3">
@@ -118,13 +145,17 @@ const ChatReportDetails = () => {
                   <Col xs={12} xxl={4}>
                     <div>
                       <h6 className="fw-medium mb-2">Report Date:</h6>
-                      <p style={{ color: "#727A84" }}>{dateFormat(chatReportData?.report_date)}</p>
+                      <p style={{ color: "#727A84" }}>
+                        {dateFormat(chatReportData?.report_date)}
+                      </p>
                     </div>
                   </Col>
                   <Col xs={12} xxl={8}>
                     <div>
                       <h6 className="fw-medium mb-2">Message:</h6>
-                      <p style={{ color: "#727A84" }}>{chatReportData?.message}</p>
+                      <p style={{ color: "#727A84" }}>
+                        {chatReportData?.message}
+                      </p>
                     </div>
                   </Col>
                 </Row>

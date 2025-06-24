@@ -10,13 +10,17 @@ const CustomPagination = ({ pagination, setFilters }) => {
   const active = currentPage;
   let items = [];
 
-  const handlePageChange = useCallback((pageNumber) => {
-    setFilters((prev) => ({ ...prev, page: pageNumber }));
-  }, [setFilters]);
+  const handlePageChange = useCallback(
+    (pageNumber) => {
+      setFilters((prev) => ({ ...prev, page: pageNumber }));
+    },
+    [setFilters]
+  );
 
   const handleFirstPage = () => handlePageChange(1);
   const handlePrevPage = () => active > 1 && handlePageChange(active - 1);
-  const handleNextPage = () => active < totalPages && handlePageChange(active + 1);
+  const handleNextPage = () =>
+    active < totalPages && handlePageChange(active + 1);
   const handleLastPage = () => handlePageChange(totalPages);
 
   if (totalPages <= 7) {
@@ -82,7 +86,7 @@ const CustomPagination = ({ pagination, setFilters }) => {
 
   return (
     <div className="customPagination">
-      <div className="d-flex justify-content-between align-items-baseline flex-wrap">
+      <div className="d-flex flex-column flex-lg-row justify-content-between align-items-center flex-wrap gap-2">
         <div className="">
           <p className="paginationText">
             Showing {totalRecords > 0 ? startItem : 0} to {endItem} Out Of{" "}
@@ -92,13 +96,9 @@ const CustomPagination = ({ pagination, setFilters }) => {
         <div className="">
           <Pagination>
             {/* <Pagination.First onClick={handleFirstPage} /> */}
-            <Pagination.Prev onClick={handlePrevPage} >
-              Previous
-            </Pagination.Prev>
+            <Pagination.Prev onClick={handlePrevPage}>Previous</Pagination.Prev>
             {items}
-            <Pagination.Next onClick={handleNextPage} >
-              Next
-            </Pagination.Next>
+            <Pagination.Next onClick={handleNextPage}>Next</Pagination.Next>
             {/* <Pagination.Last onClick={handleLastPage} /> */}
           </Pagination>
         </div>
