@@ -358,6 +358,28 @@ export const ServiceManagementHeaders = [
     title: "Action",
   },
 ];
+export const BannerManagementHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "bannertitle",
+    title: "banner title",
+  },
+  {
+    key: "addedon",
+    title: "added on",
+  },
+  {
+    key: "expirydate",
+    title: "expiry date",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
 export const shopProductsHeaders = [
   {
     key: "id",
@@ -1215,6 +1237,61 @@ export const slotHistoryHeaders = [
   {
     key: "slots",
     title: "Slots",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
+export const CancelPenaltyManagementHeader = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "penaltypercentage",
+    title: "penalty percentage",
+  },
+  {
+    key: "updatedon",
+    title: "Updated On",
+  },
+];
+export const CancelTimeManagementHeader = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "day",
+    title: "day",
+  },
+  {
+    key: "updatedon",
+    title: "Updated On",
+  },
+];
+
+export const RequestManagementHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "consultantName",
+    title: "Consultant Name",
+  },
+  {
+    key: "request",
+    title: "Request",
+  },
+  {
+    key: "status",
+    title: "Status",
+  },
+  {
+    key: "recievedon",
+    title: "Recieved On",
   },
   {
     key: "action",

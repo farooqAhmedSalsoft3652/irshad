@@ -627,6 +627,43 @@ export const addServiceSchema = Yup.object().shape({
       }
     ),
 });
+export const addNewBannerSchema = Yup.object().shape({
+  banner_title: Yup.string()
+    .required("Banner Title is required")
+    .min(3, "Banner Title must be at least 3 characters long"),
+  photo: Yup.mixed()
+    .required("An image is required.") // Ensure something is provided
+    .test(
+      "is-valid-images",
+      "At least one valid image file or URL must be provided.",
+      function (value) {
+        const validImageTypes = [
+          "image/jpeg",
+          "image/jpg",
+          "image/webp",
+          "image/gif",
+          "image/png",
+        ];
+
+        // Ensure at least one valid file or URL is present
+        const hasValidFiles =
+          value &&
+          value.some((file) => {
+            if (typeof file === "string") {
+              return true; // If it's a string, assume it's a valid URL
+            }
+            if (file instanceof File) {
+              return validImageTypes.includes(file.type); // Validate file type
+            }
+            return false;
+          });
+
+        return hasValidFiles;
+      }
+    ),
+    expiry_date: Yup.string()
+    .required("Expiry date is required")
+});
 export const addSubCategorySchema = Yup.object().shape({
   categoryTitle: Yup.string()
     .required("Category Title is required")
@@ -945,6 +982,12 @@ export const addNewSubscriptionPlanSchema = Yup.object().shape({
 });
 export const disbursementTime = Yup.object().shape({
   disbursement_time: Yup.string().required("Disbursement time is required"),
+});
+export const cancelPenaltySchema = Yup.object().shape({
+  penalty_rate: Yup.string().required("Penalty rate is required"),
+});
+export const cancelTimeSchema = Yup.object().shape({
+  set_days: Yup.string().required("Set days is required"),
 });
 export const promoCode = Yup.object().shape({
   promo_name: Yup.string().required("Promo name is required"),

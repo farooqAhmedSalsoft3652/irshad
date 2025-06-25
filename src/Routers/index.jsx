@@ -33,7 +33,6 @@ import AddVideo from "../Pages/Admin/ContentManagement/Videos/AddVideo";
 import ViewVideo from "../Pages/Admin/ContentManagement/Videos/ViewVideo";
 import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
 import Product from "../Pages/Admin/Product/Product";
-import ViewProductCategoryDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import QueriesDetails from "../Pages/Admin/QueriesManagement/QueriesDetail";
 import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
 import ServiceDetails from "../Pages/Admin/ServiceProviderManagement/ServiceDetails";
@@ -124,9 +123,13 @@ import Tutorials from "../Pages/User/Tutorials";
 import VideoVerification from "../Pages/User/VideoVerification";
 import WithDrawAmount from "../Pages/User/WithDraw";
 // import SlotManagement from "../Pages/User/SlotManagement";
+import AddNewBanner from "../Pages/Admin/BannerManagement/AddNewBanner";
+import BannerManagement from "../Pages/Admin/BannerManagement/BannerManagement";
+import PromoCodeManagement from "../Pages/Admin/PromoCodeManagement/PromoCodeManagement";
 import AddService from "../Pages/Admin/ServiceManagement/AddService";
 import EditServiceManagement from "../Pages/Admin/ServiceManagement/EditServiceManagement";
 import ServiceManagement from "../Pages/Admin/ServiceManagement/ServiceManagement";
+import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import AddSubCategory from "../Pages/Admin/SubCategoryManagement/AddSubCategory";
 import EditSubCategory from "../Pages/Admin/SubCategoryManagement/EditSubCategory";
 import SubCategoryManagement from "../Pages/Admin/SubCategoryManagement/SubCategoryManagement";
@@ -137,9 +140,13 @@ import BankDetailsUserEdit from "../Pages/User/BankDetailsUser/BankDetailsUserEd
 import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
-import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import ScreeningHome from "../Pages/User/ScreeningHome/index";
-import PromoCodeManagement from "../Pages/Admin/PromoCodeManagement/PromoCodeManagement";
+import EditNewBanner from "../Pages/Admin/BannerManagement/EditNewBanner";
+import NewBannerDetail from "../Pages/Admin/BannerManagement/NewBannerDetail";
+import CancellationPenaltyManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationPenaltyManagement";
+import CancellationTimeManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationTimeManagement";
+import RequestManagement from "../Pages/Admin/RequestManagement/RequestManagement";
+import RequestDetails from "../Pages/Admin/RequestManagement/RequetsDetail";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -354,6 +361,18 @@ const routes = [
           // Promo Code Management //
           { path: "admin/promo-code", element: <PromoCodeManagement /> },
           // --- End --- //
+          // Banner Management //
+          { path: "admin/banner-management", element: <BannerManagement /> },
+          { path: "admin/banner-management/add-new", element: <AddNewBanner /> },
+          { path: "admin/banner-management/:id/edit", element: <EditNewBanner /> },
+          { path: "admin/banner-management/:id", element: <NewBannerDetail /> },
+          // --- End --- //
+          // Request Management //
+          { path: "admin/request-management", element: <RequestManagement /> },
+          { path: "admin/request-management/:id", element: <RequestDetails /> },
+          // --- End --- //
+
+          
 
           // Reports Management //
           { path: "admin/reports-management", element: <ReportsManagement /> },
@@ -406,6 +425,8 @@ const routes = [
           },
           { path: "admin/chat", element: <Chat /> },
           { path: "admin/payout-management", element: <PayoutsManagement /> },
+          { path: "admin/cancel-penalty-management", element: <CancellationPenaltyManagement /> },
+          { path: "admin/cancel-penalty-management/cancel-time-management", element: <CancellationTimeManagement /> },
           { path: "admin/*", element: <AdminErrorPage /> },
         ],
       },

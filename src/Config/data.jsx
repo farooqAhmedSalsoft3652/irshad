@@ -10893,3 +10893,197 @@ export const serviceManagementData = {
     total: 11,
   },
 };
+
+export const bannerManagementData = {
+  status: true,
+  message: "Banner Management Listing",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: 1,
+        banner_title: "Abc",
+        creation_date: "2024-07-05T08:21:31.000000Z",
+        expiry_date: "2024-07-05T08:21:31.000000Z",
+        photo: [images.BannerImg],
+      },
+      {
+        id: 2,
+        banner_title: "Abc",
+        creation_date: "2024-07-05T08:21:31.000000Z",
+        expiry_date: "2024-07-05T08:21:31.000000Z",
+        photo: [images.ProfileCover],
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
+
+export const CancelPenaltyManagementData = {
+  status: true,
+  message: "Appointment logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: "1",
+        penalty_rate: "05",
+        set_day: "01",
+        date: "2024-06-25T14:29:37.000000Z",
+        type: "booking",
+      },
+      {
+        id: "2",
+        penalty_rate: "10",
+        set_day: "02",
+        date: "2024-06-25T14:29:37.000000Z",
+        type: "order",
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
+
+export const RequestManagementData = {
+  status: true,
+  message: "Appointment logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: "1",
+        consultant_name: "Eric",
+        request: "Booked Week",
+        request_date: "2024-06-17T14:29:37.000000Z",
+        status: "Pending",
+        recieved_on: "2024-06-17T14:29:37.000000Z",
+        email: "someemail@email.com",
+        phone: "+11234567890",
+        user: {
+          name: "Eric",
+          id: "1",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+        },
+        consultant: {
+          id: "1",
+          name: "Victoria",
+          photo: images.adminProfileImg,
+        },
+      },
+      {
+        id: "2",
+        consultant_name: "Eric",
+        request: "Priced Request",
+        request_date: "2024-06-17T14:29:37.000000Z",
+        status: "Resolved",
+        recieved_on: "2024-06-17T14:29:37.000000Z",
+        email: "someemail@email.com",
+        phone: "+11234567890",
+        user: {
+          name: "Eric",
+          id: "1",
+          photo: "https://upload.wikimedia.org/wikipedia/commons/b/be/Pep_2017_%28cropped%29.jpg",
+        },
+        consultant: {
+          id: "1",
+          name: "Victoria",
+          photo: images.adminProfileImg,
+        },
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
