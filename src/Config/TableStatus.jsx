@@ -264,6 +264,20 @@ export const appointmentTypeOptions = [
     text: "Standard",
   },
 ];
+export const pendingTypeOptions = [
+  {
+    value: "all",
+    text: "All",
+  },
+  {
+    value: "pending",
+    text: "Pending",
+  },
+  {
+    value: "resolved",
+    text: "Resolved",
+  },
+];
 export const subscriptionType = [
   {
     value: "",

@@ -11020,6 +11020,8 @@ export const RequestManagementData = {
         status: "Pending",
         recieved_on: "2024-06-17T14:29:37.000000Z",
         email: "someemail@email.com",
+        message:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
         phone: "+11234567890",
         user: {
           name: "Eric",
@@ -11040,6 +11042,8 @@ export const RequestManagementData = {
         status: "Resolved",
         recieved_on: "2024-06-17T14:29:37.000000Z",
         email: "someemail@email.com",
+         message:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
         phone: "+11234567890",
         user: {
           name: "Eric",

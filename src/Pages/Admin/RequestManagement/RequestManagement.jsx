@@ -5,7 +5,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { RequestManagementData } from "../../../Config/data";
 import { RequestManagementHeaders } from "../../../Config/TableHeaders";
-import { appointmentTypeOptions } from "../../../Config/TableStatus";
+import { appointmentTypeOptions, pendingTypeOptions } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters ";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
@@ -55,7 +55,7 @@ const RequestManagement = ({ filters, setFilters, pagination, updatePagination }
                     pagination={pagination}
                     dateFilters={[
                       {
-                        title: "Appointment Date",
+                        title: "Date",
                         from: "fromDate",
                         to: "toDate",
                         fromTitle: "From",
@@ -64,9 +64,9 @@ const RequestManagement = ({ filters, setFilters, pagination, updatePagination }
                     ]}
                     selectOptions={[
                       {
-                        main_title: "Appointment Type Status",
-                        title: "Appointment Type",
-                        options: appointmentTypeOptions,
+                        // main_title: "Status",
+                        title: "Status",
+                        options: pendingTypeOptions,
                       },
                     ]}
                   >
