@@ -1298,3 +1298,30 @@ export const RequestManagementHeaders = [
     title: "Action",
   },
 ];
+
+export const paymentLogsAdminHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "bookingID",
+    title: "Booking ID",
+  },
+  {
+    key: "bookingCharges",
+    title: "Booking Charges",
+  },
+  {
+    key: "commission",
+    title: "Commission",
+  },
+  {
+    key: "bookingType",
+    title: "Booking Type",
+  },
+  {
+    key: "bookingDate",
+    title: "Booking Date",
+  },
+];

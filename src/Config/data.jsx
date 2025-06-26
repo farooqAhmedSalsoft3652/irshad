@@ -5020,6 +5020,7 @@ export const paymentLogsBookingData = {
         bookingCharges: "$15",
         commission: "$5",
         bookingDate: "10/02/2024",
+        bookingType: "Standard",
         paymentDate: "10/02/2024",
       },
       {
@@ -5028,6 +5029,7 @@ export const paymentLogsBookingData = {
         bookingCharges: "$25",
         commission: "$7",
         bookingDate: "01/05/2024",
+        bookingType: "Quick",
         paymentDate: "01/05/2024",
       },
       {
@@ -5036,6 +5038,7 @@ export const paymentLogsBookingData = {
         bookingCharges: "$35",
         commission: "$10",
         bookingDate: "20/03/2024",
+        bookingType: "Standard",
         paymentDate: "20/03/2024",
       },
       {
@@ -5044,6 +5047,7 @@ export const paymentLogsBookingData = {
         bookingCharges: "$45",
         commission: "$12",
         bookingDate: "15/07/2024",
+        bookingType: "Quick",
         paymentDate: "15/07/2024",
       },
       {
@@ -5052,6 +5056,7 @@ export const paymentLogsBookingData = {
         bookingCharges: "$55",
         commission: "$15",
         bookingDate: "25/06/2024",
+        bookingType: "Standard",
         paymentDate: "25/06/2024",
       },
     ],
@@ -11042,7 +11047,7 @@ export const RequestManagementData = {
         status: "Resolved",
         recieved_on: "2024-06-17T14:29:37.000000Z",
         email: "someemail@email.com",
-         message:
+        message:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
         phone: "+11234567890",
         user: {

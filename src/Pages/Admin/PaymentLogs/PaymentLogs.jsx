@@ -1,81 +1,97 @@
 import { useEffect, useState } from "react";
+import CustomTable from "../../../Components/CustomTable";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import CustomButton from "../../../Components/CustomButton";
-import BookingLogsTable from "./BookingLogsTable";
-import OrderLogsTable from "./OrderLogsTable";
-import InAppPurchasesTable from "./InAppPurchasesTable";
+import { paymentLogsBookingData } from "../../../Config/data";
+import { paymentLogsAdminHeaders } from "../../../Config/TableHeaders";
+import withFilters from "../../../HOC/withFilters ";
+import withModal from "../../../HOC/withModal";
+import { dateFormat, serialNum } from "../../../Utils/helper";
+import { appointmentTypeOptions } from "../../../Config/TableStatus";
 
-const PaymentLogs = () => {
-  const [activeTab, setActiveTab] = useState("bookingLogs");
-  const [tabWidth, setTabWidth] = useState(160);
-  const [showRounded, setShowRounded] = useState(false);
-  const [showAllRounded, setAllRounded] = useState(false);
+const PaymentLogs = ({ filters, setFilters, pagination, updatePagination, isSubmitting }) => {
+  const [payoutLogs, setPayoutLogs] = useState([]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setTabWidth(window.innerWidth < 768 ? 160 : 180);
-      setShowRounded(window.innerWidth < 584 ? true : false);
-      setAllRounded(window.innerWidth < 360 ? true : false);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const renderTab = () => {
-    switch (activeTab) {
-      case "bookingLogs":
-        return <BookingLogsTable />;
-      case "orderLogs":
-        return <OrderLogsTable />;
-      case "inApp":
-        return <InAppPurchasesTable />;
-      default:
-        return <BookingLogsTable />;
+  const fetchPaymentLogs = async () => {
+    try {
+      const response = paymentLogsBookingData;
+      if (response.status) {
+        const { data, total, per_page, current_page, to } = response.detail;
+        setPayoutLogs(data);
+        updatePagination({
+          showData: to,
+          currentPage: current_page,
+          totalRecords: total,
+          totalPages: Math.ceil(total / per_page),
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching payoutLogs:", error);
     }
   };
+
+  useEffect(() => {
+    fetchPaymentLogs();
+  }, [filters]);
+
 
   return (
     <DashboardLayout pageTitle="Payment Logs">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
-            <div className="row my-4">
-              <div className="col-12">
-                <h2 className="mainTitle mb-0">Payment Logs</h2>
+            {/* Table Section */}
+            <div className="dashCard">
+              <div className="row mb-4">
+                <div className="col-12">
+                  <h2 className="mainTitle mb-0">Payment Logs</h2>
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-12">
+                  <h4 className="dashTitle fw-medium">Total Earning: $200</h4>
+                </div>
+              </div>
+              <div className="row mb-3">
+                <div className="col-12">
+                  <CustomTable
+                    filters={filters}
+                    setFilters={setFilters}
+                    loading={isSubmitting}
+                    headers={paymentLogsAdminHeaders}
+                    pagination={pagination}
+                    dateFilters={[
+                      {
+                        title: "Booking Date",
+                        from: "fromDate",
+                        to: "toDate",
+                        fromTitle: "From",
+                        toTitle: "To",
+                      },
+                    ]}
+                    selectOptions={[
+                      {
+                        main_title: "Booking Type Status",
+                        title: "Booking Type",
+                        options: appointmentTypeOptions,
+                      },
+                    ]}
+                  >
+                    <tbody>
+                      {payoutLogs.map((item, index) => (
+                        <tr key={item?.id}>
+                          <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                          <td>{item.bookingId}</td>
+                          <td>{item.bookingCharges}</td>
+                          <td>{item.commission}</td>
+                          <td>{item.bookingType}</td>
+                          <td>{item?.bookingDate}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </CustomTable>
+                </div>
               </div>
             </div>
-            <div className="mt-5 mb-4 d-flex flex-wrap justify-content-center">
-              <CustomButton
-                style={{ minWidth: tabWidth, marginBottom: '8px' }}
-                className={`site-btn tab-btn ${activeTab === "bookingLogs" && "tab-selected"} text-decoratio-none ${
-                  showAllRounded ? "roundedBorders" : "leftBordersRounded"
-                }`}
-                text="Booking Logs"
-                onClick={() => setActiveTab("bookingLogs")}
-              />
-              <CustomButton
-                style={{ minWidth: tabWidth, marginBottom: '8px' }}
-                className={`site-btn tab-btn ${activeTab === "orderLogs" && "tab-selected"} text-decoration-none ${
-                  showAllRounded ? "roundedBorders" : showRounded ? "rightBordersRounded" : "notRoundedBorders"
-                }`}
-                text="Order Logs"
-                onClick={() => setActiveTab("orderLogs")}
-              />
-              <CustomButton
-                style={{ minWidth: tabWidth, marginBottom: '8px' }}
-                className={`site-btn tab-btn ${activeTab === "inApp" && "tab-selected"} text-decoration-none  ${
-                  showRounded ? "roundedBorders" : "rightBordersRounded"
-                }`}
-                text="In-App Purchases"
-                onClick={() => setActiveTab("inApp")}
-              />
-            </div>
-            <h2 className="text-end fs-4 fw-bold">Total Earnings: $380</h2>
-            {renderTab()}
           </div>
         </div>
       </div>
@@ -83,4 +99,4 @@ const PaymentLogs = () => {
   );
 };
 
-export default PaymentLogs;
+export default withModal(withFilters(PaymentLogs));

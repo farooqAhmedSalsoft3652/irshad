@@ -48,10 +48,6 @@ import MainLayout from "../Components/Layouts/UserLayout/MainLayout/index";
 import AddBankDetail from "../Pages/Admin/BankDetail/AddBankDetail";
 import EditBankDetail from "../Pages/Admin/BankDetail/EditBankDetail";
 import MyBankDetail from "../Pages/Admin/BankDetail/MyBankDetail";
-import AddBanner from "../Pages/Admin/BannerAdsManagement/AddBanner";
-import BannerAdDetails from "../Pages/Admin/BannerAdsManagement/BannerAdDetails";
-import BannerAdsManagement from "../Pages/Admin/BannerAdsManagement/BannerAdsManagement";
-import EditBanner from "../Pages/Admin/BannerAdsManagement/EditBanner";
 import Chat from "../Pages/Admin/Chat/Chat";
 import AddArticle from "../Pages/Admin/ContentManagement/Articles/AddArticle";
 import EditArticle from "../Pages/Admin/ContentManagement/Articles/EditArticle";
@@ -125,7 +121,13 @@ import WithDrawAmount from "../Pages/User/WithDraw";
 // import SlotManagement from "../Pages/User/SlotManagement";
 import AddNewBanner from "../Pages/Admin/BannerManagement/AddNewBanner";
 import BannerManagement from "../Pages/Admin/BannerManagement/BannerManagement";
+import EditNewBanner from "../Pages/Admin/BannerManagement/EditNewBanner";
+import NewBannerDetail from "../Pages/Admin/BannerManagement/NewBannerDetail";
+import CancellationPenaltyManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationPenaltyManagement";
+import CancellationTimeManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationTimeManagement";
 import PromoCodeManagement from "../Pages/Admin/PromoCodeManagement/PromoCodeManagement";
+import RequestManagement from "../Pages/Admin/RequestManagement/RequestManagement";
+import RequestDetails from "../Pages/Admin/RequestManagement/RequetsDetail";
 import AddService from "../Pages/Admin/ServiceManagement/AddService";
 import EditServiceManagement from "../Pages/Admin/ServiceManagement/EditServiceManagement";
 import ServiceManagement from "../Pages/Admin/ServiceManagement/ServiceManagement";
@@ -141,12 +143,6 @@ import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ScreeningHome from "../Pages/User/ScreeningHome/index";
-import EditNewBanner from "../Pages/Admin/BannerManagement/EditNewBanner";
-import NewBannerDetail from "../Pages/Admin/BannerManagement/NewBannerDetail";
-import CancellationPenaltyManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationPenaltyManagement";
-import CancellationTimeManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationTimeManagement";
-import RequestManagement from "../Pages/Admin/RequestManagement/RequestManagement";
-import RequestDetails from "../Pages/Admin/RequestManagement/RequetsDetail";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -372,8 +368,6 @@ const routes = [
           { path: "admin/request-management/:id", element: <RequestDetails /> },
           // --- End --- //
 
-          
-
           // Reports Management //
           { path: "admin/reports-management", element: <ReportsManagement /> },
           {
@@ -391,10 +385,7 @@ const routes = [
           // --- End --- //
 
           // Payment Logs //
-          { path: "admin/banner-ads", element: <BannerAdsManagement /> },
-          { path: "admin/banner-ads/:id", element: <BannerAdDetails /> },
-          { path: "admin/banner-ads/:id/edit", element: <EditBanner /> },
-          { path: "admin/banner-ads/add", element: <AddBanner /> },
+          { path: "admin/payment-logs", element: <PaymentLogs /> },
           // --- End --- //
 
           // Bank Details //

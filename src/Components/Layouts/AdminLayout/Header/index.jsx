@@ -1,4 +1,4 @@
-import { faBars, faEllipsisV, faMoneyCheck, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faDollarSign, faEllipsisV, faMoneyCheck, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Dropdown, Nav, Navbar } from "react-bootstrap";
@@ -66,6 +66,10 @@ export const Header = (props) => {
                 <Link className="userMenuItem" to={`/${role}/mybank-detail`}>
                   <FontAwesomeIcon className="me-2 yellow-text" icon={faMoneyCheck} />
                   My Bank Detail
+                </Link>
+                <Link className="userMenuItem" to={`/${role}/payment-logs`}>
+                  <FontAwesomeIcon className="me-2 yellow-text" icon={faDollarSign} />
+                  Payment Logs
                 </Link>
                 <Link onClick={() => setShowModal(true)} className="userMenuItem">
                   <FontAwesomeIcon className="me-1 yellow-text" icon={faSignOut} /> Logout
