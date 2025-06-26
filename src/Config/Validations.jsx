@@ -627,6 +627,9 @@ export const addServiceSchema = Yup.object().shape({
       }
     ),
 });
+export const chatInitiateSchema = Yup.object().shape({
+  title: Yup.string().required('Title is required')
+});
 export const addNewBannerSchema = Yup.object().shape({
   banner_title: Yup.string()
     .required("Banner Title is required")

@@ -58,10 +58,7 @@ import AddEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/Add
 import EditEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/EditEmergencyContacts.";
 import EmergencyContactsManagement from "../Pages/Admin/EmergencyContactsManagement/EmergencyContactsManagement";
 import PaymentLogs from "../Pages/Admin/PaymentLogs/PaymentLogs";
-import ReportDetails from "../Pages/Admin/ReportsManagement/ReportDetails";
-import ReportedPost from "../Pages/Admin/ReportsManagement/ReportedPost";
 import ReportsManagement from "../Pages/Admin/ReportsManagement/ReportsManagement";
-import ViewReport from "../Pages/Admin/ReportsManagement/ViewReport";
 import AddNewPlanProvider from "../Pages/Admin/SubscriptionLogs/AddNewPlanProvider";
 import AddNewPlanUser from "../Pages/Admin/SubscriptionLogs/AddNewPlanUser";
 import EditSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanProvider";
@@ -126,6 +123,7 @@ import NewBannerDetail from "../Pages/Admin/BannerManagement/NewBannerDetail";
 import CancellationPenaltyManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationPenaltyManagement";
 import CancellationTimeManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationTimeManagement";
 import PromoCodeManagement from "../Pages/Admin/PromoCodeManagement/PromoCodeManagement";
+import ReportsDetail from "../Pages/Admin/ReportsManagement/ReportsDetail";
 import RequestManagement from "../Pages/Admin/RequestManagement/RequestManagement";
 import RequestDetails from "../Pages/Admin/RequestManagement/RequetsDetail";
 import AddService from "../Pages/Admin/ServiceManagement/AddService";
@@ -371,16 +369,8 @@ const routes = [
           // Reports Management //
           { path: "admin/reports-management", element: <ReportsManagement /> },
           {
-            path: "admin/reports-management/view-report/:id",
-            element: <ViewReport />,
-          },
-          {
-            path: "admin/reports-management/report/:id",
-            element: <ReportDetails />,
-          },
-          {
-            path: "admin/reports-management/report/:id/post",
-            element: <ReportedPost />,
+            path: "admin/reports-management/:id",
+            element: <ReportsDetail />,
           },
           // --- End --- //
 

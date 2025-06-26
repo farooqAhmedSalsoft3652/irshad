@@ -614,7 +614,7 @@ export const PromoCodeManagementHeader = [
     title: "Action",
   },
 ];
-export const reportsManagementBookingHeader = [
+export const reportsManagementHeader = [
   {
     key: "id",
     title: "S.No",
@@ -628,42 +628,12 @@ export const reportsManagementBookingHeader = [
     title: "User Name",
   },
   {
-    key: "bookingDate",
-    title: "Booking Date",
-  },
-  {
     key: "reportedDate",
     title: "Reported Date",
   },
   {
-    key: "charges",
-    title: "Charges",
-  },
-  {
-    key: "status",
-    title: "Status",
-  },
-  {
-    key: "action",
-    title: "Action",
-  },
-];
-export const reportsManagementNewsfeedHeader = [
-  {
-    key: "id",
-    title: "S.No",
-  },
-  {
-    key: "username",
-    title: "User Name",
-  },
-  {
-    key: "emailAddress",
-    title: "Email Address",
-  },
-  {
-    key: "reportedDate",
-    title: "Reported Date",
+    key: "appointmentCharges",
+    title: "Appointment Charges",
   },
   {
     key: "status",
