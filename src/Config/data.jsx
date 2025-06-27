@@ -10822,7 +10822,8 @@ export const reportsManagementData = {
         phone: "+11234567890",
         serviceDate: "14/02/2024",
         serviceTime: "5:00PM",
-        reason:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
+        reason:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
         user: {
           name: "Tom albert",
           id: "1",
@@ -10855,7 +10856,8 @@ export const reportsManagementData = {
         phone: "+11234567890",
         serviceDate: "14/02/2024",
         serviceTime: "5:00PM",
-        reason: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
+        reason:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
         user: {
           name: "Tom albert",
           id: "1",
@@ -10867,6 +10869,134 @@ export const reportsManagementData = {
           name: "Victoria Andrew",
           serviceName: "MedLink Solutions service",
         },
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
+
+export const contactUsTableData = {
+  status: true,
+  message: "Report logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: "1",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "user",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+      {
+        id: "2",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "guest",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+      {
+        id: "3",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "consultant",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
+export const complainTableData = {
+  status: true,
+  message: "Report logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: "1",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "user",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+      {
+        id: "2",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "guest",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",

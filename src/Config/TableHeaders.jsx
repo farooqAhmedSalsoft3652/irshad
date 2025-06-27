@@ -1295,3 +1295,30 @@ export const paymentLogsAdminHeaders = [
     title: "Booking Date",
   },
 ];
+
+export const queryTableHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "fullName",
+    title: "Full Name",
+  },
+  {
+    key: "emailAddress",
+    title: "Email Address",
+  },
+  {
+    key: "userType",
+    title: "User Type",
+  },
+  {
+    key: "date",
+    title: "Date",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];

@@ -141,6 +141,8 @@ import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ScreeningHome from "../Pages/User/ScreeningHome/index";
+import QueryContactUsDetails from "../Pages/Admin/QueriesManagement/QueryContactUsDetails";
+import QueryComplainDetails from "../Pages/Admin/QueriesManagement/QueryComplainDetails";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -345,7 +347,8 @@ const routes = [
 
           // Queries Management //
           { path: "admin/queries-management", element: <QueriesManagement /> },
-          { path: "admin/queries-management/:id", element: <QueriesDetails /> },
+          { path: "admin/queries-management/contact-us/:id", element: <QueryContactUsDetails /> },
+          { path: "admin/queries-management/complain/:id", element: <QueryComplainDetails /> },
           // --- End --- //
 
           // Payment Logs //

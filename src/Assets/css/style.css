@@ -587,9 +587,9 @@ a:hover {
 }
 
 .tab-btn {
-  color: var(--grayColor);
+  color: #15355E !important;
   border: 1px solid #999;
-
+  background-color: #fff !important;
   &:hover {
     transform: none;
     color: var(--whiteColor);
@@ -599,8 +599,8 @@ a:hover {
 
 .tab-selected {
   border: 1px solid var(--blueColor);
-  color: var(--whiteColor);
-  background-color: var(--blueColor);
+  color: var(--whiteColor) !important;
+  background-color: #15355E !important;
 }
 
 /* .secondaryBtn {

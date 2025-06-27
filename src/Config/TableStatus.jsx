@@ -960,3 +960,18 @@ export const sessionTypeStatus = [
     text: "Video Call",
   },
 ];
+
+export const userTypeStatus = [
+  {
+    value: "user",
+    text: "User",
+  },
+  {
+    value: "guest",
+    text: "Guest",
+  },
+  {
+    value: "consultant",
+    text: "Consultant",
+  },
+];

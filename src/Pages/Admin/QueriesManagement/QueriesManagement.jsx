@@ -1,102 +1,90 @@
 import { useEffect, useState } from "react";
-import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import CustomButton from "../../../Components/CustomButton";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import CustomTable from "../../../Components/CustomTable";
-import { queriesManagementData } from "../../../Config/data";
-import { queriesManagementHeader } from "../../../Config/TableHeaders"; 
-import { queriesType } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
-import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { dateFormat, serialNum } from "../../../Utils/helper";
+import ContactUsTable from "./ContactUsTable";
+import ComplainTable from "./ComplainTable";
 
-const QueriesManagement = ({ filters, setFilters, pagination, updatePagination }) => {
-  const [queryData, setQueryData] = useState([]);
-  const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
 
-  const fetchUsers = async () => {
-    try {
-      startSubmitting(true);
-      const response = queriesManagementData;
-      if (response.status) {
-        const { data, total, per_page, current_page, to } = response.detail;
-        setQueryData(data);
-        updatePagination({
-          showData: to,
-          currentPage: current_page,
-          totalRecords: total,
-          totalPages: Math.ceil(total / per_page),
-        });
-      }
-    } catch (error) {
-      console.error("Error fetching users:", error);
-    } finally {
-      stopSubmitting(false);
+const QueriesManagement = () => {
+  const [activeTab, setActiveTab] = useState("contact");
+  const [tabWidth, setTabWidth] = useState(160);
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    let tab = searchParams.get("tab");
+    if (tab) setActiveTab(tab);
+  }, [searchParams]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setTabWidth(window.innerWidth < 768 ? 160 : 180);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const renderTab = () => {
+    switch (activeTab) {
+      case "contact":
+        return <ContactUsTable />;
+      case "complain":
+        return <ComplainTable />;
+      case "report":
+        return <>report</>;;
+      case "question":
+        return <>question</>;;
+      default:
+        return <ContactUsTable />;
     }
   };
 
-
-  useEffect(() => {
-    fetchUsers();
-  }, [filters]);
+  const handleTabChange = (tab) => {
+  setActiveTab(tab);
+  const params = new URLSearchParams(window.location.search);
+  params.set("tab", tab);
+  window.history.replaceState({}, "", `${window.location.pathname}?${params}`);
+};
 
   return (
-    <DashboardLayout pageTitle="Queries Management">
+    <DashboardLayout pageTitle="Query Management">
       <div className="container-fluid">
-        <div className="row">
+        <div className="row dashCard">
           <div className="col-12">
-            <div className="row my-4">
+            <div className="row mb-4">
               <div className="col-12">
-                <h2 className="mainTitle mb-0">Queries Management</h2>
+                <h2 className="mainTitle mb-0">Query Management</h2>
               </div>
             </div>
-            <div className="dashCard">
-              <div className="row mb-3">
-                <div className="col-12">
-                  <CustomTable
-                    filters={filters}
-                    setFilters={setFilters}
-                    loading={isSubmitting}
-                    headers={queriesManagementHeader}
-                    pagination={pagination}
-                    dateFilters={[
-                      {
-                        title: "Date",
-                        from: "fromDate",
-                        to: "toDate",
-                      },
-                    ]}
-                    selectOptions={[
-                      {
-                        title: "user type",
-                        options: queriesType
-                      }
-                    ]}
-                  >
-                    <tbody>
-                      {queryData?.map((item, index) => (
-                        <tr key={item?.id}>
-                          <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
-                          <td>{item?.userName}</td>
-                          <td>{item?.emailAddress}</td>
-                          <td>{item?.userType}</td>
-                          <td>{dateFormat(item?.date)}</td>
-                          <td>
-                            <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
-                              <span className="tooltip-toggle" aria-label="View">
-                                <Link to={`${item.id}`}>
-                                  <FaEye size={20} color="#1819ff" />
-                                </Link>
-                              </span>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </CustomTable>
-                </div>
-              </div>
+            <div className="mt-4 mb-4 d-flex justify-content-center">
+              <CustomButton
+                style={{ minWidth: tabWidth, marginBottom: "8px" }}
+                className={`tab-btn ${activeTab === "contact" && "tab-selected"} text-decoratio-none leftBordersRounded`}
+                text="Contact Us"
+                  onClick={() => handleTabChange("contact")}
+              />
+              <CustomButton
+                style={{ minWidth: tabWidth, marginBottom: "8px" }}
+                className={`tab-btn ${activeTab === "complain" && "tab-selected"} text-decoration-none rounded-0`}
+                text="Complain"
+                 onClick={() => handleTabChange("complain")}
+              />
+              <CustomButton
+                style={{ minWidth: tabWidth, marginBottom: "8px" }}
+                className={`tab-btn ${activeTab === "report" && "tab-selected"} text-decoration-none rounded-0`}
+                text="Report"
+                onClick={() => handleTabChange("report")}
+              />
+              <CustomButton
+                style={{ minWidth: tabWidth, marginBottom: "8px" }}
+                className={`tab-btn ${activeTab === "question" && "tab-selected"} text-decoration-none rightBordersRounded`}
+                text="Ask A Question"
+                onClick={() => handleTabChange("question")}
+              />
             </div>
+            <div className="dashCard mt-4">{renderTab()}</div>
           </div>
         </div>
       </div>
@@ -104,5 +92,4 @@ const QueriesManagement = ({ filters, setFilters, pagination, updatePagination }
   );
 };
 
-
-export default withFilters(QueriesManagement);
+export default QueriesManagement;
