@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CustomTable from "../../../Components/CustomTable";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { serialNum } from "../../../Utils/helper";
 import { paymentLogOrderHeaders } from "../../../Config/TableHeaders";

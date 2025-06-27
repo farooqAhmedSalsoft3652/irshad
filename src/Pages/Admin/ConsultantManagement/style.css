@@ -1,0 +1,36 @@
+.consultant-management {}
+
+.consultant-management .section-title {
+  font-size: 27px;
+}
+
+.quick-icon img {
+  max-width: 35px;
+  max-height: 35px;
+  display: inline-block;
+  margin-top: -3px;
+
+}
+
+.user-avater img {
+  max-width: 200px;
+  max-height: 200px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 1399px) {
+  .consultant-management .page-header .btn {
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certificate-img img {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+}

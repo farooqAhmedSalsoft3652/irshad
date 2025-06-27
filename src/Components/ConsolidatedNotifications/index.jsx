@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import { notificationsData } from "../../Config/Data";
+import { notificationsData } from "../../Config/data";
 import { notificationOptions } from "../../Config/TableStatus";
 import withPagination from "../../HOC/withPagination";
 import { dateFormat, humanReadable } from "../../Utils/helper";
@@ -10,7 +10,13 @@ import NotificationCard from "../NotificationCard";
 import { Select } from "../Select";
 import "./style.css";
 
-const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, pagination, updatePagination }) => {
+const ConsolidatedNotifications = ({
+  apiEndpoint,
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedStatus, setSelectedStatus] = useState("");
@@ -20,7 +26,8 @@ const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, paginatio
       const responses = notificationsData;
 
       // const responses = await getAll(`${apiEndpoint}${selectedStatus ? `?status=${selectedStatus}` : ""}`, filters);
-      const { data, total, per_page, current_page, to } = responses?.detail?.notifications;
+      const { data, total, per_page, current_page, to } =
+        responses?.detail?.notifications;
       setNotifications(data);
       updatePagination({
         showData: to,
@@ -46,7 +53,11 @@ const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, paginatio
       // const  {data} = notificationsData?.detail?.notifications;
 
       setNotifications((prevData) =>
-        prevData.map((notification) => (notification.id === val ? { ...notification, read_at: "2024-06-14T10:42:45.000000Z" } : notification))
+        prevData.map((notification) =>
+          notification.id === val
+            ? { ...notification, read_at: "2024-06-14T10:42:45.000000Z" }
+            : notification
+        )
       );
 
       // if (response) {
@@ -62,54 +73,61 @@ const ConsolidatedNotifications = ({ apiEndpoint, filters, setFilters, paginatio
   return (
     <div className="py-sm-5 py-3">
       <div className="site_card">
-      <Row className="mb-4">
-        <Col xs={12}>
-          <div className="d-flex justify-content-between align-items-center flex-wrap gap-sm-3 ">
-            <div>
-              <Select className="slimSelect" value={selectedStatus} onChange={setSelectedStatus} label="Show" labelclass="pe-3">
-                {notificationOptions}
-              </Select>
+        <Row className="mb-4">
+          <Col xs={12}>
+            <div className="d-flex justify-content-between align-items-center flex-wrap gap-sm-3 ">
+              <div>
+                <Select
+                  className="slimSelect"
+                  value={selectedStatus}
+                  onChange={setSelectedStatus}
+                  label="Show"
+                  labelclass="pe-3"
+                >
+                  {notificationOptions}
+                </Select>
+              </div>
+              <div>
+                <h2 className="page-title fw-bold mb-0">Notifications</h2>
+              </div>
+              <div>
+                <button
+                  className="mark_all_btn"
+                  onClick={() => {
+                    console.log("mark all clicked");
+                  }}
+                >
+                  Mark All as Read
+                </button>
+              </div>
             </div>
-            <div>
-              <h2 className="page-title fw-bold mb-0">Notifications</h2>
-            </div>
-            <div>
-              <button
-                className="mark_all_btn"
-                onClick={() => {
-                  console.log("mark all clicked");
-                }}
-              >Mark All as Read</button>
-            </div>
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12}>
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            notifications.map((notification) => (
-              <React.Fragment key={notification.id}>
-                <NotificationCard
-                  id={notification.id}
-                  text={notification?.data?.body}
-                  name={notification?.data?.title}
-                  date={dateFormat(notification?.created_at)}
-                  time={humanReadable(notification?.created_at)}
-                  read={notification?.read_at}
-                  notiRead={notification?.read_at}
-                  onClick={handleNotificationAction}
-                />
-              </React.Fragment>
-            ))
-          )}
-
-        </Col>
-      </Row>
-      <div className="text-center">
-        <CustomButton text='Load More' className='siteBtn primaryBtn' />
-      </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
+            {loading ? (
+              <LoadingSpinner />
+            ) : (
+              notifications.map((notification) => (
+                <React.Fragment key={notification.id}>
+                  <NotificationCard
+                    id={notification.id}
+                    text={notification?.data?.body}
+                    name={notification?.data?.title}
+                    date={dateFormat(notification?.created_at)}
+                    time={humanReadable(notification?.created_at)}
+                    read={notification?.read_at}
+                    notiRead={notification?.read_at}
+                    onClick={handleNotificationAction}
+                  />
+                </React.Fragment>
+              ))
+            )}
+          </Col>
+        </Row>
+        <div className="text-center">
+          <CustomButton text="Load More" className="siteBtn primaryBtn" />
+        </div>
       </div>
     </div>
   );

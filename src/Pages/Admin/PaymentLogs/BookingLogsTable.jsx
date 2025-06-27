@@ -4,7 +4,7 @@ import { paymentLogsBookingData } from "../../../Config/data";
 import { isNullOrEmpty } from "../../../Utils/helper";
 import { paymentLogBookingHeaders } from "../../../Config/TableHeaders";
 import CustomTable from "../../../Components/CustomTable";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 
 const BookingLogsTable = ({ filters, setFilters, pagination, updatePagination }) => {

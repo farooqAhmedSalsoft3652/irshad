@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import GeneralCard from "../../../Components/UserComponents/GeneralCard";
 import { servicesData } from "../../../Config/data";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { usePageTitle } from "../../../Utils/helper";
 import "./style.css";
 import CustomButton from "../../../Components/CustomButton";

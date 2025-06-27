@@ -10,7 +10,7 @@ import {
   sessionTypeStatus,
 } from "../../../Config/TableStatus";
 import { appointmentsData } from "../../../Config/data";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum, usePageTitleUser } from "../../../Utils/helper";
 

@@ -6,12 +6,18 @@ import { Select } from "../../../../Components/Select";
 import { eBooksData } from "../../../../Config/data";
 import { contentManagementEBookHeaders } from "../../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../../Config/TableStatus";
-import withFilters from "../../../../HOC/withFilters ";
+import withFilters from "../../../../HOC/withFilters";
 import { useFormStatus } from "../../../../Hooks/useFormStatus";
 import { serialNum } from "../../../../Utils/helper";
 import withModal from "../../../../HOC/withModal";
 
-const EBooksTable = ({ showModal, filters, setFilters, pagination, updatePagination }) => {
+const EBooksTable = ({
+  showModal,
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const [ebooks, setEbooks] = useState([]);
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const fetchEbooks = async () => {
@@ -45,7 +51,9 @@ const EBooksTable = ({ showModal, filters, setFilters, pagination, updatePaginat
     // Open the modal for confirmation
     showModal(
       `${newStatusValue === "1" ? "Active" : "Inactive"} E-Book`,
-      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this E-Book?`,
+      `Are you sure you want to ${
+        newStatusValue === "1" ? "Activate" : "Inactivate"
+      } this E-Book?`,
       () => onConfirmStatusChange(rowId, newStatusValue)
     );
   };
@@ -53,8 +61,19 @@ const EBooksTable = ({ showModal, filters, setFilters, pagination, updatePaginat
   // Confirm status change and update the state
   const onConfirmStatusChange = async (rowId, newStatusValue) => {
     // Update the status in the ebook state
-    setEbooks((prevData) => prevData.map((row) => (row.id === rowId ? { ...row, status_detail: newStatusValue } : row)));
-    showModal("Successful", `This E-Book has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
+    setEbooks((prevData) =>
+      prevData.map((row) =>
+        row.id === rowId ? { ...row, status_detail: newStatusValue } : row
+      )
+    );
+    showModal(
+      "Successful",
+      `This E-Book has been ${
+        newStatusValue === "1" ? "Activated" : "Inactivated"
+      } successfully!`,
+      null,
+      true
+    );
   };
 
   return (
@@ -63,7 +82,10 @@ const EBooksTable = ({ showModal, filters, setFilters, pagination, updatePaginat
         <div className="col-12">
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h4 className="dashTitle d-inline">E-Books</h4>
-            <Link to={"add-e-book"} className="site-btn primary-btn text-decoration-none">
+            <Link
+              to={"add-e-book"}
+              className="site-btn primary-btn text-decoration-none"
+            >
               Add E-Book
             </Link>
           </div>
@@ -90,7 +112,11 @@ const EBooksTable = ({ showModal, filters, setFilters, pagination, updatePaginat
             <tbody>
               {ebooks?.map((item, index) => (
                 <tr key={item?.id}>
-                  <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                  <td>
+                    {serialNum(
+                      (filters.page - 1) * filters.per_page + index + 1
+                    )}
+                  </td>
                   <td>{item?.eBookTitle}</td>
                   <td>{item?.addedOn}</td>
                   <td>

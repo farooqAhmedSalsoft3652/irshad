@@ -8,7 +8,7 @@ import CustomButton from "../../../Components/CustomButton";
 import { usePageTitle } from "../../../Utils/helper";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import "./style.css";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import CustomPagination from "../../../Components/CustomPagination";
 import { servicesData } from "../../../Config/data";
 

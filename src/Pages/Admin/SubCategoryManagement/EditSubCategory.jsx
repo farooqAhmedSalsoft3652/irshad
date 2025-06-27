@@ -8,7 +8,7 @@ import CustomInput from "../../../Components/CustomInput";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { Select } from "../../../Components/Select";
 import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
-import { serviceCategoryData } from "../../../Config/Data";
+import { serviceCategoryData } from "../../../Config/data";
 import { categoryStatus, statusOptions } from "../../../Config/TableStatus";
 import { addSubCategorySchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";

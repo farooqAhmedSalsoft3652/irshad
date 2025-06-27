@@ -6,7 +6,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { queriesManagementData } from "../../../Config/data";
 import { queriesManagementHeader } from "../../../Config/TableHeaders"; 
 import { queriesType } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 

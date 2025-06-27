@@ -1298,10 +1298,12 @@ h3.page-title {
 .bg-yellow {
   background-color: #E8D101;
 }
-.detail-image img{
+
+.detail-image img {
   height: 300px;
   object-fit: cover;
 }
+
 .detail-box h6 {
   font-size: 20px;
   color: #15355E;
@@ -1317,8 +1319,8 @@ h3.page-title {
 
 .detail-box span img {
   border-radius: 100px !important;
-  height: 30px !important;
-  width: 30px !important;
+  height: 25px !important;
+  width: 25px !important;
   object-fit: cover;
 }
 
@@ -1355,6 +1357,15 @@ h3.page-title {
 /************ User Css END
 *****************************************/
 
+.tooltip-toggle a {
+  color: #15355E;
+}
+
+.tooltip-toggle a:hover {
+  color: #005acd;
+}
+
+
 @media (max-width:1666px) {
   h2.section-title {
     font-size: 46px;
@@ -1362,6 +1373,10 @@ h3.page-title {
 }
 
 @media screen and (max-width: 1399px) {
+  .mainTitle {
+    font-size: 32px;
+  }
+
   h2.page-title {
     font-size: 37px;
   }
@@ -1446,7 +1461,8 @@ h3.page-title {
     width: 30px;
     height: 30px;
   }
-  .detail-image img{
+
+  .detail-image img {
     height: 250px;
   }
 }
@@ -1505,6 +1521,7 @@ h3.page-title {
     height: 25px;
   }
 }
+
 @media screen and (max-width:480px) {
   h2.page-title {
     font-size: 25px;
@@ -1517,7 +1534,8 @@ h3.page-title {
   h2.section-title {
     font-size: 22px;
   }
-  .detail-image img{
+
+  .detail-image img {
     height: 200px;
   }
 }

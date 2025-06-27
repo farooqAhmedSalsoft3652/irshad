@@ -8,7 +8,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { commissionManagementData } from "../../../Config/data";
 import { CommissionManagementHeader } from "../../../Config/TableHeaders";
 import { commissionRate } from "../../../Config/Validations";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
 const CommissionManagement = ({ filters, setFilters, pagination, updatePagination, onSubmit, isSubmitting, errors }) => {

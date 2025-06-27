@@ -6,7 +6,7 @@ import {
   slotManagementHistoryData,
 } from "../../../Config/data";
 import { slotHistoryHeaders } from "../../../Config/TableHeaders";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { serialNum, usePageTitleUser } from "../../../Utils/helper";

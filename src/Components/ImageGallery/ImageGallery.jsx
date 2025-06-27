@@ -15,6 +15,7 @@ const ImageGallery = ({
   borderRadius = 0,
   scaleOnHover = true,
   fullWidth = false,
+  className,
 }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -61,7 +62,7 @@ const ImageGallery = ({
     };
   }, [isModalOpen]);
   return (
-    <div style={fullWidth ? { width: "100%" } : {}} className={`d-flex gap-${gap} flex-wrap`}>
+    <div style={fullWidth ? { width: "100%" } : {}} className={`d-flex gap-${gap} flex-wrap ${className}`}>
       {images?.map((image, i) => (
         <img
           key={i}

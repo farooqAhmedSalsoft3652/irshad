@@ -8,7 +8,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { payoutManagementData } from "../../../Config/data";
 import { PayoutManagementHeader } from "../../../Config/TableHeaders";
 import { disbursementTime } from "../../../Config/Validations";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 import withModal from "../../../HOC/withModal";
 

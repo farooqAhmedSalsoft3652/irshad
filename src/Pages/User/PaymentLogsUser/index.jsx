@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import CustomTable from "../../../Components/CustomTable";
-import { paymentLogsData } from "../../../Config/Data";
+import { paymentLogsData } from "../../../Config/data";
 import { paymentLogsHeaders } from "../../../Config/TableHeaders";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { usePageTitleUser } from "../../../Utils/helper";

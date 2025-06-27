@@ -8,7 +8,7 @@ import { Select } from "../../../Components/Select";
 import { shopDetailsData } from "../../../Config/data";
 import { shopProductsHeaders } from "../../../Config/TableHeaders";
 import { categoryStatus, normalStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum } from "../../../Utils/helper";

@@ -5,7 +5,7 @@ import { contentManagementBlogsHeaders } from "../../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../../Config/TableStatus";
 import { FaEdit, FaEye } from "react-icons/fa";
 import { serialNum } from "../../../../Utils/helper";
-import withFilters from "../../../../HOC/withFilters ";
+import withFilters from "../../../../HOC/withFilters";
 import { useFormStatus } from "../../../../Hooks/useFormStatus";
 import { Select } from "../../../../Components/Select";
 import { Link } from "react-router-dom";

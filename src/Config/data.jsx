@@ -4,6 +4,7 @@ import Stats2 from "../Assets/images/svg/newBookings.svg?react";
 import Stats3 from "../Assets/images/svg/newUsers.svg?react";
 import Stats4 from "../Assets/images/svg/newConsultant.svg?react";
 import { getImageAsFile } from "../Utils/helper";
+import { category } from "./TableStatus";
 
 export const notificationsData = {
   status: true,
@@ -982,7 +983,7 @@ export const userOrderLogsData = {
     total: 11,
   },
 };
-export const serviceProvidersData = {
+export const consultantManagerData = {
   status: true,
   message: "Service Provider listing",
   detail: {
@@ -993,18 +994,48 @@ export const serviceProvidersData = {
         email: "sarahmiles@gmail.com",
         registrationDate: "12/02/2024",
         status_detail: "1",
-        name: "Sarah Miles",
+        name: "Sarah",
+        last_name: "Miles",
+        category: "Education",
         gender: "Female",
+        language: "English",
+        nationality: "Qatar",
         phoneNo: "+1 2345678901",
         state: "Texas",
         city: "Dallas",
-        bio: "Dr. Sarah has over 07 years of experience in the field of pediatrics. She has worked in several healthcare settings, including children's hospitals, clinics, and primary care facilities, providing specialized medical care for children of all ages.",
-        certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
-          institute: "Harvard Medical School",
-          certificateTitle: "Pediatrician",
-        },
+        chat_min: "10",
+        chat_max: "20",
+        call_min: "20",
+        call_max: "25",
+        is_quick: true,
+        total_working_hurs: "19 hrs per week",
+        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor, providing specialized medical care for children of all ages.",
+        education: [
+          {
+            id: 1,
+            institute_name: "Institute ABC",
+            degree_title: "Degree ABC",
+            start_year: "2020",
+            end_year: "2023",
+          },
+        ],
+        work_experience: [
+          {
+            id: 1,
+            organization_name: "Organization ABC",
+            designation: "Doctor A",
+            start_year: "2023",
+            end_year: "2024",
+          },
+        ],
+        certification: [
+          {
+            institute: "Harvard Medical School",
+            certificateTitle: "Pediatrician",
+            photo:
+              "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          },
+        ],
         userImage:
           "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
@@ -1060,7 +1091,9 @@ export const serviceProvidersData = {
         email: "danielcarter@gmail.com",
         registrationDate: "01/12/2024",
         status_detail: "0",
-        name: "Daniel Carter",
+        name: "Daniel",
+        last_name: "Carter",
+        category: "Consultancy",
         gender: "Male",
         phoneNo: "+1 9876543210",
         state: "New York",
@@ -1127,7 +1160,9 @@ export const serviceProvidersData = {
         email: "emilywhite@gmail.com",
         registrationDate: "03/02/2024",
         status_detail: "1",
-        name: "Emily White",
+        name: "Emily",
+        last_name: "White",
+        category: "Self Improvement & skill building",
         gender: "Female",
         phoneNo: "+1 3456789012",
         state: "Florida",
@@ -1194,7 +1229,9 @@ export const serviceProvidersData = {
         email: "michaelscott@gmail.com",
         registrationDate: "08/08/2024",
         status_detail: "0",
-        name: "Michael Scott",
+        name: "Michael",
+        last_name: "Scott",
+        category: "Education",
         gender: "Male",
         phoneNo: "+1 1234567899",
         state: "California",
@@ -1261,7 +1298,9 @@ export const serviceProvidersData = {
         email: "jessicagreen@gmail.com",
         registrationDate: "20/06/2024",
         status_detail: "1",
-        name: "Jessica Green",
+        name: "Jessica",
+        last_name: "Green",
+        category: "Consultancy",
         gender: "Female",
         phoneNo: "+1 7654321098",
         state: "Illinois",
@@ -1520,7 +1559,7 @@ export const serviceDetailsData = {
     data: [
       {
         id: "1",
-        name: "Diagnose Service",
+        name: "Diagnose Service 1",
         description:
           "Diagnostic services are essential for accurately identifying medical conditions, guiding effective treatment plans, and monitoring the success of ongoing care. Our comprehensive range of diagnostic tools includes laboratory tests, imaging studies...",
         serviceCategory: "Online",

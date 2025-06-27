@@ -3,17 +3,24 @@ import { Link, useParams } from "react-router-dom";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import BackButton from "../../../Components/BackButton";
 import CustomTable from "../../../Components/CustomTable";
-import { serviceProvidersData } from "../../../Config/data";
+import { consultantManagerData } from "../../../Config/data";
 import { serviceProviderServicesHeaders } from "../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 import { Select } from "../../../Components/Select";
 import { FaEye } from "react-icons/fa";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
 
-const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, updatePagination }) => {
+const ConsultantServices = ({
+  showModal,
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const { id } = useParams();
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const [services, setServices] = useState([]);
@@ -21,7 +28,7 @@ const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, u
   const fetchServiceProvidersServices = async () => {
     try {
       startSubmitting(true);
-      const response = serviceProvidersData;
+      const response = consultantManagerData;
       if (response.status) {
         const { data, total, per_page, current_page, to } = response.detail;
         setServices(data.find((provider) => provider.id === id)?.services);
@@ -44,7 +51,9 @@ const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, u
     // Open the modal for confirmation
     showModal(
       `${newStatusValue === "1" ? "Active" : "Inactive"} service`,
-      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this service?`,
+      `Are you sure you want to ${
+        newStatusValue === "1" ? "Activate" : "Inactivate"
+      } this service?`,
       () => onConfirmStatusChange(id, newStatusValue)
     );
   };
@@ -52,8 +61,19 @@ const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, u
   // Confirm status change and update the state
   const onConfirmStatusChange = async (row, newStatusValue) => {
     // Update the status in the Services state
-    setServices((prevData) => prevData.map((item) => (item.id === row ? { ...item, status_detail: newStatusValue } : item)));
-    showModal("Successful", `This Service has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
+    setServices((prevData) =>
+      prevData.map((item) =>
+        item.id === row ? { ...item, status_detail: newStatusValue } : item
+      )
+    );
+    showModal(
+      "Successful",
+      `This Service has been ${
+        newStatusValue === "1" ? "Activated" : "Inactivated"
+      } successfully!`,
+      null,
+      true
+    );
   };
 
   useEffect(() => {
@@ -66,7 +86,7 @@ const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, u
         <div className="row">
           <div className="col-12 ">
             <div className="d-flex my-4">
-              <BackButton />
+              <BackButton2 />
               <h2 className="mainTitle mb-0">All Services</h2>
             </div>
             <div className="dashCard">
@@ -95,7 +115,11 @@ const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, u
                     <tbody>
                       {services?.map((item, index) => (
                         <tr key={item?.id}>
-                          <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                          <td>
+                            {serialNum(
+                              (filters.page - 1) * filters.per_page + index + 1
+                            )}
+                          </td>
                           <td>{item?.serviceName}</td>
                           <td>{item?.serviceCategory}</td>
                           <td>{dateFormat(item?.creationDate)}</td>
@@ -117,9 +141,12 @@ const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, u
                           </td>
                           <td>
                             <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
-                              <span className="tooltip-toggle" aria-label="View">
+                              <span
+                                className="tooltip-toggle"
+                                aria-label="View"
+                              >
                                 <Link to={`${item.id}`}>
-                                  <FaEye size={20} color="#1819ff" />
+                                  <FaEye size={20} />
                                 </Link>
                               </span>
                             </div>
@@ -138,4 +165,4 @@ const ServiceProviderServices = ({ showModal, filters, setFilters, pagination, u
   );
 };
 
-export default withModal(withFilters(ServiceProviderServices));
+export default withModal(withFilters(ConsultantServices));

@@ -7,7 +7,7 @@ import { Select } from "../../../Components/Select";
 import { userManagementData } from "../../../Config/data";
 import { userHeaders } from "../../../Config/TableHeaders"; // Table Headers
 import { normalStatus, statusOptions } from "../../../Config/TableStatus"; // Import statusOptions
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum } from "../../../Utils/helper";

@@ -4,22 +4,30 @@ import { Link } from "react-router-dom";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import CustomTable from "../../../Components/CustomTable";
 import { Select } from "../../../Components/Select";
-import { serviceProvidersData } from "../../../Config/data";
-import { serviceProviderHeaders } from "../../../Config/TableHeaders";
+import { consultantManagerData } from "../../../Config/data";
+import { consultantManagerHeaders } from "../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum } from "../../../Utils/helper";
+import { Col, Row } from "react-bootstrap";
+import "./style.css";
 
-const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination, updatePagination }) => {
+const ConsultantManagement = ({
+  showModal,
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const [userData, setUserData] = useState([]);
 
   const fetchServiceProviders = async () => {
     try {
       startSubmitting(true);
-      const response = serviceProvidersData;
+      const response = consultantManagerData;
       if (response.status) {
         const { data, total, per_page, current_page, to } = response.detail;
         setUserData(data);
@@ -27,7 +35,7 @@ const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination,
           showData: to,
           currentPage: current_page,
           totalRecords: total,
-          totalPages: Math.ceil(total / per_page)
+          totalPages: Math.ceil(total / per_page),
         });
       }
     } catch (error) {
@@ -42,8 +50,10 @@ const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination,
     const newStatusValue = e;
     // Open the modal for confirmation
     showModal(
-      `${newStatusValue === "1" ? "Active" : "Inactive"} Service Provider`,
-      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this Service Provider?`,
+      null,
+      `Are you sure you want to ${
+        newStatusValue === "1" ? "Activate" : "Inactivate"
+      } this Consultant?`,
       () => onConfirmStatusChange(userId, newStatusValue)
     );
   };
@@ -51,8 +61,19 @@ const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination,
   // Confirm status change and update the state
   const onConfirmStatusChange = async (userId, newStatusValue) => {
     // Update the status in the userData state
-    setUserData((prevData) => prevData.map((user) => (user.id === userId ? { ...user, status_detail: newStatusValue } : user)));
-    showModal("Successful", `This Service Provider has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
+    setUserData((prevData) =>
+      prevData.map((user) =>
+        user.id === userId ? { ...user, status_detail: newStatusValue } : user
+      )
+    );
+    showModal(
+      null,
+      `Consultant Has Been ${
+        newStatusValue === "1" ? "Activated" : "Inactivated"
+      } Successfully!`,
+      null,
+      true
+    );
   };
 
   useEffect(() => {
@@ -60,45 +81,65 @@ const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination,
   }, [filters]);
 
   return (
-    <DashboardLayout pageTitle="Service Provider Management">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-12 ">
-              <div className="my-4 d-flex flex-wrap gap-3 gap-md-0 align-items-center justify-content-between">
-                <h2 className="mainTitle mb-0">Service Provider Management</h2>
-                <Link to={"requests"} className="site-btn primary-btn text-decoration-none">
-                  New Requests
-                </Link>
-            </div>
-            <div className="dashCard">
-              <div className="row mb-3">
-                <div className="col-12">
+    <DashboardLayout pageTitle="Consultant Management">
+      <div className="container-fluid consultant-management">
+        <div className="dashCard">
+          <div className="row">
+            <div className="col-12">
+              <Row className="mb-2 page-header">
+                <Col
+                  xs={12}
+                  className="gap-2 d-flex flex-column flex-xl-row justify-content-between align-items-start align-items-xl-center flex-wrap"
+                >
+                  <div className="flex-shrink-0">
+                    <h2 class="align-self-start mainTitle mb-0">
+                      Consultant Management
+                    </h2>
+                  </div>
+                  <div className="ms-xl-auto d-flex gap-2 gap-xxl-3 flex-column flex-sm-row flex-xl-column flex-xxl-row">
+                    <Link to={"requests"} className="btn btn-primary">
+                      Consultant screening
+                    </Link>
+                    <Link to={"requests"} className="btn btn-outline-primary">
+                      New Consultants Request
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+              <Row className="mb-3">
+                <Col xs={12}>
                   <CustomTable
                     filters={filters}
                     setFilters={setFilters}
                     loading={isSubmitting}
-                    headers={serviceProviderHeaders}
+                    headers={consultantManagerHeaders}
                     pagination={pagination}
                     dateFilters={[
                       {
                         title: "Registration Date",
                         from: "fromDate",
-                        to: "toDate"
-                      }
+                        to: "toDate",
+                      },
                     ]}
                     selectOptions={[
                       {
                         title: "Status",
-                        options: normalStatus
-                      }
+                        options: normalStatus,
+                      },
                     ]}
                   >
                     <tbody>
                       {userData?.map((item, index) => (
                         <tr key={item?.id}>
-                          <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                          <td>
+                            {serialNum(
+                              (filters.page - 1) * filters.per_page + index + 1
+                            )}
+                          </td>
                           <td>{item?.name}</td>
+                          <td>{item?.last_name}</td>
                           <td>{item?.email}</td>
+                          <td>{item?.category}</td>
                           <td>{dateFormat(item?.registrationDate)}</td>
                           {/* Status column with Select dropdown */}
                           <td>
@@ -116,9 +157,12 @@ const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination,
                           </td>
                           <td>
                             <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
-                              <span className="tooltip-toggle" aria-label="View">
+                              <span
+                                className="tooltip-toggle"
+                                aria-label="View"
+                              >
                                 <Link to={`${item.id}`}>
-                                  <FaEye size={20} color="#1819ff" />
+                                  <FaEye size={20} />
                                 </Link>
                               </span>
                             </div>
@@ -127,8 +171,8 @@ const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination,
                       ))}
                     </tbody>
                   </CustomTable>
-                </div>
-              </div>
+                </Col>
+              </Row>
             </div>
           </div>
         </div>
@@ -137,4 +181,4 @@ const ServiceProviderManagement = ({ showModal, filters, setFilters, pagination,
   );
 };
 
-export default withModal(withFilters(ServiceProviderManagement));
+export default withModal(withFilters(ConsultantManagement));

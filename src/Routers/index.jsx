@@ -36,13 +36,15 @@ import Product from "../Pages/Admin/Product/Product";
 import ViewProductCategoryDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import QueriesDetails from "../Pages/Admin/QueriesManagement/QueriesDetail";
 import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
-import ServiceDetails from "../Pages/Admin/ServiceProviderManagement/ServiceDetails";
-import ServiceProviderDetails from "../Pages/Admin/ServiceProviderManagement/ServiceProviderDetails";
-import ServiceProviderManagement from "../Pages/Admin/ServiceProviderManagement/ServiceProviderManagement";
-import ServiceProviderProfile from "../Pages/Admin/ServiceProviderManagement/ServiceProviderProfile";
-import ServiceProviderRequests from "../Pages/Admin/ServiceProviderManagement/ServiceProviderRequests";
-import ServiceProviderServices from "../Pages/Admin/ServiceProviderManagement/ServiceProviderServices";
-import ShopDetails from "../Pages/Admin/ServiceProviderManagement/ShopDetails";
+import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
+import ConsultantDetails from "../Pages/Admin/ConsultantManagement/ConsultantDetails";
+import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
+import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
+
+import ServiceProviderProfile from "../Pages/Admin/ConsultantManagement/ServiceProviderProfile";
+import ServiceProviderRequests from "../Pages/Admin/ConsultantManagement/ServiceProviderRequests";
+import ServiceProviderServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
+import ShopDetails from "../Pages/Admin/ConsultantManagement/ShopDetails";
 import UserOrderDetails from "../Pages/Admin/UserManagement/OrderDetail";
 
 import MainLayout from "../Components/Layouts/UserLayout/MainLayout/index";
@@ -186,33 +188,34 @@ const routes = [
 
           // Service Provider Mangement //
           {
-            path: "admin/service-provider-management",
-            element: <ServiceProviderManagement />,
+            path: "admin/consultant-management",
+            element: <ConsultantManagement />,
           },
           {
-            path: "admin/service-provider-management/requests",
-            element: <ServiceProviderRequests />,
+            path: "admin/consultant-management/:id",
+            element: <ConsultantDetails />,
           },
           {
-            path: "admin/service-provider-management/requests/:id",
-            element: <ServiceProviderProfile />,
+            path: "admin/consultant-management/:id/services",
+            element: <ConsultantServices />,
           },
           {
-            path: "admin/service-provider-management/:id",
-            element: <ServiceProviderDetails />,
+            path: "admin/consultant-management/:id/services/:serviceId",
+            element: <ConsultantServicesDetails />,
           },
-          {
-            path: "admin/service-provider-management/:id/shop",
-            element: <ShopDetails />,
-          },
-          {
-            path: "admin/service-provider-management/:id/services",
-            element: <ServiceProviderServices />,
-          },
-          {
-            path: "admin/service-provider-management/:id/services/:serviceId",
-            element: <ServiceDetails />,
-          },
+
+          // {
+          //   path: "admin/service-provider-management/requests/:id",
+          //   element: <ServiceProviderProfile />,
+          // },
+          // {
+          //   path: "admin/service-provider-management/:id/shop",
+          //   element: <ShopDetails />,
+          // },
+          // {
+          //   path: "admin/service-provider-management/:id/services",
+          //   element: <ServiceProviderServices />,
+          // },
           // --- End --- //
 
           // Sub Category Mangement //

@@ -7,7 +7,7 @@ import { Select } from "../../../Components/Select";
 import { bannerAdsManagementData } from "../../../Config/data";
 import { bannerAdsManagementHeaders } from "../../../Config/TableHeaders";
 import { enableDisableOptions, enableDisableStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { serialNum } from "../../../Utils/helper";

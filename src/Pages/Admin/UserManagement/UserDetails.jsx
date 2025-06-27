@@ -10,7 +10,7 @@ import { Select } from "../../../Components/Select";
 import { userAppointmentLogsData, userManagementData } from "../../../Config/data";
 import { appointmentHeader } from "../../../Config/TableHeaders";
 import { AppointmentType, appointmentStatus, sessionTypeStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { getCountryFlag, serialNum, statusClassMap } from "../../../Utils/helper";

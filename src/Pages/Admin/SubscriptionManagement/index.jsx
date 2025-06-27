@@ -7,7 +7,7 @@ import { normalStatus ,subcriptionTypeTwo } from "../../../Config/TableStatus"; 
 import { getAll, post } from "../../../Services/Api"; //Api Service
 import TableDropdown from "../../../Components/TableDropdown";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { subscriptionManagementData } from "../../../Config/data";
 import CustomButtonLink from "../../../Components/CustomButtonLink";

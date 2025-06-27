@@ -7,7 +7,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { serviceProvidersRequestsData } from "../../../Config/data";
 import { serviceProvidersRequestHeaders } from "../../../Config/TableHeaders";
 import { serviceProvidersRequestsStatus } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum, statusClassMap } from "../../../Utils/helper";
 

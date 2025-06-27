@@ -25,6 +25,7 @@
   transition: 0.15s linear;
   display: flex;
 }
+
 .sideLink:hover,
 .sideLink.active {
   svg {
@@ -33,15 +34,18 @@
     }
   }
 }
+
 .sidebar-li {
   margin-top: 8px;
 }
+
 .sideLink:hover,
 .sideLink.active {
   color: #fff !important;
   background: #15355E;
   border-color: var(--primaryColor);
 }
+
 /* 
 .sideLink:hover .sideIcon img, .sideLink.active  .sideIcon img{
     filter: invert(300%) brightness(200%);
@@ -64,9 +68,11 @@
 .sidebar.collapsed .sideLinkText {
   display: none;
 }
+
 .sideLinkText {
   white-space: initial;
 }
+
 .sidebar.collapsed .sideLink:hover .sideLinkText {
   display: block;
   left: 60px;
@@ -93,6 +99,7 @@
   border-radius: 8px;
   cursor: grab;
 }
+
 .sidebar::-webkit-scrollbar-thumb:active {
   cursor: grabbing;
 }
@@ -103,6 +110,7 @@
   .sidebar.collapsed {
     width: 0;
   }
+
   .sidebar {
     padding-bottom: 0;
   }

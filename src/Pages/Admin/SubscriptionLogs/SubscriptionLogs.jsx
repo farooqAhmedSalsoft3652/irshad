@@ -6,7 +6,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { subscriptionLogsData } from "../../../Config/data";
 import { subscriptionLogHeaders } from "../../../Config/TableHeaders";
 import { subcriptionStatus , subscriptionType } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { serialNum } from "../../../Utils/helper";

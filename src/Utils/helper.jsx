@@ -312,10 +312,10 @@ export const usePageTitle = (title = "", user = false) => {
       : process.env.REACT_APP_WEBSITE_NAME +
         " " +
         // name +
-        " | "  +
+        " | " +
         // title.charAt(0).toUpperCase() +
         // title.slice(1);
-        title
+        title;
   }, [title, user, name]); // Add dependencies
 };
 export const usePageTitleUser = (title) => {
@@ -589,7 +589,7 @@ export const generateLinks = (role) => {
           name: "User Management",
         },
         {
-          link: "/admin/service-provider-management",
+          link: "/admin/consultant-management",
           image: ConsultantMgIcon,
           name: "Consultant Management",
         },
@@ -603,7 +603,7 @@ export const generateLinks = (role) => {
           image: ServiceMgIcon,
           name: "Service Management",
         },
-         {
+        {
           link: "/admin/appointments",
           image: AppointmentLogs,
           name: "Appointment Logs",

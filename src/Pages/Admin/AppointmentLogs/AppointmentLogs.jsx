@@ -6,7 +6,7 @@ import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/Dashboa
 import { appointmentLogsData } from "../../../Config/data";
 import { appointmentLogsHeaders } from "../../../Config/TableHeaders";
 import { appointmentTypeOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
 const AppointmentLogs = ({ filters, setFilters, pagination, updatePagination }) => {

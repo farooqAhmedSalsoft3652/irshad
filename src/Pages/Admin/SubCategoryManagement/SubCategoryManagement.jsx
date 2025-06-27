@@ -7,7 +7,7 @@ import { Select } from "../../../Components/Select";
 import { serviceCategoryData } from "../../../Config/data";
 import { subCategoryHeaders } from "../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { dateFormat, serialNum } from "../../../Utils/helper";

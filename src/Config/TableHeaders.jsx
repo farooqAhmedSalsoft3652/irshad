@@ -214,18 +214,26 @@ export const serviceProviderorderLogsHeader = [
     title: "Action",
   },
 ];
-export const serviceProviderHeaders = [
+export const consultantManagerHeaders = [
   {
     key: "id",
     title: "S.No",
   },
   {
-    key: "service_provider_name",
-    title: "Service Provider Name",
+    key: "first_name",
+    title: "First Name",
   },
   {
-    key: "email",
+    key: "last_name",
+    title: "Last Name",
+  },
+  {
+    key: "email_address",
     title: "Email Address",
+  },
+  {
+    key: "category",
+    title: "Category",
   },
   {
     key: "registration_date",

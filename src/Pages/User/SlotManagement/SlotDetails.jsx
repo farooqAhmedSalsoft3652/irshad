@@ -5,7 +5,7 @@ import BackButton2 from "../../../Components/BackButton/BackButton2";
 import CustomButton from "../../../Components/CustomButton";
 import SlotCard from "../../../Components/SlotCard";
 import { slotManagementHistoryData, slotsData } from "../../../Config/data";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { usePageTitleUser } from "../../../Utils/helper";

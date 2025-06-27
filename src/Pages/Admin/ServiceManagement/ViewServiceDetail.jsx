@@ -4,9 +4,9 @@ import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/Dashboa
 // import { getDetails } from "../../../Services/Api";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import { Select } from "../../../Components/Select";
-import { serviceManagementData } from "../../../Config/Data";
+import { serviceManagementData } from "../../../Config/data";
 import { statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 
 const ViewServiceDetail = ({ showModal }) => {

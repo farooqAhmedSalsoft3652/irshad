@@ -24,7 +24,7 @@ import CustomModal from "../../../CustomModal";
 import HeaderNotification from "../../../HeaderNotification";
 import Toast, { showToast } from "../../../Toast";
 import "./style.css";
-import { notificationsData } from "../../../../Config/Data";
+import { notificationsData } from "../../../../Config/data";
 
 export const Header = () => {
   const navigate = useNavigate();

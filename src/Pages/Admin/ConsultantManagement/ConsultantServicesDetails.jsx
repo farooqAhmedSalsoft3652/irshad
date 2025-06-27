@@ -7,13 +7,29 @@ import CustomTable from "../../../Components/CustomTable";
 import { Select } from "../../../Components/Select";
 import { serviceDetailsData } from "../../../Config/data";
 import { serviceProviderappointmentHeader } from "../../../Config/TableHeaders";
-import { appointmentStatus, AppointmentType, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import {
+  appointmentStatus,
+  AppointmentType,
+  statusOptions,
+} from "../../../Config/TableStatus";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { dateFormat, isNullOrEmpty, serialNum, statusClassMap } from "../../../Utils/helper";
+import {
+  dateFormat,
+  isNullOrEmpty,
+  serialNum,
+  statusClassMap,
+} from "../../../Utils/helper";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
 
-const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagination }) => {
+const ConsultantServicesDetails = ({
+  showModal,
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const { serviceId } = useParams();
   const [serviceDetails, setServiceDetails] = useState(null);
 
@@ -21,7 +37,9 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   useEffect(() => {
     const getServiceDetails = async () => {
-      const response = serviceDetailsData.detail.data.find((e) => e.id === serviceId);
+      const response = serviceDetailsData.detail.data.find(
+        (e) => e.id === serviceId
+      );
 
       // const response = await getDetails(`/admin-api/users/${id}`);
       if (response) {
@@ -39,7 +57,9 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
     // Open the modal for confirmation
     showModal(
       `${newStatusValue === "1" ? "Active" : "Inactive"} Service`,
-      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this Service?`,
+      `Are you sure you want to ${
+        newStatusValue === "1" ? "Activate" : "Inactivate"
+      } this Service?`,
       () => onConfirmStatusChange(id, newStatusValue)
     );
   };
@@ -48,7 +68,14 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
   const onConfirmStatusChange = async (row, newStatusValue) => {
     // Update the status in the appointmentLogs state
     setServiceDetails({ ...serviceDetails, status_detail: newStatusValue });
-    showModal("Successful", `This Service has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
+    showModal(
+      "Successful",
+      `This Service has been ${
+        newStatusValue === "1" ? "Activated" : "Inactivated"
+      } successfully!`,
+      null,
+      true
+    );
   };
 
   if (isNullOrEmpty(serviceDetails)) {
@@ -59,7 +86,7 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
             <div className="col-12 ">
               <div className="row my-4">
                 <div className="col-12 d-flex">
-                  <BackButton />
+                  <BackButton2 />
                   <h2 className="mainTitle mb-0">Service Details</h2>
                 </div>
               </div>
@@ -81,7 +108,7 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
           <div className="col-12 ">
             <div className="row my-4">
               <div className="col-12 d-flex">
-                <BackButton />
+                <BackButton2 />
                 <h2 className="mainTitle mb-0">Service Details</h2>
               </div>
             </div>
@@ -99,7 +126,9 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
                             name="status"
                             label="Status:"
                             value={serviceDetails?.status_detail}
-                            onChange={(e) => handleStatusChange(e, serviceDetails?.id)}
+                            onChange={(e) =>
+                              handleStatusChange(e, serviceDetails?.id)
+                            }
                             isInputNeeded={false}
                           >
                             {statusOptions}
@@ -115,16 +144,26 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
                     <div className="col-md-10 mt-2">
                       <div className="my-4">
                         <h4 className="secondaryLabel">Description</h4>
-                        <p className="secondaryText mb-0">{serviceDetails.description}</p>
+                        <p className="secondaryText mb-0">
+                          {serviceDetails.description}
+                        </p>
                       </div>
                       <div className="row my-4">
                         {[
-                          { label: "Service Category", value: serviceDetails?.serviceCategory },
-                          { label: "Service Charges", value: serviceDetails?.serviceCharges },
+                          {
+                            label: "Service Category",
+                            value: serviceDetails?.serviceCategory,
+                          },
+                          {
+                            label: "Service Charges",
+                            value: serviceDetails?.serviceCharges,
+                          },
                         ].map(({ label, value }) => (
                           <div className="col-lg-4 col-md-6 mb-3" key={label}>
                             <h4 className="secondaryLabel">{label}</h4>
-                            <p className="secondaryText wrapText mb-0">{value}</p>
+                            <p className="secondaryText wrapText mb-0">
+                              {value}
+                            </p>
                           </div>
                         ))}
                       </div>
@@ -167,16 +206,25 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
                     <tbody>
                       {appointmentLogs?.map((item, index) => (
                         <tr key={item?.id}>
-                          <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                          <td>
+                            {serialNum(
+                              (filters.page - 1) * filters.per_page + index + 1
+                            )}
+                          </td>
                           <td>{item?.appointment_iD}</td>
                           <td>{item?.serviceType}</td>
                           <td>{item?.appointment_type}</td>
                           <td>{dateFormat(item?.date)}</td>
                           <td>{item?.charges}</td>
-                          <td className={statusClassMap[item?.status]}>{item?.status}</td>
+                          <td className={statusClassMap[item?.status]}>
+                            {item?.status}
+                          </td>
                           <td>
                             <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
-                              <span className="tooltip-toggle" aria-label="View">
+                              <span
+                                className="tooltip-toggle"
+                                aria-label="View"
+                              >
                                 <Link to={`/admin/appointments/${item.id}`}>
                                   <FaEye size={20} color="#1819ff" />
                                 </Link>
@@ -197,4 +245,4 @@ const ServiceDetails = ({ showModal, filters, setFilters, pagination, updatePagi
   );
 };
 
-export default withModal(withFilters(ServiceDetails));
+export default withModal(withFilters(ConsultantServicesDetails));

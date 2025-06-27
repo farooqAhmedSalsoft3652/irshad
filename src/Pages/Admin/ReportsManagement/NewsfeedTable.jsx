@@ -5,7 +5,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { reportsManagementNewsfeedHeader } from "../../../Config/TableHeaders";
 import { reportsStatus } from "../../../Config/TableStatus";
 import { reportsManagementNewsfeedData } from "../../../Config/data";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { isNullOrEmpty, serialNum, statusClassMap } from "../../../Utils/helper";
 

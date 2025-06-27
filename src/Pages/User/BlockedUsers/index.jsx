@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { dateFormat, serialNum, usePageTitle } from "../../../Utils/helper";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { normalStatus } from "../../../Config/TableStatus";
 import CustomTable from "../../../Components/CustomTable";
 import { useFormStatus } from "../../../Hooks/useFormStatus";

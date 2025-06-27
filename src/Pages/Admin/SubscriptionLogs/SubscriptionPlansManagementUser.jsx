@@ -8,7 +8,7 @@ import { Select } from "../../../Components/Select";
 import { subscriptionPlansManagementData } from "../../../Config/data";
 import { subscriptionPlanManagementHeaders } from "../../../Config/TableHeaders";
 import { normalStatus, statusOptions, subscriptionType } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { serialNum } from "../../../Utils/helper";

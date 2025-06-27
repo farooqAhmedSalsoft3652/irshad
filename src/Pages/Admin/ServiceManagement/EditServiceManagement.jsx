@@ -7,7 +7,7 @@ import CustomInput from "../../../Components/CustomInput";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { Select } from "../../../Components/Select";
 import ImageUpload from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
-import { serviceManagementData } from "../../../Config/Data";
+import { serviceManagementData } from "../../../Config/data";
 import { statusOptions } from "../../../Config/TableStatus";
 import { addServiceSchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
@@ -19,17 +19,26 @@ const EditServiceManagement = ({ showModal }) => {
 
   const { id } = useParams();
   useEffect(() => {
-    const serviceupdateData = serviceManagementData?.detail?.data?.find((e) => e.id == id);
+    const serviceupdateData = serviceManagementData?.detail?.data?.find(
+      (e) => e.id == id
+    );
     if (serviceupdateData) {
       setData(serviceupdateData);
     }
   }, [id]);
   // console.log(data, "serviceupdateData");
   const handleSubmit = async (values) => {
-    showModal(``, `Are you sure you want to update Service?`, () => onConfirmStatusChange());
+    showModal(``, `Are you sure you want to update Service?`, () =>
+      onConfirmStatusChange()
+    );
     const onConfirmStatusChange = async () => {
       // console.log("Service data:", values);
-      showModal("", `Service has been Updated successfully!`, () => navigate("/admin/service-management"), true);
+      showModal(
+        "",
+        `Service has been Updated successfully!`,
+        () => navigate("/admin/service-management"),
+        true
+      );
     };
   };
 
@@ -65,7 +74,15 @@ const EditServiceManagement = ({ showModal }) => {
               validationSchema={addServiceSchema}
               onSubmit={handleSubmit}
             >
-              {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
+              {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                setFieldValue,
+              }) => (
                 <form onSubmit={handleSubmit} className="category-wrap">
                   <div className="row my-4">
                     <div className="col-12 mb-md-4 mb-3">
@@ -143,7 +160,12 @@ const EditServiceManagement = ({ showModal }) => {
                           onChange={(files) => setFieldValue(`photo`, files)}
                           numberOfFiles={1}
                           images={values.photo}
-                          errorFromParent={touched.photo && touched.photo && errors.photo && errors.photo}
+                          errorFromParent={
+                            touched.photo &&
+                            touched.photo &&
+                            errors.photo &&
+                            errors.photo
+                          }
                           className="image-upload-style-2"
                           required
                         />
@@ -152,7 +174,12 @@ const EditServiceManagement = ({ showModal }) => {
                   </div>
                   <div className="row">
                     <div className="col-12">
-                      <CustomButton variant="btn btn-primary" className="px-5" text="Update Service" type="submit" />
+                      <CustomButton
+                        variant="btn btn-primary"
+                        className="px-5"
+                        text="Update Service"
+                        type="submit"
+                      />
                     </div>
                   </div>
                 </form>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import CustomFilters from "../../../Components/CustomFilters";
 import { newServicesData } from "../../../Config/data";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import CustomPagination from "../../../Components/CustomPagination";

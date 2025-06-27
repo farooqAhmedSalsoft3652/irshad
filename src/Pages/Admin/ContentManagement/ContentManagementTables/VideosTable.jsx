@@ -6,12 +6,18 @@ import { Select } from "../../../../Components/Select";
 import { videosData } from "../../../../Config/data";
 import { contentManagementVideoHeaders } from "../../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../../Config/TableStatus";
-import withFilters from "../../../../HOC/withFilters ";
+import withFilters from "../../../../HOC/withFilters";
 import withModal from "../../../../HOC/withModal";
 import { useFormStatus } from "../../../../Hooks/useFormStatus";
 import { serialNum } from "../../../../Utils/helper";
 
-const VideosTable = ({ showModal, filters, setFilters, pagination, updatePagination }) => {
+const VideosTable = ({
+  showModal,
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const [videos, setVideos] = useState([]);
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const fetchVideos = async () => {
@@ -45,7 +51,9 @@ const VideosTable = ({ showModal, filters, setFilters, pagination, updatePaginat
     // Open the modal for confirmation
     showModal(
       `${newStatusValue === "1" ? "Active" : "Inactive"} Video`,
-      `Are you sure you want to ${newStatusValue === "1" ? "Activate" : "Inactivate"} this Video?`,
+      `Are you sure you want to ${
+        newStatusValue === "1" ? "Activate" : "Inactivate"
+      } this Video?`,
       () => onConfirmStatusChange(rowId, newStatusValue)
     );
   };
@@ -53,8 +61,19 @@ const VideosTable = ({ showModal, filters, setFilters, pagination, updatePaginat
   // Confirm status change and update the state
   const onConfirmStatusChange = async (rowId, newStatusValue) => {
     // Update the status in the videos state
-    setVideos((prevData) => prevData.map((row) => (row.id === rowId ? { ...row, status_detail: newStatusValue } : row)));
-    showModal("Successful", `This Video has been ${newStatusValue === "1" ? "Activated" : "Inactivated"} successfully!`, null, true);
+    setVideos((prevData) =>
+      prevData.map((row) =>
+        row.id === rowId ? { ...row, status_detail: newStatusValue } : row
+      )
+    );
+    showModal(
+      "Successful",
+      `This Video has been ${
+        newStatusValue === "1" ? "Activated" : "Inactivated"
+      } successfully!`,
+      null,
+      true
+    );
   };
 
   return (
@@ -63,7 +82,10 @@ const VideosTable = ({ showModal, filters, setFilters, pagination, updatePaginat
         <div className="col-12">
           <div className="d-flex align-items-center justify-content-between mb-4">
             <h4 className="dashTitle d-inline">Videos</h4>
-            <Link to={"add-video"} className="site-btn primary-btn text-decoration-none">
+            <Link
+              to={"add-video"}
+              className="site-btn primary-btn text-decoration-none"
+            >
               Add Video
             </Link>
           </div>
@@ -90,7 +112,11 @@ const VideosTable = ({ showModal, filters, setFilters, pagination, updatePaginat
             <tbody>
               {videos?.map((item, index) => (
                 <tr key={item?.id}>
-                  <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                  <td>
+                    {serialNum(
+                      (filters.page - 1) * filters.per_page + index + 1
+                    )}
+                  </td>
                   <td>{item?.videoTitle}</td>
                   <td>{item?.addedOn}</td>
                   <td>
