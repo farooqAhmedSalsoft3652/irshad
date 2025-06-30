@@ -11,7 +11,7 @@ import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/Dashboa
 import { promoCodeData } from "../../../Config/data";
 import { PromoCodeManagementHeader } from "../../../Config/TableHeaders";
 import { promoCode } from "../../../Config/Validations";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 import "./PromoCodeManagement.css";

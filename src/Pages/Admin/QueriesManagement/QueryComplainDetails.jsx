@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
@@ -25,7 +26,7 @@ const QueryComplainDetails = () => {
   return (
     <DashboardLayout pageTitle="View Query">
       <div className="dashCard ">
-        <div className="row mb-4">
+        <div className="row mb-lg-4 mb-3">
           <div className="col-12">
             <div className="d-flex">
               <BackButton2 />
@@ -33,42 +34,47 @@ const QueryComplainDetails = () => {
             </div>
           </div>
         </div>
-        <div className="row ">
-          <div className="col-12">
-            <div className="row">
-              <div className="col-md-10 col-lg-9 col-xl-7">
-                <div className="row my-4">
+        <Row>
+          <Col xs={12} className="d-flex flex-column flex-lg-row gap-3">
+            <div className="flex-grow-1 order-2 order-lg-1">
+              <Col lg={12} xl={11} xxl={7}>
+                <Row>
                   {[
                     { label: "Full Name", value: fullName },
                     { label: "email Address", value: emailAddress },
                     { label: "User Type", value: userType },
                     { label: "Date", value: date },
                   ].map(({ label, value }) => (
-                    <div className="col-md-6 mb-3" key={label}>
+                    <Col md={6} className="mb-3 mb-lg-4" key={label}>
                       <div className="detail-box">
                         <h6 className="">{label}</h6>
-                        <p className="mb-0" style={{ textTransform: label === "User Type" ? "capitalize" : "none" }}>{value}</p>
+                        <p className="mb-0" style={{ textTransform: label === "User Type" ? "capitalize" : "none" }}>
+                          {value}
+                        </p>
                       </div>
-                    </div>
+                    </Col>
                   ))}
-                  <div className="row ">
-                    {[
-                      { label: "Subject", value: subject },
-                      { label: "Message", value: message },
-                    ].map(({ label, value }) => (
-                      <div className="col-md-10 col-12 mb-3" key={label}>
-                        <div className="detail-box">
+                </Row>
+                <Row>
+                  {[
+                    { label: "Subject", value: subject },
+                    { label: "Message", value: message },
+                  ].map(({ label, value }) => (
+                    <Col xs={12} className="mb-3 mb-lg-4" key={label}>
+                      <div className="detail-box">
                         <h6 className="">{label}</h6>
                         <p className="mb-0">{value}</p>
-                        </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                    </Col>
+                  ))}
+                </Row>
+              </Col>
             </div>
-          </div>
-        </div>
+            {/* <div className="flex-shrink-0 order-1 order-lg-2">
+              <CustomButton text="Initiate Chat" onClick={() => setInitiateModal(true)} />
+            </div> */}
+          </Col>
+        </Row>
       </div>
     </DashboardLayout>
   );

@@ -3,7 +3,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { paymentLogsBookingData } from "../../../Config/data";
 import { paymentLogsAdminHeaders } from "../../../Config/TableHeaders";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 import { appointmentTypeOptions } from "../../../Config/TableStatus";

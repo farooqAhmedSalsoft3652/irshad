@@ -6,7 +6,7 @@ import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/Dashboa
 import { RequestManagementData } from "../../../Config/data";
 import { RequestManagementHeaders } from "../../../Config/TableHeaders";
 import { appointmentTypeOptions, pendingTypeOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
 const RequestManagement = ({ filters, setFilters, pagination, updatePagination }) => {

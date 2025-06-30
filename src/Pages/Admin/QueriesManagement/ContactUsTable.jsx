@@ -5,7 +5,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { queryTableHeaders } from "../../../Config/TableHeaders";
 import { userTypeStatus } from "../../../Config/TableStatus";
 import { contactUsTableData } from "../../../Config/data";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { isNullOrEmpty, serialNum } from "../../../Utils/helper";
 

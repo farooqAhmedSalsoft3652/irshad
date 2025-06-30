@@ -6,7 +6,7 @@ import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/Dashboa
 import { reportsManagementData } from "../../../Config/data";
 import { reportsManagementHeader } from "../../../Config/TableHeaders";
 import { pendingTypeOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import { serialNum } from "../../../Utils/helper";
 
 const ReportsManagement = ({ filters, setFilters, pagination, updatePagination }) => {

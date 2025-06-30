@@ -5,10 +5,10 @@ import CustomButton from "../../../Components/CustomButton";
 import CustomInput from "../../../Components/CustomInput";
 import CustomTable from "../../../Components/CustomTable";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import { CancelPenaltyManagementData } from "../../../Config/Data";
+import { CancelPenaltyManagementData } from "../../../Config/data";
 import { CancelPenaltyManagementHeader } from "../../../Config/TableHeaders";
 import { cancelPenaltySchema } from "../../../Config/Validations";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 

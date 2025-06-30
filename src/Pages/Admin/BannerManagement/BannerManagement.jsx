@@ -7,7 +7,7 @@ import { Select } from "../../../Components/Select";
 import { bannerManagementData } from "../../../Config/data";
 import { BannerManagementHeaders } from "../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters ";
+import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
