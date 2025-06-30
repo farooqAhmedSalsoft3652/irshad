@@ -12,7 +12,15 @@ import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
-const CancellationTimeManagement = ({ filters, setFilters, pagination, updatePagination, onSubmit, isSubmitting, showModal }) => {
+const CancellationTimeManagement = ({
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+  onSubmit,
+  isSubmitting,
+  showModal,
+}) => {
   const [cancelPenalty, setCancelPenalty] = useState([]);
 
   const fetchCancelPenalty = async () => {
@@ -43,7 +51,12 @@ const CancellationTimeManagement = ({ filters, setFilters, pagination, updatePag
   };
 
   const handleFormSubmit = (values, { resetForm }) => {
-    showModal(``, `Cancellation Time has been updated successfully!`, null, true);
+    showModal(
+      ``,
+      `Cancellation Time has been updated successfully!`,
+      null,
+      true
+    );
     const newEntry = {
       id: Date.now(),
       disbursement_time: values.disbursement_time,
@@ -68,9 +81,14 @@ const CancellationTimeManagement = ({ filters, setFilters, pagination, updatePag
                 <div className="col-12">
                   <div className="d-flex align-items-center gap-2">
                     <BackButton2 />
-                    <h2 className="mainTitle mb-0">Cancellation Time Management</h2>
+                    <h2 className="mainTitle mb-0">
+                      Cancellation Time Management
+                    </h2>
                   </div>
-                  <small className="red-text d-inline-block mt-3 mb-0 fw-medium ps-sm-2">Every consultant allow to cancel bookings [set days] after that they have to pay penalty</small>
+                  <small className="red-text d-inline-block mt-3 mb-0 fw-medium ps-sm-2">
+                    Every consultant allow to cancel bookings [set days] after
+                    that they have to pay penalty
+                  </small>
                 </div>
               </div>
               <div className="mb-4">
@@ -81,14 +99,20 @@ const CancellationTimeManagement = ({ filters, setFilters, pagination, updatePag
                   validationSchema={cancelTimeSchema}
                   onSubmit={handleFormSubmit}
                 >
-                  {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+                  {({
+                    values,
+                    errors,
+                    touched,
+                    handleChange,
+                    handleBlur,
+                    handleSubmit,
+                    isSubmitting,
+                  }) => (
                     <form onSubmit={handleSubmit} className="payout-wrap">
                       <div className="row mb-3">
                         <div className="col-md-10 col-lg-11 col-xl-9 col-xxl-6">
                           {/* Flexbox layout with mobile responsiveness */}
-                          <label className="mainLabel">
-                            Set Days
-                          </label>
+                          <label className="mainLabel">Set Days</label>
                           <div className="d-flex align-items-md-center flex-md-row flex-column gap-2">
                             {/* Commission rate input */}
                             <div className="position-relative flex-grow-1">
@@ -103,7 +127,9 @@ const CancellationTimeManagement = ({ filters, setFilters, pagination, updatePag
                                 onBlur={handleBlur}
                                 // error={touched.disbursement_time && errors.disbursement_time}
                               />
-                              <span className={`fw-bold dollar_icon`}>Days</span>
+                              <span className={`fw-bold dollar_icon`}>
+                                Days
+                              </span>
                             </div>
                             {/* Update Button */}
                             <div className="">
@@ -117,7 +143,11 @@ const CancellationTimeManagement = ({ filters, setFilters, pagination, updatePag
                               />
                             </div>
                           </div>
-                          <ErrorMessage name="set_days" component="p" className="error-message red-text mb-0" />
+                          <ErrorMessage
+                            name="set_days"
+                            component="p"
+                            className="error-message red-text mb-0"
+                          />
                         </div>
                       </div>
                     </form>
@@ -150,7 +180,11 @@ const CancellationTimeManagement = ({ filters, setFilters, pagination, updatePag
                     <tbody>
                       {cancelPenalty?.map((item, index) => (
                         <tr key={item?.id}>
-                          <td width="33%">{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                          <td width="33%">
+                            {serialNum(
+                              (filters.page - 1) * filters.per_page + index + 1
+                            )}
+                          </td>
                           <td width="33%">{`${item?.set_day}`}</td>
                           <td width="34%">{dateFormat(item?.date)}</td>
                         </tr>

@@ -8,7 +8,13 @@ import withModal from "../../../HOC/withModal";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 import { appointmentTypeOptions } from "../../../Config/TableStatus";
 
-const PaymentLogs = ({ filters, setFilters, pagination, updatePagination, isSubmitting }) => {
+const PaymentLogs = ({
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+  isSubmitting,
+}) => {
   const [payoutLogs, setPayoutLogs] = useState([]);
 
   const fetchPaymentLogs = async () => {
@@ -32,7 +38,6 @@ const PaymentLogs = ({ filters, setFilters, pagination, updatePagination, isSubm
   useEffect(() => {
     fetchPaymentLogs();
   }, [filters]);
-
 
   return (
     <DashboardLayout pageTitle="Payment Logs">
@@ -79,7 +84,11 @@ const PaymentLogs = ({ filters, setFilters, pagination, updatePagination, isSubm
                     <tbody>
                       {payoutLogs.map((item, index) => (
                         <tr key={item?.id}>
-                          <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                          <td>
+                            {serialNum(
+                              (filters.page - 1) * filters.per_page + index + 1
+                            )}
+                          </td>
                           <td>{item.bookingId}</td>
                           <td>{item.bookingCharges}</td>
                           <td>{item.commission}</td>

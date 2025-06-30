@@ -9,7 +9,12 @@ import { appointmentTypeOptions, pendingTypeOptions } from "../../../Config/Tabl
 import withFilters from "../../../HOC/withFilters";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
-const RequestManagement = ({ filters, setFilters, pagination, updatePagination }) => {
+const RequestManagement = ({
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const [requestData, setRequestData] = useState([]);
   const fetchRequests = async () => {
     try {
@@ -73,12 +78,21 @@ const RequestManagement = ({ filters, setFilters, pagination, updatePagination }
                     <tbody>
                       {requestData?.map((item, index) => (
                         <tr key={item?.id}>
-                          <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                          <td>
+                            {serialNum(
+                              (filters.page - 1) * filters.per_page + index + 1
+                            )}
+                          </td>
                           <td>{item?.consultant_name}</td>
                           <td>{item?.request}</td>
                           <td
                             style={{
-                              color: item.status === "Pending" ? "#B58D00" : item.status === "Resolved" ? "#197E00" : "",
+                              color:
+                                item.status === "Pending"
+                                  ? "#B58D00"
+                                  : item.status === "Resolved"
+                                  ? "#197E00"
+                                  : "",
                             }}
                           >
                             {item?.status}
@@ -86,7 +100,10 @@ const RequestManagement = ({ filters, setFilters, pagination, updatePagination }
                           <td>{dateFormat(item?.recieved_on)}</td>
                           <td>
                             <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
-                              <span className="tooltip-toggle" aria-label="View">
+                              <span
+                                className="tooltip-toggle"
+                                aria-label="View"
+                              >
                                 <Link to={`${item.id}`}>
                                   <FaEye size={20} color="#C5E4F6" />
                                 </Link>

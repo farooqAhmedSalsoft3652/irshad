@@ -9,7 +9,12 @@ import withFilters from "../../../HOC/withFilters";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import { isNullOrEmpty, serialNum } from "../../../Utils/helper";
 
-const ContactUsTable = ({ filters, setFilters, pagination, updatePagination }) => {
+const ContactUsTable = ({
+  filters,
+  setFilters,
+  pagination,
+  updatePagination,
+}) => {
   const [reports, setReports] = useState([]);
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
 
@@ -82,7 +87,9 @@ const ContactUsTable = ({ filters, setFilters, pagination, updatePagination }) =
           <tbody>
             {reports.map((item, index) => (
               <tr key={item?.id}>
-                <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
+                <td>
+                  {serialNum((filters.page - 1) * filters.per_page + index + 1)}
+                </td>
                 <td>{item?.fullName}</td>
                 <td>{item?.emailAddress}</td>
                 <td>{item?.userType}</td>

@@ -18,7 +18,9 @@ const NewBannerDetail = ({ showModal }) => {
 
   useEffect(() => {
     const getBannerDetail = async () => {
-      const response = bannerManagementData?.detail?.data?.find((e) => e.id === Number(id));
+      const response = bannerManagementData?.detail?.data?.find(
+        (e) => e.id === Number(id)
+      );
 
       // const response = await getDetails(`/admin-api/users/${id}`);
       if (response) {
@@ -30,11 +32,18 @@ const NewBannerDetail = ({ showModal }) => {
   }, [id]);
 
   const handleRemoveBanner = () => {
-    showModal(``, `Are you sure you want to Remove Banner Abc?`, () => onConfirmRemove());
+    showModal(``, `Are you sure you want to Remove Banner Abc?`, () =>
+      onConfirmRemove()
+    );
   };
-  
+
   const onConfirmRemove = async () => {
-    showModal("", `Banner has been removed successfully.`, ()=>navigate('/admin/banner-management'), true);
+    showModal(
+      "",
+      `Banner has been removed successfully.`,
+      () => navigate("/admin/banner-management"),
+      true
+    );
   };
   const { banner_title, expiry_date, creation_date, photo } = data;
   return (
@@ -79,7 +88,9 @@ const NewBannerDetail = ({ showModal }) => {
               <div className="col-sm-4">
                 <div className="detail-box">
                   <h6 className="text-nowrap">Published On</h6>
-                  <p className="mb-0 text-nowrap">{dateFormat(creation_date)}</p>
+                  <p className="mb-0 text-nowrap">
+                    {dateFormat(creation_date)}
+                  </p>
                 </div>
               </div>
               <div className="col-sm-4 mt-sm-0 mt-2">
@@ -97,7 +108,11 @@ const NewBannerDetail = ({ showModal }) => {
               <Link to={`edit`} className="btn btn-primary px-5">
                 Edit Banner
               </Link>
-              <CustomButton text="Remove Banner" className="btn btn-outline-primary" onClick={handleRemoveBanner} />
+              <CustomButton
+                text="Remove Banner"
+                className="btn btn-outline-primary"
+                onClick={handleRemoveBanner}
+              />
             </div>
           </div>
         </div>
