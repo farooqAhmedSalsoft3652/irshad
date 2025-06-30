@@ -1,19 +1,17 @@
-import { Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import { Form, Formik } from "formik";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { images } from "../../../Assets";
-import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import BackButton from "../../../Components/BackButton";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
 import CustomButton from "../../../Components/CustomButton";
 import CustomInput from "../../../Components/CustomInput";
 import CustomModal from "../../../Components/CustomModal";
-import { Select } from "../../../Components/Select";
-import { accountTypeOptions } from "../../../Config/TableStatus";
+import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
+import { accountInfoAdminBank } from "../../../Config/data";
 import { addBankDetailSchema, addOtpSchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { accountInfo } from "../../../Config/data";
-import { isNullOrEmpty } from "../../../Utils/helper";
+import { dateFormat, isNullOrEmpty } from "../../../Utils/helper";
 
 const EditBankDetail = ({ showModal }) => {
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
@@ -23,7 +21,7 @@ const EditBankDetail = ({ showModal }) => {
 
   useEffect(() => {
     const getBankApiData = async () => {
-      const response = accountInfo;
+      const response = accountInfoAdminBank;
       if (response) {
         setBankData(response);
       }
@@ -37,9 +35,9 @@ const EditBankDetail = ({ showModal }) => {
 
   const handleOtpSubmit = async (values) => {
     startSubmitting();
-    console.log("OTP Submitted:", values.otp);
+    // console.log("OTP Submitted:", values.otp);
     setOtpModalShow(false);
-    showModal("Successful", `Bank Details Has Been updated Successfully!`, () => navigate("/admin/mybank-detail"), true);
+    showModal("", `Bank Details Has Been updated Successfully!`, () => navigate("/admin/mybank-detail"), true);
     stopSubmitting();
   };
   if (isNullOrEmpty(bankData)) {
@@ -55,10 +53,10 @@ const EditBankDetail = ({ showModal }) => {
         <div className="container-fluid">
           <div className="row my-3">
             <div className="col-12">
-              <h2 className="mainTitle">
-                <BackButton />
-                Edit Bank Details
-              </h2>
+              <div className="d-flex align-items-center ">
+                <BackButton2 />
+                <h2 className="mainTitle mb-0">Edit Bank Details</h2>
+              </div>
             </div>
           </div>
           <div className=" mb-4">
@@ -66,109 +64,88 @@ const EditBankDetail = ({ showModal }) => {
               <div className="col-12">
                 <Formik
                   initialValues={{
-                    accountHolderName: bankData?.accountHolderName || "",
-                    accountType: bankData?.accountType || "",
-                    bankName: bankData?.bankName || "",
-                    routingNumber: bankData?.routingNumber || "",
-                    accountNumber: bankData?.accountNumber || ""
+                    cardHolderName: bankData?.cardHolderName || "",
+                    cardNumber: bankData?.cardNumber || "",
+                    cvvNumber: bankData?.cvvNumber || "",
+                    validityDate: dateFormat(bankData?.validityDate || "", "YYYY-MM-DD"),
                   }}
                   validationSchema={addBankDetailSchema}
                   onSubmit={handleFormSubmit}
                 >
                   {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
-                    <form onSubmit={handleSubmit}>
-                      <div className="dashCard">
+                    <Form onSubmit={handleSubmit}>
+                      <div className="">
                         <div className="row">
                           <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                             <div className="row">
-                              <div className="col-12 mb-2">
+                              <div className="col-12 mb-3">
                                 <CustomInput
-                                  label="Account holder Name"
+                                  label="Card holder Name"
                                   labelclass="mainLabel"
                                   type="text"
                                   required
-                                  placeholder="Enter Account holder Name"
-                                  inputclass="mainInput"
-                                  id="accountHolderName"
-                                  value={values.accountHolderName}
+                                  placeholder="Enter Card holder Name"
+                                  id="cardHolderName"
+                                  value={values.cardHolderName}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
-                                  error={touched.accountHolderName && errors.accountHolderName}
+                                  error={touched.cardHolderName && errors.cardHolderName}
                                 />
                               </div>
-                              <div className="col-12 mb-4">
-                                <div className="select-inner-wrapper">
-                                  <Select
-                                    className="mainInput selectInput w-100"
-                                    required
-                                    id="accountType"
-                                    name="accountType"
-                                    value={values?.accountType}
-                                    onChange={(e) => setFieldValue("accountType", e)}
-                                    label="Account Type"
-                                    labelclass="mainLabel"
-                                    onBlur={handleBlur}
-                                    isInputNeeded={false}
-                                    error={touched.accountType && errors.accountType}
-                                  >
-                                    {accountTypeOptions}
-                                  </Select>
-                                </div>
-                              </div>
-                              <div className="col-12 mb-2">
+                              <div className="col-12 mb-3">
                                 <CustomInput
-                                  label="Bank Name"
+                                  label="Card Number"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
-                                  placeholder="Enter Bank Name"
+                                  placeholder="Enter Card Number"
                                   inputclass="mainInput"
-                                  id="bankName"
-                                  value={values.bankName}
+                                  id="cardNumber"
+                                  value={values.cardNumber}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
-                                  error={touched.bankName && errors.bankName}
+                                  error={touched.cardNumber && errors.cardNumber}
                                 />
                               </div>
-                              <div className="col-12 mb-2">
+                              <div className="col-12 mb-3">
                                 <CustomInput
-                                  label="Routing Number"
+                                  label="CVV Number"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="number"
                                   required
-                                  placeholder="Enter Routing Number"
+                                  placeholder="Enter CVV Number"
                                   inputclass="mainInput"
-                                  id="routingNumber"
-                                  value={values.routingNumber}
+                                  id="cvvNumber"
+                                  value={values.cvvNumber}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
-                                  error={touched.routingNumber && errors.routingNumber}
+                                  error={touched.cvvNumber && errors.cvvNumber}
                                 />
                               </div>
-                              <div className="col-12 mb-2">
+                              <div className="col-12 mb-3">
                                 <CustomInput
-                                  label="Account Number"
+                                  label="Validity Date"
                                   labelclass="mainLabel"
-                                  type="text"
+                                  type="date"
                                   required
-                                  placeholder="Enter Account Number"
+                                  placeholder="Enter Validity Date"
                                   inputclass="mainInput"
-                                  id="accountNumber"
-                                  value={values.accountNumber}
+                                  id="validityDate"
+                                  value={values.validityDate}
                                   onChange={handleChange}
                                   onBlur={handleBlur}
-                                  error={touched.accountNumber && errors.accountNumber}
+                                  error={touched.validityDate && errors.validityDate}
                                 />
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="row">
-                          <div className="col-12">
+                          <div className="col-12 mt-3">
                             <CustomButton
-                              variant="site-btn primary-btn"
+                              variant="btn btn-primary"
                               className="px-5"
-                              text="Update"
+                              text="Edit Bank Detail"
                               pendingText="Submitting..."
                               isPending={isSubmitting}
                               type="submit"
@@ -177,7 +154,7 @@ const EditBankDetail = ({ showModal }) => {
                           </div>
                         </div>
                       </div>
-                    </form>
+                    </Form>
                   )}
                 </Formik>
               </div>
@@ -195,16 +172,18 @@ const EditBankDetail = ({ showModal }) => {
         }}
         background="gray"
       >
-        <div className="text-center px-5">
+        <div className="px-4">
           <Formik initialValues={{ otp: "" }} validationSchema={addOtpSchema} onSubmit={handleOtpSubmit}>
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
               <form onSubmit={handleSubmit}>
-                <div className="otp_wrapper">
-                  <img src={images.Question} alt="Question" className="modalImage" />
-                  <h2 className="modalHeading">
-                    otp<span className="text-danger">*</span>
+                <div className="otp_wrappe">
+                  <div className="text-center">
+                    <img src={images.Check} alt="Question" className="modalImage" />
+                  </div>
+                  <h2 className="modalHeading text-start mb-1">
+                    OTP<span className="text-danger">*</span>
                   </h2>
-                  <div className="my-3">
+                  <div className="mb-3">
                     <CustomInput
                       labelclass="mainLabel"
                       type="text"
@@ -218,9 +197,9 @@ const EditBankDetail = ({ showModal }) => {
                       error={touched.otp && errors.otp}
                     />
                   </div>
-                  <div className="my-4">
+                  <div className="my-4 text-center">
                     <CustomButton
-                      variant="site-btn primary-btn"
+                      variant="btn btn-primary"
                       className="px-5"
                       text="Submit"
                       pendingText="Submitting..."

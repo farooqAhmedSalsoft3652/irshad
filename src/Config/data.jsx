@@ -4726,18 +4726,17 @@ export const inAppPurchaseManagementData = {
     total: 5,
   },
 };
-// export const accountInfo = {
-//   accountHolderName: "Tom Albert",
-//   accountType: "Savings",
-//   bankName: "Bank Abc",
-//   routingNumber: "482185491",
-//   accountNumber: "22872090"
-// };
+export const accountInfoAdminBank = {
+  cardHolderName: "Tom Albert",
+  cardNumber: "112114",
+  cvvNumber: "112",
+  validityDate: "10/02/2024",
+};
 export const accountInfo = {
   name: "Tom Albert",
   cardNumber: "1121211111111222",
   cvcNumber: "123",
-  validityDate: "2025/07/22",
+  validityDate: "10/02/2024",
 };
 
 export const contactsData = [
@@ -11016,6 +11015,126 @@ export const contactUsTableData = {
   },
 };
 export const complainTableData = {
+  status: true,
+  message: "Report logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: "1",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "user",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+      {
+        id: "2",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "guest",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
+
+export const reportTableData = {
+  status: true,
+  message: "Report logs",
+  detail: {
+    current_page: 1,
+    data: [
+      {
+        id: "1",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "user",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+      {
+        id: "2",
+        fullName: "John Doe",
+        emailAddress: "john@gmail.com",
+        userType: "guest",
+        date: "01/02/2024",
+        subject: "Lorem ipsum dolor sit amet",
+        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+      },
+    ],
+    first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
+    from: 1,
+    last_page: 2,
+    last_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    links: [
+      {
+        url: null,
+        label: "&laquo; Previous",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=1",
+        label: "1",
+        active: true,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "2",
+        active: false,
+      },
+      {
+        url: "http://localhost/food_app/admin-api/branches?page=2",
+        label: "Next &raquo;",
+        active: false,
+      },
+    ],
+    next_page_url: "http://localhost/food_app/admin-api/branches?page=2",
+    path: "http://localhost/food_app/admin-api/branches",
+    per_page: 10,
+    prev_page_url: null,
+    to: 10,
+    total: 11,
+  },
+};
+
+export const questionTableData = {
   status: true,
   message: "Report logs",
   detail: {

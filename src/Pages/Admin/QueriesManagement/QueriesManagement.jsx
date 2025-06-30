@@ -4,6 +4,8 @@ import CustomButton from "../../../Components/CustomButton";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import ContactUsTable from "./ContactUsTable";
 import ComplainTable from "./ComplainTable";
+import ReportTable from "./ReportTable";
+import QuestionTable from "./QuestionTable";
 
 
 const QueriesManagement = () => {
@@ -33,9 +35,9 @@ const QueriesManagement = () => {
       case "complain":
         return <ComplainTable />;
       case "report":
-        return <>report</>;;
+        return <ReportTable />;
       case "question":
-        return <>question</>;;
+        return <QuestionTable />;;
       default:
         return <ContactUsTable />;
     }
