@@ -366,6 +366,28 @@ export const ServiceManagementHeaders = [
     title: "Action",
   },
 ];
+export const BannerManagementHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "bannertitle",
+    title: "banner title",
+  },
+  {
+    key: "addedon",
+    title: "added on",
+  },
+  {
+    key: "expirydate",
+    title: "expiry date",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
 export const shopProductsHeaders = [
   {
     key: "id",
@@ -578,7 +600,29 @@ export const PayoutManagementHeader = [
     title: "UpdatedOn",
   },
 ];
-export const reportsManagementBookingHeader = [
+export const PromoCodeManagementHeader = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "promoName",
+    title: "Promo Name",
+  },
+  {
+    key: "promoDiscount",
+    title: "Promo Discount",
+  },
+  {
+    key: "updatedOn",
+    title: "Updated On",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
+export const reportsManagementHeader = [
   {
     key: "id",
     title: "S.No",
@@ -592,42 +636,12 @@ export const reportsManagementBookingHeader = [
     title: "User Name",
   },
   {
-    key: "bookingDate",
-    title: "Booking Date",
-  },
-  {
     key: "reportedDate",
     title: "Reported Date",
   },
   {
-    key: "charges",
-    title: "Charges",
-  },
-  {
-    key: "status",
-    title: "Status",
-  },
-  {
-    key: "action",
-    title: "Action",
-  },
-];
-export const reportsManagementNewsfeedHeader = [
-  {
-    key: "id",
-    title: "S.No",
-  },
-  {
-    key: "username",
-    title: "User Name",
-  },
-  {
-    key: "emailAddress",
-    title: "Email Address",
-  },
-  {
-    key: "reportedDate",
-    title: "Reported Date",
+    key: "appointmentCharges",
+    title: "Appointment Charges",
   },
   {
     key: "status",
@@ -1201,6 +1215,115 @@ export const slotHistoryHeaders = [
   {
     key: "slots",
     title: "Slots",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
+export const CancelPenaltyManagementHeader = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "penaltypercentage",
+    title: "penalty percentage",
+  },
+  {
+    key: "updatedon",
+    title: "Updated On",
+  },
+];
+export const CancelTimeManagementHeader = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "day",
+    title: "day",
+  },
+  {
+    key: "updatedon",
+    title: "Updated On",
+  },
+];
+
+export const RequestManagementHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "consultantName",
+    title: "Consultant Name",
+  },
+  {
+    key: "request",
+    title: "Request",
+  },
+  {
+    key: "status",
+    title: "Status",
+  },
+  {
+    key: "recievedon",
+    title: "Recieved On",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
+
+export const paymentLogsAdminHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "bookingID",
+    title: "Booking ID",
+  },
+  {
+    key: "bookingCharges",
+    title: "Booking Charges",
+  },
+  {
+    key: "commission",
+    title: "Commission",
+  },
+  {
+    key: "bookingType",
+    title: "Booking Type",
+  },
+  {
+    key: "bookingDate",
+    title: "Booking Date",
+  },
+];
+
+export const queryTableHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "fullName",
+    title: "Full Name",
+  },
+  {
+    key: "emailAddress",
+    title: "Email Address",
+  },
+  {
+    key: "userType",
+    title: "User Type",
+  },
+  {
+    key: "date",
+    title: "Date",
   },
   {
     key: "action",

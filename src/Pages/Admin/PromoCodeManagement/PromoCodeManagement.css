@@ -1,0 +1,17 @@
+.promo-code .code-name {
+    min-width: 350px;
+    width: auto;
+}
+
+.promo-code .form-control.code-amount {
+    min-width: 150px;
+    width: auto;
+}
+
+
+@media screen and (max-width: 1199.5px) {
+    .promo-code .form-control.code-amount, .promo-code .code-name {
+        width: 100%;
+        min-width: unset;
+    }
+}

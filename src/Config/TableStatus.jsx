@@ -264,6 +264,20 @@ export const appointmentTypeOptions = [
     text: "Standard",
   },
 ];
+export const pendingTypeOptions = [
+  {
+    value: "all",
+    text: "All",
+  },
+  {
+    value: "pending",
+    text: "Pending",
+  },
+  {
+    value: "resolved",
+    text: "Resolved",
+  },
+];
 export const subscriptionType = [
   {
     value: "",
@@ -944,5 +958,20 @@ export const sessionTypeStatus = [
   {
     value: "video call",
     text: "Video Call",
+  },
+];
+
+export const userTypeStatus = [
+  {
+    value: "user",
+    text: "User",
+  },
+  {
+    value: "guest",
+    text: "Guest",
+  },
+  {
+    value: "consultant",
+    text: "Consultant",
   },
 ];

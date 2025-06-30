@@ -3,21 +3,20 @@ import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CustomTable from "../../../Components/CustomTable";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import { reportsManagementData } from "../../../Config/data";
-import { reportsManagementHeader } from "../../../Config/TableHeaders";
-import { pendingTypeOptions } from "../../../Config/TableStatus";
+import { RequestManagementData } from "../../../Config/data";
+import { RequestManagementHeaders } from "../../../Config/TableHeaders";
+import { appointmentTypeOptions, pendingTypeOptions } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters ";
-import { serialNum } from "../../../Utils/helper";
+import { dateFormat, serialNum } from "../../../Utils/helper";
 
-const ReportsManagement = ({ filters, setFilters, pagination, updatePagination }) => {
-  const [reportsData, setReportsData] = useState([]);
-
-  const fetchUsers = async () => {
+const RequestManagement = ({ filters, setFilters, pagination, updatePagination }) => {
+  const [requestData, setRequestData] = useState([]);
+  const fetchRequests = async () => {
     try {
-      const response = reportsManagementData;
+      const response = RequestManagementData;
       if (response.status) {
         const { data, total, per_page, current_page, to } = response.detail;
-        setReportsData(data);
+        setRequestData(data);
         updatePagination({
           showData: to,
           currentPage: current_page,
@@ -33,18 +32,18 @@ const ReportsManagement = ({ filters, setFilters, pagination, updatePagination }
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchRequests();
   }, [filters]);
 
   return (
-    <DashboardLayout pageTitle="Reports Management">
+    <DashboardLayout pageTitle="Request Management">
       <div className="container-fluid">
         <div className="row">
           <div className="col-12">
             <div className="dashCard">
               <div className="row mb-4">
                 <div className="col-12">
-                  <h2 className="mainTitle mb-0">Reports Management</h2>
+                  <h2 className="mainTitle mb-0">Request Management</h2>
                 </div>
               </div>
               <div className="row mb-3">
@@ -52,11 +51,11 @@ const ReportsManagement = ({ filters, setFilters, pagination, updatePagination }
                   <CustomTable
                     filters={filters}
                     setFilters={setFilters}
-                    headers={reportsManagementHeader}
+                    headers={RequestManagementHeaders}
                     pagination={pagination}
                     dateFilters={[
                       {
-                        title: "Reported Date",
+                        title: "Date",
                         from: "fromDate",
                         to: "toDate",
                         fromTitle: "From",
@@ -65,20 +64,18 @@ const ReportsManagement = ({ filters, setFilters, pagination, updatePagination }
                     ]}
                     selectOptions={[
                       {
-                        main_title: "Filter By Status",
+                        // main_title: "Status",
                         title: "Status",
                         options: pendingTypeOptions,
                       },
                     ]}
                   >
                     <tbody>
-                      {reportsData?.map((item, index) => (
+                      {requestData?.map((item, index) => (
                         <tr key={item?.id}>
                           <td>{serialNum((filters.page - 1) * filters.per_page + index + 1)}</td>
-                          <td>{item?.bookingId}</td>
-                          <td>{item?.userName}</td>
-                          <td>{item?.reportedDate}</td>
-                          <td>{item?.charges}</td>
+                          <td>{item?.consultant_name}</td>
+                          <td>{item?.request}</td>
                           <td
                             style={{
                               color: item.status === "Pending" ? "#B58D00" : item.status === "Resolved" ? "#197E00" : "",
@@ -86,11 +83,12 @@ const ReportsManagement = ({ filters, setFilters, pagination, updatePagination }
                           >
                             {item?.status}
                           </td>
+                          <td>{dateFormat(item?.recieved_on)}</td>
                           <td>
                             <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
                               <span className="tooltip-toggle" aria-label="View">
                                 <Link to={`${item.id}`}>
-                                  <FaEye size={20} color="#c5e4f6" />
+                                  <FaEye size={20} color="#C5E4F6" />
                                 </Link>
                               </span>
                             </div>
@@ -109,4 +107,4 @@ const ReportsManagement = ({ filters, setFilters, pagination, updatePagination }
   );
 };
 
-export default withFilters(ReportsManagement);
+export default withFilters(RequestManagement);
