@@ -149,30 +149,42 @@ export const orderLogsHeader = [
     title: "action",
   },
 ];
-export const serviceProviderappointmentHeader = [
+export const consultantAppointmentHeader = [
   {
     key: "id",
     title: "S.No",
   },
   {
-    key: "appointmentiD",
-    title: "Appointment ID",
+    key: "booking_id",
+    title: "booking ID",
   },
   {
-    key: "serviceType",
-    title: "Service type",
+    key: "consultant_name",
+    title: "Consultant Name",
   },
   {
-    key: "appointmenttype",
-    title: "appointment type",
+    key: "booking_date",
+    title: "Booking Date",
   },
   {
-    key: "date",
-    title: "date",
+    key: "Appointment_date",
+    title: "Appointment Date",
   },
   {
-    key: "charges",
-    title: "charges",
+    key: "duration",
+    title: "Duration",
+  },
+  {
+    key: "session_type",
+    title: "Session Type",
+  },
+  {
+    key: "appointment_type",
+    title: "Appointment Type",
+  },
+  {
+    key: "amount",
+    title: "Amount",
   },
   {
     key: "status",
@@ -214,7 +226,7 @@ export const serviceProviderorderLogsHeader = [
     title: "Action",
   },
 ];
-export const consultantManagerHeaders = [
+export const consultantManagementHeaders = [
   {
     key: "id",
     title: "S.No",
@@ -248,30 +260,22 @@ export const consultantManagerHeaders = [
     title: "Action",
   },
 ];
-export const serviceProviderServicesHeaders = [
+export const consultantServicesHeaders = [
   {
     key: "id",
     title: "S.No",
   },
   {
-    key: "service name",
-    title: "service name",
+    key: "service_title",
+    title: "Service Title",
   },
   {
-    key: "service category",
-    title: "service category",
+    key: "service_sub_category",
+    title: "Service sub-category",
   },
   {
-    key: "creation date",
-    title: "creation date",
-  },
-  {
-    key: "service charges",
-    title: "service charges",
-  },
-  {
-    key: "serviceType",
-    title: "service type",
+    key: "creation_date",
+    title: "Creation Date",
   },
   {
     key: "status",
@@ -414,17 +418,25 @@ export const shopProductsHeaders = [
     title: "Action",
   },
 ];
-export const serviceProvidersRequestHeaders = [
+export const consultantRequestHeaders = [
   {
     key: "id",
     title: "S.No",
   },
   {
-    key: "serviceProviderName",
-    title: "Service Provider Name",
+    key: "first_name",
+    title: "first Name",
   },
   {
-    key: "requestedOn",
+    key: "last_name",
+    title: "last Name",
+  },
+  {
+    key: "category",
+    title: "Category",
+  },
+  {
+    key: "requested_on",
     title: "Requested On",
   },
   {

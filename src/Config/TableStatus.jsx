@@ -734,7 +734,7 @@ export const quizLanguageOptions = [
     text: "Spanish to English",
   },
 ];
-export const serviceProvidersRequestsStatus = [
+export const consultantRequestsStatus = [
   {
     value: "",
     text: "All",
@@ -753,6 +753,13 @@ export const accountTypeOptions = [
   { value: "checking", text: "Checking" },
   { value: "savings", text: "Savings" },
   { value: "business", text: "Business" },
+];
+
+export const workingHoursOptions = [
+  { value: "", text: "Select Working Hours" },
+  { value: "10", text: "10 Hrs" },
+  { value: "20", text: "20 Hrs" },
+  { value: "30", text: "30 Hrs" },
 ];
 export const bankNameOptions = [
   { value: "", text: "Select Bank Name" },

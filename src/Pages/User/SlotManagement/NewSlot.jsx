@@ -87,7 +87,7 @@ const NewSlot = ({ reasonModal, showModal, closeModal }) => {
   };
 
   const BookedNextWeek = () => {
-    reasonModal(
+    showModal(
       "", // heading
       "Are you sure you want to Book Next week?", // para
       () => {
@@ -129,9 +129,9 @@ const NewSlot = ({ reasonModal, showModal, closeModal }) => {
   };
 
   const ReduceHours = () => {
-    reasonModal(
+    showModal(
       "",
-      "Are you sure you want to reduce working hour for Next week?",
+      "Are you sure you want to reduce working hour for Next week? 123",
       () => {
         closeModal(); // ✅ now it works
         setTimeout(() => setReasonReduceHourModal(true), 300);

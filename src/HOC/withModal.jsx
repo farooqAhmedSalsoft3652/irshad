@@ -20,6 +20,7 @@ const withModal = (WrappedComponent) => {
       reasonValue: "",
       errorMessage: "",
       reasonHeading: "",
+      reasonSubHeading: "",
       reasonLabel: "", // Add reasonLabel in state
     });
     const reasonModal = (
@@ -29,6 +30,7 @@ const withModal = (WrappedComponent) => {
       success = false,
       showReason = false,
       reasonHeading = "",
+      reasonSubHeading = "",
       reasonLabel = ""
     ) => {
       setModalState({
@@ -37,6 +39,7 @@ const withModal = (WrappedComponent) => {
         success,
         heading,
         reasonHeading,
+        reasonSubHeading,
         para,
         action,
         showReason,
@@ -104,6 +107,7 @@ const withModal = (WrappedComponent) => {
           action={modalState.showReason ? handleSubmit : modalState.action}
           heading={modalState.heading}
           reasonHeading={modalState.reasonHeading}
+          reasonSubHeading={modalState.reasonSubHeading}
           para={modalState.para}
           success={modalState.success}
           showReason={modalState.currentStep === MODAL_STEPS.REASON_INPUT}

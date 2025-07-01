@@ -57,8 +57,11 @@ const CustomModal = (props) => {
 
               {/* Show reason input area if `showReason` is true */}
               {props?.showReason && (
-                <div className="modalReason my-3 text-start">
+                <div className="modalReason mb-3 text-start">
                   <h3 className="modalHeading">{props?.reasonHeading}</h3>
+                  <h4 className="modalHeading fw-medium">
+                    {props?.reasonSubHeading}
+                  </h4>
                   <p className="mb-1 fw-medium ms-1">
                     {props?.reasonLabel} <span className="text-red">*</span>
                   </p>

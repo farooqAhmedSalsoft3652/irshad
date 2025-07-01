@@ -1,38 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import BackButton from "../../../Components/BackButton";
 import CustomTable from "../../../Components/CustomTable";
-import { consultantManagerData } from "../../../Config/data";
-import { consultantServicesHeaders } from "../../../Config/TableHeaders";
-import { normalStatus, statusOptions } from "../../../Config/TableStatus";
+import { consultantRequestsData } from "../../../Config/data";
+import { consultantRequestHeaders } from "../../../Config/TableHeaders";
+import { consultantRequestsStatus } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters";
-import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { dateFormat, serialNum } from "../../../Utils/helper";
-import { Select } from "../../../Components/Select";
-import { FaEye } from "react-icons/fa";
+import { dateFormat, serialNum, statusClassMap } from "../../../Utils/helper";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import { Col, Row } from "react-bootstrap";
 
-const ConsultantServices = ({
-  showModal,
+const ConsultantRequests = ({
   filters,
   setFilters,
   pagination,
   updatePagination,
 }) => {
-  const { id } = useParams();
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
-  const [services, setServices] = useState([]);
+  const [consultantRequests, setConsultantRequests] = useState(
+    consultantRequestsData.detail.data
+  );
 
-  const fetchServiceProvidersServices = async () => {
+  const fetchServiceProvidersRequets = async () => {
     try {
       startSubmitting(true);
-      const response = consultantManagerData;
+      const response = consultantRequestsData;
       if (response.status) {
         const { data, total, per_page, current_page, to } = response.detail;
-        setServices(data.find((provider) => provider.id === id)?.services);
+        setConsultantRequests(data);
         updatePagination({
           showData: to,
           currentPage: current_page,
@@ -41,48 +39,18 @@ const ConsultantServices = ({
         });
       }
     } catch (error) {
-      console.error("Error fetching Services:", error);
+      console.error("Error fetching requests:", error);
     } finally {
       stopSubmitting(false);
     }
   };
-  // Handle status change
-  const handleStatusChange = (e, id) => {
-    const newStatusValue = e;
-    // Open the modal for confirmation
-    showModal(
-      ``,
-      `Are you sure you want to ${
-        newStatusValue === "1" ? "Activate" : "Inactivate"
-      } this service?`,
-      () => onConfirmStatusChange(id, newStatusValue)
-    );
-  };
-
-  // Confirm status change and update the state
-  const onConfirmStatusChange = async (row, newStatusValue) => {
-    // Update the status in the Services state
-    setServices((prevData) =>
-      prevData.map((item) =>
-        item.id === row ? { ...item, status_detail: newStatusValue } : item
-      )
-    );
-    showModal(
-      "",
-      `This Service has been ${
-        newStatusValue === "1" ? "Activated" : "Inactivated"
-      } successfully!`,
-      null,
-      true
-    );
-  };
 
   useEffect(() => {
-    fetchServiceProvidersServices();
+    fetchServiceProvidersRequets();
   }, [filters]);
 
   return (
-    <DashboardLayout pageTitle="All Services">
+    <DashboardLayout pageTitle="Consultant Requests">
       <div className="container-fluid">
         <div className="dashCard">
           <Row className="mb-2 page-header">
@@ -90,7 +58,7 @@ const ConsultantServices = ({
               <div className="d-flex gap-2">
                 <BackButton2 />
                 <h2 className="align-self-start mainTitle mb-0">
-                  All Services
+                  Consultant Requests
                 </h2>
               </div>
             </Col>
@@ -101,11 +69,11 @@ const ConsultantServices = ({
                 filters={filters}
                 setFilters={setFilters}
                 loading={isSubmitting}
-                headers={consultantServicesHeaders}
+                headers={consultantRequestHeaders}
                 pagination={pagination}
                 dateFilters={[
                   {
-                    title: "Creation Date",
+                    title: "Requested Date",
                     from: "fromDate",
                     to: "toDate",
                   },
@@ -113,33 +81,24 @@ const ConsultantServices = ({
                 selectOptions={[
                   {
                     title: "Status",
-                    options: normalStatus,
+                    options: consultantRequestsStatus,
                   },
                 ]}
               >
                 <tbody>
-                  {services?.map((item, index) => (
+                  {consultantRequests?.map((item, index) => (
                     <tr key={item?.id}>
                       <td>
                         {serialNum(
                           (filters.page - 1) * filters.per_page + index + 1
                         )}
                       </td>
-                      <td>{item?.serviceName}</td>
-                      <td>{item?.serviceCategory}</td>
-                      <td>{dateFormat(item?.creationDate)}</td>
-                      <td>
-                        <Select
-                          className={`tabel-select status${item?.status_detail}`}
-                          required
-                          id={`status${item?.id}`}
-                          name="status"
-                          value={item?.status_detail}
-                          onChange={(e) => handleStatusChange(e, item?.id)}
-                          isInputNeeded={false}
-                        >
-                          {statusOptions}
-                        </Select>
+                      <td>{item?.first_name}</td>
+                      <td>{item?.last_name}</td>
+                      <td>{item?.category_1}</td>
+                      <td>{dateFormat(item?.requested_on)}</td>
+                      <td className={statusClassMap[item?.status_detail]}>
+                        {item?.status_detail}
                       </td>
                       <td>
                         <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
@@ -162,4 +121,4 @@ const ConsultantServices = ({
   );
 };
 
-export default withModal(withFilters(ConsultantServices));
+export default withFilters(ConsultantRequests);

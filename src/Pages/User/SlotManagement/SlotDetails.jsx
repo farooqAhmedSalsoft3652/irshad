@@ -80,7 +80,7 @@ const SlotDetails = ({
   }, [filters, slotsData, slotManagementHistoryData, id]);
 
   const BookedNextWeek = () => {
-    reasonModal(
+    showModal(
       "", // heading
       "Are you sure you want to Book Next week?", // para
       () => {
@@ -122,7 +122,7 @@ const SlotDetails = ({
   };
 
   const ReduceHours = () => {
-    reasonModal(
+    showModal(
       "",
       "Are you sure you want to reduce working hour for Next week?",
       () => {

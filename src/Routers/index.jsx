@@ -39,11 +39,12 @@ import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
 import ConsultantDetails from "../Pages/Admin/ConsultantManagement/ConsultantDetails";
 import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
 import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
+import ConsultantBookingDetails from "../Pages/Admin/ConsultantManagement/ConsultantBookingDetails";
+import ConsultantRequests from "../Pages/Admin/ConsultantManagement/ConsultantRequests";
+import ConsultantProfile from "../Pages/Admin/ConsultantManagement/ConsultantProfile";
 
-import ServiceProviderProfile from "../Pages/Admin/ConsultantManagement/ServiceProviderProfile";
-import ServiceProviderRequests from "../Pages/Admin/ConsultantManagement/ServiceProviderRequests";
 import ServiceProviderServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
-import ShopDetails from "../Pages/Admin/ConsultantManagement/ShopDetails";
+// import ShopDetails from "../Pages/Admin/ConsultantManagement/ShopDetails";
 import UserOrderDetails from "../Pages/Admin/UserManagement/OrderDetail";
 
 import MainLayout from "../Components/Layouts/UserLayout/MainLayout/index";
@@ -200,12 +201,29 @@ const routes = [
             element: <ConsultantDetails />,
           },
           {
+            path: "admin/consultant-management/:id/booking-logs",
+            element: <ConsultantBookingDetails />,
+          },
+          {
             path: "admin/consultant-management/:id/services",
             element: <ConsultantServices />,
           },
           {
             path: "admin/consultant-management/:id/services/:serviceId",
             element: <ConsultantServicesDetails />,
+          },
+
+          {
+            path: "admin/consultant-management/:id/services/:serviceId/booking-logs",
+            element: <ConsultantBookingDetails />,
+          },
+          {
+            path: "admin/consultant-management/requests",
+            element: <ConsultantRequests />,
+          },
+          {
+            path: "admin/consultant-management/requests/:id",
+            element: <ConsultantProfile />,
           },
 
           // {
@@ -350,8 +368,14 @@ const routes = [
 
           // Queries Management //
           { path: "admin/queries-management", element: <QueriesManagement /> },
-          { path: "admin/queries-management/contact-us/:id", element: <QueryContactUsDetails /> },
-          { path: "admin/queries-management/complain/:id", element: <QueryComplainDetails /> },
+          {
+            path: "admin/queries-management/contact-us/:id",
+            element: <QueryContactUsDetails />,
+          },
+          {
+            path: "admin/queries-management/complain/:id",
+            element: <QueryComplainDetails />,
+          },
           // --- End --- //
 
           // Payment Logs //
@@ -363,8 +387,14 @@ const routes = [
           // --- End --- //
           // Banner Management //
           { path: "admin/banner-management", element: <BannerManagement /> },
-          { path: "admin/banner-management/add-new", element: <AddNewBanner /> },
-          { path: "admin/banner-management/:id/edit", element: <EditNewBanner /> },
+          {
+            path: "admin/banner-management/add-new",
+            element: <AddNewBanner />,
+          },
+          {
+            path: "admin/banner-management/:id/edit",
+            element: <EditNewBanner />,
+          },
           { path: "admin/banner-management/:id", element: <NewBannerDetail /> },
           // --- End --- //
           // Request Management //
@@ -412,8 +442,14 @@ const routes = [
           },
           { path: "admin/chat", element: <Chat /> },
           { path: "admin/payout-management", element: <PayoutsManagement /> },
-          { path: "admin/cancel-penalty-management", element: <CancellationPenaltyManagement /> },
-          { path: "admin/cancel-penalty-management/cancel-time-management", element: <CancellationTimeManagement /> },
+          {
+            path: "admin/cancel-penalty-management",
+            element: <CancellationPenaltyManagement />,
+          },
+          {
+            path: "admin/cancel-penalty-management/cancel-time-management",
+            element: <CancellationTimeManagement />,
+          },
           { path: "admin/*", element: <AdminErrorPage /> },
         ],
       },

@@ -731,6 +731,7 @@ export function flattenDateFilters(filters) {
   delete flattenedFilters.dateFilters;
   return flattenedFilters;
 }
+
 export const statusClassMap = {
   Pending: "text-warning",
   Requested: "text-warning",
@@ -739,6 +740,7 @@ export const statusClassMap = {
   Past: "text-danger",
   Completed: "completed_color",
   Approved: "text-success",
+  InProgress: "text-success",
 };
 export const statusClassMap2 = {
   Delivered: "text-success",

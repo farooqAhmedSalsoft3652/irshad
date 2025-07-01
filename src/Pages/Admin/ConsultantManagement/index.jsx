@@ -5,7 +5,7 @@ import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/Dashboa
 import CustomTable from "../../../Components/CustomTable";
 import { Select } from "../../../Components/Select";
 import { consultantManagerData } from "../../../Config/data";
-import { consultantManagerHeaders } from "../../../Config/TableHeaders";
+import { consultantManagementHeaders } from "../../../Config/TableHeaders";
 import { normalStatus, statusOptions } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
@@ -84,97 +84,90 @@ const ConsultantManagement = ({
     <DashboardLayout pageTitle="Consultant Management">
       <div className="container-fluid consultant-management">
         <div className="dashCard">
-          <div className="row">
-            <div className="col-12">
-              <Row className="mb-2 page-header">
-                <Col
-                  xs={12}
-                  className="gap-2 d-flex flex-column flex-xl-row justify-content-between align-items-start align-items-xl-center flex-wrap"
-                >
-                  <div className="flex-shrink-0">
-                    <h2 class="align-self-start mainTitle mb-0">
-                      Consultant Management
-                    </h2>
-                  </div>
-                  <div className="ms-xl-auto d-flex gap-2 gap-xxl-3 flex-column flex-sm-row flex-xl-column flex-xxl-row">
-                    <Link to={"requests"} className="btn btn-primary">
-                      Consultant screening
-                    </Link>
-                    <Link to={"requests"} className="btn btn-outline-primary">
-                      New Consultants Request
-                    </Link>
-                  </div>
-                </Col>
-              </Row>
-              <Row className="mb-3">
-                <Col xs={12}>
-                  <CustomTable
-                    filters={filters}
-                    setFilters={setFilters}
-                    loading={isSubmitting}
-                    headers={consultantManagerHeaders}
-                    pagination={pagination}
-                    dateFilters={[
-                      {
-                        title: "Registration Date",
-                        from: "fromDate",
-                        to: "toDate",
-                      },
-                    ]}
-                    selectOptions={[
-                      {
-                        title: "Status",
-                        options: normalStatus,
-                      },
-                    ]}
-                  >
-                    <tbody>
-                      {userData?.map((item, index) => (
-                        <tr key={item?.id}>
-                          <td>
-                            {serialNum(
-                              (filters.page - 1) * filters.per_page + index + 1
-                            )}
-                          </td>
-                          <td>{item?.name}</td>
-                          <td>{item?.last_name}</td>
-                          <td>{item?.email}</td>
-                          <td>{item?.category}</td>
-                          <td>{dateFormat(item?.registrationDate)}</td>
-                          {/* Status column with Select dropdown */}
-                          <td>
-                            <Select
-                              className={`tabel-select status${item?.status_detail}`}
-                              required
-                              id={`status${item?.id}`}
-                              name="status"
-                              value={item?.status_detail}
-                              onChange={(e) => handleStatusChange(e, item?.id)}
-                              isInputNeeded={false}
-                            >
-                              {statusOptions}
-                            </Select>
-                          </td>
-                          <td>
-                            <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
-                              <span
-                                className="tooltip-toggle"
-                                aria-label="View"
-                              >
-                                <Link to={`${item.id}`}>
-                                  <FaEye size={20} />
-                                </Link>
-                              </span>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </CustomTable>
-                </Col>
-              </Row>
-            </div>
-          </div>
+          <Row className="mb-2 page-header">
+            <Col
+              xs={12}
+              className="gap-2 d-flex flex-column flex-xl-row justify-content-between align-items-start align-items-xl-center flex-wrap"
+            >
+              <div className="flex-shrink-0">
+                <h2 className="align-self-start mainTitle mb-0">
+                  Consultant Management
+                </h2>
+              </div>
+              <div className="ms-xl-auto d-flex gap-2 gap-xxl-3 flex-column flex-sm-row flex-xl-column flex-xxl-row">
+                <Link to={"/requests"} className="btn btn-primary">
+                  Consultant screening
+                </Link>
+                <Link to={"requests"} className="btn btn-outline-primary">
+                  New Consultants Request
+                </Link>
+              </div>
+            </Col>
+          </Row>
+          <Row className="mb-3">
+            <Col xs={12}>
+              <CustomTable
+                filters={filters}
+                setFilters={setFilters}
+                loading={isSubmitting}
+                headers={consultantManagementHeaders}
+                pagination={pagination}
+                dateFilters={[
+                  {
+                    title: "Registration Date",
+                    from: "fromDate",
+                    to: "toDate",
+                  },
+                ]}
+                selectOptions={[
+                  {
+                    title: "Status",
+                    options: normalStatus,
+                  },
+                ]}
+              >
+                <tbody>
+                  {userData?.map((item, index) => (
+                    <tr key={item?.id}>
+                      <td>
+                        {serialNum(
+                          (filters.page - 1) * filters.per_page + index + 1
+                        )}
+                      </td>
+                      <td>{item?.name}</td>
+                      <td>{item?.last_name}</td>
+                      <td>{item?.email}</td>
+                      <td>{item?.category}</td>
+                      <td>{dateFormat(item?.registrationDate)}</td>
+                      {/* Status column with Select dropdown */}
+                      <td>
+                        <Select
+                          className={`tabel-select status${item?.status_detail}`}
+                          required
+                          id={`status${item?.id}`}
+                          name="status"
+                          value={item?.status_detail}
+                          onChange={(e) => handleStatusChange(e, item?.id)}
+                          isInputNeeded={false}
+                        >
+                          {statusOptions}
+                        </Select>
+                      </td>
+                      <td>
+                        <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
+                          <span className="tooltip-toggle" aria-label="View">
+                            <Link to={`${item.id}`}>
+                              <FaEye size={20} />
+                            </Link>
+                          </span>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </CustomTable>
+            </Col>
+          </Row>
         </div>
       </div>
     </DashboardLayout>
