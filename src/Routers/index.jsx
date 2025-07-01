@@ -119,6 +119,7 @@ import EditNewBanner from "../Pages/Admin/BannerManagement/EditNewBanner";
 import NewBannerDetail from "../Pages/Admin/BannerManagement/NewBannerDetail";
 import CancellationPenaltyManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationPenaltyManagement";
 import CancellationTimeManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationTimeManagement";
+import FAQs from "../Pages/Admin/FAQs";
 import PromoCodeManagement from "../Pages/Admin/PromoCodeManagement/PromoCodeManagement";
 import QueryComplainDetails from "../Pages/Admin/QueriesManagement/QueryComplainDetails";
 import QueryContactUsDetails from "../Pages/Admin/QueriesManagement/QueryContactUsDetails";
@@ -387,6 +388,9 @@ const routes = [
           { path: "admin/mybank-detail", element: <MyBankDetail /> },
           { path: "admin/add-bank-details", element: <AddBankDetail /> },
           { path: "admin/mybank-detail/edit", element: <EditBankDetail /> },
+          // --- End --- //
+          // FAQs management //
+          { path: "admin/faqs", element: <FAQs /> },
           // --- End --- //
 
           // Emergency Contact Management //

@@ -10,7 +10,7 @@ const ChangePasswordForm = ({
   isSubmitting,
   errors,
   btnText = "Update",
-  btnVariant = "site-btn primary-btn",
+  btnVariant = "btn btn-primary",
 }) => {
   console.log(errors);
   return (
@@ -40,7 +40,7 @@ const ChangePasswordForm = ({
                 type="password"
                 required
                 placeholder="Enter Current Password"
-                // inputclass="mainInput"
+                inputclass="mb-3"
                 id="current_password"
                 value={values.current_password}
                 onChange={handleChange}
@@ -55,7 +55,7 @@ const ChangePasswordForm = ({
                 type="password"
                 required
                 placeholder="Enter New Password"
-                // inputclass="mainInput"
+                inputclass="mb-3"
                 id="password"
                 value={values.password}
                 onChange={handleChange}
@@ -70,7 +70,7 @@ const ChangePasswordForm = ({
                 type="password"
                 required
                 placeholder="Confirm Password"
-                // inputclass="mainInput"
+                inputclass="mb-3"
                 id="password_confirmation"
                 value={values.password_confirmation}
                 onChange={handleChange}

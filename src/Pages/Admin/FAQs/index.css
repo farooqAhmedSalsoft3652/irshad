@@ -1,0 +1,103 @@
+.custWidth{
+    width: 120px;
+    text-align: center;
+}
+.accordion-button{
+    border: 1px solid #CBEDF9;
+    border-radius: 10px !important;
+}
+.accordion-button:focus{
+    border: 1px solid #CBEDF9;
+}
+.accordion-button::after {
+   transform: rotate(-90deg);
+}
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(0deg);
+}
+.accordion {
+    --bs-accordion-btn-focus-border-color: none;
+    --bs-accordion-btn-focus-box-shadow: none;
+    --bs-accordion-active-bg: none;
+}
+.accordion-item {
+    background-color: #CBEDF9;
+    margin: 20px 0px;
+    border: none;
+    border-radius: 10px !important;
+    box-shadow: 0px 4px 4px rgba(147, 214, 233, 0.29);
+}
+.videoPlayer, .video-player[poster]{
+    width: 100%;
+    height: 680px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+.videoPlayer::-webkit-media-controls{
+    opacity: 0.2;
+}
+.videoPlayer1, .video-player1[poster]{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+.videoPlayer1::-webkit-media-controls{
+    opacity: 0.2;
+}
+.uploaderW{
+    width: 60px;
+}
+.removeBtn{
+    margin-top: -10px;
+}
+
+.faqInput{
+    background: #CBEDF9;
+    border: 1px solid #CBEDF9;
+    border-radius: 10px !important;
+    box-shadow: 0px 4px 4px rgba(147, 214, 233, 0.29);
+}
+.uploadImg{
+    width: 400px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.uploadImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.uploadVideo video{
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+}
+@media screen and (max-width : 1199.5px) {
+    .videoPlayer, .video-player[poster]{
+        height: 550px;
+    }
+}
+@media screen and (max-width : 991.5px) {
+    .videoPlayer, .video-player[poster]{
+        height: 500px;
+    }
+}
+@media screen and (max-width : 767.5px) {
+    .videoPlayer, .video-player[poster]{
+        height: 400px;
+    }
+}
+@media screen and (max-width : 575.5px) {
+    .videoPlayer, .video-player[poster]{
+        height: 200px;
+    }
+    .accordion-button{
+        font-size: 14px;
+    }
+}

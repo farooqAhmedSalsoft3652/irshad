@@ -7,6 +7,7 @@ import { post } from "../../../Services/Api";
 import ChangePasswordForm from "../../../Components/ChangePasswordForm";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
 import withModal from "../../../HOC/withModal";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
 
 const ChangePassword = ({ showModal }) => {
   const navigate = useNavigate();
@@ -15,12 +16,7 @@ const ChangePassword = ({ showModal }) => {
 
   const handleSubmit = async (values) => {
     startSubmitting();
-    showModal(
-      'Successful',
-      `password Has Been changed Successfully!`,
-      ()=>(navigate(-1)),
-      true,
-    );
+    showModal("", `password Has Been updated Successfully!`, () => navigate(-1), true);
     // let response = await post("/admin-api/account/change-password", values);
     // if (response.status) {
     //   showModal(
@@ -37,22 +33,18 @@ const ChangePassword = ({ showModal }) => {
   return (
     <>
       <DashboardLayout pageTitle="Change Password">
+        <div className="dashCard my-4">
           <div className="row mb-3">
             <div className="col-12">
-              <h2 className="mainTitle">
-                <BackButton />
-                Change Password
-              </h2>
+              <div className="d-flex align-items-center gap-2">
+              <BackButton2 />
+              <h2 className="mainTitle mb-0">Change Password</h2>
+              </div>
             </div>
           </div>
-        <div className="dashCard my-4">
           <div className="row">
             <div className="col-md-9 col-lg-7 col-xl-5 ">
-              <ChangePasswordForm
-                onSubmit={handleSubmit}
-                isSubmitting={isSubmitting}
-                errors={errorsData}
-              />
+              <ChangePasswordForm onSubmit={handleSubmit} isSubmitting={isSubmitting} errors={errorsData} />
             </div>
           </div>
         </div>

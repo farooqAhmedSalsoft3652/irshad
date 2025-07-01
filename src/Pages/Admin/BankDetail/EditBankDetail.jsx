@@ -51,7 +51,8 @@ const EditBankDetail = ({ showModal }) => {
     <>
       <DashboardLayout pageTitle="Edit Bank Details">
         <div className="container-fluid">
-          <div className="row my-3">
+          <div className="dashCard">
+          <div className="row mb-4">
             <div className="col-12">
               <div className="d-flex align-items-center ">
                 <BackButton2 />
@@ -59,7 +60,7 @@ const EditBankDetail = ({ showModal }) => {
               </div>
             </div>
           </div>
-          <div className=" mb-4">
+          <div className="">
             <div className="row mb-3">
               <div className="col-12">
                 <Formik
@@ -141,7 +142,7 @@ const EditBankDetail = ({ showModal }) => {
                           </div>
                         </div>
                         <div className="row">
-                          <div className="col-12 mt-3">
+                          <div className="col-12 mt-lg-4 mt-3">
                             <CustomButton
                               variant="btn btn-primary"
                               className="px-5"
@@ -159,6 +160,7 @@ const EditBankDetail = ({ showModal }) => {
                 </Formik>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </DashboardLayout>
