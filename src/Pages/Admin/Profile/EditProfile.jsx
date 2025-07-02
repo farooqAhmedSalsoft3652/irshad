@@ -1,15 +1,13 @@
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Formik } from "formik";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import { images } from "../../../Assets";
-import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import BackButton from "../../../Components/BackButton";
-import CustomButton from "../../../Components/CustomButton";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { useNavigate } from "react-router";
+import { images } from "../../../Assets";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
+import CustomButton from "../../../Components/CustomButton";
 import CustomInput from "../../../Components/CustomInput";
+import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { adminProfileValidation } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useAuth } from "../../../Hooks/useAuth";
@@ -45,8 +43,8 @@ const EditProfile = ({ showModal }) => {
     startSubmitting();
     values.image = imageObject;
     showModal(
-      "Succesful",
-      `Profile updated successfully`,
+      "",
+      `Profile has been updated successfully`,
       // null,
       () => navigate(`/admin/profile`),
       true
@@ -69,15 +67,15 @@ const EditProfile = ({ showModal }) => {
   return (
     <>
       <DashboardLayout pageTitle="Edit Profile">
-        <div className="row mt-3">
-          <div className="col-12">
-            <h2 className="mainTitle">
-              <BackButton />
-              Edit Profile
-            </h2>
-          </div>
-        </div>
         <div className="dashCard my-4">
+          <div className="row mt-3">
+            <div className="col-12">
+              <div className="d-flex align-items-center gap-2">
+                <BackButton2 />
+                <h2 className="mainTitle mb-0">Edit Profile</h2>
+              </div>
+            </div>
+          </div>
           <div className="row mb-3">
             {profileData ? (
               <div className="col-lg-8">
@@ -87,6 +85,7 @@ const EditProfile = ({ showModal }) => {
                       first_name: profileData.first_name || "",
                       last_name: profileData.last_name || "",
                       phone: profileData.phone || "",
+                      email: profileData.email || "",
                     }}
                     validationSchema={adminProfileValidation}
                     onSubmit={handleSubmit}
@@ -95,8 +94,8 @@ const EditProfile = ({ showModal }) => {
                       return (
                         <form onSubmit={handleSubmit}>
                           <div className="row mb-3">
-                            <div className="col-lg-4 mb-3">
-                              <div className="profileImage">
+                            <div className="col-lg-4 mb-3 mt-4">
+                              <div className="edit_profile_img">
                                 <img src={profilePic ?? images.userImage} alt="User" />
                                 <input
                                   type="file"
@@ -105,11 +104,11 @@ const EditProfile = ({ showModal }) => {
                                   id="profileImage"
                                   onChange={(event) => handleImageChange(event, setFieldValue, setFieldError)}
                                 />
-                                <label htmlFor="profileImage" className="imageUploadButton">
-                                  <FontAwesomeIcon icon={faCamera} />
+                                <label htmlFor="profileImage" className="upload-btn">
+                                  <images.CameraIconOutline />
                                 </label>
+                                {errors.image && <div className="errorText red-text">{errors.image}</div>}
                               </div>
-                              {errors.image && <div className="errorText red-text">{errors.image}</div>}
                             </div>
                           </div>
                           <div className="row">
@@ -122,7 +121,7 @@ const EditProfile = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter First Name"
-                                    inputclass="mainInput"
+                                    inputclass="mb-3"
                                     id="first_name"
                                     value={values.first_name}
                                     onChange={handleChange}
@@ -137,7 +136,7 @@ const EditProfile = ({ showModal }) => {
                                     type="text"
                                     required
                                     placeholder="Enter Last Name"
-                                    inputclass="mainInput"
+                                    inputclass="mb-3"
                                     id="last_name"
                                     value={values.last_name}
                                     onChange={handleChange}
@@ -147,7 +146,7 @@ const EditProfile = ({ showModal }) => {
                                 </div>
                                 <div className="col-12 my-1">
                                   <label htmlFor="phoneInput" className="mainLabel">
-                                    Phone number<span className="text-danger">*</span>
+                                    Contact number<span className="text-danger">*</span>
                                   </label>
                                   <PhoneInput
                                     defaultCountry="US"
@@ -155,17 +154,21 @@ const EditProfile = ({ showModal }) => {
                                     value={values.phone}
                                     onChange={(phone) => setFieldValue("phone", phone)}
                                     onBlur={() => setFieldTouched("phone", true)}
-                                    className="mainInput"
+                                    className="form-control mb-3"
                                   />
                                   {touched.phone && errors.phone ? <div className="text-danger">{errors.phone}</div> : null}
+                                </div>
+                                <div className="col-12 my-1">
+                                  <label className="mainLabel mb-0">Email Address</label>
+                                  <p className="grayColor">{values?.email}</p>
                                 </div>
                               </div>
 
                               <div className="row mt-4">
                                 <div className="col-md-4">
                                   <CustomButton
-                                    variant="site-btn primary-btn"
-                                    className="px-5"
+                                    variant="btn btn-primary"
+                                    className="min-width-190"
                                     text="Update"
                                     pendingText="Submitting..."
                                     isPending={isSubmitting}

@@ -24,13 +24,6 @@ const MyBankDetail = () => {
 
   return (
     <DashboardLayout pageTitle="My Bank Details">
-      <div className="row my-3">
-        <div className="col-12">
-          <div className="d-flex">
-            <h2 className="mainTitle mb-0">My Bank Details</h2>
-          </div>
-        </div>
-      </div>
       {isNullOrEmpty(bankData) ? (
         <div className="dashCard">
           <Link to={"/admin/add-bank-details"}>
@@ -43,28 +36,40 @@ const MyBankDetail = () => {
           </Link>
         </div>
       ) : (
-        <div className="dashCard mt-3">
+        <div className="dashCard">
+          <div className="row mb-4">
+            <div className="col-12">
+              <div className="d-flex">
+                <h2 className="mainTitle mb-0">My Bank Details</h2>
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-10 col-lg-8 col-xl-7 col-xxl-5">
-              <div className="row">
+              <div className="row mb-3">
                 {[
-                  { label: "Account holder name", value: bankData?.accountHolderName },
-                  { label: "Account Type", value: bankData?.accountType },
-                  { label: "Bank Name", value: bankData?.bankName },
-                  { label: "Routing Number", value: bankData?.routingNumber },
-                  { label: "Account Number", value: bankData?.accountNumber },
+                  { label: "Card holder name", value: bankData?.cardHolderName },
+                  { label: "Card Number", value: bankData?.cardNumber },
+                  { label: "Validity Date", value: bankData?.validityDate },
                 ].map(({ label, value }) => (
-                  <div className={`col-sm-6 mb-4`} key={label}>
-                    <h4 className="secondaryLabel">{label}</h4>
-                    <p className="secondaryText wrapText mb-0">{value}</p>
+                  <div className={`col-sm-4 mb-4`} key={label}>
+                    <div className="detail-box">
+                      <h6 className="">{label}</h6>
+                      <p className="mb-0">{value}</p>
+                    </div>
                   </div>
                 ))}
               </div>
               <div className="row">
                 <div className="col-12">
-                  <Link to={`edit`} className="site-btn primary-btn text-decoration-none px-5">
-                    Edit
+                  <div className="d-flex align-items-center gap-3">
+                  <Link to={`edit`} className="btn btn-primary px-5">
+                    Edit Bank Details
                   </Link>
+                  <Link to={`/admin/add-bank-details`} className="btn btn-outline-primary px-5">
+                    Add Bank Details
+                  </Link>
+                  </div>
                 </div>
               </div>
             </div>

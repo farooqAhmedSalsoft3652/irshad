@@ -8,52 +8,63 @@ import { fullName, getCountryFlag } from "../../../Utils/helper";
 const Profile = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  
 
   return (
     <>
       <DashboardLayout pageTitle="My Profile">
-        <div className="row mt-3">
-          <div className="col-12">
-            <h2 className="mainTitle">My Profile</h2>
+        <div className="dashCard">
+          <div className="row ">
+            <div className="col-12">
+              <h2 className="mainTitle">My Profile</h2>
+            </div>
           </div>
-        </div>
-        <div className="dashCard my-4">
           <div className="row mb-3">
             {user ? (
               <div className="col-12">
                 <div className="mx-width">
-                  <div className="row text-xl-center mb-5">
+                  <div className="row text-xl-center mb-sm-5 mb-4">
                     <div className="col-12">
-                      <div className="profileImage ">
+                      <div className="adminProfileImage">
                         <img src={user?.["photo-path"]} alt="User" />
                       </div>
                     </div>
                   </div>
-                  <div className="row mt-4">
-                    <div className="col-xl-4 col-lg-6 mb-3">
-                      <h4 className="secondaryLabel">User Name</h4>
-                      <p className="secondaryText">{fullName(user)}</p>
+                  <div className="row">
+                    <div className="col-xl-3 col-lg-6 mb-3">
+                      <div className="detail-box">
+                        <h6 className="">First Name</h6>
+                        <p className="">{user?.first_name}</p>
+                      </div>
+                    </div>
+                    <div className="col-xl-3 col-lg-6 mb-3">
+                      <div className="detail-box">
+                        <h6 className="">Last Name</h6>
+                        <p className="">{user?.last_name}</p>
+                      </div>
                     </div>
 
-                    <div className="col-xl-4 col-lg-6 mb-3">
-                      <h4 className="secondaryLabel">Email Address</h4>
-                      <p className="secondaryText">{user?.email}</p>
+                    <div className="col-xl-3 col-lg-6 mb-3">
+                      <div className="detail-box">
+                        <h6 className="">Email Address</h6>
+                        <p className="">{user?.email}</p>
+                      </div>
                     </div>
-                    <div className="col-xl-4 col-lg-6 mb-3">
-                      <h4 className="secondaryLabel">Phone No</h4>
-                      <p className="secondaryText">
-                        <span>{getCountryFlag(user.phone)}</span>
-                        {user?.phone}
-                      </p>
+                    <div className="col-xl-3 col-lg-6 mb-3">
+                      <div className="detail-box">
+                        <h6 className="">Phone No</h6>
+                        <p className="d-flex align-items-center gap-2">
+                          <span>{getCountryFlag(user.phone)}</span>
+                          <span>{user?.phone}</span>
+                        </p>
+                      </div>
                     </div>
                   </div>
 
                   <div className="d-flex gap-3 flex-wrap">
                     <CustomButton
                       type="button"
-                      variant="site-btn primary-btn "
-                      className="px-5"
+                      variant="btn btn-primary"
+                      className="min-width-190"
                       text="Edit Profile"
                       onClick={() => {
                         navigate("/admin/edit-profile");
@@ -61,7 +72,7 @@ const Profile = () => {
                     />
                     <CustomButton
                       type="button"
-                      className="site-btn secondary-btn"
+                      className="btn btn-outline-primary min-width-190"
                       text="Change Password"
                       onClick={() => {
                         navigate("/admin/change-password");

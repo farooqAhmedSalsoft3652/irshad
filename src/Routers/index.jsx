@@ -23,6 +23,10 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import AppointmentDetails from "../Pages/Admin/AppointmentLogs/AppointmentDetails";
 import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
 import CommissionManagement from "../Pages/Admin/CommissionManagement/CommissionManagement";
+import ConsultantDetails from "../Pages/Admin/ConsultantManagement/ConsultantDetails";
+import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
+import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
+import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
 import ViewArticles from "../Pages/Admin/ContentManagement/Articles/ViewArticles";
 import AddBlog from "../Pages/Admin/ContentManagement/Blogs/AddBlog";
 import ViewBlogs from "../Pages/Admin/ContentManagement/Blogs/ViewBlogs";
@@ -33,7 +37,6 @@ import AddVideo from "../Pages/Admin/ContentManagement/Videos/AddVideo";
 import ViewVideo from "../Pages/Admin/ContentManagement/Videos/ViewVideo";
 import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
 import Product from "../Pages/Admin/Product/Product";
-import QueriesDetails from "../Pages/Admin/QueriesManagement/QueriesDetail";
 import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
 import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
 import ConsultantDetails from "../Pages/Admin/ConsultantManagement/ConsultantDetails";
@@ -125,7 +128,12 @@ import EditNewBanner from "../Pages/Admin/BannerManagement/EditNewBanner";
 import NewBannerDetail from "../Pages/Admin/BannerManagement/NewBannerDetail";
 import CancellationPenaltyManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationPenaltyManagement";
 import CancellationTimeManagement from "../Pages/Admin/CancellationPenaltyManagement/CancellationTimeManagement";
+import FAQs from "../Pages/Admin/FAQs";
 import PromoCodeManagement from "../Pages/Admin/PromoCodeManagement/PromoCodeManagement";
+import QueryComplainDetails from "../Pages/Admin/QueriesManagement/QueryComplainDetails";
+import QueryContactUsDetails from "../Pages/Admin/QueriesManagement/QueryContactUsDetails";
+import QueryQuestionDetails from "../Pages/Admin/QueriesManagement/QueryQuestionDetails";
+import QueryReportDetails from "../Pages/Admin/QueriesManagement/QueryReportDetails";
 import ReportsDetail from "../Pages/Admin/ReportsManagement/ReportsDetail";
 import RequestManagement from "../Pages/Admin/RequestManagement/RequestManagement";
 import RequestDetails from "../Pages/Admin/RequestManagement/RequetsDetail";
@@ -144,8 +152,6 @@ import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ScreeningHome from "../Pages/User/ScreeningHome/index";
-import QueryContactUsDetails from "../Pages/Admin/QueriesManagement/QueryContactUsDetails";
-import QueryComplainDetails from "../Pages/Admin/QueriesManagement/QueryComplainDetails";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -418,6 +424,9 @@ const routes = [
           { path: "admin/mybank-detail", element: <MyBankDetail /> },
           { path: "admin/add-bank-details", element: <AddBankDetail /> },
           { path: "admin/mybank-detail/edit", element: <EditBankDetail /> },
+          // --- End --- //
+          // FAQs management //
+          { path: "admin/faqs", element: <FAQs /> },
           // --- End --- //
 
           // Emergency Contact Management //

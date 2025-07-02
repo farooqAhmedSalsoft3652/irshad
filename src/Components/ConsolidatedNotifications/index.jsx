@@ -9,6 +9,7 @@ import LoadingSpinner from "../Loader";
 import NotificationCard from "../NotificationCard";
 import { Select } from "../Select";
 import "./style.css";
+import { useAuth } from "../../Hooks/useAuth";
 
 const ConsolidatedNotifications = ({
   apiEndpoint,
@@ -20,6 +21,7 @@ const ConsolidatedNotifications = ({
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedStatus, setSelectedStatus] = useState("");
+  const { role } = useAuth();
 
   const fetchNotifications = async () => {
     try {
@@ -71,25 +73,27 @@ const ConsolidatedNotifications = ({
   // console.log(notifications)
 
   return (
-    <div className="py-sm-5 py-3">
+    <div className={role == "user" && 'py-sm-5 py-3'}>
       <div className="site_card">
         <Row className="mb-4">
           <Col xs={12}>
-            <div className="d-flex justify-content-between align-items-center flex-wrap gap-sm-3 ">
+            <div className="d-flex justify-content-between align-items-center flex-wrap gap-sm-4 ">
               <div>
                 <Select
                   className="slimSelect"
                   value={selectedStatus}
                   onChange={setSelectedStatus}
-                  label="Show"
+                  label="Showing"
                   labelclass="pe-3"
                 >
                   {notificationOptions}
                 </Select>
               </div>
+              {role== "user" && (
               <div>
                 <h2 className="page-title fw-bold mb-0">Notifications</h2>
               </div>
+              )}
               <div>
                 <button
                   className="mark_all_btn"
