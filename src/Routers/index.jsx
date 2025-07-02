@@ -23,30 +23,20 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import AppointmentDetails from "../Pages/Admin/AppointmentLogs/AppointmentDetails";
 import AppointmentLogs from "../Pages/Admin/AppointmentLogs/AppointmentLogs";
 import CommissionManagement from "../Pages/Admin/CommissionManagement/CommissionManagement";
-import ConsultantDetails from "../Pages/Admin/ConsultantManagement/ConsultantDetails";
-import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
-import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
-import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
-import ViewArticles from "../Pages/Admin/ContentManagement/Articles/ViewArticles";
-import AddBlog from "../Pages/Admin/ContentManagement/Blogs/AddBlog";
-import ViewBlogs from "../Pages/Admin/ContentManagement/Blogs/ViewBlogs";
-import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
-import AddEBook from "../Pages/Admin/ContentManagement/EBooks/AddEBook";
-import ViewEBooks from "../Pages/Admin/ContentManagement/EBooks/ViewEBooks";
-import AddVideo from "../Pages/Admin/ContentManagement/Videos/AddVideo";
-import ViewVideo from "../Pages/Admin/ContentManagement/Videos/ViewVideo";
-import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
-import Product from "../Pages/Admin/Product/Product";
-import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
+
 import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
 import ConsultantDetails from "../Pages/Admin/ConsultantManagement/ConsultantDetails";
-import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
-import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
 import ConsultantBookingDetails from "../Pages/Admin/ConsultantManagement/ConsultantBookingDetails";
+import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
+import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
 import ConsultantRequests from "../Pages/Admin/ConsultantManagement/ConsultantRequests";
 import ConsultantProfile from "../Pages/Admin/ConsultantManagement/ConsultantProfile";
 
-import ServiceProviderServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
+// import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
+import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
+import QueriesManagement from "../Pages/Admin/QueriesManagement/QueriesManagement";
+// import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
+
 // import ShopDetails from "../Pages/Admin/ConsultantManagement/ShopDetails";
 import UserOrderDetails from "../Pages/Admin/UserManagement/OrderDetail";
 
@@ -55,25 +45,25 @@ import AddBankDetail from "../Pages/Admin/BankDetail/AddBankDetail";
 import EditBankDetail from "../Pages/Admin/BankDetail/EditBankDetail";
 import MyBankDetail from "../Pages/Admin/BankDetail/MyBankDetail";
 import Chat from "../Pages/Admin/Chat/Chat";
-import AddArticle from "../Pages/Admin/ContentManagement/Articles/AddArticle";
-import EditArticle from "../Pages/Admin/ContentManagement/Articles/EditArticle";
-import EditBlog from "../Pages/Admin/ContentManagement/Blogs/EditBlog";
-import EditEBook from "../Pages/Admin/ContentManagement/EBooks/EditEBook";
-import EditVideo from "../Pages/Admin/ContentManagement/Videos/EditVideo";
-import AddEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/AddEmergencyContacts";
-import EditEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/EditEmergencyContacts.";
-import EmergencyContactsManagement from "../Pages/Admin/EmergencyContactsManagement/EmergencyContactsManagement";
+// import AddArticle from "../Pages/Admin/ContentManagement/Articles/AddArticle";
+// import EditArticle from "../Pages/Admin/ContentManagement/Articles/EditArticle";
+// import EditBlog from "../Pages/Admin/ContentManagement/Blogs/EditBlog";
+// import EditEBook from "../Pages/Admin/ContentManagement/EBooks/EditEBook";
+// import EditVideo from "../Pages/Admin/ContentManagement/Videos/EditVideo";
+// import AddEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/AddEmergencyContacts";
+// import EditEmergencyContacts from "../Pages/Admin/EmergencyContactsManagement/EditEmergencyContacts.";
+// import EmergencyContactsManagement from "../Pages/Admin/EmergencyContactsManagement/EmergencyContactsManagement";
 import PaymentLogs from "../Pages/Admin/PaymentLogs/PaymentLogs";
 import ReportsManagement from "../Pages/Admin/ReportsManagement/ReportsManagement";
-import AddNewPlanProvider from "../Pages/Admin/SubscriptionLogs/AddNewPlanProvider";
-import AddNewPlanUser from "../Pages/Admin/SubscriptionLogs/AddNewPlanUser";
-import EditSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanProvider";
-import EditSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanUser";
-import SubscriptionPlansManagementProvider from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementProvider";
-import SubscriptionPlansManagementUser from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementUser";
-import ViewSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanProvider";
-import ViewSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanUser";
-import SubscriptionLogs from "../Pages/Admin/SubscriptionLogs/subscriptionLogs";
+// import AddNewPlanProvider from "../Pages/Admin/SubscriptionLogs/AddNewPlanProvider";
+// import AddNewPlanUser from "../Pages/Admin/SubscriptionLogs/AddNewPlanUser";
+// import EditSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanProvider";
+// import EditSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/EditSubscriptionPlanUser";
+// import SubscriptionPlansManagementProvider from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementProvider";
+// import SubscriptionPlansManagementUser from "../Pages/Admin/SubscriptionLogs/SubscriptionPlansManagementUser";
+// import ViewSubscriptionPlanProvider from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanProvider";
+// import ViewSubscriptionPlanUser from "../Pages/Admin/SubscriptionLogs/ViewSubscriptionPlanUser";
+// import SubscriptionLogs from "../Pages/Admin/SubscriptionLogs/subscriptionLogs";
 import UserPosts from "../Pages/Admin/UserManagement/UserPosts";
 
 /* User Routes */
@@ -137,10 +127,10 @@ import QueryReportDetails from "../Pages/Admin/QueriesManagement/QueryReportDeta
 import ReportsDetail from "../Pages/Admin/ReportsManagement/ReportsDetail";
 import RequestManagement from "../Pages/Admin/RequestManagement/RequestManagement";
 import RequestDetails from "../Pages/Admin/RequestManagement/RequetsDetail";
-import AddService from "../Pages/Admin/ServiceManagement/AddService";
-import EditServiceManagement from "../Pages/Admin/ServiceManagement/EditServiceManagement";
-import ServiceManagement from "../Pages/Admin/ServiceManagement/ServiceManagement";
-import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
+// import AddService from "../Pages/Admin/ServiceManagement/AddService";
+// import EditServiceManagement from "../Pages/Admin/ServiceManagement/EditServiceManagement";
+// import ServiceManagement from "../Pages/Admin/ServiceManagement/ServiceManagement";
+// import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import AddSubCategory from "../Pages/Admin/SubCategoryManagement/AddSubCategory";
 import EditSubCategory from "../Pages/Admin/SubCategoryManagement/EditSubCategory";
 import SubCategoryManagement from "../Pages/Admin/SubCategoryManagement/SubCategoryManagement";
@@ -264,52 +254,53 @@ const routes = [
             element: <EditSubCategory />,
           },
           // --- End --- //
-          { path: "admin/products/:productId", element: <Product /> },
+
+          // { path: "admin/products/:productId", element: <Product /> },
 
           // Content Mangement //
-          { path: "admin/content-management", element: <ContentManagement /> },
-          {
-            path: "admin/content-management/blogs/:id",
-            element: <ViewBlogs />,
-          },
-          {
-            path: "admin/content-management/articles/:id",
-            element: <ViewArticles />,
-          },
-          {
-            path: "admin/content-management/videos/:id",
-            element: <ViewVideo />,
-          },
-          {
-            path: "admin/content-management/e-books/:id",
-            element: <ViewEBooks />,
-          },
-          { path: "admin/content-management/add-video", element: <AddVideo /> },
-          { path: "admin/content-management/add-blog", element: <AddBlog /> },
-          {
-            path: "admin/content-management/add-article",
-            element: <AddArticle />,
-          },
-          {
-            path: "admin/content-management/add-e-book",
-            element: <AddEBook />,
-          },
-          {
-            path: "admin/content-management/videos/:id/edit",
-            element: <EditVideo />,
-          },
-          {
-            path: "admin/content-management/blogs/:id/edit",
-            element: <EditBlog />,
-          },
-          {
-            path: "admin/content-management/articles/:id/edit",
-            element: <EditArticle />,
-          },
-          {
-            path: "admin/content-management/e-books/:id/edit",
-            element: <EditEBook />,
-          },
+          // { path: "admin/content-management", element: <ContentManagement /> },
+          // {
+          //   path: "admin/content-management/blogs/:id",
+          //   element: <ViewBlogs />,
+          // },
+          // {
+          //   path: "admin/content-management/articles/:id",
+          //   element: <ViewArticles />,
+          // },
+          // {
+          //   path: "admin/content-management/videos/:id",
+          //   element: <ViewVideo />,
+          // },
+          // {
+          //   path: "admin/content-management/e-books/:id",
+          //   element: <ViewEBooks />,
+          // },
+          // { path: "admin/content-management/add-video", element: <AddVideo /> },
+          // { path: "admin/content-management/add-blog", element: <AddBlog /> },
+          // {
+          //   path: "admin/content-management/add-article",
+          //   element: <AddArticle />,
+          // },
+          // {
+          //   path: "admin/content-management/add-e-book",
+          //   element: <AddEBook />,
+          // },
+          // {
+          //   path: "admin/content-management/videos/:id/edit",
+          //   element: <EditVideo />,
+          // },
+          // {
+          //   path: "admin/content-management/blogs/:id/edit",
+          //   element: <EditBlog />,
+          // },
+          // {
+          //   path: "admin/content-management/articles/:id/edit",
+          //   element: <EditArticle />,
+          // },
+          // {
+          //   path: "admin/content-management/e-books/:id/edit",
+          //   element: <EditEBook />,
+          // },
           // --- End --- //
 
           // Appointments //
@@ -318,58 +309,58 @@ const routes = [
           // --- End --- //
 
           // Service Management //
-          {
-            path: "admin/service-management",
-            element: <ServiceManagement />,
-          },
-          {
-            path: "admin/service-management/add-service",
-            element: <AddService />,
-          },
-          {
-            path: "admin/service-management/:id",
-            element: <ViewServiceDetail />,
-          },
-          {
-            path: "admin/service-management/:id/edit",
-            element: <EditServiceManagement />,
-          },
+          // {
+          //   path: "admin/service-management",
+          //   element: <ServiceManagement />,
+          // },
+          // {
+          //   path: "admin/service-management/add-service",
+          //   element: <AddService />,
+          // },
+          // {
+          //   path: "admin/service-management/:id",
+          //   element: <ViewServiceDetail />,
+          // },
+          // {
+          //   path: "admin/service-management/:id/edit",
+          //   element: <EditServiceManagement />,
+          // },
           // --- End --- //
 
           // Subscription Logs //
-          { path: "admin/subscription-logs", element: <SubscriptionLogs /> },
-          {
-            path: "admin/subscription-logs/user/management",
-            element: <SubscriptionPlansManagementUser />,
-          },
-          {
-            path: "admin/subscription-logs/user/management/add-plan",
-            element: <AddNewPlanUser />,
-          },
-          {
-            path: "admin/subscription-logs/user/management/:id/edit",
-            element: <EditSubscriptionPlanUser />,
-          },
-          {
-            path: "admin/subscription-logs/user/management/:id",
-            element: <ViewSubscriptionPlanUser />,
-          },
-          {
-            path: "admin/subscription-logs/provider/management",
-            element: <SubscriptionPlansManagementProvider />,
-          },
-          {
-            path: "admin/subscription-logs/provider/management/add-plan",
-            element: <AddNewPlanProvider />,
-          },
-          {
-            path: "admin/subscription-logs/provider/management/:id",
-            element: <ViewSubscriptionPlanProvider />,
-          },
-          {
-            path: "admin/subscription-logs/provider/management/:id/edit",
-            element: <EditSubscriptionPlanProvider />,
-          },
+          // { path: "admin/subscription-logs", element: <SubscriptionLogs /> },
+          // {
+          //   path: "admin/subscription-logs/user/management",
+          //   element: <SubscriptionPlansManagementUser />,
+          // },
+          // {
+          //   path: "admin/subscription-logs/user/management/add-plan",
+          //   element: <AddNewPlanUser />,
+          // },
+          // {
+          //   path: "admin/subscription-logs/user/management/:id/edit",
+          //   element: <EditSubscriptionPlanUser />,
+          // },
+          // {
+          //   path: "admin/subscription-logs/user/management/:id",
+          //   element: <ViewSubscriptionPlanUser />,
+          // },
+          // {
+          //   path: "admin/subscription-logs/provider/management",
+          //   element: <SubscriptionPlansManagementProvider />,
+          // },
+          // {
+          //   path: "admin/subscription-logs/provider/management/add-plan",
+          //   element: <AddNewPlanProvider />,
+          // },
+          // {
+          //   path: "admin/subscription-logs/provider/management/:id",
+          //   element: <ViewSubscriptionPlanProvider />,
+          // },
+          // {
+          //   path: "admin/subscription-logs/provider/management/:id/edit",
+          //   element: <EditSubscriptionPlanProvider />,
+          // },
           // --- End --- //
 
           // Queries Management //
@@ -381,6 +372,14 @@ const routes = [
           {
             path: "admin/queries-management/complain/:id",
             element: <QueryComplainDetails />,
+          },
+          {
+            path: "admin/queries-management/report/:id",
+            element: <QueryReportDetails />,
+          },
+          {
+            path: "admin/queries-management/question/:id",
+            element: <QueryQuestionDetails />,
           },
           // --- End --- //
 
@@ -430,18 +429,18 @@ const routes = [
           // --- End --- //
 
           // Emergency Contact Management //
-          {
-            path: "admin/emergency-contact-management",
-            element: <EmergencyContactsManagement />,
-          },
-          {
-            path: "admin/emergency-contact-management/add",
-            element: <AddEmergencyContacts />,
-          },
-          {
-            path: "admin/emergency-contact-management/:id/edit",
-            element: <EditEmergencyContacts />,
-          },
+          // {
+          //   path: "admin/emergency-contact-management",
+          //   element: <EmergencyContactsManagement />,
+          // },
+          // {
+          //   path: "admin/emergency-contact-management/add",
+          //   element: <AddEmergencyContacts />,
+          // },
+          // {
+          //   path: "admin/emergency-contact-management/:id/edit",
+          //   element: <EditEmergencyContacts />,
+          // },
           // --- End --- //
 
           { path: "admin/notifications", element: <NotificationsAdmin /> },
