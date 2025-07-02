@@ -127,10 +127,10 @@ import QueryReportDetails from "../Pages/Admin/QueriesManagement/QueryReportDeta
 import ReportsDetail from "../Pages/Admin/ReportsManagement/ReportsDetail";
 import RequestManagement from "../Pages/Admin/RequestManagement/RequestManagement";
 import RequestDetails from "../Pages/Admin/RequestManagement/RequetsDetail";
-// import AddService from "../Pages/Admin/ServiceManagement/AddService";
-// import EditServiceManagement from "../Pages/Admin/ServiceManagement/EditServiceManagement";
-// import ServiceManagement from "../Pages/Admin/ServiceManagement/ServiceManagement";
-// import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
+import AddService from "../Pages/Admin/ServiceManagement/AddService";
+import EditServiceManagement from "../Pages/Admin/ServiceManagement/EditServiceManagement";
+import ServiceManagement from "../Pages/Admin/ServiceManagement/ServiceManagement";
+import ViewServiceDetail from "../Pages/Admin/ServiceManagement/ViewServiceDetail";
 import AddSubCategory from "../Pages/Admin/SubCategoryManagement/AddSubCategory";
 import EditSubCategory from "../Pages/Admin/SubCategoryManagement/EditSubCategory";
 import SubCategoryManagement from "../Pages/Admin/SubCategoryManagement/SubCategoryManagement";
@@ -187,7 +187,7 @@ const routes = [
           { path: "admin/posts", element: <UserPosts /> },
           // --- End --- //
 
-          // Service Provider Mangement //
+          // Consultant Mangement //
           {
             path: "admin/consultant-management",
             element: <ConsultantManagement />,
@@ -309,22 +309,22 @@ const routes = [
           // --- End --- //
 
           // Service Management //
-          // {
-          //   path: "admin/service-management",
-          //   element: <ServiceManagement />,
-          // },
-          // {
-          //   path: "admin/service-management/add-service",
-          //   element: <AddService />,
-          // },
-          // {
-          //   path: "admin/service-management/:id",
-          //   element: <ViewServiceDetail />,
-          // },
-          // {
-          //   path: "admin/service-management/:id/edit",
-          //   element: <EditServiceManagement />,
-          // },
+          {
+            path: "admin/service-management",
+            element: <ServiceManagement />,
+          },
+          {
+            path: "admin/service-management/add-service",
+            element: <AddService />,
+          },
+          {
+            path: "admin/service-management/:id",
+            element: <ViewServiceDetail />,
+          },
+          {
+            path: "admin/service-management/:id/edit",
+            element: <EditServiceManagement />,
+          },
           // --- End --- //
 
           // Subscription Logs //
