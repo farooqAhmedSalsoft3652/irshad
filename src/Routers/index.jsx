@@ -142,6 +142,9 @@ import ChatReportDetails from "../Pages/User/Chat/ReportDetails";
 import NewServices from "../Pages/User/NewServices";
 import NewServicesAdd from "../Pages/User/NewServices/ServicesAdd";
 import ScreeningHome from "../Pages/User/ScreeningHome/index";
+import FaqAdd from "../Pages/Admin/FAQs/FaqAdd";
+import FaqEdit from "../Pages/Admin/FAQs/FaqEdit";
+import AppReport from "../Pages/Admin/Dashboard/AppReport";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -172,6 +175,7 @@ const routes = [
         children: [
           { path: "admin/*", element: <PreventAdmin /> },
           { path: "admin/dashboard", element: <Dashboard /> },
+          { path: "admin/dashboard/app-report", element: <AppReport /> },
           { path: "admin/profile", element: <Profile /> },
           { path: "admin/edit-profile", element: <EditProfile /> },
           { path: "admin/change-password", element: <ChangePassword /> },
@@ -426,6 +430,8 @@ const routes = [
           // --- End --- //
           // FAQs management //
           { path: "admin/faqs", element: <FAQs /> },
+          { path: "admin/faq-management/add-faq", element: <FaqAdd /> },
+          { path: "admin/faq-management/edit-faq/:id", element: <FaqEdit /> },
           // --- End --- //
 
           // Emergency Contact Management //
