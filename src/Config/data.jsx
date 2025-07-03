@@ -1003,13 +1003,54 @@ export const consultantManagerData = {
         phoneNo: "+1 2345678901",
         state: "Texas",
         city: "Dallas",
+
         chat_min: "10",
         chat_max: "20",
         call_min: "20",
         call_max: "25",
+        video_min: "20",
+        video_max: "25",
+
+        // is_quick_service: true,
+        quick_chat_min: "10",
+        quick_chat_max: "20",
+        quick_call_min: "20",
+        quick_call_max: "25",
+        quick_video_min: "20",
+        quick_video_max: "25",
+
+        standard_chat_min: "10",
+        standard_chat_max: "20",
+        standard_call_min: "20",
+        standard_call_max: "25",
+        standard_video_min: "30",
+        standard_video_max: "40",
+
         is_quick: true,
         total_working_hurs: "19 hrs per week",
+        total_hours: "10 Hours",
+        commission_rate: "05%",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor, providing specialized medical care for children of all ages.",
+        change_from_default: true,
+        given_service: [
+          {
+            service_name: "Service 1",
+          },
+          {
+            service_name: "Service 2",
+          },
+          {
+            service_name: "Service 3",
+          },
+        ],
+        given_category: [
+          {
+            category_name: "Category 1",
+          },
+          {
+            category_name: "Category 2",
+          },
+        ],
         education: [
           {
             id: 1,
@@ -1098,13 +1139,41 @@ export const consultantManagerData = {
         phoneNo: "+1 9876543210",
         state: "New York",
         city: "New York City",
+
+        chat_min: "10",
+        chat_max: "20",
+        call_min: "20",
+        call_max: "25",
+        // is_quick: true,
+
+        total_working_hurs: "19 hrs per week",
         bio: "Dr. Daniel is a renowned cardiologist with 15 years of experience. He has made significant contributions in the field of cardiology and worked in various reputed hospitals to treat patients with cardiovascular diseases.",
-        certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
-          institute: "Johns Hopkins University",
-          certificateTitle: "Cardiologist",
-        },
+        education: [
+          {
+            id: 1,
+            institute_name: "Institute ABC",
+            degree_title: "Degree ABC",
+            start_year: "2020",
+            end_year: "2023",
+          },
+        ],
+        work_experience: [
+          {
+            id: 1,
+            organization_name: "Organization ABC",
+            designation: "Doctor A",
+            start_year: "2023",
+            end_year: "2024",
+          },
+        ],
+        certification: [
+          {
+            institute: "Harvard Medical School",
+            certificateTitle: "Pediatrician",
+            photo:
+              "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          },
+        ],
         userImage:
           "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
@@ -1168,12 +1237,32 @@ export const consultantManagerData = {
         state: "Florida",
         city: "Miami",
         bio: "Dr. Emily has over 08 years of experience as an oncologist, working extensively in cancer research and treatment. She has been part of various cancer institutes, helping patients in their fight against cancer.",
-        certification: {
-          photo:
-            "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
-          institute: "University of Florida",
-          certificateTitle: "Oncologist",
-        },
+        education: [
+          {
+            id: 1,
+            institute_name: "Institute ABC",
+            degree_title: "Degree ABC",
+            start_year: "2020",
+            end_year: "2023",
+          },
+        ],
+        work_experience: [
+          {
+            id: 1,
+            organization_name: "Organization ABC",
+            designation: "Doctor A",
+            start_year: "2023",
+            end_year: "2024",
+          },
+        ],
+        certification: [
+          {
+            institute: "Harvard Medical School",
+            certificateTitle: "Pediatrician",
+            photo:
+              "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
+          },
+        ],
         userImage:
           "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
         services: [
@@ -3547,12 +3636,6 @@ export const newRequestConsultantData = {
           },
         ],
         certification: [
-          {
-            institute: "Harvard Medical School",
-            certificateTitle: "Pediatrician",
-            photo:
-              "https://static.vecteezy.com/system/resources/thumbnails/004/805/384/small_2x/graduation-certificate-template-free-vector.jpg",
-          },
           {
             institute: "Harvard Medical School",
             certificateTitle: "Pediatrician",
@@ -11671,7 +11754,8 @@ export const reportTableData = {
         userType: "user",
         date: "01/02/2024",
         subject: "Lorem ipsum dolor sit amet",
-        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+        message:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
       },
       {
         id: "2",
@@ -11680,7 +11764,8 @@ export const reportTableData = {
         userType: "guest",
         date: "01/02/2024",
         subject: "Lorem ipsum dolor sit amet",
-        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+        message:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",
@@ -11731,7 +11816,8 @@ export const questionTableData = {
         userType: "user",
         date: "01/02/2024",
         subject: "Lorem ipsum dolor sit amet",
-        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+        message:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
       },
       {
         id: "2",
@@ -11740,7 +11826,8 @@ export const questionTableData = {
         userType: "guest",
         date: "01/02/2024",
         subject: "Lorem ipsum dolor sit amet",
-        message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
+        message:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor.",
       },
     ],
     first_page_url: "http://localhost/food_app/admin-api/branches?page=1",

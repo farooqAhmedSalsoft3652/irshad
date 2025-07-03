@@ -31,6 +31,7 @@ import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantSe
 import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
 import ConsultantRequests from "../Pages/Admin/ConsultantManagement/ConsultantRequests";
 import ConsultantProfile from "../Pages/Admin/ConsultantManagement/ConsultantProfile";
+import SetConsultantProfile from "../Pages/Admin/ConsultantManagement/SetConsultantProfile";
 
 // import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
 import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
@@ -220,6 +221,10 @@ const routes = [
           {
             path: "admin/consultant-management/requests/:id",
             element: <ConsultantProfile />,
+          },
+          {
+            path: "admin/consultant-management/:id/set-consultant-profile",
+            element: <SetConsultantProfile />,
           },
 
           // {

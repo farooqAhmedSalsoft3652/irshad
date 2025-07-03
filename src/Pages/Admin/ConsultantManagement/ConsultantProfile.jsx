@@ -390,6 +390,20 @@ const ConsultantProfile = ({ showModal, reasonModal }) => {
                       </Col>
                     </Row>
                   )}
+                {consultantProfile?.status?.toLowerCase() == "rejected" && (
+                  <Row>
+                    <Col md={12} xxl={6} xl={8} lg={10}>
+                      <Row>
+                        <Col xs={12} className="mb-2">
+                          <div className="detail-box">
+                            <h6>Rejection Reason</h6>
+                            <p>{consultantProfile?.rejectionReason}</p>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                )}
               </Col>
             </Row>
           </div>

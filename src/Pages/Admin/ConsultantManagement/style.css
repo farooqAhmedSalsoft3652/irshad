@@ -43,6 +43,73 @@
   margin-top: -3px;
 }
 
+.input-working {
+  max-width: 200px;
+}
+
+.border-bottom-after:after {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  height: 1px;
+  margin: 0 auto;
+  content: "";
+  background-color: #E2F1FB;
+  left: 0;
+  right: 0;
+}
+
+.border-right-after:before {
+  position: absolute;
+  width: 1px;
+  height: 90%;
+  content: "";
+  background-color: #E2F1FB;
+  right: 30px;
+  top: 50%;
+  bottom: 0;
+  transform: translateY(-50%);
+}
+
+.multi-select .select__control {
+  border: 1px solid #dbdbdb;
+  border-radius: 50px;
+}
+
+.multi-select .select__value-container {
+  padding: 0 15px;
+}
+
+.multi-select .select__input-container {
+  padding: 12px 0;
+  margin: 0;
+}
+
+.multi-select .select__indicator {
+  color: #15355e;
+}
+
+.set-amount .form-control {
+  min-width: 130px;
+  color: #15355E;
+  font-size: 16px;
+  padding: 10px 15px;
+  min-height: 50px;
+  border-color: #15355E;
+}
+
+.set-amount .form-check {
+  min-width: 70px;
+  font-weight: 500;
+}
+
+.set-amount .seprator {
+  font-size: 20px;
+  font-weight: 500;
+  display: inline-block;
+  margin: 0 10px;
+}
+
 @media (max-width: 1399px) {
   .consultant-management .page-header .btn {
     padding: 14px 20px;

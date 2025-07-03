@@ -205,7 +205,10 @@ const ConsultantDetails = ({
                         >
                           View Services
                         </Link>
-                        <Link className="btn btn-outline-primary min-width-220 px-3">
+                        <Link
+                          to={`/admin/consultant-management/${id}/set-consultant-profile`}
+                          className="btn btn-outline-primary min-width-220 px-3"
+                        >
                           Set Consultant Profile
                         </Link>
                         <CustomButton
@@ -322,7 +325,7 @@ const ConsultantDetails = ({
 
               {/* Set Amount */}
               <Row className="mb-4">
-                <Col md={12} lg={10} xl={8} xxl={6}>
+                <Col md={12} lg={10} xl={11} xxl={7}>
                   <Row>
                     <Col xs={12}>
                       <h5 className="section-title mb-3">Set Amount</h5>
@@ -340,19 +343,38 @@ const ConsultantDetails = ({
                         max: consultantData.call_max,
                       },
                       {
-                        label: "Total Working Hours:",
-                        value: consultantData.total_working_hurs, // ya jo bhi relevant ho
+                        label: "Video",
+                        min: consultantData.video_min,
+                        max: consultantData.video_max,
                       },
-                    ].map(({ label, min, max, value }, index) => (
-                      <Col xs={12} md={4} className="mb-3 mb-lg-4" key={index}>
-                        <div className="detail-box">
-                          <h6 className="">{label}</h6>
-                          <p className="mb-0">
-                            {min && max ? `$${min} - $${max}` : value || "-"}
-                          </p>
-                        </div>
-                      </Col>
-                    ))}
+                      {
+                        label: "Total Working Hours:",
+                        value: consultantData.total_working_hurs, // 👈 string like "19 hrs per week"
+                      },
+                    ]
+                      .filter(
+                        (item) =>
+                          (item.min != null && item.max != null) ||
+                          (typeof item.value === "string" &&
+                            item.value.trim() !== "")
+                      )
+                      .map(({ label, min, max, value }, index) => (
+                        <Col
+                          xs={12}
+                          md={3}
+                          className="mb-3 mb-lg-4"
+                          key={index}
+                        >
+                          <div className="detail-box">
+                            <h6>{label}</h6>
+                            <p className="mb-0">
+                              {min != null && max != null
+                                ? `$${min} - $${max}`
+                                : value}
+                            </p>
+                          </div>
+                        </Col>
+                      ))}
                   </Row>
                 </Col>
               </Row>

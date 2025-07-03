@@ -46,6 +46,43 @@ export const category = [
     text: "Emergency Phrases",
   },
 ];
+
+export const categoryOptions = [
+  {
+    value: "",
+    text: "Select Category",
+  },
+  {
+    value: "1",
+    text: "Category 1",
+  },
+  {
+    value: "2",
+    text: "Category 2",
+  },
+  {
+    value: "3",
+    text: "Category 3",
+  },
+];
+export const serviceOptions = [
+  {
+    value: "",
+    text: "Select Service",
+  },
+  {
+    value: "1",
+    text: "Service 1",
+  },
+  {
+    value: "2",
+    text: "Service 2",
+  },
+  {
+    value: "3",
+    text: "Service 3",
+  },
+];
 export const language = [
   {
     value: "",

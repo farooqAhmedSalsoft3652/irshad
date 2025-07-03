@@ -388,9 +388,7 @@ const ServicesEdit = ({ showModal }) => {
                                     name={`sessionTypes`}
                                     id={`sessionType-${value}`}
                                     label={label}
-                                    checked={values.sessionTypes?.includes(
-                                      value
-                                    )}
+                                    checked={values.sessionTypes?.includes(value)}
                                     onChange={(e) => {
                                       // Get current session types array or initialize empty array
                                       const currentTypes =

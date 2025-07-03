@@ -1,5 +1,4 @@
-import { Formik } from "formik";
-import { useState } from "react";
+import { Form, Formik } from "formik";
 import { useNavigate } from "react-router";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import CustomButton from "../../../Components/CustomButton";
@@ -10,19 +9,31 @@ import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/Up
 import { categoryStatus, statusOptions } from "../../../Config/TableStatus";
 import { addSubCategorySchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
-import { useFormStatus } from "../../../Hooks/useFormStatus";
 
 const AddSubCategory = ({ showModal }) => {
   const navigate = useNavigate();
-  const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
-  const [errorsData, setErrorsData] = useState({});
 
-  const handleSubmit = async (values, { resetForm }) => {
-    console.log(values);
-    startSubmitting();
-    showModal("", `Sub-Category has been added successfully`, () => navigate(-1), true);
-    resetForm();
-    stopSubmitting();
+  const handleSubmit = async (values, { resetForm, setSubmitting }) => {
+    try {
+      // 5 second delay with await
+      // const response = await axios.post("/api/add-sub-category", values);
+      await new Promise((resolve) => setTimeout(resolve, 5000)); // remove this when call Api
+
+      console.log(values);
+
+      showModal(
+        "",
+        `Sub-Category has been added successfully`,
+        () => navigate(-1),
+        true
+      );
+
+      resetForm();
+    } catch (error) {
+      console.error("API error:", error);
+    } finally {
+      setSubmitting(false); // ✅
+    }
   };
 
   return (
@@ -49,8 +60,18 @@ const AddSubCategory = ({ showModal }) => {
                     validationSchema={addSubCategorySchema}
                     onSubmit={handleSubmit}
                   >
-                    {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue }) => (
-                      <form onSubmit={handleSubmit} className="category-wrap">
+                    {({
+                      values,
+                      errors,
+                      touched,
+                      handleChange,
+                      handleBlur,
+                      handleSubmit,
+                      setFieldValue,
+                      isSubmitting,
+                    }) => (
+                      <Form className="category-wrap">
+                        {console.log("isSubmitting:", isSubmitting)}
                         <div className="row">
                           <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4 my-2">
                             <CustomInput
@@ -62,7 +83,9 @@ const AddSubCategory = ({ showModal }) => {
                               value={values.categoryTitle}
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              error={touched.categoryTitle && errors.categoryTitle}
+                              error={
+                                touched.categoryTitle && errors.categoryTitle
+                              }
                             />
                           </div>
                           <div className="row mb-4">
@@ -74,10 +97,15 @@ const AddSubCategory = ({ showModal }) => {
                                   id="status_detail"
                                   name="status_detail"
                                   value={values?.status_detail}
-                                  onChange={(e) => setFieldValue("status_detail", e)}
+                                  onChange={(e) =>
+                                    setFieldValue("status_detail", e)
+                                  }
                                   label="Status"
                                   onBlur={handleBlur}
-                                  error={touched.status_detail && errors.status_detail}
+                                  error={
+                                    touched.status_detail &&
+                                    errors.status_detail
+                                  }
                                 >
                                   {statusOptions}
                                 </Select>
@@ -107,7 +135,9 @@ const AddSubCategory = ({ showModal }) => {
                         <div className="row mb-4">
                           <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
                             <UploadAndDisplayImages
-                              onChange={(files) => setFieldValue("photo", files)}
+                              onChange={(files) =>
+                                setFieldValue("photo", files)
+                              }
                               numberOfFiles={1}
                               errorFromParent={touched.photo && errors.photo}
                             />
@@ -116,17 +146,16 @@ const AddSubCategory = ({ showModal }) => {
                         <div className="row ">
                           <div className="col-12 mt-3">
                             <CustomButton
-                              variant="btn btn-primary"
-                              className="px-5"
-                              text="Add Sub-Category"
-                              pendingText="Submitting..."
-                              isPending={isSubmitting}
+                              variant="primary"
                               type="submit"
-                              disabled={isSubmitting}
+                              className="btn-primary px-5"
+                              isPending={isSubmitting}
+                              loadingText="Submitting..."
+                              text="Add Sub-Category"
                             />
                           </div>
                         </div>
-                      </form>
+                      </Form>
                     )}
                   </Formik>
                 </div>
