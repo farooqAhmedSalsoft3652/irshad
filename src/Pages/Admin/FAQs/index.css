@@ -6,6 +6,30 @@
     border: 1px solid #CBEDF9;
     border-radius: 10px !important;
 }
+.accordion .accordion-button {
+    color: #333333;
+    font-weight: 400;
+    padding: 15px 25px;
+    font-size: 18px;
+    background: #C5E4F6;
+    border-radius: 100px !important;
+}
+.accordion .accordion-button:not(.collapsed) {
+    background: #C5E4F6;
+}
+.accordion .accordion-body
+ {
+    margin-top: 12px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: #FCFCFD;
+    border: 1px solid #D0D5DD;
+    border-radius: 10px;
+}
+.accordion .accordion-body img, .accordion .accordion-body video{
+    height: 250px;
+    object-fit: cover;
+}
 .accordion-button:focus{
     border: 1px solid #CBEDF9;
 }
@@ -78,6 +102,9 @@
     height: 200px;
     object-fit: cover;
 }
+.accordion-button::after {
+    display: none;
+}
 @media screen and (max-width : 1199.5px) {
     .videoPlayer, .video-player[poster]{
         height: 550px;
@@ -99,5 +126,8 @@
     }
     .accordion-button{
         font-size: 14px;
+    }
+    .accordion .accordion-button {
+        border-radius: 10px !important;
     }
 }

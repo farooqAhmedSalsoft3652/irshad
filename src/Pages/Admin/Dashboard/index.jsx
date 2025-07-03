@@ -7,6 +7,7 @@ import { getAll } from "../../../Services/Api";
 import { Graph } from "../../../Components/Graph";
 import { chartStatus } from "../../../Config/TableStatus";
 import { dashboardChartDataOne, dashboardChartDataTwo, dashboardChartDataThree, dashboardChartDatafour, statsData } from "../../../Config/data";
+import { Link } from "react-router-dom";
 
 export const Dashboard = () => {
   const [data, setData] = useState([]);
@@ -164,8 +165,11 @@ export const Dashboard = () => {
             <div className="col-12">
               <div className="">
                 <div className="row my-4">
-                  <div className="col-md-6">
+                  <div className="col-12">
+                    <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <h2 className="mainTitle mb-0">Dashboard</h2>
+                    <Link to={'/admin/dashboard/app-report'} className="btn btn-primary min-width-180">Report</Link>
+                    </div>
                   </div>
                 </div>
                 <div className="row">
