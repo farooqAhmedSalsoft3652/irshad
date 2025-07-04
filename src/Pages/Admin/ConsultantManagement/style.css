@@ -162,6 +162,18 @@
   z-index: 1;
 }
 
+.quiz-question .remove-btn,
+.quiz-question .add-btn {
+  color: #000000;
+  font-size: 16px;
+  padding: 0px 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border: none;
+}
+
 @media (max-width: 1399px) {
   .consultant-management .page-header .btn {
     padding: 14px 20px;

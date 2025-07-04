@@ -88,14 +88,14 @@ const SetConsultantProfile = ({ showModal }) => {
   };
 
   const formattedCategoryOptions = categoryOptions
-    .filter((option) => option.value !== "") // "Select Category" hatao
+    .filter((option) => option.value !== "") // "Select Category" 
     .map((option) => ({
       value: option.value,
-      label: option.text, // ReactSelect ke liye label chahiye
+      label: option.text, // ReactSelect 
     }));
 
   const formattedServiceOptions = serviceOptions
-    .filter((option) => option.value !== "") // "Select language" waala option hata rahe ho
+    .filter((option) => option.value !== "") // "Select language"
     .map((option) => ({
       value: option.value,
       label: option.text,

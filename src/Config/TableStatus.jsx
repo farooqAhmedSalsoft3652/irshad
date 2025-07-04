@@ -22,6 +22,28 @@ export const statusOptions = [
     text: "Inactive",
   },
 ];
+export const quizOptions = [
+  {
+    value: "",
+    text: "Select Answer",
+  },
+  {
+    value: "1",
+    text: "Option A",
+  },
+  {
+    value: "2",
+    text: "Option B",
+  },
+  {
+    value: "3",
+    text: "Option C",
+  },
+  {
+    value: "4",
+    text: "Option D",
+  },
+];
 export const editStatus = [
   {
     value: "Active",
@@ -927,7 +949,7 @@ export const productCategories = [
   { text: "Product C", value: "productc" },
 ];
 export const servicesOptions = [
-  { text: "Select Services", value: "select_services" },
+  { text: "Select Services", value: "" },
   { text: "Services A", value: "services_a" },
   { text: "Services B", value: "services_b" },
   { text: "Services C", value: "services_c" },

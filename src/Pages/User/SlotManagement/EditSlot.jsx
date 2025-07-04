@@ -240,10 +240,7 @@ const EditSlot = ({ showModal }) => {
                                                   </button>
                                                 )}
 
-                                                {index ===
-                                                  values.slots[day].times
-                                                    .length -
-                                                    1 && (
+                                                {index ===values.slots[day].times.length - 1 && (
                                                   <button
                                                     type="button"
                                                     className="btn add-btn"

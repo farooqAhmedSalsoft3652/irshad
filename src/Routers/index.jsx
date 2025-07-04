@@ -47,6 +47,7 @@ import ScreeningFinalReport from "../Pages/Admin/ConsultantManagement/Screening/
 import ConsultantScreeningDetails from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningDetails";
 import ConsultantScreeningProfile from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningProfile";
 import ConsultantScreeningVideo from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningVideo";
+import VideoVerificationQuizAdd from "../Pages/Admin/ConsultantManagement/Screening/VideoVerificationQuizAdd";
 
 // import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
 import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
@@ -288,6 +289,10 @@ const routes = [
           {
             path: "admin/consultant-management/final-report/:id/video",
             element: <ConsultantScreeningVideo />,
+          },
+          {
+            path: "admin/consultant-management/add-quiz",
+            element: <VideoVerificationQuizAdd />,
           },
 
           // {
