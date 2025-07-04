@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import BackButton from "../../../Components/BackButton";
-import CustomTable from "../../../Components/CustomTable";
-import { consultantRequestsData } from "../../../Config/data";
-import { consultantRequestHeaders } from "../../../Config/TableHeaders";
-import { consultantRequestsStatus } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters";
-import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { dateFormat, serialNum, statusClassMap } from "../../../Utils/helper";
-import BackButton2 from "../../../Components/BackButton/BackButton2";
+import { DashboardLayout } from "../../../../Components/Layouts/AdminLayout/DashboardLayout";
+import BackButton from "../../../../Components/BackButton";
+import CustomTable from "../../../../Components/CustomTable";
+import { consultantRequestsData } from "../../../../Config/data";
+import { consultantRequestHeaders } from "../../../../Config/TableHeaders";
+import { consultantRequestsStatus } from "../../../../Config/TableStatus";
+import withFilters from "../../../../HOC/withFilters";
+import { useFormStatus } from "../../../../Hooks/useFormStatus";
+import {
+  dateFormat,
+  serialNum,
+  statusClassMap,
+} from "../../../../Utils/helper";
+import BackButton2 from "../../../../Components/BackButton/BackButton2";
 import { Col, Row } from "react-bootstrap";
 
 const ConsultantRequests = ({
@@ -95,7 +99,7 @@ const ConsultantRequests = ({
                       </td>
                       <td>{item?.first_name}</td>
                       <td>{item?.last_name}</td>
-                      <td>{item?.category_1}</td>
+                      <td>{item?.category}</td>
                       <td>{dateFormat(item?.requested_on)}</td>
                       <td className={statusClassMap[item?.status_detail]}>
                         {item?.status_detail}

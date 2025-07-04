@@ -1920,16 +1920,16 @@ const createSessionAmountSchema = (type, key) =>
 export const setConsultantProfileSchema = (formData) =>
   Yup.object().shape({
     category: Yup.array()
-      .min(1, "Kam az kam ek category chahiye")
-      .required("Category zaroori hai"),
+      .min(1, "select atleast one category")
+      .required("Category is require"),
     services: Yup.array()
-      .min(1, "Kam az kam ek service chahiye")
-      .required("Services zaroori hai"),
-    working_hours: Yup.string().required("Working hours zaroori hai"),
+      .min(1, "select atleast one category")
+      .required("Services is require"),
+    working_hours: Yup.string().required("Working hours is require"),
     change_from_default: Yup.boolean(),
     commission_rate: Yup.string().when("change_from_default", {
       is: true,
-      then: () => Yup.string().required("Commission rate zaroori hai"),
+      then: () => Yup.string().required("Commission is require"),
       otherwise: () => Yup.string().nullable(),
     }),
 

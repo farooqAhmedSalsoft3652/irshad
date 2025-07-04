@@ -24,7 +24,7 @@ const ConsultantManagement = ({
   const { isSubmitting, startSubmitting, stopSubmitting } = useFormStatus();
   const [userData, setUserData] = useState([]);
 
-  const fetchServiceProviders = async () => {
+  const fetchConsultant = async () => {
     try {
       startSubmitting(true);
       const response = consultantManagerData;
@@ -77,7 +77,7 @@ const ConsultantManagement = ({
   };
 
   useEffect(() => {
-    fetchServiceProviders();
+    fetchConsultant();
   }, [filters]);
 
   return (
@@ -95,7 +95,7 @@ const ConsultantManagement = ({
                 </h2>
               </div>
               <div className="ms-xl-auto d-flex gap-2 gap-xxl-3 flex-column flex-sm-row flex-xl-column flex-xxl-row">
-                <Link to={"/requests"} className="btn btn-primary">
+                <Link to={"consultant-screening"} className="btn btn-primary">
                   Consultant screening
                 </Link>
                 <Link to={"requests"} className="btn btn-outline-primary">

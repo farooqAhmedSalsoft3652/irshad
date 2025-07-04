@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import BackButton from "../../../Components/BackButton";
-import CustomTable from "../../../Components/CustomTable";
-import { consultantManagerData } from "../../../Config/data";
-import { consultantServicesHeaders } from "../../../Config/TableHeaders";
-import { normalStatus, statusOptions } from "../../../Config/TableStatus";
-import withFilters from "../../../HOC/withFilters";
-import withModal from "../../../HOC/withModal";
-import { useFormStatus } from "../../../Hooks/useFormStatus";
-import { dateFormat, serialNum } from "../../../Utils/helper";
-import { Select } from "../../../Components/Select";
+import { DashboardLayout } from "../../../../Components/Layouts/AdminLayout/DashboardLayout";
+import BackButton from "../../../../Components/BackButton";
+import CustomTable from "../../../../Components/CustomTable";
+import { consultantManagerData } from "../../../../Config/data";
+import { consultantServicesHeaders } from "../../../../Config/TableHeaders";
+import { normalStatus, statusOptions } from "../../../../Config/TableStatus";
+import withFilters from "../../../../HOC/withFilters";
+import withModal from "../../../../HOC/withModal";
+import { useFormStatus } from "../../../../Hooks/useFormStatus";
+import { dateFormat, serialNum } from "../../../../Utils/helper";
+import { Select } from "../../../../Components/Select";
 import { FaEye } from "react-icons/fa";
-import BackButton2 from "../../../Components/BackButton/BackButton2";
+import BackButton2 from "../../../../Components/BackButton/BackButton2";
 import { Col, Row } from "react-bootstrap";
 
 const ConsultantServices = ({

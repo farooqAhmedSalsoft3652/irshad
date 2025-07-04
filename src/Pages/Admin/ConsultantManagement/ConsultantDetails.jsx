@@ -295,7 +295,10 @@ const ConsultantDetails = ({
                       >
                         Book Next Week Slots
                       </CustomButton>
-                      <Link className="btn btn-outline-primary min-width-220 px-3">
+                      <Link
+                        to={`/admin/consultant-management/${id}/show-report`}
+                        className="btn btn-outline-primary min-width-220 px-3"
+                      >
                         Show Report
                       </Link>
                     </Col>

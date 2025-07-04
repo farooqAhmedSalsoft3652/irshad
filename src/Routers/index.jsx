@@ -27,11 +27,26 @@ import CommissionManagement from "../Pages/Admin/CommissionManagement/Commission
 import ConsultantManagement from "../Pages/Admin/ConsultantManagement/index";
 import ConsultantDetails from "../Pages/Admin/ConsultantManagement/ConsultantDetails";
 import ConsultantBookingDetails from "../Pages/Admin/ConsultantManagement/ConsultantBookingDetails";
-import ConsultantServices from "../Pages/Admin/ConsultantManagement/ConsultantServices";
-import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/ConsultantServicesDetails";
-import ConsultantRequests from "../Pages/Admin/ConsultantManagement/ConsultantRequests";
-import ConsultantProfile from "../Pages/Admin/ConsultantManagement/ConsultantProfile";
+import ConsultantServices from "../Pages/Admin/ConsultantManagement/Services/ConsultantServices";
+import ConsultantServicesDetails from "../Pages/Admin/ConsultantManagement/Services/ConsultantServicesDetails";
+import ConsultantServiceBookingDetails from "../Pages/Admin/ConsultantManagement/Services/ConsultantServiceBookingDetails";
+import ConsultantRequests from "../Pages/Admin/ConsultantManagement/Requests/ConsultantRequests";
+import ConsultantProfile from "../Pages/Admin/ConsultantManagement/Requests/ConsultantProfile";
 import SetConsultantProfile from "../Pages/Admin/ConsultantManagement/SetConsultantProfile";
+import ShowReport from "../Pages/Admin/ConsultantManagement/ShowReport";
+
+import ConsultantScreening from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreening";
+import ConsultantScreeningMeetingDetails from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningMeetingDetails";
+import ConsultantScreeningSession from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningSession";
+import ConsultantMeetingDocument from "../Pages/Admin/ConsultantManagement/Screening/ConsultantMeetingDocument";
+
+import ScreeningCategory from "../Pages/Admin/ConsultantManagement/Screening/ScreeningCategory";
+import TutorialAdd from "../Pages/Admin/ConsultantManagement/Screening/TutorialAdd";
+import TutorialEdit from "../Pages/Admin/ConsultantManagement/Screening/TutorialEdit";
+import ScreeningFinalReport from "../Pages/Admin/ConsultantManagement/Screening/ScreeningFinalReport";
+import ConsultantScreeningDetails from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningDetails";
+import ConsultantScreeningProfile from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningProfile";
+import ConsultantScreeningVideo from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningVideo";
 
 // import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
 import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
@@ -216,7 +231,7 @@ const routes = [
 
           {
             path: "admin/consultant-management/:id/services/:serviceId/booking-logs",
-            element: <ConsultantBookingDetails />,
+            element: <ConsultantServiceBookingDetails />,
           },
           {
             path: "admin/consultant-management/requests",
@@ -230,11 +245,51 @@ const routes = [
             path: "admin/consultant-management/:id/set-consultant-profile",
             element: <SetConsultantProfile />,
           },
+          {
+            path: "admin/consultant-management/:id/show-report",
+            element: <ShowReport />,
+          },
+          {
+            path: "admin/consultant-management/consultant-screening",
+            element: <ConsultantScreening />,
+          },
+          {
+            path: "admin/consultant-management/consultant-screening/:id",
+            element: <ConsultantScreeningMeetingDetails />,
+          },
+          {
+            path: "admin/consultant-management/consultant-screening/:id/meeting",
+            element: <ConsultantScreeningSession />,
+          },
+          {
+            path: "admin/consultant-management/consultant-meeting-document",
+            element: <ConsultantMeetingDocument />,
+          },
+          {
+            path: "admin/consultant-management/add-tutorial",
+            element: <TutorialAdd />,
+          },
+          {
+            path: "admin/consultant-management/edit-tutorial",
+            element: <TutorialEdit />,
+          },
+          {
+            path: "admin/consultant-management/final-report",
+            element: <ScreeningFinalReport />,
+          },
+          {
+            path: "admin/consultant-management/final-report/:id",
+            element: <ConsultantScreeningDetails />,
+          },
+          {
+            path: "admin/consultant-management/final-report/:id/profile",
+            element: <ConsultantScreeningProfile />,
+          },
+          {
+            path: "admin/consultant-management/final-report/:id/video",
+            element: <ConsultantScreeningVideo />,
+          },
 
-          // {
-          //   path: "admin/service-provider-management/requests/:id",
-          //   element: <ServiceProviderProfile />,
-          // },
           // {
           //   path: "admin/service-provider-management/:id/shop",
           //   element: <ShopDetails />,

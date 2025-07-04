@@ -13,7 +13,7 @@ const AppReport = () => {
   const categoryData = [90, 80, 70, 60, 50, 40, 30, 20, 10, 5];
   const consultantData = [90, 80, 70, 60, 50, 40, 30, 20, 10, 5];
   return (
-    <DashboardLayout pageTitle="Dashboard">
+    <DashboardLayout pageTitle="App Report">
       <div className="container-fluid dashCard app-report">
         <div className="row mb-4">
           <div className="col-12">
@@ -26,13 +26,17 @@ const AppReport = () => {
         <Row className="mb-4">
           <Col md={6} className="mb-3">
             <div className="statsCard">
-              <h6 className="text-uppercase">Total Services Bought in (Month)</h6>
+              <h6 className="text-uppercase">
+                Total Services Bought in (Month)
+              </h6>
               <h3>100</h3>
             </div>
           </Col>
           <Col md={6} className="mb-3">
             <div className="statsCard">
-              <h6 className="text-uppercase">Total Revenue Generate This (Month)</h6>
+              <h6 className="text-uppercase">
+                Total Revenue Generate This (Month)
+              </h6>
               <h3>$100000</h3>
             </div>
           </Col>
@@ -47,7 +51,11 @@ const AppReport = () => {
                     {years.map((year) => (
                       <Button
                         key={year}
-                        variant={year === selectedYear ? "primary" : "outline-secondary"}
+                        variant={
+                          year === selectedYear
+                            ? "primary"
+                            : "outline-secondary"
+                        }
                         onClick={() => setSelectedYear(year)}
                         className="rounded-pill"
                       >
@@ -69,7 +77,11 @@ const AppReport = () => {
                     {months.map((month) => (
                       <Button
                         key={month}
-                        variant={month === selectedMonth ? "primary" : "outline-secondary"}
+                        variant={
+                          month === selectedMonth
+                            ? "primary"
+                            : "outline-secondary"
+                        }
                         onClick={() => setSelectedMonth(month)}
                         className="rounded-pill"
                       >

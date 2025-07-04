@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { images } from "../../../Assets";
-import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
-import BackButton from "../../../Components/BackButton";
-import CustomButton from "../../../Components/CustomButton";
-import { newRequestConsultantData } from "../../../Config/data";
-import withModal from "../../../HOC/withModal";
-import { getCountryFlag, statusClassMap } from "../../../Utils/helper";
+import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
-import BackButton2 from "../../../Components/BackButton/BackButton2";
-import CustomModal from "../../../Components/CustomModal";
-import { Form, Formik } from "formik";
-import ImageGallery from "../../../Components/ImageGallery/ImageGallery";
+import { useParams } from "react-router-dom";
+import { images } from "../../../../Assets";
+import BackButton2 from "../../../../Components/BackButton/BackButton2";
+import CustomButton from "../../../../Components/CustomButton";
+import ImageGallery from "../../../../Components/ImageGallery/ImageGallery";
+import { DashboardLayout } from "../../../../Components/Layouts/AdminLayout/DashboardLayout";
+import { newRequestConsultantData } from "../../../../Config/data";
+import withModal from "../../../../HOC/withModal";
+import { getCountryFlag, statusClassMap } from "../../../../Utils/helper";
 
 const ConsultantProfile = ({ showModal, reasonModal }) => {
   const { id } = useParams();

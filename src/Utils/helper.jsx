@@ -241,6 +241,7 @@ export const timeFormat = (time) => {
 };
 
 export const timeFormat2 = (time) => {
+  if (!time) return "-"; // or return "" if you want nothing
   return moment(time).local().format("hh:mm A");
 };
 

@@ -25,6 +25,8 @@ import serviceImg5 from "../Assets/images/service-5.png";
 import serviceImg6 from "../Assets/images/service-6.png";
 import certificate_image from "../Assets/images/certificate.png";
 
+import videoPoster from "../Assets/images/video-poster.png";
+
 // irshad images
 import BannerImg from "../Assets/images/bannerImg.png";
 import Logo from "../Assets/images/logo.png";
@@ -116,4 +118,5 @@ export const images = {
   adminAuthLogo,
   adminProfileImg,
   pdfSvg,
+  videoPoster,
 };

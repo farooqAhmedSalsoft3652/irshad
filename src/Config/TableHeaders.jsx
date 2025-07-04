@@ -260,6 +260,54 @@ export const consultantManagementHeaders = [
     title: "Action",
   },
 ];
+export const consultantScreeningHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "consultant_name",
+    title: "Consultant Name",
+  },
+  {
+    key: "date",
+    title: "Date",
+  },
+  {
+    key: "time",
+    title: "Time",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
+export const ScreeningFinalReportHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "consultant_name",
+    title: "Consultant Name",
+  },
+  {
+    key: "category",
+    title: "category",
+  },
+  {
+    key: "complete_on",
+    title: "Complete On",
+  },
+  {
+    key: "status",
+    title: "Status",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
 export const consultantServicesHeaders = [
   {
     key: "id",
@@ -442,6 +490,24 @@ export const consultantRequestHeaders = [
   {
     key: "status",
     title: "Status",
+  },
+  {
+    key: "action",
+    title: "Action",
+  },
+];
+export const consultantCategoryHeaders = [
+  {
+    key: "id",
+    title: "S.No",
+  },
+  {
+    key: "category",
+    title: "Category",
+  },
+  {
+    key: "update_on",
+    title: "Update On",
   },
   {
     key: "action",

@@ -7,19 +7,17 @@ const CustomButton = ({
   className = "",
   onClick,
   disabled = false,
-  isPending = false,
-  loadingText = "Loading…",
-  text = "Click to load",
+  isPending = false, // loading state flag
+  loadingText = "Loading…", // optional loading text
+  text = "Click to load", // default text
   children,
   style,
 }) => {
-  // console.log("CustomButton isPending:", isPending);
   return (
     <button
       type={type}
       style={style}
       className={`btn btn-${variant} ${className}`}
-      // className={`btn btn-${variant} d-flex align-items-center justify-content-center gap-2 ${className}`}
       onClick={!isPending ? onClick : null}
       disabled={disabled || isPending}
     >
@@ -30,9 +28,9 @@ const CustomButton = ({
           aria-hidden="true"
         ></span>
       )}
-      <span className="ms-2">{isPending ? loadingText : text}</span>
+      <span className="ms-2">{isPending ? loadingText : children || text}</span>
 
-      {/* <span>{isPending ? loadingText : children || text}</span> */}
+      {/* {isPending ? loadingText : children || text} */}
     </button>
   );
 };
