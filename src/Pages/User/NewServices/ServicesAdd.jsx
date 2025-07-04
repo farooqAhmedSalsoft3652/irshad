@@ -364,6 +364,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                           id="service_name"
                           name="service_name"
                           value={values.service_name}
+                          // mainLabel="Select Service"
                           onChange={(e) => {
                             setFieldValue("service_name", e);
                           }}
