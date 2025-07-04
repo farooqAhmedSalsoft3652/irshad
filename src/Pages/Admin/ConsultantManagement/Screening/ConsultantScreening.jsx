@@ -68,34 +68,37 @@ const ConsultantScreening = ({
               <div className="">
                 <Link
                   state={{ videoQuiz: "videoQuiz" }}
-                  // to={`/admin/consultant-management/consultant-category`}
-                  to={`/admin/consultant-management/add-tutorial`}
+                  to={`/admin/consultant-management/category`}
                   className="btn btn-primary min-width-250"
                 >
                   Set Video Verification quiz
                 </Link>
               </div>
               <div className="">
-                <Link to={"requests"} className="btn btn-primary min-width-250">
+                <Link
+                  to={`/admin/consultant-management/category`}
+                  className="btn btn-primary min-width-250">
                   Set Rules & Regulations
                 </Link>
               </div>
               <div className="">
                 <Link
-                  to={`/admin/consultant-management/add-tutorial`}
+                  to={`/admin/consultant-management/category`}
                   className="btn btn-primary min-width-250"
                 >
                   Set Tutorials
                 </Link>
               </div>
               <div className="">
-                <Link to={"requests"} className="btn btn-primary min-width-250">
+                <Link
+                  to={`/admin/consultant-management/category`}
+                  className="btn btn-primary min-width-250">
                   Set Finalize Quiz
                 </Link>
               </div>
               <div className="">
                 <Link
-                  to={`/admin/consultant-management/final-report`}
+                  to={`/admin/consultant-management/category`}
                   className="btn btn-primary min-width-250"
                 >
                   Final Reports Of Consultants

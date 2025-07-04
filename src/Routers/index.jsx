@@ -213,7 +213,11 @@ const routes = [
             element: <ConsultantManagement />,
           },
           {
-            path: "admin/consultant-management/:id",
+            path: "admin/consultant-management/category",
+            element: <ScreeningCategory />,
+          },
+          {
+            path: "admin/consultant-management/details/:id",
             element: <ConsultantDetails />,
           },
           {
