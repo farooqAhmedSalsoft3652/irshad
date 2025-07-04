@@ -48,6 +48,9 @@ import ConsultantScreeningDetails from "../Pages/Admin/ConsultantManagement/Scre
 import ConsultantScreeningProfile from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningProfile";
 import ConsultantScreeningVideo from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningVideo";
 import VideoVerificationQuizAdd from "../Pages/Admin/ConsultantManagement/Screening/VideoVerificationQuizAdd";
+import VideoVerificationQuizEdit from "../Pages/Admin/ConsultantManagement/Screening/VideoVerificationQuizEdit";
+import VideoVerificationQuizView from "../Pages/Admin/ConsultantManagement/Screening/VideoVerificationQuizView";
+import CategoryLinks from "../Pages/Admin/ConsultantManagement/Screening/CategoryLinks";
 
 // import ContentManagement from "../Pages/Admin/ContentManagement/ContentManagement";
 import PayoutsManagement from "../Pages/Admin/PayoutsManagement/PayoutsManagement";
@@ -163,6 +166,13 @@ import FaqAdd from "../Pages/Admin/FAQs/FaqAdd";
 import FaqEdit from "../Pages/Admin/FAQs/FaqEdit";
 import AppReport from "../Pages/Admin/Dashboard/AppReport";
 
+import RulesRegulationsAdd from "../Pages/Admin/ConsultantManagement/Screening/RulesRegulationsAdd";
+import RulesRegulationsView from "../Pages/Admin/ConsultantManagement/Screening/RulesRegulationsView";
+import RulesRegulationsEdit from "../Pages/Admin/ConsultantManagement/Screening/RulesRegulationsEdit";
+import FinalQuizAdd from "../Pages/Admin/ConsultantManagement/Screening/FinalQuizAdd";
+import FinalQuizView from "../Pages/Admin/ConsultantManagement/Screening/FinalQuizView";
+import FinalQuizEdit from "../Pages/Admin/ConsultantManagement/Screening/FinalQuizEdit";
+
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
 const roles = {
@@ -214,8 +224,36 @@ const routes = [
             element: <ConsultantManagement />,
           },
           {
+            path: "admin/consultant-management/category-links",
+            element: <CategoryLinks />,
+          },
+          {
             path: "admin/consultant-management/category",
             element: <ScreeningCategory />,
+          },
+          {
+            path: "admin/consultant-management/add-rules",
+            element: <RulesRegulationsAdd />,
+          },
+          {
+            path: "admin/consultant-management/view-rules",
+            element: <RulesRegulationsView />,
+          },
+          {
+            path: "admin/consultant-management/edit-rules/:id",
+            element: <RulesRegulationsEdit />,
+          },
+          {
+            path: "admin/consultant-management/add-final-quiz",
+            element: <FinalQuizAdd />,
+          },
+          {
+            path: "admin/consultant-management/view-final-quiz",
+            element: <FinalQuizView />,
+          },
+          {
+            path: "admin/consultant-management/edit-final-quiz/:id",
+            element: <FinalQuizEdit />,
           },
           {
             path: "admin/consultant-management/details/:id",
@@ -297,6 +335,14 @@ const routes = [
           {
             path: "admin/consultant-management/add-quiz",
             element: <VideoVerificationQuizAdd />,
+          },
+          {
+            path: "admin/consultant-management/view-quiz",
+            element: <VideoVerificationQuizView />,
+          },
+          {
+            path: "admin/consultant-management/edit-quiz/:id",
+            element: <VideoVerificationQuizEdit />,
           },
 
           // {

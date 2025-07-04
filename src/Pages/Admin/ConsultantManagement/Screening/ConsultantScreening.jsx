@@ -67,8 +67,13 @@ const ConsultantScreening = ({
             >
               <div className="">
                 <Link
-                  state={{ videoQuiz: "videoQuiz" }}
                   to={`/admin/consultant-management/category`}
+                  state={{
+                    categoryType: 'video_verification',
+                    isQuiz: true,
+                    quizType: 'video_verification',
+                    title: 'Video Verification Quiz'
+                  }}
                   className="btn btn-primary min-width-250"
                 >
                   Set Video Verification quiz
@@ -77,6 +82,12 @@ const ConsultantScreening = ({
               <div className="">
                 <Link
                   to={`/admin/consultant-management/category`}
+                  state={{
+                    categoryType: 'rules',
+                    isQuiz: false,
+                    title: 'Rules & Regulations',
+                    contentType: 'rules'
+                  }}
                   className="btn btn-primary min-width-250">
                   Set Rules & Regulations
                 </Link>
@@ -84,6 +95,12 @@ const ConsultantScreening = ({
               <div className="">
                 <Link
                   to={`/admin/consultant-management/category`}
+                  state={{
+                    categoryType: 'tutorials',
+                    isQuiz: false,
+                    title: 'Tutorials',
+                    contentType: 'tutorials'
+                  }}
                   className="btn btn-primary min-width-250"
                 >
                   Set Tutorials
@@ -92,13 +109,19 @@ const ConsultantScreening = ({
               <div className="">
                 <Link
                   to={`/admin/consultant-management/category`}
+                  state={{
+                    categoryType: 'final_quiz',
+                    isQuiz: true,
+                    quizType: 'final',
+                    title: 'Final Quiz'
+                  }}
                   className="btn btn-primary min-width-250">
                   Set Finalize Quiz
                 </Link>
               </div>
               <div className="">
                 <Link
-                  to={`/admin/consultant-management/category`}
+                  to={`/admin/consultant-management/final-report`}
                   className="btn btn-primary min-width-250"
                 >
                   Final Reports Of Consultants

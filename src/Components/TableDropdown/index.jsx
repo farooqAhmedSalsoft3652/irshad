@@ -29,7 +29,7 @@ const TableDropdown = ({ itemId, linkPath, view, edit, add }) => {
           </Link>
         )}
         {add && (
-          <Link to={`${linkPath}/edit/${itemId}`} className="dropdown-item">
+          <Link to={`${linkPath}`} className="dropdown-item">
             <FaCirclePlus />
             Add
           </Link>

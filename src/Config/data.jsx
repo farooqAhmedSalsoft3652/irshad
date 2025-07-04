@@ -4294,6 +4294,14 @@ export const consultantCategoryData = {
         category: "Education",
         update_on: "2025-04-21T12:34:17.000000Z",
         status_detail: "Pending",
+        data: {
+          video_verification:{
+            hello: 'abc'
+          },
+          final_quiz:{
+            hello: 'abc'
+          },
+        }
       },
       {
         id: "2",
