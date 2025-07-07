@@ -47,6 +47,20 @@
   overflow-y: auto;
 }
 
+.app-report .progressCard {
+  border-radius: 25px;
+  background: rgba(153, 153, 153, 0.10);
+  padding: 20px 30px;
+  & h3 {
+    color: #333;
+    font-weight: 500;
+  }
+  & h5{
+    color: #333;
+    font-weight: 400;
+  }
+}
+
 @media screen and (max-width: 1200px) and (min-width: 768px) {
 
   .stats,

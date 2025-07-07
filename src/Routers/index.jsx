@@ -172,6 +172,9 @@ import RulesRegulationsEdit from "../Pages/Admin/ConsultantManagement/Screening/
 import FinalQuizAdd from "../Pages/Admin/ConsultantManagement/Screening/FinalQuizAdd";
 import FinalQuizView from "../Pages/Admin/ConsultantManagement/Screening/FinalQuizView";
 import FinalQuizEdit from "../Pages/Admin/ConsultantManagement/Screening/FinalQuizEdit";
+import AdminChatAnnouncement from "../Pages/Admin/Chat/AdminChatAnnouncement";
+import AdminChatReports from "../Pages/Admin/Chat/AdminChatReports";
+import AdminChatContactUs from "../Pages/Admin/Chat/AdminChatContactUs";
 
 // import ScrollToTop from "../Components/UserComponents/ScrollToTop";
 
@@ -570,6 +573,9 @@ const routes = [
             element: <CommissionManagement />,
           },
           { path: "admin/chat", element: <Chat /> },
+          { path: "admin/chat-announcement", element: <AdminChatAnnouncement /> },
+          { path: "admin/chat-reports", element: <AdminChatReports /> },
+          { path: "admin/chat-contact-us", element: <AdminChatContactUs /> },
           { path: "admin/payout-management", element: <PayoutsManagement /> },
           {
             path: "admin/cancel-penalty-management",
