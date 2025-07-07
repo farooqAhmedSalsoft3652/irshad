@@ -198,7 +198,7 @@ const UserDetails = ({ showModal, filters, setFilters, pagination, updatePaginat
                             <FaEye size={20} color="#C5E4F6" />
                           </Link> */}
                           <Link to={``}>
-                            <FaEye size={20} color="#C5E4F6" />
+                            <FaEye size={20} />
                           </Link>
                         </span>
                       </div>
