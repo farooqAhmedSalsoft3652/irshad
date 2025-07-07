@@ -120,12 +120,12 @@ const ServiceManagement = ({ filters, setFilters, pagination, updatePagination, 
                           <div className="d-flex cp gap-3 tableAction align-items-center justify-content-center">
                             <span className="tooltip-toggle" aria-label="View">
                               <Link to={`${item.id}`}>
-                                <FaEye size={20} color="#C5E4F6" />
+                                <FaEye size={20}  />
                               </Link>
                             </span>
                             <span className="tooltip-toggle" aria-label="Edit">
                               <Link to={`${item.id}/edit`}>
-                                <FaEdit size={20} color="#C5E4F6" />
+                                <FaEdit size={20}  />
                               </Link>
                             </span>
                           </div>

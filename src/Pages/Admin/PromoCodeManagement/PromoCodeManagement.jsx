@@ -201,12 +201,12 @@ const PromoCodeManagement = ({ filters, setFilters, pagination, updatePagination
                                     setEditModal(true);
                                   }}
                                 >
-                                  <FaEdit size={20} color="#C5E4F6" />
+                                  <FaEdit size={20} color="#15355E" />
                                 </CustomButton>
                               </span>
                               <span className="tooltip-toggle" aria-label="Delete">
                                 <CustomButton className="btn bg-transparent border-0 p-0">
-                                  <FaTrashAlt size={18} color="#C5E4F6" onClick={() => handleDelete(item.id)} />
+                                  <FaTrashAlt size={18} color="#15355E" onClick={() => handleDelete(item.id)} />
                                 </CustomButton>
                               </span>
                             </div>
