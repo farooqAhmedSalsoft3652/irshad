@@ -80,7 +80,7 @@ const VideoVerificationTab = () => {
             </Col>
 
             <Col xs={12} className="detail-box mb-3">
-              <h6>Question:</h6>
+              <h6>Question</h6>
               <p className="mb-0">{q.question}</p>
             </Col>
 
@@ -90,9 +90,9 @@ const VideoVerificationTab = () => {
 
               return (
                 <Col xs={12} className="detail-box mb-3" key={optKey}>
-                  <h6>Option {optKey}:</h6>
+                  <h6>Option {optKey}</h6>
                   <p
-                    className={`mb-0 p-2 rounded ${
+                    className={`mb-0 rounded ${
                       isSelected
                         ? isCorrect
                           ? "fw-bold text-primary"

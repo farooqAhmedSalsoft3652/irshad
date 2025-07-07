@@ -22,25 +22,34 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
 
   useEffect(() => {
     const state = location.state;
-    if (state?.quizType === 'video_verification') {
+    if (state?.quizType === "video_verification") {
       setQuizInfo(state);
     } else {
       // If no valid state, redirect back to category links
-      navigate('/admin/consultant-management/category-links');
+      navigate("/admin/consultant-management/category");
     }
   }, [location, navigate]);
 
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       console.log("Form Values:", values);
-      
-      if (!values.comments || !values.passingMarks || !values.questions.length) {
+
+      if (
+        !values.comments ||
+        !values.passingMarks ||
+        !values.questions.length
+      ) {
         showModal("Error", "Please fill all required fields", null, true);
         return;
       }
 
       if (values.passingMarks > 2) {
-        showModal("Error", "Passing marks must be less than or equal to total marks (2)", null, true);
+        showModal(
+          "Error",
+          "Passing marks must be less than or equal to total marks (2)",
+          null,
+          true
+        );
         return;
       }
 
@@ -49,35 +58,27 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
         ...values,
         categoryId: quizInfo?.categoryId,
         categoryName: quizInfo?.categoryName,
-        quizType: quizInfo?.quizType
+        quizType: quizInfo?.quizType,
       };
 
+      console.log("Saving quiz with data:", formData);
+
       showModal(
-        "", 
-        `Are You Sure You Want to Add this Quiz?`, 
-        async () => {
-          try {
-            // Here you would typically make an API call to save the quiz
-            console.log("Saving quiz with data:", formData);
-            // await Api.post('/quiz', formData);
-            
-            showModal("Success", "Quiz has been added successfully!", () => {
-              navigate('/admin/consultant-management/category', {
-                state: {
-                  categoryType: 'video_verification',
-                  isQuiz: true,
-                  quizType: 'video_verification',
-                  title: 'Video Verification Quiz'
-                }
-              });
-            }, true);
-            resetForm();
-          } catch (error) {
-            console.error("Error saving quiz:", error);
-            showModal("Error", "Failed to save quiz. Please try again.", null, true);
-          }
-        }
+        "Success",
+        "Quiz has been added successfully!",
+        () => {
+          navigate("/admin/consultant-management/category", {
+            state: {
+              categoryType: "video_verification",
+              isQuiz: true,
+              quizType: "video_verification",
+              title: "Video Verification Quiz",
+            },
+          });
+        },
+        true
       );
+      resetForm();
     } catch (error) {
       console.error("Form submission error:", error);
       showModal("Error", "An error occurred. Please try again.", null, true);
@@ -121,7 +122,10 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
           <Row className="mb-2 page-header">
             <Col xs={12} className="d-flex mb-4 mb-xl-4 gap-2">
               <BackButton2 />
-              <h2 className="mainTitle mb-0">{quizInfo?.title || "Add Quiz"}</h2>
+              <h2 className="mainTitle mb-0">
+                {/* {quizInfo?.title || "Add Quiz"} */}
+                Add {quizInfo?.title}
+              </h2>
             </Col>
           </Row>
 
@@ -151,13 +155,13 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                 handleChange,
                 handleBlur,
                 setFieldValue,
-                isSubmitting
+                isSubmitting,
               }) => (
                 <Form>
                   <Row>
-                    <Col xs={12} xxl={8}>
+                    <Col xs={12} md={10} xl={8} xxl={7}>
                       <Row>
-                        <Col xxl={6}>
+                        <Col md={9} xxl={7}>
                           <CustomInput
                             label="Comments"
                             type="textarea"
@@ -173,15 +177,23 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                             error={touched.comments && errors.comments}
                           />
                         </Col>
-                        <Col xxl={12}>
-                          <h3>Quiz</h3>
-                        </Col>
-                        <Col xxl={12}>
-                          <label htmlFor="passingMarks" className="form-label d-block">
-                            Passing Marks<span className="text-danger">*</span>
-                          </label>
-                          <div className="d-flex align-items-center gap-3">
-                            <div className="">
+                      </Row>
+                      <Row>
+                        <Col className="mt-4" xxl={12}>
+                          <Row>
+                            <Col xs={12}>
+                              <h3 className="mb-3">Quiz</h3>
+                              <label
+                                htmlFor="passingMarks"
+                                className="form-label d-block"
+                              >
+                                Passing Marks
+                                <span className="text-danger">*</span>
+                              </label>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col md={9} xxl={7}>
                               <CustomInput
                                 type="number"
                                 required
@@ -192,24 +204,46 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                                 value={values.passingMarks}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
-                                error={touched.passingMarks && errors.passingMarks}
+                                error={
+                                  touched.passingMarks && errors.passingMarks
+                                }
                               />
-                            </div>
-                            <div className="">Total Marks: 2</div>
-                          </div>
-                          <div className="text-muted">
-                            Passing Marks must be less than or equal to total marks
-                          </div>
+                            </Col>
+                            <Col
+                              md={3}
+                              xxl={5}
+                              className="align-self-center mt-sm-2 mt-0"
+                            >
+                              <div className="fw-medium">Total Marks: 2</div>
+                            </Col>
+                            <Col xs={12}>
+                              <div className="text-muted mt-2">
+                                Passing Marks must be less than or equal to
+                                total marks
+                              </div>
+                            </Col>
+                          </Row>
                         </Col>
+                      </Row>
 
-                        <Col className="quiz-question">
+                      <Row className="mt-3 mt-lg-4">
+                        <Col className="quiz-question" md={9} xxl={7}>
                           <FieldArray name="questions">
                             {({ push, remove }) => (
                               <>
                                 {values.questions.map((q, index) => (
-                                  <div key={index} className="question-row mb-4">
+                                  <div
+                                    key={index}
+                                    className={`question-row ${
+                                      values.questions.length > 1
+                                        ? "mb-4"
+                                        : "mb-3"
+                                    }`}
+                                  >
                                     <div className="d-flex justify-content-between align-items-center mb-3">
-                                      <h3>Question {index + 1}</h3>
+                                      <h3 className="mb-0">
+                                        Question {index + 1}
+                                      </h3>
                                       {values.questions.length > 1 && (
                                         <button
                                           type="button"
@@ -225,7 +259,9 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                                     </div>
 
                                     <div className="mb-2">
-                                      <label>Question</label>
+                                      <label className="form-label">
+                                        Question
+                                      </label>
                                       <Field
                                         name={`questions[${index}].question`}
                                         className="form-control"
@@ -233,13 +269,15 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                                       <ErrorMessage
                                         name={`questions[${index}].question`}
                                         component="div"
-                                        className="text-danger"
+                                        className="error-message red-text"
                                       />
                                     </div>
 
                                     {["A", "B", "C", "D"].map((opt) => (
                                       <div className="mb-2" key={opt}>
-                                        <label>Option {opt}</label>
+                                        <label className="form-label">
+                                          Option {opt}
+                                        </label>
                                         <Field
                                           name={`questions[${index}].option${opt}`}
                                           className="form-control"
@@ -247,13 +285,15 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                                         <ErrorMessage
                                           name={`questions[${index}].option${opt}`}
                                           component="div"
-                                          className="text-danger"
+                                          className="error-message red-text"
                                         />
                                       </div>
                                     ))}
 
                                     <div className="mb-2">
-                                      <label>Correct Answer</label>
+                                      <label className="form-label">
+                                        Correct Answer
+                                      </label>
                                       <Field
                                         as="select"
                                         name={`questions[${index}].correctAnswer`}
@@ -270,11 +310,9 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                                       <ErrorMessage
                                         name={`questions[${index}].correctAnswer`}
                                         component="div"
-                                        className="text-danger"
+                                        className="error-message red-text"
                                       />
                                     </div>
-
-                                    
                                   </div>
                                 ))}
 
@@ -292,126 +330,6 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                             )}
                           </FieldArray>
                         </Col>
-                        {/* <Col className="quiz-question">
-                          <div className="question-row">
-                            <div className="d-flex">
-                              <h3>Question 1</h3>
-                              <button
-                                type="button"
-                                className="btn remove-btn"
-                                onClick={() => remove(index)}
-                              >
-                                <span className="delete-icon">
-                                  <FontAwesomeIcon icon={faTrash} />
-                                </span>
-                                Delete
-                              </button>
-                            </div>
-                            <div className="mb-3">
-                              <CustomInput
-                                label="Question"
-                                type="text"
-                                required
-                                placeholder="Enter Comments"
-                                id="working_hours"
-                                value={values.working_hours}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={
-                                  touched.working_hours && errors.working_hours
-                                }
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <CustomInput
-                                label="Option A"
-                                type="text"
-                                required
-                                placeholder="Enter Comments"
-                                id="working_hours"
-                                value={values.working_hours}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={
-                                  touched.working_hours && errors.working_hours
-                                }
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <CustomInput
-                                label="Option B"
-                                type="text"
-                                required
-                                placeholder="Enter Comments"
-                                id="working_hours"
-                                value={values.working_hours}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={
-                                  touched.working_hours && errors.working_hours
-                                }
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <CustomInput
-                                label="Option C"
-                                type="text"
-                                required
-                                placeholder="Enter Comments"
-                                id="working_hours"
-                                value={values.working_hours}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={
-                                  touched.working_hours && errors.working_hours
-                                }
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <CustomInput
-                                label="Option D"
-                                type="text"
-                                required
-                                placeholder="Enter Comments"
-                                id="working_hours"
-                                value={values.working_hours}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                error={
-                                  touched.working_hours && errors.working_hours
-                                }
-                              />
-                            </div>
-                            <div className="mb-3">
-                              <Select
-                                wrapperClass="d-block"
-                                required
-                                id="status"
-                                name="status"
-                                value={values?.status}
-                                onChange={(e) => setFieldValue("status", e)}
-                                label="Status"
-                                labelclass="mainLabel"
-                                onBlur={handleBlur}
-                                error={touched.status && errors.status}
-                              >
-                                {quizOptions}
-                              </Select>
-                            </div>
-                          </div>
-                          <div className="mt-3">
-                            <button
-                              type="button"
-                              className="btn add-btn"
-                              // onClick={() => push(initialSlot)}
-                            >
-                              <span className="add-icon">
-                                <FontAwesomeIcon icon={faPlus} />
-                              </span>
-                              Add More
-                            </button>
-                          </div>
-                        </Col> */}
                       </Row>
                     </Col>
                   </Row>

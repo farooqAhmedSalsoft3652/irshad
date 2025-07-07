@@ -8,36 +8,60 @@ import CustomButton from "../../../../Components/CustomButton";
 const RulesRegulationsView = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [rulesData, setRulesData] = useState(null);
+  // const [rulesData, setRulesData] = useState(null);
 
-  useEffect(() => {
-    const state = location.state;
-    if (state?.categoryType === 'rules' && state?.id) {
-      // Fetch rules data based on ID
-      // This is dummy data - replace with actual API call
-      setRulesData({
-        id: state.id,
-        title: "Consultant Rules & Regulations",
-        description: "These are the main rules and regulations that all consultants must follow.",
-        rules: [
-          {
-            rule: "Professional Conduct",
-            explanation: "Maintain professional behavior at all times when interacting with clients."
-          },
-          {
-            rule: "Timely Response",
-            explanation: "Respond to client inquiries within 24 hours during business days."
-          },
-          {
-            rule: "Confidentiality",
-            explanation: "Maintain strict confidentiality of all client information and data."
-          }
-        ]
-      });
-    } else {
-      navigate('/admin/consultant-management/category-links');
-    }
-  }, [location, navigate]);
+  const rulesData = {
+    id: 1,
+    title: "Consultant Rules & Regulations",
+    description:
+      "These are the main rules and regulations that all consultants must follow.",
+    rules: [
+      {
+        rule: "Professional Conduct",
+        explanation:
+          "Maintain professional behavior at all times when interacting with clients.",
+      },
+      {
+        rule: "Timely Response",
+        explanation:
+          "Respond to client inquiries within 24 hours during business days.",
+      },
+      {
+        rule: "Confidentiality",
+        explanation:
+          "Maintain strict confidentiality of all client information and data.",
+      },
+    ],
+  };
+
+  // useEffect(() => {
+  //   const state = location.state;
+  //   if (state?.categoryType === 'rules' && state?.id) {
+  //     // Fetch rules data based on ID
+  //     // This is dummy data - replace with actual API call
+  //     setRulesData({
+  //       id: state.id,
+  //       title: "Consultant Rules & Regulations",
+  //       description: "These are the main rules and regulations that all consultants must follow.",
+  //       rules: [
+  //         {
+  //           rule: "Professional Conduct",
+  //           explanation: "Maintain professional behavior at all times when interacting with clients."
+  //         },
+  //         {
+  //           rule: "Timely Response",
+  //           explanation: "Respond to client inquiries within 24 hours during business days."
+  //         },
+  //         {
+  //           rule: "Confidentiality",
+  //           explanation: "Maintain strict confidentiality of all client information and data."
+  //         }
+  //       ]
+  //     });
+  //   } else {
+  //     navigate('/admin/consultant-management/category-links');
+  //   }
+  // }, [location, navigate]);
 
   return (
     <DashboardLayout pageTitle="View Rules & Regulations">
@@ -69,7 +93,10 @@ const RulesRegulationsView = () => {
                   <div className="rules-section">
                     <h3 className="section-title mb-4">Rules</h3>
                     {rulesData.rules.map((rule, index) => (
-                      <div key={index} className="rule-card mb-4 p-4 border rounded bg-light">
+                      <div
+                        key={index}
+                        className="rule-card mb-4 p-4 border rounded bg-light"
+                      >
                         <h4 className="rule-title mb-3">
                           Rule {index + 1}: {rule.rule}
                         </h4>
@@ -85,12 +112,14 @@ const RulesRegulationsView = () => {
                     <CustomButton
                       variant="btn btn-primary min-width-180 me-2"
                       text="Edit Rules"
-                      onClick={() => navigate(`../edit-rules/${rulesData.id}`, {
-                        state: {
-                          ...location.state,
-                          id: rulesData.id
-                        }
-                      })}
+                      onClick={() =>
+                        navigate(`../edit-rules/${rulesData.id}`, {
+                          state: {
+                            ...location.state,
+                            id: rulesData.id,
+                          },
+                        })
+                      }
                     />
                   </div>
                 </Col>
@@ -107,4 +136,4 @@ const RulesRegulationsView = () => {
   );
 };
 
-export default RulesRegulationsView; 
+export default RulesRegulationsView;

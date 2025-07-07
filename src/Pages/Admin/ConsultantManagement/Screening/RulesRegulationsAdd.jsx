@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Col, Row } from "react-bootstrap";
 import { DashboardLayout } from "../../../../Components/Layouts/AdminLayout/DashboardLayout";
@@ -18,22 +18,24 @@ const RulesRegulationsAdd = ({ showModal }) => {
 
   useEffect(() => {
     const state = location.state;
-    if (state?.categoryType === 'rules') {
+    if (state?.categoryType === "rules") {
       setRulesInfo(state);
     } else {
-      navigate('/admin/consultant-management/category-links');
+      navigate("/admin/consultant-management/category-links");
     }
   }, [location, navigate]);
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
     description: Yup.string().required("Description is required"),
-    rules: Yup.array().of(
-      Yup.object().shape({
-        rule: Yup.string().required("Rule is required"),
-        explanation: Yup.string().required("Explanation is required")
-      })
-    ).min(1, "At least one rule is required")
+    rules: Yup.array()
+      .of(
+        Yup.object().shape({
+          rule: Yup.string().required("Rule is required"),
+          explanation: Yup.string().required("Explanation is required"),
+        })
+      )
+      .min(1, "At least one rule is required"),
   });
 
   const initialValues = {
@@ -42,9 +44,9 @@ const RulesRegulationsAdd = ({ showModal }) => {
     rules: [
       {
         rule: "",
-        explanation: ""
-      }
-    ]
+        explanation: "",
+      },
+    ],
   };
 
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
@@ -58,30 +60,40 @@ const RulesRegulationsAdd = ({ showModal }) => {
         ...values,
         categoryId: rulesInfo?.categoryId,
         categoryName: rulesInfo?.categoryName,
-        categoryType: rulesInfo?.categoryType
+        categoryType: rulesInfo?.categoryType,
       };
 
       showModal(
-        "", 
-        "Are You Sure You Want to Add these Rules & Regulations?", 
+        "",
+        "Are You Sure You Want to Add these Rules & Regulations?",
         async () => {
           try {
             console.log("Saving rules with data:", formData);
             // await Api.post('/rules', formData);
-            
-            showModal("Success", "Rules & Regulations have been added successfully!", () => {
-              navigate('/admin/consultant-management/category', {
-                state: {
-                  categoryType: 'rules',
-                  isQuiz: false,
-                  title: 'Rules & Regulations'
-                }
-              });
-            }, true);
+
+            showModal(
+              "Success",
+              "Rules & Regulations have been added successfully!",
+              () => {
+                navigate("/admin/consultant-management/category", {
+                  state: {
+                    categoryType: "rules",
+                    isQuiz: false,
+                    title: "Rules & Regulations",
+                  },
+                });
+              },
+              true
+            );
             resetForm();
           } catch (error) {
             console.error("Error saving rules:", error);
-            showModal("Error", "Failed to save rules. Please try again.", null, true);
+            showModal(
+              "Error",
+              "Failed to save rules. Please try again.",
+              null,
+              true
+            );
           }
         }
       );
@@ -100,14 +112,22 @@ const RulesRegulationsAdd = ({ showModal }) => {
           <Row className="mb-2 page-header">
             <Col xs={12} className="d-flex mb-4 mb-xl-4 gap-2">
               <BackButton2 />
-              <h2 className="mainTitle mb-0">{rulesInfo?.title || "Add Rules & Regulations"}</h2>
+              <h2 className="mainTitle mb-0">
+                {rulesInfo?.title || "Add Rules & Regulations"}
+              </h2>
             </Col>
           </Row>
 
           {rulesInfo ? (
             <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
+              initialValues={{
+                question: "",
+                text: "",
+                photo: "",
+                video: "",
+                answerType: [], // Array for selected checkboxes
+              }}
+              // validationSchema={addFaqSchema}
               onSubmit={handleSubmit}
             >
               {({
@@ -116,113 +136,106 @@ const RulesRegulationsAdd = ({ showModal }) => {
                 touched,
                 handleChange,
                 handleBlur,
-                isSubmitting,
-                setFieldValue
+                setFieldValue,
               }) => (
-                <Form>
-                  <Row>
-                    <Col xs={12} xxl={8}>
-                      <CustomInput
-                        label="Title"
-                        type="text"
-                        name="title"
-                        placeholder="Enter Title"
-                        value={values.title}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.title && errors.title}
-                        required
-                      />
-
-                      <CustomInput
-                        label="Description"
-                        type="textarea"
-                        name="description"
-                        placeholder="Enter Description"
-                        value={values.description}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.description && errors.description}
-                        required
-                        rows="4"
-                      />
-
-                      <div className="rules-section mt-4">
-                        <h3 className="mb-3">Rules</h3>
-                        {values.rules.map((rule, index) => (
-                          <div key={index} className="rule-item mb-4 p-3 border rounded">
-                            <div className="d-flex justify-content-between align-items-center mb-3">
-                              <h4>Rule {index + 1}</h4>
-                              {values.rules.length > 1 && (
-                                <button
-                                  type="button"
-                                  className="btn btn-danger btn-sm"
-                                  onClick={() => {
-                                    const newRules = values.rules.filter((_, i) => i !== index);
-                                    setFieldValue('rules', newRules);
-                                  }}
-                                >
-                                  <FontAwesomeIcon icon={faTrash} /> Remove Rule
-                                </button>
-                              )}
-                            </div>
-
-                            <CustomInput
-                              label="Rule"
-                              type="text"
-                              name={`rules.${index}.rule`}
-                              placeholder="Enter Rule"
-                              value={rule.rule}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={
-                                touched.rules?.[index]?.rule && 
-                                errors.rules?.[index]?.rule
-                              }
-                              required
+                <Form className="category-wrap">
+                  <div className="row mb-3">
+                    <div className="col-12">
+                      <label className="form-label fw-medium">Tutorial</label>
+                      <div className="d-flex gap-4 flex-wrap">
+                        {["Text", "Image", "Video"].map((opt) => (
+                          <div
+                            key={opt}
+                            className="form-check form-check-inline"
+                          >
+                            <Field
+                              name="answerType"
+                              type="checkbox"
+                              value={opt}
+                              className="form-check-input"
+                              id={`answer-${opt}`}
                             />
-
-                            <CustomInput
-                              label="Explanation"
-                              type="textarea"
-                              name={`rules.${index}.explanation`}
-                              placeholder="Enter Explanation"
-                              value={rule.explanation}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={
-                                touched.rules?.[index]?.explanation && 
-                                errors.rules?.[index]?.explanation
-                              }
-                              required
-                              rows="3"
-                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor={`answer-${opt}`}
+                            >
+                              {opt}
+                            </label>
                           </div>
                         ))}
-
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          onClick={() => {
-                            setFieldValue('rules', [
-                              ...values.rules,
-                              { rule: '', explanation: '' }
-                            ]);
-                          }}
-                        >
-                          <FontAwesomeIcon icon={faPlus} /> Add Another Rule
-                        </button>
                       </div>
-                    </Col>
-                  </Row>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4 my-2">
+                      <CustomInput
+                        label="Text"
+                        type="text"
+                        required
+                        placeholder="Enter Text Answer"
+                        id="question"
+                        name="question"
+                        value={values.question}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        error={touched.question && errors.question}
+                      />
+                    </div>
+                  </div>
 
-                  <div className="mt-4">
-                    <CustomButton
-                      variant="btn btn-primary min-width-180"
-                      type="submit"
-                      text="Add Rules"
-                      disabled={isSubmitting}
-                    />
+                  {/* Conditionally Show Text Field */}
+                  {values.answerType.includes("Text") && (
+                    <div className="row">
+                      <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4 my-2">
+                        <CustomInput
+                          label="Text"
+                          type="text"
+                          placeholder="Enter Text Answer"
+                          id="text"
+                          name="text"
+                          value={values.text}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          error={touched.text && errors.text}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {/* Conditionally Show Image Upload */}
+                  {values.answerType.includes("Image") && (
+                    <div className="row mb-4">
+                      <label className="mainLabel ps-3">Image</label>
+                      <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                        <ImageUpload
+                          onChange={(file) => setFieldValue("photo", file)}
+                          numberOfFiles={1}
+                          errorFromParent={touched.photo && errors.photo}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {/* Conditionally Show Video Upload */}
+                  {values.answerType.includes("Video") && (
+                    <div className="row">
+                      <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                        <VideoUploader
+                          name="video"
+                          label="Video"
+                          onChange={handleChange}
+                          // onChange={(file) => setFieldValue("video", file)}
+                          errorFromParent={touched.video && errors.video}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  <div className="row">
+                    <div className="col-12 mt-3">
+                      <CustomButton
+                        variant="btn btn-primary min-width-180"
+                        text="Add"
+                        type="submit"
+                      />
+                    </div>
                   </div>
                 </Form>
               )}
@@ -238,4 +251,4 @@ const RulesRegulationsAdd = ({ showModal }) => {
   );
 };
 
-export default withModal(RulesRegulationsAdd); 
+export default withModal(RulesRegulationsAdd);

@@ -271,7 +271,7 @@ const ConsultantScreeningDetails = ({ showModal, reasonModal }) => {
                       </Nav>
                       <Tab.Content>
                         <Tab.Pane eventKey={activeTab}>
-                          <Row>{filteredTabsData(activeTab)}</Row>
+                          {filteredTabsData(activeTab)}
                         </Tab.Pane>
                       </Tab.Content>
                     </Tab.Container>

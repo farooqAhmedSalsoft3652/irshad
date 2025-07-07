@@ -1,6 +1,6 @@
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Dropdown, Row } from "react-bootstrap";
 import { FaEdit, FaEye, FaPlus } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -12,39 +12,36 @@ import { consultantCategoryHeaders } from "../../../../Config/TableHeaders";
 import { consultantRequestsStatus } from "../../../../Config/TableStatus";
 import withFilters from "../../../../HOC/withFilters";
 import { useFormStatus } from "../../../../Hooks/useFormStatus";
-import {
-  serialNum,
-  timeFormat2,
-} from "../../../../Utils/helper";
+import { serialNum, timeFormat2 } from "../../../../Utils/helper";
 
 const CATEGORY_TYPES = {
-  VIDEO_VERIFICATION: 'video_verification',
-  RULES: 'rules',
-  TUTORIALS: 'tutorials',
-  FINAL_QUIZ: 'final_quiz'
+  VIDEO_VERIFICATION: "video_verification",
+  RULES: "rules",
+  TUTORIALS: "tutorials",
+  FINAL_QUIZ: "final_quiz",
 };
 
 const CATEGORY_ROUTES = {
   video_verification: {
-    add: '/admin/consultant-management/add-quiz',
-    view: '/admin/consultant-management/view-quiz',
-    edit: '/admin/consultant-management/edit-quiz'
+    add: "/admin/consultant-management/add-quiz",
+    view: "/admin/consultant-management/view-quiz",
+    edit: "/admin/consultant-management/edit-quiz",
   },
   rules: {
-    add: '/admin/consultant-management/add-rules',
-    view: '/admin/consultant-management/view-rules',
-    edit: '/admin/consultant-management/edit-rules'
+    add: "/admin/consultant-management/add-rules",
+    view: "/admin/consultant-management/view-rules",
+    edit: "/admin/consultant-management/edit-rules",
   },
   tutorials: {
-    add: '/admin/consultant-management/add-tutorial',
-    view: '/admin/consultant-management/view-tutorial',
-    edit: '/admin/consultant-management/edit-tutorial'
+    add: "/admin/consultant-management/add-tutorial",
+    view: "/admin/consultant-management/view-tutorial",
+    edit: "/admin/consultant-management/edit-tutorial",
   },
   final_quiz: {
-    add: '/admin/consultant-management/add-final-quiz',
-    view: '/admin/consultant-management/view-final-quiz',
-    edit: '/admin/consultant-management/edit-final-quiz'
-  }
+    add: "/admin/consultant-management/add-final-quiz",
+    view: "/admin/consultant-management/view-final-quiz",
+    edit: "/admin/consultant-management/edit-final-quiz",
+  },
 };
 
 const ScreeningCategory = ({
@@ -96,88 +93,88 @@ const ScreeningCategory = ({
     fetchCategory();
   }, [filters]);
 
-  const handleAddAction = (item) => {
-    if (!selectedCategory || !categoryState) return;
+  // const handleAddAction = (item) => {
+  //   if (!selectedCategory || !categoryState) return;
 
-    const routes = CATEGORY_ROUTES[selectedCategory];
-    if (!routes) return;
+  //   const routes = CATEGORY_ROUTES[selectedCategory];
+  //   if (!routes) return;
 
-    // For video verification quiz
-    if (categoryState.categoryType === 'video_verification') {
-      navigate(routes.add, {
-        state: {
-          quizType: categoryState.quizType,
-          categoryId: item.id,
-          categoryName: item.category,
-          title: categoryState.title,
-          isQuiz: true
-        }
-      });
-    } else if (categoryState.categoryType === 'rules') {
-      navigate(routes.add, {
-        state: {
-          categoryType: 'rules',
-          categoryId: item.id,
-          categoryName: item.category,
-          title: categoryState.title,
-          isQuiz: false
-        }
-      });
-    } else if (categoryState.categoryType === 'final_quiz') {
-      navigate(routes.add, {
-        state: {
-          categoryType: 'final_quiz',
-          categoryId: item.id,
-          categoryName: item.category,
-          title: categoryState.title,
-          isQuiz: true
-        }
-      });
-    }
-  };
+  //   // For video verification quiz
+  //   if (categoryState.categoryType === "video_verification") {
+  //     navigate(routes.add, {
+  //       state: {
+  //         quizType: categoryState.quizType,
+  //         categoryId: item.id,
+  //         categoryName: item.category,
+  //         title: categoryState.title,
+  //         isQuiz: true,
+  //       },
+  //     });
+  //   } else if (categoryState.categoryType === "rules") {
+  //     navigate(routes.add, {
+  //       state: {
+  //         categoryType: "rules",
+  //         categoryId: item.id,
+  //         categoryName: item.category,
+  //         title: categoryState.title,
+  //         isQuiz: false,
+  //       },
+  //     });
+  //   } else if (categoryState.categoryType === "final_quiz") {
+  //     navigate(routes.add, {
+  //       state: {
+  //         categoryType: "final_quiz",
+  //         categoryId: item.id,
+  //         categoryName: item.category,
+  //         title: categoryState.title,
+  //         isQuiz: true,
+  //       },
+  //     });
+  //   }
+  // };
 
-  const handleViewAction = (item) => {
-    if (!categoryState) return;
+  // const handleViewAction = (item) => {
+  //   if (!categoryState) return;
 
-    const routes = CATEGORY_ROUTES[categoryState.categoryType];
-    if (!routes) return;
+  //   const routes = CATEGORY_ROUTES[categoryState.categoryType];
+  //   if (!routes) return;
 
-    // For video verification quiz
-    if (categoryState.categoryType === 'video_verification') {
-      navigate(routes.view, {
-        state: {
-          quizType: categoryState.quizType,
-          categoryId: item.id,
-          categoryName: item.category,
-          title: categoryState.title,
-          isQuiz: true
-        }
-      });
-    } else if (categoryState.categoryType === 'rules') {
-      navigate(routes.view, {
-        state: {
-          categoryType: 'rules',
-          categoryId: item.id,
-          categoryName: item.category,
-          title: categoryState.title,
-          isQuiz: false
-        }
-      });
-    } else if (categoryState.categoryType === 'final_quiz') {
-      navigate(routes.view, {
-        state: {
-          categoryType: 'final_quiz',
-          categoryId: item.id,
-          categoryName: item.category,
-          title: categoryState.title,
-          isQuiz: true
-        }
-      });
-    }
-  };
+  //   // For video verification quiz
+  //   if (categoryState.categoryType === "video_verification") {
+  //     navigate(routes.view, {
+  //       state: {
+  //         quizType: categoryState.quizType,
+  //         categoryId: item.id,
+  //         categoryName: item.category,
+  //         title: categoryState.title,
+  //         isQuiz: true,
+  //       },
+  //     });
+  //   } else if (categoryState.categoryType === "rules") {
+  //     navigate(routes.view, {
+  //       state: {
+  //         categoryType: "rules",
+  //         categoryId: item.id,
+  //         categoryName: item.category,
+  //         title: categoryState.title,
+  //         isQuiz: false,
+  //       },
+  //     });
+  //   } else if (categoryState.categoryType === "final_quiz") {
+  //     navigate(routes.view, {
+  //       state: {
+  //         categoryType: "final_quiz",
+  //         categoryId: item.id,
+  //         categoryName: item.category,
+  //         title: categoryState.title,
+  //         isQuiz: true,
+  //       },
+  //     });
+  //   }
+  // };
 
   return (
-    <DashboardLayout pageTitle={categoryState?.title || "Category"}>
+    <DashboardLayout pageTitle={`${categoryState?.title} Category`}>
       <div className="container-fluid">
         <div className="dashCard">
           <Row className="mb-2 page-header">
@@ -185,7 +182,7 @@ const ScreeningCategory = ({
               <div className="d-flex gap-2">
                 <BackButton2 />
                 <h2 className="align-self-start mainTitle mb-0">
-                  {categoryState?.title || 'Category'}
+                  {categoryState?.title} Category
                 </h2>
               </div>
             </Col>
@@ -230,23 +227,32 @@ const ScreeningCategory = ({
                           >
                             <FontAwesomeIcon icon={faEllipsisV} />
                           </Dropdown.Toggle>
-                          <Dropdown.Menu align="end" className="tableDropdownMenu">
-                            {item.data && item.data[categoryState?.categoryType] ? (
+                          <Dropdown.Menu
+                            align="end"
+                            className="tableDropdownMenu"
+                          >
+                            {item.data &&
+                            item.data[categoryState?.categoryType] ? (
                               <>
                                 <Link
                                   to="#"
                                   className="dropdown-item"
                                   onClick={(e) => {
                                     e.preventDefault();
-                                    navigate(CATEGORY_ROUTES[categoryState.categoryType].view, {
-                                      state: {
-                                        quizType: categoryState.quizType,
-                                        categoryId: item.id,
-                                        categoryName: item.category,
-                                        title: categoryState.title,
-                                        isQuiz: categoryState.isQuiz
+                                    navigate(
+                                      CATEGORY_ROUTES[
+                                        categoryState.categoryType
+                                      ].view,
+                                      {
+                                        state: {
+                                          quizType: categoryState.quizType,
+                                          categoryId: item.id,
+                                          categoryName: item.category,
+                                          title: categoryState.title,
+                                          isQuiz: categoryState.isQuiz,
+                                        },
                                       }
-                                    });
+                                    );
                                   }}
                                 >
                                   <FaEye className="me-2" />
@@ -257,37 +263,45 @@ const ScreeningCategory = ({
                                   className="dropdown-item"
                                   onClick={(e) => {
                                     e.preventDefault();
-                                    navigate(CATEGORY_ROUTES[categoryState.categoryType].edit, {
-                                      state: {
-                                        quizType: categoryState.quizType,
-                                        categoryId: item.id,
-                                        categoryName: item.category,
-                                        title: categoryState.title,
-                                        isQuiz: categoryState.isQuiz
+                                    navigate(
+                                      `CATEGORY_ROUTES[categoryState.categoryType].edit/${item.id}`,
+                                      {
+                                        state: {
+                                          quizType: categoryState.quizType,
+                                          categoryId: item.id,
+                                          categoryName: item.category,
+                                          title: categoryState.title,
+                                          isQuiz: categoryState.isQuiz,
+                                        },
                                       }
-                                    });
+                                    );
                                   }}
                                 >
                                   <FaEdit className="me-2" />
                                   Edit
                                 </Link>
                               </>
-                            ): (
+                            ) : (
                               <Link
                                 to="#"
                                 className="dropdown-item"
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  navigate(CATEGORY_ROUTES[categoryState.categoryType].add, {
-                                    state: {
-                                      quizType: categoryState.quizType,
-                                      categoryId: item.id,
-                                      categoryName: item.category,
-                                      title: categoryState.title,
-                                      isQuiz: categoryState.isQuiz,
-                                      categoryType: categoryState.categoryType
+                                  navigate(
+                                    CATEGORY_ROUTES[categoryState.categoryType]
+                                      .add,
+                                    {
+                                      state: {
+                                        quizType: categoryState.quizType,
+                                        categoryId: item.id,
+                                        categoryName: item.category,
+                                        title: categoryState.title,
+                                        isQuiz: categoryState.isQuiz,
+                                        categoryType:
+                                          categoryState.categoryType,
+                                      },
                                     }
-                                  });
+                                  );
                                 }}
                               >
                                 <FaPlus className="me-2" />
