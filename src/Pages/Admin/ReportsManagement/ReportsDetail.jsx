@@ -170,7 +170,7 @@ const ReportsDetail = ({ showModal }) => {
                             </h4>
                           </div>
                           <div className="">
-                            <Link style={{ fontSize: 14 }}>View Details</Link>
+                            <Link to={`/admin/consultant-management/details/${reportsDetail?.user?.id}`} style={{ fontSize: 14 }}>View Details</Link>
                           </div>
                         </div>
                       </div>

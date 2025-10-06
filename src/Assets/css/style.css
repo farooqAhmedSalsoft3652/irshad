@@ -863,6 +863,7 @@ h3.page-title {
   width: auto;
   display: inline-flex;
   align-items: center;
+  margin-right: 1rem;
 }
 
 .back-button:hover svg path {
@@ -1062,6 +1063,9 @@ h3.page-title {
 .user-layout .customPagination,
 .admin-layout .customPagination {
   margin: 0px;
+}
+.admin-layout .customPagination{
+  margin-top: 25px;
 }
 
 .user-layout .customPagination p.paginationText,

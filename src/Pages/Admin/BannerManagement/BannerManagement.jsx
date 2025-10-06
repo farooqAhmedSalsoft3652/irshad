@@ -67,20 +67,27 @@ const BannerManagement = ({
                   pagination={pagination}
                   dateFilters={[
                     {
-                      title: "Creation Date",
+                      title: "Date",
+                      from: "fromDate",
+                      to: "toDate",
+                      fromTitle: "From",
+                      toTitle: "To",
+                    },
+                    {
+                      title: "Expire Date",
                       from: "fromDate",
                       to: "toDate",
                       fromTitle: "From",
                       toTitle: "To",
                     },
                   ]}
-                  selectOptions={[
-                    {
-                      main_title: "Filter By Status",
-                      title: "Status",
-                      options: normalStatus,
-                    },
-                  ]}
+                  // selectOptions={[
+                  //   {
+                  //     main_title: "Filter By Status",
+                  //     title: "Status",
+                  //     options: normalStatus,
+                  //   },
+                  // ]}
                 >
                   <tbody>
                     {bannerData?.map((item, index) => (

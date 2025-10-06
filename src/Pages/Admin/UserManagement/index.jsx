@@ -37,21 +37,19 @@ const UserManagement = ({ showModal, filters, setFilters, pagination, updatePagi
       stopSubmitting(false);
     }
   };
-
   // Handle status change
   const handleStatusChange = (e, userId) => {
     const newStatusValue = e;
     // Open the modal for confirmation
-    showModal(``, `Are you sure you want to change this user status to ${newStatusValue === "1" ? "Active" : "Inactive"}?`, () =>
+    showModal(``, `Are you sure you want to  ${newStatusValue === "1" ? "Active" : "Inactive"} this user?`, () =>
       onConfirmStatusChange(userId, newStatusValue)
     );
   };
-
   // Confirm status change and update the state
   const onConfirmStatusChange = async (userId, newStatusValue) => {
     // Update the status in the userData state
     setUserData((prevData) => prevData.map((user) => (user.id === userId ? { ...user, status_detail: newStatusValue } : user)));
-    showModal("", `User status has been changed to ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
+    showModal("", `User has been ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
   };
 
   useEffect(() => {

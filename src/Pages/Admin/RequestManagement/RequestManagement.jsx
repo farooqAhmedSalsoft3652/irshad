@@ -5,7 +5,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { RequestManagementData } from "../../../Config/data";
 import { RequestManagementHeaders } from "../../../Config/TableHeaders";
-import { appointmentTypeOptions, pendingTypeOptions } from "../../../Config/TableStatus";
+import { appointmentTypeOptions, pendingTypeOptions, requestOptions } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters";
 import { dateFormat, serialNum } from "../../../Utils/helper";
 
@@ -69,9 +69,14 @@ const RequestManagement = ({
                     ]}
                     selectOptions={[
                       {
-                        // main_title: "Status",
+                        main_title: "Filter By Status",
                         title: "Status",
                         options: pendingTypeOptions,
+                      },
+                      {
+                        main_title: "Filter By Request",
+                        title: "Request Status",
+                        options: requestOptions,
                       },
                     ]}
                   >

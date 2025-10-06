@@ -68,7 +68,7 @@ const UserDetails = ({ showModal, filters, setFilters, pagination, updatePaginat
     // Open the modal for confirmation
     showModal(
       ``,
-      `Are you sure you want to change this user status to ${newStatusValue === "1" ? "Active" : "Inactive"}?`,
+      `Are you sure you want to ${newStatusValue === "1" ? "Active" : "Inactive"} this user?`,
       () => onConfirmStatusChange(userId, newStatusValue)
     );
   };
@@ -77,7 +77,7 @@ const UserDetails = ({ showModal, filters, setFilters, pagination, updatePaginat
   const onConfirmStatusChange = async (userId, newStatusValue) => {
     // Update the status in the appointmentLogs state
     setProfileData({ ...profileData, status_detail: newStatusValue });
-    showModal("", `User status has been changed to ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
+    showModal("", `User has been ${newStatusValue === "1" ? "Active" : "Inactive"} successfully.`, null, true);
   };
 
   const { email, phone_number, first_name, last_name, date_of_birth } = profileData;
@@ -124,13 +124,13 @@ const UserDetails = ({ showModal, filters, setFilters, pagination, updatePaginat
                     { label: "Last Name", value: last_name },
                     { label: "Email Address", value: email },
                     { label: "Date Of Birth", value: date_of_birth },
-                    { label: "Phone Number", value: phone_number },
+                    { label: "Contact Number", value: phone_number },
                   ].map(({ label, value }) => (
                     <div className="col-lg-4 col-md-6 mb-3" key={label}>
                       <div className="detail-box">
                       <h6 className="">{label}</h6>
                       <p className=" mb-0">
-                        {label === "Phone Number" && <span>{getCountryFlag(value)}</span>} {value}
+                        {label === "Contact Number" && <span>{getCountryFlag(value)}</span>} {value}
                       </p>
                       </div>
                     </div>

@@ -176,7 +176,7 @@ const PromoCodeManagement = ({ filters, setFilters, pagination, updatePagination
                     pagination={pagination}
                     dateFilters={[
                       {
-                        title: "Updated On Date",
+                        title: "Date",
                         from: "fromDate",
                         to: "toDate",
                         fromTitle: "From",

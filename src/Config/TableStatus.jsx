@@ -337,6 +337,28 @@ export const pendingTypeOptions = [
     text: "Resolved",
   },
 ];
+export const requestOptions = [
+  {
+    value: "all",
+    text: "All",
+  },
+  {
+    value: "book_week",
+    text: "Book Week",
+  },
+  {
+    value: "priced_request",
+    text: "Priced Request",
+  },
+  {
+    value: "reduce_hours",
+    text: "Reduce Hours",
+  },
+  {
+    value: "request_for_session_type",
+    text: "Request For Session Type",
+  },
+];
 export const subscriptionType = [
   {
     value: "",
@@ -671,6 +693,24 @@ export const categoryStatus = [
   {
     value: "4",
     text: "Joint & Bone Health",
+  },
+];
+export const consultantCategory = [
+  {
+    value: "",
+    text: "Select Category",
+  },
+  {
+    value: "1",
+    text: "Education",
+  },
+  {
+    value: "2",
+    text: "Consultancy",
+  },
+  {
+    value: "3",
+    text: "Self Improvement & skill building",
   },
 ];
 export const sorting = [

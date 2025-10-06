@@ -6,7 +6,7 @@ import CustomTable from "../../../Components/CustomTable";
 import { Select } from "../../../Components/Select";
 import { consultantManagerData } from "../../../Config/data";
 import { consultantManagementHeaders } from "../../../Config/TableHeaders";
-import { normalStatus, statusOptions } from "../../../Config/TableStatus";
+import { consultantCategory, normalStatus, statusOptions } from "../../../Config/TableStatus";
 import withFilters from "../../../HOC/withFilters";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
@@ -114,15 +114,19 @@ const ConsultantManagement = ({
                 pagination={pagination}
                 dateFilters={[
                   {
-                    title: "Registration Date",
+                    title: "Date",
                     from: "fromDate",
                     to: "toDate",
                   },
                 ]}
                 selectOptions={[
                   {
-                    title: "Status",
+                    title: "Filter ByStatus",
                     options: normalStatus,
+                  },
+                  {
+                    title: "Filter By Category",
+                    options: consultantCategory,
                   },
                 ]}
               >
