@@ -24,7 +24,7 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
         optionB: "Paris",
         optionC: "Berlin",
         optionD: "Madrid",
-        correctAnswer: "B"
+        correctAnswer: "B",
       },
       {
         question: "Which planet is known as the Red Planet?",
@@ -32,42 +32,57 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
         optionB: "Jupiter",
         optionC: "Mars",
         optionD: "Saturn",
-        correctAnswer: "C"
-      }
-    ]
+        correctAnswer: "C",
+      },
+    ],
   };
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       console.log("Form Values:", values);
-      
-      if (!values.comments || !values.passingMarks || !values.questions.length) {
+
+      if (
+        !values.comments ||
+        !values.passingMarks ||
+        !values.questions.length
+      ) {
         showModal("Error", "Please fill all required fields", null, true);
         return;
       }
 
       if (values.passingMarks > 2) {
-        showModal("Error", "Passing marks must be less than or equal to total marks (2)", null, true);
+        showModal(
+          "Error",
+          "Passing marks must be less than or equal to total marks (2)",
+          null,
+          true
+        );
         return;
       }
 
-      showModal(
-        "", 
-        `Are You Sure You Want to Update this Quiz?`, 
-        async () => {
-          try {
-            // Here you would typically make an API call to update the quiz
-            // await Api.put('/quiz/:id', values);
-            
-            showModal("Success", "Quiz has been updated successfully!", () => {
+      showModal("", `Are You Sure You Want to Update this Quiz?`, async () => {
+        try {
+          // Here you would typically make an API call to update the quiz
+          // await Api.put('/quiz/:id', values);
+
+          showModal(
+            "Success",
+            "Quiz has been updated successfully!",
+            () => {
               navigate(-1);
-            }, true);
-          } catch (error) {
-            console.error("Error updating quiz:", error);
-            showModal("Error", "Failed to update quiz. Please try again.", null, true);
-          }
+            },
+            true
+          );
+        } catch (error) {
+          console.error("Error updating quiz:", error);
+          showModal(
+            "Error",
+            "Failed to update quiz. Please try again.",
+            null,
+            true
+          );
         }
-      );
+      });
     } catch (error) {
       console.error("Form submission error:", error);
       showModal("Error", "An error occurred. Please try again.", null, true);
@@ -106,7 +121,7 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
   };
 
   return (
-    <DashboardLayout pageTitle="Edit Quiz">
+    <DashboardLayout pageTitle="Edit Video Verification">
       <div className="container-fluid">
         <div className="dashCard">
           <Row className="mb-2 page-header">
@@ -128,13 +143,13 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
               handleChange,
               handleBlur,
               setFieldValue,
-              isSubmitting
+              isSubmitting,
             }) => (
               <Form>
                 <Row>
-                  <Col xs={12} xxl={8}>
+                  <Col xs={12} md={10} xl={8} xxl={7}>
                     <Row>
-                      <Col xxl={6}>
+                      <Col md={9} xxl={7}>
                         <CustomInput
                           label="Comments"
                           type="textarea"
@@ -150,15 +165,23 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
                           error={touched.comments && errors.comments}
                         />
                       </Col>
-                      <Col xxl={12}>
-                        <h3>Quiz</h3>
-                      </Col>
-                      <Col xxl={12}>
-                        <label htmlFor="passingMarks" className="form-label d-block">
-                          Passing Marks<span className="text-danger">*</span>
-                        </label>
-                        <div className="d-flex align-items-center gap-3">
-                          <div className="">
+                    </Row>
+                    <Row>
+                      <Col className="mt-4" xxl={12}>
+                        <Row>
+                          <Col xs={12}>
+                            <h3 className="mb-3">Quiz</h3>
+                            <label
+                              htmlFor="passingMarks"
+                              className="form-label d-block"
+                            >
+                              Passing Marks
+                              <span className="text-danger">*</span>
+                            </label>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col md={9} xxl={7}>
                             <CustomInput
                               type="number"
                               required
@@ -169,17 +192,29 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
                               value={values.passingMarks}
                               onChange={handleChange}
                               onBlur={handleBlur}
-                              error={touched.passingMarks && errors.passingMarks}
+                              error={
+                                touched.passingMarks && errors.passingMarks
+                              }
                             />
-                          </div>
-                          <div className="">Total Marks: 2</div>
-                        </div>
-                        <div className="text-muted">
-                          Passing Marks must be less than or equal to total marks
-                        </div>
+                          </Col>
+                          <Col
+                            md={3}
+                            xxl={5}
+                            className="align-self-center mt-sm-2 mt-0"
+                          >
+                            <div className="fw-medium">Total Marks: 2</div>
+                          </Col>
+                          <Col xs={12}>
+                            <div className="text-muted mt-2">
+                              Passing Marks must be less than or equal to total
+                              marks
+                            </div>
+                          </Col>
+                        </Row>
                       </Col>
-
-                      <Col className="quiz-question">
+                    </Row>
+                    <Row className="mt-3 mt-lg-4">
+                      <Col className="quiz-question" md={9} xxl={7}>
                         <FieldArray name="questions">
                           {({ push, remove }) => (
                             <>
@@ -268,19 +303,19 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
                         </FieldArray>
                       </Col>
                     </Row>
+                    <Row>
+                      <Col xs={12} className="mt-4">
+                        <CustomButton
+                          variant="primary"
+                          className="min-width-180"
+                          text="Update"
+                          type="submit"
+                          disabled={isSubmitting}
+                        />
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
-
-                <div className="row">
-                  <div className="col-12 mt-3">
-                    <CustomButton
-                      variant="btn btn-primary min-width-180"
-                      text="Update"
-                      type="submit"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                </div>
               </Form>
             )}
           </Formik>
@@ -290,4 +325,4 @@ const VideoVerificationQuizEdit = ({ showModal }) => {
   );
 };
 
-export default withModal(VideoVerificationQuizEdit); 
+export default withModal(VideoVerificationQuizEdit);

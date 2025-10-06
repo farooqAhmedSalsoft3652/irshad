@@ -106,7 +106,10 @@ const ImageUpload = ({
   };
 
   return (
-    <div style={{ position: "relative" }} className={`${Styles[className]}`}>
+    <div
+      style={{ position: "relative 123" }}
+      className={`${Styles[className]}`}
+    >
       {/* {(Array.isArray(files) ? files.length : files ? 1 : 0) > 0 && label && (
         <label
           className={`form-label fw-medium d-block ${
@@ -158,7 +161,7 @@ const ImageUpload = ({
                   typeof image === "string" ? image : URL.createObjectURL(image)
                 }
                 alt="Uploaded"
-                className={Styles.uploadedImage}
+                className={`${Styles.uploadedImage} custom-upload-class`}
               />
               <button
                 type="button"
@@ -182,7 +185,6 @@ const ImageUpload = ({
           bottom: 0,
           cursor: "pointer",
           zIndex: -1,
-          width: "100%",
         }}
         type="file"
         multiple={numberOfFiles > 1}

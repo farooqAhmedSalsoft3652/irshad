@@ -1658,7 +1658,26 @@ export const signUpUserValidationSchema = Yup.object().shape({
   gender: Yup.string().required("Gender is required"),
   phone: Yup.string()
     .required("Contact Number is required")
-    .min(10, "Contact Number must be at least 10 digits"),
+    .test(
+      "is-valid-phone",
+      "Please enter a valid phone number",
+      function (value) {
+        if (!value) return false;
+
+        // Check if the value contains only country code (like +1, +91, etc.)
+        // and no actual phone number digits
+        const phoneRegex = /^\+[1-9]\d{0,3}$/;
+        if (phoneRegex.test(value)) {
+          return false; // Only country code without phone number
+        }
+
+        // Remove all non-digit characters to check if there are actual digits
+        const digitsOnly = value.replace(/\D/g, "");
+
+        // Check if there are at least 10 digits (excluding country code)
+        return digitsOnly.length >= 10;
+      }
+    ),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),

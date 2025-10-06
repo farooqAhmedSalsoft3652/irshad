@@ -16,7 +16,7 @@ const UploadAndDisplayVideo = ({
   id = "0",
 }) => {
   const [files, setFiles] = useState([]);
-  const [error, setError] = useState("");
+const [error, setError] = useState("");
   const [initialized, setInitialized] = useState(false); // New flag
 
   // Memoize videos array

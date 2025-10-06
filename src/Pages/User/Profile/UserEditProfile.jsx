@@ -214,13 +214,7 @@ const UserEditProfile = ({ showModal }) => {
                                     accept="image/*"
                                     className="d-none"
                                     id="profileImage"
-                                    onChange={(event) =>
-                                      handleImageChange(
-                                        event,
-                                        setFieldValue,
-                                        setFieldError
-                                      )
-                                    }
+                                    onChange={(event) => handleImageChange( event, setFieldValue, setFieldError) }
                                   />
                                   <label
                                     htmlFor="profileImage"

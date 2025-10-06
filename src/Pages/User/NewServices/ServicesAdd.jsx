@@ -110,15 +110,15 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     showQuickServices: false,
     sessionTypes: [], // Changed from sessionType to sessionTypes (array)
     sessionAmounts: {
-      chat: "",
-      call: "",
-      video: "",
+      chat: "10",
+      call: "20",
+      video: "30",
     },
     quickSessionType: [],
     quickSessionAmounts: {
-      chat: "",
-      call: "",
-      video: "",
+      chat: "20",
+      call: "30",
+      video: "40",
     },
     descriptions: "",
     banner_images: [], // Image Upload Field
@@ -451,9 +451,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                       true
                                     );
                                   }}
+                                  readOnly
                                 />
 
-                                <span className="badge">Range $0-$100</span>
+                                {/* <span className="badge">Range $0-$100</span> */}
                                 <CustomButton
                                   variant="secondary"
                                   className=""
@@ -562,11 +563,11 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                   // If turning off quick services, reset the quick session fields
                                   if (!isChecked) {
                                     setFieldValue("quickSessionType", []);
-                                    setFieldValue("quickSessionAmounts", {
-                                      chat: "",
-                                      call: "",
-                                      video: "",
-                                    });
+                                    // setFieldValue("quickSessionAmounts", {
+                                    //   chat: "",
+                                    //   call: "",
+                                    //   video: "",
+                                    // });
                                   }
                                 }}
                               />
@@ -651,9 +652,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                           true
                                         );
                                       }}
+                                      readOnly
                                     />
 
-                                    <span className="badge">Range $0-$100</span>
+                                    {/* <span className="badge">Range $0-$100</span> */}
                                     <CustomButton
                                       variant="secondary"
                                       className=""

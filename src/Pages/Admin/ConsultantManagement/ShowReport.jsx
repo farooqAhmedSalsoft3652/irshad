@@ -2,16 +2,58 @@ import { Button, Col, ProgressBar, Row } from "react-bootstrap";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import { DashboardLayout } from "../../../Components/Layouts/AdminLayout/DashboardLayout";
 import { useState } from "react";
+import { dashboardChartDataOne } from "../../../Config/data";
+import { Graph } from "../../../Components/Graph";
 
 const ShowReport = () => {
-  const [selectedYear, setSelectedYear] = useState(2024);
-  const [selectedMonth, setSelectedMonth] = useState("Jan");
+  const [selectedYear, setSelectedYear] = useState(null);
+  const [selectedMonth, setSelectedMonth] = useState(null);
+  const [yearData, setYearData] = useState();
+  const [chartdata, setChartData] = useState(dashboardChartDataOne);
+  const getCurrentYear = () => new Date().getFullYear();
+  const [selectedValue, setSelectedValue] = useState(getCurrentYear());
 
   const years = [2019, 2020, 2021, 2022, 2023, 2024];
   const months = ["Jan", "Feb", "Mar", "Jun", "Aug", "Jul", "Sep", "Dec"];
 
   const categoryData = [90, 80, 70, 60, 50, 40, 30, 20, 10, 5];
   const consultantData = [90, 80, 70, 60, 50, 40, 30, 20, 10, 5];
+
+  const handleYearClick = (year) => {
+    setSelectedYear(year);
+    console.log("Selected Year:", year);
+  };
+
+  const handleMonthClick = (month) => {
+    setSelectedMonth(month);
+    console.log("Selected Month:", month);
+  };
+
+  const handleSelectChange = (value) => {
+    setSelectedValue(value);
+    fetchOrderChart(value);
+  };
+  const handleSelectYear = (value) => {
+    const newValue = `&further_type=${value}`;
+    setYearData(newValue);
+    fetchRevenueChart(selectedValueTwo, newValue);
+  };
+
+  const yearlyChartStatus = [
+    {
+      value: "2023",
+      text: "2023",
+    },
+    {
+      value: "2024",
+      text: "2024",
+    },
+    {
+      value: "2025",
+      text: "2025",
+    },
+  ];
+
   return (
     <DashboardLayout pageTitle="Show Report">
       <div className="container-fluid app-report">
@@ -56,10 +98,9 @@ const ShowReport = () => {
                           variant={
                             year === selectedYear
                               ? "primary"
-                              : "outline-secondary"
+                              : "outline-primary"
                           }
-                          onClick={() => setSelectedYear(year)}
-                          className="rounded-pill"
+                          onClick={() => handleYearClick(year)}
                         >
                           {year}
                         </Button>
@@ -82,10 +123,9 @@ const ShowReport = () => {
                           variant={
                             month === selectedMonth
                               ? "primary"
-                              : "outline-secondary"
+                              : "outline-primary"
                           }
-                          onClick={() => setSelectedMonth(month)}
-                          className="rounded-pill"
+                          onClick={() => handleMonthClick(month)}
                         >
                           {month}
                         </Button>
@@ -107,9 +147,17 @@ const ShowReport = () => {
                       <span>Abc</span>
                       <span>{value}%</span>
                     </div>
-                    <ProgressBar>
-                      <ProgressBar now={value} variant="dark" key={1} />
-                      <ProgressBar now={100 - value} variant="light" key={2} />
+                    <ProgressBar style={{ borderRadius: "10px" }}>
+                      <ProgressBar
+                        now={value}
+                        style={{ background: "#15355E" }}
+                        key={1}
+                      />
+                      <ProgressBar
+                        now={100 - value}
+                        style={{ background: "#C5E4F6" }}
+                        key={2}
+                      />
                     </ProgressBar>
                   </div>
                 ))}
@@ -127,12 +175,34 @@ const ShowReport = () => {
                       <span>{value}%</span>
                     </div>
                     <ProgressBar>
-                      <ProgressBar now={value} variant="dark" key={1} />
-                      <ProgressBar now={100 - value} variant="light" key={2} />
-                    </ProgressBar>
+                      <ProgressBar
+                        now={value}
+                        style={{ background: "#15355E" }}
+                        key={1}
+                      />
+                      <ProgressBar
+                        now={100 - value}
+                        style={{ background: "#C5E4F6" }}
+                        key={2}
+                      />
+                  </ProgressBar>
                   </div>
                 ))}
               </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <Graph
+                type="line"
+                item={chartdata}
+                selectedValue={selectedValue}
+                onSelectChange={handleSelectChange}
+                options={yearlyChartStatus}
+                onSelectYear={handleSelectYear}
+                text="Reviews Analytics"
+                backgroundColor="#C5E4F6"
+              />
             </Col>
           </Row>
         </div>

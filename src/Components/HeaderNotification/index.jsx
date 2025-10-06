@@ -10,12 +10,14 @@ import { useAuth } from "../../Hooks/useAuth";
 
 const HeaderNotification = ({
   notificationData,
+  notificationCount,
   getNotification,
   viewAllLink,
 }) => {
   const { role } = useAuth();
-  const [notifications, setNotifications] = useState(notificationData);
+  const [notifications, setNotifications] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dropdownRef = useRef(null);
 
   // Update local state when notificationData prop changes
@@ -49,7 +51,10 @@ const HeaderNotification = ({
 
     if (!isOpen) {
       // Only fetch notifications when opening the dropdown
-      getNotification();
+      setIsLoading(true);
+      getNotification().finally(() => {
+        setIsLoading(false);
+      });
     }
   };
 
@@ -93,7 +98,10 @@ const HeaderNotification = ({
         // Let the built-in onToggle handle outside clicks
         setIsOpen(isOpen);
         if (isOpen) {
-          getNotification();
+          setIsLoading(true);
+          getNotification().finally(() => {
+            setIsLoading(false);
+          });
         }
       }}
     >
@@ -104,9 +112,9 @@ const HeaderNotification = ({
         className="notButton d-flex align-items-center"
       >
         <FontAwesomeIcon className="bellIcon" icon={faBell} color="#C5E4F6" />
-        {notifications.length > 0 && (
+        {notificationCount > 0 && (
           <span className="badge">
-            {notifications.length > 9 ? "9+" : notifications.length}
+            {notificationCount > 9 ? "9+" : notificationCount}
           </span>
         )}
       </Dropdown.Toggle>
@@ -114,11 +122,18 @@ const HeaderNotification = ({
         <div className="notificationsBodyHeader">
           <p className="mb-0 fw-bold">Notifications</p>
           <div className="newNotificationCount">
-            <p className="mb-0">{notifications.length} new</p>
+            <p className="mb-0">{notificationCount} new</p>
           </div>
         </div>
         <div className="notificationsBody">
-          {notifications.length > 0 ? (
+          {isLoading ? (
+            <div className="text-center py-3">
+              <div className="spinner-border spinner-border-sm" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+              <p className="mt-2 mb-0">Loading notifications...</p>
+            </div>
+          ) : notifications.length > 0 ? (
             notifications.slice(0, 5).map((notification) => (
               <div
                 className={`singleNoti ${
@@ -174,6 +189,7 @@ const HeaderNotification = ({
 
 HeaderNotification.propTypes = {
   notificationData: PropTypes.array.isRequired,
+  notificationCount: PropTypes.number.isRequired,
   getNotification: PropTypes.func.isRequired,
   viewAllLink: PropTypes.string,
 };

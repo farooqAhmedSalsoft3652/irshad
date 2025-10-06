@@ -17,7 +17,7 @@ const AddService = ({ showModal }) => {
     resetForm();
     showModal(``, `Are you sure you want to add service?`, () => onConfirmStatusChange());
     const onConfirmStatusChange = async () => {
-      // console.log("Service data:", values);
+      console.log("Service data:", values);
       showModal("", `Service has been added successfully!`, () => navigate("/admin/service-management"), true);
     };
     stopSubmitting();

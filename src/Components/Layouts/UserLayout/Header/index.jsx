@@ -116,14 +116,33 @@ export const Header = () => {
   }, []);
 
   const [notificationData, setNotificationData] = useState([]);
+  const [notificationCount, setNotificationCount] = useState(0);
+  
+  const getNotificationCount = async () => {
+    // Get only the count of notifications
+    const response = notificationsData;
+    if (response) {
+      const count = response?.detail?.notifications?.data?.length || 0;
+      setNotificationCount(count);
+    }
+    return Promise.resolve(); // Return a promise for consistency
+  };
+
   const getNotification = async () => {
-    // let url = `/${role}-api/notifications`;
-    // const response = await getAll(url);
+    // Get full notification data when dropdown is opened
     const response = notificationsData;
     if (response) {
       setNotificationData(response?.detail?.notifications?.data);
     }
+    return Promise.resolve(); // Return a promise for loading state management
   };
+
+  // Load notification count on component mount
+  useEffect(() => {
+    if (token) {
+      getNotificationCount().catch(console.error);
+    }
+  }, [token]);
 
   let currentLinks = generateLinks(role);
   const location = useLocation();
@@ -265,6 +284,7 @@ export const Header = () => {
                         <HeaderNotification
                           viewAllLink="/notifications"
                           notificationData={notificationData}
+                          notificationCount={notificationCount}
                           getNotification={getNotification}
                         />
                       </Nav.Item>
@@ -369,6 +389,7 @@ export const Header = () => {
                       <HeaderNotification
                         viewAllLink="/notifications"
                         notificationData={notificationData}
+                        notificationCount={notificationCount}
                         getNotification={getNotification}
                       />
                     </Nav.Item>
@@ -427,12 +448,12 @@ export const Header = () => {
                             </span>
                             <span> Bank Details</span>
                           </Dropdown.Item>
-                          <Dropdown.Item as={Link} to="/blocked-users">
+                          {/* <Dropdown.Item as={Link} to="/blocked-users">
                             <span>
                               <images.BlockedUsers />
                             </span>
                             <span>Blocked Users</span>
-                          </Dropdown.Item>
+                          </Dropdown.Item> */}
                           <Dropdown.Item
                             className="logout"
                             onClick={() => setShowModal(true)}

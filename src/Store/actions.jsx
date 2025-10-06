@@ -32,4 +32,3 @@ export const deleteAllImages = () => {
 };
 
 export const logout = () => ({ type: "LOGOUT" });
-

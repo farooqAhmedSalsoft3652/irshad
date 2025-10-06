@@ -20,9 +20,32 @@
 .authForm .multi-select .select__indicator {
   color: #15355e;
 }
-.authForm .multi-select .css-1u9des2-indicatorSeparator{
+
+.authForm .multi-select .css-1u9des2-indicatorSeparator {
   display: none;
 }
+
+/* PhoneInput Error State */
+/* .authForm .phone-input-wrapper.is-invalid {
+  border: 1px solid #dc3545 !important;
+  border-radius: 50px;
+} */
+
+/* .authForm .phone-input-wrapper.is-invalid .PhoneInput {
+  border: none !important;
+} */
+
+.authForm .phone-input-wrapper.is-invalid .PhoneInputInput {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.authForm .phone-input-wrapper.is-invalid .PhoneInputCountrySelect {
+  border: none !important;
+  outline: none !important;
+}
+
 /* .authForm .multi-select {
   width: 30%;
   height: 45px;

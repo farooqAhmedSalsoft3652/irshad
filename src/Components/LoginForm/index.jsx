@@ -114,12 +114,12 @@ const LoginForm = ({
             error={touched.password && errors.password}
           />
           <div className="d-flex align-items-center justify-content-between mt-1 flex-wrap gap-sm-0 gap-2">
-            <Form.Check
+            {/* <Form.Check
               type={"checkbox"}
               name="rememberMe"
               id="rememberMe"
               label={`Remember Me`}
-            />
+            /> */}
             <Link
               to={`${actor ? "/" + actor : ""}/forget-password`}
               className="fw-light"

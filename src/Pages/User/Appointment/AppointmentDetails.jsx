@@ -268,45 +268,34 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
                 </Col>
               )}
 
-              {(data?.status === "upcoming" ||
-                data?.status === "in-progress") && (
+                
+              {(data?.status === "upcoming") && (
                 <div className="d-flex gap-2 flex-wrap align-items-center">
                   {data?.session_type == "Chat" ? (
-                    // <CustomButton
-                    //   onClick={() => setAppointmentModal(true)}
-                    //   variant="primary"
-                    //   className="min-width-180"
-                    // >
-                    //   Start Chat
-                    // </CustomButton>
-                    <Link to="/chat" className="btn btn-primary min-width-180">
+                    <CustomButton
+                      onClick={() => setAppointmentModal(true)}
+                      variant="primary"
+                      className="min-width-180"
+                    >
                       Start Chat
-                    </Link>
+                    </CustomButton>
                   ) : data?.session_type == "Call" ? (
-                    // <CustomButton
-                    //   onClick={() => setAppointmentModal(true)}
-                    //   variant="primary"
-                    //   className="min-width-180"
-                    // >
-                    //   Start Session
-                    // </CustomButton>
-                    <Link to="/call" className="btn btn-primary min-width-180">
-                      Start Session
-                    </Link>
-                  ) : data?.session_type == "Video Call" ? (
-                    <Link
-                      to="/video-call"
-                      className="btn btn-primary min-width-180"
+                    <CustomButton
+                      onClick={() => setAppointmentModal(true)}
+                      variant="primary"
+                      className="min-width-180"
                     >
                       Start Session
-                    </Link>
-                  ) : // <CustomButton
-                  //   onClick={() => setAppointmentModal(true)}
-                  //   variant="primary"
-                  //   className="min-width-180"
-                  // >
-                  //   Start Session
-                  // </CustomButton>
+                    </CustomButton>
+                  ) : data?.session_type == "Video Call" ? (
+                    <CustomButton
+                      onClick={() => setAppointmentModal(true)}
+                      variant="primary"
+                      className="min-width-180"
+                    >
+                      Start Session
+                    </CustomButton>
+                  ) : 
                   null}
 
                   {data?.status !== "in-progress" && (
@@ -319,6 +308,29 @@ const AppointmentsDetails = ({ showModal, closeModal }) => {
                   )}
                 </div>
               )}
+
+              {(data?.status === "in-progress") && (
+                <div className="d-flex gap-2 flex-wrap align-items-center">
+                  {data?.session_type == "Chat" ? (
+                    <Link to="/chat" className="btn btn-primary min-width-180">
+                      Start Chat
+                    </Link>
+                  ) : data?.session_type == "Call" ? (
+                    <Link to="/call" className="btn btn-primary min-width-180">
+                      Start Session
+                    </Link>
+                  ) : data?.session_type == "Video Call" ? (
+                    <Link
+                      to="/video-call"
+                      className="btn btn-primary min-width-180"
+                    >
+                      Join Session
+                    </Link>
+                  ) : 
+                  null}
+                </div>
+              )}
+
             </Row>
           </div>
         </div>

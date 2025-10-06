@@ -116,7 +116,7 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
   };
 
   return (
-    <DashboardLayout pageTitle={quizInfo?.title || "Add Quiz"}>
+    <DashboardLayout pageTitle={quizInfo?.title || "Add Video Verification"}>
       <div className="container-fluid">
         <div className="dashCard">
           <Row className="mb-2 page-header">
@@ -331,19 +331,20 @@ const VideoVerificationQuizAdd = ({ showModal }) => {
                           </FieldArray>
                         </Col>
                       </Row>
+
+                      <Row>
+                        <Col xs={12} className="mt-4">
+                          <CustomButton
+                            variant="primary"
+                            className="min-width-180"
+                            text="Add"
+                            type="submit"
+                            disabled={isSubmitting}
+                          />
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
-
-                  <div className="row">
-                    <div className="col-12 mt-3">
-                      <CustomButton
-                        variant="btn btn-primary min-width-180"
-                        text="Add"
-                        type="submit"
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                  </div>
                 </Form>
               )}
             </Formik>

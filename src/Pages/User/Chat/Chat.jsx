@@ -225,7 +225,7 @@ const UserChat = ({ showModal }) => {
                             Reports
                           </NavLink>
                         </Dropdown.Item>
-                        <Dropdown.Item as="li">
+                        {/* <Dropdown.Item as="li">
                           <NavLink
                             to={"/chat-contact-us"}
                             className={({ isActive }) =>
@@ -234,7 +234,7 @@ const UserChat = ({ showModal }) => {
                           >
                             Contact Us
                           </NavLink>
-                        </Dropdown.Item>
+                        </Dropdown.Item> */}
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
@@ -317,9 +317,9 @@ const UserChat = ({ showModal }) => {
                               <Dropdown.Item onClick={() => UserRestricted()}>
                                 Restrict Message From The User
                               </Dropdown.Item>
-                              <Dropdown.Item onClick={() => BlockedUser()}>
+                              {/* <Dropdown.Item onClick={() => BlockedUser()}>
                                 Block User
-                              </Dropdown.Item>
+                              </Dropdown.Item> */}
                             </Dropdown.Menu>
                           </Dropdown>
                         </div>

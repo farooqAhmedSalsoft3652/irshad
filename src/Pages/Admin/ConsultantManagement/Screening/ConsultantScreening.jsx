@@ -69,10 +69,10 @@ const ConsultantScreening = ({
                 <Link
                   to={`/admin/consultant-management/category`}
                   state={{
-                    categoryType: 'video_verification',
+                    categoryType: "video_verification",
                     isQuiz: true,
-                    quizType: 'video_verification',
-                    title: 'Video Verification Quiz'
+                    quizType: "video_verification",
+                    title: "Video Verification Quiz",
                   }}
                   className="btn btn-primary min-width-250"
                 >
@@ -83,12 +83,13 @@ const ConsultantScreening = ({
                 <Link
                   to={`/admin/consultant-management/category`}
                   state={{
-                    categoryType: 'rules',
+                    categoryType: "rules",
                     isQuiz: false,
-                    title: 'Rules & Regulations',
-                    contentType: 'rules'
+                    title: "Rules & Regulations",
+                    contentType: "rules",
                   }}
-                  className="btn btn-primary min-width-250">
+                  className="btn btn-primary min-width-250"
+                >
                   Set Rules & Regulations
                 </Link>
               </div>
@@ -96,10 +97,10 @@ const ConsultantScreening = ({
                 <Link
                   to={`/admin/consultant-management/category`}
                   state={{
-                    categoryType: 'tutorials',
+                    categoryType: "tutorials",
                     isQuiz: false,
-                    title: 'Tutorials',
-                    contentType: 'tutorials'
+                    title: "Tutorials",
+                    contentType: "tutorials",
                   }}
                   className="btn btn-primary min-width-250"
                 >
@@ -110,12 +111,13 @@ const ConsultantScreening = ({
                 <Link
                   to={`/admin/consultant-management/category`}
                   state={{
-                    categoryType: 'final_quiz',
+                    categoryType: "final_quiz",
                     isQuiz: true,
-                    quizType: 'final',
-                    title: 'Final Quiz'
+                    quizType: "final",
+                    title: "Finalize Quiz",
                   }}
-                  className="btn btn-primary min-width-250">
+                  className="btn btn-primary min-width-250"
+                >
                   Set Finalize Quiz
                 </Link>
               </div>

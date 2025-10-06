@@ -87,15 +87,15 @@ const FinalQuizAdd = ({ showModal }) => {
       console.log("Saving quiz with data:", formData);
 
       showModal(
-        "Success",
+        "",
         "Quiz has been added successfully!",
         () => {
           navigate("/admin/consultant-management/category", {
             state: {
-              categoryType: "video_verification",
+              categoryType: "final_quiz",
               isQuiz: true,
-              quizType: "video_verification",
-              title: "Video Verification Quiz",
+              quizType: "final_quiz",
+              title: "Finalize Quiz",
             },
           });
         },
@@ -111,13 +111,13 @@ const FinalQuizAdd = ({ showModal }) => {
   };
 
   return (
-    <DashboardLayout pageTitle="Add Final Quiz">
+    <DashboardLayout pageTitle="Add Finalize Quiz">
       <div className="container-fluid">
         <div className="dashCard">
           <Row className="mb-4 page-header">
-            <Col xs={12} className="d-flex mb-4 mb-xl-0">
+            <Col xs={12} className="d-flex mb-4 mb-xl-4 gap-2">
               <BackButton2 />
-              <h2 className="mainTitle mb-0">Create Final Quiz</h2>
+              <h2 className="mainTitle mb-0">Create Finalize Quiz</h2>
             </Col>
           </Row>
 

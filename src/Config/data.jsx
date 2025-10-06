@@ -4304,6 +4304,9 @@ export const consultantCategoryData = {
           final_quiz: {
             hello: "abc",
           },
+          tutorials: {
+            hello: "abc",
+          },
         },
       },
       {

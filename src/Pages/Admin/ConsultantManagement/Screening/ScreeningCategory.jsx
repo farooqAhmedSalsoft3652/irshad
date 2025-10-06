@@ -264,7 +264,11 @@ const ScreeningCategory = ({
                                   onClick={(e) => {
                                     e.preventDefault();
                                     navigate(
-                                      `CATEGORY_ROUTES[categoryState.categoryType].edit/${item.id}`,
+                                      `${
+                                        CATEGORY_ROUTES[
+                                          categoryState.categoryType
+                                        ].edit
+                                      }/${item.id}`,
                                       {
                                         state: {
                                           quizType: categoryState.quizType,

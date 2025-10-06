@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Col, Row } from "react-bootstrap";
 import { DashboardLayout } from "../../../../Components/Layouts/AdminLayout/DashboardLayout";
@@ -10,69 +10,50 @@ import CustomInput from "../../../../Components/CustomInput";
 import withModal from "../../../../HOC/withModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import ImageUpload from "../../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
+import { images } from "../../../../Assets";
 
 const RulesRegulationsEdit = ({ showModal }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [rulesData, setRulesData] = useState(null);
 
-  useEffect(() => {
-    const state = location.state;
-    if (state?.categoryType === 'rules' && state?.id) {
-      // Fetch rules data based on ID
-      // This is dummy data - replace with actual API call
-      setRulesData({
-        id: state.id,
-        title: "Consultant Rules & Regulations",
-        description: "These are the main rules and regulations that all consultants must follow.",
-        rules: [
-          {
-            rule: "Professional Conduct",
-            explanation: "Maintain professional behavior at all times when interacting with clients."
-          },
-          {
-            rule: "Timely Response",
-            explanation: "Respond to client inquiries within 24 hours during business days."
-          }
-        ]
-      });
-    } else {
-      navigate('/admin/consultant-management/category-links');
-    }
-  }, [location, navigate]);
+  const rulesData = {
+    id: 1,
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
+    poster: images.BannerImg,
+    answerType: ["Image"],
+  };
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
-    rules: Yup.array().of(
-      Yup.object().shape({
-        rule: Yup.string().required("Rule is required"),
-        explanation: Yup.string().required("Explanation is required")
-      })
-    ).min(1, "At least one rule is required")
+    text: Yup.string().required("Title is required"),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      if (!values.title || !values.description || !values.rules.length) {
-        showModal("Error", "Please fill all required fields", null, true);
-        return;
-      }
-
       showModal(
-        "", 
-        "Are You Sure You Want to Update these Rules & Regulations?", 
+        "",
+        "Are You Sure You Want to Update these Rules & Regulations?",
         async () => {
           try {
             console.log("Updating rules with data:", values);
             // await Api.put(`/rules/${rulesData.id}`, values);
-            
-            showModal("Success", "Rules & Regulations have been updated successfully!", () => {
-              navigate(-1);
-            }, true);
+
+            showModal(
+              "",
+              "Rules & Regulations have been updated successfully!",
+              () => {
+                navigate(-1);
+              },
+              true
+            );
           } catch (error) {
             console.error("Error updating rules:", error);
-            showModal("Error", "Failed to update rules. Please try again.", null, true);
+            showModal(
+              "Error",
+              "Failed to update rules. Please try again.",
+              null,
+              true
+            );
           }
         }
       );
@@ -107,120 +88,71 @@ const RulesRegulationsEdit = ({ showModal }) => {
                 touched,
                 handleChange,
                 handleBlur,
-                isSubmitting,
-                setFieldValue
+                setFieldValue,
               }) => (
-                <Form>
+                <Form className="category-wrap">
+                  {console.log(errors)}
                   <Row>
-                    <Col xs={12} xxl={8}>
+                    <Col xs={12} md={10} xl={8} xxl={7}>
                       <Row>
-                        <Col xxl={6}>
+                        <Col md={9} xxl={8} className="detail-box mb-3">
+                          <label className="form-label fw-medium">Option</label>
+                          <div className="d-flex gap-4 flex-wrap">
+                            {["Text", "Image"].map((opt) => (
+                              <div
+                                key={opt}
+                                className="form-check form-check-inline"
+                              >
+                                <Field
+                                  name="answerType"
+                                  type="checkbox"
+                                  value={opt}
+                                  className="form-check-input"
+                                  id={`answer-${opt}`}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  htmlFor={`answer-${opt}`}
+                                >
+                                  {opt}
+                                </label>
+                              </div>
+                            ))}
+                          </div>
+                        </Col>
+                        <Col md={9} xxl={8} className="detail-box mb-3">
                           <CustomInput
-                            label="Title"
-                            type="text"
-                            name="title"
-                            placeholder="Enter Title"
-                            value={values.title}
+                            label="Text"
+                            type="textarea"
+                            rows={5}
+                            placeholder="Enter Text Answer"
+                            id="text"
+                            name="text"
+                            value={rulesData.text}
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            error={touched.title && errors.title}
-                            required
+                            error={touched.text && errors.text}
                           />
                         </Col>
-                        <Col xxl={12}>
-                          <CustomInput
-                            label="Description"
-                            type="textarea"
-                            name="description"
-                            placeholder="Enter Description"
-                            value={values.description}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            error={touched.description && errors.description}
-                            required
-                            rows="4"
+                        <Col md={9} xxl={8} className="mb-3 rules-image-edit">
+                          <label className="mainLabel ps-3">Image</label>
+                          <ImageUpload
+                            className={`rules-image-edit`}
+                            onChange={(file) => setFieldValue("poster", file)}
+                            numberOfFiles={1}
+                            errorFromParent={touched.poster && errors.poster}
+                            images={rulesData.poster}
+                          />
+                        </Col>
+                        <Col xs={12}>
+                          <CustomButton
+                            variant="primary"
+                            className="min-width-180"
+                            text="Update"
+                            type="submit"
                           />
                         </Col>
                       </Row>
-
-                      <div className="rules-section mt-4">
-                        <h3 className="mb-3">Rules</h3>
-                        {values.rules.map((rule, index) => (
-                          <div key={index} className="rule-item mb-4 p-4 border rounded bg-light">
-                            <div className="d-flex justify-content-between align-items-center mb-3">
-                              <h4>Rule {index + 1}</h4>
-                              {values.rules.length > 1 && (
-                                <button
-                                  type="button"
-                                  className="btn remove-btn"
-                                  onClick={() => {
-                                    const newRules = values.rules.filter((_, i) => i !== index);
-                                    setFieldValue('rules', newRules);
-                                  }}
-                                >
-                                  <span className="delete-icon me-2">
-                                    <FontAwesomeIcon icon={faTrash} />
-                                  </span>
-                                  Delete
-                                </button>
-                              )}
-                            </div>
-
-                            <CustomInput
-                              label="Rule"
-                              type="text"
-                              name={`rules.${index}.rule`}
-                              placeholder="Enter Rule"
-                              value={rule.rule}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={
-                                touched.rules?.[index]?.rule && 
-                                errors.rules?.[index]?.rule
-                              }
-                              required
-                            />
-
-                            <CustomInput
-                              label="Explanation"
-                              type="textarea"
-                              name={`rules.${index}.explanation`}
-                              placeholder="Enter Explanation"
-                              value={rule.explanation}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={
-                                touched.rules?.[index]?.explanation && 
-                                errors.rules?.[index]?.explanation
-                              }
-                              required
-                              rows="3"
-                            />
-                          </div>
-                        ))}
-
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          onClick={() => {
-                            setFieldValue('rules', [
-                              ...values.rules,
-                              { rule: '', explanation: '' }
-                            ]);
-                          }}
-                        >
-                          <FontAwesomeIcon icon={faPlus} /> Add Another Rule
-                        </button>
-                      </div>
-
-                      <div className="mt-4">
-                        <CustomButton
-                          variant="btn btn-primary min-width-180"
-                          type="submit"
-                          text="Update Rules"
-                          disabled={isSubmitting}
-                        />
-                      </div>
                     </Col>
                   </Row>
                 </Form>
@@ -237,4 +169,4 @@ const RulesRegulationsEdit = ({ showModal }) => {
   );
 };
 
-export default withModal(RulesRegulationsEdit); 
+export default withModal(RulesRegulationsEdit);

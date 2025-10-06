@@ -10,6 +10,8 @@ import CustomInput from "../../../../Components/CustomInput";
 import withModal from "../../../../HOC/withModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
+import VideoUploader from "../../../../Components/VideoUploader";
+import ImageUpload from "../../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 
 const RulesRegulationsAdd = ({ showModal }) => {
   const navigate = useNavigate();
@@ -21,41 +23,25 @@ const RulesRegulationsAdd = ({ showModal }) => {
     if (state?.categoryType === "rules") {
       setRulesInfo(state);
     } else {
-      navigate("/admin/consultant-management/category-links");
+      navigate("/admin/consultant-management/category");
     }
   }, [location, navigate]);
 
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
-    rules: Yup.array()
-      .of(
-        Yup.object().shape({
-          rule: Yup.string().required("Rule is required"),
-          explanation: Yup.string().required("Explanation is required"),
-        })
-      )
-      .min(1, "At least one rule is required"),
+    text: Yup.string().required("Title is required"),
+    // description: Yup.string().required("Description is required"),
+    // rules: Yup.array()
+    //   .of(
+    //     Yup.object().shape({
+    //       rule: Yup.string().required("Rule is required"),
+    //       explanation: Yup.string().required("Explanation is required"),
+    //     })
+    //   )
+    //   .min(1, "At least one rule is required"),
   });
-
-  const initialValues = {
-    title: "",
-    description: "",
-    rules: [
-      {
-        rule: "",
-        explanation: "",
-      },
-    ],
-  };
 
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
-      if (!values.title || !values.description || !values.rules.length) {
-        showModal("Error", "Please fill all required fields", null, true);
-        return;
-      }
-
       const formData = {
         ...values,
         categoryId: rulesInfo?.categoryId,
@@ -72,7 +58,7 @@ const RulesRegulationsAdd = ({ showModal }) => {
             // await Api.post('/rules', formData);
 
             showModal(
-              "Success",
+              "",
               "Rules & Regulations have been added successfully!",
               () => {
                 navigate("/admin/consultant-management/category", {
@@ -112,22 +98,18 @@ const RulesRegulationsAdd = ({ showModal }) => {
           <Row className="mb-2 page-header">
             <Col xs={12} className="d-flex mb-4 mb-xl-4 gap-2">
               <BackButton2 />
-              <h2 className="mainTitle mb-0">
-                {rulesInfo?.title || "Add Rules & Regulations"}
-              </h2>
+              <h2 className="mainTitle mb-0">Add {rulesInfo?.title}</h2>
             </Col>
           </Row>
 
           {rulesInfo ? (
             <Formik
               initialValues={{
-                question: "",
                 text: "",
                 photo: "",
-                video: "",
                 answerType: [], // Array for selected checkboxes
               }}
-              // validationSchema={addFaqSchema}
+              validationSchema={validationSchema}
               onSubmit={handleSubmit}
             >
               {({
@@ -138,105 +120,69 @@ const RulesRegulationsAdd = ({ showModal }) => {
                 handleBlur,
                 setFieldValue,
               }) => (
-                <Form className="category-wrap">
-                  <div className="row mb-3">
-                    <div className="col-12">
-                      <label className="form-label fw-medium">Tutorial</label>
-                      <div className="d-flex gap-4 flex-wrap">
-                        {["Text", "Image", "Video"].map((opt) => (
-                          <div
-                            key={opt}
-                            className="form-check form-check-inline"
-                          >
-                            <Field
-                              name="answerType"
-                              type="checkbox"
-                              value={opt}
-                              className="form-check-input"
-                              id={`answer-${opt}`}
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor={`answer-${opt}`}
-                            >
-                              {opt}
-                            </label>
+                <Form>
+                  {/* {console.log(errors)} */}
+                  <Row>
+                    <Col xs={12} md={10} xl={8} xxl={7}>
+                      <Row>
+                        <Col md={9} xxl={8} className="detail-box mb-3">
+                          <label className="form-label fw-medium">Option</label>
+                          <div className="d-flex gap-4 flex-wrap">
+                            {["Text", "Image"].map((opt) => (
+                              <div
+                                key={opt}
+                                className="form-check form-check-inline"
+                              >
+                                <Field
+                                  name="answerType"
+                                  type="checkbox"
+                                  value={opt}
+                                  className="form-check-input"
+                                  id={`answer-${opt}`}
+                                />
+                                <label
+                                  className="form-check-label"
+                                  htmlFor={`answer-${opt}`}
+                                >
+                                  {opt}
+                                </label>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4 my-2">
-                      <CustomInput
-                        label="Text"
-                        type="text"
-                        required
-                        placeholder="Enter Text Answer"
-                        id="question"
-                        name="question"
-                        value={values.question}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        error={touched.question && errors.question}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Conditionally Show Text Field */}
-                  {values.answerType.includes("Text") && (
-                    <div className="row">
-                      <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4 my-2">
-                        <CustomInput
-                          label="Text"
-                          type="text"
-                          placeholder="Enter Text Answer"
-                          id="text"
-                          name="text"
-                          value={values.text}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          error={touched.text && errors.text}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  {/* Conditionally Show Image Upload */}
-                  {values.answerType.includes("Image") && (
-                    <div className="row mb-4">
-                      <label className="mainLabel ps-3">Image</label>
-                      <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                        <ImageUpload
-                          onChange={(file) => setFieldValue("photo", file)}
-                          numberOfFiles={1}
-                          errorFromParent={touched.photo && errors.photo}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  {/* Conditionally Show Video Upload */}
-                  {values.answerType.includes("Video") && (
-                    <div className="row">
-                      <div className="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                        <VideoUploader
-                          name="video"
-                          label="Video"
-                          onChange={handleChange}
-                          // onChange={(file) => setFieldValue("video", file)}
-                          errorFromParent={touched.video && errors.video}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  <div className="row">
-                    <div className="col-12 mt-3">
-                      <CustomButton
-                        variant="btn btn-primary min-width-180"
-                        text="Add"
-                        type="submit"
-                      />
-                    </div>
-                  </div>
+                        </Col>
+                        <Col md={9} xxl={8} className="detail-box mb-3">
+                          <CustomInput
+                            label="Text"
+                            type="textarea"
+                            rows={5}
+                            placeholder="Enter Text Answer"
+                            id="text"
+                            name="text"
+                            value={values.text}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            error={touched.text && errors.text}
+                          />
+                        </Col>
+                        <Col md={9} xxl={8} className="mb-3 rules-image-edit">
+                          <label className="mainLabel ps-3">Image</label>
+                          <ImageUpload
+                            onChange={(file) => setFieldValue("photo", file)}
+                            numberOfFiles={1}
+                            errorFromParent={touched.photo && errors.photo}
+                          />
+                        </Col>
+                        <Col xs={12}>
+                          <CustomButton
+                            variant="primary"
+                            className="min-width-180"
+                            text="Add"
+                            type="submit"
+                          />
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
                 </Form>
               )}
             </Formik>

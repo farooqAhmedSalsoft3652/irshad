@@ -57,15 +57,7 @@ const VideoVerification = () => {
             />
           </div>
           <p className="">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-            euismod bibendum laoreet. Proin gravida dolor sit amet lacus
-            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
-            Cum sociis natoque penatibus et magnis dis parturient montes,
-            nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra
-            vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget
-            odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus
-            accumsan et viverra justo commodo. Proin sodales pulvinar tempor.
+          The video verification quiz needs to be only an automated interview. First, we ensure that the users webcam and microphones are enabled. Once that setup is done, the user will be shown a question on the screen for 10 seconds and then they will be given 30 secs amount of time to record their answers on the same page itself. Once that question is recorded, the user can click “Next” to proceed to the next question and each time the user clicks Next, the recorded videos will be sent to then admin for each question separately and repeat the process. So, on the admin side, that particular user’s profile will be updated each time they click on the Next button with the recorded videos for the admin to approve. 
           </p>
           <Formik
             initialValues={initialValues}

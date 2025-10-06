@@ -61,6 +61,7 @@ const UserSignup = () => {
             handleSubmit,
             setFieldTouched,
             setFieldValue,
+            setFieldError,
           }) => (
             <form className="mt-3" onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -164,14 +165,30 @@ const UserSignup = () => {
                   {" "}
                   Contact Number<span className="text-danger">*</span>
                 </label>
-                <PhoneInput
-                  defaultCountry="US"
-                  placeholder="Enter Conatct Number"
-                  value={values.phone}
-                  onChange={(phone) => setFieldValue("phone", phone)}
-                  onBlur={() => setFieldTouched("phone", true)}
-                  className="form-control"
-                />
+                <div
+                  className={`phone-input-wrapper ${
+                    touched.phone && errors.phone ? "is-invalid" : ""
+                  }`}
+                >
+                  <PhoneInput
+                    defaultCountry="US"
+                    placeholder="Enter Contact Number"
+                    value={values.phone}
+                    onChange={(phone) => {
+                      setFieldValue("phone", phone);
+                      // Clear error when user starts typing a valid phone number
+                      if (phone && touched.phone) {
+                        // Check if it's a valid phone number (not just country code)
+                        const digitsOnly = phone.replace(/\D/g, "");
+                        if (digitsOnly.length >= 10) {
+                          setFieldError("phone", "");
+                        }
+                      }
+                    }}
+                    onBlur={() => setFieldTouched("phone", true)}
+                    className="form-control"
+                  />
+                </div>
                 {touched.phone && errors.phone ? (
                   <div className="error-message">
                     <p>{errors.phone}</p>

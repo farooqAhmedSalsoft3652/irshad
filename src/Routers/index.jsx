@@ -42,6 +42,7 @@ import ConsultantMeetingDocument from "../Pages/Admin/ConsultantManagement/Scree
 
 import ScreeningCategory from "../Pages/Admin/ConsultantManagement/Screening/ScreeningCategory";
 import TutorialAdd from "../Pages/Admin/ConsultantManagement/Screening/TutorialAdd";
+import TutorialView from "../Pages/Admin/ConsultantManagement/Screening/TutorialView";
 import TutorialEdit from "../Pages/Admin/ConsultantManagement/Screening/TutorialEdit";
 import ScreeningFinalReport from "../Pages/Admin/ConsultantManagement/Screening/ScreeningFinalReport";
 import ConsultantScreeningDetails from "../Pages/Admin/ConsultantManagement/Screening/ConsultantScreeningDetails";
@@ -316,7 +317,11 @@ const routes = [
             element: <TutorialAdd />,
           },
           {
-            path: "admin/consultant-management/edit-tutorial",
+            path: "admin/consultant-management/view-tutorial",
+            element: <TutorialView />,
+          },
+          {
+            path: "admin/consultant-management/edit-tutorial/:id",
             element: <TutorialEdit />,
           },
           {
@@ -573,7 +578,10 @@ const routes = [
             element: <CommissionManagement />,
           },
           { path: "admin/chat", element: <Chat /> },
-          { path: "admin/chat-announcement", element: <AdminChatAnnouncement /> },
+          {
+            path: "admin/chat-announcement",
+            element: <AdminChatAnnouncement />,
+          },
           { path: "admin/chat-reports", element: <AdminChatReports /> },
           { path: "admin/chat-contact-us", element: <AdminChatContactUs /> },
           { path: "admin/payout-management", element: <PayoutsManagement /> },

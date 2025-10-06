@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import BackButton2 from "../../../../Components/BackButton/BackButton2";
-import { DashboardLayout } from "../../../../Components/Layouts/AdminLayout/DashboardLayout";
+import { useState } from "react";
 import { Col, Row } from "react-bootstrap";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import BackButton2 from "../../../../Components/BackButton/BackButton2";
 import CustomButton from "../../../../Components/CustomButton";
-import { useLocation, useNavigate } from "react-router-dom";
+import { DashboardLayout } from "../../../../Components/Layouts/AdminLayout/DashboardLayout";
 
 const VideoVerificationQuizView = () => {
+  const { id } = useParams();
+
   const navigate = useNavigate();
   const location = useLocation();
   const [quizInfo, setQuizInfo] = useState(null);
 
   // Dummy data for view page
   const quizData = {
+    id: 1,
     comments:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. ",
     passingMarks: 1,
@@ -116,13 +119,22 @@ const VideoVerificationQuizView = () => {
                 </Row>
                 <Row>
                   <Col xs={12} xxl={8}>
-                    <div className="actions mt-4">
-                      <CustomButton
-                        variant="btn btn-primary min-width-180 me-2"
-                        text="Edit Quiz"
-                        onClick={() => navigate("../edit")}
-                      />
-                    </div>
+                    <CustomButton
+                      variant="primary"
+                      className="min-width-180"
+                      text="Edit"
+                      type="submit"
+                      onClick={() =>
+                        navigate(
+                          `/admin/consultant-management/edit-quiz/${quizData.id}`
+                        )
+                      }
+                    />
+                    {/* <CustomButton
+                      variant="btn btn-primary min-width-180 me-2"
+                      text="Edit Quiz"
+                      onClick={() => navigate("../edit")}
+                    /> */}
                   </Col>
                 </Row>
               </Col>

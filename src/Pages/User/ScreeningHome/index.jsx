@@ -2,12 +2,14 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { images } from "../../../Assets";
 import ApprovedBadge from "../../../Assets/images/approveBadge.png";
-import FinalApproval from "../../../Assets/images/svg/finalApproval.svg?react";
+import InitialSignup from "../../../Assets/images/svg/initialSignup.svg?react";
+import VideoVerification from "../../../Assets/images/svg/videVerification.svg?react";
 import MeetWithAdmin from "../../../Assets/images/svg/meetingWithAdmin.svg?react";
+import FinalApproval from "../../../Assets/images/svg/finalApproval.svg?react";
 import Rule_Regulations from "../../../Assets/images/svg/rulesAndRegulations.svg?react";
 import Tutorials from "../../../Assets/images/svg/tutorials.svg?react";
-import VideoVerification from "../../../Assets/images/svg/videVerification.svg?react";
 import WaitResult from "../../../Assets/images/svg/waitForResult.svg?react";
+import MakeDecision from "../../../Assets/images/svg/makeDecision.svg?react";
 import CustomButton from "../../../Components/CustomButton";
 import { useAuth } from "../../../Hooks/useAuth";
 import { usePageTitleUser } from "../../../Utils/helper";
@@ -20,42 +22,34 @@ const ScreeningHome = () => {
   const steps = [
     {
       id: 1,
-      title: "Video Verification",
+      title: "initial Sign-Up page application",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.",
       date: "20/02/2025",
       status: "open",
-      icon: <VideoVerification />,
+      icon: <InitialSignup />,
       cardBg: "#FEF7E6",
       approved: ApprovedBadge,
       link_path: "/video-verification",
     },
     {
       id: 2,
-      title: "Meeting With Admin",
+      title: "Video Verification",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      icon: <MeetWithAdmin />,
+      icon: <VideoVerification />,
       cardBg: "#EFF8F8",
-      link_path: "/meeting-admin",
+      link_path: "/video-verification ",
     },
     {
       id: 3,
-      title: "Rules & Regulation",
+      title: "Live meeting with the admin ",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      icon: <Rule_Regulations />,
+      icon: <MeetWithAdmin />,
       cardBg: "#F1FAEE",
-      link_path: "/rules-regulations",
+      link_path: "/meeting-admin",
     },
     {
       id: 4,
-      title: "Tutorials",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      icon: <Tutorials />,
-      cardBg: "#E1FFCA",
-      link_path: "/tutorials",
-    },
-    {
-      id: 5,
       title: "Final Approval",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       icon: <FinalApproval />,
@@ -64,13 +58,39 @@ const ScreeningHome = () => {
       link_path: "/final-quiz",
     },
     {
+      id: 5,
+      title: "Rules & Regulations",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      icon: <Rule_Regulations />,
+      highlight: true,
+      cardBg: "#EFF8F8",
+      link_path: "/rules-regulations",
+    },
+    {
       id: 6,
+      title: "Tutorials",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      icon: <Tutorials />,
+      cardBg: "#E1FFCA",
+      link_path: "/tutorials",
+    },
+    {
+      id: 7,
       title: "Wait For Result",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       icon: <WaitResult />,
+      cardBg: "#F1FAEE",
+      link_path: "",
+    },
+    {
+      id: 8,
+      title: "Make your decision ",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      icon: <MakeDecision />,
       cardBg: "rgba(21, 53, 94, 0.20)",
       link_path: "",
     },
+    // final-quiz
   ];
   return (
     <>
