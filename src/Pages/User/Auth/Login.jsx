@@ -12,8 +12,8 @@ const UserLogin = () => {
     <>
       <UserAuthLayout authTitle="Login" authMain authPara="" authLeftText="Your Journey to Emotional Wellness" dontHaveAcc>
         <LoginForm
-          // actor="user"
-          // apiEndpoint="/admin-api/auth/login"
+          actor="user"
+          apiEndpoint="/login"
           validationSchema={loginValidationSchema}
         />
       </UserAuthLayout>

@@ -160,14 +160,14 @@ export const forgotEmail = Yup.object().shape({
 export const forgotCode = Yup.object().shape({
   code: Yup.string()
     .required("Verification code is required")
-    .matches(/^\d{4}$/, "Verification code must be 4 digits"),
+    .matches(/^\d{6}$/, "Verification code must be 6 digits"),
 });
 
 export const forgotPassword = Yup.object().shape({
   password: Yup.string()
     // .min(8, 'Password must be at least 8 characters')
     .required("Password is required"),
-  password_confirmation: Yup.string()
+  confirm_password: Yup.string()
     .required("Confirm Password is required")
     .oneOf([Yup.ref("password"), null], "Confirm Password must match Password.")
     .label("Confirm Password"),
@@ -1651,7 +1651,7 @@ export const addProductSchema = Yup.object().shape({
 export const signUpUserValidationSchema = Yup.object().shape({
   first_name: Yup.string().required("First Name is required"),
   last_name: Yup.string().required("Last Name is required"),
-  languages: Yup.array()
+  language: Yup.array()
     .min(1, "At least one language is required")
     .required("Languages are required"),
   nationality: Yup.string().required("Nationality is required"),
@@ -1687,10 +1687,10 @@ export const signUpUserValidationSchema = Yup.object().shape({
   confirm_password: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirm Password is required"),
-  profile_pic: Yup.array()
+  profile_image: Yup.array()
     .min(1, "Profile Picture is required")
     .required("Profile Picture is required"),
-  cover_pic: Yup.array().min(0, "Cover Picture is required"),
+  cover_image: Yup.array().min(1, "Cover Picture is required").required("Cover Picture is required"),
   // cover_pic: Yup.array().min(1, "Cover Picture is required"),
   // .required("Cover Picture is required"),
 });

@@ -15,23 +15,19 @@ export const useLogin = () => {
 
   const login = async (route, params = {}) => {
     try {
-      const getRole = route.split("/")[1];
       const fd = new FormData();
       buildFormData(fd, params);
 
       const response = await axios.post(route, fd);
-      const {
-        data: {
-          detail: { token, role, user },
-          status,
-        },
-      } = response;
+      const responseData = response?.data?.data;
+
+      const { access_token, user } = responseData;
 
       // Update Redux state
-      dispatch(setToken(token));
-      dispatch(setRoles(role));
+      dispatch(setToken(access_token));
+      dispatch(setRoles(user?.role));
       dispatch(setData(user));
-      return status;
+      return response?.data?.status;
     } catch (error) {
       console.log('Error:', error.response ? error.response.data : error.message);
       return error.response ? error.response.data : { message: 'Unknown error occurred' };

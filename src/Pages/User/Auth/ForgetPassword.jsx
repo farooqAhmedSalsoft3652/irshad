@@ -11,7 +11,7 @@ const UserForgetPassword = () => {
       authMain
     >
       <StepOne
-        apiEndpoint="/admin-api/password-recovery/verify-email"
+        apiEndpoint="/forget-password"
         navigateTo="/forget-password2"
       />
     </UserAuthLayout>

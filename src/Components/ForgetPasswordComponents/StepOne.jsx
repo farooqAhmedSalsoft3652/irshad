@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { forgotEmail } from "../../Config/Validations";
 import { useFormStatus } from "../../Hooks/useFormStatus";
-import { usePageTitleUser } from "../../Utils/helper";
+import { setEmail, usePageTitleUser } from "../../Utils/helper";
 import CustomButton from "../CustomButton";
 import CustomInput from "../CustomInput";
-import Toast from "../Toast";
+import Toast, { showToast } from "../Toast";
 import "./style.css";
+import { post } from "../../Services/Api";
 
 const StepOne = ({ apiEndpoint, navigateTo }) => {
   const navigate = useNavigate();
@@ -15,20 +16,20 @@ const StepOne = ({ apiEndpoint, navigateTo }) => {
   usePageTitleUser("Forgot Password");
   const handleSubmit = async (values) => {
     startSubmitting();
-    setTimeout(() => {
-      navigate(navigateTo);
-    }, 1000);
-    // setEmail(values);
-    // let response = await post(apiEndpoint, values);
-    // if (response.status) {
-    //     showToast(response.message, "success");
     // setTimeout(() => {
-    //     navigate(navigateTo);
+    //   navigate(navigateTo);
     // }, 1000);
-    // } else {
-    //     stopSubmitting();
-    //     showToast(response?.errors?.email[0], "error")
-    // }
+    setEmail(values);
+    let response = await post(apiEndpoint, values);
+    if (response.status) {
+        showToast(response?.data?.message, "success");
+    setTimeout(() => {
+        navigate(navigateTo);
+    }, 1000);
+    } else {
+        stopSubmitting();
+        showToast("Email is invalid", "error")
+    }
     stopSubmitting();
   };
 

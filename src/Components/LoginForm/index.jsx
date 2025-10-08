@@ -12,12 +12,7 @@ import Toast, { showToast } from "../Toast/index.jsx";
 import "./style.css";
 import { Form } from "react-bootstrap";
 
-const LoginForm = ({
-  actor,
-  apiEndpoint,
-  validationSchema,
-  additionalField,
-}) => {
+const LoginForm = ({ actor, apiEndpoint, validationSchema, additionalField }) => {
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
   const login = useLogin();
@@ -27,47 +22,71 @@ const LoginForm = ({
 
   const handleSubmit = async (values) => {
     startSubmitting();
-    // let currentUser;
+    console.log("Login values:", values);
+    let response = await login(apiEndpoint, values); // open this whn using backend api
+    console.log("Login response:", response);
 
-    // currentUser =
-    //   loginCredentials.email == values.email && loginCredentials.password == values.password
-    //     ? (currentUser = loginCredentials)
-    //     : (currentUser = false);
-
-    const currentUser = loginCredentials.find(
-      (user) => user.email === values.email && user.password === values.password
-    );
-
-    // let response = await login(apiEndpoint, values); // open this whn using backend api
-    if (currentUser && currentUser.status) {
-      //remove all redux when using backend APIs
-      dispatch(setToken(currentUser.token));
-      dispatch(setRoles(currentUser.role));
-      dispatch(setData(currentUser));
-      showToast(currentUser.message, "success");
-
+    if (response) {
+      showToast("Login successful", "success");
       setTimeout(() => {
-        if (currentUser?.role === "admin") {
+        if (response?.data?.user?.role === "admin") {
           navigate(`/admin/dashboard`);
-        } else if (currentUser?.role === "provider") {
-          navigate(`/provider`);
+        } else if (response?.data?.user?.role === "user") {
+          navigate(`/`);
         } else {
           navigate(`/`); // Default fallback route
         }
       }, 1000);
-
-      // setTimeout(() => {
-      //   navigate(currentUser.role === "admin" ? `/admin/dashboard` : `/test`);
-      // }, 1000);
-
-      // setTimeout(() => {
-      //   navigate(`/admin/dashboard`);
-      // }, 1000);
     } else {
-      showToast(currentUser.message, "error");
+      showToast("Login failed", "error");
     }
+
     stopSubmitting();
   };
+
+  // const handleSubmit = async (values) => {
+  //   startSubmitting();
+  //   // let currentUser;
+
+  //   // currentUser =
+  //   //   loginCredentials.email == values.email && loginCredentials.password == values.password
+  //   //     ? (currentUser = loginCredentials)
+  //   //     : (currentUser = false);
+
+  //   const currentUser = loginCredentials.find(
+  //     (user) => user.email === values.email && user.password === values.password
+  //   );
+
+  //   // let response = await login(apiEndpoint, values); // open this whn using backend api
+  //   if (currentUser && currentUser.status) {
+  //     //remove all redux when using backend APIs
+  //     dispatch(setToken(currentUser.token));
+  //     dispatch(setRoles(currentUser.role));
+  //     dispatch(setData(currentUser));
+  //     showToast(currentUser.message, "success");
+
+  //     setTimeout(() => {
+  //       if (currentUser?.role === "admin") {
+  //         navigate(`/admin/dashboard`);
+  //       } else if (currentUser?.role === "provider") {
+  //         navigate(`/provider`);
+  //       } else {
+  //         navigate(`/`); // Default fallback route
+  //       }
+  //     }, 1000);
+
+  //     // setTimeout(() => {
+  //     //   navigate(currentUser.role === "admin" ? `/admin/dashboard` : `/test`);
+  //     // }, 1000);
+
+  //     // setTimeout(() => {
+  //     //   navigate(`/admin/dashboard`);
+  //     // }, 1000);
+  //   } else {
+  //     showToast(currentUser.message, "error");
+  //   }
+  //   stopSubmitting();
+  // };
 
   return (
     <Formik
@@ -79,28 +98,21 @@ const LoginForm = ({
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({
-        values,
-        errors,
-        touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-      }) => (
+      {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
         <form className="mt-3" onSubmit={handleSubmit}>
           <Toast />
           <div className="mb-3">
-          <CustomInput
-            label="Email Address"
-            id="email"
-            type="email"
-            required
-            placeholder="Enter Email Address"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.email && errors.email}
-          />
+            <CustomInput
+              label="Email Address"
+              id="email"
+              type="email"
+              required
+              placeholder="Enter Email Address"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={touched.email && errors.email}
+            />
           </div>
           <CustomInput
             label="Password"
@@ -120,28 +132,16 @@ const LoginForm = ({
               id="rememberMe"
               label={`Remember Me`}
             /> */}
-            <Link
-              to={`${actor ? "/" + actor : ""}/forget-password`}
-              className="fw-light"
-            >
-              <button
-                type="button"
-                className="notButton underlineOnHover blueColor text-decoration-underline fw-medium"
-              >
+            {/* <Link to={`${actor === "user" ? "/" + actor : ""}/forget-password`} className="fw-light"> */}
+            <Link to={`${actor !== "user" ? `/${actor}` : ""}/forget-password`} className="fw-light">
+              <button type="button" className="notButton underlineOnHover blueColor text-decoration-underline fw-medium">
                 Forgot Password?
               </button>
             </Link>
           </div>
 
           <div className="mt-5 text-center">
-            <CustomButton
-              variant="primary"
-              className="w-100"
-              text="Log In"
-              pendingText="Loading..."
-              isPending={isSubmitting}
-              type="submit"
-            />
+            <CustomButton variant="primary" className="w-100" text="Log In" pendingText="Loading..." isPending={isSubmitting} type="submit" />
           </div>
         </form>
       )}

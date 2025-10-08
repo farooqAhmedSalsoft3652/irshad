@@ -10,8 +10,8 @@ const UserForgetPassword2 = () => {
       authMain
     >
       <StepTwo
-        apiEndpoint="/admin-api/password-recovery/verify-code"
-        resendEndpoint="/admin-api/password-recovery/verify-email"
+        apiEndpoint="/verify-code"
+        resendEndpoint="/forget-password"
         navigateTo="/forget-password3"
       />
     </UserAuthLayout>

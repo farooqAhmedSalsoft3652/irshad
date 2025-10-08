@@ -4,12 +4,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { forgotPassword } from "../../Config/Validations";
 import { useFormStatus } from "../../Hooks/useFormStatus";
-import { usePageTitleUser } from "../../Utils/helper";
+import { getCode, getEmail, usePageTitleUser } from "../../Utils/helper";
 import CustomButton from "../CustomButton";
 import CustomInput from "../CustomInput";
 import CustomModal from "../CustomModal";
-import Toast from "../Toast";
+import Toast, { showToast } from "../Toast";
 import "./style.css";
+import { post } from "../../Services/Api";
 
 const StepThree = ({ apiEndpoint, navigateTo }) => {
   const navigate = useNavigate();
@@ -21,20 +22,20 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
 
   const handleSubmit = async (values) => { 
     startSubmitting();
-    // let email = getEmail();
-    // let code = getCode();
-    // values.code = code.code;
-    // values.email = email.email;
-    // let response = await post(apiEndpoint, values);
-    // if (response.status) {
-    //   setLoad(false);
-    //   showToast(response.message, "success");
-    //   setShowModal(true);
-    // } else {
-    //   stopSubmitting();
-    //   setLoad(false);
-    //   showToast(response.message, "error");
-    // }
+    let email = getEmail();
+    let code = getCode();
+    values.code = code.code;
+    values.email = email.email;
+    let response = await post(apiEndpoint, values);
+    if (response?.status) {
+      setLoad(false);
+      // showToast(response?.data?.message, "success");
+      setShowModal(true);
+    } else {
+      stopSubmitting();
+      setLoad(false);
+      showToast("Failed to update password", "error");
+    }
     setShowModal(true);
     stopSubmitting();
   };
@@ -48,7 +49,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
       <Formik
         initialValues={{
           password: "",
-          password_confirmation: "",
+          confirm_password: "",
         }}
         validationSchema={forgotPassword}
         onSubmit={handleSubmit}
@@ -68,6 +69,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
               id="password"
               type="password"
               required
+              inputclass="mb-3"
               placeholder="Enter New Password"
               labelclass="mainLabel"
               value={values.password}
@@ -78,16 +80,16 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
 
             <CustomInput
               label="Confirm Password"
-              id="password_confirmation"
+              id="confirm_password"
               type="password"
               required
               placeholder="Enter Confirm Password"
               labelclass="mainLabel"
-              value={values.password_confirmation}
+              value={values.confirm_password}
               onChange={handleChange}
               onBlur={handleBlur}
               error={
-                touched.password_confirmation && errors.password_confirmation
+                touched.confirm_password && errors.confirm_password
               }
             />
             <div className="mt-4 text-center">
@@ -108,7 +110,7 @@ const StepThree = ({ apiEndpoint, navigateTo }) => {
         close={() => setShowModal(false)}
         action={PageChange}
         success
-        btnText="Okay"
+        btnText="Ok"
         para="Your password has been updated. Please login to continue"
       />
     </>

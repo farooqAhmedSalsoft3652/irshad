@@ -10,7 +10,7 @@ const UserForgetPassword3 = () => {
       backOption={true}
     >
       <StepThree
-        apiEndpoint="/admin-api/password-recovery/update-password"
+        apiEndpoint="/set-password"
         navigateTo="/login"
       />
     </UserAuthLayout>

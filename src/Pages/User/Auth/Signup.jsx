@@ -26,10 +26,25 @@ const UserSignup = () => {
       label: option.text,
     }));
 
+  // const handleSubmit = async (values, { resetForm }) => {
+  //   console.log("registered", values);
+  //   resetForm();
+  //   navigate("/personal-details");
+  // };
+
   const handleSubmit = async (values, { resetForm }) => {
     console.log("registered", values);
+
+    // LocalStorage mein bhi save karein (optional)
+    localStorage.setItem("signupData", JSON.stringify(values));
+
+    navigate("/personal-details", {
+      state: {
+        formData: values,
+      },
+    });
+
     resetForm();
-    navigate("/personal-details");
   };
 
   return (
@@ -39,30 +54,20 @@ const UserSignup = () => {
           initialValues={{
             first_name: "",
             last_name: "",
-            languages: [], // Changed from language to languages (array)
+            language: [], // Changed from language to language (array)
             nationality: "",
             gender: "",
             phone: "",
             email: "",
             password: "",
             confirm_password: "",
-            profile_pic: [],
-            cover_pic: [],
+            profile_image: [],
+            cover_image: [],
           }}
           validationSchema={signUpUserValidationSchema}
           onSubmit={handleSubmit}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            setFieldTouched,
-            setFieldValue,
-            setFieldError,
-          }) => (
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue, setFieldError }) => (
             <form className="mt-3" onSubmit={handleSubmit}>
               <div className="mb-3">
                 <CustomInput
@@ -93,28 +98,28 @@ const UserSignup = () => {
                 />
               </div>
               <div className="inputWrapper position-relative mb-3">
-                <label htmlFor="languages" className="mainLabel">
-                  Languages<span className="text-danger">*</span>
+                <label htmlFor="language" className="mainLabel">
+                  language<span className="text-danger">*</span>
                 </label>
                 <ReactSelect
                   isMulti
-                  id="languages"
-                  name="languages"
+                  id="language"
+                  name="language"
                   className="multi-select"
                   classNamePrefix="select"
-                  value={values.languages}
+                  value={values.language}
                   onChange={(selectedOptions) => {
-                    setFieldValue("languages", selectedOptions);
+                    setFieldValue("language", selectedOptions);
                   }}
-                  onBlur={() => setFieldTouched("languages", true)}
+                  onBlur={() => setFieldTouched("language", true)}
                   isClearable={true}
                   isSearchable={true}
                   options={languageOptions}
-                  placeholder="Select Languages"
+                  placeholder="Select language"
                 />
-                {touched.languages && errors.languages && (
+                {touched.language && errors.language && (
                   <div className="error-message">
-                    <p>{errors.languages}</p>
+                    <p>{errors.language}</p>
                   </div>
                 )}
               </div>
@@ -142,9 +147,7 @@ const UserSignup = () => {
                   wrapperClass="d-block mb-3"
                   mainLabel="Select Gender"
                   value={values.gender}
-                  onChange={(value) =>
-                    handleChange({ target: { name: "gender", value } })
-                  } // Adapting to Formik
+                  onChange={(value) => handleChange({ target: { name: "gender", value } })} // Adapting to Formik
                   onBlur={handleBlur}
                   error={touched.gender && errors.gender}
                 >
@@ -165,11 +168,7 @@ const UserSignup = () => {
                   {" "}
                   Contact Number<span className="text-danger">*</span>
                 </label>
-                <div
-                  className={`phone-input-wrapper ${
-                    touched.phone && errors.phone ? "is-invalid" : ""
-                  }`}
-                >
+                <div className={`phone-input-wrapper ${touched.phone && errors.phone ? "is-invalid" : ""}`}>
                   <PhoneInput
                     defaultCountry="US"
                     placeholder="Enter Contact Number"
@@ -239,37 +238,31 @@ const UserSignup = () => {
               </div>
               <div className="image-upload-style-2 mb-3">
                 <ImageUpload
-                  id="profile_pic"
+                  id="profile_image"
                   label="Profile Picture"
                   placeholder="Upload Profile Picture"
-                  onChange={(files) => setFieldValue("profile_pic", files)}
+                  onChange={(files) => setFieldValue("profile_image", files)}
                   numberOfFiles={1}
                   required
-                  errorFromParent={touched.profile_pic && errors.profile_pic}
+                  errorFromParent={touched.profile_image && errors.profile_image}
                   className="image-upload-style-2"
                 />
               </div>
               <div className="image-upload-style-2">
                 <ImageUpload
-                  id="cover_pic"
+                  id="cover_image"
                   label="Cover Picture"
                   placeholder="Upload Cover Picture"
-                  onChange={(files) => setFieldValue("cover_pic", files)}
+                  onChange={(files) => setFieldValue("cover_image", files)}
                   numberOfFiles={1}
                   // required
-                  errorFromParent={touched.cover_pic && errors.cover_pic}
+                  errorFromParent={touched.cover_image && errors.cover_image}
                   className="image-upload-style-2"
                 />
               </div>
 
               <div className="mt-5 text-center">
-                <CustomButton
-                  variant="primary"
-                  className="w-100"
-                  text="Next"
-                  pendingText="Loading..."
-                  type="submit"
-                />
+                <CustomButton variant="primary" className="w-100" text="Next" pendingText="Loading..." type="submit" />
               </div>
 
               <p className="mt-4 mb-0 fw-medium text-center text-capitalize grayLightColor">
