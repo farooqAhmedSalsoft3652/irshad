@@ -8,20 +8,86 @@ import { usePageTitleUser } from "../../../Utils/helper";
 import ImageUpload from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 import { personalDetailsValidationSchema } from "../../../Config/Validations";
 import CustomButton from "../../../Components/CustomButton";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import CustomModal from "../../../Components/CustomModal";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import { Container, Row, Col } from "react-bootstrap";
+import { getAll, post } from "../../../Services/Api";
+import axios from "axios";
+import { showToast } from "../../../Components/Toast";
 
 const PersonalDetails = () => {
   const [modal, setModal] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
   usePageTitleUser("Personal Details");
+  const location = useLocation();
+
+  // Location state se data get karein
+  const signupData = location?.state?.formData;
+
+  console.log("Country Code:", signupData?.country_code);
+  console.log("Dial Code:", signupData?.dial_code);
+  console.log("Language:", signupData?.language);
+
+  const fetchCategories = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const result = await getAll("/categories");
+
+      if (result.status && result.data) {
+        setCategories(result.data); // Keep raw API data
+      } else {
+        setError("Categories not found");
+      }
+    } catch (err) {
+      console.error("Error fetching categories:", err);
+      setError("Failed to load categories");
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   const handleSubmit = async (values, { resetForm }) => {
-    // console.log("details", values);
-    resetForm();
-    setModal(true);
+    try {
+      const languageFields = {};
+      values.language.forEach((lang, index) => {
+        languageFields[`language[${index}]`] = lang.label; // or lang.value
+      });
+
+      const educationFields = {};
+      values.education.forEach((edu, eduIndex) => {
+        Object.entries(edu).forEach(([field, value]) => {
+          educationFields[`education[${eduIndex}][${field}]`] = value;
+        });
+      });
+
+      // Merge language fields with the rest of the values
+      const payload = {
+        ...values,
+        ...languageFields,
+        ...educationFields,
+      };
+
+      // Remove original array to avoid duplication
+      delete payload.language;
+      delete payload.education;
+      const response = await post("/consultant/signup", payload);
+      console.log("Signup successful:", response.data);
+      setModal(true);
+      resetForm();
+    } catch (error) {
+      console.error("Signup error:", error);
+      showToast(error.response?.data?.message || "Signup failed");
+    }
   };
   return (
     <section className={`user-login`}>
@@ -34,413 +100,100 @@ const PersonalDetails = () => {
                   <div className="authForm">
                     <div className="d-flex flex-wrap">
                       <BackButton2 />
-                      <h2 className="authTitle mb-0 mx-auto">
-                        Personal Details
-                      </h2>
+                      <h2 className="authTitle mb-0 mx-auto">Personal Details</h2>
                     </div>
                     <Formik
                       initialValues={{
+                        ...signupData,
                         about: "",
-                        category: "",
-                        educationDetails: [
+                        category_id: "",
+                        education: [
                           {
-                            institution_name: "",
+                            institute_name: "",
                             degree_title: "",
-                            edu_details_from: "",
-                            edu_details_to: "",
+                            from: "",
+                            to: "",
                           },
                         ],
-                        workExperience: [
+                        work_experience: [
                           {
                             organization_name: "",
                             designation: "",
-                            wokr_exp_from: "",
-                            wokr_exp_to: "",
+                            from: "",
+                            to: "",
                           },
                         ],
-                        certificationDetails: [
+                        certificates: [
                           {
-                            institution_name: "",
+                            institute_name: "",
                             certificate_title: "",
-                            certificate_pic: [],
+                            image: [],
                           },
                         ],
                       }}
                       validationSchema={personalDetailsValidationSchema}
                       onSubmit={handleSubmit}
                     >
-                      {({
-                        values,
-                        errors,
-                        touched,
-                        handleChange,
-                        handleBlur,
-                        handleSubmit,
-                        setFieldTouched,
-                        setFieldValue,
-                      }) => (
-                        <form className="mt-3" onSubmit={handleSubmit}>
-                          <div className="inputWrapper position-relative">
-                            <Select
-                              label="Select Category"
-                              labelclass="mainLabel"
-                              required
-                              id="category"
-                              name="category"
-                              wrapperClass="d-block mb-3"
-                              mainLabel="Select Category"
-                              value={values.category}
-                              onChange={(value) =>
-                                handleChange({
-                                  target: { name: "category", value },
-                                })
-                              } // Adapting to Formik
-                              onBlur={handleBlur}
-                              error={touched.category && errors.category}
-                            >
-                              {[
-                                {
-                                  value: "abc",
-                                  text: "abc",
-                                },
-                                {
-                                  value: "abc",
-                                  text: "abc",
-                                },
-                              ]}
-                            </Select>
-                          </div>
-                          <div className="mb-3">
-                            <CustomInput
-                              label="About Yourself"
-                              id="about"
-                              type="textarea"
-                              required
-                              placeholder="Add About Yourself"
-                              labelclass="mainLabel"
-                              value={values.about}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              error={touched.about && errors.about}
-                            />
-                          </div>
-                          <FieldArray name="educationDetails">
-                            {({ push, remove }) => (
-                              <>
-                                {values.educationDetails.map((edu, index) => (
-                                  <div key={index} className="mb-4">
-                                    <h3 className="fw-bold">
-                                      Educational Details {index + 1}
-                                    </h3>
-                                    {/* Delete button */}
-                                    {values.educationDetails.length > 1 && (
-                                      <div className="text-end">
-                                        <button
-                                          type="button"
-                                          className="bg-transparent border-0"
-                                          onClick={() => remove(index)}
-                                        >
-                                          <div className="d-flex align-items-center gap-1">
-                                            <span>
-                                              <DeleteIcon />
-                                            </span>
-                                            <span className="mt-1">Delete</span>
-                                          </div>
-                                        </button>
-                                      </div>
-                                    )}
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="Institution Name"
-                                        id={`educationDetails.${index}.institution_name`}
-                                        type="text"
-                                        required
-                                        placeholder="Enter Institution Name"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.educationDetails[index]
-                                            .institution_name
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.educationDetails &&
-                                          touched.educationDetails[index]
-                                            ?.institution_name &&
-                                          errors.educationDetails &&
-                                          errors.educationDetails[index]
-                                            ?.institution_name
-                                        }
-                                      />
-                                    </div>
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="Degree Title"
-                                        id={`educationDetails.${index}.degree_title`}
-                                        type="text"
-                                        required
-                                        placeholder="Enter Degree Title"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.educationDetails[index]
-                                            .degree_title
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.educationDetails &&
-                                          touched.educationDetails[index]
-                                            ?.degree_title &&
-                                          errors.educationDetails &&
-                                          errors.educationDetails[index]
-                                            ?.degree_title
-                                        }
-                                      />
-                                    </div>
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="From"
-                                        id={`educationDetails.${index}.edu_details_from`}
-                                        type="date"
-                                        required
-                                        placeholder="Enter Date"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.educationDetails[index]
-                                            .edu_details_from
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.educationDetails &&
-                                          touched.educationDetails[index]
-                                            ?.edu_details_from &&
-                                          errors.educationDetails &&
-                                          errors.educationDetails[index]
-                                            ?.edu_details_from
-                                        }
-                                      />
-                                    </div>
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="To"
-                                        id={`educationDetails.${index}.edu_details_to`}
-                                        type="date"
-                                        required
-                                        placeholder="Enter Date"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.educationDetails[index]
-                                            .edu_details_to
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.educationDetails &&
-                                          touched.educationDetails[index]
-                                            ?.edu_details_to &&
-                                          errors.educationDetails &&
-                                          errors.educationDetails[index]
-                                            ?.edu_details_to
-                                        }
-                                      />
-                                    </div>
-                                  </div>
+                      {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldTouched, setFieldValue }) => (
+                        console.log(errors, "errors"),
+                        (
+                          <form className="mt-3" onSubmit={handleSubmit}>
+                            <div className="inputWrapper position-relative mb-3">
+                              <label className="mainLabel">
+                                Select Category <span className="text-danger">*</span>
+                              </label>
+                              <select
+                                id="category_id"
+                                name="category_id"
+                                className="d-block form-select"
+                                value={values.category_id}
+                                onChange={(
+                                  event // event parameter receive karein
+                                ) =>
+                                  handleChange({
+                                    target: { name: "category_id", value: event.target.value }, // event.target.value use karein
+                                  })
+                                }
+                                onBlur={handleBlur}
+                              >
+                                <option value="">Select Category</option>
+                                {categories?.map((category_id) => (
+                                  <option key={category_id.id} value={category_id.id}>
+                                    {category_id.name}
+                                  </option>
                                 ))}
-                                {/* Add More button */}
-                                <button
-                                  type="button"
-                                  className="bg-transparent border-0"
-                                  onClick={() =>
-                                    push({
-                                      institution_name: "",
-                                      degree_title: "",
-                                      edu_details_from: "",
-                                      edu_details_to: "",
-                                    })
-                                  }
-                                >
-                                  <div className="d-flex align-items-center gap-1">
-                                    <span>
-                                      <AddIcon />
-                                    </span>
-                                    <span className="mt-1">Add More</span>
-                                  </div>
-                                </button>
-                              </>
-                            )}
-                          </FieldArray>
-                          <FieldArray name="workExperience">
-                            {({ push, remove }) => (
-                              <>
-                                {values.workExperience.map((edu, index) => (
-                                  <div key={index} className="mb-4 mt-4">
-                                    <h3 className="fw-bold">
-                                      Work Experience {index + 1}
-                                    </h3>
-                                    {/* Delete button */}
-                                    {values.workExperience.length > 1 && (
-                                      <div className="text-end">
-                                        <button
-                                          type="button"
-                                          className="bg-transparent border-0"
-                                          onClick={() => remove(index)}
-                                        >
-                                          <div className="d-flex align-items-center gap-1">
-                                            <span>
-                                              <DeleteIcon />
-                                            </span>
-                                            <span className="mt-1">Delete</span>
-                                          </div>
-                                        </button>
-                                      </div>
-                                    )}
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="Organization Name"
-                                        id={`workExperience.${index}.organization_name`}
-                                        type="text"
-                                        required
-                                        placeholder="Enter Organization Name"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.workExperience[index]
-                                            .organization_name
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.workExperience &&
-                                          touched.workExperience[index]
-                                            ?.organization_name &&
-                                          errors.workExperience &&
-                                          errors.workExperience[index]
-                                            ?.organization_name
-                                        }
-                                      />
-                                    </div>
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="Designation"
-                                        id={`workExperience.${index}.designation`}
-                                        type="text"
-                                        required
-                                        placeholder="Enter Designation"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.workExperience[index]
-                                            .designation
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.workExperience &&
-                                          touched.workExperience[index]
-                                            ?.designation &&
-                                          errors.workExperience &&
-                                          errors.workExperience[index]
-                                            ?.designation
-                                        }
-                                      />
-                                    </div>
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="From"
-                                        id={`workExperience.${index}.wokr_exp_from`}
-                                        type="date"
-                                        required
-                                        placeholder="Enter Date"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.workExperience[index]
-                                            .wokr_exp_from
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.workExperience &&
-                                          touched.workExperience[index]
-                                            ?.wokr_exp_from &&
-                                          errors.workExperience &&
-                                          errors.workExperience[index]
-                                            ?.wokr_exp_from
-                                        }
-                                      />
-                                    </div>
-                                    <div className="mb-3">
-                                      <CustomInput
-                                        label="To"
-                                        id={`workExperience.${index}.wokr_exp_to`}
-                                        type="date"
-                                        required
-                                        placeholder="Enter Date"
-                                        labelclass="mainLabel"
-                                        value={
-                                          values.workExperience[index]
-                                            .wokr_exp_to
-                                        }
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        error={
-                                          touched.workExperience &&
-                                          touched.workExperience[index]
-                                            ?.wokr_exp_to &&
-                                          errors.workExperience &&
-                                          errors.workExperience[index]
-                                            ?.wokr_exp_to
-                                        }
-                                      />
-                                    </div>
-                                  </div>
-                                ))}
-                                {/* Add More button */}
-                                <button
-                                  type="button"
-                                  className="bg-transparent border-0"
-                                  onClick={() =>
-                                    push({
-                                      organization_name: "",
-                                      designation: "",
-                                      wokr_exp_from: "",
-                                      wokr_exp_to: "",
-                                    })
-                                  }
-                                >
-                                  <div className="d-flex align-items-center gap-1">
-                                    <span>
-                                      <AddIcon />
-                                    </span>
-                                    <span className="mt-1">Add More</span>
-                                  </div>
-                                </button>
-                              </>
-                            )}
-                          </FieldArray>
-                          <FieldArray name="certificationDetails">
-                            {({ push, remove }) => (
-                              <>
-                                {values.certificationDetails.map(
-                                  (edu, index) => (
-                                    <div key={index} className="mb-4 mt-4">
-                                      <h3 className="fw-bold">
-                                        Certification Detail {index + 1}
-                                      </h3>
+                              </select>
+                              {touched.category && errors.category && <p className="red-text">{errors.category}</p>}
+                            </div>
+                            <div className="mb-3">
+                              <CustomInput
+                                label="About Yourself"
+                                id="about"
+                                type="textarea"
+                                required
+                                placeholder="Add About Yourself"
+                                labelclass="mainLabel"
+                                value={values.about}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.about && errors.about}
+                              />
+                            </div>
+                            <FieldArray name="education">
+                              {({ push, remove }) => (
+                                <>
+                                  {values.education.map((edu, index) => (
+                                    <div key={index} className="mb-4">
+                                      <h3 className="fw-bold">Educational Details {index + 1}</h3>
                                       {/* Delete button */}
-                                      {values.certificationDetails.length >
-                                        1 && (
+                                      {values.education.length > 1 && (
                                         <div className="text-end">
-                                          <button
-                                            type="button"
-                                            className="bg-transparent border-0"
-                                            onClick={() => remove(index)}
-                                          >
+                                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
                                             <div className="d-flex align-items-center gap-1">
                                               <span>
                                                 <DeleteIcon />
                                               </span>
-                                              <span className="mt-1">
-                                                Delete
-                                              </span>
+                                              <span className="mt-1">Delete</span>
                                             </div>
                                           </button>
                                         </div>
@@ -448,116 +201,321 @@ const PersonalDetails = () => {
                                       <div className="mb-3">
                                         <CustomInput
                                           label="Institution Name"
-                                          id={`certificationDetails.${index}.institution_name`}
+                                          id={`education.${index}.institute_name`}
                                           type="text"
                                           required
                                           placeholder="Enter Institution Name"
                                           labelclass="mainLabel"
-                                          value={
-                                            values.certificationDetails[index]
-                                              .institution_name
-                                          }
+                                          value={values.education[index].institute_name}
                                           onChange={handleChange}
                                           onBlur={handleBlur}
                                           error={
-                                            touched.certificationDetails &&
-                                            touched.certificationDetails[index]
-                                              ?.institution_name &&
-                                            errors.certificationDetails &&
-                                            errors.certificationDetails[index]
-                                              ?.institution_name
+                                            touched.education &&
+                                            touched.education[index]?.institute_name &&
+                                            errors.education &&
+                                            errors.education[index]?.institute_name
+                                          }
+                                        />
+                                      </div>
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="Degree Title"
+                                          id={`education.${index}.degree_title`}
+                                          type="text"
+                                          required
+                                          placeholder="Enter Degree Title"
+                                          labelclass="mainLabel"
+                                          value={values.education[index].degree_title}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={
+                                            touched.education &&
+                                            touched.education[index]?.degree_title &&
+                                            errors.education &&
+                                            errors.education[index]?.degree_title
+                                          }
+                                        />
+                                      </div>
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="From"
+                                          id={`education.${index}.from`}
+                                          type="date"
+                                          required
+                                          placeholder="Enter Date"
+                                          labelclass="mainLabel"
+                                          value={values.education[index].from}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={touched.education && touched.education[index]?.from && errors.education && errors.education[index]?.from}
+                                        />
+                                      </div>
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="To"
+                                          id={`education.${index}.to`}
+                                          type="date"
+                                          required
+                                          placeholder="Enter Date"
+                                          labelclass="mainLabel"
+                                          value={values.education[index].to}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={touched.education && touched.education[index]?.to && errors.education && errors.education[index]?.to}
+                                        />
+                                      </div>
+                                    </div>
+                                  ))}
+                                  {/* Add More button */}
+                                  <button
+                                    type="button"
+                                    className="bg-transparent border-0"
+                                    onClick={() =>
+                                      push({
+                                        institute_name: "",
+                                        degree_title: "",
+                                        from: "",
+                                        to: "",
+                                      })
+                                    }
+                                  >
+                                    <div className="d-flex align-items-center gap-1">
+                                      <span>
+                                        <AddIcon />
+                                      </span>
+                                      <span className="mt-1">Add More</span>
+                                    </div>
+                                  </button>
+                                </>
+                              )}
+                            </FieldArray>
+                            <FieldArray name="work_experience">
+                              {({ push, remove }) => (
+                                <>
+                                  {values.work_experience.map((edu, index) => (
+                                    <div key={index} className="mb-4 mt-4">
+                                      <h3 className="fw-bold">Work Experience {index + 1}</h3>
+                                      {/* Delete button */}
+                                      {values.work_experience.length > 1 && (
+                                        <div className="text-end">
+                                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                                            <div className="d-flex align-items-center gap-1">
+                                              <span>
+                                                <DeleteIcon />
+                                              </span>
+                                              <span className="mt-1">Delete</span>
+                                            </div>
+                                          </button>
+                                        </div>
+                                      )}
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="Organization Name"
+                                          id={`work_experience.${index}.organization_name`}
+                                          type="text"
+                                          required
+                                          placeholder="Enter Organization Name"
+                                          labelclass="mainLabel"
+                                          value={values.work_experience[index].organization_name}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={
+                                            touched.work_experience &&
+                                            touched.work_experience[index]?.organization_name &&
+                                            errors.work_experience &&
+                                            errors.work_experience[index]?.organization_name
+                                          }
+                                        />
+                                      </div>
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="Designation"
+                                          id={`work_experience.${index}.designation`}
+                                          type="text"
+                                          required
+                                          placeholder="Enter Designation"
+                                          labelclass="mainLabel"
+                                          value={values.work_experience[index].designation}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={
+                                            touched.work_experience &&
+                                            touched.work_experience[index]?.designation &&
+                                            errors.work_experience &&
+                                            errors.work_experience[index]?.designation
+                                          }
+                                        />
+                                      </div>
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="From"
+                                          id={`work_experience.${index}.from`}
+                                          type="date"
+                                          required
+                                          placeholder="Enter Date"
+                                          labelclass="mainLabel"
+                                          value={values.work_experience[index].from}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={
+                                            touched.work_experience &&
+                                            touched.work_experience[index]?.from &&
+                                            errors.work_experience &&
+                                            errors.work_experience[index]?.from
+                                          }
+                                        />
+                                      </div>
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="To"
+                                          id={`work_experience.${index}.to`}
+                                          type="date"
+                                          required
+                                          placeholder="Enter Date"
+                                          labelclass="mainLabel"
+                                          value={values.work_experience[index].to}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={
+                                            touched.work_experience &&
+                                            touched.work_experience[index]?.to &&
+                                            errors.work_experience &&
+                                            errors.work_experience[index]?.to
+                                          }
+                                        />
+                                      </div>
+                                    </div>
+                                  ))}
+                                  {/* Add More button */}
+                                  <button
+                                    type="button"
+                                    className="bg-transparent border-0"
+                                    onClick={() =>
+                                      push({
+                                        organization_name: "",
+                                        designation: "",
+                                        from: "",
+                                        to: "",
+                                      })
+                                    }
+                                  >
+                                    <div className="d-flex align-items-center gap-1">
+                                      <span>
+                                        <AddIcon />
+                                      </span>
+                                      <span className="mt-1">Add More</span>
+                                    </div>
+                                  </button>
+                                </>
+                              )}
+                            </FieldArray>
+                            <FieldArray name="certificates">
+                              {({ push, remove }) => (
+                                <>
+                                  {values.certificates.map((edu, index) => (
+                                    <div key={index} className="mb-4 mt-4">
+                                      <h3 className="fw-bold">Certification Detail {index + 1}</h3>
+                                      {/* Delete button */}
+                                      {values.certificates.length > 1 && (
+                                        <div className="text-end">
+                                          <button type="button" className="bg-transparent border-0" onClick={() => remove(index)}>
+                                            <div className="d-flex align-items-center gap-1">
+                                              <span>
+                                                <DeleteIcon />
+                                              </span>
+                                              <span className="mt-1">Delete</span>
+                                            </div>
+                                          </button>
+                                        </div>
+                                      )}
+                                      <div className="mb-3">
+                                        <CustomInput
+                                          label="Institution Name"
+                                          id={`certificates.${index}.institute_name`}
+                                          type="text"
+                                          required
+                                          placeholder="Enter Institution Name"
+                                          labelclass="mainLabel"
+                                          value={values.certificates[index].institute_name}
+                                          onChange={handleChange}
+                                          onBlur={handleBlur}
+                                          error={
+                                            touched.certificates &&
+                                            touched.certificates[index]?.institute_name &&
+                                            errors.certificates &&
+                                            errors.certificates[index]?.institute_name
                                           }
                                         />
                                       </div>
                                       <div className="mb-3">
                                         <CustomInput
                                           label="Certificate Title"
-                                          id={`certificationDetails.${index}.certificate_title`}
+                                          id={`certificates.${index}.certificate_title`}
                                           type="text"
                                           required
                                           placeholder="Enter Certificate Title"
                                           labelclass="mainLabel"
-                                          value={
-                                            values.certificationDetails[index]
-                                              .certificate_title
-                                          }
+                                          value={values.certificates[index].certificate_title}
                                           onChange={handleChange}
                                           onBlur={handleBlur}
                                           error={
-                                            touched.certificationDetails &&
-                                            touched.certificationDetails[index]
-                                              ?.certificate_title &&
-                                            errors.certificationDetails &&
-                                            errors.certificationDetails[index]
-                                              ?.certificate_title
+                                            touched.certificates &&
+                                            touched.certificates[index]?.certificate_title &&
+                                            errors.certificates &&
+                                            errors.certificates[index]?.certificate_title
                                           }
                                         />
                                       </div>
                                       <div className="image-upload-style-2 mt-3">
                                         <ImageUpload
-                                          id={`certificationDetails.${index}.certificate_pic`}
+                                          id={`certificates.${index}.image`}
                                           placeholder="Upload Certificate Picture"
                                           label={`Certificate Picture`}
-                                          onChange={(files) =>
-                                            setFieldValue(
-                                              `certificationDetails.${index}.certificate_pic`,
-                                              files
-                                            )
-                                          }
+                                          onChange={(files) => setFieldValue(`certificates.${index}.image`, files)}
                                           numberOfFiles={1}
                                           errorFromParent={
-                                            touched.certificationDetails &&
-                                            touched.certificationDetails[index]
-                                              ?.certificate_pic &&
-                                            errors.certificationDetails &&
-                                            errors.certificationDetails[index]
-                                              ?.certificate_pic
+                                            touched.certificates &&
+                                            touched.certificates[index]?.image &&
+                                            errors.certificates &&
+                                            errors.certificates[index]?.image
                                           }
                                           className="image-upload-style-2"
                                           required
                                         />
                                       </div>
                                     </div>
-                                  )
-                                )}
-                                {/* Add More button */}
-                                <button
-                                  type="button"
-                                  className="bg-transparent border-0"
-                                  onClick={() =>
-                                    push({
-                                      institution_name: "",
-                                      degree_title: "",
-                                      certificate_pic: [],
-                                    })
-                                  }
-                                >
-                                  <div className="d-flex align-items-center gap-1">
-                                    <span>
-                                      <AddIcon />
-                                    </span>
-                                    <span className="mt-1">Add More</span>
-                                  </div>
-                                </button>
-                              </>
-                            )}
-                          </FieldArray>
-                          <CustomButton
-                            variant="primary"
-                            className="w-100 mt-4"
-                            text="Signup"
-                            type="submit"
-                          />
-                          <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">
-                            Already have an account?
-                            <Link
-                              to={"/login"}
-                              className="underlineOnHover text-dark ps-1"
-                            >
-                              Login
-                            </Link>
-                          </p>
-                        </form>
+                                  ))}
+                                  {/* Add More button */}
+                                  <button
+                                    type="button"
+                                    className="bg-transparent border-0"
+                                    onClick={() =>
+                                      push({
+                                        institute_name: "",
+                                        degree_title: "",
+                                        image: [],
+                                      })
+                                    }
+                                  >
+                                    <div className="d-flex align-items-center gap-1">
+                                      <span>
+                                        <AddIcon />
+                                      </span>
+                                      <span className="mt-1">Add More</span>
+                                    </div>
+                                  </button>
+                                </>
+                              )}
+                            </FieldArray>
+                            <CustomButton variant="primary" className="w-100 mt-4" text="Signup" type="submit" />
+                            <p className="mt-4 fw-medium text-center text-capitalize grayLightColor">
+                              Already have an account?
+                              <Link to={"/login"} className="underlineOnHover text-dark ps-1">
+                                Login
+                              </Link>
+                            </p>
+                          </form>
+                        )
                       )}
                     </Formik>
                   </div>
@@ -571,12 +529,12 @@ const PersonalDetails = () => {
         show={modal}
         action={() => {
           setModal(false);
-          navigate("/screening");
+          // navigate("/screening");
         }}
         close={() => setModal(false)}
         success
         para="Profile has been created successfully. Please wait for the admin approval."
-        btnText="Okay"
+        btnText="Ok"
       />
     </section>
   );

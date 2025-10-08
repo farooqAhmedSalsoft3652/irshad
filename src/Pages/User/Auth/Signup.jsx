@@ -35,12 +35,19 @@ const UserSignup = () => {
   const handleSubmit = async (values, { resetForm }) => {
     console.log("registered", values);
 
+    // Extract additional data that's not in form values
+    const formDataWithExtras = {
+      ...values,
+      country_code: values.country_code || "", // Ensure these exist
+      dial_code: values.dial_code || "",
+    };
+
     // LocalStorage mein bhi save karein (optional)
-    localStorage.setItem("signupData", JSON.stringify(values));
+    localStorage.setItem("signupData", JSON.stringify(formDataWithExtras));
 
     navigate("/personal-details", {
       state: {
-        formData: values,
+        formData: formDataWithExtras, // ✅ Now all data will be passed
       },
     });
 
@@ -170,21 +177,241 @@ const UserSignup = () => {
                 </label>
                 <div className={`phone-input-wrapper ${touched.phone && errors.phone ? "is-invalid" : ""}`}>
                   <PhoneInput
+                    international
                     defaultCountry="US"
                     placeholder="Enter Contact Number"
                     value={values.phone}
                     onChange={(phone) => {
+                      console.log("📞 Phone Input:", phone);
                       setFieldValue("phone", phone);
-                      // Clear error when user starts typing a valid phone number
+
+                      // Simple and reliable extraction
+                      if (phone && phone.startsWith("+")) {
+                        const dialCodeMatch = phone.match(/^\+\d+/);
+                        if (dialCodeMatch) {
+                          const dial_code = dialCodeMatch[0];
+
+                          // Expanded country mapping
+                          const countryMap = {
+                            "+1": "US",
+                            "+1": "CA",
+                            "+1": "PR", // North America
+                            "+44": "GB",
+                            "+33": "FR",
+                            "+49": "DE",
+                            "+39": "IT",
+                            "+34": "ES",
+                            "+31": "NL",
+                            "+32": "BE",
+                            "+41": "CH",
+                            "+43": "AT",
+                            "+46": "SE",
+                            "+45": "DK",
+                            "+47": "NO",
+                            "+358": "FI",
+                            "+353": "IE",
+                            "+351": "PT",
+                            "+30": "GR",
+                            "+48": "PL",
+                            "+36": "HU",
+                            "+40": "RO",
+                            "+420": "CZ",
+                            "+421": "SK",
+                            "+385": "HR",
+                            "+386": "SI",
+                            "+387": "BA",
+                            "+389": "MK",
+                            "+370": "LT",
+                            "+371": "LV",
+                            "+372": "EE",
+                            "+373": "MD",
+                            "+374": "AM",
+                            "+375": "BY",
+                            "+376": "AD",
+                            "+377": "MC",
+                            "+378": "SM",
+                            "+379": "VA",
+                            "+380": "UA",
+                            "+381": "RS",
+                            "+382": "ME",
+                            "+383": "XK",
+                            "+385": "HR",
+                            "+386": "SI",
+                            "+387": "BA",
+                            "+389": "MK",
+                            "+7": "RU",
+                            "+7": "KZ", // Russia & Kazakhstan
+                            "+20": "EG",
+                            "+212": "MA",
+                            "+213": "DZ",
+                            "+216": "TN",
+                            "+218": "LY",
+                            "+220": "GM",
+                            "+221": "SN",
+                            "+222": "MR",
+                            "+223": "ML",
+                            "+224": "GN",
+                            "+225": "CI",
+                            "+226": "BF",
+                            "+227": "NE",
+                            "+228": "TG",
+                            "+229": "BJ",
+                            "+230": "MU",
+                            "+231": "LR",
+                            "+232": "SL",
+                            "+233": "GH",
+                            "+234": "NG",
+                            "+235": "TD",
+                            "+236": "CF",
+                            "+237": "CM",
+                            "+238": "CV",
+                            "+239": "ST",
+                            "+240": "GQ",
+                            "+241": "GA",
+                            "+242": "CG",
+                            "+243": "CD",
+                            "+244": "AO",
+                            "+245": "GW",
+                            "+246": "IO",
+                            "+247": "AC",
+                            "+248": "SC",
+                            "+249": "SD",
+                            "+250": "RW",
+                            "+251": "ET",
+                            "+252": "SO",
+                            "+253": "DJ",
+                            "+254": "KE",
+                            "+255": "TZ",
+                            "+256": "UG",
+                            "+257": "BI",
+                            "+258": "MZ",
+                            "+260": "ZM",
+                            "+261": "MG",
+                            "+262": "RE",
+                            "+263": "ZW",
+                            "+264": "NA",
+                            "+265": "MW",
+                            "+266": "LS",
+                            "+267": "BW",
+                            "+268": "SZ",
+                            "+269": "KM",
+                            "+27": "ZA",
+                            "+30": "GR",
+                            "+31": "NL",
+                            "+32": "BE",
+                            "+33": "FR",
+                            "+34": "ES",
+                            "+36": "HU",
+                            "+39": "IT",
+                            "+40": "RO",
+                            "+41": "CH",
+                            "+43": "AT",
+                            "+44": "GB",
+                            "+45": "DK",
+                            "+46": "SE",
+                            "+47": "NO",
+                            "+48": "PL",
+                            "+49": "DE",
+                            "+51": "PE",
+                            "+52": "MX",
+                            "+53": "CU",
+                            "+54": "AR",
+                            "+55": "BR",
+                            "+56": "CL",
+                            "+57": "CO",
+                            "+58": "VE",
+                            "+59": "GY",
+                            "+501": "BZ",
+                            "+502": "GT",
+                            "+503": "SV",
+                            "+504": "HN",
+                            "+505": "NI",
+                            "+506": "CR",
+                            "+507": "PA",
+                            "+508": "PM",
+                            "+509": "HT",
+                            "+590": "GP",
+                            "+591": "BO",
+                            "+592": "GY",
+                            "+593": "EC",
+                            "+594": "GF",
+                            "+595": "PY",
+                            "+596": "MQ",
+                            "+597": "SR",
+                            "+598": "UY",
+                            "+599": "CW",
+                            "+60": "MY",
+                            "+61": "AU",
+                            "+62": "ID",
+                            "+63": "PH",
+                            "+64": "NZ",
+                            "+65": "SG",
+                            "+66": "TH",
+                            "+81": "JP",
+                            "+82": "KR",
+                            "+84": "VN",
+                            "+86": "CN",
+                            "+90": "TR",
+                            "+91": "IN",
+                            "+92": "PK",
+                            "+93": "AF",
+                            "+94": "LK",
+                            "+95": "MM",
+                            "+98": "IR",
+                            "+960": "MV",
+                            "+961": "LB",
+                            "+962": "JO",
+                            "+963": "SY",
+                            "+964": "IQ",
+                            "+965": "KW",
+                            "+966": "SA",
+                            "+967": "YE",
+                            "+968": "OM",
+                            "+970": "PS",
+                            "+971": "AE",
+                            "+972": "IL",
+                            "+973": "BH",
+                            "+974": "QA",
+                            "+975": "BT",
+                            "+976": "MN",
+                            "+977": "NP",
+                            "+992": "TJ",
+                            "+993": "TM",
+                            "+994": "AZ",
+                            "+995": "GE",
+                            "+996": "KG",
+                            "+998": "UZ",
+                          };
+
+                          const country_code = countryMap[dial_code] || "US";
+
+                          console.log("✅ Extracted - Dial Code:", dial_code, "Country:", country_code);
+
+                          setFieldValue("country_code", country_code);
+                          setFieldValue("dial_code", dial_code);
+                        }
+                      } else {
+                        // Clear values if no phone number
+                        setFieldValue("country_code", "");
+                        setFieldValue("dial_code", "");
+                      }
+
+                      // Error clear logic
                       if (phone && touched.phone) {
-                        // Check if it's a valid phone number (not just country code)
                         const digitsOnly = phone.replace(/\D/g, "");
                         if (digitsOnly.length >= 10) {
                           setFieldError("phone", "");
                         }
                       }
                     }}
-                    onBlur={() => setFieldTouched("phone", true)}
+                    onBlur={() => {
+                      setFieldTouched("phone", true);
+                      console.log("📋 Final Form Values:", {
+                        phone: values.phone,
+                        country_code: values.country_code,
+                        dial_code: values.dial_code,
+                      });
+                    }}
                     className="form-control"
                   />
                 </div>

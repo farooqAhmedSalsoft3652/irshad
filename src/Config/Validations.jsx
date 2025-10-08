@@ -1697,44 +1697,44 @@ export const signUpUserValidationSchema = Yup.object().shape({
 
 export const personalDetailsValidationSchema = Yup.object().shape({
   about: Yup.string().required("About is required"),
-  category: Yup.string().required("Category is required"),
+  category_id: Yup.string().required("Category is required"),
 
-  educationDetails: Yup.array().of(
+  education: Yup.array().of(
     Yup.object().shape({
-      institution_name: Yup.string().required("Institution Name is required"),
+      institute_name: Yup.string().required("Institution Name is required"),
       degree_title: Yup.string().required("Degree Title is required"),
-      edu_details_from: Yup.date()
+      from: Yup.date()
         .required("Start date is required")
         .typeError("Invalid date"),
-      edu_details_to: Yup.date()
+      to: Yup.date()
         .required("End date is required")
-        .typeError("Invalid date")
-        .min(
-          Yup.ref("edu_details_from"),
-          "End date can't be before start date"
-        ),
+        // .typeError("Invalid date")
+        // .min(
+        //   Yup.ref("from"),
+        //   "End date can't be before start date"
+        // ),
     })
   ),
 
-  workExperience: Yup.array().of(
+  work_experience: Yup.array().of(
     Yup.object().shape({
       organization_name: Yup.string().required("Organization Name is required"),
       designation: Yup.string().required("Designation is required"),
-      wokr_exp_from: Yup.date()
+      from: Yup.date()
         .required("Start date is required")
         .typeError("Invalid date"),
-      wokr_exp_to: Yup.date()
+      to: Yup.date()
         .required("End date is required")
-        .typeError("Invalid date")
-        .min(Yup.ref("wokr_exp_from"), "End date can't be before start date"),
+        // .typeError("Invalid date")
+        // .min(Yup.ref("from"), "End date can't be before start date"),
     })
   ),
 
-  certificationDetails: Yup.array().of(
+  certificates: Yup.array().of(
     Yup.object().shape({
-      institution_name: Yup.string().required("Institution Name is required"),
+      institute_name: Yup.string().required("Institution Name is required"),
       certificate_title: Yup.string().required("Certificate Title is required"),
-      certificate_pic: Yup.mixed().test(
+      image: Yup.mixed().test(
         "fileRequired",
         "Certificate Picture is required",
         (value) => value && value.length > 0
