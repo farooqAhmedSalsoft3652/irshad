@@ -1,21 +1,18 @@
 import { FieldArray, Formik } from "formik";
-import { UserAuthLayout } from "../../../Components/Layouts/UserLayout/AuthLayout";
-import { Select } from "../../../Components/Select";
-import CustomInput from "../../../Components/CustomInput";
+import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AddIcon from "../../../Assets/images/svg/addIcon.svg?react";
 import DeleteIcon from "../../../Assets/images/svg/deleteIcon.svg?react";
-import { usePageTitleUser } from "../../../Utils/helper";
+import BackButton2 from "../../../Components/BackButton/BackButton2";
+import CustomButton from "../../../Components/CustomButton";
+import CustomInput from "../../../Components/CustomInput";
+import CustomModal from "../../../Components/CustomModal";
+import { showToast } from "../../../Components/Toast";
 import ImageUpload from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 import { personalDetailsValidationSchema } from "../../../Config/Validations";
-import CustomButton from "../../../Components/CustomButton";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import CustomModal from "../../../Components/CustomModal";
-import BackButton2 from "../../../Components/BackButton/BackButton2";
-import { Container, Row, Col } from "react-bootstrap";
 import { getAll, post } from "../../../Services/Api";
-import axios from "axios";
-import { showToast } from "../../../Components/Toast";
+import { usePageTitleUser } from "../../../Utils/helper";
 
 const PersonalDetails = () => {
   const [modal, setModal] = useState(false);
@@ -29,9 +26,9 @@ const PersonalDetails = () => {
   // Location state se data get karein
   const signupData = location?.state?.formData;
 
-  console.log("Country Code:", signupData?.country_code);
-  console.log("Dial Code:", signupData?.dial_code);
-  console.log("Language:", signupData?.language);
+  // console.log("Country Code:", signupData?.country_code);
+  // console.log("Dial Code:", signupData?.dial_code);
+  // console.log("Language:", signupData?.language);
 
   const fetchCategories = async () => {
     try {
@@ -58,11 +55,23 @@ const PersonalDetails = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
+      // ✅ Basic validation for work_experience date ranges
+      const hasInvalidExperienceDates = values.work_experience.some((exp) => {
+        return new Date(exp.to) < new Date(exp.from);
+      });
+
+      if (hasInvalidExperienceDates) {
+        showToast("End date cannot be earlier than start date in work experience.");
+        return;
+      }
+
+      // 🔁 Transform language[]
       const languageFields = {};
       values.language.forEach((lang, index) => {
         languageFields[`language[${index}]`] = lang.label; // or lang.value
       });
 
+      // 🔁 Transform education[]
       const educationFields = {};
       values.education.forEach((edu, eduIndex) => {
         Object.entries(edu).forEach(([field, value]) => {
@@ -70,25 +79,45 @@ const PersonalDetails = () => {
         });
       });
 
-      // Merge language fields with the rest of the values
+      // 🔁 Transform work_experience[]
+      const workExperienceFields = {};
+      values.work_experience.forEach((exp, expIndex) => {
+        Object.entries(exp).forEach(([field, value]) => {
+          workExperienceFields[`work_experience[${expIndex}][${field}]`] = value;
+        });
+      });
+
+      // 🧱 Build final payload
       const payload = {
         ...values,
         ...languageFields,
         ...educationFields,
+        ...workExperienceFields,
       };
 
-      // Remove original array to avoid duplication
+      // 🚫 Remove original arrays
       delete payload.language;
       delete payload.education;
+      delete payload.work_experience;
+
+      // 🚀 Submit form
       const response = await post("/consultant/signup", payload);
-      console.log("Signup successful:", response.data);
-      setModal(true);
-      resetForm();
+
+      // ✅ Check for success
+      if (response?.status) {
+        console.log("Signup successful:", response);
+        setModal(true);
+        resetForm();
+      } else {
+        // ❌ Handle API-side failure
+        showToast(response?.data?.message || "Signup failed.");
+      }
     } catch (error) {
       console.error("Signup error:", error);
-      showToast(error.response?.data?.message || "Signup failed");
+      showToast(error.response?.data?.message || "Signup failed.");
     }
   };
+
   return (
     <section className={`user-login`}>
       <Container fluid>
