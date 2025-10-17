@@ -15,7 +15,8 @@ const UserProfile = () => {
   const [coverPic, setCoverPic] = useState();
 
   useEffect(() => {
-    setProfilePic(user.photo_path || images.userImage);
+    setProfilePic(user?.avatar);
+    console.log(user?.avatar, "fdsjkfhkj")
     setCoverPic(user.cover_photo || images.ProfileCover);
   }, []);
 
@@ -39,7 +40,7 @@ const UserProfile = () => {
                 <Row>
                   <Col xs={12} className="mb-4">
                     <div className="ptofile_img ms-lg-5 ms-4">
-                      <img src={profilePic ?? images.userImage} alt="User" />
+                      <img src={profilePic ?? images.UserImage} alt="User" />
                     </div>
                   </Col>
 

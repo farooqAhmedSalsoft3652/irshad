@@ -25,7 +25,7 @@ export const useLogin = () => {
 
       // Update Redux state
       dispatch(setToken(access_token));
-      dispatch(setRoles(user?.role));
+      dispatch(setRoles(user?.role === "consultant" ? "user" : user?.role));
       dispatch(setData(user));
       return response?.data?.status;
     } catch (error) {

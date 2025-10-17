@@ -5,6 +5,7 @@ import BackButton2 from "../../../Components/BackButton/BackButton2";
 import ChangePasswordForm from "../../../Components/ChangePasswordForm";
 import withModal from "../../../HOC/withModal";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
+import { post } from "../../../Services/Api";
 import "./style.css";
 
 const UserChangePassword = ({ showModal }) => {
@@ -14,23 +15,23 @@ const UserChangePassword = ({ showModal }) => {
 
   const handleSubmit = async (values) => {
     startSubmitting();
-    showModal(
-      null,
-      `password Has Been updated Successfully!`,
-      () => navigate(-1),
-      true
-    );
-    // let response = await post("/admin-api/account/change-password", values);
-    // if (response.status) {
-    //   showModal(
-    //     `Password changed successfully`,
-    //     null,
-    //     true,
-    //     () => navigate(`/admin/profile`)
-    //   );
-    // } else {
-    //   setErrorsData({ errors: "current_password" });
-    // }
+    // showModal(
+    //   null,
+    //   `password Has Been updated Successfully!`,
+    //   () => navigate(-1),
+    //   true
+    // );
+    let response = await post("/change-password", values);
+    if (response.status) {
+      showModal(
+        ``,
+        `Password changed successfully`,
+        () => navigate(`/profile`),
+        true,
+      );
+    } else {
+      setErrorsData({ errors: "current_password" });
+    }
     stopSubmitting();
   };
   return (

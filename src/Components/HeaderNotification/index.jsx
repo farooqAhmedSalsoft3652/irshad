@@ -112,11 +112,11 @@ const HeaderNotification = ({
         className="notButton d-flex align-items-center"
       >
         <FontAwesomeIcon className="bellIcon" icon={faBell} color="#C5E4F6" />
-        {notificationCount > 0 && (
           <span className="badge">
-            {notificationCount > 9 ? "9+" : notificationCount}
+            {notificationCount}
           </span>
-        )}
+        {/* {notificationCount > 0 && (
+        )} */}
       </Dropdown.Toggle>
       <Dropdown.Menu className="notiMenu" align="end">
         <div className="notificationsBodyHeader">

@@ -25,6 +25,7 @@ import HeaderNotification from "../../../HeaderNotification";
 import Toast, { showToast } from "../../../Toast";
 import "./style.css";
 import { notificationsData } from "../../../../Config/data";
+import { getAll } from "../../../../Services/Api";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ export const Header = () => {
 
   useEffect(() => {
     if (user) {
-      setProfilePic(user.photo_path || images.userImage);
+      setProfilePic(user.image || images.UserImage);
     }
   }, [user]);
 
@@ -118,23 +119,32 @@ export const Header = () => {
   const [notificationData, setNotificationData] = useState([]);
   const [notificationCount, setNotificationCount] = useState(0);
   
-  const getNotificationCount = async () => {
-    // Get only the count of notifications
-    const response = notificationsData;
-    if (response) {
-      const count = response?.detail?.notifications?.data?.length || 0;
+const getNotificationCount = async () => {
+  try {
+    let url = `/notifications/unread/count`;
+    const response = await getAll(url);
+    
+    if (response && response.status && response.data) {
+      const count = response.data.count || 0;
       setNotificationCount(count);
+    } else {
+      setNotificationCount(0);
     }
-    return Promise.resolve(); // Return a promise for consistency
-  };
+  } catch (error) {
+    console.error('Error fetching notification count:', error);
+    setNotificationCount(0);
+  }
+};
 
   const getNotification = async () => {
     // Get full notification data when dropdown is opened
-    const response = notificationsData;
+    // const response = notificationsData;
+    let url = `/notifications/all/list`;
+    const response = await getAll(url);
     if (response) {
-      setNotificationData(response?.detail?.notifications?.data);
+      setNotificationData(response?.data);
     }
-    return Promise.resolve(); // Return a promise for loading state management
+    // return Promise.resolve(); // Return a promise for loading state management
   };
 
   // Load notification count on component mount
@@ -305,8 +315,8 @@ export const Header = () => {
                                     <img
                                       src={
                                         profilePic ??
-                                        images.userImage ??
-                                        images.Placeholder
+                                        images.UserImage ??
+                                        images.placeholder
                                       }
                                       alt="avatar"
                                     />

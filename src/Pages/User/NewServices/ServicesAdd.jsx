@@ -5,10 +5,7 @@ import { useLocation, useNavigate } from "react-router";
 import BackButton2 from "../../../Components/BackButton/BackButton2";
 import CustomButton from "../../../Components/CustomButton";
 import CustomInput from "../../../Components/CustomInput";
-import {
-  modalReasonValidation,
-  serviceValidationSchema,
-} from "../../../Config/Validations";
+import { modalReasonValidation, serviceValidationSchema } from "../../../Config/Validations";
 import withModal from "../../../HOC/withModal";
 import { useAuth } from "../../../Hooks/useAuth";
 import { useFormStatus } from "../../../Hooks/useFormStatus";
@@ -23,6 +20,7 @@ import CustomModal from "../../../Components/CustomModal";
 import { Select } from "../../../Components/Select";
 import UploadAndDisplayImages from "../../../Components/UploadAndDisplayImage/UploadAndDisplayImage";
 import { servicesOptions } from "../../../Config/TableStatus";
+import { getAll } from "../../../Services/Api";
 const NewServicesAdd = ({ showModal, reasonModal }) => {
   usePageTitle("Edit Profile", true);
   const navigate = useNavigate();
@@ -40,6 +38,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     saturday: true,
     sunday: true,
   });
+
+  // State for service options from API
+  const [serviceOptions, setServiceOptions] = useState([]);
+  const [loadingServices, setLoadingServices] = useState(false);
 
   // Add this function to book a specific day
   /*
@@ -122,13 +124,13 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     },
     descriptions: "",
     banner_images: [], // Image Upload Field
-    mondayTime: [{ startTime: "", endTime: "", isBooked: false }],
-    tuesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
-    wednesdayTime: [{ startTime: "", endTime: "", isBooked: false }],
-    thursdayTime: [{ startTime: "", endTime: "", isBooked: false }],
-    fridayTime: [{ startTime: "", endTime: "", isBooked: false }],
-    saturdayTime: [{ startTime: "", endTime: "", isBooked: false }],
-    sundayTime: [{ startTime: "", endTime: "", isBooked: false }],
+    mondayTime: [{ startTime: "", endTime: "", duration: "", isBooked: false }],
+    tuesdayTime: [{ startTime: "", endTime: "", duration: "", isBooked: false }],
+    wednesdayTime: [{ startTime: "", endTime: "", duration: "", isBooked: false }],
+    thursdayTime: [{ startTime: "", endTime: "", duration: "", isBooked: false }],
+    fridayTime: [{ startTime: "", endTime: "", duration: "", isBooked: false }],
+    saturdayTime: [{ startTime: "", endTime: "", duration: "", isBooked: false }],
+    sundayTime: [{ startTime: "", endTime: "", duration: "", isBooked: false }],
   };
 
   const sessionOptions = [
@@ -193,39 +195,24 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
       }
 
       // Quick Session Types and Amounts (if enabled and selected)
-      if (
-        values.showQuickServices &&
-        values.quickSessionType &&
-        values.quickSessionType.length > 0
-      ) {
+      if (values.showQuickServices && values.quickSessionType && values.quickSessionType.length > 0) {
         payload.quickSessionType = values.quickSessionType;
 
         // Add amounts for each selected quick session type
         payload.quickSessionAmounts = {};
         values.quickSessionType.forEach((type) => {
           if (values.quickSessionAmounts?.[type]) {
-            payload.quickSessionAmounts[type] =
-              values.quickSessionAmounts[type];
+            payload.quickSessionAmounts[type] = values.quickSessionAmounts[type];
           }
         });
       }
 
       // Days timing (filter out empty time slots)
-      const days = [
-        "mondayTime",
-        "tuesdayTime",
-        "wednesdayTime",
-        "thursdayTime",
-        "fridayTime",
-        "saturdayTime",
-        "sundayTime",
-      ];
+      const days = ["mondayTime", "tuesdayTime", "wednesdayTime", "thursdayTime", "fridayTime", "saturdayTime", "sundayTime"];
 
       days.forEach((day) => {
         // Filter out empty time slots
-        const timeSlots = values[day]?.filter(
-          (slot) => slot.startTime && slot.endTime
-        );
+        const timeSlots = values[day]?.filter((slot) => slot.startTime && slot.endTime);
 
         if (timeSlots?.length) {
           // For time slots with start and end times, set isBooked to true
@@ -252,12 +239,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
     const payload = buildPayload(values);
     console.log("Final Payload:", payload);
 
-    showModal(
-      "",
-      `New Service Added Successfully.`,
-      () => navigate(`/new-services`),
-      true
-    );
+    showModal("", `New Service Added Successfully.`, () => navigate(`/new-services`), true);
 
     resetForm({
       payload: {
@@ -302,13 +284,37 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
   };
 
   const handleRequestCall = () => {
-    showModal(
-      "",
-      `Request reason for call sent sucessfully wait for the admin's approval`,
-      false,
-      true
-    );
+    showModal("", `Request reason for call sent sucessfully wait for the admin's approval`, false, true);
   };
+
+  // Fetch services from API
+  const fetchServices = async () => {
+    try {
+      setLoadingServices(true);
+
+      const result = await getAll(`/consultant/sub-categories/${id}/service-types`);
+
+      if (result.status && result.data) {
+        // Transform API data for select options
+        const transformedOptions = result.data.map((service) => ({
+          value: service.id.toString(),
+          label: service.name,
+        }));
+
+        setServiceOptions(transformedOptions);
+      }
+    } catch (error) {
+      console.error("Error fetching services:", error);
+      // showModal("Error", "Failed to load services. Please try again.", null, false);
+    } finally {
+      setLoadingServices(false);
+    }
+  };
+
+  // Fetch services on component mount
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   // console.log(user)
   return (
@@ -341,39 +347,31 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                 validateOnMount={true}
                 validateOnChange={true}
               >
-                {({
-                  values,
-                  errors,
-                  touched,
-                  handleChange,
-                  handleBlur,
-                  setFieldValue,
-                  setErrors,
-                  setTouched,
-                  handleSubmit,
-                  setFieldTouched,
-                }) => (
+                {({ values, errors, touched, handleChange, handleBlur, setFieldValue, setErrors, setTouched, handleSubmit, setFieldTouched }) => (
                   <Form onSubmit={handleSubmit}>
-                    {console.log("Errors:", errors)}
+                    {/* {console.log("Errors:", errors)} */}
                     <Row>
                       {/* Service Name */}
                       <Col xs={12} lg={6} xxl={5} className="mb-3">
-                        <Select
-                          wrapperClass="d-block mb-3"
-                          required
-                          id="service_name"
-                          name="service_name"
-                          value={values.service_name}
-                          // mainLabel="Select Service"
-                          onChange={(e) => {
-                            setFieldValue("service_name", e);
-                          }}
-                          label="Select Service"
-                          onBlur={handleBlur}
-                          error={touched.service_name && errors.service_name}
-                        >
-                          {servicesOptions}
-                        </Select>
+                        <label className="form-label">
+                          Select Service
+                          <span className="text-danger">*</span>
+                        </label>
+                        <Field as="select" name="service_name" className={`form-select`} onBlur={handleBlur}>
+                          <option value="">Select a service</option>
+                          {loadingServices ? (
+                            <option value="" disabled>
+                              Loading services...
+                            </option>
+                          ) : (
+                            serviceOptions.map((service) => (
+                              <option key={service.value} value={service.value}>
+                                {service.label}
+                              </option>
+                            ))
+                          )}
+                        </Field>
+                        {touched.service_name && errors.service_name && <div className="error-message red-text">{errors.service_name}</div>}
                       </Col>
                     </Row>
                     <Row>
@@ -386,38 +384,24 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
 
                           {sessionOptions.map(({ label, value }) => (
                             <div key={value}>
-                              <div
-                                className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}
-                              >
-                                <label
-                                  key={value}
-                                  className={`btn btn-primary btn-checkbox ${
-                                    values.sessionTypes?.includes(value)
-                                      ? "active"
-                                      : ""
-                                  }`}
-                                >
+                              <div className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}>
+                                <label key={value} className={`btn btn-primary btn-checkbox ${values.sessionTypes?.includes(value) ? "active" : ""}`}>
                                   <FormCheck
                                     type="checkbox"
                                     name={`sessionTypes`}
                                     id={`sessionType-${value}`}
                                     label={label}
-                                    checked={values.sessionTypes?.includes(
-                                      value
-                                    )}
+                                    checked={values.sessionTypes?.includes(value)}
                                     onChange={(e) => {
                                       // Get current session types array or initialize empty array
-                                      const currentTypes =
-                                        values.sessionTypes || [];
+                                      const currentTypes = values.sessionTypes || [];
 
                                       // Add or remove the value based on checkbox state
                                       let newTypes;
                                       if (e.target.checked) {
                                         newTypes = [...currentTypes, value];
                                       } else {
-                                        newTypes = currentTypes.filter(
-                                          (type) => type !== value
-                                        );
+                                        newTypes = currentTypes.filter((type) => type !== value);
                                       }
 
                                       // Update the form values
@@ -433,35 +417,21 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                   value={values.sessionAmounts?.[value] || ""}
                                   type="number"
                                   className="form-control w-auto"
-                                  disabled={
-                                    !values.sessionTypes?.includes(value)
-                                  }
+                                  disabled={!values.sessionTypes?.includes(value)}
                                   placeholder="Enter Amount"
                                   min={0}
                                   max={100}
                                   onChange={(e) => {
-                                    setFieldValue(
-                                      `sessionAmounts.${value}`,
-                                      e.target.value
-                                    );
+                                    setFieldValue(`sessionAmounts.${value}`, e.target.value);
                                   }}
                                   onBlur={() => {
-                                    setFieldTouched(
-                                      `sessionAmounts.${value}`,
-                                      true
-                                    );
+                                    setFieldTouched(`sessionAmounts.${value}`, true);
                                   }}
                                   readOnly
                                 />
 
                                 {/* <span className="badge">Range $0-$100</span> */}
-                                <CustomButton
-                                  variant="secondary"
-                                  className=""
-                                  text="Request More"
-                                  onClick={() => setRequestModal(true)}
-                                  type="button"
-                                />
+                                <CustomButton variant="secondary" className="" text="Request More" onClick={() => setRequestModal(true)} type="button" />
                               </div>
                               {/* Show error for this session type if it's selected and touched */}
                               {values.sessionTypes?.includes(value) &&
@@ -471,9 +441,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                   <div className="error-message red-text mb-2">
                                     {(() => {
                                       try {
-                                        const parsedErrors = JSON.parse(
-                                          errors.sessionAmounts
-                                        );
+                                        const parsedErrors = JSON.parse(errors.sessionAmounts);
                                         return parsedErrors[value] || "";
                                       } catch (e) {
                                         return "";
@@ -483,21 +451,12 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                 )}
                             </div>
                           ))}
-                          <CustomButton
-                            variant="secondary"
-                            className="min-width-250"
-                            text="Request For Call"
-                            type="button"
-                            onClick={handleRequestCall}
-                          />
+                          <CustomButton variant="secondary" className="min-width-250" text="Request For Call" type="button" onClick={handleRequestCall} />
 
                           {/* Show general session types error */}
-                          {(touched.sessionTypes || hasSubmitted) &&
-                            errors.sessionTypes && (
-                              <div className="error-message red-text mt-2">
-                                {errors.sessionTypes}
-                              </div>
-                            )}
+                          {(touched.sessionTypes || hasSubmitted) && errors.sessionTypes && (
+                            <div className="error-message red-text mt-2">{errors.sessionTypes}</div>
+                          )}
                         </div>
                       </Col>
                     </Row>
@@ -526,14 +485,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                         <UploadAndDisplayImages
                           label="Upload Image"
                           placeholder="Upload your picture"
-                          onChange={(files) =>
-                            setFieldValue("banner_images", files)
-                          }
+                          onChange={(files) => setFieldValue("banner_images", files)}
                           numberOfFiles={1}
                           required
-                          errorFromParent={
-                            touched.banner_images && errors.banner_images
-                          }
+                          errorFromParent={touched.banner_images && errors.banner_images}
                         />
                       </Col>
                     </Row>
@@ -542,13 +497,8 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                         <div className="session-type mb-3">
                           <div className="d-flex gap-3">
                             <div className="flex-shrink-0">
-                              <label className="form-label mb-2">
-                                Slots Doesnt work on the quick service
-                              </label>
-                              <p className="mb-0">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing
-                              </p>
+                              <label className="form-label mb-2">Slots Doesnt work on the quick service</label>
+                              <p className="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
                             </div>
                             <div className="flex-shrink-0 align-self-end">
                               <FormCheck
@@ -582,100 +532,61 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
 
                               {sessionOptions.map(({ label, value }) => (
                                 <div key={value}>
-                                  <div
-                                    className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}
-                                  >
-                                    <label
-                                      key={value}
-                                      className={`btn btn-primary btn-checkbox ${
-                                        values.quickSessionType?.includes(value)
-                                          ? "active"
-                                          : ""
-                                      }`}
-                                    >
+                                  <div className={`d-flex align-items-center gap-3 mb-4 mb-sm-3 flex-wrap`}>
+                                    <label key={value} className={`btn btn-primary btn-checkbox ${values.quickSessionType?.includes(value) ? "active" : ""}`}>
                                       <FormCheck
                                         type="checkbox"
                                         name={`quickSessionType`}
                                         id={`quickSessionType-${value}`}
                                         label={label}
-                                        checked={values.quickSessionType?.includes(
-                                          value
-                                        )}
+                                        checked={values.quickSessionType?.includes(value)}
                                         onChange={(e) => {
                                           // Get current session types array or initialize empty array
-                                          const currentTypes =
-                                            values.quickSessionType || [];
+                                          const currentTypes = values.quickSessionType || [];
 
                                           // Add or remove the value based on checkbox state
                                           let newTypes;
                                           if (e.target.checked) {
                                             newTypes = [...currentTypes, value];
                                           } else {
-                                            newTypes = currentTypes.filter(
-                                              (type) => type !== value
-                                            );
+                                            newTypes = currentTypes.filter((type) => type !== value);
                                           }
 
                                           // Update the form values
-                                          setFieldValue(
-                                            "quickSessionType",
-                                            newTypes
-                                          );
+                                          setFieldValue("quickSessionType", newTypes);
                                         }}
                                       />
                                     </label>
                                     <Field
                                       name={`quickSessionAmounts.${value}`}
-                                      value={
-                                        values.quickSessionAmounts?.[value] ||
-                                        ""
-                                      }
+                                      value={values.quickSessionAmounts?.[value] || ""}
                                       type="number"
                                       className="form-control w-auto"
-                                      disabled={
-                                        !values.quickSessionType?.includes(
-                                          value
-                                        )
-                                      }
+                                      disabled={!values.quickSessionType?.includes(value)}
                                       placeholder="Enter Amount"
                                       min={0}
                                       max={100}
                                       onChange={(e) => {
-                                        setFieldValue(
-                                          `quickSessionAmounts.${value}`,
-                                          e.target.value
-                                        );
+                                        setFieldValue(`quickSessionAmounts.${value}`, e.target.value);
                                       }}
                                       onBlur={() => {
-                                        setFieldTouched(
-                                          `quickSessionAmounts.${value}`,
-                                          true
-                                        );
+                                        setFieldTouched(`quickSessionAmounts.${value}`, true);
                                       }}
                                       readOnly
                                     />
 
                                     {/* <span className="badge">Range $0-$100</span> */}
-                                    <CustomButton
-                                      variant="secondary"
-                                      className=""
-                                      text="Request More"
-                                      onClick={() => setRequestModal(true)}
-                                      type="button"
-                                    />
+                                    <CustomButton variant="secondary" className="" text="Request More" onClick={() => setRequestModal(true)} type="button" />
                                   </div>
                                   {/* Show error for this quick session type if it's selected and touched */}
                                   {values.quickSessionType?.includes(value) &&
                                     touched.quickSessionAmounts?.[value] &&
                                     errors.quickSessionAmounts &&
-                                    typeof errors.quickSessionAmounts ===
-                                      "string" && (
+                                    typeof errors.quickSessionAmounts === "string" && (
                                       <div className="error-message red-text mb-2">
                                         {(() => {
                                           try {
-                                            const parsedErrors = JSON.parse(
-                                              errors.quickSessionAmounts
-                                            );
+                                            const parsedErrors = JSON.parse(errors.quickSessionAmounts);
                                             return parsedErrors[value] || "";
                                           } catch (e) {
                                             return "";
@@ -693,19 +604,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                 </div>
                               )} */}
 
-                              <CustomButton
-                                variant="secondary"
-                                className="min-width-250"
-                                text="Request For Call"
-                                type="button"
-                                onClick={handleRequestCall}
-                              />
-                              {(touched.quickSessionType || hasSubmitted) &&
-                                errors.quickSessionType && (
-                                  <div className="error-message red-text mt-2">
-                                    {errors.quickSessionType}
-                                  </div>
-                                )}
+                              <CustomButton variant="secondary" className="min-width-250" text="Request For Call" type="button" onClick={handleRequestCall} />
+                              {(touched.quickSessionType || hasSubmitted) && errors.quickSessionType && (
+                                <div className="error-message red-text mt-2">{errors.quickSessionType}</div>
+                              )}
                             </div>
                           )}
                         </div>
@@ -716,22 +618,12 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                       <Col xs={12}>
                         <h5 className="mb-3">Manage Service Slots</h5>
                       </Col>
-                      {[
-                        "monday",
-                        "tuesday",
-                        "wednesday",
-                        "thursday",
-                        "friday",
-                        "saturday",
-                        "sunday",
-                      ].map((day) => (
+                      {["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].map((day) => (
                         <Col xs={12} md={6} xxl={3} className="mb-3" key={day}>
                           <Card className="card-slot">
                             <Card.Header className="py-3 d-flex align-items-center">
                               <Card.Title className="mb-0 text-capitalize fw-medium flex-grow-1">
-                                <label>
-                                  {day.charAt(0).toUpperCase() + day.slice(1)}
-                                </label>
+                                <label>{day.charAt(0).toUpperCase() + day.slice(1)}</label>
                               </Card.Title>
                               <FormCheck
                                 type="switch"
@@ -748,23 +640,14 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
 
                                   // Update the day's booking status in the form values
                                   const dayTimeKey = `${day}Time`;
-                                  const currentTimeSlots = [
-                                    ...values[dayTimeKey],
-                                  ];
-
-                                  // We don't change isBooked here - it should only be changed when explicitly booking a day
+                                  const currentTimeSlots = [...values[dayTimeKey]];
 
                                   // If enabling, touch the fields to trigger validation
                                   if (isEnabled) {
                                     // Touch all fields in the first time slot to trigger validation
-                                    setFieldTouched(
-                                      `${dayTimeKey}.0.startTime`,
-                                      true
-                                    );
-                                    setFieldTouched(
-                                      `${dayTimeKey}.0.endTime`,
-                                      true
-                                    );
+                                    setFieldTouched(`${dayTimeKey}.0.startTime`, true);
+                                    setFieldTouched(`${dayTimeKey}.0.endTime`, true);
+                                    setFieldTouched(`${dayTimeKey}.0.duration`, true);
                                   }
                                   // If disabling, clear existing values and errors for this day
                                   else {
@@ -773,9 +656,8 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                       {
                                         startTime: "",
                                         endTime: "",
-                                        isBooked:
-                                          currentTimeSlots[0]?.isBooked ||
-                                          false,
+                                        duration: "",
+                                        isBooked: currentTimeSlots[0]?.isBooked || false,
                                       },
                                     ]);
 
@@ -811,48 +693,50 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                               <CustomInput
                                                 name={`${day}Time.${index}.startTime`}
                                                 type="time"
-                                                disabled={
-                                                  isDisabled[day] ||
-                                                  values[`${day}Time`][index]
-                                                    .isBooked
-                                                }
-                                                value={
-                                                  values[`${day}Time`][index]
-                                                    .startTime
-                                                }
+                                                disabled={isDisabled[day] || values[`${day}Time`][index].isBooked}
+                                                value={values[`${day}Time`][index].startTime}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                                error={
-                                                  touched[`${day}Time`]?.[index]
-                                                    ?.startTime &&
-                                                  errors[`${day}Time`]?.[index]
-                                                    ?.startTime
-                                                }
+                                                error={touched[`${day}Time`]?.[index]?.startTime && errors[`${day}Time`]?.[index]?.startTime}
                                               />
                                             </div>
                                             <div className="flex-grow-1 w-100">
                                               <CustomInput
                                                 name={`${day}Time.${index}.endTime`}
                                                 type="time"
-                                                disabled={
-                                                  isDisabled[day] ||
-                                                  values[`${day}Time`][index]
-                                                    .isBooked
-                                                }
-                                                value={
-                                                  values[`${day}Time`][index]
-                                                    .endTime
-                                                }
+                                                disabled={isDisabled[day] || values[`${day}Time`][index].isBooked}
+                                                value={values[`${day}Time`][index].endTime}
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
-                                                error={
-                                                  touched[`${day}Time`]?.[index]
-                                                    ?.endTime &&
-                                                  errors[`${day}Time`]?.[index]
-                                                    ?.endTime
-                                                }
+                                                error={touched[`${day}Time`]?.[index]?.endTime && errors[`${day}Time`]?.[index]?.endTime}
                                               />
                                             </div>
+                                          </div>
+
+                                          {/* Duration Selection Dropdown */}
+                                          <div className="mt-3">
+                                            <label className="form-label small mb-2">
+                                              Select Your Duration
+                                              <span className="text-danger">*</span>
+                                            </label>
+                                            <Field
+                                              as="select"
+                                              name={`${day}Time.${index}.duration`}
+                                              className={`form-select ${
+                                                touched[`${day}Time`]?.[index]?.duration && errors[`${day}Time`]?.[index]?.duration ? "is-invalid" : ""
+                                              }`}
+                                              disabled={isDisabled[day] || values[`${day}Time`][index].isBooked}
+                                              value={values[`${day}Time`][index].duration || ""}
+                                              onChange={handleChange}
+                                              onBlur={handleBlur}
+                                            >
+                                              <option value="">Select Duration</option>
+                                              <option value="30_min">30 minutes</option>
+                                              <option value="1_hr">1 Hour</option>
+                                            </Field>
+                                            {touched[`${day}Time`]?.[index]?.duration && errors[`${day}Time`]?.[index]?.duration && (
+                                              <div className="error-message red-text">{errors[`${day}Time`]?.[index]?.duration}</div>
+                                            )}
                                           </div>
 
                                           {/* Delete button */}
@@ -862,15 +746,10 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                                 type="button"
                                                 className="btn remove-btn"
                                                 onClick={() => remove(index)}
-                                                disabled={
-                                                  values[`${day}Time`][index]
-                                                    .isBooked
-                                                }
+                                                disabled={values[`${day}Time`][index].isBooked}
                                               >
                                                 <span className="delete-icon">
-                                                  <FontAwesomeIcon
-                                                    icon={faTrash}
-                                                  />
+                                                  <FontAwesomeIcon icon={faTrash} />
                                                 </span>
                                                 Delete
                                               </button>
@@ -889,7 +768,8 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                                               push({
                                                 startTime: "",
                                                 endTime: "",
-                                                isBooked: false, // New time slots are not booked by default
+                                                duration: "",
+                                                isBooked: false,
                                               })
                                             }
                                           >
@@ -910,25 +790,13 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                       ))}
                       <Col xs={12}>
                         {/* Display the "at least one day" error if it exists */}
-                        {errors.mondayTime &&
-                          typeof errors.mondayTime === "string" && (
-                            <div className="error-message red-text mb-3">
-                              {errors.mondayTime}
-                            </div>
-                          )}
+                        {errors.mondayTime && typeof errors.mondayTime === "string" && <div className="error-message red-text mb-3">{errors.mondayTime}</div>}
                       </Col>
                     </Row>
                     <Row>
                       {/* Submit Button */}
                       <Col xs={12} className="mt-4">
-                        <CustomButton
-                          variant="primary"
-                          className="px-5"
-                          text="Save"
-                          pendingText="Submitting..."
-                          isPending={isSubmitting}
-                          type="submit"
-                        />
+                        <CustomButton variant="primary" className="px-5" text="Save" pendingText="Submitting..." isPending={isSubmitting} type="submit" />
                       </Col>
                     </Row>
                   </Form>
@@ -954,16 +822,7 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
           validationSchema={modalReasonValidation}
           onSubmit={handleRequestSubmit}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            setFieldValue,
-            isSubmitting,
-          }) => (
+          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue, isSubmitting }) => (
             <Form>
               <h3 className="modalHeading">Amount Request Reason</h3>
               {console.log("Errors", errors)}
@@ -993,26 +852,16 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
                   name="uploadFile"
                   type="file"
                   accept=".pdf,.docx,.jpg,.jpeg"
-                  onChange={(event) =>
-                    setFieldValue("uploadFile", event.currentTarget.files[0])
-                  }
+                  onChange={(event) => setFieldValue("uploadFile", event.currentTarget.files[0])}
                   className="d-none"
                 />
 
-                {touched.uploadFile && errors.uploadFile && (
-                  <div className="error-message red-text">
-                    {errors.uploadFile}
-                  </div>
-                )}
+                {touched.uploadFile && errors.uploadFile && <div className="error-message red-text">{errors.uploadFile}</div>}
 
                 {values.uploadFile && (
                   <div className="upload-file">
                     <strong>{values.uploadFile.name}</strong>
-                    <button
-                      type="button"
-                      className="remove-btn"
-                      onClick={() => setFieldValue("uploadFile", null)}
-                    >
+                    <button type="button" className="remove-btn" onClick={() => setFieldValue("uploadFile", null)}>
                       Remove
                     </button>
                   </div>
@@ -1020,19 +869,8 @@ const NewServicesAdd = ({ showModal, reasonModal }) => {
               </div>
 
               <div className="text-center d-flex justify-content-center gap-3">
-                <CustomButton
-                  variant="primary"
-                  text="Post"
-                  pendingText="Submitting..."
-                  isPending={isSubmitting}
-                  type="submit"
-                  disabled={isSubmitting}
-                />
-                <CustomButton
-                  variant="secondary"
-                  text="Cancel"
-                  onClick={() => setRequestModal(false)}
-                />
+                <CustomButton variant="primary" text="Post" pendingText="Submitting..." isPending={isSubmitting} type="submit" disabled={isSubmitting} />
+                <CustomButton variant="secondary" text="Cancel" onClick={() => setRequestModal(false)} />
               </div>
             </Form>
           )}

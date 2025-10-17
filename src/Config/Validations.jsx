@@ -174,11 +174,11 @@ export const forgotPassword = Yup.object().shape({
 });
 
 export const changePassword = Yup.object().shape({
-  current_password: Yup.string().required("Current Password is required"),
-  password: Yup.string().required("New Password is required"),
-  password_confirmation: Yup.string()
+  old_password: Yup.string().required("Current Password is required"),
+  new_password: Yup.string().required("New Password is required"),
+  confirm_password: Yup.string()
     .required("Confirm Password is required")
-    .oneOf([Yup.ref("password"), null], "Confirm Password must match Password.")
+    .oneOf([Yup.ref("new_password"), null], "Confirm Password must match Password.")
     .label("Confirm Password"),
 });
 

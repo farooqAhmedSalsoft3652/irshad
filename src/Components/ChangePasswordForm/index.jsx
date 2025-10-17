@@ -16,9 +16,9 @@ const ChangePasswordForm = ({
   return (
     <Formik
       initialValues={{
-        current_password: "",
-        password: "",
-        password_confirmation: "",
+        old_password: "",
+        new_password: "",
+        confirm_password: "",
       }}
       validationSchema={changePassword}
       onSubmit={onSubmit}
@@ -41,11 +41,11 @@ const ChangePasswordForm = ({
                 required
                 placeholder="Enter Current Password"
                 inputclass="mb-3"
-                id="current_password"
-                value={values.current_password}
+                id="old_password"
+                value={values.old_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={touched.current_password && errors.current_password}
+                error={touched.old_password && errors.old_password}
               />
             </Col>
             <Col md={12} className="my-1">
@@ -56,11 +56,11 @@ const ChangePasswordForm = ({
                 required
                 placeholder="Enter New Password"
                 inputclass="mb-3"
-                id="password"
-                value={values.password}
+                id="new_password"
+                value={values.new_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={touched.password && errors.password}
+                error={touched.new_password && errors.new_password}
               />
             </Col>
             <Col md={12} className="my-1">
@@ -71,12 +71,12 @@ const ChangePasswordForm = ({
                 required
                 placeholder="Confirm Password"
                 inputclass="mb-3"
-                id="password_confirmation"
-                value={values.password_confirmation}
+                id="confirm_password"
+                value={values.confirm_password}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 error={
-                  touched.password_confirmation && errors.password_confirmation
+                  touched.confirm_password && errors.confirm_password
                 }
               />
             </Col>
